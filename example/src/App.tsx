@@ -7,7 +7,7 @@ export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
 
   React.useEffect(() => {
-    Flybuy.multiply(3, 7).then(setResult);
+    Flybuy.multiply(3, 4).then(setResult);
   }, []);
 
   return (

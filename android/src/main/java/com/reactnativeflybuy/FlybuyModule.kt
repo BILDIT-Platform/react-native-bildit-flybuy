@@ -11,6 +11,7 @@ import com.radiusnetworks.flybuy.sdk.notify.NotificationInfo
 import com.radiusnetworks.flybuy.sdk.notify.NotifyManager
 import java.util.Map
 import com.facebook.react.bridge.*
+import com.radiusnetworks.flybuy.sdk.data.common.Pagination
 
 class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
@@ -191,8 +192,43 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
     }
   }
 
+  @ReactMethod
+  fun fetchSites(params: ReadableMap, promise: Promise) {
+    val query = params.getString("query")
+    val page = params.getInt("page")
+    FlyBuyCore.sites.fetch { sites, pagination, sdkError ->
+      sdkError?.let {
+        handleFlyBuyError(it)
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        sites?.let {
+          val map = Arguments.createMap()
+          var sites = parseSites(it)
+          if (pagination != null) {
+            var pagination = parsePagination(pagination)
+            map.putArray("data", sites)
+            map.putMap("pagination", pagination)
+            promise.resolve(map)
+          } else {
+            promise.reject("Fetch sites Error", "Error retrieving pagination")
+          }
+        } ?: run {
+          promise.reject("Fetch sites Error", "Error retrieving sites")
+        }
+
+      }
+
+    }
+  }
+
 }
 
+fun parsePagination(pagination: Pagination): WritableMap {
+  val map = Arguments.createMap()
+  map.putInt("currentPage", pagination.currentPage)
+  map.putInt("totalPages", pagination.totalPages)
+  return map
+}
 
 fun parseCustomer(customer: Customer): WritableMap {
   val map = Arguments.createMap()

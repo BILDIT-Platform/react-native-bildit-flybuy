@@ -131,6 +131,15 @@ export default function App() {
       .catch((err) => console.tron.log('err', err));
   };
 
+  const fetchSites = () => {
+    Flybuy.Sites.fetchSites({
+      query: 'Test',
+      page: 1,
+    })
+      .then((sites) => console.tron.log('sites', sites))
+      .catch((err) => console.tron.log('err', err));
+  };
+
   React.useEffect(() => {
     Flybuy.configure('224.epegiXJkGRqvwLJJYHPTCWGR');
     Flybuy.Notify.configure();
@@ -168,6 +177,7 @@ export default function App() {
       <Button title="createForSites" color="#841584" onPress={createForSites} />
       <Text>Sites</Text>
       <Button title="fetchAllSites" color="#841584" onPress={fetchAllSites} />
+      <Button title="fetchSites" color="#841584" onPress={fetchSites} />
     </View>
   );
 }

@@ -125,6 +125,7 @@ const FlyBuyModule = {
   },
   Sites: {
     fetchAllSites: Flybuy.fetchAllSites,
+    fetchSites: Flybuy.fetchSites,
   },
   Notify: {
     configure: Flybuy.notifyConfigure,

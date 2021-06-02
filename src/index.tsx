@@ -1,17 +1,17 @@
 import { NativeModules } from 'react-native';
 
-export interface CircularRegion {
+export interface ICircularRegion {
   latitude: number;
   longitude: number;
   radius: number;
 }
 
-export interface NotificationInfo {
+export interface INotificationInfo {
   title: string;
   message: string;
   data: any;
 }
-export interface Order {
+export interface IOrder {
   id: number;
   state: string;
   customerState: string;
@@ -41,7 +41,7 @@ export interface Order {
   customerLicensePlate?: string;
 }
 
-export interface Site {
+export interface ISite {
   id: number;
   name?: string;
   phone?: string;
@@ -60,7 +60,7 @@ export interface Site {
   partnerIdentifier?: string;
 }
 
-export interface Customer {
+export interface ICustomer {
   name: string;
   carType: string;
   carColor: string;
@@ -70,30 +70,68 @@ export interface Customer {
 
 const { Flybuy } = NativeModules;
 
-type FlybuyType = {
-  // configure
-  configure(token: string): void;
-  // customer
-  login(code: string): Promise<any>;
-  createCustomer(customerInfo: Customer): Promise<Customer>;
-  updateCustomer(customerInfo: Customer): Promise<Customer>;
-  getCurrentCustomer(): Promise<Customer>;
-  //  orders
-  fetchOrders(): Promise<[Order]>;
+type Orders = {
+  fetchOrders(): Promise<[IOrder]>;
   createOrder(
     siteId: number,
     pid: string,
-    customerInfo: Customer
-  ): Promise<Order>;
-  // notify
-  notifyConfigure(): void;
+    customerInfo: ICustomer
+  ): Promise<IOrder>;
+};
+
+type Customer = {
+  login(code: string): Promise<any>;
+  createCustomer(customerInfo: ICustomer): Promise<ICustomer>;
+  updateCustomer(customerInfo: ICustomer): Promise<ICustomer>;
+  getCurrentCustomer(): Promise<ICustomer>;
+};
+
+type Sites = {
+  fetchAllSites(): Promise<[ISite]>;
+};
+
+type Notify = {
+  configure(): void;
   clearNotifications(): Promise<void>;
   createForSitesInRegion(
-    region: CircularRegion,
-    notification: NotificationInfo
-  ): Promise<[Site]>;
-  createForSites(sites: [Site], notification: NotificationInfo): Promise<void>;
-  // sites
-  fetchAllSites(): Promise<[Site]>;
+    region: ICircularRegion,
+    notification: INotificationInfo
+  ): Promise<[ISite]>;
+  createForSites(
+    sites: [ISite],
+    notification: INotificationInfo
+  ): Promise<void>;
 };
-export default Flybuy as FlybuyType;
+
+type FlyBuyType = {
+  Orders: Orders;
+  Customer: Customer;
+  Notify: Notify;
+  Sites: Sites;
+  configure(token: string): void;
+};
+
+const FlyBuyModule = {
+  configure: Flybuy.configure,
+  Orders: {
+    fetchOrders: Flybuy.fetchOrders,
+    createOrder: Flybuy.createOrder,
+  },
+  Customer: {
+    login: Flybuy.login,
+    createCustomer: Flybuy.createCustomer,
+    updateCustomer: Flybuy.updateCustomer,
+    getCurrentCustomer: Flybuy.getCurrentCustomer,
+  },
+  Sites: {
+    fetchAllSites: Flybuy.fetchAllSites,
+  },
+  Notify: {
+    configure: Flybuy.notifyConfigure,
+    clearNotifications: Flybuy.clearNotifications,
+    createForSitesInRegion: Flybuy.createForSitesInRegion,
+    createForSites: Flybuy.createForSites,
+  },
+};
+
+export default FlyBuyModule as FlyBuyType;

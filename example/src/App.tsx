@@ -15,19 +15,19 @@ const Button = ({ title, color, onPress }) => {
 };
 export default function App() {
   const fetchOrders = () => {
-    Flybuy.fetchOrders()
+    Flybuy.Orders.fetchOrders()
       .then((orders) => console.tron.log('orders', orders))
       .catch((err) => console.tron.log(err));
   };
 
   const login = () => {
-    Flybuy.login('F69PGKM1QXCN7Dj3ybEXCpU4')
+    Flybuy.Customer.login('F69PGKM1QXCN7Dj3ybEXCpU4')
       .then((customer) => console.tron.log('customer', customer))
       .catch((err) => console.tron.log(err));
   };
 
   const createOrder = () => {
-    Flybuy.createOrder(15942, '989899', {
+    Flybuy.Orders.createOrder(15942, '989899', {
       name: 'Lamia Selmane AB',
       carType: 'Nothing',
       carColor: 'Silver',
@@ -39,7 +39,7 @@ export default function App() {
   };
 
   const createCustomer = () => {
-    Flybuy.createCustomer({
+    Flybuy.Customer.createCustomer({
       name: 'Abdelkhalek Zellat',
       carType: 'Nothing',
       carColor: 'Silver',
@@ -51,7 +51,7 @@ export default function App() {
   };
 
   const updateCustomer = () => {
-    Flybuy.updateCustomer({
+    Flybuy.Customer.updateCustomer({
       name: 'Abdelkhalek Zellat',
       carType: 'Nothing',
       carColor: 'Silver',
@@ -63,13 +63,13 @@ export default function App() {
   };
 
   const getCurrentCustomer = () => {
-    Flybuy.getCurrentCustomer()
+    Flybuy.Customer.getCurrentCustomer()
       .then((customer) => console.tron.log('customer', customer))
       .catch((err) => console.tron.log(err));
   };
 
   const clearNotifications = () => {
-    Flybuy.clearNotifications()
+    Flybuy.Notify.clearNotifications()
       .then(() => console.tron.log('notifications cleared'))
       .catch((err) => console.tron.log('err', err));
   };
@@ -90,7 +90,7 @@ export default function App() {
       },
     };
 
-    Flybuy.createForSitesInRegion(region, notification)
+    Flybuy.Notify.createForSitesInRegion(region, notification)
       .then((sites) => console.tron.log('notifications crated', sites))
       .catch((err) => console.tron.log('err', err));
   };
@@ -120,20 +120,20 @@ export default function App() {
       },
     ];
 
-    Flybuy.createForSites(sites, notification)
+    Flybuy.Notify.createForSites(sites, notification)
       .then(() => console.tron.log('notifications crated'))
       .catch((err) => console.tron.log('err', err));
   };
 
   const fetchAllSites = () => {
-    Flybuy.fetchAllSites()
+    Flybuy.Sites.fetchAllSites()
       .then((sites) => console.tron.log('sites', sites))
       .catch((err) => console.tron.log('err', err));
   };
 
   React.useEffect(() => {
     Flybuy.configure('224.epegiXJkGRqvwLJJYHPTCWGR');
-    Flybuy.notifyConfigure();
+    Flybuy.Notify.configure();
   }, []);
 
   return (

@@ -1,18 +1,15 @@
 package com.reactnativeflybuy
 
 import com.radiusnetworks.flybuy.sdk.FlyBuyCore
-import com.radiusnetworks.flybuy.sdk.pickup.PickupManager
-import com.radiusnetworks.flybuy.sdk.notify.NotifyManager
-import android.content.Context
-import android.util.Log
-import com.facebook.react.bridge.*
-// import com.google.gson.Gson
 import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Customer
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Order
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Site
 import com.radiusnetworks.flybuy.sdk.notify.NotificationInfo
+import com.radiusnetworks.flybuy.sdk.notify.NotifyManager
+import java.util.Map
+import com.facebook.react.bridge.*
 
 class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
@@ -129,9 +126,10 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
 
   @ReactMethod
   fun createForSitesInRegion(region: ReadableMap, notification: ReadableMap, promise: Promise) {
-   val regionInfo: CircularRegion = decodeRegion(region)
-   val notificationInfo: NotificationInfo = decodeNotification(notification)
-   NotifyManager.getInstance().createForSitesInRegion(
+    val regionInfo: CircularRegion = decodeRegion(region)
+    val notificationInfo: NotificationInfo = decodeNotification(notification)
+
+    NotifyManager.getInstance().createForSitesInRegion(
       region = regionInfo,
       notificationInfo = notificationInfo
     ) { sites, sdkError ->
@@ -299,16 +297,33 @@ fun decodeRegion(region: ReadableMap): CircularRegion {
 fun decodeNotification(notification: ReadableMap): NotificationInfo {
   var title = ""
   var message = ""
+  var data = mapOf<String, String>()
 
   if (notification.hasKey("title")) {
     title = notification.getString("title")!!
   }
+
   if (notification.hasKey("message")) {
     message = notification.getString("message")!!
   }
 
+  if (notification.hasKey("data")) {
+    var dataMap = notification.getMap("data")!!
+    val iterator: ReadableMapKeySetIterator = dataMap.keySetIterator()
+    while (iterator.hasNextKey()) {
+      val key = iterator.nextKey()
+      val type: ReadableType = dataMap.getType(key)
+      when (type) {
+        ReadableType.String -> data += Pair(key, dataMap.getString(key)!!)
+        else -> throw IllegalArgumentException("Could not convert object with key: $key.")
+      }
+    }
+
+  }
+
   return NotificationInfo(
     title = title,
-    message = message
+    message = message,
+    data = data
   )
 }

@@ -84,6 +84,10 @@ export default function App() {
     const notification = {
       title: 'Test Notification',
       message: 'Test Notification message',
+      data: {
+        key1: 'value',
+        key2: 'value',
+      },
     };
 
     Flybuy.createForSitesInRegion(region, notification)

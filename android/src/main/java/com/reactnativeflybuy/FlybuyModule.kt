@@ -15,12 +15,6 @@ import com.radiusnetworks.flybuy.sdk.notify.NotificationInfo
 
 class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
-  // init {
-  //   FlyBuyCore.configure(reactContext, "224.epegiXJkGRqvwLJJYHPTCWGR")
-  //   PickupManager.getInstance().configure(reactContext)
-  //   NotifyManager.getInstance().configure(reactContext)
-  // }
-
   override fun getName(): String {
     return "Flybuy"
   }
@@ -28,6 +22,11 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   @ReactMethod
   fun configure(token: String, promise: Promise) {
     FlyBuyCore.configure(reactApplicationContext.baseContext, token)
+  }
+
+  @ReactMethod
+  fun notifyConfigure(promise: Promise) {
+    NotifyManager.getInstance()?.configure(reactApplicationContext.baseContext)
   }
 
   // Customer
@@ -66,8 +65,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   @ReactMethod
   fun updateCustomer(customer: ReadableMap, promise: Promise) {
     val customerInfo: CustomerInfo = decodeCustomerInfo(customer)
-    FlyBuyCore.customer.update(customerInfo) {
-      customer, sdkError ->
+    FlyBuyCore.customer.update(customerInfo) { customer, sdkError ->
       sdkError?.let {
         promise.reject(it.userError(), it.userError())
       } ?: run {
@@ -148,6 +146,17 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
     //     promise.resolve(sites)
     //   }
     // }
+  }
+
+  @ReactMethod
+  fun clearNotifications(promise: Promise) {
+    NotifyManager.getInstance().clear() { sdkError ->
+      sdkError?.let {
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        promise.resolve(null)
+      }
+    }
   }
 }
 

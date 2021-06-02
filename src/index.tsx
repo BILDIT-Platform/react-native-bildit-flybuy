@@ -52,9 +52,10 @@ export interface Customer {
 const { Flybuy } = NativeModules;
 
 type FlybuyType = {
+  // configure
   configure(token: string): void;
+  // customer
   login(code: string): Promise<any>;
-  fetchOrders(): Promise<[Order]>;
   createOrder(
     siteId: number,
     pid: string,
@@ -63,25 +64,10 @@ type FlybuyType = {
   createCustomer(customerInfo: Customer): Promise<Customer>;
   updateCustomer(customerInfo: Customer): Promise<Customer>;
   getCurrentCustomer(): Promise<Customer>;
+  //  orders
+  fetchOrders(): Promise<[Order]>;
+  // notify
+  notifyConfigure(): void;
+  clearNotifications(): void;
 };
 export default Flybuy as FlybuyType;
-
-// export default Flybuy as FlybuyType;
-
-// export default {
-//   configure: (token: string): void => Flybuy.configure() ,
-//   Notify: {
-//     createForSitesInRegion: (
-//       region: CircularRegion,
-//       notification: NotificationInfo
-//     ): Promise<any> => Flybuy.createForSitesInRegion(region, notification),
-//   },
-//   Customer: {
-//     loginWithToken: (token: String): Promise<any> =>
-//       Flybuy.loginWithToken(token),
-//   },
-//   Orders: {
-//     fetchOrders: (): Promise<any> => Flybuy.fetchOrders(),
-//     createOrder: (): Promise<any> => Flybuy.createOrder(),
-//   },
-// };

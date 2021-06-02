@@ -68,6 +68,12 @@ export default function App() {
       .catch((err) => console.log(err));
   };
 
+  const clearNotifications = () => {
+    Flybuy.clearNotifications()
+      .then(() => console.log('notifications cleared'))
+      .catch((err) => console.log('err', err));
+  };
+
   const createForSitesInRegion = () => {
     const region = {
       latitude: 12.122,
@@ -85,6 +91,7 @@ export default function App() {
 
   React.useEffect(() => {
     Flybuy.configure('224.epegiXJkGRqvwLJJYHPTCWGR');
+    Flybuy.notifyConfigure();
   }, []);
 
   return (
@@ -103,6 +110,11 @@ export default function App() {
         onPress={getCurrentCustomer}
       />
       <Button title="updateCustomer" color="#841584" onPress={updateCustomer} />
+      <Button
+        title="clearNotifications"
+        color="#841584"
+        onPress={clearNotifications}
+      />
       <Button
         title="createForSitesInRegion"
         color="#841584"

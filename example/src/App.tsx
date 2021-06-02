@@ -1,18 +1,48 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Flybuy from 'react-native-flybuy';
 
+const Button = ({ title, color, onPress }) => {
+  return (
+    <TouchableOpacity
+      style={[styles.button, { backgroundColor: color }]}
+      onPress={onPress}
+    >
+      <Text style={styles.text}>{title}</Text>
+    </TouchableOpacity>
+  );
+};
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const fetchOrders = () => {
+    Flybuy.Orders.fetchOrders()
+      .then((orders) => console.log(orders))
+      .catch((err) => console.log(err));
+  };
 
-  React.useEffect(() => {
-    Flybuy.multiply(3, 4).then(setResult);
-  }, []);
+  const createForSitesInRegion = () => {
+    const region = {
+      latitude: 12.122,
+      longitude: 12.122,
+      radius: 12.122,
+    };
+
+    const notification = {
+      title: 'Test Notification',
+      message: 'Test Notification message',
+    };
+
+    Flybuy.Notify.createForSitesInRegion(region, notification);
+  };
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Button title="Fetch orders" color="#841584" onPress={fetchOrders} />
+      <Button
+        title="createForSitesInRegion"
+        color="#841584"
+        onPress={createForSitesInRegion}
+      />
     </View>
   );
 }
@@ -23,9 +53,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+  text: {
+    color: '#fff',
+    fontSize: 15,
+  },
+  button: {
+    width: '60%',
+    padding: 10,
+    margin: 5,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

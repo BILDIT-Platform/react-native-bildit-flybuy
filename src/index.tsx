@@ -1,16 +1,16 @@
 import { NativeModules } from 'react-native';
 
-// type CircularRegion = {
-//   latitude: number;
-//   longitude: number;
-//   radius: number;
-// };
+export interface CircularRegion {
+  latitude: number;
+  longitude: number;
+  radius: number;
+}
 
-// type NotificationInfo = {
-//   title: string;
-//   message: string;
-//   data: any;
-// };
+export interface NotificationInfo {
+  title: string;
+  message: string;
+  data: any;
+}
 export interface Order {
   id: number;
   state: string;
@@ -69,5 +69,9 @@ type FlybuyType = {
   // notify
   notifyConfigure(): void;
   clearNotifications(): void;
+  createForSitesInRegion(
+    region: CircularRegion,
+    notification: NotificationInfo
+  ): void;
 };
 export default Flybuy as FlybuyType;

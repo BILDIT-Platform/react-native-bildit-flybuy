@@ -11,6 +11,7 @@ import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Customer
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Order
+import com.radiusnetworks.flybuy.sdk.data.room.domain.Site
 import com.radiusnetworks.flybuy.sdk.notify.NotificationInfo
 
 class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
@@ -127,25 +128,24 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   // Notify
 
   @ReactMethod
-  fun createForSitesInRegion(regionJSObject: ReadableMap, notificationJSObject: ReadableMap, promise: Promise) {
-    val latitude = regionJSObject.getDouble("latitude");
-    val longitude = regionJSObject.getDouble("longitude");
-    val radius = regionJSObject.getDouble("radius").toFloat();
-    val region = CircularRegion(latitude, longitude, radius);
-    // val title = notificationJSObject.getString("title")
-    // val message = notificationJSObject.getString("title")
-    // val notification = NotificationInfo(title, message);
-    // NotifyManager.getInstance().createForSitesInRegion(region, notification) { sites, sdkError ->
-    //   if (null != sdkError) {
-    //     // Handle error
-    //     handleFlyBuyError(sdkError)
-    //     promise.reject(sdkError.userError())
-    //   } else {
-    //     // Handle success
-    //     Log.d("Success", "Success")
-    //     promise.resolve(sites)
-    //   }
-    // }
+  fun createForSitesInRegion(region: ReadableMap, notification: ReadableMap, promise: Promise) {
+   val regionInfo: CircularRegion = decodeRegion(region)
+   val notificationInfo: NotificationInfo = decodeNotification(notification)
+   NotifyManager.getInstance().createForSitesInRegion(
+      region = regionInfo,
+      notificationInfo = notificationInfo
+    ) { sites, sdkError ->
+      sdkError?.let {
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        sites?.let {
+          promise.resolve(parseSites(sites))
+        } ?: run {
+          promise.reject("Create Notification for sites in region Error", "Error creating notification")
+        }
+      }
+    }
+
   }
 
   @ReactMethod
@@ -220,6 +220,36 @@ fun parseOrder(order: Order): WritableMap {
   return map
 }
 
+fun parseSites(items: List<Site>): WritableArray {
+  val array = WritableNativeArray()
+  for (item in items) {
+    array.pushMap(parseSite(item))
+  }
+  return array
+}
+
+fun parseSite(site: Site): WritableMap {
+  val map = Arguments.createMap()
+  map.putInt("id", site.id)
+  map.putString("name", site.name)
+  map.putString("phone", site.phone)
+  map.putString("streetAddress", site.streetAddress)
+  map.putString("fullAddress", site.fullAddress)
+  map.putString("locality", site.locality)
+  map.putString("region", site.region)
+  map.putString("country", site.country)
+  map.putString("postalCode", site.postalCode)
+  map.putString("latitude", site.latitude)
+  map.putString("longitude", site.longitude)
+  map.putString("coverPhotoUrl", site.coverPhotoUrl)
+  map.putString("instructions", site.instructions)
+  map.putString("description", site.description)
+  map.putString("partnerIdentifier", site.partnerIdentifier)
+
+  return map
+}
+
+
 fun decodeCustomerInfo(customer: ReadableMap): CustomerInfo {
   var name = ""
   var carType = ""
@@ -252,4 +282,33 @@ fun decodeCustomerInfo(customer: ReadableMap): CustomerInfo {
     phone = phone
   )
 
+}
+
+fun decodeRegion(region: ReadableMap): CircularRegion {
+  var latitude = region.getDouble("latitude")!!
+  var longitude = region.getDouble("longitude")!!
+  var radius = region.getInt("radius").toFloat()
+
+  return CircularRegion(
+    latitude = latitude,
+    longitude = longitude,
+    radius = radius
+  )
+}
+
+fun decodeNotification(notification: ReadableMap): NotificationInfo {
+  var title = ""
+  var message = ""
+
+  if (notification.hasKey("title")) {
+    title = notification.getString("title")!!
+  }
+  if (notification.hasKey("message")) {
+    message = notification.getString("message")!!
+  }
+
+  return NotificationInfo(
+    title = title,
+    message = message
+  )
 }

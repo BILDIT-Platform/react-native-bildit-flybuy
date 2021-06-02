@@ -86,7 +86,9 @@ export default function App() {
       message: 'Test Notification message',
     };
 
-    Flybuy.Notify.createForSitesInRegion(region, notification);
+    Flybuy.createForSitesInRegion(region, notification)
+      .then((sites) => console.log('notifications crated', sites))
+      .catch((err) => console.log('err', err));
   };
 
   React.useEffect(() => {

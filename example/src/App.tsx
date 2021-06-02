@@ -15,8 +15,26 @@ const Button = ({ title, color, onPress }) => {
 };
 export default function App() {
   const fetchOrders = () => {
-    Flybuy.Orders.fetchOrders()
-      .then((orders) => console.log(orders))
+    Flybuy.fetchOrders()
+      .then((orders) => console.log('orders', orders))
+      .catch((err) => console.log(err));
+  };
+
+  const login = () => {
+    Flybuy.login('F69PGKM1QXCN7Dj3ybEXCpU4')
+      .then((customer) => console.log('customer', customer))
+      .catch((err) => console.log(err));
+  };
+
+  const createOrder = () => {
+    Flybuy.createOrder(15942, '12345', {
+      name: 'Lamia Selmane AB',
+      carType: 'Nothing',
+      carColor: 'Silver',
+      licensePlate: 'Nothing',
+      phone: '555-555-5555',
+    })
+      .then((order) => console.log('order', order))
       .catch((err) => console.log(err));
   };
 
@@ -35,9 +53,15 @@ export default function App() {
     Flybuy.Notify.createForSitesInRegion(region, notification);
   };
 
+  React.useEffect(() => {
+    Flybuy.configure('224.epegiXJkGRqvwLJJYHPTCWGR');
+  }, []);
+
   return (
     <View style={styles.container}>
+      <Button title="login" color="#841584" onPress={login} />
       <Button title="Fetch orders" color="#841584" onPress={fetchOrders} />
+      <Button title="Create orders" color="#841584" onPress={createOrder} />
       <Button
         title="createForSitesInRegion"
         color="#841584"

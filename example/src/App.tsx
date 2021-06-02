@@ -38,6 +38,18 @@ export default function App() {
       .catch((err) => console.log(err));
   };
 
+  const createCustomer = () => {
+    Flybuy.createCustomer({
+      name: 'Abdelkhalek Zellat',
+      carType: 'Nothing',
+      carColor: 'Silver',
+      licensePlate: 'Nothing',
+      phone: '555-555-5555',
+    })
+      .then((customer) => console.log('customer', customer))
+      .catch((err) => console.log(err));
+  };
+
   const createForSitesInRegion = () => {
     const region = {
       latitude: 12.122,
@@ -62,6 +74,11 @@ export default function App() {
       <Button title="login" color="#841584" onPress={login} />
       <Button title="Fetch orders" color="#841584" onPress={fetchOrders} />
       <Button title="Create orders" color="#841584" onPress={createOrder} />
+      <Button
+        title="create Customer"
+        color="#841584"
+        onPress={createCustomer}
+      />
       <Button
         title="createForSitesInRegion"
         color="#841584"

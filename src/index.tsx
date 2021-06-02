@@ -41,13 +41,26 @@ export interface Order {
   customerLicensePlate?: string;
 }
 
+export interface Customer {
+  name: string;
+  carType: string;
+  carColor: string;
+  licensePlate: string;
+  phone?: string;
+}
+
 const { Flybuy } = NativeModules;
 
 type FlybuyType = {
   configure(token: string): void;
   login(code: string): Promise<any>;
   fetchOrders(): Promise<[Order]>;
-  createOrder(siteId: number, pid: string, customerInfo: any): Promise<any>;
+  createOrder(
+    siteId: number,
+    pid: string,
+    customerInfo: Customer
+  ): Promise<Order>;
+  createCustomer(customerInfo: Customer): Promise<any>;
 };
 export default Flybuy as FlybuyType;
 

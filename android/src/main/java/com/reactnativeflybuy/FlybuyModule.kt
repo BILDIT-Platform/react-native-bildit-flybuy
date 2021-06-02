@@ -47,6 +47,22 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
     }
   }
 
+  @ReactMethod
+  fun createCustomer(customer: ReadableMap, promise: Promise) {
+    val customerInfo: CustomerInfo = decodeCustomerInfo(customer)
+    FlyBuyCore.customer.create(customerInfo, true, true) { customer, sdkError ->
+      sdkError?.let {
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        customer?.let {
+          promise.resolve(parseCustomer(customer))
+        } ?: run {
+          promise.reject("Create Customer Error", "Error retrieving customer")
+        }
+      }
+    }
+  }
+
   // Orders
 
   @ReactMethod

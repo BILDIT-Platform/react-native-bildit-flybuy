@@ -1,7 +1,9 @@
 package com.reactnativeflybuy
 
 import android.util.Log
+import com.facebook.react.bridge.*
 import com.radiusnetworks.flybuy.sdk.FlyBuyCore
+import com.radiusnetworks.flybuy.sdk.data.common.Pagination
 import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Customer
@@ -9,9 +11,7 @@ import com.radiusnetworks.flybuy.sdk.data.room.domain.Order
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Site
 import com.radiusnetworks.flybuy.sdk.notify.NotificationInfo
 import com.radiusnetworks.flybuy.sdk.notify.NotifyManager
-import java.util.Map
-import com.facebook.react.bridge.*
-import com.radiusnetworks.flybuy.sdk.data.common.Pagination
+
 
 class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
@@ -148,23 +148,23 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
 
   }
 
-  // @ReactMethod
-  // fun createForSites(sitesList: ReadableArray, notification: ReadableMap, promise: Promise) {
-  //   val sites = decodeSites(sitesList)
-  //   val notificationInfo: NotificationInfo = decodeNotification(notification)
+  @ReactMethod
+  fun createForSites(sitesList: ReadableArray, notification: ReadableMap, promise: Promise) {
+    val sites = decodeSites(sitesList)
+    val notificationInfo: NotificationInfo = decodeNotification(notification)
 
-  //   NotifyManager.getInstance().createForSites(
-  //     sites = sites,
-  //     notificationInfo = notificationInfo
-  //   ) { sdkError ->
-  //     sdkError?.let {
-  //       promise.reject(it.userError(), it.userError())
-  //     } ?: run {
-  //       promise.resolve(null)
-  //     }
-  //   }
+    NotifyManager.getInstance().createForSites(
+      sites = sites,
+      notificationInfo = notificationInfo
+    ) { sdkError ->
+      sdkError?.let {
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        promise.resolve(null)
+      }
+    }
 
-  // }
+  }
 
   @ReactMethod
   fun clearNotifications(promise: Promise) {
@@ -423,29 +423,110 @@ fun decodeNotification(notification: ReadableMap): NotificationInfo {
   )
 }
 
-// fun decodeSites(sitesList: ReadableArray): List<Site> {
-//   var list = listOf<Site>()
-//   for (site in sitesList.toArrayList()) {
-//     // Log.d("site", site.toString())
-//    // list += decodeSite(site)
-//     var sitelol = Site(
-//       id = 123
-//     )
-//   }
-//   return list
-// }
+fun decodeSites(sitesList: ReadableArray): List<Site> {
+  var list = listOf<Site>()
+  for (i in 0 until sitesList.size()) {
+    var site = sitesList.getMap(i)!!
+    list += decodeSite(site)
+  }
 
-// fun decodeSite(site: Any): Site {
-//   var id = 0
+  return list
+}
 
-//   if (site.hasKey("id")) {
-//     id = site.getInt("id")
-//   }
+fun decodeSite(site: ReadableMap): Site {
+  var name: String? = null
+  var phone: String? = null
+  var streetAddress: String? = null
+  var fullAddress: String? = null
+  var locality: String? = null
+  var region: String? = null
+  var country: String? = null
+  var postalCode: String? = null
+  var latitude: String? = null
+  var longitude: String? = null
+  var coverPhotoUrl: String? = null
+  var iconUrl: String? = null
+  var instructions: String? = null
+  var description: String? = null
+  var partnerIdentifier: String? = null
 
-//   return Site(
-//     id = id
-//   )
-// }
+  var id = site.getInt("id")!!
+
+  if (site.hasKey("name")) {
+    name = site.getString("name")
+  }
+
+  if (site.hasKey("phone")) {
+    phone = site.getString("phone")
+  }
+
+  if (site.hasKey("streetAddress")) {
+    streetAddress = site.getString("streetAddress")
+  }
+
+  if (site.hasKey("fullAddress")) {
+    fullAddress = site.getString("fullAddress")
+  }
+
+  if (site.hasKey("locality")) {
+    locality = site.getString("locality")
+  }
+
+  if (site.hasKey("region")) {
+    region = site.getString("region")
+  }
+
+  if (site.hasKey("country")) {
+    country = site.getString("country")
+  }
+
+  if (site.hasKey("postalCode")) {
+    postalCode = site.getString("postalCode")
+  }
+
+  if (site.hasKey("latitude")) {
+    latitude = site.getString("latitude")
+  }
+
+  if (site.hasKey("longitude")) {
+    longitude = site.getString("longitude")
+  }
+
+  if (site.hasKey("iconUrl")) {
+    iconUrl = site.getString("iconUrl")
+  }
+
+  if (site.hasKey("instructions")) {
+    instructions = site.getString("instructions")
+  }
+
+  if (site.hasKey("description")) {
+    description = site.getString("description")
+  }
+
+  if (site.hasKey("partnerIdentifier")) {
+    partnerIdentifier = site.getString("partnerIdentifier")
+  }
+
+  return Site(
+    id = id,
+    name = name,
+    phone = phone,
+    streetAddress = streetAddress,
+    fullAddress = fullAddress,
+    locality = locality,
+    region = region,
+    country = country,
+    postalCode = postalCode,
+    latitude = latitude,
+    longitude = longitude,
+    coverPhotoUrl = coverPhotoUrl,
+    iconUrl = iconUrl,
+    instructions = instructions,
+    description = description,
+    partnerIdentifier = partnerIdentifier
+  )
+}
 
 
 

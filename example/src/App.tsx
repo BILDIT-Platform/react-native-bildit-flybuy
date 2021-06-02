@@ -107,16 +107,21 @@ export default function App() {
 
     const sites = [
       {
-        id: 15942,
-        name: 'Test Site',
-        streetAddress: '500 Yale Ave N, Seattle, WA 98109, USA',
-        fullAddress: '500 Yale Ave N, Seattle, WA 98109, USA',
-        timezone: 'America/Los_Angeles',
-        latitude: '47.6234207',
-        longitude: '-122.3300605',
-        instructions: '',
         description: '',
-        phone: '+18882458277',
+        instructions: '',
+        coverPhotoUrl: null,
+        longitude: '-122.3300605',
+        postalCode: null,
+        fullAddress: '500 Yale Ave N, Seattle, WA 98109, USA',
+        locality: null,
+        latitude: '47.6234207',
+        id: 15942,
+        region: null,
+        streetAddress: null,
+        country: null,
+        phone: '333-333-3333',
+        partnerIdentifier: '001',
+        name: 'Test Site',
       },
     ];
 

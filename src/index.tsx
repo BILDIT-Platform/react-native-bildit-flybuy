@@ -41,6 +41,25 @@ export interface Order {
   customerLicensePlate?: string;
 }
 
+export interface Site {
+  id: number;
+  name?: string;
+  phone?: string;
+  streetAddress?: string;
+  fullAddress?: string;
+  locality?: string;
+  region?: string;
+  country?: string;
+  postalCode?: string;
+  latitude?: string;
+  longitude?: string;
+  coverPhotoUrl?: string;
+  iconUrl?: string;
+  instructions?: string;
+  description?: string;
+  partnerIdentifier?: string;
+}
+
 export interface Customer {
   name: string;
   carType: string;
@@ -56,22 +75,25 @@ type FlybuyType = {
   configure(token: string): void;
   // customer
   login(code: string): Promise<any>;
-  createOrder(
-    siteId: number,
-    pid: string,
-    customerInfo: Customer
-  ): Promise<Order>;
   createCustomer(customerInfo: Customer): Promise<Customer>;
   updateCustomer(customerInfo: Customer): Promise<Customer>;
   getCurrentCustomer(): Promise<Customer>;
   //  orders
   fetchOrders(): Promise<[Order]>;
+  createOrder(
+    siteId: number,
+    pid: string,
+    customerInfo: Customer
+  ): Promise<Order>;
   // notify
   notifyConfigure(): void;
-  clearNotifications(): void;
+  clearNotifications(): Promise<void>;
   createForSitesInRegion(
     region: CircularRegion,
     notification: NotificationInfo
-  ): void;
+  ): Promise<[Site]>;
+  createForSites(sites: [Site], notification: NotificationInfo): Promise<void>;
+  // sites
+  fetchAllSites(): Promise<[Site]>;
 };
 export default Flybuy as FlybuyType;

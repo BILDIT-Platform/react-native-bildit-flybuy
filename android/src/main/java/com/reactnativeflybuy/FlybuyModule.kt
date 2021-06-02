@@ -1,5 +1,6 @@
 package com.reactnativeflybuy
 
+import android.util.Log
 import com.radiusnetworks.flybuy.sdk.FlyBuyCore
 import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
@@ -146,6 +147,24 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
 
   }
 
+  // @ReactMethod
+  // fun createForSites(sitesList: ReadableArray, notification: ReadableMap, promise: Promise) {
+  //   val sites = decodeSites(sitesList)
+  //   val notificationInfo: NotificationInfo = decodeNotification(notification)
+
+  //   NotifyManager.getInstance().createForSites(
+  //     sites = sites,
+  //     notificationInfo = notificationInfo
+  //   ) { sdkError ->
+  //     sdkError?.let {
+  //       promise.reject(it.userError(), it.userError())
+  //     } ?: run {
+  //       promise.resolve(null)
+  //     }
+  //   }
+
+  // }
+
   @ReactMethod
   fun clearNotifications(promise: Promise) {
     NotifyManager.getInstance().clear() { sdkError ->
@@ -156,7 +175,24 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
       }
     }
   }
+
+// Sites
+
+  @ReactMethod
+  fun fetchAllSites(promise: Promise) {
+    FlyBuyCore.sites.fetchAll { sites, sdkError ->
+      sdkError?.let {
+        handleFlyBuyError(it)
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        promise.resolve(sites?.let { parseSites(it) })
+      }
+
+    }
+  }
+
 }
+
 
 fun parseCustomer(customer: Customer): WritableMap {
   val map = Arguments.createMap()
@@ -327,3 +363,31 @@ fun decodeNotification(notification: ReadableMap): NotificationInfo {
     data = data
   )
 }
+
+// fun decodeSites(sitesList: ReadableArray): List<Site> {
+//   var list = listOf<Site>()
+//   for (site in sitesList.toArrayList()) {
+//     // Log.d("site", site.toString())
+//    // list += decodeSite(site)
+//     var sitelol = Site(
+//       id = 123
+//     )
+//   }
+//   return list
+// }
+
+// fun decodeSite(site: Any): Site {
+//   var id = 0
+
+//   if (site.hasKey("id")) {
+//     id = site.getInt("id")
+//   }
+
+//   return Site(
+//     id = id
+//   )
+// }
+
+
+
+

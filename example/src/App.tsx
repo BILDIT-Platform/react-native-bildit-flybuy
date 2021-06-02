@@ -16,26 +16,26 @@ const Button = ({ title, color, onPress }) => {
 export default function App() {
   const fetchOrders = () => {
     Flybuy.fetchOrders()
-      .then((orders) => console.log('orders', orders))
-      .catch((err) => console.log(err));
+      .then((orders) => console.tron.log('orders', orders))
+      .catch((err) => console.tron.log(err));
   };
 
   const login = () => {
     Flybuy.login('F69PGKM1QXCN7Dj3ybEXCpU4')
-      .then((customer) => console.log('customer', customer))
-      .catch((err) => console.log(err));
+      .then((customer) => console.tron.log('customer', customer))
+      .catch((err) => console.tron.log(err));
   };
 
   const createOrder = () => {
-    Flybuy.createOrder(15942, '12345', {
+    Flybuy.createOrder(15942, '989899', {
       name: 'Lamia Selmane AB',
       carType: 'Nothing',
       carColor: 'Silver',
       licensePlate: 'Nothing',
       phone: '555-555-5555',
     })
-      .then((order) => console.log('order', order))
-      .catch((err) => console.log(err));
+      .then((order) => console.tron.log('order', order))
+      .catch((err) => console.tron.log(err));
   };
 
   const createCustomer = () => {
@@ -46,8 +46,8 @@ export default function App() {
       licensePlate: 'Nothing',
       phone: '555-555-5555',
     })
-      .then((customer) => console.log('customer', customer))
-      .catch((err) => console.log(err));
+      .then((customer) => console.tron.log('customer', customer))
+      .catch((err) => console.tron.log(err));
   };
 
   const updateCustomer = () => {
@@ -58,27 +58,27 @@ export default function App() {
       licensePlate: 'Nothing',
       phone: '555-555-5555',
     })
-      .then((customer) => console.log('customer', customer))
-      .catch((err) => console.log(err));
+      .then((customer) => console.tron.log('customer', customer))
+      .catch((err) => console.tron.log(err));
   };
 
   const getCurrentCustomer = () => {
     Flybuy.getCurrentCustomer()
-      .then((customer) => console.log('customer', customer))
-      .catch((err) => console.log(err));
+      .then((customer) => console.tron.log('customer', customer))
+      .catch((err) => console.tron.log(err));
   };
 
   const clearNotifications = () => {
     Flybuy.clearNotifications()
-      .then(() => console.log('notifications cleared'))
-      .catch((err) => console.log('err', err));
+      .then(() => console.tron.log('notifications cleared'))
+      .catch((err) => console.tron.log('err', err));
   };
 
   const createForSitesInRegion = () => {
     const region = {
-      latitude: 12.122,
-      longitude: 12.122,
-      radius: 12.122,
+      latitude: 47.6234207,
+      longitude: -122.3322544,
+      radius: 100,
     };
 
     const notification = {
@@ -91,8 +91,44 @@ export default function App() {
     };
 
     Flybuy.createForSitesInRegion(region, notification)
-      .then((sites) => console.log('notifications crated', sites))
-      .catch((err) => console.log('err', err));
+      .then((sites) => console.tron.log('notifications crated', sites))
+      .catch((err) => console.tron.log('err', err));
+  };
+
+  const createForSites = () => {
+    const notification = {
+      title: 'Test Notification',
+      message: 'Test Notification message',
+      data: {
+        key1: 'value',
+        key2: 'value',
+      },
+    };
+
+    const sites = [
+      {
+        id: 15942,
+        name: 'Test Site',
+        streetAddress: '500 Yale Ave N, Seattle, WA 98109, USA',
+        fullAddress: '500 Yale Ave N, Seattle, WA 98109, USA',
+        timezone: 'America/Los_Angeles',
+        latitude: '47.6234207',
+        longitude: '-122.3300605',
+        instructions: '',
+        description: '',
+        phone: '+18882458277',
+      },
+    ];
+
+    Flybuy.createForSites(sites, notification)
+      .then(() => console.tron.log('notifications crated'))
+      .catch((err) => console.tron.log('err', err));
+  };
+
+  const fetchAllSites = () => {
+    Flybuy.fetchAllSites()
+      .then((sites) => console.tron.log('sites', sites))
+      .catch((err) => console.tron.log('err', err));
   };
 
   React.useEffect(() => {
@@ -102,9 +138,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Text>Customer</Text>
       <Button title="login" color="#841584" onPress={login} />
-      <Button title="Fetch orders" color="#841584" onPress={fetchOrders} />
-      <Button title="Create orders" color="#841584" onPress={createOrder} />
       <Button
         title="create Customer"
         color="#841584"
@@ -116,6 +151,10 @@ export default function App() {
         onPress={getCurrentCustomer}
       />
       <Button title="updateCustomer" color="#841584" onPress={updateCustomer} />
+      <Text>Order</Text>
+      <Button title="Fetch orders" color="#841584" onPress={fetchOrders} />
+      <Button title="Create order" color="#841584" onPress={createOrder} />
+      <Text>Notify</Text>
       <Button
         title="clearNotifications"
         color="#841584"
@@ -126,6 +165,9 @@ export default function App() {
         color="#841584"
         onPress={createForSitesInRegion}
       />
+      <Button title="createForSites" color="#841584" onPress={createForSites} />
+      <Text>Sites</Text>
+      <Button title="fetchAllSites" color="#841584" onPress={fetchAllSites} />
     </View>
   );
 }

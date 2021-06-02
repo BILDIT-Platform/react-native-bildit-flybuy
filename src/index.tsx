@@ -88,6 +88,12 @@ type Customer = {
 
 type Sites = {
   fetchAllSites(): Promise<[ISite]>;
+  fetchSitesByQuery(query: string, page: number): Promise<[ISite]>;
+  fetchSitesByRegion(
+    per: number,
+    page: number,
+    region: ICircularRegion
+  ): Promise<[ISite]>;
 };
 
 type Notify = {
@@ -125,7 +131,8 @@ const FlyBuyModule = {
   },
   Sites: {
     fetchAllSites: Flybuy.fetchAllSites,
-    fetchSites: Flybuy.fetchSites,
+    fetchSitesByQuery: Flybuy.fetchSitesByQuery,
+    fetchSitesByRegion: Flybuy.fetchSitesByRegion,
   },
   Notify: {
     configure: Flybuy.notifyConfigure,

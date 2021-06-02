@@ -77,7 +77,7 @@ export default function App() {
   const createForSitesInRegion = () => {
     const region = {
       latitude: 47.6234207,
-      longitude: -122.3322544,
+      longitude: -122.3300605,
       radius: 100,
     };
 
@@ -131,10 +131,25 @@ export default function App() {
       .catch((err) => console.tron.log('err', err));
   };
 
-  const fetchSites = () => {
-    Flybuy.Sites.fetchSites({
+  const fetchSitesByQuery = () => {
+    Flybuy.Sites.fetchSitesByQuery({
       query: 'Test',
       page: 1,
+    })
+      .then((sites) => console.tron.log('sites', sites))
+      .catch((err) => console.tron.log('err', err));
+  };
+
+  const fetchSitesByRegion = () => {
+    const region = {
+      latitude: 47.6234207,
+      longitude: -122.3300605,
+      radius: 100,
+    };
+    Flybuy.Sites.fetchSitesByRegion({
+      per: 20,
+      page: 1,
+      region,
     })
       .then((sites) => console.tron.log('sites', sites))
       .catch((err) => console.tron.log('err', err));
@@ -177,7 +192,16 @@ export default function App() {
       <Button title="createForSites" color="#841584" onPress={createForSites} />
       <Text>Sites</Text>
       <Button title="fetchAllSites" color="#841584" onPress={fetchAllSites} />
-      <Button title="fetchSites" color="#841584" onPress={fetchSites} />
+      <Button
+        title="fetchSitesByQuery"
+        color="#841584"
+        onPress={fetchSitesByQuery}
+      />
+      <Button
+        title="fetchSitesByRegion"
+        color="#841584"
+        onPress={fetchSitesByRegion}
+      />
     </View>
   );
 }

@@ -193,10 +193,10 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   }
 
   @ReactMethod
-  fun fetchSites(params: ReadableMap, promise: Promise) {
+  fun fetchSitesByQuery(params: ReadableMap, promise: Promise) {
     val query = params.getString("query")
     val page = params.getInt("page")
-    FlyBuyCore.sites.fetch { sites, pagination, sdkError ->
+    FlyBuyCore.sites.fetch(query, page) { sites, pagination, sdkError ->
       sdkError?.let {
         handleFlyBuyError(it)
         promise.reject(it.userError(), it.userError())
@@ -212,6 +212,29 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
           } else {
             promise.reject("Fetch sites Error", "Error retrieving pagination")
           }
+        } ?: run {
+          promise.reject("Fetch sites Error", "Error retrieving sites")
+        }
+
+      }
+
+    }
+  }
+
+  @ReactMethod
+  fun fetchSitesByRegion(params: ReadableMap, promise: Promise) {
+    val per = params.getInt("per")
+    val page = params.getInt("page")
+    val regionInfo = params.getMap("region")!!
+    val region: CircularRegion = decodeRegion(regionInfo)
+
+    FlyBuyCore.sites.fetch(region, page, per) { sites, sdkError ->
+      sdkError?.let {
+        handleFlyBuyError(it)
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        sites?.let {
+          promise.resolve(parseSites(sites))
         } ?: run {
           promise.reject("Fetch sites Error", "Error retrieving sites")
         }

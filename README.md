@@ -11,11 +11,29 @@ npm install react-native-flybuy
 ## Usage
 
 ```js
-import Flybuy from "react-native-flybuy";
+import Flybuy from 'react-native-flybuy';
 
 // ...
 
-const result = await Flybuy.multiply(3, 7);
+const customer = await Flybuy.login('TOKEN');
+
+const orders = await Flybuy.fetchOrders();
+
+const order = await Flybuy.createOrder(15942, '12345', {
+  name: 'Lamia Selmane AB',
+  carType: 'Tesla',
+  carColor: 'Silver',
+  licensePlate: 'Lorem',
+  phone: '555-555-5555',
+});
+
+const customer = await Flybuy.createCustomer({
+  name: 'Abdelkhalek Zellat',
+  carType: 'Tesla',
+  carColor: 'Silver',
+  licensePlate: 'Nothing',
+  phone: '555-555-5555',
+});
 ```
 
 ## Contributing

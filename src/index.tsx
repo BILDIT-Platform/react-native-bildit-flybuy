@@ -60,7 +60,9 @@ type FlybuyType = {
     pid: string,
     customerInfo: Customer
   ): Promise<Order>;
-  createCustomer(customerInfo: Customer): Promise<any>;
+  createCustomer(customerInfo: Customer): Promise<Customer>;
+  updateCustomer(customerInfo: Customer): Promise<Customer>;
+  getCurrentCustomer(): Promise<Customer>;
 };
 export default Flybuy as FlybuyType;
 

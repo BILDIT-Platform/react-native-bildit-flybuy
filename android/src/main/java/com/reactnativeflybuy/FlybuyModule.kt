@@ -63,6 +63,33 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
     }
   }
 
+  @ReactMethod
+  fun updateCustomer(customer: ReadableMap, promise: Promise) {
+    val customerInfo: CustomerInfo = decodeCustomerInfo(customer)
+    FlyBuyCore.customer.update(customerInfo) {
+      customer, sdkError ->
+      sdkError?.let {
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        customer?.let {
+          promise.resolve(parseCustomer(customer))
+        } ?: run {
+          promise.reject("Update Customer Error", "Error updating customer")
+        }
+      }
+    }
+  }
+
+  @ReactMethod
+  fun getCurrentCustomer(promise: Promise) {
+    val customer = FlyBuyCore.customer.current
+    customer?.let {
+      promise.resolve(parseCustomer(customer))
+    } ?: run {
+      promise.reject("Not logged in", "Current Customer null")
+    }
+  }
+
   // Orders
 
   @ReactMethod

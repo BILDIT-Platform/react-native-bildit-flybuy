@@ -7,9 +7,14 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import Flybuy from 'react-native-flybuy';
+import Flybuy, { ISite } from 'react-native-flybuy';
+type ButtonProps = {
+  title: string;
+  color?: string;
+  onPress?: () => void;
+};
 
-const Button = ({ title, color = '#841584', onPress }) => {
+const Button = ({ title, color = '#841584', onPress }: ButtonProps) => {
   return (
     <TouchableOpacity
       style={[styles.button, { backgroundColor: color }]}
@@ -168,23 +173,24 @@ export default function App() {
       },
     };
 
-    const sites = [
+    const sites: ISite[] = [
       {
-        description: '',
-        instructions: '',
-        coverPhotoUrl: null,
-        longitude: '-122.3300605',
-        postalCode: null,
+        id: 15942,
+        name: 'Test Site',
+        phone: '333-333-3333',
+        streetAddress: null,
         fullAddress: '500 Yale Ave N, Seattle, WA 98109, USA',
         locality: null,
-        latitude: '47.6234207',
-        id: 15942,
         region: null,
-        streetAddress: null,
         country: null,
-        phone: '333-333-3333',
+        postalCode: null,
+        latitude: '47.6234207',
+        longitude: '-122.3300605',
+        coverPhotoUrl: null,
+        iconUrl: null,
+        instructions: '',
+        description: '',
         partnerIdentifier: '001',
-        name: 'Test Site',
       },
     ];
 

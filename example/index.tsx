@@ -3,6 +3,11 @@ import App from './src/App';
 import { name as appName } from './app.json';
 
 AppRegistry.registerComponent(appName, () => App);
+declare global {
+  interface Console {
+    tron: any;
+  }
+}
 
 import Reactotron from 'reactotron-react-native';
 

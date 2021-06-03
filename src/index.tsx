@@ -45,19 +45,19 @@ export interface ISite {
   id: number;
   name?: string;
   phone?: string;
-  streetAddress?: string;
-  fullAddress?: string;
-  locality?: string;
-  region?: string;
-  country?: string;
-  postalCode?: string;
-  latitude?: string;
-  longitude?: string;
-  coverPhotoUrl?: string;
-  iconUrl?: string;
-  instructions?: string;
-  description?: string;
-  partnerIdentifier?: string;
+  streetAddress?: string | null;
+  fullAddress?: string | null;
+  locality?: string | null;
+  region?: string | null;
+  country?: string | null;
+  postalCode?: string | null;
+  latitude?: string | null;
+  longitude?: string | null;
+  coverPhotoUrl?: string | null;
+  iconUrl?: string | null;
+  instructions?: string | null;
+  description?: string | null;
+  partnerIdentifier?: string | null;
 }
 
 export interface ICustomer {
@@ -83,7 +83,7 @@ enum CustomerState {
   COMPLETED = 'completed',
 }
 
-enum OrderState {
+enum OrderStateType {
   CREATED = 'created',
   READY = 'ready',
   DELAYED = 'delayed',
@@ -112,7 +112,7 @@ type Orders = {
     pid: string,
     customerInfo: ICustomer,
     pickupWindow?: PickupWindow,
-    orderState?: OrderState,
+    orderState?: OrderStateType,
     pickupType?: PickupType
   ): Promise<IOrder>;
   claimOrder(
@@ -120,7 +120,7 @@ type Orders = {
     customerInfo: ICustomer,
     pickupType?: PickupType
   ): Promise<IOrder>;
-  updateOrderState(orderId: number, state: OrderState): Promise<IOrder>;
+  updateOrderState(orderId: number, state: OrderStateType): Promise<IOrder>;
   updateOrderCustomerState(
     orderId: number,
     state: CustomerState
@@ -139,12 +139,12 @@ type Customer = {
 
 type Sites = {
   fetchAllSites(): Promise<[ISite]>;
-  fetchSitesByQuery(query: string, page: number): Promise<[ISite]>;
-  fetchSitesByRegion(
-    per: number,
-    page: number,
-    region: ICircularRegion
-  ): Promise<[ISite]>;
+  fetchSitesByQuery(params: { query: string; page: number }): Promise<[ISite]>;
+  fetchSitesByRegion(params: {
+    per: number;
+    page: number;
+    region: ICircularRegion;
+  }): Promise<[ISite]>;
 };
 
 type Notify = {
@@ -167,6 +167,7 @@ type Pickup = {
 type FlyBuyType = {
   Orders: Orders;
   Customer: Customer;
+  Pickup: Pickup;
   Notify: Notify;
   Sites: Sites;
   configure(token: string): void;

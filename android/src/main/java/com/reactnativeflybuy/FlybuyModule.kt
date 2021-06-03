@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import com.facebook.react.bridge.*
 import com.radiusnetworks.flybuy.sdk.FlyBuyCore
+import com.radiusnetworks.flybuy.sdk.data.common.SdkError
 import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Customer
@@ -13,12 +14,16 @@ import com.radiusnetworks.flybuy.sdk.data.room.domain.Order
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Site
 import com.radiusnetworks.flybuy.sdk.notify.NotificationInfo
 import com.radiusnetworks.flybuy.sdk.notify.NotifyManager
+import com.radiusnetworks.flybuy.sdk.presence.LocatorState
 import com.radiusnetworks.flybuy.sdk.presence.PresenceLocator
 import com.radiusnetworks.flybuy.sdk.presence.PresenceManager
 import java.util.*
+import java.util.concurrent.ExecutionException
 
 
 class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+
+
 
   override fun getName(): String {
     return "Flybuy"
@@ -51,10 +56,31 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
         promise.reject(it.userError(), it.userError())
       }
       presenceLocator?.let {
-        promise.resolve(presenceLocator.major.toString())
+
+//      //  promise.resolve(presenceLocator.refere)
         // Set locator listener
-        //it.listener = locatorListener
+        // it.listener = locatorListener
         // Store locator or start it here
+        startLocator(presenceLocator)
+      }
+    }
+  }
+
+  @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+  @ReactMethod
+  fun startLocatorWithIdentifier(byte_presenceId: String, payload: String, promise: Promise ) {
+    var presenceId = byte_presenceId.toByteArray()
+    PresenceManager.getInstance()?.createLocatorWithIdentifier(presenceId, payload) { presenceLocator, sdkError ->
+      sdkError?.let {
+        // Handle error
+        promise.reject(it.userError(), it.userError())
+      }
+      presenceLocator?.let {
+        // Set locator listener
+        // it.listener = locatorListener
+        // Store locator or start it here
+        startLocator(presenceLocator)
+        promise.resolve("Location started successfully:"+ presenceLocator.presenceNamespace.toString())
       }
     }
   }
@@ -65,8 +91,14 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   }
 
   @ReactMethod
-  fun stopLocator() {
-    PresenceManager.getInstance()?.stop()
+  fun stopLocator(promise: Promise) {
+    try {
+      PresenceManager.getInstance()?.stop()
+      promise.resolve("Locator is stopped successfully.")
+    }catch (e:ExecutionException){
+      promise.reject(e.message)
+    }
+
   }
 
 

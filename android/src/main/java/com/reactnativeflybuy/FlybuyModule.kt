@@ -120,7 +120,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
 
   @ReactMethod
   fun fetchOrders(promise: Promise) {
-    FlyBuyCore.orders.fetch() { orders, sdkError ->
+    FlyBuyCore.orders.fetch { orders, sdkError ->
       sdkError?.let {
         handleFlyBuyError(it)
         promise.reject(it.userError(), it.userError())
@@ -128,6 +128,19 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
         promise.resolve(orders?.let { parseOrders(it) })
       }
 
+    }
+  }
+
+  @ReactMethod
+  fun claimOrder(redeemCode: String, customer: ReadableMap, pickupType: String? = null, promise: Promise) {
+    FlyBuyCore.orders.claim(redeemCode, decodeCustomerInfo(customer), pickupType) { order, sdkError ->
+      sdkError?.let {
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        order?.let { promise.resolve(parseOrder(it)) } ?: run {
+          promise.reject("null", "Null order")
+        }
+      }
     }
   }
 

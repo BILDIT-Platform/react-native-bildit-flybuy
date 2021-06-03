@@ -77,6 +77,11 @@ type Orders = {
     pid: string,
     customerInfo: ICustomer
   ): Promise<IOrder>;
+  claimOrder(
+    redeemCode: string,
+    customerInfo: ICustomer,
+    pickupType?: string
+  ): Promise<Order>;
 };
 
 type Customer = {
@@ -124,6 +129,7 @@ const FlyBuyModule = {
   Orders: {
     fetchOrders: Flybuy.fetchOrders,
     createOrder: Flybuy.createOrder,
+    claimOrder: Flybuy.claimOrder,
   },
   Customer: {
     loginWithToken: Flybuy.loginWithToken,

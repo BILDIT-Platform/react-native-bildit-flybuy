@@ -45,7 +45,7 @@ export default function App() {
   };
 
   const createOrder = () => {
-    Flybuy.Orders.createOrder(15942, '989899', {
+    Flybuy.Orders.createOrder(15942, '9898899', {
       name: 'Lamia Selmane AB',
       carType: 'Nothing',
       carColor: 'Silver',
@@ -53,6 +53,22 @@ export default function App() {
       phone: '555-555-5555',
     })
       .then((order) => console.tron.log('order', order))
+      .catch((err) => console.tron.log(err));
+  };
+
+  const claimOrder = () => {
+    Flybuy.Orders.claimOrder(
+      '9898899',
+      {
+        name: 'Lamia Selmane AB',
+        carType: 'Nothing',
+        carColor: 'Silver',
+        licensePlate: 'Nothing',
+        phone: '555-555-5555',
+      },
+      'pickup'
+    )
+      .then((order) => console.tron.log('claim order', order))
       .catch((err) => console.tron.log(err));
   };
 
@@ -212,6 +228,7 @@ export default function App() {
         <Text>Order</Text>
         <Button title="Fetch orders" color="#841584" onPress={fetchOrders} />
         <Button title="Create order" color="#841584" onPress={createOrder} />
+        <Button title="claimOrder" color="#841584" onPress={claimOrder} />
         <Text>Notify</Text>
         <Button
           title="clearNotifications"

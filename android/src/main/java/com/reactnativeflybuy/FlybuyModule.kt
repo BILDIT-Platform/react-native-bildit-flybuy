@@ -8,9 +8,11 @@ import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Customer
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Order
+import com.radiusnetworks.flybuy.sdk.data.room.domain.PickupWindow
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Site
 import com.radiusnetworks.flybuy.sdk.notify.NotificationInfo
 import com.radiusnetworks.flybuy.sdk.notify.NotifyManager
+import org.threeten.bp.Instant
 
 
 class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
@@ -48,7 +50,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
 
   @ReactMethod
   fun login(email: String, password: String, promise: Promise) {
-    FlyBuyCore.customer.login(email , password) { customer, error ->
+    FlyBuyCore.customer.login(email, password) { customer, error ->
       if (null != error) {
         // Handle error
         handleFlyBuyError(error)
@@ -63,7 +65,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
 
   @ReactMethod
   fun logout(promise: Promise) {
-    FlyBuyCore.customer.logout{ error ->
+    FlyBuyCore.customer.logout { error ->
       if (null != error) {
         // Handle error
         handleFlyBuyError(error)
@@ -145,13 +147,17 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   }
 
   @ReactMethod
-  fun createOrder(siteID: Int, pid: String, customer: ReadableMap, promise: Promise) {
+  fun createOrder(siteID: Int, pid: String, customer: ReadableMap, pickupWindow: ReadableMap, orderState: String? = null, pickupType: String? = null, promise: Promise) {
     val customerInfo: CustomerInfo = decodeCustomerInfo(customer)
+    val pickupWindowInfo = decodePickupWindow(pickupWindow)
 
     FlyBuyCore.orders.create(
       siteID = siteID,
       partnerIdentifier = pid,
-      customerInfo = customerInfo
+      customerInfo = customerInfo,
+      pickupWindow = pickupWindowInfo,
+      state = orderState,
+      pickupType = pickupType
     ) { order, sdkError ->
       sdkError?.let {
         promise.reject(it.userError(), it.userError())
@@ -569,6 +575,11 @@ fun decodeSite(site: ReadableMap): Site {
   )
 }
 
-
-
-
+fun decodePickupWindow(pickupWindow: ReadableMap): PickupWindow {
+  val instantStart = Instant.parse(pickupWindow.getString("start")!!)
+  val instantEnd = Instant.parse(pickupWindow.getString("end")!!)
+  return PickupWindow(
+    start = instantStart,
+    end = instantEnd
+  )
+}

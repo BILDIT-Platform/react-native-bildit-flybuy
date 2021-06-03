@@ -45,13 +45,24 @@ export default function App() {
   };
 
   const createOrder = () => {
-    Flybuy.Orders.createOrder(15942, '9898899', {
-      name: 'Lamia Selmane AB',
-      carType: 'Nothing',
-      carColor: 'Silver',
-      licensePlate: 'Nothing',
-      phone: '555-555-5555',
-    })
+    const pickupWindow = {
+      start: new Date().toISOString(),
+      end: new Date('2022-12-02').toISOString(),
+    };
+    Flybuy.Orders.createOrder(
+      15942,
+      '573836',
+      {
+        name: 'Lamia Selmane AB',
+        carType: 'Nothing',
+        carColor: 'Silver',
+        licensePlate: 'Nothing',
+        phone: '555-555-5555',
+      },
+      pickupWindow,
+      'delayed',
+      'delivery'
+    )
       .then((order) => console.tron.log('order', order))
       .catch((err) => console.tron.log(err));
   };

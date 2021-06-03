@@ -68,6 +68,31 @@ export interface ICustomer {
   phone?: string;
 }
 
+type PickupWindow = {
+  start: string;
+  end: string;
+};
+
+enum OrderState {
+  CREATED = 'created',
+  READY = 'ready',
+  DELAYED = 'delayed',
+  DELIVERY_DISPATCHED = 'delivery_dispatched',
+  DRIVER_ASSIGNED = 'driver_assigned',
+  DELIVERY_FAILED = 'delivery_failed',
+  PICKED_UP = 'picked_up',
+  OUT_FOR_DELIVERY = 'out_for_delivery',
+  UNDELIVERABLE = 'undeliverable',
+  CANCELLED = 'cancelled',
+  COMPLETED = 'completed',
+}
+
+enum PickupType {
+  CURBSIDE = 'curbside',
+  PICKUP = 'pickup',
+  DELIVERY = 'delivery',
+}
+
 const { Flybuy } = NativeModules;
 
 type Orders = {
@@ -75,12 +100,15 @@ type Orders = {
   createOrder(
     siteId: number,
     pid: string,
-    customerInfo: ICustomer
+    customerInfo: ICustomer,
+    pickupWindow?: PickupWindow,
+    orderState?: OrderState,
+    pickupType?: PickupType
   ): Promise<IOrder>;
   claimOrder(
     redeemCode: string,
     customerInfo: ICustomer,
-    pickupType?: string
+    pickupType?: PickupType
   ): Promise<Order>;
 };
 

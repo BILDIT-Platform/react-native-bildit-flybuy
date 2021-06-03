@@ -125,6 +125,7 @@ type Orders = {
     orderId: number,
     state: CustomerState
   ): Promise<IOrder>;
+  rateOrder(orderId: number, rating: number, comments: string): Promise<IOrder>;
 };
 
 type Customer = {
@@ -175,6 +176,7 @@ const FlyBuyModule = {
     claimOrder: Flybuy.claimOrder,
     updateOrderState: Flybuy.updateOrderState,
     updateOrderCustomerState: Flybuy.updateOrderCustomerState,
+    rateOrder: Flybuy.rateOrder,
   },
   Customer: {
     loginWithToken: Flybuy.loginWithToken,

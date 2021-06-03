@@ -185,8 +185,21 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   }
 
   @ReactMethod
+  fun rateOrder(orderId: Int, rating: Int, comments: String, promise: Promise) {
+    FlyBuyCore.orders.rateOrder(orderId = orderId, rating = rating, comments = comments) { order, sdkError ->
+      sdkError?.let {
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        order?.let { promise.resolve(parseOrder(it)) } ?: run {
+          promise.reject("null", "Null order")
+        }
+      }
+    }
+  }
+
+  @ReactMethod
   fun updateOrderCustomerState(orderId: Int, state: String, promise: Promise) {
-    FlyBuyCore.orders.updateCustomerState(orderId , state) { order, sdkError ->
+    FlyBuyCore.orders.updateCustomerState(orderId, state) { order, sdkError ->
       sdkError?.let {
         promise.reject(it.userError(), it.userError())
       } ?: run {

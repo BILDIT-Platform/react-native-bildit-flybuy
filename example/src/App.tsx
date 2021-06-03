@@ -95,6 +95,12 @@ export default function App() {
       .catch((err) => console.tron.log(err));
   };
 
+  const rateOrder = () => {
+    Flybuy.Orders.rateOrder(46084566, 5, 'Awesome!')
+      .then((order) => console.tron.log('rateOrder', order))
+      .catch((err) => console.tron.log(err));
+  };
+
   const createCustomer = () => {
     Flybuy.Customer.createCustomer({
       name: 'Abdelkhalek Zellat',
@@ -237,6 +243,7 @@ export default function App() {
         <Button title="Create order" onPress={createOrder} />
         <Button title="claimOrder" onPress={claimOrder} />
         <Button title="updateOrderState" onPress={updateOrderState} />
+        <Button title="rateOrder" onPress={rateOrder} />
         <Button
           title="updateOrderCustomerState"
           onPress={updateOrderCustomerState}

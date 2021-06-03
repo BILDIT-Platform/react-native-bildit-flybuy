@@ -109,7 +109,8 @@ type Orders = {
     redeemCode: string,
     customerInfo: ICustomer,
     pickupType?: PickupType
-  ): Promise<Order>;
+  ): Promise<IOrder>;
+  updateOrderState(orderId: number, state: OrderState): Promise<IOrder>;
 };
 
 type Customer = {
@@ -158,6 +159,7 @@ const FlyBuyModule = {
     fetchOrders: Flybuy.fetchOrders,
     createOrder: Flybuy.createOrder,
     claimOrder: Flybuy.claimOrder,
+    updateOrderState: Flybuy.updateOrderState,
   },
   Customer: {
     loginWithToken: Flybuy.loginWithToken,

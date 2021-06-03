@@ -83,6 +83,12 @@ export default function App() {
       .catch((err) => console.tron.log(err));
   };
 
+  const updateOrderState = () => {
+    Flybuy.Orders.updateOrderState(46084566, 'ready')
+      .then((order) => console.tron.log('updateOrderState', order))
+      .catch((err) => console.tron.log(err));
+  };
+
   const createCustomer = () => {
     Flybuy.Customer.createCustomer({
       name: 'Abdelkhalek Zellat',
@@ -240,6 +246,11 @@ export default function App() {
         <Button title="Fetch orders" color="#841584" onPress={fetchOrders} />
         <Button title="Create order" color="#841584" onPress={createOrder} />
         <Button title="claimOrder" color="#841584" onPress={claimOrder} />
+        <Button
+          title="updateOrderState"
+          color="#841584"
+          onPress={updateOrderState}
+        />
         <Text>Notify</Text>
         <Button
           title="clearNotifications"

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Flybuy from 'react-native-flybuy';
 
-const Button = ({ title, color, onPress }) => {
+const Button = ({ title, color = '#841584', onPress }) => {
   return (
     <TouchableOpacity
       style={[styles.button, { backgroundColor: color }]}
@@ -86,6 +86,12 @@ export default function App() {
   const updateOrderState = () => {
     Flybuy.Orders.updateOrderState(46084566, 'ready')
       .then((order) => console.tron.log('updateOrderState', order))
+      .catch((err) => console.tron.log(err));
+  };
+
+  const updateOrderCustomerState = () => {
+    Flybuy.Orders.updateOrderCustomerState(46084566, 'departed')
+      .then((order) => console.tron.log('updateOrderCustomerState', order))
       .catch((err) => console.tron.log(err));
   };
 
@@ -220,65 +226,32 @@ export default function App() {
     <ScrollView>
       <View style={styles.container}>
         <Text>Customer</Text>
-        <Button title="login" color="#841584" onPress={login} />
-        <Button
-          title="loginWithToken"
-          color="#841584"
-          onPress={loginWithToken}
-        />
-        <Button title="logout" color="#841584" onPress={logout} />
-        <Button
-          title="create Customer"
-          color="#841584"
-          onPress={createCustomer}
-        />
-        <Button
-          title="getCurrentCustomer"
-          color="#841584"
-          onPress={getCurrentCustomer}
-        />
-        <Button
-          title="updateCustomer"
-          color="#841584"
-          onPress={updateCustomer}
-        />
+        <Button title="login" onPress={login} />
+        <Button title="loginWithToken" onPress={loginWithToken} />
+        <Button title="logout" onPress={logout} />
+        <Button title="create Customer" onPress={createCustomer} />
+        <Button title="getCurrentCustomer" onPress={getCurrentCustomer} />
+        <Button title="updateCustomer" onPress={updateCustomer} />
         <Text>Order</Text>
-        <Button title="Fetch orders" color="#841584" onPress={fetchOrders} />
-        <Button title="Create order" color="#841584" onPress={createOrder} />
-        <Button title="claimOrder" color="#841584" onPress={claimOrder} />
+        <Button title="Fetch orders" onPress={fetchOrders} />
+        <Button title="Create order" onPress={createOrder} />
+        <Button title="claimOrder" onPress={claimOrder} />
+        <Button title="updateOrderState" onPress={updateOrderState} />
         <Button
-          title="updateOrderState"
-          color="#841584"
-          onPress={updateOrderState}
+          title="updateOrderCustomerState"
+          onPress={updateOrderCustomerState}
         />
         <Text>Notify</Text>
-        <Button
-          title="clearNotifications"
-          color="#841584"
-          onPress={clearNotifications}
-        />
+        <Button title="clearNotifications" onPress={clearNotifications} />
         <Button
           title="createForSitesInRegion"
-          color="#841584"
           onPress={createForSitesInRegion}
         />
-        <Button
-          title="createForSites"
-          color="#841584"
-          onPress={createForSites}
-        />
+        <Button title="createForSites" onPress={createForSites} />
         <Text>Sites</Text>
-        <Button title="fetchAllSites" color="#841584" onPress={fetchAllSites} />
-        <Button
-          title="fetchSitesByQuery"
-          color="#841584"
-          onPress={fetchSitesByQuery}
-        />
-        <Button
-          title="fetchSitesByRegion"
-          color="#841584"
-          onPress={fetchSitesByRegion}
-        />
+        <Button title="fetchAllSites" onPress={fetchAllSites} />
+        <Button title="fetchSitesByQuery" onPress={fetchSitesByQuery} />
+        <Button title="fetchSitesByRegion" onPress={fetchSitesByRegion} />
       </View>
     </ScrollView>
   );

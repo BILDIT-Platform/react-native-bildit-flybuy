@@ -14,7 +14,7 @@ export interface INotificationInfo {
 export interface IOrder {
   id: number;
   state: string;
-  customerState: string;
+  customerState: CustomerState;
   partnerIdentifier?: string;
   pickupWindow?: [string];
   pickupType?: string;
@@ -73,6 +73,16 @@ type PickupWindow = {
   end: string;
 };
 
+enum CustomerState {
+  CREATED = 'created',
+  EN_ROUTE = 'en_route',
+  NEARBY = 'nearby',
+  ARRIVED = 'arrived',
+  WAITING = 'waiting',
+  DEPARTED = 'departed',
+  COMPLETED = 'completed',
+}
+
 enum OrderState {
   CREATED = 'created',
   READY = 'ready',
@@ -111,6 +121,10 @@ type Orders = {
     pickupType?: PickupType
   ): Promise<IOrder>;
   updateOrderState(orderId: number, state: OrderState): Promise<IOrder>;
+  updateOrderCustomerState(
+    orderId: number,
+    state: CustomerState
+  ): Promise<IOrder>;
 };
 
 type Customer = {
@@ -160,6 +174,7 @@ const FlyBuyModule = {
     createOrder: Flybuy.createOrder,
     claimOrder: Flybuy.claimOrder,
     updateOrderState: Flybuy.updateOrderState,
+    updateOrderCustomerState: Flybuy.updateOrderCustomerState,
   },
   Customer: {
     loginWithToken: Flybuy.loginWithToken,

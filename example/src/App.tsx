@@ -226,6 +226,7 @@ export default function App() {
   React.useEffect(() => {
     Flybuy.configure('224.epegiXJkGRqvwLJJYHPTCWGR');
     Flybuy.Notify.configure();
+    Flybuy.Pickup.configure();
   }, []);
 
   return (

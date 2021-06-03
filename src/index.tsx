@@ -160,6 +160,10 @@ type Notify = {
   ): Promise<void>;
 };
 
+type Pickup = {
+  configure(): void;
+};
+
 type FlyBuyType = {
   Orders: Orders;
   Customer: Customer;
@@ -196,6 +200,9 @@ const FlyBuyModule = {
     clearNotifications: Flybuy.clearNotifications,
     createForSitesInRegion: Flybuy.createForSitesInRegion,
     createForSites: Flybuy.createForSites,
+  },
+  Pickup: {
+    configure: Flybuy.pickupConfigure,
   },
 };
 

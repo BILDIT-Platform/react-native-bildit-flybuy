@@ -12,6 +12,7 @@ import com.radiusnetworks.flybuy.sdk.data.room.domain.PickupWindow
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Site
 import com.radiusnetworks.flybuy.sdk.notify.NotificationInfo
 import com.radiusnetworks.flybuy.sdk.notify.NotifyManager
+import com.radiusnetworks.flybuy.sdk.pickup.PickupManager
 import org.threeten.bp.Instant
 
 
@@ -24,11 +25,6 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   @ReactMethod
   fun configure(token: String, promise: Promise) {
     FlyBuyCore.configure(reactApplicationContext.baseContext, token)
-  }
-
-  @ReactMethod
-  fun notifyConfigure(promise: Promise) {
-    NotifyManager.getInstance()?.configure(reactApplicationContext.baseContext)
   }
 
   // Customer
@@ -210,7 +206,19 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
     }
   }
 
+  // Pickup
+
+  @ReactMethod
+  fun pickupConfigure(promise: Promise) {
+    PickupManager.getInstance()?.configure(reactApplicationContext.baseContext)
+  }
+
   // Notify
+
+  @ReactMethod
+  fun notifyConfigure(promise: Promise) {
+    NotifyManager.getInstance()?.configure(reactApplicationContext.baseContext)
+  }
 
   @ReactMethod
   fun createForSitesInRegion(region: ReadableMap, notification: ReadableMap, promise: Promise) {

@@ -80,7 +80,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
         // it.listener = locatorListener
         // Store locator or start it here
         startLocator(presenceLocator)
-        promise.resolve("Location started successfully:"+ presenceLocator.presenceNamespace.toString())
+        promise.resolve("Locator started successfully")
       }
     }
   }

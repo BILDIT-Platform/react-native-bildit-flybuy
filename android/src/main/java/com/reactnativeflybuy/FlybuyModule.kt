@@ -32,8 +32,23 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   // Customer
 
   @ReactMethod
-  fun login(token: String, promise: Promise) {
+  fun loginWithToken(token: String, promise: Promise) {
     FlyBuyCore.customer.loginWithToken(token = token) { customer, error ->
+      if (null != error) {
+        // Handle error
+        handleFlyBuyError(error)
+        promise.reject(error.userError())
+      } else {
+        if (null != customer) {
+          promise.resolve(parseCustomer(customer))
+        }
+      }
+    }
+  }
+
+  @ReactMethod
+  fun login(email: String, password: String, promise: Promise) {
+    FlyBuyCore.customer.login(email , password) { customer, error ->
       if (null != error) {
         // Handle error
         handleFlyBuyError(error)

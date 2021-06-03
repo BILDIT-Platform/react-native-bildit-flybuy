@@ -80,7 +80,8 @@ type Orders = {
 };
 
 type Customer = {
-  login(code: string): Promise<any>;
+  loginWithToken(code: string): Promise<any>;
+  login(email: string, password: string): Promise<any>;
   logout(): Promise<any>;
   createCustomer(customerInfo: ICustomer): Promise<ICustomer>;
   updateCustomer(customerInfo: ICustomer): Promise<ICustomer>;
@@ -125,6 +126,7 @@ const FlyBuyModule = {
     createOrder: Flybuy.createOrder,
   },
   Customer: {
+    loginWithToken: Flybuy.loginWithToken,
     login: Flybuy.login,
     logout: Flybuy.logout,
     createCustomer: Flybuy.createCustomer,

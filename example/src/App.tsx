@@ -1,6 +1,12 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import Flybuy from 'react-native-flybuy';
 
 const Button = ({ title, color, onPress }) => {
@@ -20,8 +26,14 @@ export default function App() {
       .catch((err) => console.tron.log(err));
   };
 
+  const loginWithToken = () => {
+    Flybuy.Customer.loginWithToken('F69PGKM1QXCN7Dj3ybEXCpU4')
+      .then((customer) => console.tron.log('customer', customer))
+      .catch((err) => console.tron.log(err));
+  };
+
   const login = () => {
-    Flybuy.Customer.login('F69PGKM1QXCN7Dj3ybEXCpU4')
+    Flybuy.Customer.login('ha_zellat@esi.dz', 'password')
       .then((customer) => console.tron.log('customer', customer))
       .catch((err) => console.tron.log(err));
   };
@@ -172,49 +184,64 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Customer</Text>
-      <Button title="login" color="#841584" onPress={login} />
-      <Button title="logout" color="#841584" onPress={logout} />
-      <Button
-        title="create Customer"
-        color="#841584"
-        onPress={createCustomer}
-      />
-      <Button
-        title="getCurrentCustomer"
-        color="#841584"
-        onPress={getCurrentCustomer}
-      />
-      <Button title="updateCustomer" color="#841584" onPress={updateCustomer} />
-      <Text>Order</Text>
-      <Button title="Fetch orders" color="#841584" onPress={fetchOrders} />
-      <Button title="Create order" color="#841584" onPress={createOrder} />
-      <Text>Notify</Text>
-      <Button
-        title="clearNotifications"
-        color="#841584"
-        onPress={clearNotifications}
-      />
-      <Button
-        title="createForSitesInRegion"
-        color="#841584"
-        onPress={createForSitesInRegion}
-      />
-      <Button title="createForSites" color="#841584" onPress={createForSites} />
-      <Text>Sites</Text>
-      <Button title="fetchAllSites" color="#841584" onPress={fetchAllSites} />
-      <Button
-        title="fetchSitesByQuery"
-        color="#841584"
-        onPress={fetchSitesByQuery}
-      />
-      <Button
-        title="fetchSitesByRegion"
-        color="#841584"
-        onPress={fetchSitesByRegion}
-      />
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text>Customer</Text>
+        <Button title="login" color="#841584" onPress={login} />
+        <Button
+          title="loginWithToken"
+          color="#841584"
+          onPress={loginWithToken}
+        />
+        <Button title="logout" color="#841584" onPress={logout} />
+        <Button
+          title="create Customer"
+          color="#841584"
+          onPress={createCustomer}
+        />
+        <Button
+          title="getCurrentCustomer"
+          color="#841584"
+          onPress={getCurrentCustomer}
+        />
+        <Button
+          title="updateCustomer"
+          color="#841584"
+          onPress={updateCustomer}
+        />
+        <Text>Order</Text>
+        <Button title="Fetch orders" color="#841584" onPress={fetchOrders} />
+        <Button title="Create order" color="#841584" onPress={createOrder} />
+        <Text>Notify</Text>
+        <Button
+          title="clearNotifications"
+          color="#841584"
+          onPress={clearNotifications}
+        />
+        <Button
+          title="createForSitesInRegion"
+          color="#841584"
+          onPress={createForSitesInRegion}
+        />
+        <Button
+          title="createForSites"
+          color="#841584"
+          onPress={createForSites}
+        />
+        <Text>Sites</Text>
+        <Button title="fetchAllSites" color="#841584" onPress={fetchAllSites} />
+        <Button
+          title="fetchSitesByQuery"
+          color="#841584"
+          onPress={fetchSitesByQuery}
+        />
+        <Button
+          title="fetchSitesByRegion"
+          color="#841584"
+          onPress={fetchSitesByRegion}
+        />
+      </View>
+    </ScrollView>
   );
 }
 

@@ -94,10 +94,16 @@ export default function App() {
   React.useEffect(() => {
     Flybuy.configure('224.epegiXJkGRqvwLJJYHPTCWGR');
     Flybuy.notifyConfigure();
+    Flybuy.presenceConfigure('237e9877-e79b-12d4-a765-321741963000');
   }, []);
-
+  const createLocate = () => {
+    Flybuy.createLocatorWithIdentifier('12345678', '123').then((locator) => {
+      console.log('locator----->', locator);
+    });
+  };
   return (
     <View style={styles.container}>
+      <Button title="create locator" color="#841584" onPress={createLocate} />
       <Button title="login" color="#841584" onPress={login} />
       <Button title="Fetch orders" color="#841584" onPress={fetchOrders} />
       <Button title="Create orders" color="#841584" onPress={createOrder} />

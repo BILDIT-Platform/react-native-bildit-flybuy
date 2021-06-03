@@ -49,6 +49,10 @@ export interface Customer {
   phone?: string;
 }
 
+export interface PresenceLocator {
+  payload: string;
+}
+
 const { Flybuy } = NativeModules;
 
 type FlybuyType = {
@@ -73,5 +77,11 @@ type FlybuyType = {
     region: CircularRegion,
     notification: NotificationInfo
   ): void;
+  // presence
+  presenceConfigure(presenceUUID: string): void;
+  createLocatorWithIdentifier(
+    presenceId: string,
+    payload: string
+  ): Promise<string>;
 };
 export default Flybuy as FlybuyType;

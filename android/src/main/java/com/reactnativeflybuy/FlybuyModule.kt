@@ -1,18 +1,22 @@
 package com.reactnativeflybuy
 
-import com.radiusnetworks.flybuy.sdk.FlyBuyCore
-import com.radiusnetworks.flybuy.sdk.pickup.PickupManager
-import com.radiusnetworks.flybuy.sdk.notify.NotifyManager
-import android.content.Context
-import android.util.Log
-import com.facebook.react.bridge.*
 // import com.google.gson.Gson
+import android.os.Build
+import android.util.Log
+import androidx.annotation.RequiresApi
+import com.facebook.react.bridge.*
+import com.radiusnetworks.flybuy.sdk.FlyBuyCore
 import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Customer
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Order
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Site
 import com.radiusnetworks.flybuy.sdk.notify.NotificationInfo
+import com.radiusnetworks.flybuy.sdk.notify.NotifyManager
+import com.radiusnetworks.flybuy.sdk.presence.PresenceLocator
+import com.radiusnetworks.flybuy.sdk.presence.PresenceManager
+import java.util.*
+
 
 class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
@@ -29,6 +33,42 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   fun notifyConfigure(promise: Promise) {
     NotifyManager.getInstance()?.configure(reactApplicationContext.baseContext)
   }
+
+
+  @ReactMethod
+  fun presenceConfigure(presenceUUID: String, promise: Promise) {
+    val uid = UUID.fromString(presenceUUID)
+    PresenceManager.getInstance()?.configure(reactApplicationContext.baseContext, uid)
+  }
+
+  @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+  @ReactMethod
+  fun createLocatorWithIdentifier(byte_presenceId: String, payload: String, promise: Promise ) {
+    var presenceId = byte_presenceId.toByteArray()
+    PresenceManager.getInstance()?.createLocatorWithIdentifier(presenceId, payload) { presenceLocator, sdkError ->
+      sdkError?.let {
+        // Handle error
+        promise.reject(it.userError(), it.userError())
+      }
+      presenceLocator?.let {
+        promise.resolve(presenceLocator.major.toString())
+        // Set locator listener
+        //it.listener = locatorListener
+        // Store locator or start it here
+      }
+    }
+  }
+
+  @ReactMethod
+  fun startLocator(presenceLocator: PresenceLocator) {
+    PresenceManager.getInstance()?.start(presenceLocator)
+  }
+
+  @ReactMethod
+  fun stopLocator() {
+    PresenceManager.getInstance()?.stop()
+  }
+
 
   // Customer
 
@@ -185,6 +225,7 @@ fun parseOrders(items: List<Order>): WritableArray {
   }
   return array
 }
+
 
 
 fun parseOrder(order: Order): WritableMap {

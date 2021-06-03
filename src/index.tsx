@@ -79,9 +79,10 @@ type FlybuyType = {
   ): void;
   // presence
   presenceConfigure(presenceUUID: string): void;
-  createLocatorWithIdentifier(
+  startLocatorWithIdentifier(
     presenceId: string,
     payload: string
   ): Promise<string>;
+  stopLocator(): Promise<string>;
 };
 export default Flybuy as FlybuyType;

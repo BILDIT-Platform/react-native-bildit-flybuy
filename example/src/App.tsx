@@ -97,13 +97,23 @@ export default function App() {
     Flybuy.presenceConfigure('237e9877-e79b-12d4-a765-321741963000');
   }, []);
   const createLocate = () => {
-    Flybuy.createLocatorWithIdentifier('12345678', '123').then((locator) => {
-      console.log('locator----->', locator);
+    Flybuy.startLocatorWithIdentifier('12345678', '123').then((locatorRssi) => {
+      console.log('locatorRssi----->', locatorRssi);
     });
+  };
+  const stopLocator = () => {
+    Flybuy.stopLocator()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
   return (
     <View style={styles.container}>
       <Button title="create locator" color="#841584" onPress={createLocate} />
+      <Button title="stop locator" color="#841584" onPress={stopLocator} />
       <Button title="login" color="#841584" onPress={login} />
       <Button title="Fetch orders" color="#841584" onPress={fetchOrders} />
       <Button title="Create orders" color="#841584" onPress={createOrder} />

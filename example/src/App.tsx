@@ -26,6 +26,12 @@ export default function App() {
       .catch((err) => console.tron.log(err));
   };
 
+  const logout = () => {
+    Flybuy.Customer.logout()
+      .then(() => console.tron.log('logout success'))
+      .catch((err) => console.tron.log(err));
+  };
+
   const createOrder = () => {
     Flybuy.Orders.createOrder(15942, '989899', {
       name: 'Lamia Selmane AB',
@@ -169,6 +175,7 @@ export default function App() {
     <View style={styles.container}>
       <Text>Customer</Text>
       <Button title="login" color="#841584" onPress={login} />
+      <Button title="logout" color="#841584" onPress={logout} />
       <Button
         title="create Customer"
         color="#841584"

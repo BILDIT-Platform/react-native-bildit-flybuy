@@ -47,6 +47,19 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   }
 
   @ReactMethod
+  fun logout(promise: Promise) {
+    FlyBuyCore.customer.logout{ error ->
+      if (null != error) {
+        // Handle error
+        handleFlyBuyError(error)
+        promise.reject(error.userError())
+      } else {
+        promise.resolve(null)
+      }
+    }
+  }
+
+  @ReactMethod
   fun createCustomer(customer: ReadableMap, promise: Promise) {
     val customerInfo: CustomerInfo = decodeCustomerInfo(customer)
     FlyBuyCore.customer.create(customerInfo, true, true) { customer, sdkError ->

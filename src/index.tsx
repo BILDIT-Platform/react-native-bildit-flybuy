@@ -81,6 +81,7 @@ type Orders = {
 
 type Customer = {
   login(code: string): Promise<any>;
+  logout(): Promise<any>;
   createCustomer(customerInfo: ICustomer): Promise<ICustomer>;
   updateCustomer(customerInfo: ICustomer): Promise<ICustomer>;
   getCurrentCustomer(): Promise<ICustomer>;
@@ -125,6 +126,7 @@ const FlyBuyModule = {
   },
   Customer: {
     login: Flybuy.login,
+    logout: Flybuy.logout,
     createCustomer: Flybuy.createCustomer,
     updateCustomer: Flybuy.updateCustomer,
     getCurrentCustomer: Flybuy.getCurrentCustomer,

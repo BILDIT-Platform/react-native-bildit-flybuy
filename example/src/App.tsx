@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import Button from './Button';
-import Flybuy, { ISite } from 'react-native-flybuy';
+import Flybuy, { ISite } from 'react-native-bildit-flybuy';
 
 export default function App() {
   // Orders

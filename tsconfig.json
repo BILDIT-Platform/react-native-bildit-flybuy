@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-flybuy": ["./src/index"]
+      "react-native-bildit-flybuy": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

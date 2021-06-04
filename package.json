@@ -1,5 +1,5 @@
 {
-  "name": "react-native-flybuy",
+  "name": "react-native-bildit-flybuy",
   "version": "0.1.0",
   "description": "React Native JS Wrapper for FlyBuy Native SDK",
   "main": "lib/commonjs/index",
@@ -13,7 +13,7 @@
     "android",
     "ios",
     "cpp",
-    "react-native-flybuy.podspec",
+    "react-native-bildit-flybuy.podspec",
     "!lib/typescript/example",
     "!android/build",
     "!ios/build",

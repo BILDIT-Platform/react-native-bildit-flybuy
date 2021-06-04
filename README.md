@@ -1,4 +1,4 @@
-# react-native-flybuy
+# react-native-bildit-flybuy
 
 React Native JS Wrapper for FlyBuy Native SDK
 
@@ -11,7 +11,7 @@ yarn add react-native-bildit-flybuy@https://github.com/BILDIT-LLC/react-native-b
 ## Usage
 
 ```js
-import Flybuy from 'react-native-flybuy';
+import Flybuy from 'react-native-bildit-flybuy';
 
 // ...
 

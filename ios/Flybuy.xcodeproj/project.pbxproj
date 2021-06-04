@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-
-		5E555C0D2413F4C50049A1A2 /* Flybuy.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* Flybuy.m */; };
-
+		B0CE299A266A867A00CE42A6 /* FlyBuyNotify in Frameworks */ = {isa = PBXBuildFile; productRef = B0CE2999266A867A00CE42A6 /* FlyBuyNotify */; };
+		B0CE299C266A867A00CE42A6 /* FlyBuyPickup in Frameworks */ = {isa = PBXBuildFile; productRef = B0CE299B266A867A00CE42A6 /* FlyBuyPickup */; };
+		B0CE299E266A867A00CE42A6 /* FlyBuyPresence in Frameworks */ = {isa = PBXBuildFile; productRef = B0CE299D266A867A00CE42A6 /* FlyBuyPresence */; };
+		F4FF95D7245B92E800C19C63 /* Flybuy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /* Flybuy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,10 +27,9 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libFlybuy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFlybuy.a; sourceTree = BUILT_PRODUCTS_DIR; };
-
-		B3E7B5881CC2AC0600A0062D /* Flybuy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flybuy.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* Flybuy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flybuy.m; sourceTree = "<group>"; };
-
+		F4FF95D5245B92E700C19C63 /* Flybuy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Flybuy-Bridging-Header.h"; sourceTree = "<group>"; };
+		F4FF95D6245B92E800C19C63 /* Flybuy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flybuy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +37,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0CE299A266A867A00CE42A6 /* FlyBuyNotify in Frameworks */,
+				B0CE299C266A867A00CE42A6 /* FlyBuyPickup in Frameworks */,
+				B0CE299E266A867A00CE42A6 /* FlyBuyPresence in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,10 +57,9 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-
-				B3E7B5881CC2AC0600A0062D /* Flybuy.h */,
+				F4FF95D6245B92E800C19C63 /* Flybuy.swift */,
 				B3E7B5891CC2AC0600A0062D /* Flybuy.m */,
-
+				F4FF95D5245B92E700C19C63 /* Flybuy-Bridging-Header.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,6 +80,11 @@
 			dependencies = (
 			);
 			name = Flybuy;
+			packageProductDependencies = (
+				B0CE2999266A867A00CE42A6 /* FlyBuyNotify */,
+				B0CE299B266A867A00CE42A6 /* FlyBuyPickup */,
+				B0CE299D266A867A00CE42A6 /* FlyBuyPresence */,
+			);
 			productName = RCTDataManager;
 			productReference = 134814201AA4EA6300B7C361 /* libFlybuy.a */;
 			productType = "com.apple.product-type.library.static";
@@ -105,6 +112,9 @@
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
+			packageReferences = (
+				B0CE2998266A867A00CE42A6 /* XCRemoteSwiftPackageReference "flybuy-ios" */,
+			);
 			productRefGroup = 58B511D21A9E6C8500147676;
 			projectDirPath = "";
 			projectRoot = "";
@@ -119,9 +129,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
-				B3E7B58A1CC2AC0600A0062D /* Flybuy.m in Sources */,
-
+				F4FF95D7245B92E800C19C63 /* Flybuy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +242,9 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Flybuy;
 				SKIP_INSTALL = YES;
-
+				SWIFT_OBJC_BRIDGING_HEADER = "Flybuy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -251,7 +261,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Flybuy;
 				SKIP_INSTALL = YES;
-
+				SWIFT_OBJC_BRIDGING_HEADER = "Flybuy-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -277,6 +288,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B0CE2998266A867A00CE42A6 /* XCRemoteSwiftPackageReference "flybuy-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RadiusNetworks/flybuy-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B0CE2999266A867A00CE42A6 /* FlyBuyNotify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0CE2998266A867A00CE42A6 /* XCRemoteSwiftPackageReference "flybuy-ios" */;
+			productName = FlyBuyNotify;
+		};
+		B0CE299B266A867A00CE42A6 /* FlyBuyPickup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0CE2998266A867A00CE42A6 /* XCRemoteSwiftPackageReference "flybuy-ios" */;
+			productName = FlyBuyPickup;
+		};
+		B0CE299D266A867A00CE42A6 /* FlyBuyPresence */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0CE2998266A867A00CE42A6 /* XCRemoteSwiftPackageReference "flybuy-ios" */;
+			productName = FlyBuyPresence;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 58B511D31A9E6C8500147676 /* Project object */;
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B0750E09266A9FE40085AC8D /* Flybuy.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* Flybuy.m */; };
+		B0750E2D266AA0320085AC8D /* Flybuy-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D5245B92E700C19C63 /* Flybuy-Bridging-Header.h */; };
 		B0CE299A266A867A00CE42A6 /* FlyBuyNotify in Frameworks */ = {isa = PBXBuildFile; productRef = B0CE2999266A867A00CE42A6 /* FlyBuyNotify */; };
 		B0CE299C266A867A00CE42A6 /* FlyBuyPickup in Frameworks */ = {isa = PBXBuildFile; productRef = B0CE299B266A867A00CE42A6 /* FlyBuyPickup */; };
 		B0CE299E266A867A00CE42A6 /* FlyBuyPresence in Frameworks */ = {isa = PBXBuildFile; productRef = B0CE299D266A867A00CE42A6 /* FlyBuyPresence */; };
@@ -129,6 +131,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0750E2D266AA0320085AC8D /* Flybuy-Bridging-Header.h in Sources */,
+				B0750E09266A9FE40085AC8D /* Flybuy.m in Sources */,
 				F4FF95D7245B92E800C19C63 /* Flybuy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

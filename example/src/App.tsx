@@ -219,11 +219,12 @@ export default function App() {
   // Prescence
 
   const startLocator = () => {
-    Flybuy.Presence.startLocatorWithIdentifier('12345678', '123').then(
-      (res) => {
-        console.tron.log('locatorRssi----->', res);
-      }
-    );
+    Flybuy.Presence.startLocatorWithIdentifier(
+      '12345678',
+      "{'key':'value'}"
+    ).then((res) => {
+      console.tron.log('locatorRssi----->', res);
+    });
   };
 
   const stopLocator = () => {

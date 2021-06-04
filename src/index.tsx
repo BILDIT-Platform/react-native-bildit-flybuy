@@ -160,6 +160,15 @@ type Notify = {
   ): Promise<void>;
 };
 
+type Presence = {
+  configure(presenceUUID: string): void;
+  startLocatorWithIdentifier(
+    presenceId: string,
+    payload: string
+  ): Promise<string>;
+  stopLocator(): Promise<string>;
+};
+
 type Pickup = {
   configure(): void;
 };
@@ -170,6 +179,7 @@ type FlyBuyType = {
   Pickup: Pickup;
   Notify: Notify;
   Sites: Sites;
+  Presence: Presence;
   configure(token: string): void;
 };
 
@@ -204,6 +214,11 @@ const FlyBuyModule = {
   },
   Pickup: {
     configure: Flybuy.pickupConfigure,
+  },
+  Presence: {
+    configure: Flybuy.presenceConfigure,
+    startLocatorWithIdentifier: Flybuy.startLocatorWithIdentifier,
+    stopLocator: Flybuy.stopLocator,
   },
 };
 

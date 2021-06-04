@@ -1,6 +1,7 @@
 package com.reactnativeflybuy
 
 import android.util.Log
+import androidx.annotation.RequiresApi
 import com.facebook.react.bridge.*
 import com.radiusnetworks.flybuy.sdk.FlyBuyCore
 import com.radiusnetworks.flybuy.sdk.data.common.Pagination
@@ -13,10 +14,15 @@ import com.radiusnetworks.flybuy.sdk.data.room.domain.Site
 import com.radiusnetworks.flybuy.sdk.notify.NotificationInfo
 import com.radiusnetworks.flybuy.sdk.notify.NotifyManager
 import com.radiusnetworks.flybuy.sdk.pickup.PickupManager
+import com.radiusnetworks.flybuy.sdk.presence.PresenceLocator
+import com.radiusnetworks.flybuy.sdk.presence.PresenceManager
 import org.threeten.bp.Instant
+import java.util.*
+import java.util.concurrent.ExecutionException
 
 
 class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+
 
   override fun getName(): String {
     return "Flybuy"
@@ -338,6 +344,67 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
     }
   }
 
+  // Presence
+
+  @ReactMethod
+  fun presenceConfigure(presenceUUID: String) {
+    val uid = UUID.fromString(presenceUUID)
+    PresenceManager.getInstance()?.configure(reactApplicationContext.baseContext, uid)
+  }
+
+  @ReactMethod
+  fun createLocatorWithIdentifier(byte_presenceId: String, payload: String, promise: Promise) {
+    var presenceId = byte_presenceId.toByteArray()
+    PresenceManager.getInstance()?.createLocatorWithIdentifier(presenceId, payload) { presenceLocator, sdkError ->
+      sdkError?.let {
+        // Handle error
+        promise.reject(it.userError(), it.userError())
+      }
+      presenceLocator?.let {
+
+        //  promise.resolve(presenceLocator.refere)
+        // Set locator listener
+        // it.listener = locatorListener
+        // Store locator or start it here
+        startLocator(presenceLocator)
+      }
+    }
+  }
+
+  @ReactMethod
+  fun startLocator(presenceLocator: PresenceLocator) {
+    PresenceManager.getInstance()?.start(presenceLocator)
+  }
+
+  @ReactMethod
+  fun startLocatorWithIdentifier(byte_presenceId: String, payload: String, promise: Promise) {
+    var presenceId = byte_presenceId.toByteArray()
+    PresenceManager.getInstance()?.createLocatorWithIdentifier(presenceId, payload) { presenceLocator, sdkError ->
+      sdkError?.let {
+        // Handle error
+        promise.reject(it.userError(), it.userError())
+      }
+      presenceLocator?.let {
+        // Set locator listener
+        // it.listener = locatorListener
+        // Store locator or start it here
+        startLocator(presenceLocator)
+        promise.resolve("Locator started successfully")
+      }
+    }
+  }
+
+  @ReactMethod
+  fun stopLocator(promise: Promise) {
+    try {
+      PresenceManager.getInstance()?.stop()
+      promise.resolve("Locator is stopped successfully.")
+    } catch (e: ExecutionException) {
+      promise.reject(e.message)
+    }
+  }
+
+
 }
 
 fun parsePagination(pagination: Pagination): WritableMap {
@@ -630,3 +697,4 @@ fun decodePickupWindow(pickupWindow: ReadableMap): PickupWindow {
     end = instantEnd
   )
 }
+

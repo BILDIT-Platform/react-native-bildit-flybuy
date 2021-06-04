@@ -1,0 +1,24 @@
+{
+  "pluginId": "default",
+  "version": "current",
+  "label": "Next",
+  "isLast": true,
+  "docsSidebars": {
+    "tutorialSidebar": [
+      {
+        "type": "link",
+        "label": "Quick Start",
+        "href": "/docs/intro"
+      },
+      {
+        "type": "link",
+        "label": "Reference",
+        "href": "/docs/Reference"
+      }
+    ]
+  },
+  "permalinkToSidebar": {
+    "/docs/intro": "tutorialSidebar",
+    "/docs/Reference": "tutorialSidebar"
+  }
+}

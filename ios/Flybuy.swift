@@ -1,8 +1,16 @@
 import FlyBuy
+import FlyBuyPickup
+import FlyBuyPresence
+import FlyBuyNotify
 
 @objc(Flybuy)
 class Flybuy: NSObject {
 
+    @objc(configure:)
+    func configure(token: String) {
+        FlyBuy.Core.configure(["token": token])
+    }
+    
     @objc(loginWithToken:withResolver:withRejecter:)
     func loginWithToken(token: String,
                resolve:@escaping RCTPromiseResolveBlock,

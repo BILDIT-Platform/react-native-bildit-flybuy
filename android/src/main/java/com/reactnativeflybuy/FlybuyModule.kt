@@ -24,7 +24,6 @@ import java.util.concurrent.ExecutionException
 class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
 
-
   override fun getName(): String {
     return "Flybuy"
   }
@@ -354,7 +353,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   }
 
   @ReactMethod
-  fun createLocatorWithIdentifier(byte_presenceId: String, payload: String, promise: Promise ) {
+  fun createLocatorWithIdentifier(byte_presenceId: String, payload: String, promise: Promise) {
     var presenceId = byte_presenceId.toByteArray()
     PresenceManager.getInstance()?.createLocatorWithIdentifier(presenceId, payload) { presenceLocator, sdkError ->
       sdkError?.let {
@@ -376,8 +375,9 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   fun startLocator(presenceLocator: PresenceLocator) {
     PresenceManager.getInstance()?.start(presenceLocator)
   }
+
   @ReactMethod
-  fun startLocatorWithIdentifier(byte_presenceId: String, payload: String, promise: Promise ) {
+  fun startLocatorWithIdentifier(byte_presenceId: String, payload: String, promise: Promise) {
     var presenceId = byte_presenceId.toByteArray()
     PresenceManager.getInstance()?.createLocatorWithIdentifier(presenceId, payload) { presenceLocator, sdkError ->
       sdkError?.let {
@@ -399,11 +399,10 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
     try {
       PresenceManager.getInstance()?.stop()
       promise.resolve("Locator is stopped successfully.")
-    }catch (e: ExecutionException){
+    } catch (e: ExecutionException) {
       promise.reject(e.message)
     }
   }
-
 
 
 }
@@ -440,7 +439,6 @@ fun parseOrders(items: List<Order>): WritableArray {
   }
   return array
 }
-
 
 
 fun parseOrder(order: Order): WritableMap {

@@ -11,6 +11,8 @@ class Flybuy: NSObject {
         FlyBuy.Core.configure(["token": token])
     }
     
+    // Customer
+
     @objc(loginWithToken:withResolver:withRejecter:)
     func loginWithToken(token: String,
                resolve:@escaping RCTPromiseResolveBlock,
@@ -23,6 +25,30 @@ class Flybuy: NSObject {
             }
         }
     }
+    
+    // Notify
+    
+    @objc(notifyConfigure)
+    func notifyConfigure() {
+        FlyBuyNotify.Manager.shared.configure()
+    }
+
+    // Pickup
+
+    @objc(pickupConfigure)
+    func pickupConfigure() {
+        FlyBuyPickup.Manager.shared.configure()
+    }
+
+    // Presence
+    
+    @objc(presenceConfigure:)
+    func presenceConfigure(presenceUUID: String) {
+        var uuid = UUID(uuidString: presenceUUID)!
+        FlyBuyPresence.Manager.shared.configure(presenceUUID: uuid)
+    }
+    
+    // Parsers
 
     func parseCustomerInfo(info: CustomerInfo) -> Dictionary<String, String?> {
         return [

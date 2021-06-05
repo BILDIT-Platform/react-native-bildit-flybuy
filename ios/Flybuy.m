@@ -5,9 +5,18 @@
 RCT_EXTERN_METHOD(configure:(NSString *)token)
 
 // Customer
+
 RCT_EXTERN_METHOD(loginWithToken:(NSString *)token
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(login:(NSString *)email
+                  withPassword:(NSString *)password
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(logout)
+
 
 // Notify
 

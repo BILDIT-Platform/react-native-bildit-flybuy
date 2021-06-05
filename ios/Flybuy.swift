@@ -26,6 +26,25 @@ class Flybuy: NSObject {
         }
     }
     
+    @objc(login:withPassword:withResolver:withRejecter:)
+    func login(email: String,
+               password: String,
+               resolve:@escaping RCTPromiseResolveBlock,
+               reject:@escaping RCTPromiseRejectBlock) {
+        FlyBuy.Core.customer.login(emailAddress: email, password: password) { (customer, error) in
+            if ((error == nil) && (customer != nil)) {
+                resolve(self.parserCustomer(customer: customer!))
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+    
+    @objc(logout)
+    func logout() {
+        FlyBuy.Core.customer.logout()
+    }
+    
     // Notify
     
     @objc(notifyConfigure)

@@ -1,4 +1,4 @@
-# react-native-bildit-flybuy
+# React Native FlyBuy
 
 React Native JS Wrapper for FlyBuy Native SDK
 

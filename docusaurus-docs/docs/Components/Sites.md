@@ -8,6 +8,8 @@ sidebar_position: 3
 Flybuy.Sites.fetchAllSites()
 ```
 
+**[flybuy Fetch all Sites Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/sites?id=fetch-all-sites)**
+
 ## Fetch Sites by Query
 
 ```jsx
@@ -16,6 +18,8 @@ Flybuy.Sites.fetchSitesByQuery({
       page: 1,
     })
 ```
+
+**[flybuy Fetch Sites by Query Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/sites?id=fetch-sites)**
 
 ## Fetch Sites by Region
 
@@ -31,3 +35,5 @@ Flybuy.Sites.fetchSitesByRegion({
     region,
 })
 ```
+
+**[flybuy Fetch Sites by Region Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/sites?id=fetch-sites-in-region)**

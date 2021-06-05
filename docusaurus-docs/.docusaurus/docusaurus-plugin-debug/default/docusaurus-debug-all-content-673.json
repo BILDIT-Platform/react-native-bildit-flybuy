@@ -61,10 +61,6 @@
                   }
                 ],
                 "collapsed": true
-              },
-              {
-                "type": "doc",
-                "id": "Reference"
               }
             ]
           },
@@ -76,7 +72,6 @@
             "/docs/Modules/Notify": "tutorialSidebar",
             "/docs/Modules/Pickup": "tutorialSidebar",
             "/docs/Modules/Presence": "tutorialSidebar",
-            "/docs/Reference": "tutorialSidebar",
             "/docs/Setup": "tutorialSidebar"
           },
           "docs": [
@@ -152,10 +147,6 @@
               "previous": {
                 "title": "Customers",
                 "permalink": "/docs/Components/Customers"
-              },
-              "next": {
-                "title": "Reference",
-                "permalink": "/docs/Reference"
               }
             },
             {
@@ -163,7 +154,7 @@
               "id": "intro",
               "isDocsHomePage": false,
               "title": "Introduction",
-              "description": "Installation",
+              "description": "Overview",
               "source": "@site/docs/intro.md",
               "sourceDirName": ".",
               "slug": "/intro",
@@ -253,25 +244,6 @@
               "next": {
                 "title": "Notify",
                 "permalink": "/docs/Modules/Notify"
-              }
-            },
-            {
-              "unversionedId": "Reference",
-              "id": "Reference",
-              "isDocsHomePage": false,
-              "title": "Reference",
-              "description": "Fetch Orders",
-              "source": "@site/docs/Reference.md",
-              "sourceDirName": ".",
-              "slug": "/Reference",
-              "permalink": "/docs/Reference",
-              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Reference.md",
-              "version": "current",
-              "frontMatter": {},
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Sites",
-                "permalink": "/docs/Components/Sites"
               }
             },
             {

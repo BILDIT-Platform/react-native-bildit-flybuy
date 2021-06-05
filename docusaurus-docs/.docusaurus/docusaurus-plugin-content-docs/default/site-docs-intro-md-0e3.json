@@ -3,7 +3,7 @@
   "id": "intro",
   "isDocsHomePage": false,
   "title": "Introduction",
-  "description": "Installation",
+  "description": "Overview",
   "source": "@site/docs/intro.md",
   "sourceDirName": ".",
   "slug": "/intro",

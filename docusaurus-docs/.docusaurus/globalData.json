@@ -46,11 +46,6 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "Reference",
-              "path": "/docs/Reference",
-              "sidebar": "tutorialSidebar"
-            },
-            {
               "id": "Setup",
               "path": "/docs/Setup",
               "sidebar": "tutorialSidebar"

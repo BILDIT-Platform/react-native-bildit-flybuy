@@ -1,0 +1,11 @@
+framework module FlyBuyPresence {
+  umbrella header "FlyBuyPresence.h"
+
+  export *
+  module * { export * }
+}
+
+module FlyBuyPresence.Swift {
+    header "FlyBuyPresence-Swift.h"
+    requires objc
+}

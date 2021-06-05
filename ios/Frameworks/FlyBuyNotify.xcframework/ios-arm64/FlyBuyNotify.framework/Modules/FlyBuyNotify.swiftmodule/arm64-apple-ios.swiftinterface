@@ -1,0 +1,34 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FlyBuyNotify
+import CoreLocation
+import FlyBuy
+@_exported import FlyBuyNotify
+import Foundation
+import Swift
+import UserNotifications
+@objc open class NotificationInfo : ObjectiveC.NSObject {
+  @objc final public let title: Swift.String
+  @objc final public let content: Swift.String
+  @objc final public let data: [Swift.AnyHashable : Any]?
+  public init(title: Swift.String, content: Swift.String, data: [Swift.AnyHashable : Any]?)
+  @objc deinit
+  @objc override dynamic public init()
+}
+@_inheritsConvenienceInitializers @objc(FlyBuyNotifyManager) public class Manager : ObjectiveC.NSObject {
+  @objc public static let shared: FlyBuyNotify.Manager
+  @objc public func configure()
+  @objc deinit
+  @objc public func createForSitesInRegion(_ region: CoreLocation.CLCircularRegion, notification: FlyBuyNotify.NotificationInfo, callback: @escaping (([FlyBuy.Site]?, Swift.Error?) -> (Swift.Void)))
+  @objc public func createForSites(_ sites: [FlyBuy.Site], notification: FlyBuyNotify.NotificationInfo, callback: @escaping ((Swift.Error?) -> (Swift.Void)))
+  @objc public func clear(callback: @escaping (Swift.Error?) -> (Swift.Void))
+  @objc public func isFlyBuyNotifyUserInfo(_ userInfo: [Swift.AnyHashable : Any]) -> Swift.Bool
+  @objc override dynamic public init()
+}
+@_hasMissingDesignatedInitializers public class NotifyManagerError : FlyBuy.FlyBuyError {
+  @objc deinit
+  override public init(_ description: Swift.String?, context: Any? = super)
+}
+extension Manager : FlyBuy.FlyBuyModuleManager {
+  public func configUpdated(_ config: FlyBuy.AppConfig)
+}

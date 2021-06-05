@@ -3,15 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		B0750E09266A9FE40085AC8D /* Flybuy.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* Flybuy.m */; };
 		B0750E2D266AA0320085AC8D /* Flybuy-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D5245B92E700C19C63 /* Flybuy-Bridging-Header.h */; };
-		B0CE299A266A867A00CE42A6 /* FlyBuyNotify in Frameworks */ = {isa = PBXBuildFile; productRef = B0CE2999266A867A00CE42A6 /* FlyBuyNotify */; };
-		B0CE299C266A867A00CE42A6 /* FlyBuyPickup in Frameworks */ = {isa = PBXBuildFile; productRef = B0CE299B266A867A00CE42A6 /* FlyBuyPickup */; };
-		B0CE299E266A867A00CE42A6 /* FlyBuyPresence in Frameworks */ = {isa = PBXBuildFile; productRef = B0CE299D266A867A00CE42A6 /* FlyBuyPresence */; };
 		F4FF95D7245B92E800C19C63 /* Flybuy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /* Flybuy.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,9 +36,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0CE299A266A867A00CE42A6 /* FlyBuyNotify in Frameworks */,
-				B0CE299C266A867A00CE42A6 /* FlyBuyPickup in Frameworks */,
-				B0CE299E266A867A00CE42A6 /* FlyBuyPresence in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,9 +77,6 @@
 			);
 			name = Flybuy;
 			packageProductDependencies = (
-				B0CE2999266A867A00CE42A6 /* FlyBuyNotify */,
-				B0CE299B266A867A00CE42A6 /* FlyBuyPickup */,
-				B0CE299D266A867A00CE42A6 /* FlyBuyPresence */,
 			);
 			productName = RCTDataManager;
 			productReference = 134814201AA4EA6300B7C361 /* libFlybuy.a */;
@@ -115,7 +106,6 @@
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
 			packageReferences = (
-				B0CE2998266A867A00CE42A6 /* XCRemoteSwiftPackageReference "flybuy-ios" */,
 			);
 			productRefGroup = 58B511D21A9E6C8500147676;
 			projectDirPath = "";
@@ -292,35 +282,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		B0CE2998266A867A00CE42A6 /* XCRemoteSwiftPackageReference "flybuy-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RadiusNetworks/flybuy-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B0CE2999266A867A00CE42A6 /* FlyBuyNotify */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B0CE2998266A867A00CE42A6 /* XCRemoteSwiftPackageReference "flybuy-ios" */;
-			productName = FlyBuyNotify;
-		};
-		B0CE299B266A867A00CE42A6 /* FlyBuyPickup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B0CE2998266A867A00CE42A6 /* XCRemoteSwiftPackageReference "flybuy-ios" */;
-			productName = FlyBuyPickup;
-		};
-		B0CE299D266A867A00CE42A6 /* FlyBuyPresence */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B0CE2998266A867A00CE42A6 /* XCRemoteSwiftPackageReference "flybuy-ios" */;
-			productName = FlyBuyPresence;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 58B511D31A9E6C8500147676 /* Project object */;
 }

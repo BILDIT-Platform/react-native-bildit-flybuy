@@ -1,19 +1,19 @@
 export default {
-  "title": "BUILDIT's React Native FlyBuy SDK",
-  "tagline": "Build Mobile Commerce Fast",
-  "url": "https://your-docusaurus-test-site.com",
+  "title": "BILDIT's React Native FlyBuy SDK",
+  "tagline": "FlyBuy Pickup, Notify, and Presence. The Flybuy cloud service and mobile SDKs from Radius Networks enable developers to integrate Flybuy functionality directly, streamlining customer pickup and staff tooling with other systems.",
+  "url": "https://bilditon.com",
   "baseUrl": "/",
   "onBrokenLinks": "throw",
   "onBrokenMarkdownLinks": "warn",
-  "favicon": "img/favicon.ico",
-  "organizationName": "facebook",
-  "projectName": "docusaurus",
+  "favicon": "img/favicon.png",
+  "organizationName": "bildit-llc",
+  "projectName": "react-native-bildit-flybuy",
   "themeConfig": {
     "navbar": {
       "title": "BILDIT",
       "logo": {
-        "alt": "My Site Logo",
-        "src": "img/logo.svg"
+        "alt": "BILIDIT Logo",
+        "src": "img/bilditlogo.png"
       },
       "items": [
         {
@@ -29,7 +29,7 @@ export default {
           "position": "left"
         },
         {
-          "href": "https://github.com/facebook/docusaurus",
+          "href": "https://github.com/bildit-llc/react-native-bildit-flybuy",
           "label": "GitHub",
           "position": "right"
         }
@@ -53,15 +53,7 @@ export default {
           "items": [
             {
               "label": "Stack Overflow",
-              "href": "https://stackoverflow.com/questions/tagged/docusaurus"
-            },
-            {
-              "label": "Discord",
-              "href": "https://discordapp.com/invite/docusaurus"
-            },
-            {
-              "label": "Twitter",
-              "href": "https://twitter.com/docusaurus"
+              "href": "https://stackoverflow.com/questions/tagged/flybuy"
             }
           ]
         },
@@ -74,12 +66,12 @@ export default {
             },
             {
               "label": "GitHub",
-              "href": "https://github.com/facebook/docusaurus"
+              "href": "https://github.com/bildit-llc/react-native-bildit-flybuy"
             }
           ]
         }
       ],
-      "copyright": "Copyright © 2021 My Project, Inc. Built with Docusaurus."
+      "copyright": "Copyright © 2021 BILDIT, LLC. Built with Docusaurus."
     },
     "colorMode": {
       "defaultMode": "light",
@@ -106,15 +98,15 @@ export default {
       "@docusaurus/preset-classic",
       {
         "docs": {
-          "sidebarPath": "/Volumes/data/Work/TASK_PACKAGES/GITHUB_PACKAGES/react-native-bildit-flybuy/docusaurus-docs/sidebars.js",
-          "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/"
+          "sidebarPath": "/Users/administrator/react-native-bildit-flybuy/docusaurus-docs/sidebars.js",
+          "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/"
         },
         "blog": {
           "showReadingTime": true,
-          "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/blog/"
+          "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/blog/"
         },
         "theme": {
-          "customCss": "/Volumes/data/Work/TASK_PACKAGES/GITHUB_PACKAGES/react-native-bildit-flybuy/docusaurus-docs/src/css/custom.css"
+          "customCss": "/Users/administrator/react-native-bildit-flybuy/docusaurus-docs/src/css/custom.css"
         }
       }
     ]

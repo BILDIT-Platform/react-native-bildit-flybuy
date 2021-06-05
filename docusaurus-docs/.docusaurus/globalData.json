@@ -11,13 +11,48 @@
           "mainDocId": "intro",
           "docs": [
             {
+              "id": "Components/Customers",
+              "path": "/docs/Components/Customers",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Components/Orders",
+              "path": "/docs/Components/Orders",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Components/Sites",
+              "path": "/docs/Components/Sites",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "intro",
               "path": "/docs/intro",
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Modules/Notify",
+              "path": "/docs/Modules/Notify",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Modules/Pickup",
+              "path": "/docs/Modules/Pickup",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Modules/Presence",
+              "path": "/docs/Modules/Presence",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Reference",
               "path": "/docs/Reference",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Setup",
+              "path": "/docs/Setup",
               "sidebar": "tutorialSidebar"
             }
           ]

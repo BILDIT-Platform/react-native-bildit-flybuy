@@ -6,13 +6,13 @@
           "versionName": "current",
           "versionLabel": "Next",
           "versionPath": "/docs",
-          "versionEditUrl": "https://github.com/facebook/docusaurus/edit/master/website/docs",
-          "versionEditUrlLocalized": "https://github.com/facebook/docusaurus/edit/master/website/i18n/en/docusaurus-plugin-content-docs/current",
+          "versionEditUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs",
+          "versionEditUrlLocalized": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/i18n/en/docusaurus-plugin-content-docs/current",
           "isLast": true,
           "routePriority": -1,
-          "sidebarFilePath": "/Volumes/data/Work/TASK_PACKAGES/GITHUB_PACKAGES/react-native-bildit-flybuy/docusaurus-docs/sidebars.js",
-          "contentPath": "/Volumes/data/Work/TASK_PACKAGES/GITHUB_PACKAGES/react-native-bildit-flybuy/docusaurus-docs/docs",
-          "contentPathLocalized": "/Volumes/data/Work/TASK_PACKAGES/GITHUB_PACKAGES/react-native-bildit-flybuy/docusaurus-docs/i18n/en/docusaurus-plugin-content-docs/current",
+          "sidebarFilePath": "/Users/administrator/react-native-bildit-flybuy/docusaurus-docs/sidebars.js",
+          "contentPath": "/Users/administrator/react-native-bildit-flybuy/docusaurus-docs/docs",
+          "contentPathLocalized": "/Users/administrator/react-native-bildit-flybuy/docusaurus-docs/i18n/en/docusaurus-plugin-content-docs/current",
           "mainDocId": "intro",
           "sidebars": {
             "tutorialSidebar": [
@@ -22,26 +22,153 @@
               },
               {
                 "type": "doc",
+                "id": "Setup"
+              },
+              {
+                "type": "category",
+                "label": "Modules",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "Modules/Pickup"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "Modules/Presence"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "Modules/Notify"
+                  }
+                ],
+                "collapsed": true
+              },
+              {
+                "type": "category",
+                "label": "Components",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "Components/Orders"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "Components/Customers"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "Components/Sites"
+                  }
+                ],
+                "collapsed": true
+              },
+              {
+                "type": "doc",
                 "id": "Reference"
               }
             ]
           },
           "permalinkToSidebar": {
+            "/docs/Components/Customers": "tutorialSidebar",
+            "/docs/Components/Orders": "tutorialSidebar",
+            "/docs/Components/Sites": "tutorialSidebar",
             "/docs/intro": "tutorialSidebar",
-            "/docs/Reference": "tutorialSidebar"
+            "/docs/Modules/Notify": "tutorialSidebar",
+            "/docs/Modules/Pickup": "tutorialSidebar",
+            "/docs/Modules/Presence": "tutorialSidebar",
+            "/docs/Reference": "tutorialSidebar",
+            "/docs/Setup": "tutorialSidebar"
           },
           "docs": [
+            {
+              "unversionedId": "Components/Customers",
+              "id": "Components/Customers",
+              "isDocsHomePage": false,
+              "title": "Customers",
+              "description": "Create Customer",
+              "source": "@site/docs/Components/Customers.md",
+              "sourceDirName": "Components",
+              "slug": "/Components/Customers",
+              "permalink": "/docs/Components/Customers",
+              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Components/Customers.md",
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Orders",
+                "permalink": "/docs/Components/Orders"
+              },
+              "next": {
+                "title": "Sites",
+                "permalink": "/docs/Components/Sites"
+              }
+            },
+            {
+              "unversionedId": "Components/Orders",
+              "id": "Components/Orders",
+              "isDocsHomePage": false,
+              "title": "Orders",
+              "description": "Fetch Orders",
+              "source": "@site/docs/Components/Orders.md",
+              "sourceDirName": "Components",
+              "slug": "/Components/Orders",
+              "permalink": "/docs/Components/Orders",
+              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Components/Orders.md",
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Notify",
+                "permalink": "/docs/Modules/Notify"
+              },
+              "next": {
+                "title": "Customers",
+                "permalink": "/docs/Components/Customers"
+              }
+            },
+            {
+              "unversionedId": "Components/Sites",
+              "id": "Components/Sites",
+              "isDocsHomePage": false,
+              "title": "Sites",
+              "description": "Fetch all Sites",
+              "source": "@site/docs/Components/Sites.md",
+              "sourceDirName": "Components",
+              "slug": "/Components/Sites",
+              "permalink": "/docs/Components/Sites",
+              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Components/Sites.md",
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "sidebar_position": 3
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Customers",
+                "permalink": "/docs/Components/Customers"
+              },
+              "next": {
+                "title": "Reference",
+                "permalink": "/docs/Reference"
+              }
+            },
             {
               "unversionedId": "intro",
               "id": "intro",
               "isDocsHomePage": false,
-              "title": "Quick Start",
+              "title": "Introduction",
               "description": "Installation",
               "source": "@site/docs/intro.md",
               "sourceDirName": ".",
               "slug": "/intro",
               "permalink": "/docs/intro",
-              "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/docs/intro.md",
+              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/intro.md",
               "version": "current",
               "sidebarPosition": 1,
               "frontMatter": {
@@ -49,8 +176,83 @@
               },
               "sidebar": "tutorialSidebar",
               "next": {
-                "title": "Reference",
-                "permalink": "/docs/Reference"
+                "title": "Setup",
+                "permalink": "/docs/Setup"
+              }
+            },
+            {
+              "unversionedId": "Modules/Notify",
+              "id": "Modules/Notify",
+              "isDocsHomePage": false,
+              "title": "Notify",
+              "description": "Initialize SDK",
+              "source": "@site/docs/Modules/Notify.md",
+              "sourceDirName": "Modules",
+              "slug": "/Modules/Notify",
+              "permalink": "/docs/Modules/Notify",
+              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Modules/Notify.md",
+              "version": "current",
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Presence",
+                "permalink": "/docs/Modules/Presence"
+              },
+              "next": {
+                "title": "Orders",
+                "permalink": "/docs/Components/Orders"
+              }
+            },
+            {
+              "unversionedId": "Modules/Pickup",
+              "id": "Modules/Pickup",
+              "isDocsHomePage": false,
+              "title": "Pickup",
+              "description": "Initialize SDK",
+              "source": "@site/docs/Modules/Pickup.md",
+              "sourceDirName": "Modules",
+              "slug": "/Modules/Pickup",
+              "permalink": "/docs/Modules/Pickup",
+              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Modules/Pickup.md",
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Setup",
+                "permalink": "/docs/Setup"
+              },
+              "next": {
+                "title": "Presence",
+                "permalink": "/docs/Modules/Presence"
+              }
+            },
+            {
+              "unversionedId": "Modules/Presence",
+              "id": "Modules/Presence",
+              "isDocsHomePage": false,
+              "title": "Presence",
+              "description": "Initialize SDK",
+              "source": "@site/docs/Modules/Presence.md",
+              "sourceDirName": "Modules",
+              "slug": "/Modules/Presence",
+              "permalink": "/docs/Modules/Presence",
+              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Modules/Presence.md",
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Pickup",
+                "permalink": "/docs/Modules/Pickup"
+              },
+              "next": {
+                "title": "Notify",
+                "permalink": "/docs/Modules/Notify"
               }
             },
             {
@@ -63,13 +265,39 @@
               "sourceDirName": ".",
               "slug": "/Reference",
               "permalink": "/docs/Reference",
-              "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/docs/Reference.md",
+              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Reference.md",
               "version": "current",
               "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Quick Start",
+                "title": "Sites",
+                "permalink": "/docs/Components/Sites"
+              }
+            },
+            {
+              "unversionedId": "Setup",
+              "id": "Setup",
+              "isDocsHomePage": false,
+              "title": "Setup",
+              "description": "Installation",
+              "source": "@site/docs/Setup.md",
+              "sourceDirName": ".",
+              "slug": "/Setup",
+              "permalink": "/docs/Setup",
+              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Setup.md",
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Introduction",
                 "permalink": "/docs/intro"
+              },
+              "next": {
+                "title": "Pickup",
+                "permalink": "/docs/Modules/Pickup"
               }
             }
           ]
@@ -84,12 +312,12 @@
           "id": "welcome",
           "metadata": {
             "permalink": "/blog/welcome",
-            "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/blog/blog/2019-05-30-welcome.md",
+            "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/blog/blog/2019-05-30-welcome.md",
             "source": "@site/blog/2019-05-30-welcome.md",
             "title": "Welcome",
             "description": "Blog features are powered by the blog plugin. Simply add files to the blog directory. It supports tags as well!",
             "date": "2019-05-30T00:00:00.000Z",
-            "formattedDate": "May 30, 2019",
+            "formattedDate": "May 29, 2019",
             "tags": [
               {
                 "label": "facebook",
@@ -116,12 +344,12 @@
           "id": "hello-world",
           "metadata": {
             "permalink": "/blog/hello-world",
-            "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/blog/blog/2019-05-29-hello-world.md",
+            "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/blog/blog/2019-05-29-hello-world.md",
             "source": "@site/blog/2019-05-29-hello-world.md",
             "title": "Hello",
             "description": "Welcome to this blog. This blog is created with Docusaurus 2 alpha.",
             "date": "2019-05-29T00:00:00.000Z",
-            "formattedDate": "May 29, 2019",
+            "formattedDate": "May 28, 2019",
             "tags": [
               {
                 "label": "hello",
@@ -148,12 +376,12 @@
           "id": "hola",
           "metadata": {
             "permalink": "/blog/hola",
-            "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/blog/blog/2019-05-28-hola.md",
+            "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/blog/blog/2019-05-28-hola.md",
             "source": "@site/blog/2019-05-28-hola.md",
             "title": "Hola",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet",
             "date": "2019-05-28T00:00:00.000Z",
-            "formattedDate": "May 28, 2019",
+            "formattedDate": "May 27, 2019",
             "tags": [
               {
                 "label": "hola",

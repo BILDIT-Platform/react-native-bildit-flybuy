@@ -2,13 +2,13 @@
   "unversionedId": "intro",
   "id": "intro",
   "isDocsHomePage": false,
-  "title": "Quick Start",
+  "title": "Introduction",
   "description": "Installation",
   "source": "@site/docs/intro.md",
   "sourceDirName": ".",
   "slug": "/intro",
   "permalink": "/docs/intro",
-  "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/docs/intro.md",
+  "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/intro.md",
   "version": "current",
   "sidebarPosition": 1,
   "frontMatter": {
@@ -16,7 +16,7 @@
   },
   "sidebar": "tutorialSidebar",
   "next": {
-    "title": "Reference",
-    "permalink": "/docs/Reference"
+    "title": "Setup",
+    "permalink": "/docs/Setup"
   }
 }

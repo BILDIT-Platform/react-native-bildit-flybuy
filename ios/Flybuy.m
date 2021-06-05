@@ -1,19 +1,33 @@
-#import "Flybuy.h"
+#import <React/RCTBridgeModule.h>
 
-@implementation Flybuy
+@interface RCT_EXTERN_MODULE(Flybuy, NSObject)
 
-RCT_EXPORT_MODULE()
+RCT_EXTERN_METHOD(configure:(NSString *)token)
 
-// Example method
-// See // https://reactnative.dev/docs/native-modules-ios
-RCT_REMAP_METHOD(multiply,
-                 multiplyWithA:(nonnull NSNumber*)a withB:(nonnull NSNumber*)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
-{
-  NSNumber *result = @([a floatValue] * [b floatValue]);
+// Customer
 
-  resolve(result);
-}
+RCT_EXTERN_METHOD(loginWithToken:(NSString *)token
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(login:(NSString *)email
+                  withPassword:(NSString *)password
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(logout)
+
+
+// Notify
+
+RCT_EXTERN_METHOD(notifyConfigure)
+
+// Pickup
+
+RCT_EXTERN_METHOD(pickupConfigure)
+
+// Presence
+
+RCT_EXTERN_METHOD(presenceConfigure:(NSString *)presenceUUID)
 
 @end

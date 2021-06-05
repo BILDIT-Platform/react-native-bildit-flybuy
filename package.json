@@ -1,5 +1,5 @@
 {
-  "name": "react-native-flybuy",
+  "name": "react-native-bildit-flybuy",
   "version": "0.1.0",
   "description": "React Native JS Wrapper for FlyBuy Native SDK",
   "main": "lib/commonjs/index",
@@ -13,7 +13,7 @@
     "android",
     "ios",
     "cpp",
-    "react-native-flybuy.podspec",
+    "react-native-bildit-flybuy.podspec",
     "!lib/typescript/example",
     "!android/build",
     "!ios/build",
@@ -36,13 +36,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/zeabdelkhalek/react-native-flybuy",
-  "author": "BILDIT <ha_zellat@esi.dz> (https://github.com/zeabdelkhalek)",
+  "repository": "https://github.com/BILDIT-LLC/react-native-bildit-flybuy",
+  "author": "BILDIT <bildit@gmail.com> (https://github.com/BILDIT-LLC)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zeabdelkhalek/react-native-flybuy/issues"
+    "url": "https://github.com/BILDIT-LLC/react-native-bildit-flybuy/issues"
   },
-  "homepage": "https://github.com/zeabdelkhalek/react-native-flybuy#readme",
+  "homepage": "https://github.com/BILDIT-LLC/react-native-bildit-flybuy/issues#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

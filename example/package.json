@@ -1,6 +1,6 @@
 {
-  "name": "react-native-flybuy-example",
-  "description": "Example app for react-native-flybuy",
+  "name": "react-native-bildit-flybuy-example",
+  "description": "Example app for react-native-bildit-flybuy",
   "version": "0.0.1",
   "private": true,
   "scripts": {

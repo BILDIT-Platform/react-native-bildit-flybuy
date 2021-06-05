@@ -1,51 +1,14 @@
 import * as React from 'react';
 
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
-import Flybuy, { ISite } from 'react-native-flybuy';
-type ButtonProps = {
-  title: string;
-  color?: string;
-  onPress?: () => void;
-};
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import Button from './Button';
+import Flybuy, { ISite } from 'react-native-bildit-flybuy';
 
-const Button = ({ title, color = '#841584', onPress }: ButtonProps) => {
-  return (
-    <TouchableOpacity
-      style={[styles.button, { backgroundColor: color }]}
-      onPress={onPress}
-    >
-      <Text style={styles.text}>{title}</Text>
-    </TouchableOpacity>
-  );
-};
 export default function App() {
+  // Orders
   const fetchOrders = () => {
     Flybuy.Orders.fetchOrders()
       .then((orders) => console.tron.log('orders', orders))
-      .catch((err) => console.tron.log(err));
-  };
-
-  const loginWithToken = () => {
-    Flybuy.Customer.loginWithToken('F69PGKM1QXCN7Dj3ybEXCpU4')
-      .then((customer) => console.tron.log('customer', customer))
-      .catch((err) => console.tron.log(err));
-  };
-
-  const login = () => {
-    Flybuy.Customer.login('ha_zellat@esi.dz', 'password')
-      .then((customer) => console.tron.log('customer', customer))
-      .catch((err) => console.tron.log(err));
-  };
-
-  const logout = () => {
-    Flybuy.Customer.logout()
-      .then(() => console.tron.log('logout success'))
       .catch((err) => console.tron.log(err));
   };
 
@@ -106,6 +69,26 @@ export default function App() {
       .catch((err) => console.tron.log(err));
   };
 
+  // Customer
+
+  const loginWithToken = () => {
+    Flybuy.Customer.loginWithToken('F69PGKM1QXCN7Dj3ybEXCpU4')
+      .then((customer) => console.tron.log('customer', customer))
+      .catch((err) => console.tron.log(err));
+  };
+
+  const login = () => {
+    Flybuy.Customer.login('ha_zellat@esi.dz', 'password')
+      .then((customer) => console.tron.log('customer', customer))
+      .catch((err) => console.tron.log(err));
+  };
+
+  const logout = () => {
+    Flybuy.Customer.logout()
+      .then(() => console.tron.log('logout success'))
+      .catch((err) => console.tron.log(err));
+  };
+
   const createCustomer = () => {
     Flybuy.Customer.createCustomer({
       name: 'Abdelkhalek Zellat',
@@ -135,6 +118,8 @@ export default function App() {
       .then((customer) => console.tron.log('customer', customer))
       .catch((err) => console.tron.log(err));
   };
+
+  // Notify
 
   const clearNotifications = () => {
     Flybuy.Notify.clearNotifications()
@@ -199,6 +184,8 @@ export default function App() {
       .catch((err) => console.tron.log('err', err));
   };
 
+  // Sites
+
   const fetchAllSites = () => {
     Flybuy.Sites.fetchAllSites()
       .then((sites) => console.tron.log('sites', sites))
@@ -229,6 +216,27 @@ export default function App() {
       .catch((err) => console.tron.log('err', err));
   };
 
+  // Prescence
+
+  const startLocator = () => {
+    Flybuy.Presence.startLocatorWithIdentifier(
+      '12345678',
+      "{'key':'value'}"
+    ).then((res) => {
+      console.tron.log('locatorRssi----->', res);
+    });
+  };
+
+  const stopLocator = () => {
+    Flybuy.Presence.stopLocator()
+      .then((result) => {
+        console.tron.log(result);
+      })
+      .catch((e) => {
+        console.tron.log(e);
+      });
+  };
+
   React.useEffect(() => {
     Flybuy.configure('224.epegiXJkGRqvwLJJYHPTCWGR');
     Flybuy.Notify.configure();
@@ -236,23 +244,6 @@ export default function App() {
     Flybuy.Presence.configure('4192bff0-e1e0-43ce-a4db-912808c32493');
   }, []);
 
-  const startLocator = () => {
-    Flybuy.Presence.startLocatorWithIdentifier('12345678', '123').then(
-      (res) => {
-        console.log('locatorRssi----->', res);
-      }
-    );
-  };
-
-  const stopLocator = () => {
-    Flybuy.Presence.stopLocator()
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -297,17 +288,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  text: {
-    color: '#fff',
-    fontSize: 15,
-  },
-  button: {
-    width: '60%',
-    padding: 10,
-    margin: 5,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });

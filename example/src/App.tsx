@@ -4,6 +4,31 @@ import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import Button from './Button';
 import Flybuy, { ISite } from 'react-native-bildit-flybuy';
 
+const ORDER_ID = 46615889;
+const NEW_ORDER_ID = 15942;
+const NEW_PID = '013804';
+const CUSTOMER_INFO = {
+  name: 'Lamia Selmane AB',
+  carType: 'Nothing',
+  carColor: 'Silver',
+  licensePlate: 'Nothing',
+  phone: '555-555-5555',
+};
+const NOTIFICATION = {
+  title: 'Test Notification',
+  message: 'Test Notification message',
+  data: {
+    key1: 'value',
+    key2: 'value',
+  },
+};
+
+const REGION = {
+  latitude: 47.6234207,
+  longitude: -122.3300605,
+  radius: 100,
+};
+
 export default function App() {
   // Orders
   const fetchOrders = () => {
@@ -18,15 +43,9 @@ export default function App() {
       end: new Date('2022-12-02').toISOString(),
     };
     Flybuy.Orders.createOrder(
-      15942,
-      '573836',
-      {
-        name: 'Lamia Selmane AB',
-        carType: 'Nothing',
-        carColor: 'Silver',
-        licensePlate: 'Nothing',
-        phone: '555-555-5555',
-      },
+      NEW_ORDER_ID,
+      NEW_PID,
+      CUSTOMER_INFO,
       pickupWindow,
       'delayed',
       'delivery'
@@ -36,35 +55,25 @@ export default function App() {
   };
 
   const claimOrder = () => {
-    Flybuy.Orders.claimOrder(
-      '9898899',
-      {
-        name: 'Lamia Selmane AB',
-        carType: 'Nothing',
-        carColor: 'Silver',
-        licensePlate: 'Nothing',
-        phone: '555-555-5555',
-      },
-      'pickup'
-    )
+    Flybuy.Orders.claimOrder('46615889', CUSTOMER_INFO, 'pickup')
       .then((order) => console.tron.log('claim order', order))
       .catch((err) => console.tron.log(err));
   };
 
   const updateOrderState = () => {
-    Flybuy.Orders.updateOrderState(46084566, 'ready')
+    Flybuy.Orders.updateOrderState(ORDER_ID, 'ready')
       .then((order) => console.tron.log('updateOrderState', order))
       .catch((err) => console.tron.log(err));
   };
 
   const updateOrderCustomerState = () => {
-    Flybuy.Orders.updateOrderCustomerState(46084566, 'departed')
+    Flybuy.Orders.updateOrderCustomerState(ORDER_ID, 'departed')
       .then((order) => console.tron.log('updateOrderCustomerState', order))
       .catch((err) => console.tron.log(err));
   };
 
   const rateOrder = () => {
-    Flybuy.Orders.rateOrder(46084566, 5, 'Awesome!')
+    Flybuy.Orders.rateOrder(ORDER_ID, 5, 'Awesome!')
       .then((order) => console.tron.log('rateOrder', order))
       .catch((err) => console.tron.log(err));
   };
@@ -90,25 +99,13 @@ export default function App() {
   };
 
   const createCustomer = () => {
-    Flybuy.Customer.createCustomer({
-      name: 'Abdelkhalek Zellat',
-      carType: 'Nothing',
-      carColor: 'Silver',
-      licensePlate: 'Nothing',
-      phone: '555-555-5555',
-    })
+    Flybuy.Customer.createCustomer(CUSTOMER_INFO)
       .then((customer) => console.tron.log('customer', customer))
       .catch((err) => console.tron.log(err));
   };
 
   const updateCustomer = () => {
-    Flybuy.Customer.updateCustomer({
-      name: 'Abdelkhalek Zellat',
-      carType: 'Nothing',
-      carColor: 'Silver',
-      licensePlate: 'Nothing',
-      phone: '555-555-5555',
-    })
+    Flybuy.Customer.updateCustomer(CUSTOMER_INFO)
       .then((customer) => console.tron.log('customer', customer))
       .catch((err) => console.tron.log(err));
   };
@@ -128,36 +125,12 @@ export default function App() {
   };
 
   const createForSitesInRegion = () => {
-    const region = {
-      latitude: 47.6234207,
-      longitude: -122.3300605,
-      radius: 100,
-    };
-
-    const notification = {
-      title: 'Test Notification',
-      message: 'Test Notification message',
-      data: {
-        key1: 'value',
-        key2: 'value',
-      },
-    };
-
-    Flybuy.Notify.createForSitesInRegion(region, notification)
+    Flybuy.Notify.createForSitesInRegion(REGION, NOTIFICATION)
       .then((sites) => console.tron.log('notifications crated', sites))
       .catch((err) => console.tron.log('err', err));
   };
 
   const createForSites = () => {
-    const notification = {
-      title: 'Test Notification',
-      message: 'Test Notification message',
-      data: {
-        key1: 'value',
-        key2: 'value',
-      },
-    };
-
     const sites: ISite[] = [
       {
         id: 15942,
@@ -179,7 +152,7 @@ export default function App() {
       },
     ];
 
-    Flybuy.Notify.createForSites(sites, notification)
+    Flybuy.Notify.createForSites(sites, NOTIFICATION)
       .then(() => console.tron.log('notifications crated'))
       .catch((err) => console.tron.log('err', err));
   };
@@ -202,15 +175,10 @@ export default function App() {
   };
 
   const fetchSitesByRegion = () => {
-    const region = {
-      latitude: 47.6234207,
-      longitude: -122.3300605,
-      radius: 100,
-    };
     Flybuy.Sites.fetchSitesByRegion({
       per: 20,
       page: 1,
-      region,
+      REGION,
     })
       .then((sites) => console.tron.log('sites', sites))
       .catch((err) => console.tron.log('err', err));

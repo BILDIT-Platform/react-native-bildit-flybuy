@@ -40,9 +40,51 @@ class Flybuy: NSObject {
         }
     }
     
-    @objc(logout)
-    func logout() {
+    @objc(logout:withRejecter:)
+    func logout(resolve:@escaping RCTPromiseResolveBlock,
+                reject:@escaping RCTPromiseRejectBlock) {
         FlyBuy.Core.customer.logout()
+        resolve(nil)
+    }
+    
+    @objc(getCurrentCustomer:withRejecter:)
+    func getCurrentCustomer(resolve:@escaping RCTPromiseResolveBlock,
+                            reject:@escaping RCTPromiseRejectBlock) {
+        let customer = FlyBuy.Core.customer.current
+        if (customer == nil) {
+            reject("not login", "current customer error", nil )
+        } else {
+            resolve(self.parserCustomer(customer: customer!))
+        }
+    }
+    
+    @objc(createCustomer:withResolver:withRejecter:)
+    func createCustomer(customer: Dictionary<String, String>,
+                        resolve:@escaping RCTPromiseResolveBlock,
+                        reject:@escaping RCTPromiseRejectBlock) {
+        let customerInfo: CustomerInfo = decodeCustomerInfo(customer: customer)
+        FlyBuy.Core.customer.create(customerInfo, termsOfService: true, ageVerification: true) {
+            (customer, error) in
+            if (error == nil && customer != nil) {
+                resolve(self.parserCustomer(customer: customer!))
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+    
+    @objc(updateCustomer:withResolver:withRejecter:)
+    func updateCustomer(customer: Dictionary<String, String>,
+                        resolve:@escaping RCTPromiseResolveBlock,
+                        reject:@escaping RCTPromiseRejectBlock) {
+        let customerInfo: CustomerInfo = decodeCustomerInfo(customer: customer)
+        FlyBuy.Core.customer.update(customerInfo) { (customer, error) in
+            if ((error == nil) && (customer != nil)) {
+                resolve(self.parserCustomer(customer: customer!))
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
     }
     
     // Notify
@@ -85,5 +127,15 @@ class Flybuy: NSObject {
             "emailAddress": customer.emailAddress,
             "info": parseCustomerInfo(info: customer.info),
         ]
+    }
+    
+    // Decoders
+    
+    func decodeCustomerInfo(customer: Dictionary<String, String?>) -> CustomerInfo {
+        return CustomerInfo.init(name: customer["name"] as? String ?? " ",
+                                 carType: customer["carType"] ?? "",
+                                 carColor: customer["carColor"] ?? "",
+                                 licensePlate: customer["licensePlate"] ?? "",
+                                 phone: customer["phone"] ?? "")
     }
 }

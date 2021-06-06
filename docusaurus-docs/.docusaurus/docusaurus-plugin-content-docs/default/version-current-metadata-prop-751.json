@@ -58,6 +58,23 @@
           }
         ],
         "collapsed": true
+      },
+      {
+        "type": "category",
+        "label": "Example App",
+        "items": [
+          {
+            "type": "link",
+            "label": "App.tsx",
+            "href": "/docs/Example App/App"
+          },
+          {
+            "type": "link",
+            "label": "Button.tsx",
+            "href": "/docs/Example App/Button"
+          }
+        ],
+        "collapsed": true
       }
     ]
   },
@@ -65,6 +82,8 @@
     "/docs/Components/Customers": "tutorialSidebar",
     "/docs/Components/Orders": "tutorialSidebar",
     "/docs/Components/Sites": "tutorialSidebar",
+    "/docs/Example App/App": "tutorialSidebar",
+    "/docs/Example App/Button": "tutorialSidebar",
     "/docs/intro": "tutorialSidebar",
     "/docs/Modules/Notify": "tutorialSidebar",
     "/docs/Modules/Pickup": "tutorialSidebar",

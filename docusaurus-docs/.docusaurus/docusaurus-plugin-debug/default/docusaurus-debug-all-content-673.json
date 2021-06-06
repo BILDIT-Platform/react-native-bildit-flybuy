@@ -61,6 +61,21 @@
                   }
                 ],
                 "collapsed": true
+              },
+              {
+                "type": "category",
+                "label": "Example App",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "Example App/App"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "Example App/Button"
+                  }
+                ],
+                "collapsed": true
               }
             ]
           },
@@ -68,6 +83,8 @@
             "/docs/Components/Customers": "tutorialSidebar",
             "/docs/Components/Orders": "tutorialSidebar",
             "/docs/Components/Sites": "tutorialSidebar",
+            "/docs/Example App/App": "tutorialSidebar",
+            "/docs/Example App/Button": "tutorialSidebar",
             "/docs/intro": "tutorialSidebar",
             "/docs/Modules/Notify": "tutorialSidebar",
             "/docs/Modules/Pickup": "tutorialSidebar",
@@ -147,6 +164,52 @@
               "previous": {
                 "title": "Customers",
                 "permalink": "/docs/Components/Customers"
+              },
+              "next": {
+                "title": "App.tsx",
+                "permalink": "/docs/Example App/App"
+              }
+            },
+            {
+              "unversionedId": "Example App/App",
+              "id": "Example App/App",
+              "isDocsHomePage": false,
+              "title": "App.tsx",
+              "description": "`jsx",
+              "source": "@site/docs/Example App/App.md",
+              "sourceDirName": "Example App",
+              "slug": "/Example App/App",
+              "permalink": "/docs/Example App/App",
+              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Example App/App.md",
+              "version": "current",
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Sites",
+                "permalink": "/docs/Components/Sites"
+              },
+              "next": {
+                "title": "Button.tsx",
+                "permalink": "/docs/Example App/Button"
+              }
+            },
+            {
+              "unversionedId": "Example App/Button",
+              "id": "Example App/Button",
+              "isDocsHomePage": false,
+              "title": "Button.tsx",
+              "description": "`jsx",
+              "source": "@site/docs/Example App/Button.md",
+              "sourceDirName": "Example App",
+              "slug": "/Example App/Button",
+              "permalink": "/docs/Example App/Button",
+              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Example App/Button.md",
+              "version": "current",
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "App.tsx",
+                "permalink": "/docs/Example App/App"
               }
             },
             {

@@ -26,6 +26,16 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Example App/App",
+              "path": "/docs/Example App/App",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Example App/Button",
+              "path": "/docs/Example App/Button",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "intro",
               "path": "/docs/intro",
               "sidebar": "tutorialSidebar"

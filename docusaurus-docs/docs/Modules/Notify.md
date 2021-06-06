@@ -2,6 +2,15 @@
 
 ## Create for Sites in Region
 
+#### Params
+
+| Name | Type | Example |
+|------|------|---------|
+| region | Obj | `{latitude: 47.6234207,longitude: -122.3300605,radius: 100}` |
+| notification | Obj | `{title: 'Test Notification',message: 'Test Notification message',data: {key1: 'value',key2: 'value'}` |
+
+#### Example
+
 ```jsx
     const region = {
       latitude: 47.6234207,
@@ -23,6 +32,14 @@
 
 ## Clear Notifications
 
+#### Params
+
+| Name | Type |
+|------|------|
+| None | None |
+
+#### Example
+
 ```jsx
 Flybuy.Notify.clearNotifications()
 ```
@@ -30,6 +47,15 @@ Flybuy.Notify.clearNotifications()
 **[flybuy Clear Notifications Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=clear-notifications)**
 
 ## Create for Sites
+
+#### Params
+
+| Name | Type | Example |
+|------|------|---------|
+| notification | Obj | `{title: 'Test Notification',message: 'Test Notification message',data: {key1: 'value',key2: 'value',}` |
+| sites | List | `[{},...]`
+
+#### Example
 
 ```jsx
 const notification = {

@@ -30,4 +30,15 @@ RCT_EXTERN_METHOD(pickupConfigure)
 
 RCT_EXTERN_METHOD(presenceConfigure:(NSString *)presenceUUID)
 
+
+RCT_EXTERN_METHOD(startLocatorWithIdentifier:(NSString *)presenceIdStr
+                  withPayload:(NSString *)payload
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(stopLocator
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject
+                  )
+
 @end

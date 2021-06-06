@@ -63,10 +63,45 @@ class Flybuy: NSObject {
     
     @objc(presenceConfigure:)
     func presenceConfigure(presenceUUID: String) {
-        var uuid = UUID(uuidString: presenceUUID)!
+        let uuid = UUID(uuidString: presenceUUID)!
         FlyBuyPresence.Manager.shared.configure(presenceUUID: uuid)
     }
     
+    @objc(startLocatorWithIdentifier:withPayload:withResolver:withRejecter:)
+    func startLocatorWithIdentifier(
+        presenceIdStr: String,
+        payload: String,
+        resolve:@escaping RCTPromiseResolveBlock,
+        reject:@escaping RCTPromiseRejectBlock
+    ) {
+        
+        let bytes = presenceIdStr.utf8
+        let presenceId = Data(bytes)
+        FlyBuyPresence.Manager.shared.createLocatorWithIdentifier( presenceId, payload:payload) { (locator, error) ->
+            (Void) in
+            if error != nil {
+                // Handle error
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+            else {
+                FlyBuyPresence.Manager.shared.start(locator!)
+                resolve("Locator started successfully")
+                // Set locator delegate
+                //   locator?.delegate = self
+                // Store locator or start it here
+            }
+        }
+        
+    }
+    @objc(stopLocator)
+    func stopLocator(){
+        if let error = FlyBuyPresence.Manager.shared.stop() as? PresenceError {
+            print("Error Type: \(error.type)")
+            //            reject(error.localizedDescription,  error.debugDescription, error )
+            //            }
+            //        resolve("Locator is stopped successfully.Locator is stopped successfully.")
+        }
+    }
     // Parsers
 
     func parseCustomerInfo(info: CustomerInfo) -> Dictionary<String, String?> {

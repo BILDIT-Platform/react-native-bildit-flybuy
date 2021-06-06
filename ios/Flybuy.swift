@@ -44,7 +44,7 @@ class Flybuy: NSObject {
     func logout(resolve:@escaping RCTPromiseResolveBlock,
                 reject:@escaping RCTPromiseRejectBlock) {
         FlyBuy.Core.customer.logout()
-        resolve(nil)
+        resolve("ok")
     }
     
     @objc(getCurrentCustomer:withRejecter:)
@@ -138,6 +138,38 @@ class Flybuy: NSObject {
         
         
     }
+    
+    @objc(updateOrderState:withState:withResolver:withRejecter:)
+    func updateOrderState(orderId: Int,
+                          state: String,
+                          resolve:@escaping RCTPromiseResolveBlock,
+                          reject:@escaping RCTPromiseRejectBlock) {
+        FlyBuy.Core.orders.updateOrderState(orderID: orderId, state: state) {
+            (order, error) in
+            if (error == nil) {
+                resolve(self.parseOrder(order: order!))
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+    
+    @objc(updateOrderCustomerState:withState:withResolver:withRejecter:)
+    func updateOrderCustomerState(orderId: Int,
+                                  state: String,
+                                  resolve:@escaping RCTPromiseResolveBlock,
+                                  reject:@escaping RCTPromiseRejectBlock) {
+        FlyBuy.Core.orders.updateCustomerState(orderID: orderId, customerState: state) {
+            (order, error) in
+            if (error == nil) {
+                // resolve("ok")
+                resolve(self.parseOrder(order: order!))
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+    
     
     // Sites
     

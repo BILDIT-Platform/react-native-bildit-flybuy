@@ -29,6 +29,21 @@ RCT_EXTERN_METHOD(updateCustomer:(NSDictionary *)customer
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
 
+// Orders
+
+RCT_EXTERN_METHOD(fetchOrders:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(createOrder:(int)siteId
+                  withPartnerIdentifier:(NSString *)pid
+                  withCustomerInfo:(NSDictionary *)customerInfo
+                  withPickupWindow:(NSDictionary)pickupWindow
+                  withOrderState:(NSString)orderState
+                  withPickupType:(NSString)pickupType
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+// Sites
+
 // Notify
 
 RCT_EXTERN_METHOD(notifyConfigure)

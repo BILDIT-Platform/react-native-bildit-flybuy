@@ -5,18 +5,18 @@ import FlyBuyNotify
 
 @objc(Flybuy)
 class Flybuy: NSObject {
-
+    
     @objc(configure:)
     func configure(token: String) {
         FlyBuy.Core.configure(["token": token])
     }
     
     // Customer
-
+    
     @objc(loginWithToken:withResolver:withRejecter:)
     func loginWithToken(token: String,
-               resolve:@escaping RCTPromiseResolveBlock,
-               reject:@escaping RCTPromiseRejectBlock) {
+                        resolve:@escaping RCTPromiseResolveBlock,
+                        reject:@escaping RCTPromiseRejectBlock) {
         FlyBuy.Core.customer.loginWithToken(token: token) { (customer, error) in
             if ((error == nil) && (customer != nil)) {
                 resolve(self.parserCustomer(customer: customer!))
@@ -87,30 +87,65 @@ class Flybuy: NSObject {
         }
     }
     
+    // Orders
+    
+    @objc(fetchOrders:withRejecter:)
+    func fetchOrders(resolve:@escaping RCTPromiseResolveBlock,reject:@escaping RCTPromiseRejectBlock) {
+        FlyBuy.Core.orders.fetch() { (orders, error) in
+            if (error == nil) {
+                resolve((orders ?? []).map { self.parseOrder(order: $0) })
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+    
+    @objc(createOrder:withPartnerIdentifier:withCustomerInfo:withPickupWindow:withOrderState:withPickupType:withResolver:withRejecter:)
+    func createOrder(siteId: Int, pid: String,
+                     customerInfo: Dictionary<String, String>,
+                     pickupWindow: Dictionary<String, String>?,
+                     orderState: String,
+                     pickupType: String,
+                     resolve:@escaping RCTPromiseResolveBlock,
+                     reject:@escaping RCTPromiseRejectBlock) {
+        let info = decodeCustomerInfo(customer: customerInfo)
+        let pickupWindowInfo = decodePickupWindow(pickupWindow: pickupWindow)
+        FlyBuy.Core.orders.create(siteID: siteId, partnerIdentifier: pid, customerInfo: info, pickupWindow: pickupWindowInfo, state: orderState) {
+            (order, error) in
+            if (error == nil && order != nil) {
+                resolve(self.parseOrder(order: order!))
+            } else {
+                reject(error.debugDescription, error?.localizedDescription, error )
+            }
+        }
+    }
+    
+    // Sites
+    
     // Notify
     
     @objc(notifyConfigure)
     func notifyConfigure() {
         FlyBuyNotify.Manager.shared.configure()
     }
-
+    
     // Pickup
-
+    
     @objc(pickupConfigure)
     func pickupConfigure() {
         FlyBuyPickup.Manager.shared.configure()
     }
-
+    
     // Presence
     
     @objc(presenceConfigure:)
     func presenceConfigure(presenceUUID: String) {
-        var uuid = UUID(uuidString: presenceUUID)!
+        let uuid = UUID(uuidString: presenceUUID)!
         FlyBuyPresence.Manager.shared.configure(presenceUUID: uuid)
     }
     
     // Parsers
-
+    
     func parseCustomerInfo(info: CustomerInfo) -> Dictionary<String, String?> {
         return [
             "name": info.name,
@@ -120,12 +155,46 @@ class Flybuy: NSObject {
             "phone": info.phone,
         ]
     }
-
+    
     func parserCustomer(customer: Customer) -> Dictionary<String, Any?> {
         return [
             "token": customer.token,
             "emailAddress": customer.emailAddress,
             "info": parseCustomerInfo(info: customer.info),
+        ]
+    }
+    
+    func parseOrder(order: Order) -> Dictionary<String, Any?> {
+        return [
+            "id": order.id,
+            "state": order.state,
+            "customerState": order.customerState.description.lowercased(),
+            "partnerIdentifier": order.partnerIdentifier,
+            "pickupWindow": [
+                order.pickupWindow?.start.description,
+                order.pickupWindow?.end.description
+            ],
+            "pickupType": order.pickupType,
+            "etaAt": order.etaAt?.description,
+            "redemptionCode": order.redemptionCode,
+            "redeemedAt": order.redeemedAt?.description,
+            "customerRating": order.customerRating,
+            "customerComment": order.customerComment,
+            
+            "siteID": order.siteID,
+            "siteName": order.siteName,
+            "sitePhone": order.sitePhone,
+            "siteFullAddress": order.siteFullAddress,
+            "siteLongitude": order.siteLongitude,
+            "siteLatitude": order.siteLatitude,
+            "siteInstructions": order.siteInstructions,
+            "siteDescription": order.siteDescription,
+            "siteCoverPhotoURL": order.siteCoverPhotoURL,
+            
+            "customerName": order.customerName,
+            "customerCarType": order.customerCarType,
+            "customerCarColor": order.customerCarColor,
+            "customerLicensePlate": order.customerLicensePlate,
         ]
     }
     
@@ -137,5 +206,17 @@ class Flybuy: NSObject {
                                  carColor: customer["carColor"] ?? "",
                                  licensePlate: customer["licensePlate"] ?? "",
                                  phone: customer["phone"] ?? "")
+    }
+    
+    func decodePickupWindow(pickupWindow: Dictionary<String, String>?) -> PickupWindow {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withFullDate,
+                                          .withTime,
+                                          .withDashSeparatorInDate,
+                                          .withColonSeparatorInTime]
+        
+        let start: Date = (formatter.date(from: pickupWindow?["start"]! ?? " ")!)
+        let end: Date = (formatter.date(from: pickupWindow?["end"]! ?? " ")!)
+        return PickupWindow.init(start: start, end: end)
     }
 }

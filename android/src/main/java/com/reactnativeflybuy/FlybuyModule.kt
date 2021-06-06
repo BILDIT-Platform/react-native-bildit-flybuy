@@ -73,7 +73,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
         handleFlyBuyError(error)
         promise.reject(error.userError())
       } else {
-        promise.resolve(null)
+        promise.resolve("ok")
       }
     }
   }
@@ -260,7 +260,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
       sdkError?.let {
         promise.reject(it.userError(), it.userError())
       } ?: run {
-        promise.resolve(null)
+        promise.resolve("ok")
       }
     }
 
@@ -272,7 +272,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
       sdkError?.let {
         promise.reject(it.userError(), it.userError())
       } ?: run {
-        promise.resolve(null)
+        promise.resolve("ok")
       }
     }
   }

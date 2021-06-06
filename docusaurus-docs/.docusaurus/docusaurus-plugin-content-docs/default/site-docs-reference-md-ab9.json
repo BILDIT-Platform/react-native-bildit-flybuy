@@ -8,12 +8,12 @@
   "sourceDirName": ".",
   "slug": "/Reference",
   "permalink": "/docs/Reference",
-  "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/docs/Reference.md",
+  "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Reference.md",
   "version": "current",
   "frontMatter": {},
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Quick Start",
-    "permalink": "/docs/intro"
+    "title": "Sites",
+    "permalink": "/docs/Components/Sites"
   }
 }

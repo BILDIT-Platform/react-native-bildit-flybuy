@@ -178,7 +178,7 @@ export default function App() {
     Flybuy.Sites.fetchSitesByRegion({
       per: 20,
       page: 1,
-      REGION,
+      region: REGION,
     })
       .then((sites) => console.tron.log('sites', sites))
       .catch((err) => console.tron.log('err', err));

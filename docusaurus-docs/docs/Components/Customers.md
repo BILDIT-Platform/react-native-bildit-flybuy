@@ -46,6 +46,13 @@ Flybuy.Customer.updateCustomer({
 
 ## Get Current Customer
 
+#### Params
+| Name | Type |
+|------|------|
+| None | None |
+
+#### Example
+
 ```jsx
 Flybuy.Customer.getCurrentCustomer()
 ```

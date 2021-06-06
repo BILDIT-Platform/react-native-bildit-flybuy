@@ -17,12 +17,12 @@ Flybuy.Orders.fetchOrders()
 #### Params
 |Name | Type | Example |
 |-----|------|---------|
-|     | Int  | `15942` |
-|     | Str | `'573836'` |
-|     | Obj |  `{name: 'Lamia Selmane AB',carType: 'Nothing',carColor: 'Silver',licensePlate: 'Nothing' phone: '555-555-5555',}` |
+| orderID | Int  | `15942` |
+| pid | Str | `'573836'` |
+| customer | Obj |  `{name: 'Lamia Selmane AB',carType: 'Nothing',carColor: 'Silver',licensePlate: 'Nothing' phone: '555-555-5555',}` |
 | pickupWindow | Obj | `{start: new Date().toISOString(),end: new Date('2022-12-02').toISOString(),}` |    |
-|     | Str | `'delayed'` |
-|     | Str | `'delivery'` |
+| status | Str | `'delayed'` |
+| deliveryType | Str | `'delivery'` |
 
 #### Example
 
@@ -50,9 +50,9 @@ Flybuy.Orders.createOrder(
 #### Params
 | Name | Type | Example |
 |------|------|---------|
-|      | Str  | `'9898899'` |
-|      | Obj  | `{name: 'Lamia Selmane AB',carType: 'Nothing',carColor: 'Silver',licensePlate: 'Nothing',phone: '555-555-5555',}` |
-|      | Str  | `'pickup'` |
+| pid | Str  | `'9898899'` |
+| customer | Obj  | `{name: 'Lamia Selmane AB',carType: 'Nothing',carColor: 'Silver',licensePlate: 'Nothing',phone: '555-555-5555',}` |
+| deliveryType | Str  | `'pickup'` |
 
 #### Example
 
@@ -79,7 +79,7 @@ Flybuy.Orders.claimOrder(
 | Name | Type | Example |
 |------|------|---------|
 | orderID | Int  | `46084566` |
-|      | Str  | `'ready'` |
+| status | Str  | `'ready'` |
 
 #### Example
 
@@ -96,7 +96,7 @@ Flybuy.Orders.updateOrderState(46084566, 'ready')
 | Name | Type | Example |
 |------|------|---------|
 | orderID | Int | `46084566` |
-|     | Str | `'departed'` |
+| status | Str | `'departed'` |
 
 #### Example
 

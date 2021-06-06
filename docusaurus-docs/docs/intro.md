@@ -1,52 +1,30 @@
 ---
 sidebar_position: 1
 ---
-
 # Introduction
 
-## Installation
+## Overview
 
-You can install the sdk with yarn, like so:
+The Flybuy React Native SDK allows developers to quickly and easily integrate Flybuy functionality into React Native applications. 
 
-```shell
-yarn add react-native-bildit-flybuy@https://github.com/BILDIT-LLC/react-native-bildit-flybuy.git
-```
+## Flybuy Documentation
 
-## Authorization
+Throughout the Modules and Components sections of these docs, you will find direct links to the [flybuy docs](https://www.radiusnetworks.com/developers/flybuy/#/?id=flybuy-developer-documentation) related to a given API call. 
 
-You'll need to pass your flybuy api token in each call to the api.
+## Issues
 
-```jsx
-api_token = <your_flybuy_api_token>
-```
+For general service questions and help, consult the Radius Networks [support knowledge base](https://support.radiusnetworks.com/hc/en-us).
 
-## Usage
+If you’ve found a problem in this library, perform a search under Issues in case it has already been reported. If you do not find any issue addressing it, feel free to [open a new one](https://github.com/RadiusNetworks/flybuy-documentation/issues/new).
 
-```jsx
-import Flybuy from 'react-native-bildit-flybuy';
-```
-#### Fetch all orders
-```jsx
-const result = Flybuy.fetchOrders(api_token);
-```
-#### Fetch all orders associated with a partner ID
-```jsx
-const result = Flybuy.fetchOrderByPartnerIdentifier(api_token, partnerIdentifier);
-```
-#### Fetch an order by its ID
-```jsx
-const result = await Flybuy.fetchOrderById(api_token,order_id)
-```
+Your issue report should contain a title and a clear description of the issue at a minimum. Please provide as much relevant information as possible to replicate the issue. This should include a code sample demonstrating the issue and any relevant client information.
 
+## License
 
-#### Create a new order
-```jsx
-const result = Flybuy.createOrder(api_token, data);
-```
-#### Change the state of the local application
-```jsx
-const result = Flybuy.changeState(api_token, data);
-```
+Copyright (c) 2020 by Radius Networks
 
+http://www.radiusnetworks.com
 
+All Rights Reserved
 
+Usage of this library implies agreement to abide by the Radius Networks [terms of service](https://www.flybuy.com/terms-of-service)

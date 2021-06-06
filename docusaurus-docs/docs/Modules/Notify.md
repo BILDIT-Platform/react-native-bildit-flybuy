@@ -19,12 +19,15 @@
 
     Flybuy.Notify.createForSitesInRegion(region, notification)
 ```
+**[flybuy Create for Sites in Region Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=create-for-sites-in-region)**
 
 ## Clear Notifications
 
 ```jsx
 Flybuy.Notify.clearNotifications()
 ```
+
+**[flybuy Clear Notifications Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=clear-notifications)**
 
 ## Create for Sites
 
@@ -61,3 +64,5 @@ const sites: ISite[] = [
 
 Flybuy.Notify.createForSites(sites, notification)
 ```
+
+**[flybuy Create for Sites Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=additional-methods)**

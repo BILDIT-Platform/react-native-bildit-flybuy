@@ -94,7 +94,7 @@ export default [
 },
 {
   path: '/docs',
-  component: ComponentCreator('/docs','4de'),
+  component: ComponentCreator('/docs','ab8'),
   
   routes: [
 {
@@ -130,11 +130,6 @@ export default [
 {
   path: '/docs/Modules/Presence',
   component: ComponentCreator('/docs/Modules/Presence','0f0'),
-  exact: true,
-},
-{
-  path: '/docs/Reference',
-  component: ComponentCreator('/docs/Reference','7c8'),
   exact: true,
 },
 {

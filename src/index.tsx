@@ -60,12 +60,17 @@ export interface ISite {
   partnerIdentifier?: string | null;
 }
 
-export interface ICustomer {
+export interface ICustomerInfo {
   name: string;
   carType: string;
   carColor: string;
   licensePlate: string;
   phone?: string;
+}
+export interface ICustomer {
+  token: string;
+  emailAddress?: string;
+  info: ICustomerInfo;
 }
 
 type PickupWindow = {
@@ -110,14 +115,14 @@ type Orders = {
   createOrder(
     siteId: number,
     pid: string,
-    customerInfo: ICustomer,
+    customerInfo: ICustomerInfo,
     pickupWindow?: PickupWindow,
     orderState?: OrderStateType,
     pickupType?: PickupType
   ): Promise<IOrder>;
   claimOrder(
     redeemCode: string,
-    customerInfo: ICustomer,
+    customerInfo: ICustomerInfo,
     pickupType?: PickupType
   ): Promise<IOrder>;
   updateOrderState(orderId: number, state: OrderStateType): Promise<IOrder>;
@@ -132,8 +137,8 @@ type Customer = {
   loginWithToken(code: string): Promise<any>;
   login(email: string, password: string): Promise<any>;
   logout(): Promise<any>;
-  createCustomer(customerInfo: ICustomer): Promise<ICustomer>;
-  updateCustomer(customerInfo: ICustomer): Promise<ICustomer>;
+  createCustomer(customerInfo: ICustomerInfo): Promise<ICustomer>;
+  updateCustomer(customerInfo: ICustomerInfo): Promise<ICustomer>;
   getCurrentCustomer(): Promise<ICustomer>;
 };
 

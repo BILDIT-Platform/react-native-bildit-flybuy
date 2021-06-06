@@ -162,7 +162,22 @@ class Flybuy: NSObject {
         FlyBuy.Core.orders.updateCustomerState(orderID: orderId, customerState: state) {
             (order, error) in
             if (error == nil) {
-                // resolve("ok")
+                resolve(self.parseOrder(order: order!))
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+    
+    @objc(rateOrder:withRating:withComments:withResolver:withRejecter:)
+    func rateOrder(orderId: Int,
+                   rating: Int,
+                   comments: String,
+                   resolve:@escaping RCTPromiseResolveBlock,
+                   reject:@escaping RCTPromiseRejectBlock) {
+        FlyBuy.Core.orders.rateOrder(orderID: orderId, rating: rating, comments: comments) {
+            (order, error) in
+            if (error == nil) {
                 resolve(self.parseOrder(order: order!))
             } else {
                 reject(error?.localizedDescription,  error.debugDescription, error )

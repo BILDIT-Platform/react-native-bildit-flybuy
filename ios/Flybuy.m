@@ -58,6 +58,12 @@ RCT_EXTERN_METHOD(updateOrderCustomerState:(int)orderId
                   withState:(NSString *)state
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(rateOrder:(int)orderId
+                  withRating:(int *)rating
+                  withComments:(NSString *)comments
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
 // Sites
 
 // Notify

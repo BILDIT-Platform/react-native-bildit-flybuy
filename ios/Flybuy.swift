@@ -296,15 +296,19 @@ class Flybuy: NSObject {
         }
         
     }
-    @objc(stopLocator)
-    func stopLocator(){
-        if let error = FlyBuyPresence.Manager.shared.stop() as? PresenceError {
-            print("Error Type: \(error.type)")
-            //            reject(error.localizedDescription,  error.debugDescription, error )
-            //            }
-            //        resolve("Locator is stopped successfully.Locator is stopped successfully.")
-        }
+    
+    @objc(stopLocator:withRejecter:)
+    func stopLocator(resolve:@escaping RCTPromiseResolveBlock,
+                            reject:@escaping RCTPromiseRejectBlock) {
+
+           if let error = FlyBuyPresence.Manager.shared.stop() as? PresenceError {
+                    print("Error Type: \(error.type)")
+                    reject(error.localizedDescription,  error.debugDescription, error )
+            }
+            resolve("Locator is stopped successfully.Locator is stopped successfully.")
+
     }
+
     // Parsers
     
     func parsePagination(pagination: Pagination?) -> Dictionary<String, Any?>? {

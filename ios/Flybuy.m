@@ -98,9 +98,6 @@ RCT_EXTERN_METHOD(startLocatorWithIdentifier:(NSString *)presenceIdStr
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
 
-RCT_EXTERN_METHOD(stopLocator
-                  withResolver:(RCTPromiseResolveBlock)resolve
-                  withRejecter:(RCTPromiseRejectBlock)reject
-                  )
-
+RCT_EXTERN_METHOD(stopLocator:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
 @end

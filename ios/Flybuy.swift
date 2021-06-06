@@ -120,6 +120,25 @@ class Flybuy: NSObject {
         }
     }
     
+    @objc(claimOrder:withCustomer:withPickupType:withResolver:withRejecter:)
+    func claimOrder(redeemCode: String,
+                    customer: Dictionary<String, String>,
+                    pickupType: String,
+                    resolve:@escaping RCTPromiseResolveBlock,
+                    reject:@escaping RCTPromiseRejectBlock) {
+        let customerInfo: CustomerInfo = decodeCustomerInfo(customer: customer)
+        FlyBuy.Core.orders.claim(withRedemptionCode: redeemCode, customerInfo: customerInfo, pickupType: pickupType) {
+            (order: Order?, error: Error?) in
+            if (error == nil) {
+                resolve(self.parseOrder(order: order!))
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+        
+        
+    }
+    
     // Sites
     
     // Notify
@@ -211,9 +230,9 @@ class Flybuy: NSObject {
     func decodePickupWindow(pickupWindow: Dictionary<String, String>?) -> PickupWindow {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withFullDate,
-                                          .withTime,
-                                          .withDashSeparatorInDate,
-                                          .withColonSeparatorInTime]
+                                   .withTime,
+                                   .withDashSeparatorInDate,
+                                   .withColonSeparatorInTime]
         
         let start: Date = (formatter.date(from: pickupWindow?["start"]! ?? " ")!)
         let end: Date = (formatter.date(from: pickupWindow?["end"]! ?? " ")!)

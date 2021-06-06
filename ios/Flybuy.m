@@ -42,6 +42,12 @@ RCT_EXTERN_METHOD(createOrder:(int)siteId
                   withPickupType:(NSString)pickupType
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(claimOrder:(NSString *)redeemCode
+                  withCustomer:(NSDictionary *)customer
+                  withPickupType:(NSString)pickupType
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
 // Sites
 
 // Notify

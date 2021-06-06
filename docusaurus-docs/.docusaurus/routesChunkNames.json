@@ -114,7 +114,7 @@
     "component": "component---theme-mdx-page-1-f-3-b90",
     "content": "content---markdown-page-393-028"
   },
-  "/docs-ab8": {
+  "/docs-3ef": {
     "component": "component---theme-doc-page-1-be-9be",
     "versionMetadata": "versionMetadata---docs-935-398"
   },
@@ -129,6 +129,14 @@
   "/docs/Components/Sites-3f3": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-components-sitesd-6-b-0c4"
+  },
+  "/docs/Example App/App-bd3": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-example-app-appbaa-807"
+  },
+  "/docs/Example App/Button-0ec": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-example-app-button-169-c1b"
   },
   "/docs/intro-e84": {
     "component": "component---theme-doc-item-178-a40",

@@ -14,6 +14,4 @@ You can install the React Native FlyBuy SDK with npm or yarn, as follows:
 
 ## Additional iOS/Android Configs
 
-## Example App
-
 ## Setup FCM for Silent Notifications

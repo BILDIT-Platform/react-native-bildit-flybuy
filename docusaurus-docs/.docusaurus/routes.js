@@ -94,7 +94,7 @@ export default [
 },
 {
   path: '/docs',
-  component: ComponentCreator('/docs','ab8'),
+  component: ComponentCreator('/docs','3ef'),
   
   routes: [
 {
@@ -110,6 +110,16 @@ export default [
 {
   path: '/docs/Components/Sites',
   component: ComponentCreator('/docs/Components/Sites','3f3'),
+  exact: true,
+},
+{
+  path: '/docs/Example App/App',
+  component: ComponentCreator('/docs/Example App/App','bd3'),
+  exact: true,
+},
+{
+  path: '/docs/Example App/Button',
+  component: ComponentCreator('/docs/Example App/Button','0ec'),
   exact: true,
 },
 {

@@ -188,6 +188,54 @@ class Flybuy: NSObject {
     
     // Sites
     
+    @objc(fetchAllSites:withRejecter:)
+    func fetchAllSites(resolve:@escaping RCTPromiseResolveBlock,
+                       reject:@escaping RCTPromiseRejectBlock) {
+        FlyBuy.Core.sites.fetchAll() { (sites, error) in
+            if (error == nil) {
+                resolve((sites ?? []).map { self.parseSite(site: $0) })
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+    
+    @objc(fetchSitesByQuery:withResolver:withRejecter:)
+    func fetchSitesByQuery(params: Dictionary<String, Any>,
+                           resolve:@escaping RCTPromiseResolveBlock,
+                           reject:@escaping RCTPromiseRejectBlock) {
+        let query: String = params["query"] as! String
+        let page: Int = params["page"] as! Int
+        
+        FlyBuy.Core.sites.fetch(query: query, page: page) { (sites, pagination, error) in
+            if (error == nil) {
+                resolve([
+                    "data": (sites ?? []).map { self.parseSite(site: $0) },
+                    "pagination": self.parsePagination(pagination: pagination) ?? [] as Any
+                ])
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+    
+    @objc(fetchSitesByRegion:withResolver:withRejecter:)
+    func fetchSitesByRegion(params: Dictionary<String, Any>,
+                            resolve:@escaping RCTPromiseResolveBlock,
+                            reject:@escaping RCTPromiseRejectBlock) {
+        let page: Int = params["page"] as! Int
+        let per: Int = params["per"] as! Int
+        let region: CLCircularRegion = decodeRegion(region: params["region"] as! Dictionary<String, Double>)
+        
+        FlyBuy.Core.sites.fetch(region: region,page: page, per:per) { (sites, error) in
+            if (error == nil) {
+                resolve((sites ?? []).map { self.parseSite(site: $0) })
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+    
     // Notify
     
     @objc(notifyConfigure)
@@ -211,6 +259,16 @@ class Flybuy: NSObject {
     }
     
     // Parsers
+    
+    func parsePagination(pagination: Pagination?) -> Dictionary<String, Any?>? {
+        if let pagination: Pagination = pagination {
+            return [
+                "currentPage": pagination.currentPage,
+                "totalPages": pagination.totalPages,
+            ]
+        } else { return nil }
+        
+    }
     
     func parseCustomerInfo(info: CustomerInfo) -> Dictionary<String, String?> {
         return [
@@ -264,6 +322,30 @@ class Flybuy: NSObject {
         ]
     }
     
+    
+    func parseSite(site: Site?) -> Dictionary<String, Any?>? {
+        if let site: Site = site {
+            return [
+                "id": site.id,
+                "name": site.name,
+                "phone": site.phone,
+                "streetAddress": site.streetAddress,
+                "fullAddress": site.fullAddress,
+                "locality": site.locality,
+                "region": site.region,
+                "country": site.country,
+                "postalCode": site.postalCode,
+                "latitude": site.latitude,
+                "longitude": site.longitude,
+                "coverPhotoURL": site.coverPhotoURL,
+                "instructions": site.instructions,
+                "description": site.descriptionText,
+                "partnerIdentifier": site.partnerIdentifier,
+            ]
+            
+        } else { return nil }
+    }
+    
     // Decoders
     
     func decodeCustomerInfo(customer: Dictionary<String, String?>) -> CustomerInfo {
@@ -284,5 +366,15 @@ class Flybuy: NSObject {
         let start: Date = (formatter.date(from: pickupWindow?["start"]! ?? " ")!)
         let end: Date = (formatter.date(from: pickupWindow?["end"]! ?? " ")!)
         return PickupWindow.init(start: start, end: end)
+    }
+    
+    func decodeRegion(region: Dictionary<String, Double>) -> CLCircularRegion {
+        let latitude: Double = region["latitude"]!
+        let longitude: Double = region["longitude"]!
+        let radius: Double = region["radius"]!
+        
+        var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        
+        return CLCircularRegion.init(center: coordinate, radius: radius, identifier: UUID().uuidString)
     }
 }

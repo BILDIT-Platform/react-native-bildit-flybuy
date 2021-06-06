@@ -66,6 +66,17 @@ RCT_EXTERN_METHOD(rateOrder:(int)orderId
                   withRejecter:(RCTPromiseRejectBlock)reject)
 // Sites
 
+RCT_EXTERN_METHOD(fetchAllSites:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(fetchSitesByQuery:(NSDictionary *)params
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(fetchSitesByRegion:(NSDictionary *)params
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
 // Notify
 
 RCT_EXTERN_METHOD(notifyConfigure)

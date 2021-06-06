@@ -243,6 +243,18 @@ class Flybuy: NSObject {
         FlyBuyNotify.Manager.shared.configure()
     }
     
+    @objc(clearNotifications:withRejecter:)
+    func clearNotifications(resolve:@escaping RCTPromiseResolveBlock,
+                       reject:@escaping RCTPromiseRejectBlock) {
+        FlyBuyNotify.Manager.shared.clear() { (error) in
+            if (error == nil) {
+                resolve("ok")
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+    
     // Pickup
     
     @objc(pickupConfigure)

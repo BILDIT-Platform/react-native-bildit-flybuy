@@ -1,8 +1,13 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Platform } from 'react-native';
 import Button from './Button';
 import Flybuy, { ISite } from 'react-native-bildit-flybuy';
+import {
+  requestMultiple,
+  PERMISSIONS,
+  RESULTS,
+} from 'react-native-permissions';
 
 const ORDER_ID = 46615889;
 const NEW_ORDER_ID = 15942;
@@ -17,10 +22,10 @@ const CUSTOMER_INFO = {
 const NOTIFICATION = {
   title: 'Test Notification',
   message: 'Test Notification message',
-  data: {
-    key1: 'value',
-    key2: 'value',
-  },
+  // data: {
+  //   key1: 'value',
+  //   key2: 'value',
+  // },
 };
 
 const REGION = {
@@ -30,6 +35,23 @@ const REGION = {
 };
 
 export default function App() {
+  const getLocationPermissions = async () => {
+    const granted = await requestMultiple(
+      Platform.select({
+        android: [
+          PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
+          PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+        ],
+        ios: [PERMISSIONS.IOS.LOCATION_WHEN_IN_USE],
+      }),
+      {
+        title: 'ExampleApp',
+        message: 'ExampleApp would like access to your location ',
+      }
+    );
+    return granted === RESULTS.GRANTED;
+  };
+
   // Orders
   const fetchOrders = () => {
     Flybuy.Orders.fetchOrders()
@@ -210,6 +232,7 @@ export default function App() {
     Flybuy.Notify.configure();
     Flybuy.Pickup.configure();
     Flybuy.Presence.configure('4192bff0-e1e0-43ce-a4db-912808c32493');
+    getLocationPermissions();
   }, []);
 
   return (

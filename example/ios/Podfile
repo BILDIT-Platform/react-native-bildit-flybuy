@@ -10,6 +10,10 @@ target 'FlybuyExample' do
 
   pod 'react-native-bildit-flybuy', :path => '../..'
 
+  permissions_path = '../node_modules/react-native-permissions/ios'
+
+  pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
+
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and

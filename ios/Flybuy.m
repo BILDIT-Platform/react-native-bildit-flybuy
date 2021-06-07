@@ -84,9 +84,16 @@ RCT_EXTERN_METHOD(notifyConfigure)
 RCT_EXTERN_METHOD(clearNotifications:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(createForSitesInRegion:(NSDictionary *)region
+                  withNotification:(NSDictionary *)notification
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
 // Pickup
 
 RCT_EXTERN_METHOD(pickupConfigure)
+
+RCT_EXTERN_METHOD(onLocationPermissionChanged)
 
 // Presence
 

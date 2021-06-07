@@ -176,6 +176,7 @@ type Presence = {
 
 type Pickup = {
   configure(): void;
+  onLocationPermissionChanged(): void;
 };
 
 type FlyBuyType = {
@@ -219,6 +220,7 @@ const FlyBuyModule = {
   },
   Pickup: {
     configure: Flybuy.pickupConfigure,
+    onLocationPermissionChanged: Flybuy.onLocationPermissionChanged,
   },
   Presence: {
     configure: Flybuy.presenceConfigure,

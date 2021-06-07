@@ -219,6 +219,11 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
     PickupManager.getInstance()?.configure(reactApplicationContext.baseContext)
   }
 
+  @ReactMethod
+  fun onLocationPermissionChanged() {
+    PickupManager.getInstance().onLocationPermissionChanged()
+  }
+
   // Notify
 
   @ReactMethod

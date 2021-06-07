@@ -272,6 +272,22 @@ class Flybuy: NSObject {
         }
     }
     
+    @objc(createForSites:withNotification:withResolver:withRejecter:)
+    func createForSites(sites: Array<Dictionary<String, Any>>,
+                        notification: Dictionary<String, Any>,
+                        resolve:@escaping RCTPromiseResolveBlock,
+                        reject:@escaping RCTPromiseRejectBlock) {
+        let parsedSites: Array<Site> = (sites ?? []).map { self.decodeSite(site: $0)}
+        let notificationInfo: NotificationInfo = self.decodeNotification(notification: notification)
+        FlyBuyNotify.Manager.shared.createForSites(_:parsedSites,notification:notificationInfo) { (sites, error) in
+            if (error == nil) {
+                resolve((sites ?? []).map { self.parseSite(site: $0) })
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+    
     // Pickup
     
     @objc(pickupConfigure)
@@ -388,6 +404,21 @@ class Flybuy: NSObject {
                                  carColor: customer["carColor"] ?? "",
                                  licensePlate: customer["licensePlate"] ?? "",
                                  phone: customer["phone"] ?? "")
+    }
+    
+    func decodeSite(site: Dictionary<String, Any>) -> Site {
+        // Site init not implemented
+        //        return Site.init(
+        //            id: site["id"] ?? "",
+        //            partnerIdentifier: site["partnerIdentifier"] ?? "",
+        //            phone: site["phone"] ?? "",
+        //            fullAddress: site["fullAddress"] ?? "",
+        //            longitude: site["longitude"] ?? "",
+        //            latitude: site["latitude"] ?? "",
+        //            instructions: site["instructions"] ?? "",
+        //            descriptionText: site["descriptionText"] ?? "",
+        //            coverPhotoURL: site["coverPhotoURL"] ?? "",
+        //            )
     }
     
     func decodePickupWindow(pickupWindow: Dictionary<String, String>?) -> PickupWindow {

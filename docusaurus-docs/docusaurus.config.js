@@ -1,7 +1,8 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'BILDIT\'s React Native FlyBuy SDK',
-  tagline: 'FlyBuy Pickup, Notify, and Presence. The Flybuy cloud service and mobile SDKs from Radius Networks enable developers to integrate Flybuy functionality directly, streamlining customer pickup and staff tooling with other systems.',
+  title: "BILDIT's React Native FlyBuy SDK",
+  tagline:
+    'FlyBuy Pickup, Notify, and Presence. The Flybuy cloud service and mobile SDKs from Radius Networks enable developers to integrate Flybuy functionality directly, streamlining customer pickup and staff tooling with other systems.',
   url: 'https://bilditon.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -23,9 +24,9 @@ module.exports = {
           position: 'left',
           label: 'Docs',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        { to: '/blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/bildit-llc/react-native-bildit-flybuy',
+          href: 'https://github.com/bildit-Platform/react-native-bildit-flybuy',
           label: 'GitHub',
           position: 'right',
         },
@@ -61,7 +62,7 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/bildit-llc/react-native-bildit-flybuy',
+              href: 'https://github.com/bildit-Platform/react-native-bildit-flybuy',
             },
           ],
         },
@@ -77,13 +78,13 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/',
+            'https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/blog/',
+            'https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

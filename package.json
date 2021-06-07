@@ -36,13 +36,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/BILDIT-LLC/react-native-bildit-flybuy",
-  "author": "BILDIT <bildit@gmail.com> (https://github.com/BILDIT-LLC)",
+  "repository": "https://github.com/BILDIT-Platform/react-native-bildit-flybuy",
+  "author": "BILDIT <bildit@gmail.com> (https://github.com/Platform-LLC)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BILDIT-LLC/react-native-bildit-flybuy/issues"
+    "url": "https://github.com/BILDIT-Platform/react-native-bildit-flybuy/issues"
   },
-  "homepage": "https://github.com/BILDIT-LLC/react-native-bildit-flybuy/issues#readme",
+  "homepage": "https://github.com/BILDIT-Platform/react-native-bildit-flybuy/issues#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

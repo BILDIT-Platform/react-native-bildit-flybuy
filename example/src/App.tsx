@@ -22,10 +22,10 @@ const CUSTOMER_INFO = {
 const NOTIFICATION = {
   title: 'Test Notification',
   message: 'Test Notification message',
-  // data: {
-  //   key1: 'value',
-  //   key2: 'value',
-  // },
+  data: {
+    key1: 'value',
+    key2: 'value',
+  },
 };
 
 const REGION = {

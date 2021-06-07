@@ -257,13 +257,12 @@ class Flybuy: NSObject {
     
     @objc(createForSitesInRegion:withNotification:withResolver:withRejecter:)
     func createForSitesInRegion(region: Dictionary<String, Double>,
-                                notification: Dictionary<String, String>,
+                                notification: Dictionary<String, Any>,
                                 resolve:@escaping RCTPromiseResolveBlock,
                                 reject:@escaping RCTPromiseRejectBlock) {
         
         let regionInfo: CLCircularRegion = self.decodeRegion(region: region)
         let notificationInfo: NotificationInfo = self.decodeNotification(notification: notification)
-        
         FlyBuyNotify.Manager.shared.createForSitesInRegion(_:regionInfo,notification:notificationInfo) { (sites, error) in
             if (error == nil) {
                 resolve((sites ?? []).map { self.parseSite(site: $0) })
@@ -279,7 +278,7 @@ class Flybuy: NSObject {
     func pickupConfigure() {
         FlyBuyPickup.Manager.shared.configure()
     }
-        
+    
     @objc(onLocationPermissionChanged)
     func onLocationPermissionChanged() {
         // FlyBuyPickup.Manager.shared.onLocationPermissionChanged()
@@ -413,9 +412,10 @@ class Flybuy: NSObject {
         return CLCircularRegion.init(center: coordinate, radius: radius, identifier: UUID().uuidString)
     }
     
-    func decodeNotification(notification: Dictionary<String, String>) -> NotificationInfo {
-        let title: String = notification["title"]!
-        let content: String = notification["message"]!
-        return NotificationInfo.init(title: title, content: content, data: nil )
+    func decodeNotification(notification: Dictionary<String, Any>) -> NotificationInfo {
+        let title: String = notification["title"]! as! String
+        let content: String = notification["message"]! as! String
+        let data: Dictionary<String, String> = notification["data"]! as! Dictionary<String, String>
+        return NotificationInfo.init(title: title, content: content, data: data )
     }
 }

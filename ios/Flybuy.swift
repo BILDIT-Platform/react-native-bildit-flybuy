@@ -42,9 +42,9 @@ class Flybuy: NSObject {
     
     @objc(signUp:withPassword:withResolver:withRejecter:)
     func signUp(email: String,
-               password: String,
-               resolve:@escaping RCTPromiseResolveBlock,
-               reject:@escaping RCTPromiseRejectBlock) {
+                password: String,
+                resolve:@escaping RCTPromiseResolveBlock,
+                reject:@escaping RCTPromiseRejectBlock) {
         FlyBuy.Core.customer.signUp(emailAddress: email, password: password) { (customer, error) in
             if ((error == nil) && (customer != nil)) {
                 resolve(self.parserCustomer(customer: customer!))
@@ -352,16 +352,15 @@ class Flybuy: NSObject {
     
     @objc(stopLocator:withRejecter:)
     func stopLocator(resolve:@escaping RCTPromiseResolveBlock,
-                            reject:@escaping RCTPromiseRejectBlock) {
-
-           if let error = FlyBuyPresence.Manager.shared.stop() as? PresenceError {
-                    print("Error Type: \(error.type)")
-                    reject(error.localizedDescription,  error.debugDescription, error )
-            }
-            resolve("Locator is stopped successfully.Locator is stopped successfully.")
-
+                     reject:@escaping RCTPromiseRejectBlock) {
+        
+        if let error = FlyBuyPresence.Manager.shared.stop() as? PresenceError {
+            reject(error.localizedDescription,  error.debugDescription, error )
+        }
+        resolve("Locator is stopped successfully.Locator is stopped successfully.")
+        
     }
-
+    
     // Parsers
     
     func parsePagination(pagination: Pagination?) -> Dictionary<String, Any?>? {
@@ -460,20 +459,20 @@ class Flybuy: NSObject {
                                  phone: customer["phone"] ?? "")
     }
     
-// Site init not implemented in native SDK
-//    func decodeSite(site: Dictionary<String, Any>) -> Site {
-//        return Site.init(
-//            id: site["id"] ?? "",
-//            partnerIdentifier: site["partnerIdentifier"] ?? "",
-//            phone: site["phone"] ?? "",
-//            fullAddress: site["fullAddress"] ?? "",
-//            longitude: site["longitude"] ?? "",
-//            latitude: site["latitude"] ?? "",
-//            instructions: site["instructions"] ?? "",
-//            descriptionText: site["descriptionText"] ?? "",
-//            coverPhotoURL: site["coverPhotoURL"] ?? "",
-//            )
-//    }
+    // Site init not implemented in native SDK
+    //    func decodeSite(site: Dictionary<String, Any>) -> Site {
+    //        return Site.init(
+    //            id: site["id"] ?? "",
+    //            partnerIdentifier: site["partnerIdentifier"] ?? "",
+    //            phone: site["phone"] ?? "",
+    //            fullAddress: site["fullAddress"] ?? "",
+    //            longitude: site["longitude"] ?? "",
+    //            latitude: site["latitude"] ?? "",
+    //            instructions: site["instructions"] ?? "",
+    //            descriptionText: site["descriptionText"] ?? "",
+    //            coverPhotoURL: site["coverPhotoURL"] ?? "",
+    //            )
+    //    }
     
     func decodePickupWindow(pickupWindow: Dictionary<String, String>?) -> PickupWindow {
         let formatter = ISO8601DateFormatter()

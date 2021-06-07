@@ -137,6 +137,7 @@ type Customer = {
   loginWithToken(code: string): Promise<any>;
   login(email: string, password: string): Promise<any>;
   logout(): Promise<any>;
+  signUp(email: string, password: string): Promise<any>;
   createCustomer(customerInfo: ICustomerInfo): Promise<ICustomer>;
   updateCustomer(customerInfo: ICustomerInfo): Promise<ICustomer>;
   getCurrentCustomer(): Promise<ICustomer>;
@@ -203,6 +204,7 @@ const FlyBuyModule = {
     loginWithToken: Flybuy.loginWithToken,
     login: Flybuy.login,
     logout: Flybuy.logout,
+    signUp: Flybuy.signUp,
     createCustomer: Flybuy.createCustomer,
     updateCustomer: Flybuy.updateCustomer,
     getCurrentCustomer: Flybuy.getCurrentCustomer,

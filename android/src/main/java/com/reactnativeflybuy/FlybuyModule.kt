@@ -66,6 +66,21 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   }
 
   @ReactMethod
+  fun signUp(email: String, password: String, promise: Promise) {
+    FlyBuyCore.customer.signUp(email, password) { customer, error ->
+      if (null != error) {
+        // Handle error
+        handleFlyBuyError(error)
+        promise.reject(error.userError())
+      } else {
+        if (null != customer) {
+          promise.resolve(parseCustomer(customer))
+        }
+      }
+    }
+  }
+
+  @ReactMethod
   fun logout(promise: Promise) {
     FlyBuyCore.customer.logout { error ->
       if (null != error) {

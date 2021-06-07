@@ -114,6 +114,12 @@ export default function App() {
       .catch((err) => console.tron.log(err));
   };
 
+  const signUp = () => {
+    Flybuy.Customer.signUp('ha_zellat@esi.dz', 'password')
+      .then((customer) => console.tron.log('customer', customer))
+      .catch((err) => console.tron.log(err));
+  };
+
   const logout = () => {
     Flybuy.Customer.logout()
       .then(() => console.tron.log('logout success'))
@@ -240,6 +246,7 @@ export default function App() {
       <View style={styles.container}>
         <Text>Customer</Text>
         <Button title="login" onPress={login} />
+        <Button title="signUp" onPress={signUp} />
         <Button title="loginWithToken" onPress={loginWithToken} />
         <Button title="logout" onPress={logout} />
         <Button title="create Customer" onPress={createCustomer} />

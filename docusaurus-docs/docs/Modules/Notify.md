@@ -18,10 +18,10 @@ Call this method to create a notification for a list of sites in a given circula
 
 #### Params
 
-| Name         | Type              | Example                                                                                                         |
-| ------------ | ----------------- | --------------------------------------------------------------------------------------------------------------- |
-| region       | ICircularRegion   | `{ latitude: 47.6234207, longitude: -122.3300605, radius: 100 }`                                                |
-| notification | INotificationInfo | `{ title: 'Test Notification', message: 'Test Notification message', data: { key1: 'value1', key2: 'value2' }}` |
+| Name         | Type                                            | Example                                                                                                         |
+| ------------ | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| region       | [`CircularRegion`](../Types/CircularRegion)     | `{ latitude: 47.6234207, longitude: -122.3300605, radius: 100 }`                                                |
+| notification | [`NotificationInfo`](../Types/NotificationInfo) | `{ title: 'Test Notification', message: 'Test Notification message', data: { key1: 'value1', key2: 'value2' }}` |
 
 #### Example
 
@@ -70,10 +70,10 @@ Create geofence notification for list of sites.
 
 #### Params
 
-| Name         | Type              | Example                                                                                                       |
-| ------------ | ----------------- | ------------------------------------------------------------------------------------------------------------- |
-| notification | INotificationInfo | `{ title: 'Test Notification', message: 'Test Notification message', data: { key1: 'value', key2: 'value' }}` |
-| sites        | [ISite]           | `[{},...]`                                                                                                    |
+| Name         | Type                                            | Example                                                                                                       |
+| ------------ | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| notification | [`NotificationInfo`](../Types/NotificationInfo) | `{ title: 'Test Notification', message: 'Test Notification message', data: { key1: 'value', key2: 'value' }}` |
+| sites        | [[`Site`](../Types/Site)]                       | `[{},...]`                                                                                                    |
 
 #### Example
 

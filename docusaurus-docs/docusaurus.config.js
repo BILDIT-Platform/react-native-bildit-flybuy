@@ -4,8 +4,8 @@ module.exports = {
   tagline:
     'FlyBuy Pickup, Notify, and Presence. The Flybuy cloud service and mobile SDKs from Radius Networks enable developers to integrate Flybuy functionality directly, streamlining customer pickup and staff tooling with other systems.',
   url: 'https://bilditon.com',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
+  baseUrl: '/react-native-bildit-flybuy/',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
   organizationName: 'bildit-llc', // Usually your GitHub org/user name.

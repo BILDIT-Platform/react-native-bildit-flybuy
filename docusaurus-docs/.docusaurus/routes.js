@@ -44,47 +44,47 @@ export default [
 },
 {
   path: '/blog',
-  component: ComponentCreator('/blog','f38'),
+  component: ComponentCreator('/blog','faa'),
   exact: true,
 },
 {
   path: '/blog/hello-world',
-  component: ComponentCreator('/blog/hello-world','6e3'),
+  component: ComponentCreator('/blog/hello-world','c16'),
   exact: true,
 },
 {
   path: '/blog/hola',
-  component: ComponentCreator('/blog/hola','a97'),
+  component: ComponentCreator('/blog/hola','b39'),
   exact: true,
 },
 {
   path: '/blog/tags',
-  component: ComponentCreator('/blog/tags','600'),
+  component: ComponentCreator('/blog/tags','3e4'),
   exact: true,
 },
 {
   path: '/blog/tags/docusaurus',
-  component: ComponentCreator('/blog/tags/docusaurus','d0a'),
+  component: ComponentCreator('/blog/tags/docusaurus','04d'),
   exact: true,
 },
 {
   path: '/blog/tags/facebook',
-  component: ComponentCreator('/blog/tags/facebook','9d6'),
+  component: ComponentCreator('/blog/tags/facebook','25a'),
   exact: true,
 },
 {
   path: '/blog/tags/hello',
-  component: ComponentCreator('/blog/tags/hello','4dd'),
+  component: ComponentCreator('/blog/tags/hello','bd9'),
   exact: true,
 },
 {
   path: '/blog/tags/hola',
-  component: ComponentCreator('/blog/tags/hola','9b3'),
+  component: ComponentCreator('/blog/tags/hola','c5f'),
   exact: true,
 },
 {
   path: '/blog/welcome',
-  component: ComponentCreator('/blog/welcome','a64'),
+  component: ComponentCreator('/blog/welcome','72a'),
   exact: true,
 },
 {
@@ -94,7 +94,7 @@ export default [
 },
 {
   path: '/docs',
-  component: ComponentCreator('/docs','3ef'),
+  component: ComponentCreator('/docs','991'),
   
   routes: [
 {
@@ -110,16 +110,6 @@ export default [
 {
   path: '/docs/Components/Sites',
   component: ComponentCreator('/docs/Components/Sites','3f3'),
-  exact: true,
-},
-{
-  path: '/docs/Example App/App',
-  component: ComponentCreator('/docs/Example App/App','bd3'),
-  exact: true,
-},
-{
-  path: '/docs/Example App/Button',
-  component: ComponentCreator('/docs/Example App/Button','0ec'),
   exact: true,
 },
 {
@@ -145,6 +135,11 @@ export default [
 {
   path: '/docs/Setup',
   component: ComponentCreator('/docs/Setup','308'),
+  exact: true,
+},
+{
+  path: '/docs/Usage',
+  component: ComponentCreator('/docs/Usage','06a'),
   exact: true,
 },
 ]

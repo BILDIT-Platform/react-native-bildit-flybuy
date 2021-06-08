@@ -6,13 +6,13 @@
           "versionName": "current",
           "versionLabel": "Next",
           "versionPath": "/docs",
-          "versionEditUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs",
-          "versionEditUrlLocalized": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/i18n/en/docusaurus-plugin-content-docs/current",
+          "versionEditUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs",
+          "versionEditUrlLocalized": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/i18n/en/docusaurus-plugin-content-docs/current",
           "isLast": true,
           "routePriority": -1,
-          "sidebarFilePath": "/Users/administrator/react-native-bildit-flybuy/docusaurus-docs/sidebars.js",
-          "contentPath": "/Users/administrator/react-native-bildit-flybuy/docusaurus-docs/docs",
-          "contentPathLocalized": "/Users/administrator/react-native-bildit-flybuy/docusaurus-docs/i18n/en/docusaurus-plugin-content-docs/current",
+          "sidebarFilePath": "/Users/macbookpro13/Desktop/Dev/BILDIT/react-native-flybuy/docusaurus-docs/sidebars.js",
+          "contentPath": "/Users/macbookpro13/Desktop/Dev/BILDIT/react-native-flybuy/docusaurus-docs/docs",
+          "contentPathLocalized": "/Users/macbookpro13/Desktop/Dev/BILDIT/react-native-flybuy/docusaurus-docs/i18n/en/docusaurus-plugin-content-docs/current",
           "mainDocId": "intro",
           "sidebars": {
             "tutorialSidebar": [
@@ -23,6 +23,10 @@
               {
                 "type": "doc",
                 "id": "Setup"
+              },
+              {
+                "type": "doc",
+                "id": "Usage"
               },
               {
                 "type": "category",
@@ -61,21 +65,6 @@
                   }
                 ],
                 "collapsed": true
-              },
-              {
-                "type": "category",
-                "label": "Example App",
-                "items": [
-                  {
-                    "type": "doc",
-                    "id": "Example App/App"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "Example App/Button"
-                  }
-                ],
-                "collapsed": true
               }
             ]
           },
@@ -83,13 +72,12 @@
             "/docs/Components/Customers": "tutorialSidebar",
             "/docs/Components/Orders": "tutorialSidebar",
             "/docs/Components/Sites": "tutorialSidebar",
-            "/docs/Example App/App": "tutorialSidebar",
-            "/docs/Example App/Button": "tutorialSidebar",
             "/docs/intro": "tutorialSidebar",
             "/docs/Modules/Notify": "tutorialSidebar",
             "/docs/Modules/Pickup": "tutorialSidebar",
             "/docs/Modules/Presence": "tutorialSidebar",
-            "/docs/Setup": "tutorialSidebar"
+            "/docs/Setup": "tutorialSidebar",
+            "/docs/Usage": "tutorialSidebar"
           },
           "docs": [
             {
@@ -102,7 +90,7 @@
               "sourceDirName": "Components",
               "slug": "/Components/Customers",
               "permalink": "/docs/Components/Customers",
-              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Components/Customers.md",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Components/Customers.md",
               "version": "current",
               "sidebarPosition": 2,
               "frontMatter": {
@@ -128,7 +116,7 @@
               "sourceDirName": "Components",
               "slug": "/Components/Orders",
               "permalink": "/docs/Components/Orders",
-              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Components/Orders.md",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Components/Orders.md",
               "version": "current",
               "sidebarPosition": 1,
               "frontMatter": {
@@ -154,7 +142,7 @@
               "sourceDirName": "Components",
               "slug": "/Components/Sites",
               "permalink": "/docs/Components/Sites",
-              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Components/Sites.md",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Components/Sites.md",
               "version": "current",
               "sidebarPosition": 3,
               "frontMatter": {
@@ -164,52 +152,6 @@
               "previous": {
                 "title": "Customers",
                 "permalink": "/docs/Components/Customers"
-              },
-              "next": {
-                "title": "App.tsx",
-                "permalink": "/docs/Example App/App"
-              }
-            },
-            {
-              "unversionedId": "Example App/App",
-              "id": "Example App/App",
-              "isDocsHomePage": false,
-              "title": "App.tsx",
-              "description": "`jsx",
-              "source": "@site/docs/Example App/App.md",
-              "sourceDirName": "Example App",
-              "slug": "/Example App/App",
-              "permalink": "/docs/Example App/App",
-              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Example App/App.md",
-              "version": "current",
-              "frontMatter": {},
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Sites",
-                "permalink": "/docs/Components/Sites"
-              },
-              "next": {
-                "title": "Button.tsx",
-                "permalink": "/docs/Example App/Button"
-              }
-            },
-            {
-              "unversionedId": "Example App/Button",
-              "id": "Example App/Button",
-              "isDocsHomePage": false,
-              "title": "Button.tsx",
-              "description": "`jsx",
-              "source": "@site/docs/Example App/Button.md",
-              "sourceDirName": "Example App",
-              "slug": "/Example App/Button",
-              "permalink": "/docs/Example App/Button",
-              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Example App/Button.md",
-              "version": "current",
-              "frontMatter": {},
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "App.tsx",
-                "permalink": "/docs/Example App/App"
               }
             },
             {
@@ -222,7 +164,7 @@
               "sourceDirName": ".",
               "slug": "/intro",
               "permalink": "/docs/intro",
-              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/intro.md",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/intro.md",
               "version": "current",
               "sidebarPosition": 1,
               "frontMatter": {
@@ -244,7 +186,7 @@
               "sourceDirName": "Modules",
               "slug": "/Modules/Notify",
               "permalink": "/docs/Modules/Notify",
-              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Modules/Notify.md",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Modules/Notify.md",
               "version": "current",
               "frontMatter": {},
               "sidebar": "tutorialSidebar",
@@ -267,7 +209,7 @@
               "sourceDirName": "Modules",
               "slug": "/Modules/Pickup",
               "permalink": "/docs/Modules/Pickup",
-              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Modules/Pickup.md",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Modules/Pickup.md",
               "version": "current",
               "sidebarPosition": 1,
               "frontMatter": {
@@ -275,8 +217,8 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Setup",
-                "permalink": "/docs/Setup"
+                "title": "Usage",
+                "permalink": "/docs/Usage"
               },
               "next": {
                 "title": "Presence",
@@ -293,7 +235,7 @@
               "sourceDirName": "Modules",
               "slug": "/Modules/Presence",
               "permalink": "/docs/Modules/Presence",
-              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Modules/Presence.md",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Modules/Presence.md",
               "version": "current",
               "sidebarPosition": 2,
               "frontMatter": {
@@ -319,7 +261,7 @@
               "sourceDirName": ".",
               "slug": "/Setup",
               "permalink": "/docs/Setup",
-              "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/docs/Setup.md",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Setup.md",
               "version": "current",
               "sidebarPosition": 2,
               "frontMatter": {
@@ -329,6 +271,32 @@
               "previous": {
                 "title": "Introduction",
                 "permalink": "/docs/intro"
+              },
+              "next": {
+                "title": "Usage",
+                "permalink": "/docs/Usage"
+              }
+            },
+            {
+              "unversionedId": "Usage",
+              "id": "Usage",
+              "isDocsHomePage": false,
+              "title": "Usage",
+              "description": "Configure Flybuy at launch",
+              "source": "@site/docs/Usage.md",
+              "sourceDirName": ".",
+              "slug": "/Usage",
+              "permalink": "/docs/Usage",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Usage.md",
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Setup",
+                "permalink": "/docs/Setup"
               },
               "next": {
                 "title": "Pickup",
@@ -347,12 +315,12 @@
           "id": "welcome",
           "metadata": {
             "permalink": "/blog/welcome",
-            "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/blog/blog/2019-05-30-welcome.md",
+            "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/blog/blog/2019-05-30-welcome.md",
             "source": "@site/blog/2019-05-30-welcome.md",
             "title": "Welcome",
             "description": "Blog features are powered by the blog plugin. Simply add files to the blog directory. It supports tags as well!",
             "date": "2019-05-30T00:00:00.000Z",
-            "formattedDate": "May 29, 2019",
+            "formattedDate": "May 30, 2019",
             "tags": [
               {
                 "label": "facebook",
@@ -379,12 +347,12 @@
           "id": "hello-world",
           "metadata": {
             "permalink": "/blog/hello-world",
-            "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/blog/blog/2019-05-29-hello-world.md",
+            "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/blog/blog/2019-05-29-hello-world.md",
             "source": "@site/blog/2019-05-29-hello-world.md",
             "title": "Hello",
             "description": "Welcome to this blog. This blog is created with Docusaurus 2 alpha.",
             "date": "2019-05-29T00:00:00.000Z",
-            "formattedDate": "May 28, 2019",
+            "formattedDate": "May 29, 2019",
             "tags": [
               {
                 "label": "hello",
@@ -411,12 +379,12 @@
           "id": "hola",
           "metadata": {
             "permalink": "/blog/hola",
-            "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/blog/blog/2019-05-28-hola.md",
+            "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/blog/blog/2019-05-28-hola.md",
             "source": "@site/blog/2019-05-28-hola.md",
             "title": "Hola",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet",
             "date": "2019-05-28T00:00:00.000Z",
-            "formattedDate": "May 27, 2019",
+            "formattedDate": "May 28, 2019",
             "tags": [
               {
                 "label": "hola",

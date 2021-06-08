@@ -29,7 +29,7 @@ export default {
           "position": "left"
         },
         {
-          "href": "https://github.com/bildit-llc/react-native-bildit-flybuy",
+          "href": "https://github.com/bildit-Platform/react-native-bildit-flybuy",
           "label": "GitHub",
           "position": "right"
         }
@@ -66,7 +66,7 @@ export default {
             },
             {
               "label": "GitHub",
-              "href": "https://github.com/bildit-llc/react-native-bildit-flybuy"
+              "href": "https://github.com/bildit-Platform/react-native-bildit-flybuy"
             }
           ]
         }
@@ -98,15 +98,23 @@ export default {
       "@docusaurus/preset-classic",
       {
         "docs": {
-          "sidebarPath": "/Users/administrator/react-native-bildit-flybuy/docusaurus-docs/sidebars.js",
-          "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/"
+          "sidebarPath": "/Users/macbookpro13/Desktop/Dev/BILDIT/react-native-flybuy/docusaurus-docs/sidebars.js",
+          "remarkPlugins": [
+            [
+              null,
+              {
+                "sync": true
+              }
+            ]
+          ],
+          "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/"
         },
         "blog": {
           "showReadingTime": true,
-          "editUrl": "https://github.com/bildit-llc/react-native-bildit-flybuy/edit/main/website/blog/"
+          "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/blog/"
         },
         "theme": {
-          "customCss": "/Users/administrator/react-native-bildit-flybuy/docusaurus-docs/src/css/custom.css"
+          "customCss": "/Users/macbookpro13/Desktop/Dev/BILDIT/react-native-flybuy/docusaurus-docs/src/css/custom.css"
         }
       }
     ]

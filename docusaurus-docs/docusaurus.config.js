@@ -76,6 +76,9 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          remarkPlugins: [
+            [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
+          ],
           // Please change this to your repo.
           editUrl:
             'https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/',

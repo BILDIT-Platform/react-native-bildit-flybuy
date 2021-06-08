@@ -3,8 +3,10 @@ import FlyBuyPickup
 import FlyBuyPresence
 import FlyBuyNotify
 
+
 @objc(Flybuy)
 class Flybuy: NSObject {
+    
     
     @objc(configure:)
     func configure(token: String) {
@@ -330,7 +332,6 @@ class Flybuy: NSObject {
         resolve:@escaping RCTPromiseResolveBlock,
         reject:@escaping RCTPromiseRejectBlock
     ) {
-        
         let bytes = presenceIdStr.utf8
         let presenceId = Data(bytes)
         FlyBuyPresence.Manager.shared.createLocatorWithIdentifier( presenceId, payload:payload) { (locator, error) ->
@@ -357,7 +358,9 @@ class Flybuy: NSObject {
         if let error = FlyBuyPresence.Manager.shared.stop() as? PresenceError {
             reject(error.localizedDescription,  error.debugDescription, error )
         }
-        resolve("Locator is stopped successfully.Locator is stopped successfully.")
+        else{
+            resolve("Locator is stopped successfully.")         
+        }
         
     }
     
@@ -502,4 +505,5 @@ class Flybuy: NSObject {
         let data: Dictionary<String, String> = notification["data"]! as! Dictionary<String, String>
         return NotificationInfo.init(title: title, content: content, data: data )
     }
+    
 }

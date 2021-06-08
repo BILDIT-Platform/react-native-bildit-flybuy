@@ -41,6 +41,8 @@ Flybuy.Presence.startLocatorWithIdentifier('12345678', "{'key':'value'}");
 
 ## Stop a Locator
 
+Stop the Presence Locator when the transaction is complete.
+
 #### Params
 
 | Name | Type |

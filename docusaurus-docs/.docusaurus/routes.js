@@ -94,7 +94,7 @@ export default [
 },
 {
   path: '/docs',
-  component: ComponentCreator('/docs','991'),
+  component: ComponentCreator('/docs','11d'),
   
   routes: [
 {
@@ -130,6 +130,56 @@ export default [
 {
   path: '/docs/Modules/Presence',
   component: ComponentCreator('/docs/Modules/Presence','0f0'),
+  exact: true,
+},
+{
+  path: '/docs/Object Types/CircularRegion',
+  component: ComponentCreator('/docs/Object Types/CircularRegion','bd2'),
+  exact: true,
+},
+{
+  path: '/docs/Object Types/Customer',
+  component: ComponentCreator('/docs/Object Types/Customer','aa0'),
+  exact: true,
+},
+{
+  path: '/docs/Object Types/CustomerInfo',
+  component: ComponentCreator('/docs/Object Types/CustomerInfo','81f'),
+  exact: true,
+},
+{
+  path: '/docs/Object Types/CustomerState',
+  component: ComponentCreator('/docs/Object Types/CustomerState','295'),
+  exact: true,
+},
+{
+  path: '/docs/Object Types/NotificationInfo',
+  component: ComponentCreator('/docs/Object Types/NotificationInfo','3a3'),
+  exact: true,
+},
+{
+  path: '/docs/Object Types/Order',
+  component: ComponentCreator('/docs/Object Types/Order','245'),
+  exact: true,
+},
+{
+  path: '/docs/Object Types/OrderState',
+  component: ComponentCreator('/docs/Object Types/OrderState','8d2'),
+  exact: true,
+},
+{
+  path: '/docs/Object Types/PickupType',
+  component: ComponentCreator('/docs/Object Types/PickupType','331'),
+  exact: true,
+},
+{
+  path: '/docs/Object Types/PickupWindow',
+  component: ComponentCreator('/docs/Object Types/PickupWindow','3db'),
+  exact: true,
+},
+{
+  path: '/docs/Object Types/Site',
+  component: ComponentCreator('/docs/Object Types/Site','864'),
   exact: true,
 },
 {

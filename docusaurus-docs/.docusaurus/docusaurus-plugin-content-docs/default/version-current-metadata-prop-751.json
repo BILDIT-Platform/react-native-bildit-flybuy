@@ -63,6 +63,63 @@
           }
         ],
         "collapsed": true
+      },
+      {
+        "type": "category",
+        "label": "Object Types",
+        "items": [
+          {
+            "type": "link",
+            "label": "CustomerInfo Object Type",
+            "href": "/docs/Object Types/CustomerInfo"
+          },
+          {
+            "type": "link",
+            "label": "Customer Object Type",
+            "href": "/docs/Object Types/Customer"
+          },
+          {
+            "type": "link",
+            "label": "Site Object Type",
+            "href": "/docs/Object Types/Site"
+          },
+          {
+            "type": "link",
+            "label": "Order Object Type",
+            "href": "/docs/Object Types/Order"
+          },
+          {
+            "type": "link",
+            "label": "PickupWindow Object Type",
+            "href": "/docs/Object Types/PickupWindow"
+          },
+          {
+            "type": "link",
+            "label": "CircularRegion Object Type",
+            "href": "/docs/Object Types/CircularRegion"
+          },
+          {
+            "type": "link",
+            "label": "NotificationInfo Object Type",
+            "href": "/docs/Object Types/NotificationInfo"
+          },
+          {
+            "type": "link",
+            "label": "OrderState Object Type",
+            "href": "/docs/Object Types/OrderState"
+          },
+          {
+            "type": "link",
+            "label": "CustomerState Object Type",
+            "href": "/docs/Object Types/CustomerState"
+          },
+          {
+            "type": "link",
+            "label": "PickupType Object Type",
+            "href": "/docs/Object Types/PickupType"
+          }
+        ],
+        "collapsed": true
       }
     ]
   },
@@ -74,6 +131,16 @@
     "/docs/Modules/Notify": "tutorialSidebar",
     "/docs/Modules/Pickup": "tutorialSidebar",
     "/docs/Modules/Presence": "tutorialSidebar",
+    "/docs/Object Types/CircularRegion": "tutorialSidebar",
+    "/docs/Object Types/Customer": "tutorialSidebar",
+    "/docs/Object Types/CustomerInfo": "tutorialSidebar",
+    "/docs/Object Types/CustomerState": "tutorialSidebar",
+    "/docs/Object Types/NotificationInfo": "tutorialSidebar",
+    "/docs/Object Types/Order": "tutorialSidebar",
+    "/docs/Object Types/OrderState": "tutorialSidebar",
+    "/docs/Object Types/PickupType": "tutorialSidebar",
+    "/docs/Object Types/PickupWindow": "tutorialSidebar",
+    "/docs/Object Types/Site": "tutorialSidebar",
     "/docs/Setup": "tutorialSidebar",
     "/docs/Usage": "tutorialSidebar"
   }

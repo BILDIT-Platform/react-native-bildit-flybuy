@@ -114,7 +114,7 @@
     "component": "component---theme-mdx-page-1-f-3-b90",
     "content": "content---markdown-page-393-028"
   },
-  "/docs-991": {
+  "/docs-11d": {
     "component": "component---theme-doc-page-1-be-9be",
     "versionMetadata": "versionMetadata---docs-935-398"
   },
@@ -145,6 +145,46 @@
   "/docs/Modules/Presence-0f0": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-modules-presence-7-f-0-adc"
+  },
+  "/docs/Object Types/CircularRegion-bd2": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-object-types-circular-region-557-2c1"
+  },
+  "/docs/Object Types/Customer-aa0": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-object-types-customer-5-f-5-712"
+  },
+  "/docs/Object Types/CustomerInfo-81f": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-object-types-customer-info-835-d13"
+  },
+  "/docs/Object Types/CustomerState-295": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-object-types-customer-stateb-6-f-8e4"
+  },
+  "/docs/Object Types/NotificationInfo-3a3": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-object-types-notification-info-5-ac-56a"
+  },
+  "/docs/Object Types/Order-245": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-object-types-ordered-9-9fb"
+  },
+  "/docs/Object Types/OrderState-8d2": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-object-types-order-stated-7-d-348"
+  },
+  "/docs/Object Types/PickupType-331": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-object-types-pickup-typedde-428"
+  },
+  "/docs/Object Types/PickupWindow-3db": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-object-types-pickup-windowe-99-7b0"
+  },
+  "/docs/Object Types/Site-864": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-object-types-site-7-e-9-c5c"
   },
   "/docs/Setup-308": {
     "component": "component---theme-doc-item-178-a40",

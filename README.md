@@ -1,45 +1,20 @@
-# React Native FlyBuy
+<p align="center">
+  <a href="#">
+    <img src="logo.svg" height="128">
+    <h1 align="center">FlyBuy</h1>
+  </a>
+</p>
 
-React Native JS Wrapper for FlyBuy Native SDK
+The FlyBuy cloud service and mobile SDK enables developers to add FlyBuy functionality directly into their react native apps for a full white label implementation of the service.
 
-## Installation
+## Documentation
 
-```sh
-yarn add react-native-bildit-flybuy@https://github.com/BILDIT-Platform/react-native-bildit-flybuy.git
-```
-
-## Usage
-
-```js
-import Flybuy from 'react-native-bildit-flybuy';
-
-// ...
-
-const customer = await Flybuy.login('TOKEN');
-
-const orders = await Flybuy.fetchOrders();
-
-const order = await Flybuy.createOrder(15942, '12345', {
-  name: 'Lamia Selmane AB',
-  carType: 'Tesla',
-  carColor: 'Silver',
-  licensePlate: 'Lorem',
-  phone: '555-555-5555',
-});
-
-const customer = await Flybuy.createCustomer({
-  name: 'Abdelkhalek Zellat',
-  carType: 'Tesla',
-  carColor: 'Silver',
-  licensePlate: 'Nothing',
-  phone: '555-555-5555',
-});
-```
+Visit []() to view the full documentation.
 
 ## Contributing
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+Do you have a feature request, bug report, or patch? Great! See [CONTRIBUTING.md][contribute] for information on what you can do about that. Contributions are welcome and appreciated !
 
 ## License
 
-MIT
+[MIT](./LICENSE)

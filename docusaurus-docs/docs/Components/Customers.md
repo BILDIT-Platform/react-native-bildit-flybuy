@@ -10,9 +10,9 @@ Create a customer account using information from the user
 
 #### Params
 
-| Name     | Type          | Example                                                                                                                   |
-| -------- | ------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| customer | ICustomerInfo | `{ name: 'Abdelkhalek Zellat', carType: 'Nothing', carColor: 'Silver', licensePlate: 'Nothing', phone: '555-555-5555' } ` |
+| Name     | Type                                   | Example                                                                                                                   |
+| -------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| customer | [`ICustomerInfo`](../../ObjectTypes/C) | `{ name: 'Abdelkhalek Zellat', carType: 'Nothing', carColor: 'Silver', licensePlate: 'Nothing', phone: '555-555-5555' } ` |
 
 #### Example
 

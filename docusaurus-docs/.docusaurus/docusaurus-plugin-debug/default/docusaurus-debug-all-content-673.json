@@ -68,47 +68,47 @@
               },
               {
                 "type": "category",
-                "label": "Object Types",
+                "label": "Types",
                 "items": [
                   {
                     "type": "doc",
-                    "id": "Object Types/CustomerInfo"
+                    "id": "Types/CustomerInfo"
                   },
                   {
                     "type": "doc",
-                    "id": "Object Types/Customer"
+                    "id": "Types/Customer"
                   },
                   {
                     "type": "doc",
-                    "id": "Object Types/Site"
+                    "id": "Types/Site"
                   },
                   {
                     "type": "doc",
-                    "id": "Object Types/Order"
+                    "id": "Types/Order"
                   },
                   {
                     "type": "doc",
-                    "id": "Object Types/PickupWindow"
+                    "id": "Types/PickupWindow"
                   },
                   {
                     "type": "doc",
-                    "id": "Object Types/CircularRegion"
+                    "id": "Types/CircularRegion"
                   },
                   {
                     "type": "doc",
-                    "id": "Object Types/NotificationInfo"
+                    "id": "Types/NotificationInfo"
                   },
                   {
                     "type": "doc",
-                    "id": "Object Types/OrderState"
+                    "id": "Types/OrderState"
                   },
                   {
                     "type": "doc",
-                    "id": "Object Types/CustomerState"
+                    "id": "Types/CustomerState"
                   },
                   {
                     "type": "doc",
-                    "id": "Object Types/PickupType"
+                    "id": "Types/PickupType"
                   }
                 ],
                 "collapsed": true
@@ -123,17 +123,17 @@
             "/docs/Modules/Notify": "tutorialSidebar",
             "/docs/Modules/Pickup": "tutorialSidebar",
             "/docs/Modules/Presence": "tutorialSidebar",
-            "/docs/Object Types/CircularRegion": "tutorialSidebar",
-            "/docs/Object Types/Customer": "tutorialSidebar",
-            "/docs/Object Types/CustomerInfo": "tutorialSidebar",
-            "/docs/Object Types/CustomerState": "tutorialSidebar",
-            "/docs/Object Types/NotificationInfo": "tutorialSidebar",
-            "/docs/Object Types/Order": "tutorialSidebar",
-            "/docs/Object Types/OrderState": "tutorialSidebar",
-            "/docs/Object Types/PickupType": "tutorialSidebar",
-            "/docs/Object Types/PickupWindow": "tutorialSidebar",
-            "/docs/Object Types/Site": "tutorialSidebar",
             "/docs/Setup": "tutorialSidebar",
+            "/docs/Types/CircularRegion": "tutorialSidebar",
+            "/docs/Types/Customer": "tutorialSidebar",
+            "/docs/Types/CustomerInfo": "tutorialSidebar",
+            "/docs/Types/CustomerState": "tutorialSidebar",
+            "/docs/Types/NotificationInfo": "tutorialSidebar",
+            "/docs/Types/Order": "tutorialSidebar",
+            "/docs/Types/OrderState": "tutorialSidebar",
+            "/docs/Types/PickupType": "tutorialSidebar",
+            "/docs/Types/PickupWindow": "tutorialSidebar",
+            "/docs/Types/Site": "tutorialSidebar",
             "/docs/Usage": "tutorialSidebar"
           },
           "docs": [
@@ -212,7 +212,7 @@
               },
               "next": {
                 "title": "CustomerInfo Object Type",
-                "permalink": "/docs/Object Types/CustomerInfo"
+                "permalink": "/docs/Types/CustomerInfo"
               }
             },
             {
@@ -313,262 +313,6 @@
               }
             },
             {
-              "unversionedId": "Object Types/CircularRegion",
-              "id": "Object Types/CircularRegion",
-              "isDocsHomePage": false,
-              "title": "CircularRegion Object Type",
-              "description": "CircularRegion object is used to define a geographical region using latitude, logtitude ana radius.",
-              "source": "@site/docs/Object Types/CircularRegion.md",
-              "sourceDirName": "Object Types",
-              "slug": "/Object Types/CircularRegion",
-              "permalink": "/docs/Object Types/CircularRegion",
-              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Object Types/CircularRegion.md",
-              "version": "current",
-              "sidebarPosition": 6,
-              "frontMatter": {
-                "sidebar_position": 6
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "PickupWindow Object Type",
-                "permalink": "/docs/Object Types/PickupWindow"
-              },
-              "next": {
-                "title": "NotificationInfo Object Type",
-                "permalink": "/docs/Object Types/NotificationInfo"
-              }
-            },
-            {
-              "unversionedId": "Object Types/Customer",
-              "id": "Object Types/Customer",
-              "isDocsHomePage": false,
-              "title": "Customer Object Type",
-              "description": "Customer object type provide details of the current customer and is returned after creating a customer or logging in.",
-              "source": "@site/docs/Object Types/Customer.md",
-              "sourceDirName": "Object Types",
-              "slug": "/Object Types/Customer",
-              "permalink": "/docs/Object Types/Customer",
-              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Object Types/Customer.md",
-              "version": "current",
-              "sidebarPosition": 2,
-              "frontMatter": {
-                "sidebar_position": 2
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "CustomerInfo Object Type",
-                "permalink": "/docs/Object Types/CustomerInfo"
-              },
-              "next": {
-                "title": "Site Object Type",
-                "permalink": "/docs/Object Types/Site"
-              }
-            },
-            {
-              "unversionedId": "Object Types/CustomerInfo",
-              "id": "Object Types/CustomerInfo",
-              "isDocsHomePage": false,
-              "title": "CustomerInfo Object Type",
-              "description": "CustomerInfo object is used to define the customer informations.",
-              "source": "@site/docs/Object Types/CustomerInfo.md",
-              "sourceDirName": "Object Types",
-              "slug": "/Object Types/CustomerInfo",
-              "permalink": "/docs/Object Types/CustomerInfo",
-              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Object Types/CustomerInfo.md",
-              "version": "current",
-              "sidebarPosition": 1,
-              "frontMatter": {
-                "sidebar_position": 1
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Sites",
-                "permalink": "/docs/Components/Sites"
-              },
-              "next": {
-                "title": "Customer Object Type",
-                "permalink": "/docs/Object Types/Customer"
-              }
-            },
-            {
-              "unversionedId": "Object Types/CustomerState",
-              "id": "Object Types/CustomerState",
-              "isDocsHomePage": false,
-              "title": "CustomerState Object Type",
-              "description": "CustomerState provides the current status of the customer. A pickup order can typically have the following customer states.",
-              "source": "@site/docs/Object Types/CustomerState.md",
-              "sourceDirName": "Object Types",
-              "slug": "/Object Types/CustomerState",
-              "permalink": "/docs/Object Types/CustomerState",
-              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Object Types/CustomerState.md",
-              "version": "current",
-              "sidebarPosition": 8,
-              "frontMatter": {
-                "sidebar_position": 8
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "OrderState Object Type",
-                "permalink": "/docs/Object Types/OrderState"
-              },
-              "next": {
-                "title": "PickupType Object Type",
-                "permalink": "/docs/Object Types/PickupType"
-              }
-            },
-            {
-              "unversionedId": "Object Types/NotificationInfo",
-              "id": "Object Types/NotificationInfo",
-              "isDocsHomePage": false,
-              "title": "NotificationInfo Object Type",
-              "description": "NotificationInfo object is used to define a notification title, message and payload.",
-              "source": "@site/docs/Object Types/NotificationInfo.md",
-              "sourceDirName": "Object Types",
-              "slug": "/Object Types/NotificationInfo",
-              "permalink": "/docs/Object Types/NotificationInfo",
-              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Object Types/NotificationInfo.md",
-              "version": "current",
-              "sidebarPosition": 7,
-              "frontMatter": {
-                "sidebar_position": 7
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "CircularRegion Object Type",
-                "permalink": "/docs/Object Types/CircularRegion"
-              },
-              "next": {
-                "title": "OrderState Object Type",
-                "permalink": "/docs/Object Types/OrderState"
-              }
-            },
-            {
-              "unversionedId": "Object Types/Order",
-              "id": "Object Types/Order",
-              "isDocsHomePage": false,
-              "title": "Order Object Type",
-              "description": "Order object type provides details for an order.",
-              "source": "@site/docs/Object Types/Order.md",
-              "sourceDirName": "Object Types",
-              "slug": "/Object Types/Order",
-              "permalink": "/docs/Object Types/Order",
-              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Object Types/Order.md",
-              "version": "current",
-              "sidebarPosition": 4,
-              "frontMatter": {
-                "sidebar_position": 4
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Site Object Type",
-                "permalink": "/docs/Object Types/Site"
-              },
-              "next": {
-                "title": "PickupWindow Object Type",
-                "permalink": "/docs/Object Types/PickupWindow"
-              }
-            },
-            {
-              "unversionedId": "Object Types/OrderState",
-              "id": "Object Types/OrderState",
-              "isDocsHomePage": false,
-              "title": "OrderState Object Type",
-              "description": "OrderState provides the state of the order from the merchant’s perspective. A pickup order can typically have the following states.",
-              "source": "@site/docs/Object Types/OrderState.md",
-              "sourceDirName": "Object Types",
-              "slug": "/Object Types/OrderState",
-              "permalink": "/docs/Object Types/OrderState",
-              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Object Types/OrderState.md",
-              "version": "current",
-              "sidebarPosition": 7,
-              "frontMatter": {
-                "sidebar_position": 7
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "NotificationInfo Object Type",
-                "permalink": "/docs/Object Types/NotificationInfo"
-              },
-              "next": {
-                "title": "CustomerState Object Type",
-                "permalink": "/docs/Object Types/CustomerState"
-              }
-            },
-            {
-              "unversionedId": "Object Types/PickupType",
-              "id": "Object Types/PickupType",
-              "isDocsHomePage": false,
-              "title": "PickupType Object Type",
-              "description": "PickupType is a string that can be provided while claiming or creating an order. Current accepted values are",
-              "source": "@site/docs/Object Types/PickupType.md",
-              "sourceDirName": "Object Types",
-              "slug": "/Object Types/PickupType",
-              "permalink": "/docs/Object Types/PickupType",
-              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Object Types/PickupType.md",
-              "version": "current",
-              "sidebarPosition": 9,
-              "frontMatter": {
-                "sidebar_position": 9
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "CustomerState Object Type",
-                "permalink": "/docs/Object Types/CustomerState"
-              }
-            },
-            {
-              "unversionedId": "Object Types/PickupWindow",
-              "id": "Object Types/PickupWindow",
-              "isDocsHomePage": false,
-              "title": "PickupWindow Object Type",
-              "description": "PickupWindow object provides the time range when an order is expected to be picked up. It will be nil if there is no pickup window, i.e., ASAP. If there is just a pickup time, the start and end will be the same.",
-              "source": "@site/docs/Object Types/PickupWindow.md",
-              "sourceDirName": "Object Types",
-              "slug": "/Object Types/PickupWindow",
-              "permalink": "/docs/Object Types/PickupWindow",
-              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Object Types/PickupWindow.md",
-              "version": "current",
-              "sidebarPosition": 5,
-              "frontMatter": {
-                "sidebar_position": 5
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Order Object Type",
-                "permalink": "/docs/Object Types/Order"
-              },
-              "next": {
-                "title": "CircularRegion Object Type",
-                "permalink": "/docs/Object Types/CircularRegion"
-              }
-            },
-            {
-              "unversionedId": "Object Types/Site",
-              "id": "Object Types/Site",
-              "isDocsHomePage": false,
-              "title": "Site Object Type",
-              "description": "Site object type provides details for a particular site.",
-              "source": "@site/docs/Object Types/Site.md",
-              "sourceDirName": "Object Types",
-              "slug": "/Object Types/Site",
-              "permalink": "/docs/Object Types/Site",
-              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Object Types/Site.md",
-              "version": "current",
-              "sidebarPosition": 3,
-              "frontMatter": {
-                "sidebar_position": 3
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Customer Object Type",
-                "permalink": "/docs/Object Types/Customer"
-              },
-              "next": {
-                "title": "Order Object Type",
-                "permalink": "/docs/Object Types/Order"
-              }
-            },
-            {
               "unversionedId": "Setup",
               "id": "Setup",
               "isDocsHomePage": false,
@@ -592,6 +336,262 @@
               "next": {
                 "title": "Usage",
                 "permalink": "/docs/Usage"
+              }
+            },
+            {
+              "unversionedId": "Types/CircularRegion",
+              "id": "Types/CircularRegion",
+              "isDocsHomePage": false,
+              "title": "CircularRegion Object Type",
+              "description": "CircularRegion object is used to define a geographical region using latitude, logtitude ana radius.",
+              "source": "@site/docs/Types/CircularRegion.md",
+              "sourceDirName": "Types",
+              "slug": "/Types/CircularRegion",
+              "permalink": "/docs/Types/CircularRegion",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Types/CircularRegion.md",
+              "version": "current",
+              "sidebarPosition": 6,
+              "frontMatter": {
+                "sidebar_position": 6
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "PickupWindow Object Type",
+                "permalink": "/docs/Types/PickupWindow"
+              },
+              "next": {
+                "title": "NotificationInfo Object Type",
+                "permalink": "/docs/Types/NotificationInfo"
+              }
+            },
+            {
+              "unversionedId": "Types/Customer",
+              "id": "Types/Customer",
+              "isDocsHomePage": false,
+              "title": "Customer Object Type",
+              "description": "Customer object type provide details of the current customer and is returned after creating a customer or logging in.",
+              "source": "@site/docs/Types/Customer.md",
+              "sourceDirName": "Types",
+              "slug": "/Types/Customer",
+              "permalink": "/docs/Types/Customer",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Types/Customer.md",
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "CustomerInfo Object Type",
+                "permalink": "/docs/Types/CustomerInfo"
+              },
+              "next": {
+                "title": "Site Object Type",
+                "permalink": "/docs/Types/Site"
+              }
+            },
+            {
+              "unversionedId": "Types/CustomerInfo",
+              "id": "Types/CustomerInfo",
+              "isDocsHomePage": false,
+              "title": "CustomerInfo Object Type",
+              "description": "CustomerInfo object is used to define the customer informations.",
+              "source": "@site/docs/Types/CustomerInfo.md",
+              "sourceDirName": "Types",
+              "slug": "/Types/CustomerInfo",
+              "permalink": "/docs/Types/CustomerInfo",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Types/CustomerInfo.md",
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Sites",
+                "permalink": "/docs/Components/Sites"
+              },
+              "next": {
+                "title": "Customer Object Type",
+                "permalink": "/docs/Types/Customer"
+              }
+            },
+            {
+              "unversionedId": "Types/CustomerState",
+              "id": "Types/CustomerState",
+              "isDocsHomePage": false,
+              "title": "CustomerState Object Type",
+              "description": "CustomerState provides the current status of the customer. A pickup order can typically have the following customer states.",
+              "source": "@site/docs/Types/CustomerState.md",
+              "sourceDirName": "Types",
+              "slug": "/Types/CustomerState",
+              "permalink": "/docs/Types/CustomerState",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Types/CustomerState.md",
+              "version": "current",
+              "sidebarPosition": 8,
+              "frontMatter": {
+                "sidebar_position": 8
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "OrderState Object Type",
+                "permalink": "/docs/Types/OrderState"
+              },
+              "next": {
+                "title": "PickupType Object Type",
+                "permalink": "/docs/Types/PickupType"
+              }
+            },
+            {
+              "unversionedId": "Types/NotificationInfo",
+              "id": "Types/NotificationInfo",
+              "isDocsHomePage": false,
+              "title": "NotificationInfo Object Type",
+              "description": "NotificationInfo object is used to define a notification title, message and payload.",
+              "source": "@site/docs/Types/NotificationInfo.md",
+              "sourceDirName": "Types",
+              "slug": "/Types/NotificationInfo",
+              "permalink": "/docs/Types/NotificationInfo",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Types/NotificationInfo.md",
+              "version": "current",
+              "sidebarPosition": 7,
+              "frontMatter": {
+                "sidebar_position": 7
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "CircularRegion Object Type",
+                "permalink": "/docs/Types/CircularRegion"
+              },
+              "next": {
+                "title": "OrderState Object Type",
+                "permalink": "/docs/Types/OrderState"
+              }
+            },
+            {
+              "unversionedId": "Types/Order",
+              "id": "Types/Order",
+              "isDocsHomePage": false,
+              "title": "Order Object Type",
+              "description": "Order object type provides details for an order.",
+              "source": "@site/docs/Types/Order.md",
+              "sourceDirName": "Types",
+              "slug": "/Types/Order",
+              "permalink": "/docs/Types/Order",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Types/Order.md",
+              "version": "current",
+              "sidebarPosition": 4,
+              "frontMatter": {
+                "sidebar_position": 4
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Site Object Type",
+                "permalink": "/docs/Types/Site"
+              },
+              "next": {
+                "title": "PickupWindow Object Type",
+                "permalink": "/docs/Types/PickupWindow"
+              }
+            },
+            {
+              "unversionedId": "Types/OrderState",
+              "id": "Types/OrderState",
+              "isDocsHomePage": false,
+              "title": "OrderState Object Type",
+              "description": "OrderState provides the state of the order from the merchant’s perspective. A pickup order can typically have the following states.",
+              "source": "@site/docs/Types/OrderState.md",
+              "sourceDirName": "Types",
+              "slug": "/Types/OrderState",
+              "permalink": "/docs/Types/OrderState",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Types/OrderState.md",
+              "version": "current",
+              "sidebarPosition": 7,
+              "frontMatter": {
+                "sidebar_position": 7
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "NotificationInfo Object Type",
+                "permalink": "/docs/Types/NotificationInfo"
+              },
+              "next": {
+                "title": "CustomerState Object Type",
+                "permalink": "/docs/Types/CustomerState"
+              }
+            },
+            {
+              "unversionedId": "Types/PickupType",
+              "id": "Types/PickupType",
+              "isDocsHomePage": false,
+              "title": "PickupType Object Type",
+              "description": "PickupType is a string that can be provided while claiming or creating an order. Current accepted values are",
+              "source": "@site/docs/Types/PickupType.md",
+              "sourceDirName": "Types",
+              "slug": "/Types/PickupType",
+              "permalink": "/docs/Types/PickupType",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Types/PickupType.md",
+              "version": "current",
+              "sidebarPosition": 9,
+              "frontMatter": {
+                "sidebar_position": 9
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "CustomerState Object Type",
+                "permalink": "/docs/Types/CustomerState"
+              }
+            },
+            {
+              "unversionedId": "Types/PickupWindow",
+              "id": "Types/PickupWindow",
+              "isDocsHomePage": false,
+              "title": "PickupWindow Object Type",
+              "description": "PickupWindow object provides the time range when an order is expected to be picked up. It will be nil if there is no pickup window, i.e., ASAP. If there is just a pickup time, the start and end will be the same.",
+              "source": "@site/docs/Types/PickupWindow.md",
+              "sourceDirName": "Types",
+              "slug": "/Types/PickupWindow",
+              "permalink": "/docs/Types/PickupWindow",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Types/PickupWindow.md",
+              "version": "current",
+              "sidebarPosition": 5,
+              "frontMatter": {
+                "sidebar_position": 5
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Order Object Type",
+                "permalink": "/docs/Types/Order"
+              },
+              "next": {
+                "title": "CircularRegion Object Type",
+                "permalink": "/docs/Types/CircularRegion"
+              }
+            },
+            {
+              "unversionedId": "Types/Site",
+              "id": "Types/Site",
+              "isDocsHomePage": false,
+              "title": "Site Object Type",
+              "description": "Site object type provides details for a particular site.",
+              "source": "@site/docs/Types/Site.md",
+              "sourceDirName": "Types",
+              "slug": "/Types/Site",
+              "permalink": "/docs/Types/Site",
+              "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Types/Site.md",
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "sidebar_position": 3
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Customer Object Type",
+                "permalink": "/docs/Types/Customer"
+              },
+              "next": {
+                "title": "Order Object Type",
+                "permalink": "/docs/Types/Order"
               }
             },
             {

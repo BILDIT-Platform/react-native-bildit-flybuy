@@ -46,58 +46,58 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "Object Types/CircularRegion",
-              "path": "/docs/Object Types/CircularRegion",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "Object Types/Customer",
-              "path": "/docs/Object Types/Customer",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "Object Types/CustomerInfo",
-              "path": "/docs/Object Types/CustomerInfo",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "Object Types/CustomerState",
-              "path": "/docs/Object Types/CustomerState",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "Object Types/NotificationInfo",
-              "path": "/docs/Object Types/NotificationInfo",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "Object Types/Order",
-              "path": "/docs/Object Types/Order",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "Object Types/OrderState",
-              "path": "/docs/Object Types/OrderState",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "Object Types/PickupType",
-              "path": "/docs/Object Types/PickupType",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "Object Types/PickupWindow",
-              "path": "/docs/Object Types/PickupWindow",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "Object Types/Site",
-              "path": "/docs/Object Types/Site",
-              "sidebar": "tutorialSidebar"
-            },
-            {
               "id": "Setup",
               "path": "/docs/Setup",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Types/CircularRegion",
+              "path": "/docs/Types/CircularRegion",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Types/Customer",
+              "path": "/docs/Types/Customer",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Types/CustomerInfo",
+              "path": "/docs/Types/CustomerInfo",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Types/CustomerState",
+              "path": "/docs/Types/CustomerState",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Types/NotificationInfo",
+              "path": "/docs/Types/NotificationInfo",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Types/Order",
+              "path": "/docs/Types/Order",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Types/OrderState",
+              "path": "/docs/Types/OrderState",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Types/PickupType",
+              "path": "/docs/Types/PickupType",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Types/PickupWindow",
+              "path": "/docs/Types/PickupWindow",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Types/Site",
+              "path": "/docs/Types/Site",
               "sidebar": "tutorialSidebar"
             },
             {

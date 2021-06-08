@@ -66,57 +66,57 @@
       },
       {
         "type": "category",
-        "label": "Object Types",
+        "label": "Types",
         "items": [
           {
             "type": "link",
             "label": "CustomerInfo Object Type",
-            "href": "/docs/Object Types/CustomerInfo"
+            "href": "/docs/Types/CustomerInfo"
           },
           {
             "type": "link",
             "label": "Customer Object Type",
-            "href": "/docs/Object Types/Customer"
+            "href": "/docs/Types/Customer"
           },
           {
             "type": "link",
             "label": "Site Object Type",
-            "href": "/docs/Object Types/Site"
+            "href": "/docs/Types/Site"
           },
           {
             "type": "link",
             "label": "Order Object Type",
-            "href": "/docs/Object Types/Order"
+            "href": "/docs/Types/Order"
           },
           {
             "type": "link",
             "label": "PickupWindow Object Type",
-            "href": "/docs/Object Types/PickupWindow"
+            "href": "/docs/Types/PickupWindow"
           },
           {
             "type": "link",
             "label": "CircularRegion Object Type",
-            "href": "/docs/Object Types/CircularRegion"
+            "href": "/docs/Types/CircularRegion"
           },
           {
             "type": "link",
             "label": "NotificationInfo Object Type",
-            "href": "/docs/Object Types/NotificationInfo"
+            "href": "/docs/Types/NotificationInfo"
           },
           {
             "type": "link",
             "label": "OrderState Object Type",
-            "href": "/docs/Object Types/OrderState"
+            "href": "/docs/Types/OrderState"
           },
           {
             "type": "link",
             "label": "CustomerState Object Type",
-            "href": "/docs/Object Types/CustomerState"
+            "href": "/docs/Types/CustomerState"
           },
           {
             "type": "link",
             "label": "PickupType Object Type",
-            "href": "/docs/Object Types/PickupType"
+            "href": "/docs/Types/PickupType"
           }
         ],
         "collapsed": true
@@ -131,17 +131,17 @@
     "/docs/Modules/Notify": "tutorialSidebar",
     "/docs/Modules/Pickup": "tutorialSidebar",
     "/docs/Modules/Presence": "tutorialSidebar",
-    "/docs/Object Types/CircularRegion": "tutorialSidebar",
-    "/docs/Object Types/Customer": "tutorialSidebar",
-    "/docs/Object Types/CustomerInfo": "tutorialSidebar",
-    "/docs/Object Types/CustomerState": "tutorialSidebar",
-    "/docs/Object Types/NotificationInfo": "tutorialSidebar",
-    "/docs/Object Types/Order": "tutorialSidebar",
-    "/docs/Object Types/OrderState": "tutorialSidebar",
-    "/docs/Object Types/PickupType": "tutorialSidebar",
-    "/docs/Object Types/PickupWindow": "tutorialSidebar",
-    "/docs/Object Types/Site": "tutorialSidebar",
     "/docs/Setup": "tutorialSidebar",
+    "/docs/Types/CircularRegion": "tutorialSidebar",
+    "/docs/Types/Customer": "tutorialSidebar",
+    "/docs/Types/CustomerInfo": "tutorialSidebar",
+    "/docs/Types/CustomerState": "tutorialSidebar",
+    "/docs/Types/NotificationInfo": "tutorialSidebar",
+    "/docs/Types/Order": "tutorialSidebar",
+    "/docs/Types/OrderState": "tutorialSidebar",
+    "/docs/Types/PickupType": "tutorialSidebar",
+    "/docs/Types/PickupWindow": "tutorialSidebar",
+    "/docs/Types/Site": "tutorialSidebar",
     "/docs/Usage": "tutorialSidebar"
   }
 }

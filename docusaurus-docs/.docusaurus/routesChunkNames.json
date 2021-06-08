@@ -114,7 +114,7 @@
     "component": "component---theme-mdx-page-1-f-3-b90",
     "content": "content---markdown-page-393-028"
   },
-  "/docs-11d": {
+  "/docs-756": {
     "component": "component---theme-doc-page-1-be-9be",
     "versionMetadata": "versionMetadata---docs-935-398"
   },
@@ -146,49 +146,49 @@
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-modules-presence-7-f-0-adc"
   },
-  "/docs/Object Types/CircularRegion-bd2": {
-    "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-object-types-circular-region-557-2c1"
-  },
-  "/docs/Object Types/Customer-aa0": {
-    "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-object-types-customer-5-f-5-712"
-  },
-  "/docs/Object Types/CustomerInfo-81f": {
-    "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-object-types-customer-info-835-d13"
-  },
-  "/docs/Object Types/CustomerState-295": {
-    "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-object-types-customer-stateb-6-f-8e4"
-  },
-  "/docs/Object Types/NotificationInfo-3a3": {
-    "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-object-types-notification-info-5-ac-56a"
-  },
-  "/docs/Object Types/Order-245": {
-    "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-object-types-ordered-9-9fb"
-  },
-  "/docs/Object Types/OrderState-8d2": {
-    "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-object-types-order-stated-7-d-348"
-  },
-  "/docs/Object Types/PickupType-331": {
-    "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-object-types-pickup-typedde-428"
-  },
-  "/docs/Object Types/PickupWindow-3db": {
-    "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-object-types-pickup-windowe-99-7b0"
-  },
-  "/docs/Object Types/Site-864": {
-    "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-object-types-site-7-e-9-c5c"
-  },
   "/docs/Setup-308": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-setupfdc-6fc"
+  },
+  "/docs/Types/CircularRegion-fa6": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-types-circular-regiond-53-c28"
+  },
+  "/docs/Types/Customer-560": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-types-customeree-6-b9d"
+  },
+  "/docs/Types/CustomerInfo-78e": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-types-customer-infofbb-26f"
+  },
+  "/docs/Types/CustomerState-37a": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-types-customer-statecfe-533"
+  },
+  "/docs/Types/NotificationInfo-94e": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-types-notification-infof-4-b-199"
+  },
+  "/docs/Types/Order-178": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-types-order-39-f-005"
+  },
+  "/docs/Types/OrderState-e05": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-types-order-stated-2-d-14a"
+  },
+  "/docs/Types/PickupType-ba2": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-types-pickup-type-597-feb"
+  },
+  "/docs/Types/PickupWindow-2a1": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-types-pickup-windoweb-8-f9e"
+  },
+  "/docs/Types/Site-491": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-types-site-312-895"
   },
   "/docs/Usage-06a": {
     "component": "component---theme-doc-item-178-a40",

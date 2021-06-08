@@ -94,7 +94,7 @@ export default [
 },
 {
   path: '/docs',
-  component: ComponentCreator('/docs','11d'),
+  component: ComponentCreator('/docs','756'),
   
   routes: [
 {
@@ -133,58 +133,58 @@ export default [
   exact: true,
 },
 {
-  path: '/docs/Object Types/CircularRegion',
-  component: ComponentCreator('/docs/Object Types/CircularRegion','bd2'),
-  exact: true,
-},
-{
-  path: '/docs/Object Types/Customer',
-  component: ComponentCreator('/docs/Object Types/Customer','aa0'),
-  exact: true,
-},
-{
-  path: '/docs/Object Types/CustomerInfo',
-  component: ComponentCreator('/docs/Object Types/CustomerInfo','81f'),
-  exact: true,
-},
-{
-  path: '/docs/Object Types/CustomerState',
-  component: ComponentCreator('/docs/Object Types/CustomerState','295'),
-  exact: true,
-},
-{
-  path: '/docs/Object Types/NotificationInfo',
-  component: ComponentCreator('/docs/Object Types/NotificationInfo','3a3'),
-  exact: true,
-},
-{
-  path: '/docs/Object Types/Order',
-  component: ComponentCreator('/docs/Object Types/Order','245'),
-  exact: true,
-},
-{
-  path: '/docs/Object Types/OrderState',
-  component: ComponentCreator('/docs/Object Types/OrderState','8d2'),
-  exact: true,
-},
-{
-  path: '/docs/Object Types/PickupType',
-  component: ComponentCreator('/docs/Object Types/PickupType','331'),
-  exact: true,
-},
-{
-  path: '/docs/Object Types/PickupWindow',
-  component: ComponentCreator('/docs/Object Types/PickupWindow','3db'),
-  exact: true,
-},
-{
-  path: '/docs/Object Types/Site',
-  component: ComponentCreator('/docs/Object Types/Site','864'),
-  exact: true,
-},
-{
   path: '/docs/Setup',
   component: ComponentCreator('/docs/Setup','308'),
+  exact: true,
+},
+{
+  path: '/docs/Types/CircularRegion',
+  component: ComponentCreator('/docs/Types/CircularRegion','fa6'),
+  exact: true,
+},
+{
+  path: '/docs/Types/Customer',
+  component: ComponentCreator('/docs/Types/Customer','560'),
+  exact: true,
+},
+{
+  path: '/docs/Types/CustomerInfo',
+  component: ComponentCreator('/docs/Types/CustomerInfo','78e'),
+  exact: true,
+},
+{
+  path: '/docs/Types/CustomerState',
+  component: ComponentCreator('/docs/Types/CustomerState','37a'),
+  exact: true,
+},
+{
+  path: '/docs/Types/NotificationInfo',
+  component: ComponentCreator('/docs/Types/NotificationInfo','94e'),
+  exact: true,
+},
+{
+  path: '/docs/Types/Order',
+  component: ComponentCreator('/docs/Types/Order','178'),
+  exact: true,
+},
+{
+  path: '/docs/Types/OrderState',
+  component: ComponentCreator('/docs/Types/OrderState','e05'),
+  exact: true,
+},
+{
+  path: '/docs/Types/PickupType',
+  component: ComponentCreator('/docs/Types/PickupType','ba2'),
+  exact: true,
+},
+{
+  path: '/docs/Types/PickupWindow',
+  component: ComponentCreator('/docs/Types/PickupWindow','2a1'),
+  exact: true,
+},
+{
+  path: '/docs/Types/Site',
+  component: ComponentCreator('/docs/Types/Site','491'),
   exact: true,
 },
 {

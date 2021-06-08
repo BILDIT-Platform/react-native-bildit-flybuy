@@ -28,14 +28,14 @@ Most orders will have a pickup time of “ASAP”. If you have a different picku
 
 #### Params
 
-| Name         | Type           | Example                                                                                                           |
-| ------------ | -------------- | ----------------------------------------------------------------------------------------------------------------- | --- |
-| siteId       | Int            | `15942`                                                                                                           |
-| pid          | Str            | `'573836'`                                                                                                        |
-| customerInfo | ICustomerInfo  | `{name: 'Lamia Selmane AB',carType: 'Nothing',carColor: 'Silver',licensePlate: 'Nothing' phone: '555-555-5555',}` |
-| pickupWindow | PickupWindow   | `{start: new Date().toISOString(),end: new Date('2022-12-02').toISOString(),}`                                    |     |
-| orderState   | OrderStateType | `'delayed'`                                                                                                       |
-| pickupType   | PickupType     | `'delivery'`                                                                                                      |
+| Name         | Type                                        | Example                                                                                                           |
+| ------------ | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --- |
+| siteId       | Int                                         | `15942`                                                                                                           |
+| pid          | Str                                         | `'573836'`                                                                                                        |
+| customerInfo | [`ICustomerInfo`](../Types/CustomerInfo)    | `{name: 'Lamia Selmane AB',carType: 'Nothing',carColor: 'Silver',licensePlate: 'Nothing' phone: '555-555-5555',}` |
+| pickupWindow | [`PickupWindow`](../Types/PickupWindow)     | `{start: new Date().toISOString(),end: new Date('2022-12-02').toISOString(),}`                                    |     |
+| orderState   | [`OrderStateType`](../Types/OrderStateType) | `'delayed'`                                                                                                       |
+| pickupType   | [`PickupType`](../Types/PickupType)         | `'delivery'`                                                                                                      |
 
 #### Example
 
@@ -69,11 +69,11 @@ claim an order for the current customer.
 
 #### Params
 
-| Name         | Type          | Example                                                                                                           |
-| ------------ | ------------- | ----------------------------------------------------------------------------------------------------------------- |
-| pid          | Str           | `'9898899'`                                                                                                       |
-| customerInfo | ICustomerInfo | `{name: 'Lamia Selmane AB',carType: 'Nothing',carColor: 'Silver',licensePlate: 'Nothing',phone: '555-555-5555',}` |
-| pickupType   | PickupType    | `'pickup'`                                                                                                        |
+| Name         | Type                                     | Example                                                                                                           |
+| ------------ | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| pid          | Str                                      | `'9898899'`                                                                                                       |
+| customerInfo | [`ICustomerInfo`](../Types/CustomerInfo) | `{name: 'Lamia Selmane AB',carType: 'Nothing',carColor: 'Silver',licensePlate: 'Nothing',phone: '555-555-5555',}` |
+| pickupType   | [`PickupType`](../Types/PickupType)      | `'pickup'`                                                                                                        |
 
 #### Example
 
@@ -99,10 +99,10 @@ You can update an order’s state, if necessary, with any valid state:
 
 #### Params
 
-| Name    | Type           | Example    |
-| ------- | -------------- | ---------- |
-| orderID | Int            | `46084566` |
-| state   | OrderStateType | `'ready'`  |
+| Name    | Type                                        | Example    |
+| ------- | ------------------------------------------- | ---------- |
+| orderID | Int                                         | `46084566` |
+| state   | [`OrderStateType`](../Types/OrderStateType) | `'ready'`  |
 
 #### Example
 
@@ -116,10 +116,10 @@ Flybuy.Orders.updateOrderState(46084566, 'ready');
 
 #### Params
 
-| Name    | Type          | Example      |
-| ------- | ------------- | ------------ |
-| orderID | Int           | `46084566`   |
-| state   | CustomerState | `'departed'` |
+| Name    | Type                                      | Example      |
+| ------- | ----------------------------------------- | ------------ |
+| orderID | Int                                       | `46084566`   |
+| state   | [`CustomerState`](../Types/CustomerState) | `'departed'` |
 
 #### Example
 

@@ -53,11 +53,11 @@
                 "items": [
                   {
                     "type": "doc",
-                    "id": "Components/Orders"
+                    "id": "Components/Customers"
                   },
                   {
                     "type": "doc",
-                    "id": "Components/Customers"
+                    "id": "Components/Orders"
                   },
                   {
                     "type": "doc",
@@ -85,25 +85,25 @@
               "id": "Components/Customers",
               "isDocsHomePage": false,
               "title": "Customers",
-              "description": "Create Customer",
+              "description": "Several methods are provided for managing the Customer within the SDK.",
               "source": "@site/docs/Components/Customers.md",
               "sourceDirName": "Components",
               "slug": "/Components/Customers",
               "permalink": "/docs/Components/Customers",
               "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/Components/Customers.md",
               "version": "current",
-              "sidebarPosition": 2,
+              "sidebarPosition": 1,
               "frontMatter": {
-                "sidebar_position": 2
+                "sidebar_position": 1
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Orders",
-                "permalink": "/docs/Components/Orders"
+                "title": "Notify",
+                "permalink": "/docs/Modules/Notify"
               },
               "next": {
-                "title": "Sites",
-                "permalink": "/docs/Components/Sites"
+                "title": "Orders",
+                "permalink": "/docs/Components/Orders"
               }
             },
             {
@@ -124,12 +124,12 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Notify",
-                "permalink": "/docs/Modules/Notify"
-              },
-              "next": {
                 "title": "Customers",
                 "permalink": "/docs/Components/Customers"
+              },
+              "next": {
+                "title": "Sites",
+                "permalink": "/docs/Components/Sites"
               }
             },
             {
@@ -150,8 +150,8 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Customers",
-                "permalink": "/docs/Components/Customers"
+                "title": "Orders",
+                "permalink": "/docs/Components/Orders"
               }
             },
             {
@@ -195,8 +195,8 @@
                 "permalink": "/docs/Modules/Presence"
               },
               "next": {
-                "title": "Orders",
-                "permalink": "/docs/Components/Orders"
+                "title": "Customers",
+                "permalink": "/docs/Components/Customers"
               }
             },
             {

@@ -48,13 +48,13 @@
         "items": [
           {
             "type": "link",
-            "label": "Orders",
-            "href": "/docs/Components/Orders"
+            "label": "Customers",
+            "href": "/docs/Components/Customers"
           },
           {
             "type": "link",
-            "label": "Customers",
-            "href": "/docs/Components/Customers"
+            "label": "Orders",
+            "href": "/docs/Components/Orders"
           },
           {
             "type": "link",

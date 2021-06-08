@@ -26,10 +26,4 @@ Your issue report should contain a title and a clear description of the issue at
 
 ## License
 
-Copyright (c) 2020 by Radius Networks
-
-http://www.radiusnetworks.com
-
-All Rights Reserved
-
-Usage of this library implies agreement to abide by the Radius Networks [terms of service](https://www.flybuy.com/terms-of-service)
+[MIT](https://github.com/BILDIT-Platform/react-native-bildit-flybuy/blob/main/LICENSE)

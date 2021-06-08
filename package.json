@@ -1,7 +1,7 @@
 {
   "name": "react-native-bildit-flybuy",
-  "version": "0.1.0",
-  "description": "React Native JS Wrapper for FlyBuy Native SDK",
+  "version": "0.1.1",
+  "description": "React Native FlyBuy module. Supports Core, Pickup, Notify, and Presence Native SDK APIs.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -34,6 +34,7 @@
   "keywords": [
     "react-native",
     "ios",
+    "flybuy",
     "android"
   ],
   "repository": "https://github.com/BILDIT-Platform/react-native-bildit-flybuy",

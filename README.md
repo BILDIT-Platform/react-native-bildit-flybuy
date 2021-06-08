@@ -1,7 +1,6 @@
 <p align="center">
   <a href="#">
     <img src="logo.svg" height="128">
-    <h1 align="center">FlyBuy</h1>
   </a>
 </p>
 

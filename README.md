@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="#">
+  <a href="https://bildit-platform.github.io/react-native-bildit-flybuy/">
     <img src="logo.svg" height="128">
   </a>
 </p>
@@ -10,7 +10,7 @@ This library was bootstrapped with [create-react-native-module](https://github.c
 
 ## Documentation
 
-Visit []() to view the full documentation.
+Visit [react-native-bildit-flybuy](https://bildit-platform.github.io/react-native-bildit-flybuy/) to view the full documentation.
 
 ## Contributing
 

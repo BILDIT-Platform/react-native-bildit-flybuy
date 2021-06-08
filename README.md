@@ -12,7 +12,7 @@ Visit []() to view the full documentation.
 
 ## Contributing
 
-Do you have a feature request, bug report, or patch? Great! See [CONTRIBUTING.md][contribute] for information on what you can do about that. Contributions are welcome and appreciated !
+Do you have a feature request, bug report, or patch? Great! See [CONTRIBUTING.md](./CONTRIBUTING.md) for information on what you can do about that. Contributions are welcome and appreciated !
 
 ## License
 

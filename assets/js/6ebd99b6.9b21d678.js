@@ -1,0 +1,1 @@
+(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[714],{5915:function(s){"use strict";s.exports=JSON.parse('{"allTagsPath":"/react-native-bildit-flybuy/blog/tags","slug":"docusaurus","name":"docusaurus","count":3,"permalink":"/react-native-bildit-flybuy/blog/tags/docusaurus"}')}}]);

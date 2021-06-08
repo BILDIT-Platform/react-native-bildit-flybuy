@@ -80,7 +80,7 @@ Flybuy uses mobile sensor data to identify the location of a customer. The Flybu
 <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 ```
 
-#### Requesting permissions at runtime
+## Requesting permissions at runtime
 
 ```js
 import {

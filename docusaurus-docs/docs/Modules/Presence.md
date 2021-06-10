@@ -2,19 +2,16 @@
 sidebar_position: 2
 ---
 
-## Initialize SDK
+## Set up and Initialize SDK
 
-The Flybuy SDK must be initialized when the application starts in order to configure the app authorization token, Refer to the [Usage](../Usage) guide for details on initializing the SDK.
+The Flybuy SDK must be initialized when the application starts in order to configure the app authorization token and handle appropriate lifecycle methods. 
 
-#### Configuration
+*Important:* Complete all steps in the Android and iOS setup guides. Key steps are highlighted below.
 
-Configure Presence Module using presence UUID.
+ 1. [Install SDK](../Setup.md#installation)
+ 2. Post-install Steps for [iOS](../Setup.md#ios) and [Android](../Setup.md#android)
+ 3. [Initialize SDK on launch](../Usage.md#initialize-sdk-on-launch)
 
-```js
-import FlyBuy from 'react-native-bildit-flybuy';
-
-FlyBuy.Presence.configure('YOUR_PRESENCE_UUID_HERE');
-```
 
 ## Bluetooth Permissions
 

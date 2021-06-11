@@ -2,22 +2,17 @@
 sidebar_position: 1
 ---
 
-## Initialize SDK
 
-The Flybuy SDK must be initialized when the application starts in order to configure the app authorization token, Refer to the [Usage](../Usage) guide for details on initializing the SDK.
+## Set up and Initialize SDK
 
-#### Configuration
+The Flybuy SDK must be initialized when the application starts in order to configure the app authorization token and handle appropriate lifecycle methods. 
 
-Configure Pickup Module using:
+*Important:* Complete all steps in the Android and iOS setup guides. Key steps are highlighted below.
 
-```js
-import FlyBuy from 'react-native-bildit-flybuy';
+ 1. [Install SDK](../Setup.md#installation)
+ 2. Post-install Steps for [iOS](../Setup.md#ios) and [Android](../Setup.md#android)
+ 3. [Initialize SDK on launch](../Usage.md#initialize-sdk-on-launch)
 
-FlyBuy.Pickup.configure();
-```
+## Usage
 
-## Location Permissions
-
-Flybuy uses location services on mobile devices to send updates and provide accurate ETAs to the merchant site. the app must ask for location permissions from the user. Refer to the Setting Permissions section of the setup guides for [iOS](../Setup#enable-background-modes) and [Android](../Setup#setting-permissions) for details. If the app already asks for location permissions for other purposes, this may not be necessary. If the user does not provide permission, the SDK provides methods for updating the customer state manually, refer to [`updateOrderState`](../Components/Orders#update-order-state)
-
-#### For Order Creation Flow and Customer Management, please refer to [FlyBuy Docs](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/pickup)
+The [FlyBuy Docs](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/pickup) provide a complete guide on usage of the Pickup module. Refer to the React Native [Customers](../Components/Customers.md), [Orders](../Components/Orders.md), and [Sites](../Components/Sites.md) components for method signatures.

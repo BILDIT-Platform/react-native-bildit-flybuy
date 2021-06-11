@@ -24,63 +24,24 @@ react-native link react-native-bildit-flybuy
 
 ### iOS
 
-In order to use the SDK your app will need to request the proper permissions.
+#### Setting Permissions
 
-#### Enable Background Modes
-
-Under the “General” tab for your iOS target, select Capabilities and scroll down to Background Modes.
-
-For Pickup, enable Background Modes and select `Location updates`, `Background fetch`, and `Remote notifications`.
-
-For Presence, enable Background Modes and select `Acts as a Bluetooth LE Accessory`.
-
-<img src='/img/quickstart_background_modes.png' />
-
-#### Permission Descriptions
-
-Flybuy Pickup uses mobile sensor data to identify the location of a customer. Flybuy Presence also requires Bluetooth permissions.
-
-The Pickup module requires Location services permissions to properly function. Specifically, the SDK supports Always permission, but only needs the When in Use permission.
-
-If you are already asking users for the required permissions, you should review the usage description. The usage description explains why the application requires Always authorization.
-
-If you currently do not ask users for the required permissions, you should add a usage description to your app. Usage descriptions are set in the `Info.plist` file.
-
-| Name                                           | Suggested Description                                  |
-| ---------------------------------------------- | ------------------------------------------------------ |
-| `NSLocationAlwaysAndWhenInUseUsageDescription` | To accurately locate you for order delivery            |
-| `NSLocationWhenInUseUsageDescription`          | To accurately locate you for order delivery            |
-| `NSBluetoothAlwaysUsageDescription`            | To communicate via Bluetooth for an order at the store |
-| `NSBluetoothPeripheralUsageDescription`        | To communicate via Bluetooth for an order at the store |
+Refer to the [Flybuy Documentation on configuring permissions](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/ios?id=setting-permissions) on iOS.
 
 ### Android
 
 #### Google API Keys
 
-The SDK needs a Google API key for access to location APIs. If you have not already, go to your Google API Console and create an Android API key. Then, enable the Maps SDK for Android.
+Refer to [Flybuy Documentation on setting Google API Keys](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/android?id=google-api-keys).
 
-Add the following to your `AndroidManifest.xml` with the API key you generated above.
+#### Permissions
 
-```xml
-<application>
-    <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="<INSERT_API_KEY>"/>
-</application>
-```
+Refer to [Flybuy Documentation for permission requirements](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/android?id=setting-permissions) on Android.
 
-#### Setting Permissions
 
-Flybuy uses mobile sensor data to identify the location of a customer. The Flybuy SDK requires `ACCESS_FINE_LOCATION` and `ACCESS_BACKGROUND_LOCATION` permissions to properly function correctly. The app must request the permission at runtime.
+#### Requesting location permissions at runtime
 
-#### Adding permissions to `AndroidManifest.xml`
-
-```xml
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-```
-
-## Requesting permissions at runtime
+The following code snipper provides an example of requesting location permissions at runtime.
 
 ```js
 import {

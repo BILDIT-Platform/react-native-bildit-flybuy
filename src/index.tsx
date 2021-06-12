@@ -125,6 +125,7 @@ type Orders = {
     customerInfo: ICustomerInfo,
     pickupType?: PickupType
   ): Promise<IOrder>;
+  fetchOrderByRedemptionCode(redemCode: string): Promise<IOrder>;
   updateOrderState(orderId: number, state: OrderStateType): Promise<IOrder>;
   updateOrderCustomerState(
     orderId: number,
@@ -196,6 +197,7 @@ const FlyBuyModule = {
     fetchOrders: Flybuy.fetchOrders,
     createOrder: Flybuy.createOrder,
     claimOrder: Flybuy.claimOrder,
+    fetchOrderByRedemptionCode: Flybuy.fetchOrderByRedemptionCode,
     updateOrderState: Flybuy.updateOrderState,
     updateOrderCustomerState: Flybuy.updateOrderCustomerState,
     rateOrder: Flybuy.rateOrder,

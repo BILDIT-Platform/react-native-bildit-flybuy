@@ -151,7 +151,20 @@ class Flybuy: NSObject {
                 reject(error?.localizedDescription,  error.debugDescription, error )
             }
         }
-        
+    }
+    
+    @objc(fetchOrderByRedemptionCode:withResolver:withRejecter:)
+    func fetchOrderByRedemptionCode(
+                    redemCode: String,
+                    resolve:@escaping RCTPromiseResolveBlock,
+                    reject:@escaping RCTPromiseRejectBlock) {
+        FlyBuy.Core.orders.fetch(withRedemptionCode: redemCode) { (order, error) -> (Void) in
+          if let error = error {
+            reject(error.localizedDescription,  error.localizedDescription, error )
+          } else {
+            resolve(self.parseOrder(order: order!))
+          }
+        }
         
     }
     

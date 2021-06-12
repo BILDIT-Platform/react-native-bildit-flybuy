@@ -54,6 +54,10 @@ RCT_EXTERN_METHOD(claimOrder:(NSString *)redeemCode
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(fetchOrderByRedemptionCode:(NSString *)redemCode
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
 RCT_EXTERN_METHOD(updateOrderState:(int)orderId
                   withState:(NSString *)state
                   withResolver:(RCTPromiseResolveBlock)resolve

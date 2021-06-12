@@ -11,7 +11,7 @@ import {
 
 const ORDER_ID = 46615889;
 const NEW_ORDER_ID = 15942;
-const NEW_PID = '013804';
+const NEW_PID = '013806';
 const CUSTOMER_INFO = {
   name: 'Lamia Selmane AB',
   carType: 'Nothing',
@@ -77,9 +77,15 @@ export default function App() {
   };
 
   const claimOrder = () => {
-    Flybuy.Orders.claimOrder('46615889', CUSTOMER_INFO, 'pickup')
-      .then((order) => console.tron.log('claim order', order))
-      .catch((err) => console.tron.log(err));
+    Flybuy.Orders.claimOrder('385BQT5BMH', CUSTOMER_INFO, 'pickup')
+      .then((order) => console.log('claim order', order))
+      .catch((err) => console.log(err));
+  };
+
+  const fetchOrderByRedemptionCode = () => {
+    Flybuy.Orders.fetchOrderByRedemptionCode('385BQT5BMH')
+      .then((order) => console.log('order by redemcode', order))
+      .catch((err) => console.log(err));
   };
 
   const updateOrderState = () => {
@@ -255,6 +261,10 @@ export default function App() {
         <Text>Order</Text>
         <Button title="Fetch orders" onPress={fetchOrders} />
         <Button title="Create order" onPress={createOrder} />
+        <Button
+          title="Fetch Order By RedemptionCode"
+          onPress={fetchOrderByRedemptionCode}
+        />
         <Button title="claimOrder" onPress={claimOrder} />
         <Button title="updateOrderState" onPress={updateOrderState} />
         <Button title="rateOrder" onPress={rateOrder} />

@@ -146,7 +146,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
       } ?: run {
         promise.resolve(orders?.let { parseOrders(it) })
       }
-
+  
     }
   }
 
@@ -159,6 +159,17 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
         order?.let { promise.resolve(parseOrder(it)) } ?: run {
           promise.reject("null", "Null order")
         }
+      }
+    }
+  }
+
+  @ReactMethod
+  fun fetchOrderByRedemptionCode(redeemCode: String, promise: Promise) {
+    FlyBuyCore.orders.fetch(redeemCode) { order, sdkError ->
+      if (null != sdkError) {
+        promise.reject(sdkError.description(),sdkError.description())
+      } else {
+        promise.resolve(order?.let { parseOrder(it) })
       }
     }
   }

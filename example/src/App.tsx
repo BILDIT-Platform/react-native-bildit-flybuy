@@ -78,14 +78,14 @@ export default function App() {
 
   const claimOrder = () => {
     Flybuy.Orders.claimOrder('385BQT5BMH', CUSTOMER_INFO, 'pickup')
-      .then((order) => console.log('claim order', order))
-      .catch((err) => console.log(err));
+      .then((order) => console.tron.log('claim order', order))
+      .catch((err) => console.tron.log(err));
   };
 
   const fetchOrderByRedemptionCode = () => {
     Flybuy.Orders.fetchOrderByRedemptionCode('385BQT5BMH')
-      .then((order) => console.log('order by redemcode', order))
-      .catch((err) => console.log(err));
+      .then((order) => console.tron.log('order by redemcode', order))
+      .catch((err) => console.tron.log(err));
   };
 
   const updateOrderState = () => {

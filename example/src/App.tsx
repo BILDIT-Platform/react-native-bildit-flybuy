@@ -240,10 +240,10 @@ export default function App() {
   };
 
   React.useEffect(() => {
-    FlyBuy.Core.configure('224.epegiXJkGRqvwLJJYHPTCWGR');
+    FlyBuy.Core.configure('YOUR_APP_TOKEN_HERE');
     FlyBuy.Notify.configure();
     FlyBuy.Pickup.configure();
-    FlyBuy.Presence.configure('4192bff0-e1e0-43ce-a4db-912808c32493');
+    FlyBuy.Presence.configure('YOUR_PRESENCE_UUID_HERE');
     getLocationPermissions();
   }, []);
 

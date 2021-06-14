@@ -23,9 +23,9 @@ sidebar_position: 2
 "token": "F69PGKM1QXCN7Dj3ybEXCpU4",
 "info": {
   "phone": "555-555-5555",
-  "licensePlate": "Nothing",
+  "licensePlate": "AB 0496",
   "carColor": "Silver",
-  "carType": "Nothing",
+  "carType": "Tesla",
   "name": "Abdelkhalek Zellat"
 },
 "emailAddress": null

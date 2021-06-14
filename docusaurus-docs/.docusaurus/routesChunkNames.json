@@ -1,197 +1,197 @@
 {
-  "/-deb": {
+  "/react-native-bildit-flybuy/-122": {
     "component": "component---site-src-pages-index-jsc-4-f-f99",
-    "config": "config---5-e-9-4f3"
+    "config": "config---react-native-bildit-flybuy-5-e-9-72c"
   },
-  "/__docusaurus/debug-3d6": {
+  "/react-native-bildit-flybuy/__docusaurus/debug-d6f": {
     "component": "component---theme-debug-config-23-a-2ff"
   },
-  "/__docusaurus/debug/config-914": {
+  "/react-native-bildit-flybuy/__docusaurus/debug/config-bb5": {
     "component": "component---theme-debug-config-23-a-2ff"
   },
-  "/__docusaurus/debug/content-c28": {
+  "/react-native-bildit-flybuy/__docusaurus/debug/content-163": {
     "component": "component---theme-debug-contentba-8-ce7",
-    "allContent": "allContent---docusaurus-debug-content-246-9aa"
+    "allContent": "allContent---react-native-bildit-flybuy-docusaurus-debug-content-246-77e"
   },
-  "/__docusaurus/debug/globalData-3cf": {
+  "/react-native-bildit-flybuy/__docusaurus/debug/globalData-824": {
     "component": "component---theme-debug-global-dataede-0fa"
   },
-  "/__docusaurus/debug/metadata-31b": {
+  "/react-native-bildit-flybuy/__docusaurus/debug/metadata-7ee": {
     "component": "component---theme-debug-site-metadata-68-e-3d4"
   },
-  "/__docusaurus/debug/registry-0da": {
+  "/react-native-bildit-flybuy/__docusaurus/debug/registry-7bb": {
     "component": "component---theme-debug-registry-679-501"
   },
-  "/__docusaurus/debug/routes-244": {
+  "/react-native-bildit-flybuy/__docusaurus/debug/routes-3ae": {
     "component": "component---theme-debug-routes-946-699"
   },
-  "/blog-faa": {
+  "/react-native-bildit-flybuy/blog-6f8": {
     "component": "component---theme-blog-list-pagea-6-a-7ba",
-    "sidebar": "sidebar---blog-743-7fa",
+    "sidebar": "sidebar---react-native-bildit-flybuy-blog-743-c8e",
     "items": [
       {
-        "content": "content---blogaf-1-856"
+        "content": "content---react-native-bildit-flybuy-blogaf-1-bb4"
       },
       {
-        "content": "content---blog-357-22b"
+        "content": "content---react-native-bildit-flybuy-blog-357-770"
       },
       {
-        "content": "content---blog-8-e-9-35c"
+        "content": "content---react-native-bildit-flybuy-blog-8-e-9-80e"
       }
     ],
-    "metadata": "metadata---blogb-2-b-df1"
+    "metadata": "metadata---react-native-bildit-flybuy-blog-8-a-2-513"
   },
-  "/blog/hello-world-c16": {
+  "/react-native-bildit-flybuy/blog/hello-world-7f7": {
     "component": "component---theme-blog-post-pageccc-cab",
-    "sidebar": "sidebar---blog-743-7fa",
-    "content": "content---blog-hello-worldd-61-086"
+    "sidebar": "sidebar---react-native-bildit-flybuy-blog-743-c8e",
+    "content": "content---react-native-bildit-flybuy-blog-hello-worldd-61-1b7"
   },
-  "/blog/hola-b39": {
+  "/react-native-bildit-flybuy/blog/hola-c2e": {
     "component": "component---theme-blog-post-pageccc-cab",
-    "sidebar": "sidebar---blog-743-7fa",
-    "content": "content---blog-holabdd-150"
+    "sidebar": "sidebar---react-native-bildit-flybuy-blog-743-c8e",
+    "content": "content---react-native-bildit-flybuy-blog-holabdd-a00"
   },
-  "/blog/tags-3e4": {
+  "/react-native-bildit-flybuy/blog/tags-ba5": {
     "component": "component---theme-blog-tags-list-page-01-a-d0b",
-    "sidebar": "sidebar---blog-743-7fa",
-    "tags": "tags---blog-tagsa-70-da2"
+    "sidebar": "sidebar---react-native-bildit-flybuy-blog-743-c8e",
+    "tags": "tags---react-native-bildit-flybuy-blog-tags-21-a-c1d"
   },
-  "/blog/tags/docusaurus-04d": {
+  "/react-native-bildit-flybuy/blog/tags/docusaurus-58c": {
     "component": "component---theme-blog-tags-posts-page-687-b6c",
-    "sidebar": "sidebar---blog-743-7fa",
+    "sidebar": "sidebar---react-native-bildit-flybuy-blog-743-c8e",
     "items": [
       {
-        "content": "content---blogaf-1-856"
+        "content": "content---react-native-bildit-flybuy-blogaf-1-bb4"
       },
       {
-        "content": "content---blog-357-22b"
+        "content": "content---react-native-bildit-flybuy-blog-357-770"
       },
       {
-        "content": "content---blog-8-e-9-35c"
+        "content": "content---react-native-bildit-flybuy-blog-8-e-9-80e"
       }
     ],
-    "metadata": "metadata---blog-tags-docusaurusa-80-728"
+    "metadata": "metadata---react-native-bildit-flybuy-blog-tags-docusaurus-6-eb-504"
   },
-  "/blog/tags/facebook-25a": {
+  "/react-native-bildit-flybuy/blog/tags/facebook-7b8": {
     "component": "component---theme-blog-tags-posts-page-687-b6c",
-    "sidebar": "sidebar---blog-743-7fa",
+    "sidebar": "sidebar---react-native-bildit-flybuy-blog-743-c8e",
     "items": [
       {
-        "content": "content---blogaf-1-856"
+        "content": "content---react-native-bildit-flybuy-blogaf-1-bb4"
       }
     ],
-    "metadata": "metadata---blog-tags-facebook-031-c52"
+    "metadata": "metadata---react-native-bildit-flybuy-blog-tags-facebookbfd-ef0"
   },
-  "/blog/tags/hello-bd9": {
+  "/react-native-bildit-flybuy/blog/tags/hello-e48": {
     "component": "component---theme-blog-tags-posts-page-687-b6c",
-    "sidebar": "sidebar---blog-743-7fa",
+    "sidebar": "sidebar---react-native-bildit-flybuy-blog-743-c8e",
     "items": [
       {
-        "content": "content---blogaf-1-856"
+        "content": "content---react-native-bildit-flybuy-blogaf-1-bb4"
       },
       {
-        "content": "content---blog-357-22b"
+        "content": "content---react-native-bildit-flybuy-blog-357-770"
       }
     ],
-    "metadata": "metadata---blog-tags-hello-30-a-bed"
+    "metadata": "metadata---react-native-bildit-flybuy-blog-tags-helloa-1-e-99f"
   },
-  "/blog/tags/hola-c5f": {
+  "/react-native-bildit-flybuy/blog/tags/hola-5d7": {
     "component": "component---theme-blog-tags-posts-page-687-b6c",
-    "sidebar": "sidebar---blog-743-7fa",
+    "sidebar": "sidebar---react-native-bildit-flybuy-blog-743-c8e",
     "items": [
       {
-        "content": "content---blog-8-e-9-35c"
+        "content": "content---react-native-bildit-flybuy-blog-8-e-9-80e"
       }
     ],
-    "metadata": "metadata---blog-tags-holae-16-18a"
+    "metadata": "metadata---react-native-bildit-flybuy-blog-tags-hola-58-a-451"
   },
-  "/blog/welcome-72a": {
+  "/react-native-bildit-flybuy/blog/welcome-e98": {
     "component": "component---theme-blog-post-pageccc-cab",
-    "sidebar": "sidebar---blog-743-7fa",
-    "content": "content---blog-welcome-286-e55"
+    "sidebar": "sidebar---react-native-bildit-flybuy-blog-743-c8e",
+    "content": "content---react-native-bildit-flybuy-blog-welcome-286-b82"
   },
-  "/markdown-page-be1": {
+  "/react-native-bildit-flybuy/markdown-page-b59": {
     "component": "component---theme-mdx-page-1-f-3-b90",
-    "content": "content---markdown-page-393-028"
+    "content": "content---react-native-bildit-flybuy-markdown-page-393-e41"
   },
-  "/docs-756": {
+  "/react-native-bildit-flybuy/docs-eef": {
     "component": "component---theme-doc-page-1-be-9be",
-    "versionMetadata": "versionMetadata---docs-935-398"
+    "versionMetadata": "versionMetadata---react-native-bildit-flybuy-docs-935-d54"
   },
-  "/docs/Components/Customers-5ad": {
+  "/react-native-bildit-flybuy/docs/Components/Customers-366": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-components-customersa-1-d-8f6"
+    "content": "content---react-native-bildit-flybuy-docs-components-customersa-1-d-1ac"
   },
-  "/docs/Components/Orders-a10": {
+  "/react-native-bildit-flybuy/docs/Components/Orders-e2e": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-components-orders-460-f85"
+    "content": "content---react-native-bildit-flybuy-docs-components-orders-460-748"
   },
-  "/docs/Components/Sites-3f3": {
+  "/react-native-bildit-flybuy/docs/Components/Sites-d96": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-components-sitesd-6-b-0c4"
+    "content": "content---react-native-bildit-flybuy-docs-components-sitesd-6-b-328"
   },
-  "/docs/intro-e84": {
+  "/react-native-bildit-flybuy/docs/intro-dbc": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-intro-0-e-3-be1"
+    "content": "content---react-native-bildit-flybuy-docs-intro-0-e-3-d01"
   },
-  "/docs/Modules/Notify-65d": {
+  "/react-native-bildit-flybuy/docs/Modules/Notify-417": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-modules-notify-882-15e"
+    "content": "content---react-native-bildit-flybuy-docs-modules-notify-882-05e"
   },
-  "/docs/Modules/Pickup-ec5": {
+  "/react-native-bildit-flybuy/docs/Modules/Pickup-57f": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-modules-pickup-399-552"
+    "content": "content---react-native-bildit-flybuy-docs-modules-pickup-399-21f"
   },
-  "/docs/Modules/Presence-0f0": {
+  "/react-native-bildit-flybuy/docs/Modules/Presence-8df": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-modules-presence-7-f-0-adc"
+    "content": "content---react-native-bildit-flybuy-docs-modules-presence-7-f-0-61f"
   },
-  "/docs/Setup-308": {
+  "/react-native-bildit-flybuy/docs/Setup-99c": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-setupfdc-6fc"
+    "content": "content---react-native-bildit-flybuy-docs-setupfdc-7f5"
   },
-  "/docs/Types/CircularRegion-fa6": {
+  "/react-native-bildit-flybuy/docs/Types/CircularRegion-6e2": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-types-circular-regiond-53-c28"
+    "content": "content---react-native-bildit-flybuy-docs-types-circular-regiond-53-40a"
   },
-  "/docs/Types/Customer-560": {
+  "/react-native-bildit-flybuy/docs/Types/Customer-aff": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-types-customeree-6-b9d"
+    "content": "content---react-native-bildit-flybuy-docs-types-customeree-6-ae7"
   },
-  "/docs/Types/CustomerInfo-78e": {
+  "/react-native-bildit-flybuy/docs/Types/CustomerInfo-825": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-types-customer-infofbb-26f"
+    "content": "content---react-native-bildit-flybuy-docs-types-customer-infofbb-3d0"
   },
-  "/docs/Types/CustomerState-37a": {
+  "/react-native-bildit-flybuy/docs/Types/CustomerState-9ff": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-types-customer-statecfe-533"
+    "content": "content---react-native-bildit-flybuy-docs-types-customer-statecfe-cba"
   },
-  "/docs/Types/NotificationInfo-94e": {
+  "/react-native-bildit-flybuy/docs/Types/NotificationInfo-0e7": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-types-notification-infof-4-b-199"
+    "content": "content---react-native-bildit-flybuy-docs-types-notification-infof-4-b-13c"
   },
-  "/docs/Types/Order-178": {
+  "/react-native-bildit-flybuy/docs/Types/Order-412": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-types-order-39-f-005"
+    "content": "content---react-native-bildit-flybuy-docs-types-order-39-f-00b"
   },
-  "/docs/Types/OrderState-e05": {
+  "/react-native-bildit-flybuy/docs/Types/OrderState-ac0": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-types-order-stated-2-d-14a"
+    "content": "content---react-native-bildit-flybuy-docs-types-order-stated-2-d-831"
   },
-  "/docs/Types/PickupType-ba2": {
+  "/react-native-bildit-flybuy/docs/Types/PickupType-16a": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-types-pickup-type-597-feb"
+    "content": "content---react-native-bildit-flybuy-docs-types-pickup-type-597-560"
   },
-  "/docs/Types/PickupWindow-2a1": {
+  "/react-native-bildit-flybuy/docs/Types/PickupWindow-be5": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-types-pickup-windoweb-8-f9e"
+    "content": "content---react-native-bildit-flybuy-docs-types-pickup-windoweb-8-061"
   },
-  "/docs/Types/Site-491": {
+  "/react-native-bildit-flybuy/docs/Types/Site-ffb": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-types-site-312-895"
+    "content": "content---react-native-bildit-flybuy-docs-types-site-312-332"
   },
-  "/docs/Usage-06a": {
+  "/react-native-bildit-flybuy/docs/Usage-200": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-usagebf-4-873"
+    "content": "content---react-native-bildit-flybuy-docs-usagebf-4-646"
   }
 }

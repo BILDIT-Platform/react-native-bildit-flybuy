@@ -17,10 +17,10 @@ Fetch all sites for the app.
 #### Example
 
 ```js
-Flybuy.Sites.fetchAllSites();
+FlyBuy.Core.Sites.fetchAllSites();
 ```
 
-**[flybuy Fetch all Sites Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/sites?id=fetch-all-sites)**
+**[Flybuy Fetch all Sites Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/sites?id=fetch-all-sites)**
 
 ## Fetch Sites by Query
 
@@ -35,13 +35,13 @@ Fetch sites for the app. The `query` parameter will return results that match th
 #### Example
 
 ```js
-Flybuy.Sites.fetchSitesByQuery({
+FlyBuy.Core.Sites.fetchSitesByQuery({
   query: 'Test',
   page: 1,
 });
 ```
 
-**[flybuy Fetch Sites by Query Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/sites?id=fetch-sites)**
+**[Flybuy Fetch Sites by Query Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/sites?id=fetch-sites)**
 
 ## Fetch Sites by Region
 
@@ -63,11 +63,11 @@ const region = {
   longitude: -122.3300605,
   radius: 100,
 };
-Flybuy.Sites.fetchSitesByRegion({
+FlyBuy.Core.Sites.fetchSitesByRegion({
   per: 20,
   page: 1,
   region,
 });
 ```
 
-**[flybuy Fetch Sites by Region Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/sites?id=fetch-sites-in-region)**
+**[Flybuy Fetch Sites by Region Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/sites?id=fetch-sites-in-region)**

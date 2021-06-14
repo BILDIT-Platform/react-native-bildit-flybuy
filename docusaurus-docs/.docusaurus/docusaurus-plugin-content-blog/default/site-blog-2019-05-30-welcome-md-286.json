@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/welcome",
+  "permalink": "/react-native-bildit-flybuy/blog/welcome",
   "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/blog/blog/2019-05-30-welcome.md",
   "source": "@site/blog/2019-05-30-welcome.md",
   "title": "Welcome",
@@ -9,21 +9,21 @@
   "tags": [
     {
       "label": "facebook",
-      "permalink": "/blog/tags/facebook"
+      "permalink": "/react-native-bildit-flybuy/blog/tags/facebook"
     },
     {
       "label": "hello",
-      "permalink": "/blog/tags/hello"
+      "permalink": "/react-native-bildit-flybuy/blog/tags/hello"
     },
     {
       "label": "docusaurus",
-      "permalink": "/blog/tags/docusaurus"
+      "permalink": "/react-native-bildit-flybuy/blog/tags/docusaurus"
     }
   ],
   "readingTime": 0.175,
   "truncated": false,
   "nextItem": {
     "title": "Hello",
-    "permalink": "/blog/hello-world"
+    "permalink": "/react-native-bildit-flybuy/blog/hello-world"
   }
 }

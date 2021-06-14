@@ -1,8 +1,8 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: "BILDIT's React Native FlyBuy SDK",
+  title: "BILDIT's React Native Flybuy SDK",
   tagline:
-    'FlyBuy Pickup, Notify, and Presence. The Flybuy cloud service and mobile SDKs from Radius Networks enable developers to integrate Flybuy functionality directly, streamlining customer pickup and staff tooling with other systems.',
+    'Flybuy Pickup, Notify, and Presence. The Flybuy cloud service and mobile SDKs from Radius Networks enable developers to integrate Flybuy functionality directly, streamlining customer pickup and staff tooling with other systems.',
   url: 'https://bilditon.com',
   baseUrl: '/react-native-bildit-flybuy/',
   onBrokenLinks: 'ignore',
@@ -24,7 +24,7 @@ module.exports = {
           position: 'left',
           label: 'Docs',
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
+        // { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/bildit-Platform/react-native-bildit-flybuy',
           label: 'GitHub',
@@ -56,10 +56,10 @@ module.exports = {
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
+            // {
+            //   label: 'Blog',
+            //   to: '/blog',
+            // },
             {
               label: 'GitHub',
               href: 'https://github.com/bildit-Platform/react-native-bildit-flybuy',

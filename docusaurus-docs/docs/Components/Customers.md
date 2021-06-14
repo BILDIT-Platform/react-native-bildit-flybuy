@@ -10,23 +10,23 @@ Create a customer account using information from the user
 
 #### Params
 
-| Name     | Type                                     | Example                                                                                                                   |
-| -------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| customer | [`ICustomerInfo`](../Types/CustomerInfo) | `{ name: 'Abdelkhalek Zellat', carType: 'Nothing', carColor: 'Silver', licensePlate: 'Nothing', phone: '555-555-5555' } ` |
+| Name     | Type                                    | Example                                                                                                                 |
+| -------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| customer | [`CustomerInfo`](../Types/CustomerInfo) | `{ name: 'Abdelkhalek Zellat', carType: 'Tesla', carColor: 'Silver', licensePlate: 'AB 0496', phone: '555-555-5555' } ` |
 
 #### Example
 
 ```jsx
-Flybuy.Customer.createCustomer({
+FlyBuy.Core.Customer.createCustomer({
   name: 'Abdelkhalek Zellat',
-  carType: 'Nothing',
+  carType: 'Tesla',
   carColor: 'Silver',
-  licensePlate: 'Nothing',
+  licensePlate: 'AB 0496',
   phone: '555-555-5555',
 });
 ```
 
-**[FlyBuy Create Customer Documentation](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/customers?id=create-a-customer)**
+**[Flybuy Create Customer Documentation](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/customers?id=create-a-customer)**
 
 ## Login with Email/Password
 
@@ -42,10 +42,10 @@ Login the user in using existing credentials
 #### Example
 
 ```jsx
-Flybuy.Customer.login(`<email>`, `<password>`);
+FlyBuy.Core.Customer.login(`<email>`, `<password>`);
 ```
 
-**[FlyBuy Login with Email/Password Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/customer?id=login)**
+**[Flybuy Login with Email/Password Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/customer?id=login)**
 
 ## Login with Token
 
@@ -60,10 +60,10 @@ Login the user with a previously obtained customer API token
 #### Eample
 
 ```jsx
-Flybuy.Customer.loginWithToken(`<token>`);
+FlyBuy.Core.Customer.loginWithToken(`<token>`);
 ```
 
-**[FlyBuy Login with Token Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/customer?id=login-via-customer-token)**
+**[Flybuy Login with Token Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/customer?id=login-via-customer-token)**
 
 ## Logout
 
@@ -78,10 +78,10 @@ Logs out the current customer.
 #### Example
 
 ```jsx
-Flybuy.Customer.logout();
+FlyBuy.Core.Customer.logout();
 ```
 
-**[FlyBuy Logout Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/customer?id=logout)**
+**[Flybuy Logout Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/customer?id=logout)**
 
 ## Update Customer
 
@@ -89,23 +89,23 @@ Update customer info for the logged in user
 
 #### Params
 
-| Name     | Type          | Example                                                                                                                  |
-| -------- | ------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| customer | ICustomerInfo | `{ name: 'Abdelkhalek Zellat', carType: 'Nothing', carColor: 'Silver', licensePlate: 'Nothing', phone: '555-555-5555' }` |
+| Name     | Type                                    | Example                                                                                                                |
+| -------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| customer | [`CustomerInfo`](../Types/CustomerInfo) | `{ name: 'Abdelkhalek Zellat', carType: 'Tesla', carColor: 'Silver', licensePlate: 'AB 0496', phone: '555-555-5555' }` |
 
 #### Example
 
 ```jsx
-Flybuy.Customer.updateCustomer({
+FlyBuy.Core.Customer.updateCustomer({
   name: 'Abdelkhalek Zellat',
-  carType: 'Nothing',
+  carType: 'Tesla',
   carColor: 'Purple',
-  licensePlate: 'Nothing',
+  licensePlate: 'AB 0496',
   phone: '555-555-5555',
 });
 ```
 
-**[FlyBuy Update Customer Documentation](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/customers?id=update-a-customer)**
+**[Flybuy Update Customer Documentation](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/customers?id=update-a-customer)**
 
 ## SignUp a Customer
 
@@ -121,10 +121,10 @@ Link an email and password with the current anonymous logged in user.
 #### Example
 
 ```jsx
-Flybuy.Customer.signUp('ha_zellat@esi.dz', 'password');
+FlyBuy.Core.Customer.signUp('ha_zellat@esi.dz', 'password');
 ```
 
-**[FlyBuy SignUp Customer Documentation](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/customers?id=sign-up-a-customer)**
+**[Flybuy SignUp Customer Documentation](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/customers?id=sign-up-a-customer)**
 
 ## Get Current Customer
 
@@ -139,7 +139,7 @@ Returns an instance of the current customer
 #### Example
 
 ```jsx
-Flybuy.Customer.getCurrentCustomer();
+FlyBuy.Core.Customer.getCurrentCustomer();
 ```
 
-**[FlyBuy Get Current Customer Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk/customer?id=get-the-current-customer)**
+**[Flybuy Get Current Customer Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk/customer?id=get-the-current-customer)**

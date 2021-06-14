@@ -3,15 +3,15 @@
   "items": [
     {
       "title": "Welcome",
-      "permalink": "/blog/welcome"
+      "permalink": "/react-native-bildit-flybuy/blog/welcome"
     },
     {
       "title": "Hello",
-      "permalink": "/blog/hello-world"
+      "permalink": "/react-native-bildit-flybuy/blog/hello-world"
     },
     {
       "title": "Hola",
-      "permalink": "/blog/hola"
+      "permalink": "/react-native-bildit-flybuy/blog/hola"
     }
   ]
 }

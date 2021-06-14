@@ -23,9 +23,9 @@ phone?: string;
 ```js
 {
   name: 'Lamia Selmane',
-  carType: 'Nothing',
+  carType: 'Tesla',
   carColor: 'Silver',
-  licensePlate: 'Nothing',
+  licensePlate: 'AB 0496',
   phone: '555-555-5555',
 };
 ```

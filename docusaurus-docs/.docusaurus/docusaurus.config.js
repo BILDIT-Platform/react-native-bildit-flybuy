@@ -1,9 +1,9 @@
 export default {
-  "title": "BILDIT's React Native FlyBuy SDK",
-  "tagline": "FlyBuy Pickup, Notify, and Presence. The Flybuy cloud service and mobile SDKs from Radius Networks enable developers to integrate Flybuy functionality directly, streamlining customer pickup and staff tooling with other systems.",
+  "title": "BILDIT's React Native Flybuy SDK",
+  "tagline": "Flybuy Pickup, Notify, and Presence. The Flybuy cloud service and mobile SDKs from Radius Networks enable developers to integrate Flybuy functionality directly, streamlining customer pickup and staff tooling with other systems.",
   "url": "https://bilditon.com",
-  "baseUrl": "/",
-  "onBrokenLinks": "throw",
+  "baseUrl": "/react-native-bildit-flybuy/",
+  "onBrokenLinks": "ignore",
   "onBrokenMarkdownLinks": "warn",
   "favicon": "img/favicon.png",
   "organizationName": "bildit-llc",
@@ -22,11 +22,6 @@ export default {
           "position": "left",
           "label": "Docs",
           "activeSidebarClassName": "navbar__link--active"
-        },
-        {
-          "to": "/blog",
-          "label": "Blog",
-          "position": "left"
         },
         {
           "href": "https://github.com/bildit-Platform/react-native-bildit-flybuy",
@@ -60,10 +55,6 @@ export default {
         {
           "title": "More",
           "items": [
-            {
-              "label": "Blog",
-              "to": "/blog"
-            },
             {
               "label": "GitHub",
               "href": "https://github.com/bildit-Platform/react-native-bildit-flybuy"

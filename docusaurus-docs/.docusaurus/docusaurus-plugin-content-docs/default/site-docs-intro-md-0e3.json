@@ -7,7 +7,7 @@
   "source": "@site/docs/intro.md",
   "sourceDirName": ".",
   "slug": "/intro",
-  "permalink": "/docs/intro",
+  "permalink": "/react-native-bildit-flybuy/docs/intro",
   "editUrl": "https://github.com/bildit-Platform/react-native-bildit-flybuy/edit/main/website/docs/intro.md",
   "version": "current",
   "sidebarPosition": 1,
@@ -17,6 +17,6 @@
   "sidebar": "tutorialSidebar",
   "next": {
     "title": "Setup",
-    "permalink": "/docs/Setup"
+    "permalink": "/react-native-bildit-flybuy/docs/Setup"
   }
 }

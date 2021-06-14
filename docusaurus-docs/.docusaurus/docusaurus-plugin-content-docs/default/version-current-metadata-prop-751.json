@@ -8,17 +8,17 @@
       {
         "type": "link",
         "label": "Introduction",
-        "href": "/docs/intro"
+        "href": "/react-native-bildit-flybuy/docs/intro"
       },
       {
         "type": "link",
         "label": "Setup",
-        "href": "/docs/Setup"
+        "href": "/react-native-bildit-flybuy/docs/Setup"
       },
       {
         "type": "link",
         "label": "Usage",
-        "href": "/docs/Usage"
+        "href": "/react-native-bildit-flybuy/docs/Usage"
       },
       {
         "type": "category",
@@ -27,17 +27,17 @@
           {
             "type": "link",
             "label": "Pickup",
-            "href": "/docs/Modules/Pickup"
+            "href": "/react-native-bildit-flybuy/docs/Modules/Pickup"
           },
           {
             "type": "link",
             "label": "Presence",
-            "href": "/docs/Modules/Presence"
+            "href": "/react-native-bildit-flybuy/docs/Modules/Presence"
           },
           {
             "type": "link",
             "label": "Notify",
-            "href": "/docs/Modules/Notify"
+            "href": "/react-native-bildit-flybuy/docs/Modules/Notify"
           }
         ],
         "collapsed": true
@@ -49,17 +49,17 @@
           {
             "type": "link",
             "label": "Customers",
-            "href": "/docs/Components/Customers"
+            "href": "/react-native-bildit-flybuy/docs/Components/Customers"
           },
           {
             "type": "link",
             "label": "Orders",
-            "href": "/docs/Components/Orders"
+            "href": "/react-native-bildit-flybuy/docs/Components/Orders"
           },
           {
             "type": "link",
             "label": "Sites",
-            "href": "/docs/Components/Sites"
+            "href": "/react-native-bildit-flybuy/docs/Components/Sites"
           }
         ],
         "collapsed": true
@@ -71,52 +71,52 @@
           {
             "type": "link",
             "label": "CustomerInfo Object Type",
-            "href": "/docs/Types/CustomerInfo"
+            "href": "/react-native-bildit-flybuy/docs/Types/CustomerInfo"
           },
           {
             "type": "link",
             "label": "Customer Object Type",
-            "href": "/docs/Types/Customer"
+            "href": "/react-native-bildit-flybuy/docs/Types/Customer"
           },
           {
             "type": "link",
             "label": "Site Object Type",
-            "href": "/docs/Types/Site"
+            "href": "/react-native-bildit-flybuy/docs/Types/Site"
           },
           {
             "type": "link",
             "label": "Order Object Type",
-            "href": "/docs/Types/Order"
+            "href": "/react-native-bildit-flybuy/docs/Types/Order"
           },
           {
             "type": "link",
             "label": "PickupWindow Object Type",
-            "href": "/docs/Types/PickupWindow"
+            "href": "/react-native-bildit-flybuy/docs/Types/PickupWindow"
           },
           {
             "type": "link",
             "label": "CircularRegion Object Type",
-            "href": "/docs/Types/CircularRegion"
+            "href": "/react-native-bildit-flybuy/docs/Types/CircularRegion"
           },
           {
             "type": "link",
             "label": "NotificationInfo Object Type",
-            "href": "/docs/Types/NotificationInfo"
+            "href": "/react-native-bildit-flybuy/docs/Types/NotificationInfo"
           },
           {
             "type": "link",
             "label": "OrderState Object Type",
-            "href": "/docs/Types/OrderState"
+            "href": "/react-native-bildit-flybuy/docs/Types/OrderState"
           },
           {
             "type": "link",
             "label": "CustomerState Object Type",
-            "href": "/docs/Types/CustomerState"
+            "href": "/react-native-bildit-flybuy/docs/Types/CustomerState"
           },
           {
             "type": "link",
             "label": "PickupType Object Type",
-            "href": "/docs/Types/PickupType"
+            "href": "/react-native-bildit-flybuy/docs/Types/PickupType"
           }
         ],
         "collapsed": true
@@ -124,24 +124,24 @@
     ]
   },
   "permalinkToSidebar": {
-    "/docs/Components/Customers": "tutorialSidebar",
-    "/docs/Components/Orders": "tutorialSidebar",
-    "/docs/Components/Sites": "tutorialSidebar",
-    "/docs/intro": "tutorialSidebar",
-    "/docs/Modules/Notify": "tutorialSidebar",
-    "/docs/Modules/Pickup": "tutorialSidebar",
-    "/docs/Modules/Presence": "tutorialSidebar",
-    "/docs/Setup": "tutorialSidebar",
-    "/docs/Types/CircularRegion": "tutorialSidebar",
-    "/docs/Types/Customer": "tutorialSidebar",
-    "/docs/Types/CustomerInfo": "tutorialSidebar",
-    "/docs/Types/CustomerState": "tutorialSidebar",
-    "/docs/Types/NotificationInfo": "tutorialSidebar",
-    "/docs/Types/Order": "tutorialSidebar",
-    "/docs/Types/OrderState": "tutorialSidebar",
-    "/docs/Types/PickupType": "tutorialSidebar",
-    "/docs/Types/PickupWindow": "tutorialSidebar",
-    "/docs/Types/Site": "tutorialSidebar",
-    "/docs/Usage": "tutorialSidebar"
+    "/react-native-bildit-flybuy/docs/Components/Customers": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Components/Orders": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Components/Sites": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/intro": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Modules/Notify": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Modules/Pickup": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Modules/Presence": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Setup": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Types/CircularRegion": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Types/Customer": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Types/CustomerInfo": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Types/CustomerState": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Types/NotificationInfo": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Types/Order": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Types/OrderState": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Types/PickupType": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Types/PickupWindow": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Types/Site": "tutorialSidebar",
+    "/react-native-bildit-flybuy/docs/Usage": "tutorialSidebar"
   }
 }

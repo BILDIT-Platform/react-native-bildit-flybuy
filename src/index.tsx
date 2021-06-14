@@ -182,39 +182,21 @@ type Pickup = {
 };
 
 type FlyBuyType = {
-  Orders: Orders;
-  Customer: Customer;
   Pickup: Pickup;
   Notify: Notify;
-  Sites: Sites;
   Presence: Presence;
-  configure(token: string): void;
+  Core: {
+    configure(token: string): void;
+    Orders: Orders;
+    Customer: Customer;
+    Sites: Sites;
+  };
 };
 
 const FlyBuyModule = {
-  configure: Flybuy.configure,
-  Orders: {
-    fetchOrders: Flybuy.fetchOrders,
-    createOrder: Flybuy.createOrder,
-    claimOrder: Flybuy.claimOrder,
-    fetchOrderByRedemptionCode: Flybuy.fetchOrderByRedemptionCode,
-    updateOrderState: Flybuy.updateOrderState,
-    updateOrderCustomerState: Flybuy.updateOrderCustomerState,
-    rateOrder: Flybuy.rateOrder,
-  },
-  Customer: {
-    loginWithToken: Flybuy.loginWithToken,
-    login: Flybuy.login,
-    logout: Flybuy.logout,
-    signUp: Flybuy.signUp,
-    createCustomer: Flybuy.createCustomer,
-    updateCustomer: Flybuy.updateCustomer,
-    getCurrentCustomer: Flybuy.getCurrentCustomer,
-  },
-  Sites: {
-    fetchAllSites: Flybuy.fetchAllSites,
-    fetchSitesByQuery: Flybuy.fetchSitesByQuery,
-    fetchSitesByRegion: Flybuy.fetchSitesByRegion,
+  Pickup: {
+    configure: Flybuy.pickupConfigure,
+    onLocationPermissionChanged: Flybuy.onLocationPermissionChanged,
   },
   Notify: {
     configure: Flybuy.notifyConfigure,
@@ -222,14 +204,36 @@ const FlyBuyModule = {
     createForSitesInRegion: Flybuy.createForSitesInRegion,
     createForSites: Flybuy.createForSites,
   },
-  Pickup: {
-    configure: Flybuy.pickupConfigure,
-    onLocationPermissionChanged: Flybuy.onLocationPermissionChanged,
-  },
   Presence: {
     configure: Flybuy.presenceConfigure,
     startLocatorWithIdentifier: Flybuy.startLocatorWithIdentifier,
     stopLocator: Flybuy.stopLocator,
+  },
+  Core: {
+    configure: Flybuy.configure,
+    Orders: {
+      fetchOrders: Flybuy.fetchOrders,
+      createOrder: Flybuy.createOrder,
+      claimOrder: Flybuy.claimOrder,
+      fetchOrderByRedemptionCode: Flybuy.fetchOrderByRedemptionCode,
+      updateOrderState: Flybuy.updateOrderState,
+      updateOrderCustomerState: Flybuy.updateOrderCustomerState,
+      rateOrder: Flybuy.rateOrder,
+    },
+    Customer: {
+      loginWithToken: Flybuy.loginWithToken,
+      login: Flybuy.login,
+      logout: Flybuy.logout,
+      signUp: Flybuy.signUp,
+      createCustomer: Flybuy.createCustomer,
+      updateCustomer: Flybuy.updateCustomer,
+      getCurrentCustomer: Flybuy.getCurrentCustomer,
+    },
+    Sites: {
+      fetchAllSites: Flybuy.fetchAllSites,
+      fetchSitesByQuery: Flybuy.fetchSitesByQuery,
+      fetchSitesByRegion: Flybuy.fetchSitesByRegion,
+    },
   },
 };
 

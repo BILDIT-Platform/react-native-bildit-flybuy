@@ -1,12 +1,12 @@
 ## Set up and Initialize SDK
 
-The Flybuy SDK must be initialized when the application starts in order to configure the app authorization token and handle appropriate lifecycle methods. 
+The Flybuy SDK must be initialized when the application starts in order to configure the app authorization token and handle appropriate lifecycle methods.
 
-*Important:* Complete all steps in the Android and iOS setup guides. Key steps are highlighted below.
+_Important:_ Complete all steps in the Android and iOS setup guides. Key steps are highlighted below.
 
- 1. [Install SDK](../Setup.md#installation)
- 2. Post-install Steps for [iOS](../Setup.md#ios) and [Android](../Setup.md#android)
- 3. [Initialize SDK on launch](../Usage.md#initialize-sdk-on-launch)
+1.  [Install SDK](../Setup.md#installation)
+2.  Post-install Steps for [iOS](../Setup.md#ios) and [Android](../Setup.md#android)
+3.  [Initialize SDK on launch](../Usage.md#initialize-sdk-on-launch)
 
 ## Create for Sites in Region
 
@@ -37,10 +37,10 @@ const notification = {
   },
 };
 
-Flybuy.Notify.createForSitesInRegion(region, notification);
+FlyBuy.Notify.createForSitesInRegion(region, notification);
 ```
 
-**[FlyBuy Create for Sites in Region Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=create-for-sites-in-region)**
+**[Flybuy Create for Sites in Region Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=create-for-sites-in-region)**
 
 ## Clear Notifications
 
@@ -55,10 +55,10 @@ Clear all geofence notifications.
 #### Example
 
 ```jsx
-Flybuy.Notify.clearNotifications();
+FlyBuy.Notify.clearNotifications();
 ```
 
-**[FlyBuy Clear Notifications Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=clear-notifications)**
+**[Flybuy Clear Notifications Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=clear-notifications)**
 
 ## Create for Sites
 
@@ -104,7 +104,7 @@ const sites = [
   },
 ];
 
-Flybuy.Notify.createForSites(sites, notification);
+FlyBuy.Notify.createForSites(sites, notification);
 ```
 
-**[FlyBuy Create for Sites Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=additional-methods)**
+**[Flybuy Create for Sites Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=additional-methods)**

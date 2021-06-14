@@ -13,10 +13,10 @@ Return the list of orders for the current user.
 | None | None |
 
 ```js
-Flybuy.Orders.fetchOrders();
+FlyBuy.Core.Orders.fetchOrders();
 ```
 
-**[FlyBuy Get All Orders Documentation](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/orders?id=get-a-list-of-all-orders)**
+**[Flybuy Get All Orders Documentation](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/orders?id=get-a-list-of-all-orders)**
 
 ## Create Order
 
@@ -28,14 +28,14 @@ Most orders will have a pickup time of “ASAP”. If you have a different picku
 
 #### Params
 
-| Name         | Type                                        | Example                                                                                                           |
-| ------------ | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --- |
-| siteId       | Int                                         | `15942`                                                                                                           |
-| pid          | Str                                         | `'573836'`                                                                                                        |
-| customerInfo | [`ICustomerInfo`](../Types/CustomerInfo)    | `{name: 'Lamia Selmane AB',carType: 'Nothing',carColor: 'Silver',licensePlate: 'Nothing' phone: '555-555-5555',}` |
-| pickupWindow | [`PickupWindow`](../Types/PickupWindow)     | `{start: new Date().toISOString(),end: new Date('2022-12-02').toISOString(),}`                                    |     |
-| orderState   | [`OrderStateType`](../Types/OrderStateType) | `'delayed'`                                                                                                       |
-| pickupType   | [`PickupType`](../Types/PickupType)         | `'delivery'`                                                                                                      |
+| Name         | Type                                    | Example                                                                                                      |
+| ------------ | --------------------------------------- | ------------------------------------------------------------------------------------------------------------ | --- |
+| siteId       | Int                                     | `15942`                                                                                                      |
+| pid          | Str                                     | `'573836'`                                                                                                   |
+| customerInfo | [`CustomerInfo`](../Types/CustomerInfo) | `{name: 'Lamia Selmane',carType: 'Tesla',carColor: 'Silver',licensePlate: 'AB 0496' phone: '555-555-5555',}` |
+| pickupWindow | [`PickupWindow`](../Types/PickupWindow) | `{start: new Date().toISOString(),end: new Date('2022-12-02').toISOString(),}`                               |     |
+| orderState   | Str                                     | `'delayed'`                                                                                                  |
+| pickupType   | Str                                     | `'delivery'`                                                                                                 |
 
 #### Example
 
@@ -45,14 +45,14 @@ const pickupWindow = {
   end: new Date('2022-12-02').toISOString(),
 };
 
-Flybuy.Orders.createOrder(
+FlyBuy.Core.Orders.createOrder(
   15942,
   '573836',
   {
-    name: 'Lamia Selmane AB',
-    carType: 'Nothing',
+    name: 'Lamia Selmane',
+    carType: 'Tesla',
     carColor: 'Silver',
-    licensePlate: 'Nothing',
+    licensePlate: 'AB 0496',
     phone: '555-555-5555',
   },
   pickupWindow,
@@ -61,37 +61,37 @@ Flybuy.Orders.createOrder(
 );
 ```
 
-**[FlyBuy Create Order Documentaiton](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/orders?id=create-an-order)**
+**[Flybuy Create Order Documentaiton](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/orders?id=create-an-order)**
 
 ## Claim Order
 
-claim an order for the current customer.
+Claim an order for the current customer.
 
 #### Params
 
-| Name         | Type                                     | Example                                                                                                           |
-| ------------ | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| pid          | Str                                      | `'9898899'`                                                                                                       |
-| customerInfo | [`ICustomerInfo`](../Types/CustomerInfo) | `{name: 'Lamia Selmane AB',carType: 'Nothing',carColor: 'Silver',licensePlate: 'Nothing',phone: '555-555-5555',}` |
-| pickupType   | [`PickupType`](../Types/PickupType)      | `'pickup'`                                                                                                        |
+| Name         | Type                                    | Example                                                                                                      |
+| ------------ | --------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| pid          | Str                                     | `'9898899'`                                                                                                  |
+| customerInfo | [`CustomerInfo`](../Types/CustomerInfo) | `{name: 'Lamia Selmane',carType: 'Tesla',carColor: 'Silver',licensePlate: 'AB 0496',phone: '555-555-5555',}` |
+| pickupType   | Str                                     | `'pickup'`                                                                                                   |
 
 #### Example
 
 ```js
-Flybuy.Orders.claimOrder(
+FlyBuy.Core.Orders.claimOrder(
   '9898899',
   {
-    name: 'Lamia Selmane AB',
-    carType: 'Nothing',
+    name: 'Lamia Selmane',
+    carType: 'Tesla',
     carColor: 'Silver',
-    licensePlate: 'Nothing',
+    licensePlate: 'AB 0496',
     phone: '555-555-5555',
   },
   'pickup'
 );
 ```
 
-**[FlyBuy Claim Order Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=claim-order)**
+**[Flybuy Claim Order Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=claim-order)**
 
 ## Update Order State
 
@@ -99,35 +99,35 @@ You can update an order’s state, if necessary, with any valid state:
 
 #### Params
 
-| Name    | Type                                        | Example    |
-| ------- | ------------------------------------------- | ---------- |
-| orderID | Int                                         | `46084566` |
-| state   | [`OrderStateType`](../Types/OrderStateType) | `'ready'`  |
+| Name    | Type | Example    |
+| ------- | ---- | ---------- |
+| orderID | Int  | `46084566` |
+| state   | Str  | `'ready'`  |
 
 #### Example
 
 ```jsx
-Flybuy.Orders.updateOrderState(46084566, 'ready');
+FlyBuy.Core.Orders.updateOrderState(46084566, 'ready');
 ```
 
-**[c Update Order State Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=update-order-state)**
+**[Flybuy Update Order State Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=update-order-state)**
 
 ## Update Order Customer State
 
 #### Params
 
-| Name    | Type                                      | Example      |
-| ------- | ----------------------------------------- | ------------ |
-| orderID | Int                                       | `46084566`   |
-| state   | [`CustomerState`](../Types/CustomerState) | `'departed'` |
+| Name    | Type | Example      |
+| ------- | ---- | ------------ |
+| orderID | Int  | `46084566`   |
+| state   | Str  | `'departed'` |
 
 #### Example
 
 ```jsx
-Flybuy.Orders.updateOrderCustomerState(46084566, 'departed');
+FlyBuy.Core.Orders.updateOrderCustomerState(46084566, 'departed');
 ```
 
-**[FlyBuy Update Customer State Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=update-customer-state)**
+**[Flybuy Update Customer State Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=update-customer-state)**
 
 ## Rate Order
 
@@ -144,7 +144,7 @@ If you collect customer ratings in your app, you can pass them to Flybuy.
 #### Example
 
 ```jsx
-Flybuy.Orders.rateOrder(46084566, 5, 'Awesome!');
+FlyBuy.Core.Orders.rateOrder(46084566, 5, 'Awesome!');
 ```
 
-**[FlyBuy Rate Order Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=customer-ratings)**
+**[Flybuy Rate Order Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=customer-ratings)**

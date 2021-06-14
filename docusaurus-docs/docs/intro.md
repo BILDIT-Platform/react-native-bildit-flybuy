@@ -10,11 +10,11 @@ The Flybuy React Native SDK allows developers to quickly and easily integrate Fl
 
 ## Flybuy Documentation
 
-Throughout the Modules and Components sections of these docs, you will find direct links to the [flybuy docs](https://www.radiusnetworks.com/developers/flybuy/#/?id=flybuy-developer-documentation) related to a given API call.
+Throughout the Modules and Components sections of these docs, you will find direct links to the [Flybuy docs](https://www.radiusnetworks.com/developers/flybuy/#/?id=flybuy-developer-documentation) related to a given API call.
 
 ## Example App
 
-A sample application demonstrating the FlyBuy SDK is available at: https://github.com/BILDIT-Platform/react-native-bildit-flybuy/tree/main/example
+A sample application demonstrating the Flybuy SDK is available at: https://github.com/BILDIT-Platform/react-native-bildit-flybuy/tree/main/example
 
 ## Issues
 

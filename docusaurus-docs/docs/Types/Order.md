@@ -12,7 +12,7 @@ sidebar_position: 4
 {
   "siteName": "Test Site",
   "customerState": "departed",
-  "customerName": "Lamia Selmane AB",
+  "customerName": "Lamia Selmane",
   "siteLongitude": "-122.3300605",
   "siteDescription": "",
   "state": "ready",
@@ -22,7 +22,7 @@ sidebar_position: 4
   "redemptionCode": "ABA57PQ674",
   "id": 46084566,
   "customerCarColor": "Silver",
-  "customerCarType": "Nothing",
+  "customerCarType": "Tesla",
   "pickupWindow": ["2021-06-03 03:44:44 +0000", "2022-12-02 00:00:00 +0000"],
   "pickupType": "delivery",
   "siteFullAddress": "500 Yale Ave N, Seattle, WA 98109, USA",
@@ -31,7 +31,7 @@ sidebar_position: 4
   "siteInstructions": "",
   "customerComment": "Awesome!",
   "siteCoverPhotoURL": null,
-  "customerLicensePlate": "Nothing",
+  "customerLicensePlate": "AB 0496",
   "sitePhone": "+18882458277",
   "redeemedAt": "2021-06-03 03:44:45 +0000"
 }

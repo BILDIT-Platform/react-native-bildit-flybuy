@@ -1,5 +1,8 @@
 package com.reactnativeflybuy
 
+import android.app.Activity
+import android.app.Application.ActivityLifecycleCallbacks
+import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.facebook.react.bridge.*
@@ -28,9 +31,35 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
     return "Flybuy"
   }
 
+  private fun registerLifecycleCallbacks(activity: Activity) {
+    activity.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+      override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
+
+      override fun onActivityStarted(activity: Activity) {
+        FlyBuyCore.onActivityStarted()
+      }
+
+      override fun onActivityResumed(activity: Activity) {}
+
+      override fun onActivityPaused(activity: Activity) {}
+
+      override fun onActivityStopped(activity: Activity) {
+        FlyBuyCore.onActivityStopped()
+      }
+
+      override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
+
+      override fun onActivityDestroyed(activity: Activity) {}
+    })
+  }
+
   @ReactMethod
   fun configure(token: String, promise: Promise) {
     FlyBuyCore.configure(reactApplicationContext.baseContext, token)
+    val currentActivity = currentActivity
+    if (currentActivity != null) {
+      registerLifecycleCallbacks(currentActivity)
+    }
   }
 
   // Customer

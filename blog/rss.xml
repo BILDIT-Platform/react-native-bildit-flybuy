@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
     <channel>
-        <title>BILDIT's React Native FlyBuy SDK Blog</title>
+        <title>BILDIT's React Native Flybuy SDK Blog</title>
         <link>https://bilditon.com/blog</link>
-        <description>BILDIT's React Native FlyBuy SDK Blog</description>
+        <description>BILDIT's React Native Flybuy SDK Blog</description>
         <lastBuildDate>Thu, 30 May 2019 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>

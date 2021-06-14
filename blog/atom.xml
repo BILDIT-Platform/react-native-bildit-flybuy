@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bilditon.com/blog</id>
-    <title>BILDIT's React Native FlyBuy SDK Blog</title>
+    <title>BILDIT's React Native Flybuy SDK Blog</title>
     <updated>2019-05-30T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://bilditon.com/blog"/>
-    <subtitle>BILDIT's React Native FlyBuy SDK Blog</subtitle>
+    <subtitle>BILDIT's React Native Flybuy SDK Blog</subtitle>
     <icon>https://bilditon.com/img/favicon.png</icon>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>

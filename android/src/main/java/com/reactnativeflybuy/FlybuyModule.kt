@@ -3,9 +3,12 @@ package com.reactnativeflybuy
 import android.app.Activity
 import android.app.Application.ActivityLifecycleCallbacks
 import android.os.Bundle
-import android.util.Log
-import androidx.annotation.RequiresApi
+import android.os.Handler
+import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.facebook.react.bridge.*
+import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEmitter
 import com.radiusnetworks.flybuy.sdk.FlyBuyCore
 import com.radiusnetworks.flybuy.sdk.data.common.Pagination
 import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
@@ -23,9 +26,7 @@ import org.threeten.bp.Instant
 import java.util.*
 import java.util.concurrent.ExecutionException
 
-
 class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
-
 
   override fun getName(): String {
     return "Flybuy"
@@ -53,12 +54,44 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
     })
   }
 
+
+  private fun startObserving() {
+    val orderObserver = Observer<List<Order>> {
+      orderProgress(it)
+    }
+
+    Handler(Looper.getMainLooper()).post {
+      FlyBuyCore.orders.openLiveData.observeForever(orderObserver)
+    }
+  }
+
+  private fun orderProgress(orders: List<Order>) {
+    orders.forEach { order ->
+      reactApplicationContext
+        .getJSModule(RCTDeviceEventEmitter::class.java)
+        .emit("orderUpdated", parseOrder(order))
+    }
+  }
+
+  private fun stopObserving() {
+    (currentActivity as AppCompatActivity?)?.let {
+      if (FlyBuyCore.orders.openLiveData.hasObservers()) {
+        FlyBuyCore.orders.openLiveData.removeObservers(it)
+      }
+    }
+  }
+
+  override fun onCatalystInstanceDestroy() {
+    stopObserving()
+  }
+
   @ReactMethod
   fun configure(token: String, promise: Promise) {
     FlyBuyCore.configure(reactApplicationContext.baseContext, token)
     val currentActivity = currentActivity
     if (currentActivity != null) {
       registerLifecycleCallbacks(currentActivity)
+      startObserving()
     }
   }
 
@@ -175,7 +208,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
       } ?: run {
         promise.resolve(orders?.let { parseOrders(it) })
       }
-  
+
     }
   }
 
@@ -196,7 +229,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   fun fetchOrderByRedemptionCode(redeemCode: String, promise: Promise) {
     FlyBuyCore.orders.fetch(redeemCode) { order, sdkError ->
       if (null != sdkError) {
-        promise.reject(sdkError.description(),sdkError.description())
+        promise.reject(sdkError.description(), sdkError.description())
       } else {
         promise.resolve(order?.let { parseOrder(it) })
       }

@@ -1,4 +1,4 @@
-import { NativeModules } from 'react-native';
+import { NativeModules, NativeEventEmitter } from 'react-native';
 
 export interface ICircularRegion {
   latitude: number;
@@ -235,6 +235,7 @@ const FlyBuyModule = {
       fetchSitesByRegion: Flybuy.fetchSitesByRegion,
     },
   },
+  eventEmitter: new NativeEventEmitter(Flybuy),
 };
 
 export default FlyBuyModule as FlyBuyType;

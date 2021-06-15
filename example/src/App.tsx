@@ -8,6 +8,7 @@ import {
   PERMISSIONS,
   RESULTS,
 } from 'react-native-permissions';
+import AppConfig from './AppConfig.json';
 
 const ORDER_ID = 46615889;
 const NEW_ORDER_ID = 15942;
@@ -240,10 +241,10 @@ export default function App() {
   };
 
   React.useEffect(() => {
-    FlyBuy.Core.configure('YOUR_APP_TOKEN_HERE');
+    FlyBuy.Core.configure(AppConfig.APP_TOKEN);
     FlyBuy.Notify.configure();
     FlyBuy.Pickup.configure();
-    FlyBuy.Presence.configure('YOUR_PRESENCE_UUID_HERE');
+    FlyBuy.Presence.configure(AppConfig.PRESENCE_UUID);
     getLocationPermissions();
   }, []);
 

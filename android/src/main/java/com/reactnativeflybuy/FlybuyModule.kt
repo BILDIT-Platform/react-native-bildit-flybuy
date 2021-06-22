@@ -2,6 +2,7 @@ package com.reactnativeflybuy
 
 import android.app.Activity
 import android.app.Application.ActivityLifecycleCallbacks
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
@@ -32,25 +33,27 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   }
 
   private fun registerLifecycleCallbacks(activity: Activity) {
-    activity.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
-      override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+      activity.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+        override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
 
-      override fun onActivityStarted(activity: Activity) {
-        FlyBuyCore.onActivityStarted()
-      }
+        override fun onActivityStarted(activity: Activity) {
+          FlyBuyCore.onActivityStarted()
+        }
 
-      override fun onActivityResumed(activity: Activity) {}
+        override fun onActivityResumed(activity: Activity) {}
 
-      override fun onActivityPaused(activity: Activity) {}
+        override fun onActivityPaused(activity: Activity) {}
 
-      override fun onActivityStopped(activity: Activity) {
-        FlyBuyCore.onActivityStopped()
-      }
+        override fun onActivityStopped(activity: Activity) {
+          FlyBuyCore.onActivityStopped()
+        }
 
-      override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
+        override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
 
-      override fun onActivityDestroyed(activity: Activity) {}
-    })
+        override fun onActivityDestroyed(activity: Activity) {}
+      })
+    }
   }
 
   @ReactMethod
@@ -175,7 +178,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
       } ?: run {
         promise.resolve(orders?.let { parseOrders(it) })
       }
-  
+
     }
   }
 
@@ -757,4 +760,3 @@ fun decodePickupWindow(pickupWindow: ReadableMap): PickupWindow {
     end = instantEnd
   )
 }
-

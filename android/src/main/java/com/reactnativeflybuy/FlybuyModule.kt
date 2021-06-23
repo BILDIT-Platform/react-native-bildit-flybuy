@@ -2,7 +2,6 @@ package com.reactnativeflybuy
 
 import android.app.Activity
 import android.app.Application.ActivityLifecycleCallbacks
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi

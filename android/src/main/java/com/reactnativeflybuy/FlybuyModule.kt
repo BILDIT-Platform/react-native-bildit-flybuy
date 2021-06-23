@@ -33,27 +33,25 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   }
 
   private fun registerLifecycleCallbacks(activity: Activity) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-      activity.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
-        override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
+    activity.application.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+      override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
 
-        override fun onActivityStarted(activity: Activity) {
-          FlyBuyCore.onActivityStarted()
-        }
+      override fun onActivityStarted(activity: Activity) {
+        FlyBuyCore.onActivityStarted()
+      }
 
-        override fun onActivityResumed(activity: Activity) {}
+      override fun onActivityResumed(activity: Activity) {}
 
-        override fun onActivityPaused(activity: Activity) {}
+      override fun onActivityPaused(activity: Activity) {}
 
-        override fun onActivityStopped(activity: Activity) {
-          FlyBuyCore.onActivityStopped()
-        }
+      override fun onActivityStopped(activity: Activity) {
+        FlyBuyCore.onActivityStopped()
+      }
 
-        override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
+      override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
 
-        override fun onActivityDestroyed(activity: Activity) {}
-      })
-    }
+      override fun onActivityDestroyed(activity: Activity) {}
+    })
   }
 
   @ReactMethod

@@ -7,9 +7,11 @@ import {
   TouchableOpacity,
   FlatList,
   TextInput,
+  ActivityIndicator,
 } from 'react-native';
 import Button from './Button';
 import FlyBuy from 'react-native-bildit-flybuy';
+import AppConfig from './AppConfig.json';
 
 const NEW_ORDER_ID = 15942;
 const CUSTOMER_INFO = {
@@ -70,11 +72,19 @@ const OrderItem = ({ order, onUpdate }) => {
 export default function App() {
   const [orders, setOrders] = useState([]);
   const [partnerId, setPartnerId] = useState('');
+  const [loading, setLoading] = useState(false);
   // Orders
   const fetchOrders = () => {
+    setLoading(true);
     FlyBuy.Core.Orders.fetchOrders()
-      .then((orders) => setOrders([...orders]))
-      .catch((err) => console.log(err));
+      .then((orders) => {
+        setOrders([...orders]);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
   };
 
   const createOrder = () => {
@@ -99,7 +109,7 @@ export default function App() {
 
   const updateToStart = (order) => {
     FlyBuy.Core.Orders.updateOrderCustomerState(order.id, 'en_route')
-      .then((order) => {
+      .then(() => {
         fetchOrders();
       })
       .catch((err) => console.log('error on catch-->', err));
@@ -107,12 +117,15 @@ export default function App() {
 
   const login = () => {
     FlyBuy.Core.Customer.login('ha_zellat@esi.dz', 'password')
-      .then((customer) => console.tron.log('customer', customer))
+      .then((customer) => {
+        console.tron.log('customer', customer);
+        fetchOrders();
+      })
       .catch((err) => console.tron.log(err));
   };
 
   React.useEffect(() => {
-    FlyBuy.Core.configure('224.epegiXJkGRqvwLJJYHPTCWGR');
+    FlyBuy.Core.configure(AppConfig.APP_TOKEN);
     FlyBuy.Notify.configure();
     FlyBuy.Pickup.configure();
     fetchOrders();
@@ -133,6 +146,7 @@ export default function App() {
     <View style={styles.container}>
       <Button title="Login" onPress={login} />
       <Header />
+      {loading && <ActivityIndicator color="white" size="large" />}
       <FlatList
         style={{ width: '100%', paddingHorizontal: 10 }}
         data={orders}

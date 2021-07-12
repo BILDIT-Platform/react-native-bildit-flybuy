@@ -10,7 +10,7 @@ import {
 } from 'react-native-permissions';
 import AppConfig from './AppConfig.json';
 
-const ORDER_ID = 46615889;
+const ORDER_ID = 46084474;
 const NEW_ORDER_ID = 15942;
 const NEW_PID = '013806';
 const CUSTOMER_INFO = {
@@ -90,7 +90,7 @@ export default function App() {
   };
 
   const updateOrderState = () => {
-    FlyBuy.Core.Orders.updateOrderState(ORDER_ID, 'ready')
+    FlyBuy.Core.Orders.updateOrderState(ORDER_ID, 'driver_assigned')
       .then((order) => console.tron.log('updateOrderState', order))
       .catch((err) => console.tron.log(err));
   };
@@ -246,6 +246,19 @@ export default function App() {
     FlyBuy.Pickup.configure();
     FlyBuy.Presence.configure(AppConfig.PRESENCE_UUID);
     getLocationPermissions();
+  }, []);
+
+  React.useEffect(() => {
+    const eventListener = FlyBuy.eventEmitter.addListener(
+      'orderUpdated',
+      (event) => {
+        console.tron.log('event', event);
+      }
+    );
+
+    return () => {
+      eventListener.remove();
+    };
   }, []);
 
   return (

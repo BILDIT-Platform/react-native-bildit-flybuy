@@ -1,6 +1,9 @@
 #import <React/RCTBridgeModule.h>
+#import <React/RCTEventEmitter.h>
 
-@interface RCT_EXTERN_MODULE(Flybuy, NSObject)
+@interface RCT_EXTERN_MODULE(Flybuy, RCTEventEmitter)
+
+RCT_EXTERN_METHOD(supportedEvents)
 
 RCT_EXTERN_METHOD(configure:(NSString *)token)
 

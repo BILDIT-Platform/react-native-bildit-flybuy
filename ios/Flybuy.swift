@@ -4,8 +4,33 @@ import FlyBuyPresence
 import FlyBuyNotify
 
 
+enum FlyBuySupportedEvents: String, CaseIterable {
+    case ordersUpdated = "ordersUpdated";
+    case ordersError = "ordersError";
+    case orderUpdated = "orderUpdated";
+    case orderEventError = "orderEventError";
+}
+
 @objc(Flybuy)
-class Flybuy: NSObject {
+class Flybuy: RCTEventEmitter {
+    
+    @objc open override func supportedEvents() -> [String] {
+        return ["orderUpdated","ordersUpdated","ordersError","orderEventError"]
+    }
+    
+    override func startObserving() {
+        NotificationCenter.default.addObserver(forName: .orderUpdated, object: nil, queue: nil) { (notification) in
+            if let order = notification.object as? Order {
+                let event = FlyBuySupportedEvents.orderUpdated.rawValue
+                let body = self.parseOrder(order: order)
+                self.sendEvent(withName: event, body: body)
+            }
+        }
+    }
+    
+    override func stopObserving() {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     
     @objc(configure:)
@@ -155,15 +180,15 @@ class Flybuy: NSObject {
     
     @objc(fetchOrderByRedemptionCode:withResolver:withRejecter:)
     func fetchOrderByRedemptionCode(
-                    redemCode: String,
-                    resolve:@escaping RCTPromiseResolveBlock,
-                    reject:@escaping RCTPromiseRejectBlock) {
+        redemCode: String,
+        resolve:@escaping RCTPromiseResolveBlock,
+        reject:@escaping RCTPromiseRejectBlock) {
         FlyBuy.Core.orders.fetch(withRedemptionCode: redemCode) { (order, error) -> (Void) in
-          if let error = error {
-            reject(error.localizedDescription,  error.localizedDescription, error )
-          } else {
-            resolve(self.parseOrder(order: order!))
-          }
+            if let error = error {
+                reject(error.localizedDescription,  error.localizedDescription, error )
+            } else {
+                resolve(self.parseOrder(order: order!))
+            }
         }
         
     }

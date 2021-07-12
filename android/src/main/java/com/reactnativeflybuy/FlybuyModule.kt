@@ -33,7 +33,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   }
 
   private fun registerLifecycleCallbacks(activity: Activity) {
-    activity.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+    activity.application.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
       override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
 
       override fun onActivityStarted(activity: Activity) {
@@ -790,4 +790,3 @@ fun decodePickupWindow(pickupWindow: ReadableMap): PickupWindow {
     end = instantEnd
   )
 }
-

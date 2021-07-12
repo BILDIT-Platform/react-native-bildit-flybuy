@@ -148,3 +148,24 @@ FlyBuy.Core.Orders.rateOrder(46084566, 5, 'Awesome!');
 ```
 
 **[Flybuy Rate Order Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=customer-ratings)**
+
+## Listen to orders update
+
+Set up event listeners to get updates about orders.
+
+#### Example
+
+```jsx
+React.useEffect(() => {
+  const eventListener = FlyBuy.eventEmitter.addListener(
+    'orderUpdated',
+    (event) => {
+      console.log('event', event);
+    }
+  );
+
+  return () => {
+    eventListener.remove();
+  };
+}, []);
+```

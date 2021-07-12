@@ -11,8 +11,8 @@ import {
 import AppConfig from './AppConfig.json';
 
 const ORDER_ID = 46084474;
-const NEW_ORDER_ID = 15942;
-const NEW_PID = '013806';
+const SITE_ID = 15942;
+const NEW_PID = '01380326929';
 const CUSTOMER_INFO = {
   name: 'Lamia Selmane',
   carType: 'Tesla',
@@ -66,7 +66,7 @@ export default function App() {
       end: new Date('2022-12-02').toISOString(),
     };
     FlyBuy.Core.Orders.createOrder(
-      NEW_ORDER_ID,
+      SITE_ID,
       NEW_PID,
       CUSTOMER_INFO,
       pickupWindow,
@@ -84,7 +84,7 @@ export default function App() {
   };
 
   const fetchOrderByRedemptionCode = () => {
-    FlyBuy.Core.Orders.fetchOrderByRedemptionCode('385BQT5BMH')
+    FlyBuy.Core.Orders.fetchOrderByRedemptionCode('QDWRBDKJJG')
       .then((order) => console.tron.log('order by redemcode', order))
       .catch((err) => console.tron.log(err));
   };

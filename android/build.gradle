@@ -33,7 +33,6 @@ android {
     targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
     versionCode 1
     versionName "1.0"
-    
   }
   
   buildTypes {
@@ -127,7 +126,7 @@ dependencies {
   // noinspection GradleDynamicVersion
   api 'com.facebook.react:react-native:+'
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-  implementation platform("com.radiusnetworks.flybuy:bom:2.0.3")
+  implementation platform("com.radiusnetworks.flybuy:bom:2.1.2")
   implementation 'com.radiusnetworks.flybuy:pickup' // If using pickup feature
   implementation 'com.radiusnetworks.flybuy:presence' // If using presence feature
   implementation 'com.radiusnetworks.flybuy:notify' // If using notify feature

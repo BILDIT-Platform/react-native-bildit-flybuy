@@ -1,0 +1,56 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FlyBuyNotify
+import CoreLocation
+import FlyBuy
+@_exported import FlyBuyNotify
+import Foundation
+import Swift
+import UserNotifications
+@objc open class NotificationInfo : ObjectiveC.NSObject {
+  @objc final public let title: Swift.String
+  @objc final public let content: Swift.String
+  @objc final public let data: [Swift.AnyHashable : Any]?
+  public init(title: Swift.String, content: Swift.String, data: [Swift.AnyHashable : Any]?)
+  @objc deinit
+  @objc override dynamic public init()
+}
+@_inheritsConvenienceInitializers @objc(FlyBuyNotifyManager) public class Manager : ObjectiveC.NSObject {
+  @objc public static let shared: FlyBuyNotify.Manager
+  @objc public func configure()
+  @objc deinit
+  @objc public func createForSitesInRegion(_ region: CoreLocation.CLCircularRegion, notification: FlyBuyNotify.NotificationInfo, callback: @escaping (([FlyBuy.Site]?, Swift.Error?) -> (Swift.Void)))
+  @objc public func createForSites(_ sites: [FlyBuy.Site], notification: FlyBuyNotify.NotificationInfo, callback: @escaping ((Swift.Error?) -> (Swift.Void)))
+  @objc public func clear(callback: @escaping (Swift.Error?) -> (Swift.Void))
+  @objc public func isFlyBuyNotifyUserInfo(_ userInfo: [Swift.AnyHashable : Any]) -> Swift.Bool
+  @objc override dynamic public init()
+}
+extension Manager : FlyBuy.FlyBuyModuleManager {
+  public func set(logLevel: FlyBuy.LogLevel)
+  public func configUpdated(_ config: FlyBuy.AppConfig)
+}
+@objc public enum NotifyErrorType : Swift.Int {
+  case noLocationPermission
+  case reachedTheMaxNumberOfSites
+  case notifyModuleNotConfigured
+  public var description: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(FlyBuyNotifyError) public class NotifyError : ObjectiveC.NSObject, FlyBuy.FlyBuyError {
+  @objc final public let type: FlyBuyNotify.NotifyErrorType
+  @objc public init(_ typeIn: FlyBuyNotify.NotifyErrorType)
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension FlyBuyNotify.NotifyErrorType : Swift.Equatable {}
+extension FlyBuyNotify.NotifyErrorType : Swift.Hashable {}
+extension FlyBuyNotify.NotifyErrorType : Swift.RawRepresentable {}

@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FlyBuy
 import CoreLocation
 @_exported import FlyBuy
@@ -58,11 +58,11 @@ extension PickupLocationFilterData {
   open func encode(to encoder: Swift.Encoder) throws
 }
 public struct BeaconIdentifiers : Swift.Hashable, Swift.Codable {
+  public init(from decoder: Swift.Decoder) throws
   public var hashValue: Swift.Int {
     get
   }
   public func hash(into hasher: inout Swift.Hasher)
-  public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   public static func == (a: FlyBuy.BeaconIdentifiers, b: FlyBuy.BeaconIdentifiers) -> Swift.Bool
 }
@@ -72,7 +72,7 @@ extension Beacon : Swift.Encodable {
   public func encode(to encoder: Swift.Encoder) throws
 }
 @_inheritsConvenienceInitializers @objc(FlyBuyBeaconList) public class BeaconList : ObjectiveC.NSObject {
-  public var beacons: Swift.Dictionary<FlyBuy.BeaconIdentifiers, FlyBuy.Beacon>
+  public var beacons: [FlyBuy.BeaconIdentifiers : FlyBuy.Beacon]
   public func addScan(identifiers ids: FlyBuy.BeaconIdentifiers, rssi: Swift.Int, distance: Swift.Float)
   public func addScan(_ beacon: CoreLocation.CLBeacon)
   public func addScans(_ scannedBeacons: [CoreLocation.CLBeacon])
@@ -178,32 +178,32 @@ open class EncodableRequest<EncodableObject> where EncodableObject : Swift.Encod
   @objc deinit
   @objc override dynamic public init()
 }
-@objc open class FlyBuyError : ObjectiveC.NSObject, Foundation.LocalizedError {
-  public var errorDescription: Swift.String? {
+public protocol FlyBuyError : Foundation.LocalizedError {
+  var description: Swift.String { get }
+  var errorDescription: Swift.String? { get }
+}
+@objc public enum FlyBuyAPIErrorType : Swift.Int {
+  case invalidResponse
+  case responseError
+  public var description: Swift.String {
     get
   }
-  final public let title: Swift.String
-  public init(_ description: Swift.String?, context: Any? = nil)
-  convenience public init(_ error: Swift.Error?, context: Any? = nil)
-  @objc override dynamic public init()
-  @objc deinit
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
 }
-@_hasMissingDesignatedInitializers @objc public class FlyBuyErrorInvalidURL : FlyBuy.FlyBuyError {
-  @objc deinit
-  override public init(_ description: Swift.String?, context: Any? = super)
-}
-@_hasMissingDesignatedInitializers @objc public class FlyBuyErrorInvalidResponse : FlyBuy.FlyBuyError {
-  @objc deinit
-  override public init(_ description: Swift.String?, context: Any? = super)
-}
-@_hasMissingDesignatedInitializers @objc public class FlyBuyAPIError : FlyBuy.FlyBuyError {
+@_hasMissingDesignatedInitializers @objc(FlyBuyAPIError) public class FlyBuyAPIError : ObjectiveC.NSObject, FlyBuy.FlyBuyError {
+  @objc final public let type: FlyBuy.FlyBuyAPIErrorType
+  @objc final public let statusCodeInt: Swift.Int
   final public let statusCode: FlyBuy.HTTPStatusCode?
-  public var errors: [Swift.String : [Swift.String]]? {
-    get
+  public var errorDescription: Swift.String?
+  @objc override dynamic public var description: Swift.String {
+    @objc get
   }
-  final public let appUpgradeURL: Foundation.URL?
   @objc deinit
-  override public init(_ description: Swift.String?, context: Any? = super)
+  @objc override dynamic public init()
 }
 @objc(FlyBuyClaimOrderInfo) open class ClaimOrderInfo : ObjectiveC.NSObject, Swift.Codable {
   @objc public init(customerCarColor: Swift.String?, customerCarType: Swift.String?, customerLicensePlate: Swift.String?, customerName: Swift.String?, customerPhone: Swift.String?, pushToken: Swift.String)
@@ -248,6 +248,7 @@ public struct BeaconRegion : Swift.Codable, Swift.Hashable {
 }
 public protocol FlyBuyModuleManager {
   func configUpdated(_ config: FlyBuy.AppConfig)
+  func set(logLevel: FlyBuy.LogLevel)
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(FlyBuyCore) public class Core : ObjectiveC.NSObject {
   @objc public static let orders: FlyBuy.OrdersManager
@@ -393,6 +394,10 @@ public enum HTTPStatusCode : Swift.Int, Swift.Error {
   @objc override dynamic public init()
   @objc deinit
 }
+@_hasMissingDesignatedInitializers @objc(FlyBuySitesManagerError) public class SitesManagerError : ObjectiveC.NSObject, FlyBuy.FlyBuyError {
+  @objc deinit
+  @objc override dynamic public init()
+}
 extension Optional where Wrapped == Swift.String {
   public var presence: Swift.String? {
     get
@@ -453,9 +458,10 @@ extension NSNotification.Name {
   public static let orderUpdated: Foundation.Notification.Name
   public static let orderEventError: Foundation.Notification.Name
 }
-@_hasMissingDesignatedInitializers @objc(FlyBuyOrdersManagerError) public class OrdersManagerError : FlyBuy.FlyBuyError {
+@_hasMissingDesignatedInitializers @objc(FlyBuyOrdersManagerError) public class OrdersManagerError : ObjectiveC.NSObject, FlyBuy.FlyBuyError {
+  public var errorDescription: Swift.String?
   @objc deinit
-  override public init(_ description: Swift.String?, context: Any? = super)
+  @objc override dynamic public init()
 }
 @_inheritsConvenienceInitializers @objc(FlyBuyCustomerManager) public class CustomerManager : ObjectiveC.NSObject {
   @objc public var current: FlyBuy.Customer? {
@@ -473,8 +479,9 @@ extension NSNotification.Name {
   @objc override dynamic public init()
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc(FlyBuyCustomerManagerError) public class CustomerManagerError : FlyBuy.FlyBuyError {
-  override public init(_ description: Swift.String?, context: Any? = super)
+@_hasMissingDesignatedInitializers @objc(FlyBuyCustomerManagerError) public class CustomerManagerError : ObjectiveC.NSObject, FlyBuy.FlyBuyError {
+  public var errorDescription: Swift.String?
+  @objc override dynamic public init()
   @objc deinit
 }
 @objc public enum LogLevel : Swift.Int {
@@ -490,8 +497,9 @@ extension NSNotification.Name {
     get
   }
 }
-@_hasMissingDesignatedInitializers @objc(FlyBuyLogger) final public class Logger : ObjectiveC.NSObject {
+@objc(FlyBuyLogger) final public class Logger : ObjectiveC.NSObject {
   final public var logLevel: FlyBuy.LogLevel
+  public init(name: Swift.String = "FlyBuySDK")
   final public func verbose(_ message: Any = "", filename: Swift.String = #file, function: Swift.String = #function, line: Swift.Int = #line)
   final public func debug(_ message: Any = "", filename: Swift.String = #file, function: Swift.String = #function, line: Swift.Int = #line)
   final public func info(_ message: Any = "", filename: Swift.String = #file, function: Swift.String = #function, line: Swift.Int = #line)
@@ -585,6 +593,9 @@ extension Order {
 extension FlyBuy.LocationAuthStatus : Swift.Equatable {}
 extension FlyBuy.LocationAuthStatus : Swift.Hashable {}
 extension FlyBuy.LocationAuthStatus : Swift.RawRepresentable {}
+extension FlyBuy.FlyBuyAPIErrorType : Swift.Equatable {}
+extension FlyBuy.FlyBuyAPIErrorType : Swift.Hashable {}
+extension FlyBuy.FlyBuyAPIErrorType : Swift.RawRepresentable {}
 extension FlyBuy.HTTPStatusCode : Swift.Equatable {}
 extension FlyBuy.HTTPStatusCode : Swift.Hashable {}
 extension FlyBuy.HTTPStatusCode : Swift.RawRepresentable {}

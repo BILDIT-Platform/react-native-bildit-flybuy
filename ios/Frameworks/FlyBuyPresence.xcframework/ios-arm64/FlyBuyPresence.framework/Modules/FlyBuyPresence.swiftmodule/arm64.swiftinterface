@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FlyBuyPresence
 import CoreBluetooth
 import CoreLocation
@@ -23,6 +23,7 @@ import Swift
 }
 extension Manager : FlyBuy.FlyBuyModuleManager {
   public func configUpdated(_ config: FlyBuy.AppConfig)
+  public func set(logLevel: FlyBuy.LogLevel)
 }
 @objc public enum PresenceErrorType : Swift.Int {
   case invalidPresenceIdentifierLength
@@ -34,6 +35,7 @@ extension Manager : FlyBuy.FlyBuyModuleManager {
   case bluetoothPoweredOff
   case bluetoothUnauthorized
   case bluetoothUnsupported
+  case presenceManagerNotConfigured
   public var description: Swift.String {
     get
   }
@@ -43,32 +45,33 @@ extension Manager : FlyBuy.FlyBuyModuleManager {
     get
   }
 }
-@objc(FlyBuyPresenceError) @_objcRuntimeName(FlyBuyPresenceError) public class PresenceError : FlyBuy.FlyBuyError {
+@objc(FlyBuyPresenceError) public class PresenceError : ObjectiveC.NSObject, FlyBuy.FlyBuyError {
   @objc final public let type: FlyBuyPresence.PresenceErrorType
-  @objc public init(_ typeIn: FlyBuyPresence.PresenceErrorType, context: Any? = nil)
+  @objc public init(_ typeIn: FlyBuyPresence.PresenceErrorType)
   @objc override dynamic public var description: Swift.String {
     @objc get
   }
   @objc deinit
-  override public init(_ description: Swift.String?, context: Any? = super)
+  @objc override dynamic public init()
+}
+@objc public enum LocatorEvent : Swift.UInt8 {
+  case confirmed = 1
+  case error = 2
+  case present = 3
+  case received = 4
+  public typealias RawValue = Swift.UInt8
+  public init?(rawValue: Swift.UInt8)
+  public var rawValue: Swift.UInt8 {
+    get
+  }
 }
 @objc public protocol PresenceLocatorDelegate {
   @objc optional func locatorDidStart(_ locator: FlyBuyPresence.PresenceLocator)
   @objc optional func locatorDidStop(_ locator: FlyBuyPresence.PresenceLocator)
   @objc optional func locatorDidFail(_ locator: FlyBuyPresence.PresenceLocator, error: Swift.Error)
-  @objc optional func locator(_ locator: FlyBuyPresence.PresenceLocator, didUpdateState state: FlyBuyPresence.PresenceLocator.state)
+  @objc optional func locator(_ locator: FlyBuyPresence.PresenceLocator, didReceiveEvent type: Swift.UInt8)
 }
 @_hasMissingDesignatedInitializers @objc public class PresenceLocator : ObjectiveC.NSObject {
-  @objc public enum state : Swift.UInt8 {
-    case confirmed = 1
-    case error = 2
-    case present = 3
-    public typealias RawValue = Swift.UInt8
-    public init?(rawValue: Swift.UInt8)
-    public var rawValue: Swift.UInt8 {
-      get
-    }
-  }
   final public let uuid: Foundation.UUID
   final public let identifier: Foundation.Data
   final public let payload: Swift.String?
@@ -79,6 +82,6 @@ extension Manager : FlyBuy.FlyBuyModuleManager {
 extension FlyBuyPresence.PresenceErrorType : Swift.Equatable {}
 extension FlyBuyPresence.PresenceErrorType : Swift.Hashable {}
 extension FlyBuyPresence.PresenceErrorType : Swift.RawRepresentable {}
-extension FlyBuyPresence.PresenceLocator.state : Swift.Equatable {}
-extension FlyBuyPresence.PresenceLocator.state : Swift.Hashable {}
-extension FlyBuyPresence.PresenceLocator.state : Swift.RawRepresentable {}
+extension FlyBuyPresence.LocatorEvent : Swift.Equatable {}
+extension FlyBuyPresence.LocatorEvent : Swift.Hashable {}
+extension FlyBuyPresence.LocatorEvent : Swift.RawRepresentable {}

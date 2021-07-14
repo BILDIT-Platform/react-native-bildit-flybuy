@@ -8,7 +8,10 @@ const FeatureList = [
     Svg: require('../../static/img/code.svg').default,
     description: (
       <>
-      <a href="/docs/intro">React Native Reference</a> | <a href="https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/pickup">Pickup Guide</a>
+        <a href="./docs/Modules/Pickup">React Native Reference</a> |{' '}
+        <a href="https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/pickup">
+          Pickup Guide
+        </a>
       </>
     ),
   },
@@ -17,7 +20,10 @@ const FeatureList = [
     Svg: require('../../static/img/code.svg').default,
     description: (
       <>
-      <a href="/docs/intro">React Native Reference</a> | <a href="https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify">Notify Guide</a>
+        <a href="./docs/Modules/Notify">React Native Reference</a> |{' '}
+        <a href="https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify">
+          Notify Guide
+        </a>
       </>
     ),
   },
@@ -26,13 +32,16 @@ const FeatureList = [
     Svg: require('../../static/img/code.svg').default,
     description: (
       <>
-      <a href="/docs/intro">React Native Reference</a> | <a href="https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/presence">Presence Guide</a>
+        <a href="./docs/Modules/Presence">React Native Reference</a> |{' '}
+        <a href="https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/presence">
+          Presence Guide
+        </a>
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({ Svg, title, description }) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">

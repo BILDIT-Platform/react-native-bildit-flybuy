@@ -402,6 +402,18 @@ class Flybuy: RCTEventEmitter {
         
     }
     
+    // Notifications
+    
+    @objc(updatePushToken:)
+    func updatePushToken(token: String) {
+        FlyBuy.Core.updatePushToken(token)
+    }
+    
+    @objc(handleRemoteNotification:)
+    func handleRemoteNotification(userInfo: Dictionary<String, Any>) {
+        FlyBuy.Core.handleRemoteNotification(userInfo)
+    }
+    
     // Parsers
     
     func parsePagination(pagination: Pagination?) -> Dictionary<String, Any?>? {

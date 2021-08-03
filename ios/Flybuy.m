@@ -124,4 +124,11 @@ RCT_EXTERN_METHOD(startLocatorWithIdentifier:(NSString *)presenceIdStr
 
 RCT_EXTERN_METHOD(stopLocator:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
+
+// Notifications
+
+RCT_EXTERN_METHOD(updatePushToken:(NSString *)token)
+
+RCT_EXTERN_METHOD(handleRemoteNotification:(NSDictionary *)userInfo)
+
 @end

@@ -497,6 +497,17 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
     }
   }
 
+  // Notifications
+
+  @ReactMethod
+  fun updatePushToken(token: String) {
+    FlyBuyCore.onNewPushToken(token)
+  }
+
+  @ReactMethod
+  fun handleRemoteNotification(data: Map<String, String>) {
+    FlyBuyCore.onMessageReceived(data, null)
+  }
 
 }
 

@@ -187,10 +187,13 @@ type FlyBuyType = {
   Presence: Presence;
   Core: {
     configure(token: string): void;
+    updatePushToken(token: string): void;
+    handleRemoteNotification(userInfo: any): void;
     Orders: Orders;
     Customer: Customer;
     Sites: Sites;
   };
+  eventEmitter: any;
 };
 
 const FlyBuyModule = {
@@ -211,6 +214,8 @@ const FlyBuyModule = {
   },
   Core: {
     configure: Flybuy.configure,
+    updatePushToken: Flybuy.updatePushToken,
+    handleRemoteNotification: Flybuy.handleRemoteNotification,
     Orders: {
       fetchOrders: Flybuy.fetchOrders,
       createOrder: Flybuy.createOrder,

@@ -224,7 +224,6 @@ public protocol FlyBuyError : Foundation.LocalizedError {
   open func encode(to encoder: Swift.Encoder) throws
 }
 public struct AppConfigData : Swift.Codable {
-  public let name: Swift.String?
   public let pickupLocationFilters: FlyBuy.PickupLocationFilters?
   public let pickupStates: FlyBuy.PickupStates?
   public let notifyMaxSites: Swift.Int?

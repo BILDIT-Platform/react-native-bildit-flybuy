@@ -815,4 +815,5 @@ fun decodeData(data: ReadableMap): Map<String,String> {
       else -> throw IllegalArgumentException("Could not convert object with key: $key.")
     }
   }
+  return dataMap
 }

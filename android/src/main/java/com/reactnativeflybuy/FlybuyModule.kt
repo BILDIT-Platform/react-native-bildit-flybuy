@@ -505,8 +505,9 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   }
 
   @ReactMethod
-  fun handleRemoteNotification(data: Map<String, String>) {
-    FlyBuyCore.onMessageReceived(data, null)
+  fun handleRemoteNotification(data: ReadableMap) {
+    val dataMap: Map<String,String> = decodeData(data)
+    FlyBuyCore.onMessageReceived(dataMap, null)
   }
 
 }
@@ -800,4 +801,18 @@ fun decodePickupWindow(pickupWindow: ReadableMap): PickupWindow {
     start = instantStart,
     end = instantEnd
   )
+}
+
+
+fun decodeData(data: ReadableMap): Map<String,String> {
+  var dataMap = mapOf<String, String>()
+  val iterator: ReadableMapKeySetIterator = data.keySetIterator()
+  while (iterator.hasNextKey()) {
+    val key = iterator.nextKey()
+    val type: ReadableType = data.getType(key)
+    when (type) {
+      ReadableType.String -> dataMap += Pair(key, data.getString(key)!!)
+      else -> throw IllegalArgumentException("Could not convert object with key: $key.")
+    }
+  }
 }

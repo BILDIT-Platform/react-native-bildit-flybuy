@@ -188,7 +188,7 @@ type FlyBuyType = {
   Core: {
     configure(token: string): void;
     updatePushToken(token: string): void;
-    handleRemoteNotification(userInfo: any): void;
+    handleRemoteNotification(data: any): void;
     Orders: Orders;
     Customer: Customer;
     Sites: Sites;

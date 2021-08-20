@@ -229,7 +229,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   fun fetchOrderByRedemptionCode(redeemCode: String, promise: Promise) {
     FlyBuyCore.orders.fetch(redeemCode) { order, sdkError ->
       if (null != sdkError) {
-        promise.reject(sdkError.description(), sdkError.description())
+        promise.reject(sdkError.userError(), sdkError.userError())
       } else {
         promise.resolve(order?.let { parseOrder(it) })
       }

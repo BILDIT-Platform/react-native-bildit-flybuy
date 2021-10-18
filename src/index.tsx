@@ -108,7 +108,7 @@ enum PickupType {
   DELIVERY = 'delivery',
 }
 
-const { Flybuy = {} } = NativeModules;
+const Flybuy = NativeModules.Flybuy ?? {};
 
 type Orders = {
   fetchOrders(): Promise<[IOrder]>;

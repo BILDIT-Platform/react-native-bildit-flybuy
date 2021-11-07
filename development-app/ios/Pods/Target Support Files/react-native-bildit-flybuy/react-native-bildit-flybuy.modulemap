@@ -1,0 +1,6 @@
+module react_native_bildit_flybuy {
+  umbrella header "react-native-bildit-flybuy-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "react-native-flybuy",
+  "version": "0.1.0",
+  "summary": "React Native JS Wrapper for FlyBuy Native SDK",
+  "homepage": "https://github.com/zeabdelkhalek/react-native-flybuy#readme",
+  "license": "MIT",
+  "authors": "BILDIT <ha_zellat@esi.dz> (https://github.com/zeabdelkhalek)",
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source": {
+    "git": "https://github.com/zeabdelkhalek/react-native-flybuy.git",
+    "tag": "0.1.0"
+  },
+  "source_files": "ios/**/*.{h,m,mm}",
+  "dependencies": {
+    "React-Core": [
+
+    ]
+  }
+}

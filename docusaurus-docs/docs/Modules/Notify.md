@@ -108,3 +108,21 @@ FlyBuy.Notify.createForSites(sites, notification);
 ```
 
 **[Flybuy Create for Sites Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=additional-methods)**
+
+## Sync Notify Campaign Data
+
+Notify `sync` method is provided as a development tool, in production applications it should not be called. The SDK will automatically sync data with the Flybuy portal. However the schedule used by the SDK may not be conducive to testing and development iterations.
+
+#### Params
+
+| Name  | Type    | Example |
+| ----- | ------- | ------- |
+| force | Boolean | `true`  |
+
+#### Example
+
+```js
+FlyBuy.Notify.sync(true);
+```
+
+**[Flybuy Sync Notify Campaign Data Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=sync-notify-campaign-data)**

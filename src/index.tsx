@@ -180,7 +180,7 @@ type Presence = {
 
 type Pickup = {
   configure(): void;
-  onLocationPermissionChanged(): void;
+  onPermissionChanged(): void;
 };
 
 type FlyBuyType = {

@@ -364,11 +364,6 @@ class Flybuy: RCTEventEmitter {
         FlyBuyPickup.Manager.shared.configure()
     }
     
-    @objc(onLocationPermissionChanged)
-    func onLocationPermissionChanged() {
-        // FlyBuyPickup.Manager.shared.onLocationPermissionChanged()
-    }
-    
     // Presence
     
     @objc(presenceConfigure:)

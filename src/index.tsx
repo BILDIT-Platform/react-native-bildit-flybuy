@@ -166,6 +166,7 @@ type Notify = {
     notification: INotificationInfo
   ): Promise<void>;
   sync(force: Boolean): Promise<void>;
+  onPermissionChanged(): void;
 };
 
 type Presence = {
@@ -200,7 +201,7 @@ type FlyBuyType = {
 const FlyBuyModule = {
   Pickup: {
     configure: Flybuy.pickupConfigure,
-    onLocationPermissionChanged: Flybuy.onLocationPermissionChanged,
+    onPermissionChanged: Flybuy.onPermissionChangedPickup,
   },
   Notify: {
     configure: Flybuy.notifyConfigure,
@@ -208,6 +209,7 @@ const FlyBuyModule = {
     createForSitesInRegion: Flybuy.createForSitesInRegion,
     createForSites: Flybuy.createForSites,
     sync: Flybuy.sync,
+    onPermissionChanged: Flybuy.onPermissionChangedNotify,
   },
   Presence: {
     configure: Flybuy.presenceConfigure,

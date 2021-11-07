@@ -330,7 +330,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
-  fun onLocationPermissionChanged() {
+  fun onPermissionChangedPickup() {
     PickupManager.getInstance().onLocationPermissionChanged()
   }
 
@@ -407,6 +407,11 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
       }
     }
 
+  }
+
+  @ReactMethod
+  fun onPermissionChangedNotify() {
+    NotifyManager.getInstance().onPermissionChanged()
   }
 
 // Sites

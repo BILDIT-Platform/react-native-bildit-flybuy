@@ -76,7 +76,13 @@ React.useEffect(() => {
 Whenever the location permission changes (accepted or declined), make sure to call:
 
 ```js
-FlyBuy.Pickup.onLocationPermissionChanged();
+// If using pickup module
+
+FlyBuy.Pickup.onPermissionChanged();
+
+// If using notify module
+
+FlyBuy.Notify.onPermissionChanged();
 ```
 
 :::

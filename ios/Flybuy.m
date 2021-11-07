@@ -114,8 +114,6 @@ RCT_EXTERN_METHOD(sync:(BOOL *)force
 
 RCT_EXTERN_METHOD(pickupConfigure)
 
-RCT_EXTERN_METHOD(onLocationPermissionChanged)
-
 // Presence
 
 RCT_EXTERN_METHOD(presenceConfigure:(NSString *)presenceUUID)

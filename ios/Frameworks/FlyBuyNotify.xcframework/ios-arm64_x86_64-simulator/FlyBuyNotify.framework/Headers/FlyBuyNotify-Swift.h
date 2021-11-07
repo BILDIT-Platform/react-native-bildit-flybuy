@@ -191,6 +191,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import ObjectiveC;
+@import UIKit;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -217,17 +218,25 @@ SWIFT_CLASS_NAMED("Manager")
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyNotifyManager * _Nonnull shared;)
 + (FlyBuyNotifyManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 - (void)configure;
-- (void)createForSitesInRegion:(CLCircularRegion * _Nonnull)region notification:(NotificationInfo * _Nonnull)notification callback:(void (^ _Nonnull)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
-- (void)createForSites:(NSArray<FlyBuySite *> * _Nonnull)sites notification:(NotificationInfo * _Nonnull)notification callback:(void (^ _Nonnull)(NSError * _Nullable))callback;
+- (void)createForSitesInRegion:(CLCircularRegion * _Nonnull)region notification:(NotificationInfo * _Nonnull)notification callback:(void (^ _Nonnull)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for using Notify has been deprecated.");
+- (void)createForSites:(NSArray<FlyBuySite *> * _Nonnull)sites notification:(NotificationInfo * _Nonnull)notification callback:(void (^ _Nonnull)(NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for using Notify has been deprecated.");
 /// clears all notifications
 /// \param callback will get called on completion of any errors encountered.
 ///
-- (void)clearWithCallback:(void (^ _Nonnull)(NSError * _Nullable))callback;
-- (BOOL)isFlyBuyNotifyUserInfo:(NSDictionary * _Nonnull)userInfo SWIFT_WARN_UNUSED_RESULT;
+- (void)clearWithCallback:(void (^ _Nonnull)(NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for using Notify has been deprecated.");
+- (BOOL)isFlyBuyNotifyUserInfo:(NSDictionary * _Nonnull)userInfo SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method for using Notify has been deprecated.");
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
+
+@class UNNotificationResponse;
+
+@interface FlyBuyNotifyManager (SWIFT_EXTENSION(FlyBuyNotify))
+- (void)syncWithForce:(BOOL)force callback:(void (^ _Nullable)(NSError * _Nullable))callback;
+- (void)performFetchWithCompletionHandler:(void (^ _Nullable)(UIBackgroundFetchResult))completionHandler;
+- (NSDictionary<NSString *, NSString *> * _Nullable)handleNotification:(UNNotificationResponse * _Nonnull)response SWIFT_WARN_UNUSED_RESULT;
+@end
 
 
 SWIFT_CLASS("_TtC12FlyBuyNotify16NotificationInfo")
@@ -254,7 +263,12 @@ typedef SWIFT_ENUM(NSInteger, NotifyErrorType, open) {
   NotifyErrorTypeNoLocationPermission = 0,
   NotifyErrorTypeReachedTheMaxNumberOfSites = 1,
   NotifyErrorTypeNotifyModuleNotConfigured = 2,
+  NotifyErrorTypeCoreIsNotConfigured = 3,
+  NotifyErrorTypeNotifyModuleNotEnabled = 4,
+  NotifyErrorTypeBeaconRangingNotAvailable = 5,
+  NotifyErrorTypeNoBeaconInRange = 6,
 };
+
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
@@ -454,6 +468,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import ObjectiveC;
+@import UIKit;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -480,17 +495,25 @@ SWIFT_CLASS_NAMED("Manager")
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyNotifyManager * _Nonnull shared;)
 + (FlyBuyNotifyManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 - (void)configure;
-- (void)createForSitesInRegion:(CLCircularRegion * _Nonnull)region notification:(NotificationInfo * _Nonnull)notification callback:(void (^ _Nonnull)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
-- (void)createForSites:(NSArray<FlyBuySite *> * _Nonnull)sites notification:(NotificationInfo * _Nonnull)notification callback:(void (^ _Nonnull)(NSError * _Nullable))callback;
+- (void)createForSitesInRegion:(CLCircularRegion * _Nonnull)region notification:(NotificationInfo * _Nonnull)notification callback:(void (^ _Nonnull)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for using Notify has been deprecated.");
+- (void)createForSites:(NSArray<FlyBuySite *> * _Nonnull)sites notification:(NotificationInfo * _Nonnull)notification callback:(void (^ _Nonnull)(NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for using Notify has been deprecated.");
 /// clears all notifications
 /// \param callback will get called on completion of any errors encountered.
 ///
-- (void)clearWithCallback:(void (^ _Nonnull)(NSError * _Nullable))callback;
-- (BOOL)isFlyBuyNotifyUserInfo:(NSDictionary * _Nonnull)userInfo SWIFT_WARN_UNUSED_RESULT;
+- (void)clearWithCallback:(void (^ _Nonnull)(NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for using Notify has been deprecated.");
+- (BOOL)isFlyBuyNotifyUserInfo:(NSDictionary * _Nonnull)userInfo SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method for using Notify has been deprecated.");
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
+
+@class UNNotificationResponse;
+
+@interface FlyBuyNotifyManager (SWIFT_EXTENSION(FlyBuyNotify))
+- (void)syncWithForce:(BOOL)force callback:(void (^ _Nullable)(NSError * _Nullable))callback;
+- (void)performFetchWithCompletionHandler:(void (^ _Nullable)(UIBackgroundFetchResult))completionHandler;
+- (NSDictionary<NSString *, NSString *> * _Nullable)handleNotification:(UNNotificationResponse * _Nonnull)response SWIFT_WARN_UNUSED_RESULT;
+@end
 
 
 SWIFT_CLASS("_TtC12FlyBuyNotify16NotificationInfo")
@@ -517,7 +540,12 @@ typedef SWIFT_ENUM(NSInteger, NotifyErrorType, open) {
   NotifyErrorTypeNoLocationPermission = 0,
   NotifyErrorTypeReachedTheMaxNumberOfSites = 1,
   NotifyErrorTypeNotifyModuleNotConfigured = 2,
+  NotifyErrorTypeCoreIsNotConfigured = 3,
+  NotifyErrorTypeNotifyModuleNotEnabled = 4,
+  NotifyErrorTypeBeaconRangingNotAvailable = 5,
+  NotifyErrorTypeNoBeaconInRange = 6,
 };
+
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop

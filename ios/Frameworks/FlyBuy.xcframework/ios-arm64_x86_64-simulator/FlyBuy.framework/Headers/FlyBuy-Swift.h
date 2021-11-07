@@ -471,6 +471,13 @@ SWIFT_CLASS_NAMED("LoginInfo")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+SWIFT_CLASS("_TtC6FlyBuy12NotifyConfig")
+@interface NotifyConfig : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @class CLLocation;
 @class NSNumber;
 
@@ -662,6 +669,7 @@ SWIFT_CLASS_NAMED("PickupWindow")
 @property (nonatomic, readonly, copy) NSDate * _Nonnull end;
 - (nonnull instancetype)initWithStart:(NSDate * _Nonnull)start end:(NSDate * _Nonnull)end OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init:(NSDate * _Nonnull)date;
+- (NSString * _Nonnull)formattedStringWithLocale:(NSLocale * _Nonnull)locale SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1261,6 +1269,13 @@ SWIFT_CLASS_NAMED("LoginInfo")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+SWIFT_CLASS("_TtC6FlyBuy12NotifyConfig")
+@interface NotifyConfig : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @class CLLocation;
 @class NSNumber;
 
@@ -1452,6 +1467,7 @@ SWIFT_CLASS_NAMED("PickupWindow")
 @property (nonatomic, readonly, copy) NSDate * _Nonnull end;
 - (nonnull instancetype)initWithStart:(NSDate * _Nonnull)start end:(NSDate * _Nonnull)end OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init:(NSDate * _Nonnull)date;
+- (NSString * _Nonnull)formattedStringWithLocale:(NSLocale * _Nonnull)locale SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

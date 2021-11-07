@@ -33,6 +33,28 @@ extension PickupLocationFilterData {
     get
   }
 }
+@objc @_hasMissingDesignatedInitializers public class NotifyConfig : ObjectiveC.NSObject, Swift.Codable {
+  final public let beaconUUID: Foundation.UUID
+  final public let defaultGeofenceRadiusMeters: Swift.Int
+  final public let defaultSiteSearchRadiusMeters: Swift.Int
+  final public let analyticsEventLimit: Swift.Int?
+  @objc deinit
+  @objc override dynamic public init()
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct RuntimeError : Swift.Error, Swift.Codable {
+  public var localizedDescription: Swift.String {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension Error {
+  public var message: Swift.String {
+    get
+  }
+}
 @objc(FlyBuyCustomerConsent) open class CustomerConsent : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let termsOfService: Swift.Bool
   @objc final public let ageVerification: Swift.Bool
@@ -102,11 +124,82 @@ extension _AnyEncodable {
   public init(arrayLiteral elements: Any...)
   public init(dictionaryLiteral elements: (Swift.AnyHashable, Any)...)
 }
+public typealias ResultType<T> = Swift.Result<T, Swift.Error>
+public struct VoidResponse : Swift.Codable {
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public enum HTTPMethod : Swift.String {
+  case get
+  case post
+  case put
+  case patch
+  case delete
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum EncodingType {
+  case url
+  case json
+  public static func == (a: FlyBuy.EncodingType, b: FlyBuy.EncodingType) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public protocol BaseApiRequest {
+  var requestEndPoint: Swift.String { get }
+  var requestType: FlyBuy.HTTPMethod { get }
+  var encoding: FlyBuy.EncodingType { get }
+  var headers: [Swift.String : Swift.String]? { get }
+  var requestBody: Foundation.Data? { get }
+}
+extension BaseApiRequest {
+  public var encoding: FlyBuy.EncodingType {
+    get
+  }
+  public var requestBody: Foundation.Data? {
+    get
+  }
+  public var headers: [Swift.String : Swift.String]? {
+    get
+  }
+}
+public protocol CodableRequest : FlyBuy.BaseApiRequest {
+  associatedtype Response : Swift.Decodable
+  associatedtype ErrorType : Swift.Decodable, Swift.Error
+  var decoder: Foundation.JSONDecoder { get }
+  var apiToken: Swift.String? { get }
+  var queryParams: [Swift.String : Swift.String]? { get }
+}
+extension CodableRequest {
+  public typealias ErrorType = FlyBuy.RuntimeError
+  public var decoder: Foundation.JSONDecoder {
+    get
+  }
+  public var apiToken: Swift.String? {
+    get
+  }
+  public var queryParams: [Swift.String : Swift.String]? {
+    get
+  }
+}
 open class EncodableRequest<EncodableObject> where EncodableObject : Swift.Encodable {
   final public let object: EncodableObject
   final public let encoder: Foundation.JSONEncoder
-  public init(object: EncodableObject, encoder: Foundation.JSONEncoder = JSONEncoder())
+  public init(object: EncodableObject, encoder: Foundation.JSONEncoder = JSONEncoder.iso8601FullLocalTZ)
+  public var requestBody: Foundation.Data? {
+    get
+  }
   @objc deinit
+}
+extension BaseApiRequest {
+  public var latestApi: Swift.String {
+    get
+  }
 }
 @objc(FlyBuySite) open class Site : ObjectiveC.NSObject, Swift.Decodable {
   @objc final public let id: Swift.Int
@@ -133,13 +226,14 @@ open class EncodableRequest<EncodableObject> where EncodableObject : Swift.Encod
   @objc deinit
   required public init(from decoder: Swift.Decoder) throws
 }
-@objc(FlyBuyGeofence) open class Geofence : ObjectiveC.NSObject, Swift.Decodable {
+@objc(FlyBuyGeofence) open class Geofence : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let latitude: Swift.String
   @objc final public let longitude: Swift.String
   @objc final public let radiusMeters: Swift.Double
   public func locationCoordinate() -> CoreLocation.CLLocationCoordinate2D?
   @objc deinit
   required public init(from decoder: Swift.Decoder) throws
+  open func encode(to encoder: Swift.Encoder) throws
 }
 @objc(FlyBuyCustomerInfo) open class CustomerInfo : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let name: Swift.String
@@ -152,6 +246,14 @@ open class EncodableRequest<EncodableObject> where EncodableObject : Swift.Encod
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
   open func encode(to encoder: Swift.Encoder) throws
+}
+final public class PersistManager : FlyBuy.FlyBuyDBProtocol {
+  public static let defaultDBPath: Swift.String
+  public static var shared: FlyBuy.PersistManager
+  final public var dbManager: FlyBuy.FlyBuyDBManager
+  final public var needsInit: Swift.Bool
+  public init(atPath path: Swift.String = PersistManager.defaultDBPath)
+  @objc deinit
 }
 @objc public enum LocationAuthStatus : Swift.Int, Swift.Codable {
   case notDetermined
@@ -229,8 +331,14 @@ public struct AppConfigData : Swift.Codable {
   public let notifyMaxSites: Swift.Int?
   public let nearbySitesFeatureUrl: Swift.String?
   public let upgrade: FlyBuy.AppUpgrade?
+  public let notify: FlyBuy.NotifyConfig?
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+}
+open class BaseAPIService {
+  public init()
+  public func execute<Request>(_ request: Request, withCompletion completion: @escaping (FlyBuy.ResultType<Request.Response>) -> Swift.Void) where Request : FlyBuy.CodableRequest
+  @objc deinit
 }
 public struct BeaconRegion : Swift.Codable, Swift.Hashable {
   public let uuid: Foundation.UUID
@@ -255,7 +363,9 @@ public protocol FlyBuyModuleManager {
   @objc public static let sites: FlyBuy.SitesManager
   @objc public static let config: FlyBuy.ConfigurationManager
   @objc public static let logger: FlyBuy.Logger
+  public static var isCoreConfigured: Swift.Bool
   @objc public static func configure(_ opts: [Swift.String : Any])
+  public static func appInstanceID() -> Foundation.UUID
   @objc public static func handleRemoteNotification(_ data: [Swift.AnyHashable : Any])
   @objc public static func updatePushToken(_ newPushToken: Swift.String)
   @objc public static func updateAPNPushToken(_ deviceToken: Foundation.Data)
@@ -282,6 +392,47 @@ extension _AnyDecodable {
   @objc deinit
   open func encode(to encoder: Swift.Encoder) throws
 }
+final public class FlyBuyDBManager {
+  final public func setDBVersion(_ version: Swift.Int)
+  public init(atPath path: Swift.String)
+  final public func fetchAll<T>(_ type: [T].Type) throws -> [T] where T : FlyBuy.PersistableCodable
+  final public func fetch<T>(_ type: [T].Type, using sql: Swift.String) throws -> [T] where T : FlyBuy.PersistableCodable
+  final public func save<T>(_ value: T) throws where T : FlyBuy.PersistableCodable
+  final public func deleteAll<T>(_ type: T.Type) throws where T : FlyBuy.PersistableCodable
+  final public func execute(raw: Swift.String) throws
+  @objc deinit
+}
+public protocol FlyBuyDBProtocol {
+  var dbManager: FlyBuy.FlyBuyDBManager { get }
+}
+extension FlyBuyDBProtocol {
+  public func fetchAll<T>(_ type: [T].Type) throws -> [T] where T : FlyBuy.PersistableCodable
+  public func fetch<T>(_ type: [T].Type, using sql: Swift.String) throws -> [T] where T : FlyBuy.PersistableCodable
+  public func save<T>(_ value: T) throws where T : FlyBuy.PersistableCodable
+  public func deleteAll<T>(_ type: T.Type) throws where T : FlyBuy.PersistableCodable
+  public func execute(sql: Swift.String) throws
+}
+public protocol PersistableCodable : Swift.Decodable, Swift.Encodable {
+  static var createTable: Swift.String { get }
+  static var upsert: Swift.String { get }
+  static var fetchAll: Swift.String { get }
+  static var deleteAll: Swift.String { get }
+}
+extension PersistableCodable {
+  public static func fetchAll(persistManager: FlyBuy.FlyBuyDBProtocol = PersistManager.shared) throws -> [Self]
+  public func save(persistManager: FlyBuy.FlyBuyDBProtocol = PersistManager.shared) throws
+  public static func deleteAll(persistManager: FlyBuy.FlyBuyDBProtocol = PersistManager.shared) throws
+}
+extension JSONDecoder {
+  public static let iso8601Full: Foundation.JSONDecoder
+}
+extension JSONEncoder {
+  public static let iso8601FullLocalTZ: Foundation.JSONEncoder
+}
+extension DateFormatter {
+  public static let iso8601Full: Foundation.DateFormatter
+  public static let iso8601FullLocalTZ: Foundation.DateFormatter
+}
 @_hasMissingDesignatedInitializers @objc(FlyBuyCustomer) open class Customer : ObjectiveC.NSObject, Swift.Decodable {
   @objc final public let token: Swift.String
   @objc final public let emailAddress: Swift.String?
@@ -305,6 +456,7 @@ extension _AnyDecodable {
   @objc convenience public init(_ date: Foundation.Date)
   required convenience public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+  @objc public func formattedString(locale: Foundation.Locale = Locale.current) -> Swift.String
   @objc override dynamic public init()
   @objc deinit
 }
@@ -396,6 +548,48 @@ public enum HTTPStatusCode : Swift.Int, Swift.Error {
 @_hasMissingDesignatedInitializers @objc(FlyBuySitesManagerError) public class SitesManagerError : ObjectiveC.NSObject, FlyBuy.FlyBuyError {
   @objc deinit
   @objc override dynamic public init()
+}
+public struct AnyCodable : Swift.Codable {
+  public let value: Any
+  public init<T>(_ value: T?)
+}
+extension AnyCodable : FlyBuy._AnyEncodable, FlyBuy._AnyDecodable {
+}
+extension AnyCodable : Swift.Equatable {
+  public static func == (lhs: FlyBuy.AnyCodable, rhs: FlyBuy.AnyCodable) -> Swift.Bool
+}
+extension AnyCodable : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension AnyCodable : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension AnyCodable : Swift.ExpressibleByNilLiteral {
+}
+extension AnyCodable : Swift.ExpressibleByBooleanLiteral {
+  public typealias BooleanLiteralType = Swift.Bool
+}
+extension AnyCodable : Swift.ExpressibleByIntegerLiteral {
+  public typealias IntegerLiteralType = Swift.Int
+}
+extension AnyCodable : Swift.ExpressibleByFloatLiteral {
+  public typealias FloatLiteralType = Swift.Double
+}
+extension AnyCodable : Swift.ExpressibleByStringLiteral {
+  public typealias StringLiteralType = Swift.String
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+}
+extension AnyCodable : Swift.ExpressibleByArrayLiteral {
+  public typealias ArrayLiteralElement = Any
+}
+extension AnyCodable : Swift.ExpressibleByDictionaryLiteral {
+  public typealias Key = Swift.AnyHashable
+  public typealias Value = Any
 }
 extension Optional where Wrapped == Swift.String {
   public var presence: Swift.String? {
@@ -586,9 +780,28 @@ public struct CustomerResponse : Swift.Decodable {
   @objc deinit
   @objc override dynamic public init()
 }
+extension Order : FlyBuy.PersistableCodable {
+  public static var createTable: Swift.String {
+    get
+  }
+  public static var upsert: Swift.String {
+    get
+  }
+  public static var fetchAll: Swift.String {
+    get
+  }
+  public static var deleteAll: Swift.String {
+    get
+  }
+}
 extension Order {
   public func isOpen() -> Swift.Bool
 }
+extension FlyBuy.HTTPMethod : Swift.Equatable {}
+extension FlyBuy.HTTPMethod : Swift.Hashable {}
+extension FlyBuy.HTTPMethod : Swift.RawRepresentable {}
+extension FlyBuy.EncodingType : Swift.Equatable {}
+extension FlyBuy.EncodingType : Swift.Hashable {}
 extension FlyBuy.LocationAuthStatus : Swift.Equatable {}
 extension FlyBuy.LocationAuthStatus : Swift.Hashable {}
 extension FlyBuy.LocationAuthStatus : Swift.RawRepresentable {}
@@ -601,5 +814,3 @@ extension FlyBuy.HTTPStatusCode : Swift.RawRepresentable {}
 extension FlyBuy.LogLevel : Swift.Equatable {}
 extension FlyBuy.LogLevel : Swift.Hashable {}
 extension FlyBuy.LogLevel : Swift.RawRepresentable {}
-extension FlyBuy.Order : Swift.Encodable {}
-extension FlyBuy.Order : Swift.Decodable {}

@@ -26,7 +26,8 @@ import org.threeten.bp.Instant
 import java.util.*
 import java.util.concurrent.ExecutionException
 
-class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class FlybuyModule(reactContext: ReactApplicationContext) :
+  ReactContextBaseJavaModule(reactContext) {
 
   override fun getName(): String {
     return "Flybuy"
@@ -213,8 +214,17 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   }
 
   @ReactMethod
-  fun claimOrder(redeemCode: String, customer: ReadableMap, pickupType: String? = null, promise: Promise) {
-    FlyBuyCore.orders.claim(redeemCode, decodeCustomerInfo(customer), pickupType) { order, sdkError ->
+  fun claimOrder(
+    redeemCode: String,
+    customer: ReadableMap,
+    pickupType: String? = null,
+    promise: Promise
+  ) {
+    FlyBuyCore.orders.claim(
+      redeemCode,
+      decodeCustomerInfo(customer),
+      pickupType
+    ) { order, sdkError ->
       sdkError?.let {
         promise.reject(it.userError(), it.userError())
       } ?: run {
@@ -237,7 +247,15 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   }
 
   @ReactMethod
-  fun createOrder(siteID: Int, pid: String, customer: ReadableMap, pickupWindow: ReadableMap, orderState: String? = null, pickupType: String? = null, promise: Promise) {
+  fun createOrder(
+    siteID: Int,
+    pid: String,
+    customer: ReadableMap,
+    pickupWindow: ReadableMap,
+    orderState: String? = null,
+    pickupType: String? = null,
+    promise: Promise
+  ) {
     val customerInfo: CustomerInfo = decodeCustomerInfo(customer)
     val pickupWindowInfo = decodePickupWindow(pickupWindow)
 
@@ -276,7 +294,11 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
 
   @ReactMethod
   fun rateOrder(orderId: Int, rating: Int, comments: String, promise: Promise) {
-    FlyBuyCore.orders.rateOrder(orderId = orderId, rating = rating, comments = comments) { order, sdkError ->
+    FlyBuyCore.orders.rateOrder(
+      orderId = orderId,
+      rating = rating,
+      comments = comments
+    ) { order, sdkError ->
       sdkError?.let {
         promise.reject(it.userError(), it.userError())
       } ?: run {
@@ -334,7 +356,10 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
         sites?.let {
           promise.resolve(parseSites(sites))
         } ?: run {
-          promise.reject("Create Notification for sites in region Error", "Error creating notification")
+          promise.reject(
+            "Create Notification for sites in region Error",
+            "Error creating notification"
+          )
         }
       }
     }
@@ -368,6 +393,20 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
         promise.resolve("ok")
       }
     }
+  }
+
+  @ReactMethod
+  fun sync(force: Boolean, promise: Promise) {
+    NotifyManager.getInstance().sync(
+      force
+    ) { sdkError ->
+      sdkError?.let {
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        promise.resolve("ok")
+      }
+    }
+
   }
 
 // Sites
@@ -448,20 +487,21 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   @ReactMethod
   fun createLocatorWithIdentifier(byte_presenceId: String, payload: String, promise: Promise) {
     var presenceId = byte_presenceId.toByteArray()
-    PresenceManager.getInstance()?.createLocatorWithIdentifier(presenceId, payload) { presenceLocator, sdkError ->
-      sdkError?.let {
-        // Handle error
-        promise.reject(it.userError(), it.userError())
-      }
-      presenceLocator?.let {
+    PresenceManager.getInstance()
+      ?.createLocatorWithIdentifier(presenceId, payload) { presenceLocator, sdkError ->
+        sdkError?.let {
+          // Handle error
+          promise.reject(it.userError(), it.userError())
+        }
+        presenceLocator?.let {
 
-        //  promise.resolve(presenceLocator.refere)
-        // Set locator listener
-        // it.listener = locatorListener
-        // Store locator or start it here
-        startLocator(presenceLocator)
+          //  promise.resolve(presenceLocator.refere)
+          // Set locator listener
+          // it.listener = locatorListener
+          // Store locator or start it here
+          startLocator(presenceLocator)
+        }
       }
-    }
   }
 
   @ReactMethod
@@ -472,19 +512,20 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   @ReactMethod
   fun startLocatorWithIdentifier(byte_presenceId: String, payload: String, promise: Promise) {
     var presenceId = byte_presenceId.toByteArray()
-    PresenceManager.getInstance()?.createLocatorWithIdentifier(presenceId, payload) { presenceLocator, sdkError ->
-      sdkError?.let {
-        // Handle error
-        promise.reject(it.userError(), it.userError())
+    PresenceManager.getInstance()
+      ?.createLocatorWithIdentifier(presenceId, payload) { presenceLocator, sdkError ->
+        sdkError?.let {
+          // Handle error
+          promise.reject(it.userError(), it.userError())
+        }
+        presenceLocator?.let {
+          // Set locator listener
+          // it.listener = locatorListener
+          // Store locator or start it here
+          startLocator(presenceLocator)
+          promise.resolve("Locator started successfully")
+        }
       }
-      presenceLocator?.let {
-        // Set locator listener
-        // it.listener = locatorListener
-        // Store locator or start it here
-        startLocator(presenceLocator)
-        promise.resolve("Locator started successfully")
-      }
-    }
   }
 
   @ReactMethod
@@ -506,7 +547,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
 
   @ReactMethod
   fun handleRemoteNotification(data: ReadableMap) {
-    val dataMap: Map<String,String> = decodeData(data)
+    val dataMap: Map<String, String> = decodeData(data)
     FlyBuyCore.onMessageReceived(dataMap, null)
   }
 
@@ -804,7 +845,7 @@ fun decodePickupWindow(pickupWindow: ReadableMap): PickupWindow {
 }
 
 
-fun decodeData(data: ReadableMap): Map<String,String> {
+fun decodeData(data: ReadableMap): Map<String, String> {
   var dataMap = mapOf<String, String>()
   val iterator: ReadableMapKeySetIterator = data.keySetIterator()
   while (iterator.hasNextKey()) {

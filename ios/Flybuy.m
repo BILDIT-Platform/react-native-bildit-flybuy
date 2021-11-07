@@ -106,6 +106,10 @@ RCT_EXTERN_METHOD(createForSites:(NSArray *)sites
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(sync:(BOOL *)force
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
 // Pickup
 
 RCT_EXTERN_METHOD(pickupConfigure)

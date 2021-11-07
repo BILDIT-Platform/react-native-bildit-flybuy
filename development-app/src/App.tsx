@@ -110,7 +110,7 @@ export default function App() {
   // Customer
 
   const loginWithToken = () => {
-    FlyBuy.Core.Customer.loginWithToken('F69PGKM1QXCN7Dj3ybEXCpU4')
+    FlyBuy.Core.Customer.loginWithToken('mEVBKpwecm89bXh1juMwPuYk')
       .then((customer) => console.tron.log('customer', customer))
       .catch((err) => console.tron.log(err));
   };
@@ -245,6 +245,7 @@ export default function App() {
     FlyBuy.Notify.configure();
     FlyBuy.Pickup.configure();
     FlyBuy.Presence.configure(AppConfig.PRESENCE_UUID);
+    FlyBuy.Notify.sync(true);
     getLocationPermissions();
   }, []);
 

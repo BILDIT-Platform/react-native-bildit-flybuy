@@ -343,6 +343,20 @@ class Flybuy: RCTEventEmitter {
         }
     }
     
+    @objc(sync:withResolver:withRejecter:)
+    func sync(force: Bool,
+              resolve:@escaping RCTPromiseResolveBlock,
+              reject:@escaping RCTPromiseRejectBlock) {
+        FlyBuyNotify.Manager.shared.sync(force: force) { (error) -> (Void) in
+            if (error == nil){
+                resolve("ok")
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+    
+    
     // Pickup
     
     @objc(pickupConfigure)

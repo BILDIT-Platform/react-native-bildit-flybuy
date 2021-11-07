@@ -165,6 +165,7 @@ type Notify = {
     sites: [ISite],
     notification: INotificationInfo
   ): Promise<void>;
+  sync(force: Boolean): Promise<void>;
 };
 
 type Presence = {
@@ -206,6 +207,7 @@ const FlyBuyModule = {
     clearNotifications: Flybuy.clearNotifications,
     createForSitesInRegion: Flybuy.createForSitesInRegion,
     createForSites: Flybuy.createForSites,
+    sync: Flybuy.sync,
   },
   Presence: {
     configure: Flybuy.presenceConfigure,

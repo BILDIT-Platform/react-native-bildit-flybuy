@@ -1,4 +1,4 @@
 {
   "extends": "./tsconfig",
-  "exclude": ["example", "order_example"]
+  "exclude": ["development-app", "example-app"]
 }

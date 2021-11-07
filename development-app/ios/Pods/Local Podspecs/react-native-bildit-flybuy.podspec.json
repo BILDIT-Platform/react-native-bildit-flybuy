@@ -1,6 +1,6 @@
 {
   "name": "react-native-bildit-flybuy",
-  "version": "0.1.4",
+  "version": "0.2.2",
   "summary": "React Native FlyBuy module. Supports Core, Pickup, Notify, and Presence Native SDK APIs.",
   "homepage": "https://github.com/BILDIT-Platform/react-native-bildit-flybuy/issues#readme",
   "license": "MIT",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/BILDIT-Platform/react-native-bildit-flybuy.git",
-    "tag": "0.1.4"
+    "tag": "0.2.2"
   },
   "source_files": "ios/**/*.{h,m,mm,swift}",
   "dependencies": {

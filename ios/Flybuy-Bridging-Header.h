@@ -3,3 +3,7 @@
 
 @interface Flybuy : RCTEventEmitter <RCTBridgeModule>
 @end
+
+@interface FlybuyNotify : NSObject<RCTBridgeModule>
+- (void)performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
+@end

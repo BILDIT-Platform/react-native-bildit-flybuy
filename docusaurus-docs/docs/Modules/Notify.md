@@ -126,3 +126,61 @@ FlyBuy.Notify.sync(true);
 ```
 
 **[Flybuy Sync Notify Campaign Data Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=sync-notify-campaign-data)**
+
+## Background Data Refresh (iOS only)
+
+Notify Campaigns require the background fetch capability to be enabled in the target settings.
+![An old rock in the desert](https://www.radiusnetworks.com/developers/flybuy/sdk-2.0/img/notify_0.png)
+
+After that, you can follow this steps:
+
+1. Modify your `AppDelegate.h`
+
+  ```objc
+  #import <React/RCTBridgeDelegate.h>
+  #import <UIKit/UIKit.h>
+  #import <UserNotifications/UserNotifications.h> // <-- add this
+
+  // Add UNUserNotificationCenterDelegate
+  @interface AppDelegate : UIResponder <UIApplicationDelegate, RCTBridgeDelegate, UNUserNotificationCenterDelegate>
+
+  .... 
+
+  @end
+  ```
+
+2. Modify your `AppDelegate.m`
+
+  ```objc
+
+    #import "AppDelegate.h"
+
+    ... other imports
+    #import <react-native-bildit-flybuy/Flybuy-Bridging-Header.h> // <-- add this line
+
+      - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+      {
+        ...
+        RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+        RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
+                                                        moduleName:@"FlybuyExample"
+                                                  initialProperties:nil];
+        
+        // ------ Add this block
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        // ------
+        
+        ...
+        return YES;
+      }
+
+      // ----- Add this block
+      - (void)application:(UIApplication *)application
+      performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+        [[[FlybuyNotify alloc]init] performFetchWithCompletionHandler:completionHandler];
+      }
+      // ------
+  ```
+
+**[Flybuy Background Data Refresh Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=background-data-refresh)**

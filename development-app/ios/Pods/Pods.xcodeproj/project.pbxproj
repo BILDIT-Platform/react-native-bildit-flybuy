@@ -676,8 +676,6 @@
 		D33E8EC04C4E1F7CF368AA5DD32CC9F5 /* RCTTouchHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AAECDC5E54E79B0E5A235F9D2CB31867 /* RCTTouchHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D3910C673FA227AAAA06A9BCB2C633C4 /* RCTTouchHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E83D550FC82425C969CF8BBE4D5CBE /* RCTTouchHandler.m */; settings = {COMPILER_FLAGS = "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32 -Wno-documentation"; }; };
 		D3D6445ADC91766965B47130F940B07A /* YGEnums.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1063C5AE702819AD9668802B116DF /* YGEnums.cpp */; settings = {COMPILER_FLAGS = "-fno-omit-frame-pointer -fexceptions -Wall -Werror -std=c++1y -fPIC -fno-objc-arc"; }; };
-		D42798D327453736000B07B0 /* FlybuyNotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42798D227453736000B07B0 /* FlybuyNotify.swift */; };
-		D42798F527453774000B07B0 /* FlybuyNotify.m in Sources */ = {isa = PBXBuildFile; fileRef = D42798F427453774000B07B0 /* FlybuyNotify.m */; };
 		D43013992582B9C4C95120A205A1BD6D /* RCTPackagerConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = 38DA4BFBFC0187522A3418110581B5E5 /* RCTPackagerConnection.mm */; settings = {COMPILER_FLAGS = "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32 -Wno-documentation"; }; };
 		D4CE9B8EB9C19D7A552B86B82857C3B6 /* React-Core-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 98CD4CBF01172BC52A1D24DF802C13CC /* React-Core-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D563A65EFFBB52063B930DFEEEDC236B /* RCTInspectorDevServerHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = E922EA8500C7D83105C3488E6C2D2787 /* RCTInspectorDevServerHelper.mm */; settings = {COMPILER_FLAGS = "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32 -Wno-documentation"; }; };
@@ -2451,8 +2449,6 @@
 		D3855E00DA6F942FF5B8795935EA95AC /* RCTAnimatedNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTAnimatedNode.m; sourceTree = "<group>"; };
 		D3CB30BA3E1382DC3E1639FDAF9D88DE /* Pods-FlybuyExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FlybuyExample-umbrella.h"; sourceTree = "<group>"; };
 		D3E4A9CD90402C21CF4439009700ECFB /* log.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = log.cpp; path = yoga/log.cpp; sourceTree = "<group>"; };
-		D42798D227453736000B07B0 /* FlybuyNotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlybuyNotify.swift; path = ios/FlybuyNotify.swift; sourceTree = "<group>"; };
-		D42798F427453774000B07B0 /* FlybuyNotify.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FlybuyNotify.m; path = ios/FlybuyNotify.m; sourceTree = "<group>"; };
 		D44FB740AB7C4EEC9FDF3DBB9D3FFFE8 /* Flybuy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Flybuy.swift; path = ios/Flybuy.swift; sourceTree = "<group>"; };
 		D45C63D72563830F327B212934DE3D2D /* RCTProfileTrampoline-arm64.S */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.asm; path = "RCTProfileTrampoline-arm64.S"; sourceTree = "<group>"; };
 		D49F8E8459FA3A0C01969ED4E58F58B6 /* RCTMessageThread.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTMessageThread.h; sourceTree = "<group>"; };
@@ -3381,8 +3377,6 @@
 				B77A810DC68C7C969202C4A27524B9EA /* Frameworks */,
 				E5DA3F127B94DF5472A55B5B54387F53 /* Pod */,
 				C73ED7400A0EB82BF39F64173E77598F /* Support Files */,
-				D42798D227453736000B07B0 /* FlybuyNotify.swift */,
-				D42798F427453774000B07B0 /* FlybuyNotify.m */,
 			);
 			name = "react-native-bildit-flybuy";
 			path = ../../..;
@@ -6747,9 +6741,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A18391B9B9289FA4F91A7255F28398F9 /* Flybuy.m in Sources */,
-				D42798D327453736000B07B0 /* FlybuyNotify.swift in Sources */,
 				CF50EF98CC8F68FD7E0E7A76D5729B08 /* Flybuy.swift in Sources */,
-				D42798F527453774000B07B0 /* FlybuyNotify.m in Sources */,
 				E13D07BA8F157ECF37BD2C9968C045C7 /* react-native-bildit-flybuy-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

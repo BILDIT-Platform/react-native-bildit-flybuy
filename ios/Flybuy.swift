@@ -356,7 +356,11 @@ class Flybuy: RCTEventEmitter {
         }
     }
     
-    
+    @objc(performFetchWithCompletionHandler:)
+    func performFetchWithCompletionHandler(completionHandler: @escaping ((UIBackgroundFetchResult) -> Void)) -> Void{
+        FlyBuyNotify.Manager.shared.performFetchWithCompletionHandler(completionHandler)
+    }
+
     // Pickup
     
     @objc(pickupConfigure)

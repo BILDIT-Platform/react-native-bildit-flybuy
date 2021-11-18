@@ -67,7 +67,7 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (void)application:(UIApplication *)application
 performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
-  [[[FlybuyNotify alloc]init] performFetchWithCompletionHandler:completionHandler];
+  [[[Flybuy alloc]init] performFetchWithCompletionHandler:completionHandler];
 }
 
 @end

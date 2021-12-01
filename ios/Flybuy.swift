@@ -9,6 +9,7 @@ enum FlyBuySupportedEvents: String, CaseIterable {
     case ordersError = "ordersError";
     case orderUpdated = "orderUpdated";
     case orderEventError = "orderEventError";
+    case notifyEvents = "notifyEvents";
 }
 
 @objc(Flybuy)
@@ -19,7 +20,7 @@ class Flybuy: RCTEventEmitter {
     }
     
     @objc open override func supportedEvents() -> [String] {
-        return ["orderUpdated","ordersUpdated","ordersError","orderEventError"]
+        return ["orderUpdated","ordersUpdated","ordersError","orderEventError", "notifyEvents"]
     }
     
     override func startObserving() {
@@ -365,18 +366,10 @@ class Flybuy: RCTEventEmitter {
         FlyBuyNotify.Manager.shared.performFetchWithCompletionHandler(completionHandler)
     }
 
-    @objc(handleNotificationResponse:withResolve:withRejecter:)
-    func handleNotification(notificationResponse: UNNotificationResponse,
-                            resolve:@escaping RCTPromiseResolveBlock,
-                            reject:@escaping RCTPromiseRejectBlock) {
+    @objc(handleNotificationResponse:)
+    func handleNotification(notificationResponse: UNNotificationResponse) {
         let metadata = FlyBuyNotify.Manager.shared.handleNotification(notificationResponse)
-        if (metadata!.isEmpty) {
-            resolve(metadata)
-        } else {
-            let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Not a valid FlyBuy notification"])
-            reject("Not Supported", "This is not FlyBuy notification", error)
-        }
-        
+        self.sendEvent(withName: FlyBuySupportedEvents.notifyEvents.rawValue, body: metadata)
     }
 
 

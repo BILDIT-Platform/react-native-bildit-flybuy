@@ -3,4 +3,6 @@
 
 @interface Flybuy : RCTEventEmitter <RCTBridgeModule>
 - (void)performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
+
+- (void)handleNotificationResponse:(UNNotificationResponse*)response;
 @end

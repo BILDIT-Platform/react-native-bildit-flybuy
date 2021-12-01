@@ -409,14 +409,13 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
     }
   }
 
-  @ReactMethod
-  fun handleNotification(intent: Intent?, promise: Promise) {
+  fun handleNotification(intent: Intent?) {
     intent?.let {
       val notifyMetadata = NotifyManager.getInstance().handleNotification(it)
       if (null != notifyMetadata) {
-        promise.resolve(notifyMetadata)
-      } else {
-        promise.reject("Not supported","This is not FlyBuy notification")
+        reactApplicationContext
+          .getJSModule(RCTDeviceEventEmitter::class.java)
+          .emit("notifyEvents", notifyMetadata)
       }
     }
   }

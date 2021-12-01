@@ -70,4 +70,17 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult result))comp
   [[[Flybuy alloc]init] performFetchWithCompletionHandler:completionHandler];
 }
 
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void (^)(void))completionHandler {
+  [[[Flybuy alloc]init] handleNotificationResponse:response];
+}
+
+// Enables app to receive notifications while in the foreground
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+       willPresentNotification:(UNNotification *)notification
+         withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
+  completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
+}
+
 @end

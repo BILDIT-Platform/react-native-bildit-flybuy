@@ -9,13 +9,18 @@ enum FlyBuySupportedEvents: String, CaseIterable {
     case ordersError = "ordersError";
     case orderUpdated = "orderUpdated";
     case orderEventError = "orderEventError";
+    case notifyEvents = "notifyEvents";
 }
 
 @objc(Flybuy)
 class Flybuy: RCTEventEmitter {
+
+    @objc override static func requiresMainQueueSetup() -> Bool {
+        return false
+    }
     
     @objc open override func supportedEvents() -> [String] {
-        return ["orderUpdated","ordersUpdated","ordersError","orderEventError"]
+        return ["orderUpdated","ordersUpdated","ordersError","orderEventError", "notifyEvents"]
     }
     
     override func startObserving() {
@@ -360,6 +365,13 @@ class Flybuy: RCTEventEmitter {
     func performFetchWithCompletionHandler(completionHandler: @escaping ((UIBackgroundFetchResult) -> Void)) -> Void{
         FlyBuyNotify.Manager.shared.performFetchWithCompletionHandler(completionHandler)
     }
+
+    @objc(handleNotificationResponse:)
+    func handleNotification(notificationResponse: UNNotificationResponse) {
+        let metadata = FlyBuyNotify.Manager.shared.handleNotification(notificationResponse)
+        self.sendEvent(withName: FlyBuySupportedEvents.notifyEvents.rawValue, body: metadata)
+    }
+
 
     // Pickup
     

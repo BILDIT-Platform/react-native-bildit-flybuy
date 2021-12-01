@@ -2,6 +2,7 @@ package com.reactnativeflybuy
 
 import android.app.Activity
 import android.app.Application.ActivityLifecycleCallbacks
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -406,7 +407,17 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
         promise.resolve("ok")
       }
     }
+  }
 
+  fun handleNotification(intent: Intent?) {
+    intent?.let {
+      val notifyMetadata = NotifyManager.getInstance().handleNotification(it)
+      if (null != notifyMetadata) {
+        reactApplicationContext
+          .getJSModule(RCTDeviceEventEmitter::class.java)
+          .emit("notifyEvents", notifyMetadata)
+      }
+    }
   }
 
   @ReactMethod

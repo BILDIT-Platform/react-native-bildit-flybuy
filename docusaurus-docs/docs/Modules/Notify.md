@@ -184,3 +184,92 @@ After that, you can follow this steps:
   ```
 
 **[Flybuy Background Data Refresh Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=background-data-refresh)**
+
+## Handle Notification Response
+
+### Configuration
+
+#### iOS
+
+  Modify your `AppDelegate.m` 
+
+  Please make sure to import `#import <react-native-bildit-flybuy/Flybuy-Bridging-Header.h>` and make this changes.
+
+  ```objc
+    - (void)userNotificationCenter:(UNUserNotificationCenter *)center
+      didReceiveNotificationResponse:(UNNotificationResponse *)response
+              withCompletionHandler:(void (^)(void))completionHandler {
+        [[[Flybuy alloc]init] handleNotificationResponse:response];
+      }
+
+    // Enables app to receive notifications while in the foreground
+    - (void)userNotificationCenter:(UNUserNotificationCenter *)center
+          willPresentNotification:(UNNotification *)notification
+            withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
+      completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
+    }
+
+  ```
+
+#### Android
+
+  Modify your `MainActivity.java` and add these imports
+
+  ```java
+    import android.content.Intent;
+    import android.os.Bundle;
+    import android.os.PersistableBundle;
+
+    import androidx.annotation.Nullable;
+
+    import com.facebook.react.ReactActivity;
+    import com.facebook.react.bridge.ReactApplicationContext;
+    import com.reactnativeflybuy.FlybuyModule;
+
+  ```
+
+  Then add this inside `MainActivity.java` body
+
+  ```java
+      @Override
+      public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+        handleFlyBuyIntent(getIntent());
+      }
+
+      @Override
+      public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        handleFlyBuyIntent(intent);
+      }
+
+      public void handleFlyBuyIntent(Intent intent) {
+        FlybuyModule flybuyModule = new FlybuyModule((ReactApplicationContext) getApplicationContext());
+        flybuyModule.handleNotification(intent);
+      }
+
+  ```
+
+### Usage
+
+Set up event listeners to get updates about notification metadata.
+
+#### Example
+
+```jsx
+React.useEffect(() => {
+  const eventListener = FlyBuy.eventEmitter.addListener(
+    'notifyEvents',
+    (event) => {
+      console.log('event', event);
+    }
+  );
+
+  return () => {
+    eventListener.remove();
+  };
+}, []);
+```
+
+
+**[Flybuy Handle Notification Response](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=handle-notification-response)**

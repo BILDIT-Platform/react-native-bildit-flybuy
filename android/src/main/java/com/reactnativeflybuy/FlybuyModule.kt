@@ -426,6 +426,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
         else -> throw IllegalArgumentException("Unsupported value type ${value::class.java.name} for key [$key]")
       }
     }
+    map.putInt("time", System.currentTimeMillis().toInt())
     return map
   }
 

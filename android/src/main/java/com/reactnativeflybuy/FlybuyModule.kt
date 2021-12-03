@@ -36,13 +36,16 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
 
   private fun registerLifecycleCallbacks(activity: Activity) {
     activity.application.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
-      override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
+      override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+        handleNotification(activity.intent)
+      }
 
       override fun onActivityStarted(activity: Activity) {
         FlyBuyCore.onActivityStarted()
       }
 
-      override fun onActivityResumed(activity: Activity) {}
+      override fun onActivityResumed(activity: Activity) {
+      }
 
       override fun onActivityPaused(activity: Activity) {}
 
@@ -409,13 +412,31 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
     }
   }
 
+  fun parseNotifyMetadata(values: Map<String, Any>): WritableMap {
+    val map = Arguments.createMap()
+    for ((key, value) in values) {
+      when (value) {
+        null -> map.putNull(key)
+        is Boolean -> map.putBoolean(key, value)
+        is Double -> map.putDouble(key, value)
+        is Int -> map.putInt(key, value)
+        is String -> map.putString(key, value)
+        is WritableMap -> map.putMap(key, value)
+        is WritableArray -> map.putArray(key, value)
+        else -> throw IllegalArgumentException("Unsupported value type ${value::class.java.name} for key [$key]")
+      }
+    }
+    map.putInt("time", (System.currentTimeMillis() / 1000).toInt())
+    return map
+  }
+
   fun handleNotification(intent: Intent?) {
     intent?.let {
       val notifyMetadata = NotifyManager.getInstance().handleNotification(it)
       if (null != notifyMetadata) {
         reactApplicationContext
           .getJSModule(RCTDeviceEventEmitter::class.java)
-          .emit("notifyEvents", notifyMetadata)
+          .emit("notifyEvents", parseNotifyMetadata(notifyMetadata.toMap()))
       }
     }
   }
@@ -601,7 +622,6 @@ fun parseOrders(items: List<Order>): WritableArray {
   }
   return array
 }
-
 
 fun parseOrder(order: Order): WritableMap {
   val map = Arguments.createMap()

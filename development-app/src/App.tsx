@@ -1,6 +1,13 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text, ScrollView, Platform } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  Platform,
+  SafeAreaView,
+} from 'react-native';
 import Button from './Button';
 import FlyBuy, { ISite } from 'react-native-bildit-flybuy';
 import {
@@ -240,6 +247,10 @@ export default function App() {
       });
   };
 
+  const notifySync = () => {
+    FlyBuy.Notify.sync(true);
+  };
+
   React.useEffect(() => {
     FlyBuy.Core.configure(AppConfig.APP_TOKEN);
     FlyBuy.Notify.configure();
@@ -257,52 +268,63 @@ export default function App() {
       }
     );
 
+    const notifyListener = FlyBuy.eventEmitter.addListener(
+      'notifyEvents',
+      (event) => {
+        console.log('notify event', event);
+      }
+    );
+
     return () => {
       eventListener.remove();
+      notifyListener.remove();
     };
   }, []);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Text>Customer</Text>
-        <Button title="login" onPress={login} />
-        <Button title="signUp" onPress={signUp} />
-        <Button title="loginWithToken" onPress={loginWithToken} />
-        <Button title="logout" onPress={logout} />
-        <Button title="create Customer" onPress={createCustomer} />
-        <Button title="getCurrentCustomer" onPress={getCurrentCustomer} />
-        <Button title="updateCustomer" onPress={updateCustomer} />
-        <Text>Order</Text>
-        <Button title="Fetch orders" onPress={fetchOrders} />
-        <Button title="Create order" onPress={createOrder} />
-        <Button
-          title="Fetch Order By RedemptionCode"
-          onPress={fetchOrderByRedemptionCode}
-        />
-        <Button title="claimOrder" onPress={claimOrder} />
-        <Button title="updateOrderState" onPress={updateOrderState} />
-        <Button title="rateOrder" onPress={rateOrder} />
-        <Button
-          title="updateOrderCustomerState"
-          onPress={updateOrderCustomerState}
-        />
-        <Text>Notify</Text>
-        <Button title="clearNotifications" onPress={clearNotifications} />
-        <Button
-          title="createForSitesInRegion"
-          onPress={createForSitesInRegion}
-        />
-        <Button title="createForSites" onPress={createForSites} />
-        <Text>Sites</Text>
-        <Button title="fetchAllSites" onPress={fetchAllSites} />
-        <Button title="fetchSitesByQuery" onPress={fetchSitesByQuery} />
-        <Button title="fetchSitesByRegion" onPress={fetchSitesByRegion} />
-        <Text>Presence</Text>
-        <Button title="start locator" onPress={startLocator} />
-        <Button title="stop locator" onPress={stopLocator} />
-      </View>
-    </ScrollView>
+    <SafeAreaView>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text>Customer</Text>
+          <Button title="login" onPress={login} />
+          <Button title="signUp" onPress={signUp} />
+          <Button title="loginWithToken" onPress={loginWithToken} />
+          <Button title="logout" onPress={logout} />
+          <Button title="create Customer" onPress={createCustomer} />
+          <Button title="getCurrentCustomer" onPress={getCurrentCustomer} />
+          <Button title="updateCustomer" onPress={updateCustomer} />
+          <Text>Order</Text>
+          <Button title="Fetch orders" onPress={fetchOrders} />
+          <Button title="Create order" onPress={createOrder} />
+          <Button
+            title="Fetch Order By RedemptionCode"
+            onPress={fetchOrderByRedemptionCode}
+          />
+          <Button title="claimOrder" onPress={claimOrder} />
+          <Button title="updateOrderState" onPress={updateOrderState} />
+          <Button title="rateOrder" onPress={rateOrder} />
+          <Button
+            title="updateOrderCustomerState"
+            onPress={updateOrderCustomerState}
+          />
+          <Text>Notify</Text>
+          <Button title="sync" onPress={notifySync} />
+          <Button title="clearNotifications" onPress={clearNotifications} />
+          <Button
+            title="createForSitesInRegion"
+            onPress={createForSitesInRegion}
+          />
+          <Button title="createForSites" onPress={createForSites} />
+          <Text>Sites</Text>
+          <Button title="fetchAllSites" onPress={fetchAllSites} />
+          <Button title="fetchSitesByQuery" onPress={fetchSitesByQuery} />
+          <Button title="fetchSitesByRegion" onPress={fetchSitesByRegion} />
+          <Text>Presence</Text>
+          <Button title="start locator" onPress={startLocator} />
+          <Button title="stop locator" onPress={stopLocator} />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 

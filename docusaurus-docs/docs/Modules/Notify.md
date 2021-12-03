@@ -213,63 +213,25 @@ After that, you can follow this steps:
 
 #### Android
 
-  Modify your `MainActivity.java` and add these imports
-
-  ```java
-    import android.content.Intent;
-    import android.os.Bundle;
-    import android.os.PersistableBundle;
-
-    import androidx.annotation.Nullable;
-
-    import com.facebook.react.ReactActivity;
-    import com.facebook.react.bridge.ReactApplicationContext;
-    import com.reactnativeflybuy.FlybuyModule;
-
-  ```
-
-  Then add this inside `MainActivity.java` body
-
-  ```java
-      @Override
-      public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-        handleFlyBuyIntent(getIntent());
-      }
-
-      @Override
-      public void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        handleFlyBuyIntent(intent);
-      }
-
-      public void handleFlyBuyIntent(Intent intent) {
-        FlybuyModule flybuyModule = new FlybuyModule((ReactApplicationContext) getApplicationContext());
-        flybuyModule.handleNotification(intent);
-      }
-
-  ```
+  No changes needed.
 
 ### Usage
 
 Set up event listeners to get updates about notification metadata.
 
-#### Example
-
 ```jsx
 React.useEffect(() => {
-  const eventListener = FlyBuy.eventEmitter.addListener(
+  const notifyEventListener = FlyBuy.eventEmitter.addListener(
     'notifyEvents',
     (event) => {
-      console.log('event', event);
+      console.log('notify event', event);
     }
   );
 
   return () => {
-    eventListener.remove();
+    notifyEventListener.remove();
   };
 }, []);
 ```
-
 
 **[Flybuy Handle Notification Response](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=handle-notification-response)**

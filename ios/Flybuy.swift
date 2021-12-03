@@ -16,7 +16,7 @@ enum FlyBuySupportedEvents: String, CaseIterable {
 class Flybuy: RCTEventEmitter {
 
     @objc override static func requiresMainQueueSetup() -> Bool {
-        return false
+        return true
     }
     
     @objc open override func supportedEvents() -> [String] {
@@ -40,7 +40,9 @@ class Flybuy: RCTEventEmitter {
     
     @objc(configure:)
     func configure(token: String) {
-        FlyBuy.Core.configure(["token": token])
+        DispatchQueue.main.async {
+            FlyBuy.Core.configure(["token": token])
+        }
     }
     
     // Customer
@@ -299,7 +301,9 @@ class Flybuy: RCTEventEmitter {
     
     @objc(notifyConfigure)
     func notifyConfigure() {
-        FlyBuyNotify.Manager.shared.configure()
+        DispatchQueue.main.async {
+            FlyBuyNotify.Manager.shared.configure()
+        }
     }
     
     @objc(clearNotifications:withRejecter:)
@@ -377,15 +381,20 @@ class Flybuy: RCTEventEmitter {
     
     @objc(pickupConfigure)
     func pickupConfigure() {
-        FlyBuyPickup.Manager.shared.configure()
+        DispatchQueue.main.async {
+            FlyBuyPickup.Manager.shared.configure()
+        }
+        
     }
     
     // Presence
     
     @objc(presenceConfigure:)
     func presenceConfigure(presenceUUID: String) {
-        let uuid = UUID(uuidString: presenceUUID)!
-        FlyBuyPresence.Manager.shared.configure(presenceUUID: uuid)
+        DispatchQueue.main.async {
+            let uuid = UUID(uuidString: presenceUUID)!
+            FlyBuyPresence.Manager.shared.configure(presenceUUID: uuid)
+        }
     }
     
     @objc(startLocatorWithIdentifier:withPayload:withResolver:withRejecter:)

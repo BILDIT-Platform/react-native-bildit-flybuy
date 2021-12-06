@@ -28,6 +28,12 @@ react-native link react-native-bildit-flybuy
 
 Refer to the [Flybuy Documentation on configuring permissions](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/ios?id=setting-permissions) on iOS.
 
+#### Fix Release Build
+
+If you have trouble running the app in Release mode with error `Undefined symbol: _OBJC_CLASS_$_Flybuy`, you can fix it by changing your project `Build Settings` and set `Build Active Architecture Only` to `Yes`.
+
+![XCode change](https://user-images.githubusercontent.com/2896774/144399782-46089446-0441-46e8-aa49-3865374bf2cf.png)
+
 ### Android
 
 #### Google API Keys

@@ -14,6 +14,7 @@ import {
   requestMultiple,
   PERMISSIONS,
   RESULTS,
+  requestNotifications,
 } from 'react-native-permissions';
 import AppConfig from './AppConfig.json';
 
@@ -58,6 +59,14 @@ export default function App() {
       }
     );
     return granted === RESULTS.GRANTED;
+  };
+
+  const getNotificationPermission = () => {
+    requestNotifications(['alert', 'sound', 'badge']).then(
+      ({ status, settings }) => {
+        console.log(status, settings)
+      }
+    );
   };
 
   // Orders
@@ -257,6 +266,7 @@ export default function App() {
     FlyBuy.Pickup.configure();
     FlyBuy.Presence.configure(AppConfig.PRESENCE_UUID);
     FlyBuy.Notify.sync(true);
+    getNotificationPermission();
     getLocationPermissions();
   }, []);
 

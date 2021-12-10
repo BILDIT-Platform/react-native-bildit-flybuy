@@ -14,6 +14,13 @@ enum FlyBuySupportedEvents: String, CaseIterable {
 
 @objc(Flybuy)
 class Flybuy: RCTEventEmitter {
+    
+    @objc public static var shared:Flybuy?
+
+    override init() {
+        super.init()
+        Flybuy.shared = self
+    }
 
     @objc override static func requiresMainQueueSetup() -> Bool {
         return true
@@ -373,7 +380,9 @@ class Flybuy: RCTEventEmitter {
     @objc(handleNotificationResponse:)
     func handleNotification(notificationResponse: UNNotificationResponse) {
         let metadata = FlyBuyNotify.Manager.shared.handleNotification(notificationResponse)
-        self.sendEvent(withName: FlyBuySupportedEvents.notifyEvents.rawValue, body: metadata)
+        if (!metadata!.isEmpty) {
+            self.sendEvent(withName: FlyBuySupportedEvents.notifyEvents.rawValue, body: metadata)
+        }
     }
 
 

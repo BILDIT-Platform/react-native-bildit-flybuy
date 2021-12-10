@@ -6,7 +6,7 @@
   "license": "MIT",
   "authors": "BILDIT <ha_zellat@esi.dz> (https://github.com/BILDIT-Platform)",
   "platforms": {
-    "ios": "11.0"
+    "ios": "10.0"
   },
   "source": {
     "git": "https://github.com/BILDIT-Platform/react-native-bildit-flybuy.git",

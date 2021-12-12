@@ -33,7 +33,10 @@ sidebar_position: 4
   "siteCoverPhotoURL": null,
   "customerLicensePlate": "AB 0496",
   "sitePhone": "+18882458277",
-  "redeemedAt": "2021-06-03 03:44:45 +0000"
+  "redeemedAt": "2021-06-03 03:44:45 +0000",
+  "spotIdentifier": "1",
+  "spotIdentifierEntryEnabled": true,
+  "spotIdentifierInputType": "any"
 }
 ```
 

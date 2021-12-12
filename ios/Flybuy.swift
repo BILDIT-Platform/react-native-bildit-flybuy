@@ -35,13 +35,13 @@ class Flybuy: RCTEventEmitter {
             if let order = notification.object as? Order {
                 let event = FlyBuySupportedEvents.orderUpdated.rawValue
                 let body = self.parseOrder(order: order)
-                self.sendEvent(withName: event, body: body)
+                Flybuy.shared?.sendEvent(withName: event, body: body)
             }
         }
     }
     
     override func stopObserving() {
-        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(Flybuy.shared)
     }
     
     
@@ -534,6 +534,10 @@ class Flybuy: RCTEventEmitter {
             "customerCarType": order.customerCarType,
             "customerCarColor": order.customerCarColor,
             "customerLicensePlate": order.customerLicensePlate,
+            
+            "spotIdentifer": order.spotIdentifer,
+            "spotIdentifierEntryEnabled": order.spotIdentifierEntryEnabled,
+            "spotIdentifierInputType": order.spotIdentifierInputType
         ]
     }
     

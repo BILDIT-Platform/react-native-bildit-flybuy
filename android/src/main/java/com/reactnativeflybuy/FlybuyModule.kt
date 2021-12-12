@@ -665,6 +665,9 @@ fun parseOrder(order: Order): WritableMap {
   map.putString("customerCarType", order.customer?.carType)
   map.putString("customerCarColor", order.customer?.carColor)
   map.putString("customerLicensePlate", order.customer?.licensePlate)
+  map.putString("spotIdentifier", order.spotIdentifier)
+  map.putBoolean("spotIdentifierEntryEnabled", order.spotIdentifierEntryEnabled)
+  map.putString("spotIdentifierInputType", order.spotIdentifierInputType.toString())
 
   return map
 }

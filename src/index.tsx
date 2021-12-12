@@ -39,6 +39,10 @@ export interface IOrder {
   customerCarType?: string;
   customerCarColor?: string;
   customerLicensePlate?: string;
+
+  spotIdentifier?: string;
+  spotIdentifierEntryEnabled?: boolean;
+  spotIdentifierInputType?: string;
 }
 
 export interface ISite {

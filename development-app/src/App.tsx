@@ -64,7 +64,7 @@ export default function App() {
   const getNotificationPermission = () => {
     requestNotifications(['alert', 'sound', 'badge']).then(
       ({ status, settings }) => {
-        console.log(status, settings)
+        console.log(status, settings);
       }
     );
   };
@@ -111,9 +111,15 @@ export default function App() {
       .catch((err) => console.tron.log(err));
   };
 
-  const updateOrderStateWithSpot = () => {
-    FlyBuy.Core.Orders.updateOrderStateWithSpot(ORDER_ID, 'waiting', '1')
-      .then((order) => console.tron.log('updateOrderStateWithSpot', order))
+  const updateOrderCustomerStateWithSpot = () => {
+    FlyBuy.Core.Orders.updateOrderCustomerStateWithSpot(
+      ORDER_ID,
+      'waiting',
+      '1'
+    )
+      .then((order) =>
+        console.tron.log('updateOrderCustomerStateWithSpot', order)
+      )
       .catch((err) => console.tron.log(err));
   };
 
@@ -318,7 +324,10 @@ export default function App() {
           />
           <Button title="claimOrder" onPress={claimOrder} />
           <Button title="updateOrderState" onPress={updateOrderState} />
-          <Button title="updateOrderStateWithSpot" onPress={updateOrderStateWithSpot} />
+          <Button
+            title="updateOrderCustomerStateWithSpot"
+            onPress={updateOrderCustomerStateWithSpot}
+          />
           <Button title="rateOrder" onPress={rateOrder} />
           <Button
             title="updateOrderCustomerState"

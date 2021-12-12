@@ -243,7 +243,7 @@ class Flybuy: RCTEventEmitter {
                                   spot: String,
                                   resolve:@escaping RCTPromiseResolveBlock,
                                   reject:@escaping RCTPromiseRejectBlock) {
-        FlyBuy.Core.orders.updateCustomerState(orderID: orderId, customerState: state, spotIdentifier spot:) {
+        FlyBuy.Core.orders.updateCustomerState(orderID: orderId, customerState: state, spotIdentifier: spot) {
             (order, error) in
             if (error == nil) {
                 resolve(self.parseOrder(order: order!))

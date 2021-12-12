@@ -133,11 +133,11 @@ FlyBuy.Core.Orders.updateOrderCustomerState(46084566, 'departed');
 
 #### Params
 
-| Name    | Type | Example      |
-| ------- | ---- | ------------ |
-| orderID | Int  | `46084566`   |
-| state   | Str  | `'waiting'`  |
-| spot    | Str  | `'1'`  |
+| Name    | Type | Example      | Description |
+| ------- | ---- | ------------ | ----------- |
+| orderID | Int  | `46084566`   |             |
+| state   | Str  | `'waiting'`  |             |
+| spot    | Str  | `'1'`        | Max 35 characters |
 
 #### Example
 

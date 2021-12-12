@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   text: {
     color: '#fff',
     fontSize: 15,
+    textAlign: 'center',
   },
   button: {
     width: '60%',

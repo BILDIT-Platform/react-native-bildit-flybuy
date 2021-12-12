@@ -236,6 +236,22 @@ class Flybuy: RCTEventEmitter {
             }
         }
     }
+
+    @objc(updateOrderCustomerStateWithSpot:withState:withSpot:withResolver:withRejecter:)
+    func updateOrderCustomerStateWithSpot(orderId: Int,
+                                  state: String,
+                                  spot: String,
+                                  resolve:@escaping RCTPromiseResolveBlock,
+                                  reject:@escaping RCTPromiseRejectBlock) {
+        FlyBuy.Core.orders.updateCustomerState(orderID: orderId, customerState: state, spotIdentifier spot:) {
+            (order, error) in
+            if (error == nil) {
+                resolve(self.parseOrder(order: order!))
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
     
     @objc(rateOrder:withRating:withComments:withResolver:withRejecter:)
     func rateOrder(orderId: Int,

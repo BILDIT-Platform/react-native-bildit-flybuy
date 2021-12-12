@@ -111,6 +111,12 @@ export default function App() {
       .catch((err) => console.tron.log(err));
   };
 
+  const updateOrderStateWithSpot = () => {
+    FlyBuy.Core.Orders.updateOrderStateWithSpot(ORDER_ID, 'waiting', '1')
+      .then((order) => console.tron.log('updateOrderStateWithSpot', order))
+      .catch((err) => console.tron.log(err));
+  };
+
   const updateOrderCustomerState = () => {
     FlyBuy.Core.Orders.updateOrderCustomerState(ORDER_ID, 'departed')
       .then((order) => console.tron.log('updateOrderCustomerState', order))
@@ -312,6 +318,7 @@ export default function App() {
           />
           <Button title="claimOrder" onPress={claimOrder} />
           <Button title="updateOrderState" onPress={updateOrderState} />
+          <Button title="updateOrderStateWithSpot" onPress={updateOrderStateWithSpot} />
           <Button title="rateOrder" onPress={rateOrder} />
           <Button
             title="updateOrderCustomerState"

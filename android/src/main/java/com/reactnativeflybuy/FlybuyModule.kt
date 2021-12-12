@@ -326,6 +326,19 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
     }
   }
 
+  @ReactMethod
+  fun updateOrderCustomerStateWithSpot(orderId: Int, state: String, spot: String, promise: Promise) {
+    FlyBuyCore.orders.updateCustomerState(orderId, state, spot) { order, sdkError ->
+      sdkError?.let {
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        order?.let { promise.resolve(parseOrder(it)) } ?: run {
+          promise.reject("null", "Null order")
+        }
+      }
+    }
+  }
+
   // Pickup
 
   @ReactMethod

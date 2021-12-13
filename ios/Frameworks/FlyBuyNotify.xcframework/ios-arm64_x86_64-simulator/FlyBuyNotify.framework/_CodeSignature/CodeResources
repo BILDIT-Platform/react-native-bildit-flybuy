@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		XtTs3y0kfmSQ1fWUAB+1kK1Df2o=
+		xveHU+/UVbznVgLpc29UCzBRbB0=
 		</data>
 		<key>Modules/FlyBuyNotify.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/FlyBuyNotify.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		qtbYzGUe5bE4Y5jtEYMi6GvNoxo=
+		kE5hq+Dj37JvvySQ+z+S7TLe1GE=
 		</data>
 		<key>Modules/FlyBuyNotify.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/FlyBuyNotify.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		qtbYzGUe5bE4Y5jtEYMi6GvNoxo=
+		kE5hq+Dj37JvvySQ+z+S7TLe1GE=
 		</data>
 		<key>Modules/FlyBuyNotify.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/FlyBuyNotify.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Kp+7jZEp7U/u0LRODvfPzBAckZ8=
+		imw2NpPz5o7/C4X7J+gohFkbkgU=
 		</data>
 		<key>Modules/FlyBuyNotify.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Modules/FlyBuyNotify.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		Kp+7jZEp7U/u0LRODvfPzBAckZ8=
+		imw2NpPz5o7/C4X7J+gohFkbkgU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -103,7 +103,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Zr14/y2yVt8PUx1NIB72XFoMjp5ggnMQj9LjTe5YU80=
+			dJoo+XCpHsuIBQ7+mX3dn8vBz68vTVeRlQIMTl5bzcU=
 			</data>
 		</dict>
 		<key>Modules/FlyBuyNotify.swiftmodule/arm64.swiftdoc</key>
@@ -124,7 +124,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Zr14/y2yVt8PUx1NIB72XFoMjp5ggnMQj9LjTe5YU80=
+			dJoo+XCpHsuIBQ7+mX3dn8vBz68vTVeRlQIMTl5bzcU=
 			</data>
 		</dict>
 		<key>Modules/FlyBuyNotify.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -145,7 +145,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Qs0Ytd27cCYfDR6kaZK1JMkbSglvZ23EUpSfL6VagAM=
+			PXEvs2/8xiuKNE3cFaQYbkFPmvj3sR4ZnPH8CoeNY/0=
 			</data>
 		</dict>
 		<key>Modules/FlyBuyNotify.swiftmodule/x86_64.swiftdoc</key>
@@ -166,7 +166,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Qs0Ytd27cCYfDR6kaZK1JMkbSglvZ23EUpSfL6VagAM=
+			PXEvs2/8xiuKNE3cFaQYbkFPmvj3sR4ZnPH8CoeNY/0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

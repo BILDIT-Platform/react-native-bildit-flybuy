@@ -129,6 +129,24 @@ FlyBuy.Core.Orders.updateOrderCustomerState(46084566, 'departed');
 
 **[Flybuy Update Customer State Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=update-customer-state)**
 
+## Send spot identifier
+
+#### Params
+
+| Name    | Type | Example      | Description |
+| ------- | ---- | ------------ | ----------- |
+| orderID | Int  | `46084566`   |             |
+| state   | Str  | `'waiting'`  |             |
+| spot    | Str  | `'1'`        | Max 35 characters |
+
+#### Example
+
+```jsx
+FlyBuy.Core.Orders.updateOrderCustomerStateWithSpot(46084566, 'departed', '1');
+```
+
+**[Flybuy Send Spot Identifier Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=send-spot-identifier)**
+
 ## Rate Order
 
 If you collect customer ratings in your app, you can pass them to Flybuy.

@@ -35,13 +35,13 @@ class Flybuy: RCTEventEmitter {
             if let order = notification.object as? Order {
                 let event = FlyBuySupportedEvents.orderUpdated.rawValue
                 let body = self.parseOrder(order: order)
-                self.sendEvent(withName: event, body: body)
+                Flybuy.shared?.sendEvent(withName: event, body: body)
             }
         }
     }
     
     override func stopObserving() {
-        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(Flybuy.shared)
     }
     
     
@@ -228,6 +228,22 @@ class Flybuy: RCTEventEmitter {
                                   resolve:@escaping RCTPromiseResolveBlock,
                                   reject:@escaping RCTPromiseRejectBlock) {
         FlyBuy.Core.orders.updateCustomerState(orderID: orderId, customerState: state) {
+            (order, error) in
+            if (error == nil) {
+                resolve(self.parseOrder(order: order!))
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+
+    @objc(updateOrderCustomerStateWithSpot:withState:withSpot:withResolver:withRejecter:)
+    func updateOrderCustomerStateWithSpot(orderId: Int,
+                                  state: String,
+                                  spot: String,
+                                  resolve:@escaping RCTPromiseResolveBlock,
+                                  reject:@escaping RCTPromiseRejectBlock) {
+        FlyBuy.Core.orders.updateCustomerState(orderID: orderId, customerState: state, spotIdentifier: spot) {
             (order, error) in
             if (error == nil) {
                 resolve(self.parseOrder(order: order!))
@@ -518,6 +534,10 @@ class Flybuy: RCTEventEmitter {
             "customerCarType": order.customerCarType,
             "customerCarColor": order.customerCarColor,
             "customerLicensePlate": order.customerLicensePlate,
+            
+            "spotIdentifer": order.spotIdentifer,
+            "spotIdentifierEntryEnabled": order.spotIdentifierEntryEnabled,
+            "spotIdentifierInputType": order.spotIdentifierInputType
         ]
     }
     

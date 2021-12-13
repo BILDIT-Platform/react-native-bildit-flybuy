@@ -249,6 +249,7 @@ extension BaseApiRequest {
 }
 final public class PersistManager : FlyBuy.FlyBuyDBProtocol {
   public static let defaultDBPath: Swift.String
+  public static var resetOnInit: Swift.Bool
   public static var shared: FlyBuy.PersistManager
   final public var dbManager: FlyBuy.FlyBuyDBManager
   final public var needsInit: Swift.Bool
@@ -318,6 +319,7 @@ public protocol FlyBuyError : Foundation.LocalizedError {
 @objc(FlyBuyOrderEvent) open class OrderEvent : ObjectiveC.NSObject, Swift.Encodable {
   public init(orderID: Swift.Int, location: CoreLocation.CLLocation, beacons: [FlyBuy.Beacon], etaSeconds: Foundation.NSNumber?)
   @objc public init(orderID: Swift.Int, customerState: Swift.String, etaSeconds: Foundation.NSNumber?)
+  @objc public init(orderID: Swift.Int, customerState: Swift.String, spotIdentifier: Swift.String?)
   @objc public init(orderID: Swift.Int, state: Swift.String)
   @objc public init(orderID: Swift.Int, locationAuthStatus: FlyBuy.LocationAuthStatus)
   @objc public init(orderID: Swift.Int, customerRating: Swift.Int, customerComments: Swift.String?)
@@ -393,7 +395,10 @@ extension _AnyDecodable {
   open func encode(to encoder: Swift.Encoder) throws
 }
 final public class FlyBuyDBManager {
-  final public func setDBVersion(_ version: Swift.Int)
+  final public var dbVersion: Swift.Int {
+    get
+    set
+  }
   public init(atPath path: Swift.String)
   final public func fetchAll<T>(_ type: [T].Type) throws -> [T] where T : FlyBuy.PersistableCodable
   final public func fetch<T>(_ type: [T].Type, using sql: Swift.String) throws -> [T] where T : FlyBuy.PersistableCodable
@@ -411,6 +416,7 @@ extension FlyBuyDBProtocol {
   public func save<T>(_ value: T) throws where T : FlyBuy.PersistableCodable
   public func deleteAll<T>(_ type: T.Type) throws where T : FlyBuy.PersistableCodable
   public func execute(sql: Swift.String) throws
+  public func dbClose()
 }
 public protocol PersistableCodable : Swift.Decodable, Swift.Encodable {
   static var createTable: Swift.String { get }
@@ -603,6 +609,7 @@ extension String {
   public var isBlank: Swift.Bool {
     get
   }
+  public func removeDirectory()
 }
 @objc public class AppUpgrade : ObjectiveC.NSObject, Swift.Codable {
   final public let required: Swift.Bool
@@ -641,6 +648,7 @@ public struct PickupStates : Swift.Codable {
   @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, callback: ((FlyBuy.Order?, Swift.Error?) -> (Swift.Void))?)
   public func event(info: FlyBuy.OrderEvent, callback: ((FlyBuy.Order?, Swift.Error?) -> ())? = nil)
   @objc public func updateCustomerState(orderID: Swift.Int, customerState: Swift.String, callback: ((FlyBuy.Order?, Swift.Error?) -> (Swift.Void))? = nil)
+  @objc public func updateCustomerState(orderID: Swift.Int, customerState: Swift.String, spotIdentifier: Swift.String?, callback: ((FlyBuy.Order?, Swift.Error?) -> (Swift.Void))? = nil)
   @objc public func updateOrderState(orderID: Swift.Int, state: Swift.String, callback: ((FlyBuy.Order?, Swift.Error?) -> (Swift.Void))? = nil)
   @objc public func rateOrder(orderID: Swift.Int, rating: Swift.Int, comments: Swift.String? = nil, callback: ((FlyBuy.Order?, Swift.Error?) -> (Swift.Void))? = nil)
   @objc deinit
@@ -770,6 +778,11 @@ public struct CustomerResponse : Swift.Decodable {
   @objc final public let pickupLocalizedString: Swift.String?
   @objc public var pushToken: Swift.String?
   public var isLocationTrackingEnabled: Swift.Bool?
+  public var spotIdentifierEntryEnabled: Swift.Bool?
+  @objc public var spotIdentifer: Swift.String?
+  @objc public var spotIdentifierInputType: Swift.String?
+  @objc final public let partnerIdentifierForCustomer: Swift.String?
+  @objc final public let partnerIdentifierForCrew: Swift.String?
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   @objc public func siteLocation() -> CoreLocation.CLLocation?

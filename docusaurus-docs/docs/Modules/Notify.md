@@ -178,7 +178,7 @@ After that, you can follow this steps:
       // ----- Add this block
       - (void)application:(UIApplication *)application
       performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
-        [[[Flybuy alloc]init] performFetchWithCompletionHandler:completionHandler];
+        [[Flybuy shared] performFetchWithCompletionHandler:completionHandler];
       }
       // ------
   ```
@@ -199,7 +199,7 @@ After that, you can follow this steps:
     - (void)userNotificationCenter:(UNUserNotificationCenter *)center
       didReceiveNotificationResponse:(UNNotificationResponse *)response
               withCompletionHandler:(void (^)(void))completionHandler {
-        [[[Flybuy alloc]init] handleNotificationResponse:response];
+        [[Flybuy shared] handleNotificationResponse:response];
       }
 
     // Enables app to receive notifications while in the foreground
@@ -210,6 +210,12 @@ After that, you can follow this steps:
     }
 
   ```
+
+:::info
+
+Please make sure to request notification permission on your app to properly receive any local notification from FlyBuy.
+
+:::
 
 #### Android
 

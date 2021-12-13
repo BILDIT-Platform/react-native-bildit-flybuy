@@ -326,6 +326,19 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
     }
   }
 
+  @ReactMethod
+  fun updateOrderCustomerStateWithSpot(orderId: Int, state: String, spot: String, promise: Promise) {
+    FlyBuyCore.orders.updateCustomerState(orderId, state, spot) { order, sdkError ->
+      sdkError?.let {
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        order?.let { promise.resolve(parseOrder(it)) } ?: run {
+          promise.reject("null", "Null order")
+        }
+      }
+    }
+  }
+
   // Pickup
 
   @ReactMethod
@@ -652,6 +665,9 @@ fun parseOrder(order: Order): WritableMap {
   map.putString("customerCarType", order.customer?.carType)
   map.putString("customerCarColor", order.customer?.carColor)
   map.putString("customerLicensePlate", order.customer?.licensePlate)
+  map.putString("spotIdentifier", order.spotIdentifier)
+  map.putBoolean("spotIdentifierEntryEnabled", order.spotIdentifierEntryEnabled)
+  map.putString("spotIdentifierInputType", order.spotIdentifierInputType.toString())
 
   return map
 }

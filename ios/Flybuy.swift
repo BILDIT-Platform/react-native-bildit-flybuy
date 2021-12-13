@@ -14,6 +14,13 @@ enum FlyBuySupportedEvents: String, CaseIterable {
 
 @objc(Flybuy)
 class Flybuy: RCTEventEmitter {
+    
+    @objc public static var shared:Flybuy?
+
+    override init() {
+        super.init()
+        Flybuy.shared = self
+    }
 
     @objc override static func requiresMainQueueSetup() -> Bool {
         return true
@@ -28,13 +35,13 @@ class Flybuy: RCTEventEmitter {
             if let order = notification.object as? Order {
                 let event = FlyBuySupportedEvents.orderUpdated.rawValue
                 let body = self.parseOrder(order: order)
-                self.sendEvent(withName: event, body: body)
+                Flybuy.shared?.sendEvent(withName: event, body: body)
             }
         }
     }
     
     override func stopObserving() {
-        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(Flybuy.shared)
     }
     
     
@@ -229,6 +236,22 @@ class Flybuy: RCTEventEmitter {
             }
         }
     }
+
+    @objc(updateOrderCustomerStateWithSpot:withState:withSpot:withResolver:withRejecter:)
+    func updateOrderCustomerStateWithSpot(orderId: Int,
+                                  state: String,
+                                  spot: String,
+                                  resolve:@escaping RCTPromiseResolveBlock,
+                                  reject:@escaping RCTPromiseRejectBlock) {
+        FlyBuy.Core.orders.updateCustomerState(orderID: orderId, customerState: state, spotIdentifier: spot) {
+            (order, error) in
+            if (error == nil) {
+                resolve(self.parseOrder(order: order!))
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
     
     @objc(rateOrder:withRating:withComments:withResolver:withRejecter:)
     func rateOrder(orderId: Int,
@@ -373,7 +396,9 @@ class Flybuy: RCTEventEmitter {
     @objc(handleNotificationResponse:)
     func handleNotification(notificationResponse: UNNotificationResponse) {
         let metadata = FlyBuyNotify.Manager.shared.handleNotification(notificationResponse)
-        self.sendEvent(withName: FlyBuySupportedEvents.notifyEvents.rawValue, body: metadata)
+        if (!metadata!.isEmpty) {
+            self.sendEvent(withName: FlyBuySupportedEvents.notifyEvents.rawValue, body: metadata)
+        }
     }
 
 
@@ -509,6 +534,10 @@ class Flybuy: RCTEventEmitter {
             "customerCarType": order.customerCarType,
             "customerCarColor": order.customerCarColor,
             "customerLicensePlate": order.customerLicensePlate,
+            
+            "spotIdentifer": order.spotIdentifer,
+            "spotIdentifierEntryEnabled": order.spotIdentifierEntryEnabled,
+            "spotIdentifierInputType": order.spotIdentifierInputType
         ]
     }
     

@@ -67,13 +67,13 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (void)application:(UIApplication *)application
 performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
-  [[[Flybuy alloc]init] performFetchWithCompletionHandler:completionHandler];
+  [[Flybuy shared] performFetchWithCompletionHandler:completionHandler];
 }
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center
 didReceiveNotificationResponse:(UNNotificationResponse *)response
          withCompletionHandler:(void (^)(void))completionHandler {
-  [[[Flybuy alloc]init] handleNotificationResponse:response];
+  [[Flybuy shared] handleNotificationResponse:response];
 }
 
 // Enables app to receive notifications while in the foreground

@@ -14,10 +14,11 @@ import {
   requestMultiple,
   PERMISSIONS,
   RESULTS,
+  requestNotifications,
 } from 'react-native-permissions';
 import AppConfig from './AppConfig.json';
 
-const ORDER_ID = 46084474;
+const ORDER_ID = 85300686;
 const SITE_ID = 15942;
 const NEW_PID = '01380326929';
 const CUSTOMER_INFO = {
@@ -60,6 +61,14 @@ export default function App() {
     return granted === RESULTS.GRANTED;
   };
 
+  const getNotificationPermission = () => {
+    requestNotifications(['alert', 'sound', 'badge']).then(
+      ({ status, settings }) => {
+        console.log(status, settings);
+      }
+    );
+  };
+
   // Orders
   const fetchOrders = () => {
     FlyBuy.Core.Orders.fetchOrders()
@@ -99,6 +108,18 @@ export default function App() {
   const updateOrderState = () => {
     FlyBuy.Core.Orders.updateOrderState(ORDER_ID, 'driver_assigned')
       .then((order) => console.tron.log('updateOrderState', order))
+      .catch((err) => console.tron.log(err));
+  };
+
+  const updateOrderCustomerStateWithSpot = () => {
+    FlyBuy.Core.Orders.updateOrderCustomerStateWithSpot(
+      ORDER_ID,
+      'waiting',
+      '1'
+    )
+      .then((order) =>
+        console.tron.log('updateOrderCustomerStateWithSpot', order)
+      )
       .catch((err) => console.tron.log(err));
   };
 
@@ -257,6 +278,7 @@ export default function App() {
     FlyBuy.Pickup.configure();
     FlyBuy.Presence.configure(AppConfig.PRESENCE_UUID);
     FlyBuy.Notify.sync(true);
+    getNotificationPermission();
     getLocationPermissions();
   }, []);
 
@@ -302,6 +324,10 @@ export default function App() {
           />
           <Button title="claimOrder" onPress={claimOrder} />
           <Button title="updateOrderState" onPress={updateOrderState} />
+          <Button
+            title="updateOrderCustomerStateWithSpot"
+            onPress={updateOrderCustomerStateWithSpot}
+          />
           <Button title="rateOrder" onPress={rateOrder} />
           <Button
             title="updateOrderCustomerState"

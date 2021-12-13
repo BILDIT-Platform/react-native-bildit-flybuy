@@ -66,6 +66,12 @@ RCT_EXTERN_METHOD(updateOrderState:(int)orderId
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(updateOrderCustomerStateWithSpot:(int)orderId
+                  withState:(NSString *)state
+                  withSpot:(NSString *)state
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
 RCT_EXTERN_METHOD(updateOrderCustomerState:(int)orderId
                   withState:(NSString *)state
                   withResolver:(RCTPromiseResolveBlock)resolve

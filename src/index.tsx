@@ -39,6 +39,10 @@ export interface IOrder {
   customerCarType?: string;
   customerCarColor?: string;
   customerLicensePlate?: string;
+
+  spotIdentifier?: string;
+  spotIdentifierEntryEnabled?: boolean;
+  spotIdentifierInputType?: string;
 }
 
 export interface ISite {
@@ -130,6 +134,11 @@ type Orders = {
   updateOrderCustomerState(
     orderId: number,
     state: CustomerState
+  ): Promise<IOrder>;
+  updateOrderCustomerStateWithSpot(
+    orderId: number,
+    state: CustomerState,
+    spot: string
   ): Promise<IOrder>;
   rateOrder(orderId: number, rating: number, comments: string): Promise<IOrder>;
 };
@@ -227,6 +236,7 @@ const FlyBuyModule = {
       fetchOrderByRedemptionCode: Flybuy.fetchOrderByRedemptionCode,
       updateOrderState: Flybuy.updateOrderState,
       updateOrderCustomerState: Flybuy.updateOrderCustomerState,
+      updateOrderCustomerStateWithSpot: Flybuy.updateOrderCustomerStateWithSpot,
       rateOrder: Flybuy.rateOrder,
     },
     Customer: {

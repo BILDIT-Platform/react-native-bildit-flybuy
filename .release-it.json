@@ -9,10 +9,5 @@
   "github": {
     "release": true,
     "tokenRef": "RELEASE_GITHUB_TOKEN"
-  },
-  "plugins": {
-    "@release-it/conventional-changelog": {
-      "preset": "angular"
-    }
   }
 }

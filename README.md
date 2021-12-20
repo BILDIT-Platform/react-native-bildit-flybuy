@@ -4,6 +4,8 @@
   </a>
 </p>
 
+[![npm version](https://badge.fury.io/js/react-native-bildit-flybuy.svg)](//npmjs.com/package/react-native-bildit-flybuy)
+
 The FlyBuy cloud service and mobile SDK enables developers to add FlyBuy functionality directly into their react native apps for a full white label implementation of the service.
 
 This library was bootstrapped with [create-react-native-module](https://github.com/brodybits/create-react-native-module)

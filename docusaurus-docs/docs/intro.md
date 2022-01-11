@@ -14,7 +14,7 @@ Throughout the Modules and Components sections of these docs, you will find dire
 
 ## Example App
 
-A sample application demonstrating the Flybuy SDK is available at: https://github.com/BILDIT-Platform/react-native-bildit-flybuy/tree/main/example
+A sample application demonstrating the Flybuy SDK is available at: https://github.com/BILDIT-Platform/react-native-bildit-flybuy/tree/main/example-app
 
 ## Issues
 

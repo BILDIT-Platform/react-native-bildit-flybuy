@@ -231,7 +231,23 @@ const FlyBuyModule = {
     handleRemoteNotification: Flybuy.handleRemoteNotification,
     Orders: {
       fetchOrders: Flybuy.fetchOrders,
-      createOrder: Flybuy.createOrder,
+      createOrder: (
+        siteId: number,
+        pid: string,
+        customerInfo: ICustomerInfo,
+        pickupWindow?: PickupWindow = null,
+        orderState?: OrderStateType = null,
+        pickupType?: PickupType = null
+      ) => {
+        return Flybuy.createOrder(
+          siteId,
+          pid,
+          customerInfo,
+          pickupWindow,
+          orderState,
+          pickupType
+        );
+      },
       claimOrder: Flybuy.claimOrder,
       fetchOrderByRedemptionCode: Flybuy.fetchOrderByRedemptionCode,
       updateOrderState: Flybuy.updateOrderState,

@@ -94,14 +94,7 @@ export default function App() {
   };
 
   const createOrderWithThreeParams = () => {
-    FlyBuy.Core.Orders.createOrder(
-      SITE_ID,
-      NEW_PID,
-      CUSTOMER_INFO,
-      null,
-      null,
-      null
-    )
+    FlyBuy.Core.Orders.createOrder(SITE_ID, NEW_PID, CUSTOMER_INFO)
       .then((order) => console.tron.log('order', order))
       .catch((err) => console.tron.log(err));
   };
@@ -115,9 +108,7 @@ export default function App() {
       SITE_ID,
       NEW_PID,
       CUSTOMER_INFO,
-      pickupWindow,
-      null,
-      null
+      pickupWindow
     )
       .then((order) => console.tron.log('order', order))
       .catch((err) => console.tron.log(err));
@@ -133,8 +124,7 @@ export default function App() {
       NEW_PID,
       CUSTOMER_INFO,
       pickupWindow,
-      'delayed',
-      null
+      'delayed'
     )
       .then((order) => console.tron.log('order', order))
       .catch((err) => console.tron.log(err));

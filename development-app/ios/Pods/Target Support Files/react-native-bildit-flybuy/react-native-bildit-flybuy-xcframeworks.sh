@@ -106,7 +106,7 @@ install_xcframework() {
 }
 
 install_xcframework "${PODS_ROOT}/../../../ios/Frameworks/FlyBuy.xcframework" "react-native-bildit-flybuy" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/../../../ios/Frameworks/FlyBuyPickup.xcframework" "react-native-bildit-flybuy" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/../../../ios/Frameworks/FlyBuyNotify.xcframework" "react-native-bildit-flybuy" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
-install_xcframework "${PODS_ROOT}/../../../ios/Frameworks/FlyBuyPresence.xcframework" "react-native-bildit-flybuy" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/../../../ios/Frameworks/FlyBuyPickup.xcframework" "react-native-bildit-flybuy" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
+install_xcframework "${PODS_ROOT}/../../../ios/Frameworks/FlyBuyNotify.xcframework" "react-native-bildit-flybuy" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/../../../ios/Frameworks/FlyBuyPresence.xcframework" "react-native-bildit-flybuy" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
 

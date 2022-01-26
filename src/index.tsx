@@ -235,17 +235,17 @@ const FlyBuyModule = {
         siteId: number,
         pid: string,
         customerInfo: ICustomerInfo,
-        pickupWindow?: PickupWindow = null,
-        orderState?: OrderStateType = null,
-        pickupType?: PickupType = null
+        pickupWindow?: PickupWindow,
+        orderState?: OrderStateType,
+        pickupType?: PickupType
       ) => {
         return Flybuy.createOrder(
           siteId,
           pid,
           customerInfo,
-          pickupWindow,
-          orderState,
-          pickupType
+          pickupWindow ?? null,
+          orderState ?? null,
+          pickupType ?? null
         );
       },
       claimOrder: Flybuy.claimOrder,

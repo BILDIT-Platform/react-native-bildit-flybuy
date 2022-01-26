@@ -93,6 +93,53 @@ export default function App() {
       .catch((err) => console.tron.log(err));
   };
 
+  const createOrderWithThreeParams = () => {
+    FlyBuy.Core.Orders.createOrder(
+      SITE_ID,
+      NEW_PID,
+      CUSTOMER_INFO,
+      null,
+      null,
+      null
+    )
+      .then((order) => console.tron.log('order', order))
+      .catch((err) => console.tron.log(err));
+  };
+
+  const createOrderWithFourParams = () => {
+    const pickupWindow = {
+      start: new Date().toISOString(),
+      end: new Date('2022-12-02').toISOString(),
+    };
+    FlyBuy.Core.Orders.createOrder(
+      SITE_ID,
+      NEW_PID,
+      CUSTOMER_INFO,
+      pickupWindow,
+      null,
+      null
+    )
+      .then((order) => console.tron.log('order', order))
+      .catch((err) => console.tron.log(err));
+  };
+
+  const createOrderWithFiveParams = () => {
+    const pickupWindow = {
+      start: new Date().toISOString(),
+      end: new Date('2022-12-02').toISOString(),
+    };
+    FlyBuy.Core.Orders.createOrder(
+      SITE_ID,
+      NEW_PID,
+      CUSTOMER_INFO,
+      pickupWindow,
+      'delayed',
+      null
+    )
+      .then((order) => console.tron.log('order', order))
+      .catch((err) => console.tron.log(err));
+  };
+
   const claimOrder = () => {
     FlyBuy.Core.Orders.claimOrder('385BQT5BMH', CUSTOMER_INFO, 'pickup')
       .then((order) => console.tron.log('claim order', order))
@@ -318,6 +365,18 @@ export default function App() {
           <Text>Order</Text>
           <Button title="Fetch orders" onPress={fetchOrders} />
           <Button title="Create order" onPress={createOrder} />
+          <Button
+            title="Create order 3 Params"
+            onPress={createOrderWithThreeParams}
+          />
+          <Button
+            title="Create order 4 Params"
+            onPress={createOrderWithFourParams}
+          />
+          <Button
+            title="Create order 5 Params"
+            onPress={createOrderWithFiveParams}
+          />
           <Button
             title="Fetch Order By RedemptionCode"
             onPress={fetchOrderByRedemptionCode}

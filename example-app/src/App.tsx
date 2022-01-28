@@ -13,10 +13,15 @@ import Button from './Button';
 import FlyBuy from 'react-native-bildit-flybuy';
 import AppConfig from './AppConfig.json';
 
-const NEW_ORDER_ID = 15942;
+// Add your Flybuy Sandbox Site ID Here
+
+const SITE_ID = 1;
+
+// Defines Customer Information
+
 const CUSTOMER_INFO = {
-  name: 'Lamia Selmane AB',
-  carType: 'Nothing',
+  name: 'React Test',
+  carType: 'Honda',
   carColor: 'Silver',
   licensePlate: 'Nothing',
   phone: '555-555-5555',
@@ -87,13 +92,21 @@ export default function App() {
       });
   };
 
+
+  // "pickupWindow", "OrderState", and "PickupType" are optional fields in the CreateOrder
+  // If you leave out "pickupWindow", the pickup window will be set to ASAP
+
   const createOrder = () => {
+    const pickup_start = new Date();
+    var pickup_end = new Date(pickup_start);
+    pickup_end.setHours(pickup_start.getHours() + 1);
+
     const pickupWindow = {
-      start: new Date().toISOString(),
-      end: new Date('2022-12-02').toISOString(),
+      start: pickup_start.toISOString(),
+      end: pickup_end.toISOString(),
     };
     FlyBuy.Core.Orders.createOrder(
-      NEW_ORDER_ID,
+      SITE_ID,
       partnerId,
       CUSTOMER_INFO,
       pickupWindow,

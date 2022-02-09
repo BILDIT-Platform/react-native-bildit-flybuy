@@ -532,6 +532,8 @@ class Flybuy: RCTEventEmitter {
             "state": order.state,
             "customerState": order.customerState.description.lowercased(),
             "partnerIdentifier": order.partnerIdentifier,
+            "partnerIdentifierForCustomer": order.partnerIdentifierForCustomer,
+            "partnerIdentifierForCrew": order.partnerIdentifierForCrew,
             "pickupWindow": [
                 order.pickupWindow?.start.description,
                 order.pickupWindow?.end.description

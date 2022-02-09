@@ -274,12 +274,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyLogger
 @end
 
 
-@class FlyBuyPickupWindow;
 
-SWIFT_CLASS_NAMED("CreateOrderInfo")
-@interface FlyBuyCreateOrderInfo : NSObject
-- (nonnull instancetype)initWithSiteID:(NSInteger)siteID partnerIdentifier:(NSString * _Nonnull)partnerIdentifier customerCarColor:(NSString * _Nullable)customerCarColor customerCarType:(NSString * _Nullable)customerCarType customerLicensePlate:(NSString * _Nullable)customerLicensePlate customerName:(NSString * _Nullable)customerName customerPhone:(NSString * _Nullable)customerPhone pushToken:(NSString * _Nullable)pushToken state:(NSString * _Nullable)state pickupWindow:(FlyBuyPickupWindow * _Nullable)pickupWindow OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithSiteID:(NSInteger)siteID partnerIdentifier:(NSString * _Nonnull)partnerIdentifier customerCarColor:(NSString * _Nullable)customerCarColor customerCarType:(NSString * _Nullable)customerCarType customerLicensePlate:(NSString * _Nullable)customerLicensePlate customerName:(NSString * _Nullable)customerName customerPhone:(NSString * _Nullable)customerPhone pushToken:(NSString * _Nullable)pushToken pickupWindow:(FlyBuyPickupWindow * _Nullable)pickupWindow OBJC_DESIGNATED_INITIALIZER;
+SWIFT_CLASS("_TtC6FlyBuy15CreateOrderInfo")
+@interface CreateOrderInfo : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -476,6 +473,7 @@ SWIFT_CLASS("_TtC6FlyBuy12NotifyConfig")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class FlyBuyPickupWindow;
 @class CLLocation;
 @class NSNumber;
 
@@ -607,6 +605,7 @@ SWIFT_CLASS_NAMED("OrdersManager")
 /// \param callback called once either an order is created or an error is encountered. Optional.
 ///
 - (void)createWithSiteID:(NSInteger)siteID partnerIdentifier:(NSString * _Nonnull)partnerIdentifier customerInfo:(FlyBuyCustomerInfo * _Nonnull)customerInfo pickupWindow:(FlyBuyPickupWindow * _Nullable)pickupWindow state:(NSString * _Nonnull)state callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
+- (void)createWithSiteID:(NSInteger)siteID partnerIdentifier:(NSString * _Nonnull)partnerIdentifier customerInfo:(FlyBuyCustomerInfo * _Nonnull)customerInfo pickupWindow:(FlyBuyPickupWindow * _Nullable)pickupWindow state:(NSString * _Nonnull)state pickupType:(NSString * _Nullable)pickupType callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
 /// creates an order using the FlyBuy web API
 /// \param siteID site identifier
 ///
@@ -619,6 +618,8 @@ SWIFT_CLASS_NAMED("OrdersManager")
 /// \param callback called once either an order is created or an error is encountered. Optional.
 ///
 - (void)createWithSiteID:(NSInteger)siteID partnerIdentifier:(NSString * _Nonnull)partnerIdentifier customerInfo:(FlyBuyCustomerInfo * _Nonnull)customerInfo pickupWindow:(FlyBuyPickupWindow * _Nullable)pickupWindow callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
+- (void)createWithSiteID:(NSInteger)siteID partnerIdentifier:(NSString * _Nonnull)partnerIdentifier customerInfo:(FlyBuyCustomerInfo * _Nonnull)customerInfo pickupWindow:(FlyBuyPickupWindow * _Nullable)pickupWindow pickupType:(NSString * _Nullable)pickupType callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
+- (void)createWithSiteID:(NSInteger)siteID partnerIdentifier:(NSString * _Nonnull)partnerIdentifier customerInfo:(FlyBuyCustomerInfo * _Nonnull)customerInfo state:(NSString * _Nullable)state pickupType:(NSString * _Nullable)pickupType callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
 /// creates an order event that sets the customer state
 /// \param orderID specifies which order ID this event relates to
 ///

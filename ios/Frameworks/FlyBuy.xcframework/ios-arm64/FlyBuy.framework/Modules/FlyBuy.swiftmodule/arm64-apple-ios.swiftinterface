@@ -71,9 +71,8 @@ extension Error {
   required public init(from decoder: Swift.Decoder) throws
   open func encode(to encoder: Swift.Encoder) throws
 }
-@_hasMissingDesignatedInitializers @objc(FlyBuyCreateOrderInfo) open class CreateOrderInfo : ObjectiveC.NSObject, Swift.Codable {
-  @objc public init(siteID: Swift.Int, partnerIdentifier: Swift.String, customerCarColor: Swift.String?, customerCarType: Swift.String?, customerLicensePlate: Swift.String?, customerName: Swift.String?, customerPhone: Swift.String?, pushToken: Swift.String?, state: Swift.String?, pickupWindow: FlyBuy.PickupWindow? = nil)
-  @objc public init(siteID: Swift.Int, partnerIdentifier: Swift.String, customerCarColor: Swift.String?, customerCarType: Swift.String?, customerLicensePlate: Swift.String?, customerName: Swift.String?, customerPhone: Swift.String?, pushToken: Swift.String?, pickupWindow: FlyBuy.PickupWindow? = nil)
+@objc open class CreateOrderInfo : ObjectiveC.NSObject, Swift.Codable {
+  public init(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pushToken: Swift.String?, state: Swift.String?, pickupWindow: FlyBuy.PickupWindow? = nil, pickupType: Swift.String? = nil)
   @objc deinit
   @objc override dynamic public init()
   required public init(from decoder: Swift.Decoder) throws
@@ -645,7 +644,10 @@ public struct PickupStates : Swift.Codable {
   @objc public func fetch(withRedemptionCode redemptionCode: Swift.String, callback: ((FlyBuy.Order?, Swift.Error?) -> (Swift.Void))? = nil)
   @objc public func claim(withRedemptionCode redemptionCode: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, Swift.Error?) -> (Swift.Void))? = nil)
   @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, state: Swift.String, callback: ((FlyBuy.Order?, Swift.Error?) -> (Swift.Void))?)
+  @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, state: Swift.String, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, Swift.Error?) -> (Swift.Void))?)
   @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, callback: ((FlyBuy.Order?, Swift.Error?) -> (Swift.Void))?)
+  @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, Swift.Error?) -> (Swift.Void))?)
+  @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, state: Swift.String?, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, Swift.Error?) -> (Swift.Void))?)
   public func event(info: FlyBuy.OrderEvent, callback: ((FlyBuy.Order?, Swift.Error?) -> ())? = nil)
   @objc public func updateCustomerState(orderID: Swift.Int, customerState: Swift.String, callback: ((FlyBuy.Order?, Swift.Error?) -> (Swift.Void))? = nil)
   @objc public func updateCustomerState(orderID: Swift.Int, customerState: Swift.String, spotIdentifier: Swift.String?, callback: ((FlyBuy.Order?, Swift.Error?) -> (Swift.Void))? = nil)

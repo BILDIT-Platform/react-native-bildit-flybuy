@@ -642,6 +642,8 @@ fun parseOrder(order: Order): WritableMap {
   map.putString("state", order.state)
   map.putString("customerState", order.customerState)
   map.putString("partnerIdentifier", order.partnerIdentifier)
+  map.putString("partnerIdentifierForCustomer", order.partnerIdentifierForCustomer)
+  map.putString("partnerIdentifierForCrew", order.partnerIdentifierForCrew)
   val pickupWindow = Arguments.createArray()
   pickupWindow.pushString(order.pickupWindow?.start.toString())
   pickupWindow.pushString(order.pickupWindow?.end.toString())

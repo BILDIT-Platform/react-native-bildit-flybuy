@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FlyBuyNotify
+import BackgroundTasks
 import CoreLocation
 import FlyBuy
 @_exported import FlyBuyNotify
@@ -8,6 +9,14 @@ import Foundation
 import Swift
 import UIKit
 import UserNotifications
+public enum SyncHistory {
+  public static var writeToDefaultsEnabled: Swift.Bool
+  public static func addBGTaskExpiredEvent()
+  public static func addBGFetchAttemptEvent()
+  public static func addBGFetchCompleteEvent(error: Swift.Error?)
+  public static func appendHistory(_ str: Swift.String)
+  public static func updateLastSync(_ date: Foundation.Date)
+}
 @objc open class NotificationInfo : ObjectiveC.NSObject {
   @objc final public let title: Swift.String
   @objc final public let content: Swift.String
@@ -26,7 +35,7 @@ extension NSNotification.Name {
   public var lastSync: Foundation.Date? {
     get
   }
-  @objc public func configure()
+  @objc public func configure(bgTaskIdentifier: Swift.String? = nil, bgSyncCallback: ((Swift.Error?) -> (Swift.Void))? = nil)
   @objc deinit
   @available(*, deprecated, message: "This method for using Notify has been deprecated.")
   @objc public func createForSitesInRegion(_ region: CoreLocation.CLCircularRegion, notification: FlyBuyNotify.NotificationInfo, callback: @escaping (([FlyBuy.Site]?, Swift.Error?) -> (Swift.Void)))
@@ -39,7 +48,9 @@ extension NSNotification.Name {
   @objc override dynamic public init()
 }
 extension Manager : FlyBuy.FlyBuyModuleManager {
+  public func ordersUpdated(_ orders: [FlyBuy.Order])
   public func set(logLevel: FlyBuy.LogLevel)
+  public func set(logLevel: FlyBuy.LogLevel, writeEnabled: Swift.Bool)
   public func configUpdated(_ config: FlyBuy.AppConfig)
 }
 @objc public enum NotifyErrorType : Swift.Int {
@@ -50,6 +61,7 @@ extension Manager : FlyBuy.FlyBuyModuleManager {
   case notifyModuleNotEnabled
   case beaconRangingNotAvailable
   case noBeaconInRange
+  case beaconRangingDisabledInBackground
   public var description: Swift.String {
     get
   }

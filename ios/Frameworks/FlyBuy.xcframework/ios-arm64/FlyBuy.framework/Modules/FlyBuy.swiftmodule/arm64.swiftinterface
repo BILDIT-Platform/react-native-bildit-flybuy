@@ -43,18 +43,6 @@ extension PickupLocationFilterData {
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-public struct RuntimeError : Swift.Error, Swift.Codable {
-  public var localizedDescription: Swift.String {
-    get
-  }
-  public init(from decoder: Swift.Decoder) throws
-  public func encode(to encoder: Swift.Encoder) throws
-}
-extension Error {
-  public var message: Swift.String {
-    get
-  }
-}
 @objc(FlyBuyCustomerConsent) open class CustomerConsent : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let termsOfService: Swift.Bool
   @objc final public let ageVerification: Swift.Bool
@@ -122,6 +110,154 @@ extension _AnyEncodable {
   public init(stringLiteral value: Swift.String)
   public init(arrayLiteral elements: Any...)
   public init(dictionaryLiteral elements: (Swift.AnyHashable, Any)...)
+}
+@objc(FlyBuySite) open class Site : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let id: Swift.Int
+  @objc final public let partnerIdentifier: Swift.String?
+  @objc final public let name: Swift.String?
+  @objc final public let phone: Swift.String?
+  @objc final public let streetAddress: Swift.String?
+  @objc final public let fullAddress: Swift.String?
+  @objc final public let locality: Swift.String?
+  @objc final public let region: Swift.String?
+  @objc final public let country: Swift.String?
+  @objc final public let postalCode: Swift.String?
+  @objc final public let longitude: Swift.String?
+  @objc final public let latitude: Swift.String?
+  @objc final public let instructions: Swift.String?
+  @objc final public let descriptionText: Swift.String?
+  @objc final public let coverPhotoURL: Swift.String?
+  @objc final public let projectAccentColor: Swift.String?
+  @objc final public let projectAccentTextColor: Swift.String?
+  @objc final public let projectLogoURL: Swift.String?
+  @objc final public let geofence: FlyBuy.Geofence?
+  @objc public func location() -> CoreLocation.CLLocation?
+  @objc public func distance(from loc: CoreLocation.CLLocation) -> Foundation.NSNumber?
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc(FlyBuyGeofence) open class Geofence : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let latitude: Swift.String
+  @objc final public let longitude: Swift.String
+  @objc final public let radiusMeters: Swift.Double
+  public func locationCoordinate() -> CoreLocation.CLLocationCoordinate2D?
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+  open func encode(to encoder: Swift.Encoder) throws
+}
+@objc(FlyBuyCustomerInfo) open class CustomerInfo : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let name: Swift.String
+  @objc final public let carType: Swift.String?
+  @objc final public let carColor: Swift.String?
+  @objc final public let licensePlate: Swift.String?
+  @objc final public let phone: Swift.String?
+  @objc public init(name: Swift.String, carType: Swift.String?, carColor: Swift.String?, licensePlate: Swift.String?, phone: Swift.String? = nil)
+  @objc override dynamic public init()
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+  open func encode(to encoder: Swift.Encoder) throws
+}
+final public class PersistManager : FlyBuy.FlyBuyDBProtocol {
+  public static let defaultDBPath: Swift.String
+  public static var resetOnInit: Swift.Bool
+  public static var shared: FlyBuy.PersistManager
+  final public var dbManager: FlyBuy.FlyBuyDBManager
+  final public var needsInit: Swift.Bool
+  public init(atPath path: Swift.String = PersistManager.defaultDBPath)
+  @objc deinit
+}
+@objc public enum LocationAuthStatus : Swift.Int, Swift.Codable {
+  case notDetermined
+  case restricted
+  case denied
+  case authorizedAlways
+  case authorizedWhenInUse
+  public init(from decoder: Swift.Decoder) throws
+  public init?(from authStatus: CoreLocation.CLAuthorizationStatus)
+  public init?(from string: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public var description: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum HTTPStatusCode : Swift.Int, Swift.Error {
+  case `continue`
+  case switchingProtocols
+  case processing
+  case ok
+  case created
+  case accepted
+  case nonAuthoritativeInformation
+  case noContent
+  case resetContent
+  case partialContent
+  case multiStatus
+  case alreadyReported
+  case IMUsed
+  case multipleChoices
+  case movedPermanently
+  case found
+  case seeOther
+  case notModified
+  case useProxy
+  case switchProxy
+  case temporaryRedirect
+  case permenantRedirect
+  case badRequest
+  case unauthorized
+  case paymentRequired
+  case forbidden
+  case notFound
+  case methodNotAllowed
+  case notAcceptable
+  case proxyAuthenticationRequired
+  case requestTimeout
+  case conflict
+  case gone
+  case lengthRequired
+  case preconditionFailed
+  case payloadTooLarge
+  case URITooLong
+  case unsupportedMediaType
+  case rangeNotSatisfiable
+  case expectationFailed
+  case teapot
+  case misdirectedRequest
+  case unprocessableEntity
+  case locked
+  case failedDependency
+  case appUpgradeRequired
+  case upgradeRequired
+  case preconditionRequired
+  case tooManyRequests
+  case requestHeaderFieldsTooLarge
+  case noResponse
+  case unavailableForLegalReasons
+  case SSLCertificateError
+  case SSLCertificateRequired
+  case HTTPRequestSentToHTTPSPort
+  case clientClosedRequest
+  case internalServerError
+  case notImplemented
+  case badGateway
+  case serviceUnavailable
+  case gatewayTimeout
+  case HTTPVersionNotSupported
+  case variantAlsoNegotiates
+  case insufficientStorage
+  case loopDetected
+  case notExtended
+  case networkAuthenticationRequired
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
 }
 public typealias ResultType<T> = Swift.Result<T, Swift.Error>
 public struct VoidResponse : Swift.Codable {
@@ -200,110 +336,9 @@ extension BaseApiRequest {
     get
   }
 }
-@objc(FlyBuySite) open class Site : ObjectiveC.NSObject, Swift.Decodable {
-  @objc final public let id: Swift.Int
-  @objc final public let partnerIdentifier: Swift.String?
-  @objc final public let name: Swift.String?
-  @objc final public let phone: Swift.String?
-  @objc final public let streetAddress: Swift.String?
-  @objc final public let fullAddress: Swift.String?
-  @objc final public let locality: Swift.String?
-  @objc final public let region: Swift.String?
-  @objc final public let country: Swift.String?
-  @objc final public let postalCode: Swift.String?
-  @objc final public let longitude: Swift.String?
-  @objc final public let latitude: Swift.String?
-  @objc final public let instructions: Swift.String?
-  @objc final public let descriptionText: Swift.String?
-  @objc final public let coverPhotoURL: Swift.String?
-  @objc final public let projectAccentColor: Swift.String?
-  @objc final public let projectAccentTextColor: Swift.String?
-  @objc final public let projectLogoURL: Swift.String?
-  @objc final public let geofence: FlyBuy.Geofence?
-  @objc public func location() -> CoreLocation.CLLocation?
-  @objc public func distance(from loc: CoreLocation.CLLocation) -> Foundation.NSNumber?
-  @objc deinit
-  required public init(from decoder: Swift.Decoder) throws
-}
-@objc(FlyBuyGeofence) open class Geofence : ObjectiveC.NSObject, Swift.Codable {
-  @objc final public let latitude: Swift.String
-  @objc final public let longitude: Swift.String
-  @objc final public let radiusMeters: Swift.Double
-  public func locationCoordinate() -> CoreLocation.CLLocationCoordinate2D?
-  @objc deinit
-  required public init(from decoder: Swift.Decoder) throws
-  open func encode(to encoder: Swift.Encoder) throws
-}
-@objc(FlyBuyCustomerInfo) open class CustomerInfo : ObjectiveC.NSObject, Swift.Codable {
-  @objc final public let name: Swift.String
-  @objc final public let carType: Swift.String?
-  @objc final public let carColor: Swift.String?
-  @objc final public let licensePlate: Swift.String?
-  @objc final public let phone: Swift.String?
-  @objc public init(name: Swift.String, carType: Swift.String?, carColor: Swift.String?, licensePlate: Swift.String?, phone: Swift.String? = nil)
-  @objc override dynamic public init()
-  required public init(from decoder: Swift.Decoder) throws
-  @objc deinit
-  open func encode(to encoder: Swift.Encoder) throws
-}
-final public class PersistManager : FlyBuy.FlyBuyDBProtocol {
-  public static let defaultDBPath: Swift.String
-  public static var resetOnInit: Swift.Bool
-  public static var shared: FlyBuy.PersistManager
-  final public var dbManager: FlyBuy.FlyBuyDBManager
-  final public var needsInit: Swift.Bool
-  public init(atPath path: Swift.String = PersistManager.defaultDBPath)
-  @objc deinit
-}
-@objc public enum LocationAuthStatus : Swift.Int, Swift.Codable {
-  case notDetermined
-  case restricted
-  case denied
-  case authorizedAlways
-  case authorizedWhenInUse
-  public init(from decoder: Swift.Decoder) throws
-  public init?(from authStatus: CoreLocation.CLAuthorizationStatus)
-  public init?(from string: Swift.String)
-  public func encode(to encoder: Swift.Encoder) throws
-  public var description: Swift.String {
-    get
-  }
-  public typealias RawValue = Swift.Int
-  public init?(rawValue: Swift.Int)
-  public var rawValue: Swift.Int {
-    get
-  }
-}
 @_hasMissingDesignatedInitializers @objc(FlyBuyPagination) public class Pagination : ObjectiveC.NSObject {
   @objc final public let currentPage: Swift.Int
   @objc final public let totalPages: Swift.Int
-  @objc deinit
-  @objc override dynamic public init()
-}
-public protocol FlyBuyError : Foundation.LocalizedError {
-  var description: Swift.String { get }
-  var errorDescription: Swift.String? { get }
-}
-@objc public enum FlyBuyAPIErrorType : Swift.Int {
-  case invalidResponse
-  case responseError
-  public var description: Swift.String {
-    get
-  }
-  public typealias RawValue = Swift.Int
-  public init?(rawValue: Swift.Int)
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-@_hasMissingDesignatedInitializers @objc(FlyBuyAPIError) public class FlyBuyAPIError : ObjectiveC.NSObject, FlyBuy.FlyBuyError {
-  @objc final public let type: FlyBuy.FlyBuyAPIErrorType
-  @objc final public let statusCodeInt: Swift.Int
-  final public let statusCode: FlyBuy.HTTPStatusCode?
-  public var errorDescription: Swift.String?
-  @objc override dynamic public var description: Swift.String {
-    @objc get
-  }
   @objc deinit
   @objc override dynamic public init()
 }
@@ -357,6 +392,10 @@ public struct BeaconRegion : Swift.Codable, Swift.Hashable {
 public protocol FlyBuyModuleManager {
   func configUpdated(_ config: FlyBuy.AppConfig)
   func set(logLevel: FlyBuy.LogLevel)
+  func ordersUpdated(_ orders: [FlyBuy.Order])
+}
+extension FlyBuyModuleManager {
+  public func ordersUpdated(_ orders: [FlyBuy.Order])
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(FlyBuyCore) public class Core : ObjectiveC.NSObject {
   @objc public static let orders: FlyBuy.OrdersManager
@@ -370,7 +409,20 @@ public protocol FlyBuyModuleManager {
   @objc public static func handleRemoteNotification(_ data: [Swift.AnyHashable : Any])
   @objc public static func updatePushToken(_ newPushToken: Swift.String)
   @objc public static func updateAPNPushToken(_ deviceToken: Foundation.Data)
+  public static func cancelRunningURLSessions()
   @objc deinit
+}
+public struct RuntimeError : Swift.Error, Swift.Codable {
+  public var localizedDescription: Swift.String {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension Error {
+  public var message: Swift.String {
+    get
+  }
 }
 @usableFromInline
 internal protocol _AnyDecodable {
@@ -454,6 +506,33 @@ extension DateFormatter {
   @objc override dynamic public init()
   @objc deinit
 }
+public protocol FlyBuyError : Foundation.LocalizedError {
+  var description: Swift.String { get }
+  var errorDescription: Swift.String? { get }
+}
+@objc public enum FlyBuyAPIErrorType : Swift.Int {
+  case invalidResponse
+  case responseError
+  public var description: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(FlyBuyAPIError) public class FlyBuyAPIError : ObjectiveC.NSObject, FlyBuy.FlyBuyError {
+  @objc final public let type: FlyBuy.FlyBuyAPIErrorType
+  @objc final public let statusCodeInt: Swift.Int
+  final public let statusCode: FlyBuy.HTTPStatusCode?
+  public var errorDescription: Swift.String?
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  @objc override dynamic public init()
+}
 @objc(FlyBuyPickupWindow) public class PickupWindow : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let start: Foundation.Date
   @objc final public let end: Foundation.Date
@@ -464,80 +543,6 @@ extension DateFormatter {
   @objc public func formattedString(locale: Foundation.Locale = Locale.current) -> Swift.String
   @objc override dynamic public init()
   @objc deinit
-}
-public enum HTTPStatusCode : Swift.Int, Swift.Error {
-  case `continue`
-  case switchingProtocols
-  case processing
-  case ok
-  case created
-  case accepted
-  case nonAuthoritativeInformation
-  case noContent
-  case resetContent
-  case partialContent
-  case multiStatus
-  case alreadyReported
-  case IMUsed
-  case multipleChoices
-  case movedPermanently
-  case found
-  case seeOther
-  case notModified
-  case useProxy
-  case switchProxy
-  case temporaryRedirect
-  case permenantRedirect
-  case badRequest
-  case unauthorized
-  case paymentRequired
-  case forbidden
-  case notFound
-  case methodNotAllowed
-  case notAcceptable
-  case proxyAuthenticationRequired
-  case requestTimeout
-  case conflict
-  case gone
-  case lengthRequired
-  case preconditionFailed
-  case payloadTooLarge
-  case URITooLong
-  case unsupportedMediaType
-  case rangeNotSatisfiable
-  case expectationFailed
-  case teapot
-  case misdirectedRequest
-  case unprocessableEntity
-  case locked
-  case failedDependency
-  case appUpgradeRequired
-  case upgradeRequired
-  case preconditionRequired
-  case tooManyRequests
-  case requestHeaderFieldsTooLarge
-  case noResponse
-  case unavailableForLegalReasons
-  case SSLCertificateError
-  case SSLCertificateRequired
-  case HTTPRequestSentToHTTPSPort
-  case clientClosedRequest
-  case internalServerError
-  case notImplemented
-  case badGateway
-  case serviceUnavailable
-  case gatewayTimeout
-  case HTTPVersionNotSupported
-  case variantAlsoNegotiates
-  case insufficientStorage
-  case loopDetected
-  case notExtended
-  case networkAuthenticationRequired
-  public typealias RawValue = Swift.Int
-  public init?(rawValue: Swift.Int)
-  public var rawValue: Swift.Int {
-    get
-  }
 }
 @_inheritsConvenienceInitializers @objc(FlyBuySitesManager) open class SitesManager : ObjectiveC.NSObject {
   @objc public var all: [FlyBuy.Site]? {
@@ -702,6 +707,7 @@ extension NSNotification.Name {
 }
 @objc(FlyBuyLogger) final public class Logger : ObjectiveC.NSObject {
   final public var logLevel: FlyBuy.LogLevel
+  final public var writeEnabled: Swift.Bool
   public init(name: Swift.String = "FlyBuySDK")
   final public func verbose(_ message: Any = "", filename: Swift.String = #file, function: Swift.String = #function, line: Swift.Int = #line)
   final public func debug(_ message: Any = "", filename: Swift.String = #file, function: Swift.String = #function, line: Swift.Int = #line)
@@ -812,20 +818,20 @@ extension Order : FlyBuy.PersistableCodable {
 extension Order {
   public func isOpen() -> Swift.Bool
 }
+extension FlyBuy.LocationAuthStatus : Swift.Equatable {}
+extension FlyBuy.LocationAuthStatus : Swift.Hashable {}
+extension FlyBuy.LocationAuthStatus : Swift.RawRepresentable {}
+extension FlyBuy.HTTPStatusCode : Swift.Equatable {}
+extension FlyBuy.HTTPStatusCode : Swift.Hashable {}
+extension FlyBuy.HTTPStatusCode : Swift.RawRepresentable {}
 extension FlyBuy.HTTPMethod : Swift.Equatable {}
 extension FlyBuy.HTTPMethod : Swift.Hashable {}
 extension FlyBuy.HTTPMethod : Swift.RawRepresentable {}
 extension FlyBuy.EncodingType : Swift.Equatable {}
 extension FlyBuy.EncodingType : Swift.Hashable {}
-extension FlyBuy.LocationAuthStatus : Swift.Equatable {}
-extension FlyBuy.LocationAuthStatus : Swift.Hashable {}
-extension FlyBuy.LocationAuthStatus : Swift.RawRepresentable {}
 extension FlyBuy.FlyBuyAPIErrorType : Swift.Equatable {}
 extension FlyBuy.FlyBuyAPIErrorType : Swift.Hashable {}
 extension FlyBuy.FlyBuyAPIErrorType : Swift.RawRepresentable {}
-extension FlyBuy.HTTPStatusCode : Swift.Equatable {}
-extension FlyBuy.HTTPStatusCode : Swift.Hashable {}
-extension FlyBuy.HTTPStatusCode : Swift.RawRepresentable {}
 extension FlyBuy.LogLevel : Swift.Equatable {}
 extension FlyBuy.LogLevel : Swift.Hashable {}
 extension FlyBuy.LogLevel : Swift.RawRepresentable {}

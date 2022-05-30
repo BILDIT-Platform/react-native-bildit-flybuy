@@ -209,6 +209,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+
 @class CLCircularRegion;
 @class NotificationInfo;
 @class FlyBuySite;
@@ -217,7 +218,7 @@ SWIFT_CLASS_NAMED("Manager")
 @interface FlyBuyNotifyManager : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyNotifyManager * _Nonnull shared;)
 + (FlyBuyNotifyManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-- (void)configure;
+- (void)configureWithBgTaskIdentifier:(NSString * _Nullable)bgTaskIdentifier bgSyncCallback:(void (^ _Nullable)(NSError * _Nullable))bgSyncCallback;
 - (void)createForSitesInRegion:(CLCircularRegion * _Nonnull)region notification:(NotificationInfo * _Nonnull)notification callback:(void (^ _Nonnull)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for using Notify has been deprecated.");
 - (void)createForSites:(NSArray<FlyBuySite *> * _Nonnull)sites notification:(NotificationInfo * _Nonnull)notification callback:(void (^ _Nonnull)(NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for using Notify has been deprecated.");
 /// clears all notifications
@@ -227,6 +228,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyNotify
 - (BOOL)isFlyBuyNotifyUserInfo:(NSDictionary * _Nonnull)userInfo SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method for using Notify has been deprecated.");
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 
 
@@ -267,6 +269,7 @@ typedef SWIFT_ENUM(NSInteger, NotifyErrorType, open) {
   NotifyErrorTypeNotifyModuleNotEnabled = 4,
   NotifyErrorTypeBeaconRangingNotAvailable = 5,
   NotifyErrorTypeNoBeaconInRange = 6,
+  NotifyErrorTypeBeaconRangingDisabledInBackground = 7,
 };
 
 
@@ -486,6 +489,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+
 @class CLCircularRegion;
 @class NotificationInfo;
 @class FlyBuySite;
@@ -494,7 +498,7 @@ SWIFT_CLASS_NAMED("Manager")
 @interface FlyBuyNotifyManager : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyNotifyManager * _Nonnull shared;)
 + (FlyBuyNotifyManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-- (void)configure;
+- (void)configureWithBgTaskIdentifier:(NSString * _Nullable)bgTaskIdentifier bgSyncCallback:(void (^ _Nullable)(NSError * _Nullable))bgSyncCallback;
 - (void)createForSitesInRegion:(CLCircularRegion * _Nonnull)region notification:(NotificationInfo * _Nonnull)notification callback:(void (^ _Nonnull)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for using Notify has been deprecated.");
 - (void)createForSites:(NSArray<FlyBuySite *> * _Nonnull)sites notification:(NotificationInfo * _Nonnull)notification callback:(void (^ _Nonnull)(NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for using Notify has been deprecated.");
 /// clears all notifications
@@ -504,6 +508,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyNotify
 - (BOOL)isFlyBuyNotifyUserInfo:(NSDictionary * _Nonnull)userInfo SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method for using Notify has been deprecated.");
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 
 
@@ -544,6 +549,7 @@ typedef SWIFT_ENUM(NSInteger, NotifyErrorType, open) {
   NotifyErrorTypeNotifyModuleNotEnabled = 4,
   NotifyErrorTypeBeaconRangingNotAvailable = 5,
   NotifyErrorTypeNoBeaconInRange = 6,
+  NotifyErrorTypeBeaconRangingDisabledInBackground = 7,
 };
 
 

@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		q63XQuObaoF0RehgWjVPey16/eQ=
+		11cMYCXfK7iCWFFhm1GeOagL+30=
 		</data>
 		<key>Modules/FlyBuyPresence.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/FlyBuyPresence.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		bRI54d+Qm7dFbcTjqQo4gC1ay9I=
+		Aa7p8LTnpFCHWaazmlYhPxi9D+g=
 		</data>
 		<key>Modules/FlyBuyPresence.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/FlyBuyPresence.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		bRI54d+Qm7dFbcTjqQo4gC1ay9I=
+		Aa7p8LTnpFCHWaazmlYhPxi9D+g=
 		</data>
 		<key>Modules/FlyBuyPresence.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/FlyBuyPresence.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		C/xf37Hw0v5e+pspu3/kwDc0fjs=
+		SqGyFtGHTs8iJYMcIV0WXVJqbo4=
 		</data>
 		<key>Modules/FlyBuyPresence.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Modules/FlyBuyPresence.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		C/xf37Hw0v5e+pspu3/kwDc0fjs=
+		SqGyFtGHTs8iJYMcIV0WXVJqbo4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -103,7 +103,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			VS9GOSTIcggKV/nLcSUT/Y4EynuVIwlUhoLrdoOR8mg=
+			MI+19T9iTRAqZ7Tn9b4APl2RhOQgUg3OQfF0dd3wjBA=
 			</data>
 		</dict>
 		<key>Modules/FlyBuyPresence.swiftmodule/arm64.swiftdoc</key>
@@ -124,7 +124,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			VS9GOSTIcggKV/nLcSUT/Y4EynuVIwlUhoLrdoOR8mg=
+			MI+19T9iTRAqZ7Tn9b4APl2RhOQgUg3OQfF0dd3wjBA=
 			</data>
 		</dict>
 		<key>Modules/FlyBuyPresence.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -145,7 +145,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qJDe0BUDWWVhmAVKhz94hiDKyndMKdmRiNfEPQZZWmU=
+			ogs+cktL67E3NaE+P76Jz+6yCUTfyU5njLa4hUsNciw=
 			</data>
 		</dict>
 		<key>Modules/FlyBuyPresence.swiftmodule/x86_64.swiftdoc</key>
@@ -166,7 +166,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qJDe0BUDWWVhmAVKhz94hiDKyndMKdmRiNfEPQZZWmU=
+			ogs+cktL67E3NaE+P76Jz+6yCUTfyU5njLa4hUsNciw=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

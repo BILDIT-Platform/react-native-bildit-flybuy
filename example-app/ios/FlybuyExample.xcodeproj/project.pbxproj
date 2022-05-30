@@ -357,10 +357,10 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FlybuyExample/Pods-FlybuyExample-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FlyBuy/FlyBuy.framework/FlyBuy",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FlyBuyPickup/FlyBuyPickup.framework/FlyBuyPickup",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FlyBuyNotify/FlyBuyNotify.framework/FlyBuyNotify",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FlyBuyPresence/FlyBuyPresence.framework/FlyBuyPresence",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuy.framework/FlyBuy",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuyPickup.framework/FlyBuyPickup",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuyNotify.framework/FlyBuyNotify",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuyPresence.framework/FlyBuyPresence",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (

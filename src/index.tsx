@@ -164,7 +164,7 @@ type Sites = {
 };
 
 type Notify = {
-  configure(): void;
+  configure(bgTaskIdentifier?: string): Promise<void>;
   clearNotifications(): Promise<void>;
   createForSitesInRegion(
     region: ICircularRegion,
@@ -213,7 +213,9 @@ const FlyBuyModule = {
     onPermissionChanged: Flybuy.onPermissionChangedPickup,
   },
   Notify: {
-    configure: Flybuy.notifyConfigure,
+    configure: (bgTaskIdentifier?: string) => {
+      return Flybuy.notifyConfigure(bgTaskIdentifier)
+    },
     clearNotifications: Flybuy.clearNotifications,
     createForSitesInRegion: Flybuy.createForSitesInRegion,
     createForSites: Flybuy.createForSites,

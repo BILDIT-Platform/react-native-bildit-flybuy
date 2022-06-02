@@ -354,7 +354,12 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
   // Notify
 
   @ReactMethod
-  fun notifyConfigure(promise: Promise) {
+  fun notifyConfigure(bgTaskIdentifier: String? = null, promise: Promise) {
+    NotifyManager.getInstance()?.configure(reactApplicationContext.baseContext)
+  }
+
+  @ReactMethod
+  fun notifyConfigure(bgTaskIdentifier: String, promise: Promise) {
     NotifyManager.getInstance()?.configure(reactApplicationContext.baseContext)
   }
 

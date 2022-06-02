@@ -286,7 +286,6 @@ SWIFT_CLASS("_TtC6FlyBuy15CreateOrderInfo")
 
 SWIFT_CLASS_NAMED("Customer")
 @interface FlyBuyCustomer : NSObject
-@property (nonatomic, readonly) NSInteger id;
 @property (nonatomic, readonly, copy) NSString * _Nonnull token;
 @property (nonatomic, readonly, copy) NSString * _Nullable emailAddress;
 @property (nonatomic, readonly, strong) FlyBuyCustomerInfo * _Nonnull info;
@@ -477,8 +476,8 @@ SWIFT_CLASS("_TtC6FlyBuy12NotifyConfig")
 @end
 
 @class FlyBuyPickupWindow;
-@class NSNumber;
 @class CLLocation;
+@class NSNumber;
 
 SWIFT_CLASS_NAMED("Order")
 @interface FlyBuyOrder : NSObject
@@ -530,9 +529,6 @@ SWIFT_CLASS_NAMED("Order")
 @property (nonatomic, copy) NSString * _Nullable spotIdentifierInputType;
 @property (nonatomic, readonly, copy) NSString * _Nullable partnerIdentifierForCustomer;
 @property (nonatomic, readonly, copy) NSString * _Nullable partnerIdentifierForCrew;
-@property (nonatomic, readonly) BOOL wrongSiteDetectionEnabled;
-@property (nonatomic, readonly) BOOL distanceFilteringDisabled;
-@property (nonatomic, readonly, strong) NSNumber * _Nullable wrongSiteSearchRadius;
 - (CLLocation * _Nullable)siteLocation SWIFT_WARN_UNUSED_RESULT;
 - (NSNumber * _Nullable)siteDistanceFrom:(CLLocation * _Nonnull)location SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, readonly, strong) NSNumber * _Nullable customerID;
@@ -742,8 +738,6 @@ SWIFT_CLASS_NAMED("Site")
 @property (nonatomic, readonly, copy) NSString * _Nullable projectAccentTextColor;
 @property (nonatomic, readonly, copy) NSString * _Nullable projectLogoURL;
 @property (nonatomic, readonly, strong) FlyBuyGeofence * _Nullable geofence;
-@property (nonatomic, readonly, strong) NSNumber * _Nullable wrongSiteArrivalRadius;
-@property (nonatomic, readonly, copy) NSString * _Nullable operationalStatus;
 - (CLLocation * _Nullable)location SWIFT_WARN_UNUSED_RESULT;
 - (NSNumber * _Nullable)distanceFrom:(CLLocation * _Nonnull)loc SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -768,7 +762,6 @@ SWIFT_CLASS_NAMED("SitesManager")
 /// \param callback will get called on completion with the array of sites or any errors encountered. Optional.
 ///
 - (void)fetchWithQuery:(NSString * _Nullable)query page:(NSInteger)page callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, FlyBuyPagination * _Nullable, NSError * _Nullable))callback;
-- (void)fetchWithQuery:(NSString * _Nullable)query page:(NSInteger)page operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, FlyBuyPagination * _Nullable, NSError * _Nullable))callback;
 /// fetches the list of sites from the FlyBuy web API
 /// \param region a CLCircularRegion for the search region.
 ///
@@ -777,7 +770,6 @@ SWIFT_CLASS_NAMED("SitesManager")
 /// \param callback will get called on completion with the array of sites or any errors encountered. Optional.
 ///
 - (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
-- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
 /// fetches the list of sites from the FlyBuy web API
 /// \param region a CLCircularRegion for the search region.
 ///
@@ -788,7 +780,6 @@ SWIFT_CLASS_NAMED("SitesManager")
 /// \param callback will get called on completion with the array of sites or any errors encountered. Optional.
 ///
 - (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page per:(NSInteger)per callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
-- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page per:(NSInteger)per operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
 /// fetches the list of sites from the FlyBuy web API
 /// \param query the query string. Optional.
 ///
@@ -815,13 +806,6 @@ SWIFT_CLASS_NAMED("UpdateOrderInfo")
 @end
 
 
-
-
-SWIFT_CLASS("_TtC6FlyBuy22WrongSiteArrivalConfig")
-@interface WrongSiteArrivalConfig : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
@@ -1116,7 +1100,6 @@ SWIFT_CLASS("_TtC6FlyBuy15CreateOrderInfo")
 
 SWIFT_CLASS_NAMED("Customer")
 @interface FlyBuyCustomer : NSObject
-@property (nonatomic, readonly) NSInteger id;
 @property (nonatomic, readonly, copy) NSString * _Nonnull token;
 @property (nonatomic, readonly, copy) NSString * _Nullable emailAddress;
 @property (nonatomic, readonly, strong) FlyBuyCustomerInfo * _Nonnull info;
@@ -1307,8 +1290,8 @@ SWIFT_CLASS("_TtC6FlyBuy12NotifyConfig")
 @end
 
 @class FlyBuyPickupWindow;
-@class NSNumber;
 @class CLLocation;
+@class NSNumber;
 
 SWIFT_CLASS_NAMED("Order")
 @interface FlyBuyOrder : NSObject
@@ -1360,9 +1343,6 @@ SWIFT_CLASS_NAMED("Order")
 @property (nonatomic, copy) NSString * _Nullable spotIdentifierInputType;
 @property (nonatomic, readonly, copy) NSString * _Nullable partnerIdentifierForCustomer;
 @property (nonatomic, readonly, copy) NSString * _Nullable partnerIdentifierForCrew;
-@property (nonatomic, readonly) BOOL wrongSiteDetectionEnabled;
-@property (nonatomic, readonly) BOOL distanceFilteringDisabled;
-@property (nonatomic, readonly, strong) NSNumber * _Nullable wrongSiteSearchRadius;
 - (CLLocation * _Nullable)siteLocation SWIFT_WARN_UNUSED_RESULT;
 - (NSNumber * _Nullable)siteDistanceFrom:(CLLocation * _Nonnull)location SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, readonly, strong) NSNumber * _Nullable customerID;
@@ -1572,8 +1552,6 @@ SWIFT_CLASS_NAMED("Site")
 @property (nonatomic, readonly, copy) NSString * _Nullable projectAccentTextColor;
 @property (nonatomic, readonly, copy) NSString * _Nullable projectLogoURL;
 @property (nonatomic, readonly, strong) FlyBuyGeofence * _Nullable geofence;
-@property (nonatomic, readonly, strong) NSNumber * _Nullable wrongSiteArrivalRadius;
-@property (nonatomic, readonly, copy) NSString * _Nullable operationalStatus;
 - (CLLocation * _Nullable)location SWIFT_WARN_UNUSED_RESULT;
 - (NSNumber * _Nullable)distanceFrom:(CLLocation * _Nonnull)loc SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -1598,7 +1576,6 @@ SWIFT_CLASS_NAMED("SitesManager")
 /// \param callback will get called on completion with the array of sites or any errors encountered. Optional.
 ///
 - (void)fetchWithQuery:(NSString * _Nullable)query page:(NSInteger)page callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, FlyBuyPagination * _Nullable, NSError * _Nullable))callback;
-- (void)fetchWithQuery:(NSString * _Nullable)query page:(NSInteger)page operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, FlyBuyPagination * _Nullable, NSError * _Nullable))callback;
 /// fetches the list of sites from the FlyBuy web API
 /// \param region a CLCircularRegion for the search region.
 ///
@@ -1607,7 +1584,6 @@ SWIFT_CLASS_NAMED("SitesManager")
 /// \param callback will get called on completion with the array of sites or any errors encountered. Optional.
 ///
 - (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
-- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
 /// fetches the list of sites from the FlyBuy web API
 /// \param region a CLCircularRegion for the search region.
 ///
@@ -1618,7 +1594,6 @@ SWIFT_CLASS_NAMED("SitesManager")
 /// \param callback will get called on completion with the array of sites or any errors encountered. Optional.
 ///
 - (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page per:(NSInteger)per callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
-- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page per:(NSInteger)per operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
 /// fetches the list of sites from the FlyBuy web API
 /// \param query the query string. Optional.
 ///
@@ -1645,13 +1620,6 @@ SWIFT_CLASS_NAMED("UpdateOrderInfo")
 @end
 
 
-
-
-SWIFT_CLASS("_TtC6FlyBuy22WrongSiteArrivalConfig")
-@interface WrongSiteArrivalConfig : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop

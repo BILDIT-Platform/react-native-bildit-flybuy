@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/FlyBuy-Swift.h</key>
 		<data>
-		27Ozq2DJLSfoUBGPZiGz5xSbOvc=
+		i4h11lmtSLAuLD7D6BZYzUvVDrg=
 		</data>
 		<key>Headers/FlyBuy.h</key>
 		<data>
@@ -14,11 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-<<<<<<< HEAD
 		m4K752ZadL+QBgjD7pvnZ+jojOA=
-=======
-		wFP7LzzvDcTWXXQxuD0ZwZOFLt0=
->>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
 		</data>
 		<key>Modules/FlyBuy.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -26,19 +22,11 @@
 		</data>
 		<key>Modules/FlyBuy.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-<<<<<<< HEAD
 		AIFZzPSI7fhIx+fWx6jNW+yDdLE=
 		</data>
 		<key>Modules/FlyBuy.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
 		jS5xwgYDQxpsdT+Dq3GvUFFhlBQ=
-=======
-		udFMPiUDLYiTYvsEkm3Z7ywyrsk=
-		</data>
-		<key>Modules/FlyBuy.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
-		<data>
-		i2PZhkvi0BAchiWaR0vRYOGDwmE=
->>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
 		</data>
 		<key>Modules/FlyBuy.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -46,19 +34,11 @@
 		</data>
 		<key>Modules/FlyBuy.swiftmodule/arm64.swiftinterface</key>
 		<data>
-<<<<<<< HEAD
 		AIFZzPSI7fhIx+fWx6jNW+yDdLE=
 		</data>
 		<key>Modules/FlyBuy.swiftmodule/arm64.swiftmodule</key>
 		<data>
 		jS5xwgYDQxpsdT+Dq3GvUFFhlBQ=
-=======
-		udFMPiUDLYiTYvsEkm3Z7ywyrsk=
-		</data>
-		<key>Modules/FlyBuy.swiftmodule/arm64.swiftmodule</key>
-		<data>
-		i2PZhkvi0BAchiWaR0vRYOGDwmE=
->>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
 		</data>
 		<key>Modules/FlyBuy.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -66,19 +46,11 @@
 		</data>
 		<key>Modules/FlyBuy.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-<<<<<<< HEAD
 		1Pug0g4zjUgY8SVxgs6IYy8mnBM=
 		</data>
 		<key>Modules/FlyBuy.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
 		Wy9YhjVmiYrMYfLoLEUhfX10TEA=
-=======
-		JxHlwsf8CMbgwceMJShWP3GIjjI=
-		</data>
-		<key>Modules/FlyBuy.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
-		<data>
-		P3MJCVMLSwVAn4tRGyKOrT3p3IE=
->>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
 		</data>
 		<key>Modules/FlyBuy.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -86,19 +58,11 @@
 		</data>
 		<key>Modules/FlyBuy.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-<<<<<<< HEAD
 		1Pug0g4zjUgY8SVxgs6IYy8mnBM=
 		</data>
 		<key>Modules/FlyBuy.swiftmodule/x86_64.swiftmodule</key>
 		<data>
 		Wy9YhjVmiYrMYfLoLEUhfX10TEA=
-=======
-		JxHlwsf8CMbgwceMJShWP3GIjjI=
-		</data>
-		<key>Modules/FlyBuy.swiftmodule/x86_64.swiftmodule</key>
-		<data>
-		P3MJCVMLSwVAn4tRGyKOrT3p3IE=
->>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -111,7 +75,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			U/S/4N9IS3DW8Yio8HCpeWNIDSIBxVjE4hmRHFywmUQ=
+			IVGyTASGKGJbOYhmwi3hmRpAP6sFcKet+PUMqw9BsB8=
 			</data>
 		</dict>
 		<key>Headers/FlyBuy.h</key>
@@ -132,22 +96,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-<<<<<<< HEAD
 			iK/BcThRP1SEuETzEsM4Z9f3HzfJniPJb6Yj4tt21jo=
-=======
-			O+iwu3bG32iGOwn5hL3WsFAd0Az0IZ0boAtXputEWOo=
->>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
 			</data>
 		</dict>
 		<key>Modules/FlyBuy.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-<<<<<<< HEAD
 			2lq1RXfrkYy0DY0hfyYqZdWo+a5VroEn27dxwXzKqZc=
-=======
-			dQV7sVAK8+8vcFQxxZeIrZVGFaVKZf5UQz6JoCQiaPg=
->>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
 			</data>
 		</dict>
 		<key>Modules/FlyBuy.swiftmodule/arm64.swiftdoc</key>
@@ -161,22 +117,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-<<<<<<< HEAD
 			iK/BcThRP1SEuETzEsM4Z9f3HzfJniPJb6Yj4tt21jo=
-=======
-			O+iwu3bG32iGOwn5hL3WsFAd0Az0IZ0boAtXputEWOo=
->>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
 			</data>
 		</dict>
 		<key>Modules/FlyBuy.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-<<<<<<< HEAD
 			2lq1RXfrkYy0DY0hfyYqZdWo+a5VroEn27dxwXzKqZc=
-=======
-			dQV7sVAK8+8vcFQxxZeIrZVGFaVKZf5UQz6JoCQiaPg=
->>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
 			</data>
 		</dict>
 		<key>Modules/FlyBuy.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -190,22 +138,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-<<<<<<< HEAD
 			kUDvh6V8HsxOdN8Jh+4v/FOZqgOwbcC0aIFYEACGNxQ=
-=======
-			nmFwtZI6fx4l4FHEPFov/itOl4W++5u0bNwhtdLdvVc=
->>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
 			</data>
 		</dict>
 		<key>Modules/FlyBuy.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-<<<<<<< HEAD
 			oxcAE8sc+mg32JKLJR7sxdk1to7o2vXGChMQK94YL0k=
-=======
-			X62kJqkQcV2rwSDb5WA9O714yL/HcBACO+B+szpRGl8=
->>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
 			</data>
 		</dict>
 		<key>Modules/FlyBuy.swiftmodule/x86_64.swiftdoc</key>
@@ -219,22 +159,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-<<<<<<< HEAD
 			kUDvh6V8HsxOdN8Jh+4v/FOZqgOwbcC0aIFYEACGNxQ=
-=======
-			nmFwtZI6fx4l4FHEPFov/itOl4W++5u0bNwhtdLdvVc=
->>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
 			</data>
 		</dict>
 		<key>Modules/FlyBuy.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-<<<<<<< HEAD
 			oxcAE8sc+mg32JKLJR7sxdk1to7o2vXGChMQK94YL0k=
-=======
-			X62kJqkQcV2rwSDb5WA9O714yL/HcBACO+B+szpRGl8=
->>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

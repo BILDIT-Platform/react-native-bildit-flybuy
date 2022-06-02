@@ -131,6 +131,10 @@ extension _AnyEncodable {
   @objc final public let projectAccentTextColor: Swift.String?
   @objc final public let projectLogoURL: Swift.String?
   @objc final public let geofence: FlyBuy.Geofence?
+  @objc public var wrongSiteArrivalRadius: Foundation.NSNumber? {
+    @objc get
+  }
+  @objc final public let operationalStatus: Swift.String?
   @objc public func location() -> CoreLocation.CLLocation?
   @objc public func distance(from loc: CoreLocation.CLLocation) -> Foundation.NSNumber?
   @objc deinit
@@ -163,7 +167,7 @@ final public class PersistManager : FlyBuy.FlyBuyDBProtocol {
   public static var shared: FlyBuy.PersistManager
   final public var dbManager: FlyBuy.FlyBuyDBManager
   final public var needsInit: Swift.Bool
-  public init(atPath path: Swift.String = PersistManager.defaultDBPath)
+  public init(atPath path: Swift.String = PersistManager.defaultDBPath, migrate: Swift.Bool = true)
   @objc deinit
 }
 @objc public enum LocationAuthStatus : Swift.Int, Swift.Codable {
@@ -258,6 +262,20 @@ public enum HTTPStatusCode : Swift.Int, Swift.Error {
   public var rawValue: Swift.Int {
     get
   }
+<<<<<<< HEAD
+=======
+}
+@objc @_hasMissingDesignatedInitializers public class WrongSiteArrivalConfig : ObjectiveC.NSObject, Swift.Codable {
+  public var siteLimit: Swift.Int?
+  public var worstAccuracyLimit: Swift.Double?
+  public static let defaultSiteLimit: Swift.Int
+  public static let defaultWorstAccuracyLimit: Swift.Double
+  public static let defaultWrongSiteSearchRadius: Swift.Double
+  @objc override dynamic public init()
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+>>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
 }
 public typealias ResultType<T> = Swift.Result<T, Swift.Error>
 public struct VoidResponse : Swift.Codable {
@@ -328,7 +346,20 @@ open class EncodableRequest<EncodableObject> where EncodableObject : Swift.Encod
   public init(object: EncodableObject, encoder: Foundation.JSONEncoder = JSONEncoder.iso8601FullLocalTZ)
   public var requestBody: Foundation.Data? {
     get
+<<<<<<< HEAD
   }
+  @objc deinit
+}
+extension BaseApiRequest {
+  public var latestApi: Swift.String {
+    get
+=======
+>>>>>>> 5fb82d17b680744840072d84445b3257bb13dd14
+  }
+}
+@_hasMissingDesignatedInitializers @objc(FlyBuyPagination) public class Pagination : ObjectiveC.NSObject {
+  @objc final public let currentPage: Swift.Int
+  @objc final public let totalPages: Swift.Int
   @objc deinit
 }
 extension BaseApiRequest {
@@ -351,7 +382,7 @@ extension BaseApiRequest {
   required public init(from decoder: Swift.Decoder) throws
 }
 @objc(FlyBuyOrderEvent) open class OrderEvent : ObjectiveC.NSObject, Swift.Encodable {
-  public init(orderID: Swift.Int, location: CoreLocation.CLLocation, beacons: [FlyBuy.Beacon], etaSeconds: Foundation.NSNumber?)
+  public init(orderID: Swift.Int, location: CoreLocation.CLLocation, beacons: [FlyBuy.Beacon], etaSeconds: Foundation.NSNumber?, possibleWrongSiteId: Swift.Int?)
   @objc public init(orderID: Swift.Int, customerState: Swift.String, etaSeconds: Foundation.NSNumber?)
   @objc public init(orderID: Swift.Int, customerState: Swift.String, spotIdentifier: Swift.String?)
   @objc public init(orderID: Swift.Int, state: Swift.String)
@@ -368,6 +399,7 @@ public struct AppConfigData : Swift.Codable {
   public let nearbySitesFeatureUrl: Swift.String?
   public let upgrade: FlyBuy.AppUpgrade?
   public let notify: FlyBuy.NotifyConfig?
+  public let wrongSiteArrivalConfig: FlyBuy.WrongSiteArrivalConfig?
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
@@ -491,6 +523,7 @@ extension DateFormatter {
   public static let iso8601FullLocalTZ: Foundation.DateFormatter
 }
 @_hasMissingDesignatedInitializers @objc(FlyBuyCustomer) open class Customer : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let id: Swift.Int
   @objc final public let token: Swift.String
   @objc final public let emailAddress: Swift.String?
   @objc final public let info: FlyBuy.CustomerInfo
@@ -549,8 +582,11 @@ public protocol FlyBuyError : Foundation.LocalizedError {
     get
   }
   @objc public func fetch(query: Swift.String? = nil, page: Swift.Int = 1, callback: (([FlyBuy.Site]?, FlyBuy.Pagination?, Swift.Error?) -> (Swift.Void))? = nil)
+  @objc public func fetch(query: Swift.String? = nil, page: Swift.Int = 1, operationalStatus: Swift.String = "live", callback: (([FlyBuy.Site]?, FlyBuy.Pagination?, Swift.Error?) -> (Swift.Void))? = nil)
   @objc public func fetch(region: CoreLocation.CLCircularRegion, page: Swift.Int = 1, callback: (([FlyBuy.Site]?, Swift.Error?) -> (Swift.Void))? = nil)
+  @objc public func fetch(region: CoreLocation.CLCircularRegion, page: Swift.Int = 1, operationalStatus: Swift.String = "live", callback: (([FlyBuy.Site]?, Swift.Error?) -> (Swift.Void))? = nil)
   @objc public func fetch(region: CoreLocation.CLCircularRegion, page: Swift.Int, per: Swift.Int, callback: (([FlyBuy.Site]?, Swift.Error?) -> (Swift.Void))? = nil)
+  @objc public func fetch(region: CoreLocation.CLCircularRegion, page: Swift.Int, per: Swift.Int, operationalStatus: Swift.String = "live", callback: (([FlyBuy.Site]?, Swift.Error?) -> (Swift.Void))? = nil)
   @objc public func fetchAll(query: Swift.String? = nil, callback: (([FlyBuy.Site]?, Swift.Error?) -> (Swift.Void))? = nil)
   @objc override dynamic public init()
   @objc deinit
@@ -791,6 +827,15 @@ public struct CustomerResponse : Swift.Decodable {
   @objc public var spotIdentifierInputType: Swift.String?
   @objc final public let partnerIdentifierForCustomer: Swift.String?
   @objc final public let partnerIdentifierForCrew: Swift.String?
+  @objc public var wrongSiteDetectionEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc public var distanceFilteringDisabled: Swift.Bool {
+    @objc get
+  }
+  @objc public var wrongSiteSearchRadius: Foundation.NSNumber? {
+    @objc get
+  }
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   @objc public func siteLocation() -> CoreLocation.CLLocation?

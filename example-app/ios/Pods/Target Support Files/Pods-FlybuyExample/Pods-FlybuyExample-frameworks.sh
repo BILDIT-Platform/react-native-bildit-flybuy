@@ -113,6 +113,7 @@ install_dsym() {
       rsync --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --links --filter "- CVS/" --filter "- .svn/" --filter "- .git/" --filter "- .hg/" --filter "- Headers" --filter "- PrivateHeaders" --filter "- Modules" "${DERIVED_FILES_DIR}/${basename}.dSYM" "${DWARF_DSYM_FOLDER_PATH}"
     else
       # The dSYM was not stripped at all, in this case touch a fake folder so the input/output paths from Xcode do not reexecute this script because the file is missing.
+      mkdir -p "${DWARF_DSYM_FOLDER_PATH}"
       touch "${DWARF_DSYM_FOLDER_PATH}/${basename}.dSYM"
     fi
   fi
@@ -175,16 +176,16 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/FlyBuy/FlyBuy.framework"
-  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/FlyBuyPickup/FlyBuyPickup.framework"
-  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/FlyBuyNotify/FlyBuyNotify.framework"
-  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/FlyBuyPresence/FlyBuyPresence.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuy.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuyPickup.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuyNotify.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuyPresence.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/FlyBuy/FlyBuy.framework"
-  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/FlyBuyPickup/FlyBuyPickup.framework"
-  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/FlyBuyNotify/FlyBuyNotify.framework"
-  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/FlyBuyPresence/FlyBuyPresence.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuy.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuyPickup.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuyNotify.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuyPresence.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

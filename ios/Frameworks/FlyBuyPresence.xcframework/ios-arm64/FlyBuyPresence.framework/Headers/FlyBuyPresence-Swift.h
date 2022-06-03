@@ -208,6 +208,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 
+/// An event type that may be received by the PresenceLocator
 typedef SWIFT_ENUM(uint8_t, LocatorEvent, open) {
   LocatorEventConfirmed = 1,
   LocatorEventError = 2,
@@ -217,40 +218,64 @@ typedef SWIFT_ENUM(uint8_t, LocatorEvent, open) {
 
 @class PresenceLocator;
 
+/// Manager for presence operations
 /// Allows creating a presence locator in order to interact with presence detection hardware
 /// installed at a site.
-/// Example:
-/// \code
-/// // configure FlyBuy Presence
-/// let presenceUUID = UUID(uuidstring: "54003B4B-E2E3-46A3-A2E9-299F9F576C4B")!
-/// FlyBuy.presence.configure(presenceUUID: presenceUUID)
-///
-/// // ...
-///
-/// // create a locator
-/// let presenceId = Data([UInt8](arrayLiteral:1,2,3,4,5,6,7,8))
-/// let payload = "{'key':'value'}"
-/// FlyBuy.presence.createLocatorWithIdentifier(presenceId, payload: payload) { (locator, error) -> (Void) in
-///   locator?.delegate = self
-///   FlyBuy.presence.start(locator!)
-/// }
-///
-/// \endcode
+/// See <a href="https://www.radiusnetworks.com/developers/flybuy/#/">Flybuy Developer Docs</a> for additional details including all setup steps.
 SWIFT_CLASS_NAMED("Manager")
 @interface FlyBuyPresenceManager : NSObject
+/// The shared <code>FlyBuyPresenceManager</code> instance.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyPresenceManager * _Nonnull shared;)
 + (FlyBuyPresenceManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+/// Declares the max payload size when creating a locator.
 @property (nonatomic, readonly) NSInteger maxPayloadSize;
+/// The configured kit Presence UUID. Read-only.
 @property (nonatomic, readonly, copy) NSUUID * _Nullable presenceUUID;
-/// configures the presence UUID associated with the app’s project
+/// Configure and initialize the Presence module with the UUID associated with the app’s project.
+/// In addition to initializing the Flybuy core module you need to initialize the Presence module. Call this method with the presenceUUID to setup Flybuy Presence in your app.
+/// See <a href="https://www.radiusnetworks.com/developers/flybuy/#/">Flybuy Developer Docs</a> for additional details including all setup steps.
+/// Example:
+/// \code
+/// func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+/// // Configure Core
+/// FlyBuy.Core.configure(["token": "TOKEN_HERE"])
+///
+/// // Configure Presence
+/// let presenceUUID = UUID(uuidstring: "54003B4B-E2E3-46A3-A2E9-299F9F576C4B")!
+/// FlyBuyPresence.Manager.shared.configure(presenceUUID)
+///
+/// return true
+/// }
+///
+/// \endcode\param presenceUUID The Presence UUID associated with the app’s project.
+///
 - (void)configureWithPresenceUUID:(NSUUID * _Nonnull)presenceUUID;
 /// Calls the FlyBuy web API in order to create a presence locator
 - (void)createLocatorWithPayload:(NSString * _Nullable)payload callback:(SWIFT_NOESCAPE void (^ _Nonnull)(PresenceLocator * _Nullable, NSError * _Nullable))callback;
 /// Creates a presence locator with the given identifier and payload
+/// The application should provide a unique Presence Level® identifier (presenceIdentifier) to create a PresenceLocator. A PresenceLocator is a Bluetooth advertisement that can transmit information to the Flybuy Gateway from a mobile device in a specific spot.
+/// note:
+/// To receive updates from the PresenceLocator (e.g. starting, stopping, and state updates), set the delegate for the locator after it is created (see example).
+/// Example:
+/// \code
+/// // create a locator
+/// let presenceId = Data([UInt8](arrayLiteral:1,2,3,4,5,6,7,8))
+/// let payload = "{'key':'value'}"
+/// FlyBuyPresence.Manager.shared.createLocatorWithIdentifier(presenceId, payload: payload) { (locator, error) -> (Void) in
+///   locator?.delegate = self
+///   FlyBuyPresence.Manager.shared.start(locator!)
+/// }
+///
+/// \endcode\param presenceIdentifier A unique Presence Level® identifier
+///
+/// \param payload The payload string to be added to the locator. Optional
+///
+/// \param callback Called with the <code>PresenceLocator</code> if successfully created or any error encountered.
+///
 - (void)createLocatorWithIdentifier:(NSData * _Nonnull)presenceIdentifier payload:(NSString * _Nullable)payload callback:(SWIFT_NOESCAPE void (^ _Nonnull)(PresenceLocator * _Nullable, NSError * _Nullable))callback;
-/// starts the bluetooth advertising and service associated with a presence locator
+/// Starts the bluetooth advertising and service associated with a presence locator
 - (void)start:(PresenceLocator * _Nonnull)locator;
-/// stops the bluetooth advertising and service associated with a presence locator
+/// Stops the bluetooth advertising and service associated with a presence locator
 - (NSError * _Nullable)stop SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -258,6 +283,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyPresen
 
 enum PresenceErrorType : NSInteger;
 
+/// Error that may be returned from FlyBuyPresenceManager methods.
 SWIFT_CLASS_NAMED("PresenceError")
 @interface FlyBuyPresenceError : NSObject
 @property (nonatomic, readonly) enum PresenceErrorType type;
@@ -267,6 +293,7 @@ SWIFT_CLASS_NAMED("PresenceError")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+/// The type that may be associated with a PresenceError.
 typedef SWIFT_ENUM(NSInteger, PresenceErrorType, open) {
   PresenceErrorTypeInvalidPresenceIdentifierLength = 0,
   PresenceErrorTypeInvalidPayloadLength = 1,
@@ -281,6 +308,7 @@ typedef SWIFT_ENUM(NSInteger, PresenceErrorType, open) {
 };
 
 
+/// Data model for the presence locator
 SWIFT_CLASS("_TtC14FlyBuyPresence15PresenceLocator")
 @interface PresenceLocator : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -288,12 +316,18 @@ SWIFT_CLASS("_TtC14FlyBuyPresence15PresenceLocator")
 @end
 
 
+/// Presence Locator delegate methods
+/// Implement these methods to receive status updates from the PresenceLocator
 SWIFT_PROTOCOL("_TtP14FlyBuyPresence23PresenceLocatorDelegate_")
 @protocol PresenceLocatorDelegate
 @optional
+/// Called when the PresenceLocator is successfully started
 - (void)locatorDidStart:(PresenceLocator * _Nonnull)locator;
+/// Called when the PresenceLocator is successfully stopped
 - (void)locatorDidStop:(PresenceLocator * _Nonnull)locator;
+/// Called when the PresenceLocator encounters an error
 - (void)locatorDidFail:(PresenceLocator * _Nonnull)locator error:(NSError * _Nonnull)error;
+/// Called when the PresenceLocator receives an event from the Flybuy Gateway
 - (void)locator:(PresenceLocator * _Nonnull)locator didReceiveEvent:(uint8_t)type;
 @end
 

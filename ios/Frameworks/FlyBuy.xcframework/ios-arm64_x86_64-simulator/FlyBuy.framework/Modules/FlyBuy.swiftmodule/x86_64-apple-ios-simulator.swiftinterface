@@ -1,12 +1,14 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
 // swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FlyBuy
+import CoreBluetooth
 import CoreLocation
 @_exported import FlyBuy
 import Foundation
 import SQLite3
 import Swift
 import UIKit
+import UserNotifications
 public struct AppConfig : Swift.Codable {
   public let data: FlyBuy.AppConfigData?
   public init(from decoder: Swift.Decoder) throws
@@ -47,13 +49,6 @@ extension PickupLocationFilterData {
   @objc final public let termsOfService: Swift.Bool
   @objc final public let ageVerification: Swift.Bool
   @objc public init(termsOfService: Swift.Bool, ageVerification: Swift.Bool)
-  @objc deinit
-  @objc override dynamic public init()
-  required public init(from decoder: Swift.Decoder) throws
-  open func encode(to encoder: Swift.Encoder) throws
-}
-@objc(FlyBuyUpdateOrderInfo) open class UpdateOrderInfo : ObjectiveC.NSObject, Swift.Codable {
-  @objc public init(pushToken: Swift.String)
   @objc deinit
   @objc override dynamic public init()
   required public init(from decoder: Swift.Decoder) throws
@@ -417,9 +412,10 @@ extension FlyBuyModuleManager {
   @objc public static let orders: FlyBuy.OrdersManager
   @objc public static let customer: FlyBuy.CustomerManager
   @objc public static let sites: FlyBuy.SitesManager
-  @objc public static let config: FlyBuy.ConfigurationManager
   @objc public static let logger: FlyBuy.Logger
-  public static var isCoreConfigured: Swift.Bool
+  public static var isCoreConfigured: Swift.Bool {
+    get
+  }
   @objc public static func configure(_ opts: [Swift.String : Any])
   public static func appInstanceID() -> Foundation.UUID
   @objc public static func handleRemoteNotification(_ data: [Swift.AnyHashable : Any])
@@ -447,19 +443,6 @@ internal protocol _AnyDecodable {
 }
 extension _AnyDecodable {
   public init(from decoder: Swift.Decoder) throws
-}
-@_hasMissingDesignatedInitializers @objc(FlyBuyRequestPasswordReset) open class RequestPasswordReset : ObjectiveC.NSObject, Swift.Codable {
-  @objc deinit
-  @objc override dynamic public init()
-  required public init(from decoder: Swift.Decoder) throws
-  open func encode(to encoder: Swift.Encoder) throws
-}
-@objc(FlyBuySetNewPassword) open class SetNewPassword : ObjectiveC.NSObject, Swift.Codable {
-  @objc public init(resetPasswordToken: Swift.String, password: Swift.String, confirmation: Swift.String)
-  @objc override dynamic public init()
-  required public init(from decoder: Swift.Decoder) throws
-  @objc deinit
-  open func encode(to encoder: Swift.Encoder) throws
 }
 final public class FlyBuyDBManager {
   final public var dbVersion: Swift.Int {
@@ -518,11 +501,6 @@ extension DateFormatter {
   @objc override dynamic public init()
   @objc deinit
 }
-@_inheritsConvenienceInitializers @objc(FlyBuyConfigurationManager) public class ConfigurationManager : ObjectiveC.NSObject {
-  public func fetch(forceFetch: Swift.Bool = false)
-  @objc override dynamic public init()
-  @objc deinit
-}
 public protocol FlyBuyError : Foundation.LocalizedError {
   var description: Swift.String { get }
   var errorDescription: Swift.String? { get }
@@ -575,7 +553,25 @@ public protocol FlyBuyError : Foundation.LocalizedError {
   @objc override dynamic public init()
   @objc deinit
 }
+@objc public enum SitesManagerErrorType : Swift.Int {
+  case coreIsNotConfigured
+  public var description: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 @_hasMissingDesignatedInitializers @objc(FlyBuySitesManagerError) public class SitesManagerError : ObjectiveC.NSObject, FlyBuy.FlyBuyError {
+  @available(*, deprecated, message: "Please use 'description' instead.")
+  @objc public var errorDescription: Swift.String? {
+    @objc get
+  }
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
   @objc deinit
   @objc override dynamic public init()
 }
@@ -686,8 +682,31 @@ extension NSNotification.Name {
   public static let orderUpdated: Foundation.Notification.Name
   public static let orderEventError: Foundation.Notification.Name
 }
+@objc public enum OrdersManagerErrorType : Swift.Int {
+  case loadingCustomer
+  case loadingApiUrl
+  case alreadyFetching
+  case invalidCustomerState
+  case invalidOrderState
+  case coreIsNotConfigured
+  public var description: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 @_hasMissingDesignatedInitializers @objc(FlyBuyOrdersManagerError) public class OrdersManagerError : ObjectiveC.NSObject, FlyBuy.FlyBuyError {
-  public var errorDescription: Swift.String?
+  @available(*, deprecated, message: "Please use 'description' instead.")
+  @objc public var errorDescription: Swift.String? {
+    @objc get
+  }
+  @objc final public let type: FlyBuy.OrdersManagerErrorType
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
   @objc deinit
   @objc override dynamic public init()
 }
@@ -707,8 +726,29 @@ extension NSNotification.Name {
   @objc override dynamic public init()
   @objc deinit
 }
+@objc public enum CustomerManagerErrorType : Swift.Int {
+  case loadingApiUrl
+  case loadingCustomer
+  case missingCustomerConsent
+  case coreIsNotConfigured
+  public var description: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 @_hasMissingDesignatedInitializers @objc(FlyBuyCustomerManagerError) public class CustomerManagerError : ObjectiveC.NSObject, FlyBuy.FlyBuyError {
-  public var errorDescription: Swift.String?
+  @available(*, deprecated, message: "Please use 'description' instead.")
+  @objc public var errorDescription: Swift.String? {
+    @objc get
+  }
+  @objc final public let type: FlyBuy.CustomerManagerErrorType
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
   @objc override dynamic public init()
   @objc deinit
 }
@@ -736,28 +776,6 @@ extension NSNotification.Name {
   final public func error(_ message: Any = "", filename: Swift.String = #file, function: Swift.String = #function, line: Swift.Int = #line)
   @objc override dynamic public init()
   @objc deinit
-}
-public struct CustomerResponse : Swift.Decodable {
-  public init(from decoder: Swift.Decoder) throws
-}
-@objc(FlyBuySignUpInfo) open class SignUpInfo : ObjectiveC.NSObject, Swift.Codable {
-  @objc final public let emailAddress: Swift.String
-  @objc final public let password: Swift.String
-  @objc final public let passwordConfirmation: Swift.String
-  @objc public init(emailAddress: Swift.String, password: Swift.String, passwordConfirmation: Swift.String)
-  @objc override dynamic public init()
-  required public init(from decoder: Swift.Decoder) throws
-  @objc deinit
-  open func encode(to encoder: Swift.Encoder) throws
-}
-@objc(FlyBuyLoginInfo) open class LoginInfo : ObjectiveC.NSObject, Swift.Codable {
-  @objc final public let emailAddress: Swift.String
-  @objc final public let password: Swift.String
-  @objc public init(emailAddress: Swift.String, password: Swift.String)
-  @objc override dynamic public init()
-  required public init(from decoder: Swift.Decoder) throws
-  @objc deinit
-  open func encode(to encoder: Swift.Encoder) throws
 }
 @objc(FlyBuyOrder) open class Order : ObjectiveC.NSObject {
   @objc final public let id: Swift.Int
@@ -861,6 +879,15 @@ extension FlyBuy.EncodingType : Swift.Hashable {}
 extension FlyBuy.FlyBuyAPIErrorType : Swift.Equatable {}
 extension FlyBuy.FlyBuyAPIErrorType : Swift.Hashable {}
 extension FlyBuy.FlyBuyAPIErrorType : Swift.RawRepresentable {}
+extension FlyBuy.SitesManagerErrorType : Swift.Equatable {}
+extension FlyBuy.SitesManagerErrorType : Swift.Hashable {}
+extension FlyBuy.SitesManagerErrorType : Swift.RawRepresentable {}
+extension FlyBuy.OrdersManagerErrorType : Swift.Equatable {}
+extension FlyBuy.OrdersManagerErrorType : Swift.Hashable {}
+extension FlyBuy.OrdersManagerErrorType : Swift.RawRepresentable {}
+extension FlyBuy.CustomerManagerErrorType : Swift.Equatable {}
+extension FlyBuy.CustomerManagerErrorType : Swift.Hashable {}
+extension FlyBuy.CustomerManagerErrorType : Swift.RawRepresentable {}
 extension FlyBuy.LogLevel : Swift.Equatable {}
 extension FlyBuy.LogLevel : Swift.Hashable {}
 extension FlyBuy.LogLevel : Swift.RawRepresentable {}

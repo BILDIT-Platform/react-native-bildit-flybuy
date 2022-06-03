@@ -84,4 +84,3 @@ const App = () => {
 export default App;
 ```
 
-**[Flybuy Notifications Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notifications)**

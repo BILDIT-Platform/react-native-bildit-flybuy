@@ -20,7 +20,6 @@ Fetch all sites for the app.
 FlyBuy.Core.Sites.fetchAllSites();
 ```
 
-**[Flybuy Fetch all Sites Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/sites?id=fetch-all-sites)**
 
 ## Fetch Sites by Query
 
@@ -41,7 +40,6 @@ FlyBuy.Core.Sites.fetchSitesByQuery({
 });
 ```
 
-**[Flybuy Fetch Sites by Query Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/sites?id=fetch-sites)**
 
 ## Fetch Sites by Region
 
@@ -70,4 +68,3 @@ FlyBuy.Core.Sites.fetchSitesByRegion({
 });
 ```
 
-**[Flybuy Fetch Sites by Region Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/sites?id=fetch-sites-in-region)**

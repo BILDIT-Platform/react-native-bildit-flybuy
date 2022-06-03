@@ -16,7 +16,6 @@ Return the list of orders for the current user.
 FlyBuy.Core.Orders.fetchOrders();
 ```
 
-**[Flybuy Get All Orders Documentation](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/orders?id=get-a-list-of-all-orders)**
 
 ## Create Order
 
@@ -61,7 +60,6 @@ FlyBuy.Core.Orders.createOrder(
 );
 ```
 
-**[Flybuy Create Order Documentaiton](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/orders?id=create-an-order)**
 
 ## Claim Order
 
@@ -91,7 +89,6 @@ FlyBuy.Core.Orders.claimOrder(
 );
 ```
 
-**[Flybuy Claim Order Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=claim-order)**
 
 ## Update Order State
 
@@ -110,7 +107,6 @@ You can update an order’s state, if necessary, with any valid state:
 FlyBuy.Core.Orders.updateOrderState(46084566, 'ready');
 ```
 
-**[Flybuy Update Order State Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=update-order-state)**
 
 ## Update Order Customer State
 
@@ -127,7 +123,6 @@ FlyBuy.Core.Orders.updateOrderState(46084566, 'ready');
 FlyBuy.Core.Orders.updateOrderCustomerState(46084566, 'departed');
 ```
 
-**[Flybuy Update Customer State Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=update-customer-state)**
 
 ## Send spot identifier
 
@@ -145,7 +140,6 @@ FlyBuy.Core.Orders.updateOrderCustomerState(46084566, 'departed');
 FlyBuy.Core.Orders.updateOrderCustomerStateWithSpot(46084566, 'departed', '1');
 ```
 
-**[Flybuy Send Spot Identifier Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=send-spot-identifier)**
 
 ## Rate Order
 
@@ -165,7 +159,6 @@ If you collect customer ratings in your app, you can pass them to Flybuy.
 FlyBuy.Core.Orders.rateOrder(46084566, 5, 'Awesome!');
 ```
 
-**[Flybuy Rate Order Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/orders?id=customer-ratings)**
 
 ## Listen to orders update
 

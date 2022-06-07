@@ -40,7 +40,6 @@ const notification = {
 FlyBuy.Notify.createForSitesInRegion(region, notification);
 ```
 
-**[Flybuy Create for Sites in Region Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=create-for-sites-in-region)**
 
 ## Clear Notifications
 
@@ -58,7 +57,6 @@ Clear all geofence notifications.
 FlyBuy.Notify.clearNotifications();
 ```
 
-**[Flybuy Clear Notifications Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=clear-notifications)**
 
 ## Create for Sites
 
@@ -107,7 +105,6 @@ const sites = [
 FlyBuy.Notify.createForSites(sites, notification);
 ```
 
-**[Flybuy Create for Sites Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=additional-methods)**
 
 ## Sync Notify Campaign Data
 
@@ -125,7 +122,6 @@ Notify `sync` method is provided as a development tool, in production applicatio
 FlyBuy.Notify.sync(true);
 ```
 
-**[Flybuy Sync Notify Campaign Data Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=sync-notify-campaign-data)**
 
 ## Background Data Refresh (iOS only)
 
@@ -183,7 +179,6 @@ After that, you can follow this steps:
       // ------
   ```
 
-**[Flybuy Background Data Refresh Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=background-data-refresh)**
 
 ## Handle Notification Response
 
@@ -240,4 +235,3 @@ React.useEffect(() => {
 }, []);
 ```
 
-**[Flybuy Handle Notification Response](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify?id=handle-notification-response)**

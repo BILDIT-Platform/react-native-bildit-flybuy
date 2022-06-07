@@ -33,7 +33,6 @@ Create and start a Presence Locator. A Presence Locator is a Bluetooth advertise
 FlyBuy.Presence.startLocatorWithIdentifier('12345678', "{'key':'value'}");
 ```
 
-**[Flybuy Start Locator Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk/presence?id=start-locator)**
 
 ## Stop a Locator
 
@@ -51,7 +50,6 @@ Stop the Presence Locator when the transaction is complete.
 FlyBuy.Presence.stopLocator();
 ```
 
-**[Flybuy Stop Locator Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk/presence?id=stop-locator)**
 
 ## Android Service Notification
 

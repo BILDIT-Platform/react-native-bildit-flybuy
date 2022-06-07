@@ -26,8 +26,6 @@ FlyBuy.Core.Customer.createCustomer({
 });
 ```
 
-**[Flybuy Create Customer Documentation](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/customers?id=create-a-customer)**
-
 ## Login with Email/Password
 
 Login the user in using existing credentials
@@ -45,7 +43,6 @@ Login the user in using existing credentials
 FlyBuy.Core.Customer.login(`<email>`, `<password>`);
 ```
 
-**[Flybuy Login with Email/Password Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/customer?id=login)**
 
 ## Login with Token
 
@@ -63,7 +60,6 @@ Login the user with a previously obtained customer API token
 FlyBuy.Core.Customer.loginWithToken(`<token>`);
 ```
 
-**[Flybuy Login with Token Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/customer?id=login-via-customer-token)**
 
 ## Logout
 
@@ -81,7 +77,6 @@ Logs out the current customer.
 FlyBuy.Core.Customer.logout();
 ```
 
-**[Flybuy Logout Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/customer?id=logout)**
 
 ## Update Customer
 
@@ -105,7 +100,6 @@ FlyBuy.Core.Customer.updateCustomer({
 });
 ```
 
-**[Flybuy Update Customer Documentation](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/customers?id=update-a-customer)**
 
 ## SignUp a Customer
 
@@ -124,7 +118,6 @@ Link an email and password with the current anonymous logged in user.
 FlyBuy.Core.Customer.signUp('ha_zellat@esi.dz', 'password');
 ```
 
-**[Flybuy SignUp Customer Documentation](https://www.radiusnetworks.com/developers/flybuy/#/api/v1/customers?id=sign-up-a-customer)**
 
 ## Get Current Customer
 
@@ -142,4 +135,3 @@ Returns an instance of the current customer
 FlyBuy.Core.Customer.getCurrentCustomer();
 ```
 
-**[Flybuy Get Current Customer Documentation](https://www.radiusnetworks.com/developers/flybuy/#/sdk/customer?id=get-the-current-customer)**

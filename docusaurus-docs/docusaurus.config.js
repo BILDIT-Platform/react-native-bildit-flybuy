@@ -42,6 +42,11 @@ module.exports = {
               label: 'Tutorial',
               to: '/docs/intro',
             },
+            {
+              label: 'FlyBuy SDK Official Documentation',
+              href: 'https://www.radiusnetworks.com/developers/flybuy/',
+              target: '_blank'
+            },
           ],
         },
         {

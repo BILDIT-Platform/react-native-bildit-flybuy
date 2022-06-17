@@ -22,6 +22,7 @@ export default function App() {
 React.useEffect(() => {
   FlyBuy.Core.configure('YOUR_APP_TOKEN_HERE');
   FlyBuy.Notify.configure(); // If using notify feature
+  FlyBuy.Notify.configure('your.unique.background.app.refresh.task.identifier'); // If using notify feature and background task
   FlyBuy.Pickup.configure(); // If using pickup feature
   FlyBuy.Presence.configure('YOUR_PRESENCE_UUID_HERE'); // If using presence feature
 }, []);

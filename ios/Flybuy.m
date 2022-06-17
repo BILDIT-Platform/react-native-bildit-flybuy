@@ -97,7 +97,9 @@ RCT_EXTERN_METHOD(fetchSitesByRegion:(NSDictionary *)params
 
 // Notify
 
-RCT_EXTERN_METHOD(notifyConfigure)
+RCT_EXTERN_METHOD(notifyConfigure:(NSString)bgTaskIdentifier
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(clearNotifications:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)

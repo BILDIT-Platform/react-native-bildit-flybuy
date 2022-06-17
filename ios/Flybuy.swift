@@ -334,10 +334,24 @@ class Flybuy: RCTEventEmitter {
     
     // Notify
     
-    @objc(notifyConfigure)
-    func notifyConfigure() {
+    @objc(notifyConfigure:withResolver:withRejecter:)
+    func notifyConfigure(bgTaskIdentifier: String?,
+                        resolve:@escaping RCTPromiseResolveBlock,
+                        reject:@escaping RCTPromiseRejectBlock) {
         DispatchQueue.main.async {
-            FlyBuyNotify.Manager.shared.configure()
+            if (bgTaskIdentifier != nil) {
+                FlyBuyNotify.Manager.shared.configure(bgTaskIdentifier: bgTaskIdentifier) { error in
+                    if let error = error {
+                        reject(error.localizedDescription,  error.message, error )
+                        return
+                    }
+                    print("Notify campaigns content updated via a background task")
+                    resolve("ok")
+                }
+            } else {
+                FlyBuyNotify.Manager.shared.configure()
+            }
+            
         }
     }
     

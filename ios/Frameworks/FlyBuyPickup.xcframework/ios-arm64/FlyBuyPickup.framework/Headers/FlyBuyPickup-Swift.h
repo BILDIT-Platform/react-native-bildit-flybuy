@@ -210,10 +210,29 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+/// Manager for Pickup operations
+/// See <a href="https://www.radiusnetworks.com/developers/flybuy/#/">Flybuy Developer Docs</a> for additional details including all setup steps.
 SWIFT_CLASS_NAMED("Manager")
 @interface FlyBuyPickupManager : NSObject
+/// The shared <code>FlyBuyPickupManager</code> instance.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyPickupManager * _Nonnull shared;)
 + (FlyBuyPickupManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+/// Configure and initialize the Tableside module.
+/// In addition to initializing the Flybuy core module you need to initialize the Pickup module. Call this method to setup Flybuy Pickup in your app.
+/// See <a href="https://www.radiusnetworks.com/developers/flybuy/#/">Flybuy Developer Docs</a> for additional details including all setup steps.
+/// Example:
+/// \code
+/// func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {   
+///   // Configure Core
+///   FlyBuy.Core.configure(["token": "TOKEN_HERE"])
+///
+///   // Configure Pickup
+///   FlyBuyPickup.Manager.shared.configure()
+///
+///   return true
+/// }
+///
+/// \endcode
 - (void)configure;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");

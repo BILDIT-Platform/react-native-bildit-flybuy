@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
 // swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FlyBuyPresence
 import CoreBluetooth
 import CoreLocation
@@ -7,6 +7,7 @@ import FlyBuy
 @_exported import FlyBuyPresence
 import Foundation
 import Swift
+import _Concurrency
 @_inheritsConvenienceInitializers @objc(FlyBuyPresenceManager) public class Manager : ObjectiveC.NSObject {
   @objc public static let shared: FlyBuyPresence.Manager
   @objc final public let maxPayloadSize: Swift.Int
@@ -21,7 +22,7 @@ import Swift
   @objc public func stop() -> (Swift.Error?)
   @objc override dynamic public init()
 }
-extension Manager : FlyBuy.FlyBuyModuleManager {
+extension FlyBuyPresence.Manager : FlyBuy.FlyBuyModuleManager {
   public func configUpdated(_ config: FlyBuy.AppConfig)
   public func set(logLevel: FlyBuy.LogLevel)
 }
@@ -39,8 +40,8 @@ extension Manager : FlyBuy.FlyBuyModuleManager {
   public var description: Swift.String {
     get
   }
-  public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
@@ -52,15 +53,14 @@ extension Manager : FlyBuy.FlyBuyModuleManager {
     @objc get
   }
   @objc deinit
-  @objc override dynamic public init()
 }
 @objc public enum LocatorEvent : Swift.UInt8 {
   case confirmed = 1
   case error = 2
   case present = 3
   case received = 4
-  public typealias RawValue = Swift.UInt8
   public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
   }
@@ -76,7 +76,6 @@ extension Manager : FlyBuy.FlyBuyModuleManager {
   final public let identifier: Foundation.Data
   final public let payload: Swift.String?
   public var delegate: FlyBuyPresence.PresenceLocatorDelegate?
-  @objc override dynamic public init()
   @objc deinit
 }
 extension FlyBuyPresence.PresenceErrorType : Swift.Equatable {}

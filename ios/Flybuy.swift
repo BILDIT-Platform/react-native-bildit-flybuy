@@ -331,6 +331,22 @@ class Flybuy: RCTEventEmitter {
             }
         }
     }
+
+    @objc(fetchSiteByPartnerIdentifier:withResolver:withRejecter:)
+    func fetchSiteByPartnerIdentifier(params: Dictionary<String, Any>,
+                            resolve:@escaping RCTPromiseResolveBlock,
+                            reject:@escaping RCTPromiseRejectBlock) {
+        let pid: String = params["partnerIdentifier"] as! String
+
+        FlyBuy.Core.sites.fetchByPartnerIdentifier(partnerIdentifier: pid) { (site, error) -> (Void) in
+            if (error == nil) {
+                resolve(self.parseSite(site: site))
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+    
     
     // Notify
     

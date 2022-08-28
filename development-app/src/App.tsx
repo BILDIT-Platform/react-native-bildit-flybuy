@@ -284,6 +284,14 @@ export default function App() {
       .catch((err) => console.tron.log('err', err));
   };
 
+  const fetchSiteByPartnerIdentifier = () => {
+    FlyBuy.Core.Sites.fetchSiteByPartnerIdentifier({
+      partnerIdentifier: '123',
+    })
+      .then((site) => console.tron.log('site', site))
+      .catch((err) => console.tron.log('err', err));
+  };
+
   // Prescence
 
   const startLocator = () => {
@@ -394,6 +402,10 @@ export default function App() {
           <Button title="fetchAllSites" onPress={fetchAllSites} />
           <Button title="fetchSitesByQuery" onPress={fetchSitesByQuery} />
           <Button title="fetchSitesByRegion" onPress={fetchSitesByRegion} />
+          <Button
+            title="fetchSiteByPartnerIdentifier"
+            onPress={fetchSiteByPartnerIdentifier}
+          />
           <Text>Presence</Text>
           <Button title="start locator" onPress={startLocator} />
           <Button title="stop locator" onPress={stopLocator} />

@@ -34,32 +34,6 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
     return "Flybuy"
   }
 
-  private fun registerLifecycleCallbacks(activity: Activity) {
-    activity.application.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
-      override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-        handleNotification(activity.intent)
-      }
-
-      override fun onActivityStarted(activity: Activity) {
-        FlyBuyCore.onActivityStarted()
-      }
-
-      override fun onActivityResumed(activity: Activity) {
-      }
-
-      override fun onActivityPaused(activity: Activity) {}
-
-      override fun onActivityStopped(activity: Activity) {
-        FlyBuyCore.onActivityStopped()
-      }
-
-      override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
-
-      override fun onActivityDestroyed(activity: Activity) {}
-    })
-  }
-
-
   private fun startObserving() {
     val orderObserver = Observer<List<Order>> {
       orderProgress(it)
@@ -95,7 +69,6 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
     FlyBuyCore.configure(reactApplicationContext.baseContext, token)
     val currentActivity = currentActivity
     if (currentActivity != null) {
-      registerLifecycleCallbacks(currentActivity)
       startObserving()
     }
   }
@@ -526,6 +499,25 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
     }
   }
 
+  @ReactMethod
+  fun fetchSiteByPartnerIdentifier(params: ReadableMap, promise: Promise) {
+    val pid = params.getString("partnerIdentifier")!!
+
+    FlyBuyCore.sites.fetchByPartnerIdentifier(pid) { site, sdkError ->
+      sdkError?.let {
+        handleFlyBuyError(it)
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        site?.let {
+          promise.resolve(parseSite(site))
+        } ?: run {
+          promise.reject("Fetch site by partnerIdentifier Error", "Error retrieving site")
+        }
+
+      }
+    }
+  }
+
   // Presence
 
   @ReactMethod
@@ -795,6 +787,8 @@ fun decodeSites(sitesList: ReadableArray): List<Site> {
 }
 
 fun decodeSite(site: ReadableMap): Site {
+  var type: String? = null
+  var displayName: String? = null
   var name: String? = null
   var phone: String? = null
   var streetAddress: String? = null
@@ -810,6 +804,7 @@ fun decodeSite(site: ReadableMap): Site {
   var instructions: String? = null
   var description: String? = null
   var partnerIdentifier: String? = null
+  var operationalStatus: String? = null
 
   var id = site.getInt("id")!!
 
@@ -865,11 +860,19 @@ fun decodeSite(site: ReadableMap): Site {
     description = site.getString("description")
   }
 
+  if (site.hasKey("type")) {
+    type = site.getString("type")
+  }
+
   if (site.hasKey("partnerIdentifier")) {
     partnerIdentifier = site.getString("partnerIdentifier")
   }
 
-  return Site(
+  if (site.hasKey("operationalStatus")) {
+    operationalStatus = site.getString("operationalStatus")
+  }
+
+  var site = com.radiusnetworks.flybuy.api.model.Site(
     id = id,
     name = name,
     phone = phone,
@@ -881,11 +884,24 @@ fun decodeSite(site: ReadableMap): Site {
     postalCode = postalCode,
     latitude = latitude,
     longitude = longitude,
-    coverPhotoUrl = coverPhotoUrl,
-    iconUrl = iconUrl,
+    coverPhotoURL = coverPhotoUrl,
+    projectLogoURL = iconUrl,
     instructions = instructions,
     description = description,
-    partnerIdentifier = partnerIdentifier
+    partnerIdentifier = partnerIdentifier,
+    type = type,
+    displayName = displayName,
+    operationalStatus = operationalStatus,
+    // TODO: Map this value from API response
+    projectAccentColor = null,
+    geofence = null,
+    prearrivalSeconds = null,
+    projectAccentTextColor = null,
+    wrongSiteArrivalRadius = null,
+  )
+
+  return Site(
+    site
   )
 }
 

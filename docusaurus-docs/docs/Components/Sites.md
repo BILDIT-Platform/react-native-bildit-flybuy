@@ -68,3 +68,21 @@ FlyBuy.Core.Sites.fetchSitesByRegion({
 });
 ```
 
+
+## Fetch Site by Partner Identifier
+
+Fetch a site based on Partner Identifier.
+
+#### Params
+
+| Name   | Type                                        | Example                                                      |
+| ------ | ------------------------------------------- | ------------------------------------------------------------ |
+| partnerIdentifier | String | `123` |
+
+#### Example
+
+```js
+FlyBuy.Core.Sites.fetchSiteByPartnerIdentifier({
+  partnerIdentifier: "123"
+});
+```

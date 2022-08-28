@@ -161,6 +161,9 @@ type Sites = {
     page: number;
     region: ICircularRegion;
   }): Promise<[ISite]>;
+  fetchSiteByPartnerIdentifier(params: {
+    partnerIdentifier: string;
+  }): Promise<ISite>;
 };
 
 type Notify = {
@@ -270,6 +273,7 @@ const FlyBuyModule = {
       fetchAllSites: Flybuy.fetchAllSites,
       fetchSitesByQuery: Flybuy.fetchSitesByQuery,
       fetchSitesByRegion: Flybuy.fetchSitesByRegion,
+      fetchSiteByPartnerIdentifier: Flybuy.fetchSiteByPartnerIdentifier,
     },
   },
   eventEmitter: new NativeEventEmitter(Flybuy),

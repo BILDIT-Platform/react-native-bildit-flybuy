@@ -95,6 +95,10 @@ RCT_EXTERN_METHOD(fetchSitesByRegion:(NSDictionary *)params
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(fetchSiteByPartnerIdentifier:(NSDictionary *)params
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
 // Notify
 
 RCT_EXTERN_METHOD(notifyConfigure:(NSString)bgTaskIdentifier

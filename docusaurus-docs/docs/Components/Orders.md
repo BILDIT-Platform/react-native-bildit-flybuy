@@ -17,7 +17,7 @@ FlyBuy.Core.Orders.fetchOrders();
 ```
 
 
-## Create Order
+## Create Order using Site ID
 
 Create a new order for the current user.
 
@@ -46,6 +46,49 @@ const pickupWindow = {
 
 FlyBuy.Core.Orders.createOrder(
   15942,
+  '573836',
+  {
+    name: 'Lamia Selmane',
+    carType: 'Tesla',
+    carColor: 'Silver',
+    licensePlate: 'AB 0496',
+    phone: '555-555-5555',
+  },
+  pickupWindow,
+  'delayed',
+  'delivery'
+);
+```
+
+## Create Order using Site Partner Identifier
+
+If the app does not have the Flybuy `siteID` or only wants to create the order if the site operational status is `live`, the `sitePartnerIdentifier` can be used to create an order. An `orderPartnerIdentifier` and `customerInfo` also need to be provided. This customer information does not need to be the same as the customer that is logged in. It should be the information for the person that is picking up the order.
+
+Optionally, the `orderState`, `pickupType`, and `pickupWindow` can be set when creating an order if these are not created via a backend integration.
+
+Most orders will have a pickup time of “ASAP”. If you have a different pickup window, you can pass a `pickupWindow` parameter. If you want the default of “ASAP”, omit the parameter.
+
+#### Params
+
+| Name         | Type                                    | Example                                                                                                      |
+| ------------ | --------------------------------------- | ------------------------------------------------------------------------------------------------------------ | --- |
+| sitePid      | Str                                     | sitePartnerIdentifier: `'15942'`                                                                                                      |
+| orderPid     | Str                                     | orderPartnerIdentifier: `'573836'`                                                                                                   |
+| customerInfo | [`CustomerInfo`](../Types/CustomerInfo) | `{name: 'Lamia Selmane',carType: 'Tesla',carColor: 'Silver',licensePlate: 'AB 0496' phone: '555-555-5555',}` |
+| pickupWindow | [`PickupWindow`](../Types/PickupWindow) | `{start: new Date().toISOString(),end: new Date('2022-12-02').toISOString(),}`                               |     |
+| orderState   | Str                                     | `'delayed'`                                                                                                  |
+| pickupType   | Str                                     | `'delivery'`                                                                                                 |
+
+#### Example
+
+```js
+const pickupWindow = {
+  start: new Date().toISOString(),
+  end: new Date('2022-12-02').toISOString(),
+};
+
+FlyBuy.Core.Orders.createOrder(
+  '15942',
   '573836',
   {
     name: 'Lamia Selmane',

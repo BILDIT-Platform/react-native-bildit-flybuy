@@ -21,6 +21,8 @@ import AppConfig from './AppConfig.json';
 const ORDER_ID = 85300686;
 const SITE_ID = 15942;
 const NEW_PID = '01380326929';
+const SITE_PID = '12323';
+const ORDER_PID = '32325';
 const CUSTOMER_INFO = {
   name: 'Lamia Selmane',
   carType: 'Tesla',
@@ -73,6 +75,12 @@ export default function App() {
   const fetchOrders = () => {
     FlyBuy.Core.Orders.fetchOrders()
       .then((orders) => console.tron.log('orders', orders))
+      .catch((err) => console.tron.log(err));
+  };
+
+  const createOrderWithPartnerIdentification = () => {
+    FlyBuy.Core.Orders.createOrder(SITE_PID, ORDER_PID, CUSTOMER_INFO)
+      .then((order) => console.tron.log('order', order))
       .catch((err) => console.tron.log(err));
   };
 
@@ -374,6 +382,10 @@ export default function App() {
           <Button
             title="Create order 5 Params"
             onPress={createOrderWithFiveParams}
+          />
+          <Button
+            title="Create order with site partner identification"
+            onPress={createOrderWithPartnerIdentification}
           />
           <Button
             title="Fetch Order By RedemptionCode"

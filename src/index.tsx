@@ -124,6 +124,14 @@ type Orders = {
     orderState?: OrderStateType,
     pickupType?: PickupType
   ): Promise<IOrder>;
+  createOrder(
+    sitePid: string,
+    orderPid: string,
+    customerInfo: ICustomerInfo,
+    pickupWindow?: PickupWindow,
+    orderState?: OrderStateType,
+    pickupType?: PickupType
+  ): Promise<IOrder>;
   claimOrder(
     redeemCode: string,
     customerInfo: ICustomerInfo,

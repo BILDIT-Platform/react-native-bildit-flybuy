@@ -186,6 +186,38 @@ class Flybuy: RCTEventEmitter {
                 }
         }
     }
+
+    @objc(createOrder:withOrderPartnerIdentifier:withCustomerInfo:withPickupWindow:withOrderState:withPickupType:withResolver:withRejecter:)
+    func createOrder(sitePid: String,
+                     orderPid: String,
+                     customerInfo: Dictionary<String, String>,
+                     pickupWindow: Dictionary<String, String>? = nil,
+                     orderState: String? = nil,
+                     pickupType: String? = nil,
+                     resolve:@escaping RCTPromiseResolveBlock,
+                     reject:@escaping RCTPromiseRejectBlock) {
+        let info = decodeCustomerInfo(customer: customerInfo)
+        
+        func callbackHandler(order: Order?, error: Error?) {
+            if (error == nil && order != nil) {
+                resolve(self.parseOrder(order: order!))
+            } else {
+                reject(error.debugDescription, error?.localizedDescription, error )
+            }
+        }
+        
+        // TODO: adjust framework call based on params availability
+        if (pickupWindow != nil) {
+            let pickupWindowInfo = decodePickupWindow(pickupWindow: pickupWindow)
+            FlyBuy.Core.orders.create(sitePartnerIdentifier: sitePid, orderPartnerIdentifier: orderPid, customerInfo: info, pickupWindow: pickupWindowInfo, state: orderState ?? "created", pickupType: pickupType ?? "") {
+              (order, error) in callbackHandler(order: order, error: error)
+            }
+        } else if (pickupWindow == nil) {
+            FlyBuy.Core.orders.create(sitePartnerIdentifier: sitePid, orderPartnerIdentifier: orderPid, customerInfo: info, state: orderState ?? "created", pickupType: pickupType ?? "") {
+                    (order, error) in callbackHandler(order: order, error: error)
+                }
+        }
+    }
     
     @objc(claimOrder:withCustomer:withPickupType:withResolver:withRejecter:)
     func claimOrder(redeemCode: String,

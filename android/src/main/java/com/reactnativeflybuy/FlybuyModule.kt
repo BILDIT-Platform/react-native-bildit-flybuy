@@ -257,6 +257,39 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
+  fun createOrder(
+    sitePid: String,
+    orderPid: String,
+    customer: ReadableMap,
+    pickupWindow: ReadableMap? = null,
+    orderState: String? = null,
+    pickupType: String? = null,
+    promise: Promise
+  ) {
+    val customerInfo: CustomerInfo = decodeCustomerInfo(customer)
+    val pickupWindowInfo = pickupWindow?.let { decodePickupWindow(it) }
+
+    FlyBuyCore.orders.create(
+      sitePartnerIdentifier = sitePid,
+      orderPartnerIdentifier = orderPid,
+      customerInfo = customerInfo,
+      pickupWindow = pickupWindowInfo,
+      state = orderState,
+      pickupType = pickupType
+    ) { order, sdkError ->
+      sdkError?.let {
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        order?.let {
+          promise.resolve(parseOrder(order))
+        } ?: run {
+          promise.reject("Create Order Error", "Error retrieving order")
+        }
+      }
+    }
+  }
+
+  @ReactMethod
   fun updateOrderState(orderId: Int, state: String, promise: Promise) {
     FlyBuyCore.orders.updateState(orderId, state) { order, sdkError ->
       sdkError?.let {

@@ -28,6 +28,6 @@ extension Foundation.NSNotification.Name {
   public static let locationAuthorizationChanged: Foundation.Notification.Name
 }
 extension FlyBuyPickup.Manager : FlyBuy.FlyBuyModuleManager {
-  public func configUpdated(_ config: FlyBuy.AppConfig)
+  public func configUpdated(_ config: FlyBuy.AppConfig, pushData: FlyBuy.PushData?)
   public func set(logLevel: FlyBuy.LogLevel)
 }

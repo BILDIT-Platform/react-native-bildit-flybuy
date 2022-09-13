@@ -41,6 +41,13 @@ extension FlyBuy.PickupLocationFilterData {
   final public let defaultGeofenceRadiusMeters: Swift.Double
   final public let defaultSiteSearchRadiusMeters: Swift.Double
   final public let analyticsEventLimit: Swift.Int?
+  public var sitesFetchLongitudePrecision: Swift.Int {
+    get
+  }
+  public var sitesFetchLatitudePrecision: Swift.Int {
+    get
+  }
+  public static let defaultGeoPrecision: Swift.Int
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -132,6 +139,11 @@ extension FlyBuy._AnyEncodable {
   @objc public func distance(from loc: CoreLocation.CLLocation) -> Foundation.NSNumber?
   @objc deinit
   required public init(from decoder: Swift.Decoder) throws
+}
+extension FlyBuy.Site {
+  public var pickupConfig: FlyBuy.PickupConfig {
+    get
+  }
 }
 @objc(FlyBuyGeofence) open class Geofence : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let latitude: Swift.String
@@ -301,6 +313,13 @@ extension FlyBuy.PickupConfig : FlyBuy.PersistableCodable {
   public static let defaultSiteLimit: Swift.Int
   public static let defaultWorstAccuracyLimit: Swift.Double
   public static let defaultWrongSiteSearchRadius: Swift.Double
+  public var sitesFetchLatitudePrecision: Swift.Int {
+    get
+  }
+  public var sitesFetchLongitudePrecision: Swift.Int {
+    get
+  }
+  public static let defaultGeoPrecision: Swift.Int
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -435,7 +454,7 @@ public struct BeaconRegion : Swift.Codable, Swift.Hashable {
   public init(from decoder: Swift.Decoder) throws
 }
 public protocol FlyBuyModuleManager {
-  func configUpdated(_ config: FlyBuy.AppConfig)
+  func configUpdated(_ config: FlyBuy.AppConfig, pushData: FlyBuy.PushData?)
   func set(logLevel: FlyBuy.LogLevel)
   func ordersUpdated(_ orders: [FlyBuy.Order])
 }
@@ -522,6 +541,9 @@ extension Foundation.JSONEncoder {
 extension Foundation.DateFormatter {
   public static let iso8601Full: Foundation.DateFormatter
   public static let iso8601FullLocalTZ: Foundation.DateFormatter
+}
+extension Swift.Double {
+  public func round(to places: Swift.Int) -> Swift.Double
 }
 @_hasMissingDesignatedInitializers @objc(FlyBuyCustomer) open class Customer : ObjectiveC.NSObject, Swift.Decodable {
   @objc final public let id: Swift.Int
@@ -624,6 +646,19 @@ public protocol FlyBuyError : Foundation.LocalizedError {
     @objc get
   }
   @objc deinit
+}
+public enum RemoteNotificationMessageType : Swift.String {
+  case backgroundSync
+  case orderUpdate
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct PushData {
+  public let messageType: FlyBuy.RemoteNotificationMessageType?
+  public let forceSyncNotifyCampaigns: Swift.Bool
 }
 public struct AnyCodable : Swift.Codable {
   public let value: Any
@@ -863,19 +898,26 @@ extension FlyBuy.OrdersManager : CoreLocation.CLLocationManagerDelegate {
   @objc final public let siteCoverPhotoURL: Swift.String?
   final public let siteBeaconRegions: [FlyBuy.BeaconRegion]?
   @objc final public let sitePartnerIdentifier: Swift.String?
+  @available(*, deprecated, message: "Use order.sitePickupConfig.projectAccentColor instead")
   @objc final public let projectAccentColor: Swift.String?
+  @available(*, deprecated, message: "Use order.sitePickupConfig.projectAccentTextColor instead")
   @objc final public let projectAccentTextColor: Swift.String?
   @objc final public let projectLogoURL: Swift.String?
   @objc final public let customerName: Swift.String?
   @objc final public let customerCarType: Swift.String?
   @objc final public let customerCarColor: Swift.String?
   @objc final public let customerLicensePlate: Swift.String?
+  @available(*, deprecated, message: "Use showVehicleInfoFields for the pickup type in sitePickupConfig.availablePickupTypes")
   @objc final public let projectMobileFlowAlwaysShowVehicleInfoFields: Swift.Bool
+  @available(*, deprecated, message: "Use order.sitePickupConfig.customerNameEditingEnabled instead")
   @objc final public let projectMobileFlowCustomerNameEditingEnabled: Swift.Bool
+  @available(*, deprecated, message: "Use order.sitePickupConfig.pickupTypeSelectionEnabled instead")
   @objc final public let projectMobileFlowPickupTypeSelectionEnabled: Swift.Bool
-  @available(*, deprecated, message: "Please use PickupTypeConfig.requireVehicleInfo: Bool")
+  @available(*, deprecated, message: "Use requiredVehicleInfo for the pickup type in sitePickupConfig.availablePickupTypes")
   @objc final public let projectMobileFlowRequireVehicleInfoIfVisible: Swift.Bool
+  @available(*, deprecated, message: "Use pickupTypeLocalizedString for the pickup type in sitePickupConfig.availablePickupTypes")
   @objc final public let curbsideLocalizedString: Swift.String?
+  @available(*, deprecated, message: "Use pickupTypeLocalizedString for the pickup type in sitePickupConfig.availablePickupTypes")
   @objc final public let pickupLocalizedString: Swift.String?
   @objc public var pushToken: Swift.String?
   public var isLocationTrackingEnabled: Swift.Bool?
@@ -922,7 +964,7 @@ extension FlyBuy.Order : FlyBuy.PersistableCodable {
 }
 extension FlyBuy.Order {
   public func isOpen() -> Swift.Bool
-  public var pickupConfig: FlyBuy.PickupConfig {
+  public var sitePickupConfig: FlyBuy.PickupConfig {
     get
   }
 }
@@ -943,6 +985,9 @@ extension FlyBuy.FlyBuyAPIErrorType : Swift.RawRepresentable {}
 extension FlyBuy.SitesManagerErrorType : Swift.Equatable {}
 extension FlyBuy.SitesManagerErrorType : Swift.Hashable {}
 extension FlyBuy.SitesManagerErrorType : Swift.RawRepresentable {}
+extension FlyBuy.RemoteNotificationMessageType : Swift.Equatable {}
+extension FlyBuy.RemoteNotificationMessageType : Swift.Hashable {}
+extension FlyBuy.RemoteNotificationMessageType : Swift.RawRepresentable {}
 extension FlyBuy.OrdersManagerErrorType : Swift.Equatable {}
 extension FlyBuy.OrdersManagerErrorType : Swift.Hashable {}
 extension FlyBuy.OrdersManagerErrorType : Swift.RawRepresentable {}

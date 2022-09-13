@@ -656,19 +656,19 @@ SWIFT_CLASS_NAMED("Order")
 @property (nonatomic, readonly, copy) NSString * _Nullable siteDescription;
 @property (nonatomic, readonly, copy) NSString * _Nullable siteCoverPhotoURL;
 @property (nonatomic, readonly, copy) NSString * _Nullable sitePartnerIdentifier;
-@property (nonatomic, readonly, copy) NSString * _Nullable projectAccentColor;
-@property (nonatomic, readonly, copy) NSString * _Nullable projectAccentTextColor;
+@property (nonatomic, readonly, copy) NSString * _Nullable projectAccentColor SWIFT_DEPRECATED_MSG("Use order.sitePickupConfig.projectAccentColor instead");
+@property (nonatomic, readonly, copy) NSString * _Nullable projectAccentTextColor SWIFT_DEPRECATED_MSG("Use order.sitePickupConfig.projectAccentTextColor instead");
 @property (nonatomic, readonly, copy) NSString * _Nullable projectLogoURL;
 @property (nonatomic, readonly, copy) NSString * _Nullable customerName;
 @property (nonatomic, readonly, copy) NSString * _Nullable customerCarType;
 @property (nonatomic, readonly, copy) NSString * _Nullable customerCarColor;
 @property (nonatomic, readonly, copy) NSString * _Nullable customerLicensePlate;
-@property (nonatomic, readonly) BOOL projectMobileFlowAlwaysShowVehicleInfoFields;
-@property (nonatomic, readonly) BOOL projectMobileFlowCustomerNameEditingEnabled;
-@property (nonatomic, readonly) BOOL projectMobileFlowPickupTypeSelectionEnabled;
-@property (nonatomic, readonly) BOOL projectMobileFlowRequireVehicleInfoIfVisible SWIFT_DEPRECATED_MSG("Please use PickupTypeConfig.requireVehicleInfo: Bool");
-@property (nonatomic, readonly, copy) NSString * _Nullable curbsideLocalizedString;
-@property (nonatomic, readonly, copy) NSString * _Nullable pickupLocalizedString;
+@property (nonatomic, readonly) BOOL projectMobileFlowAlwaysShowVehicleInfoFields SWIFT_DEPRECATED_MSG("Use showVehicleInfoFields for the pickup type in sitePickupConfig.availablePickupTypes");
+@property (nonatomic, readonly) BOOL projectMobileFlowCustomerNameEditingEnabled SWIFT_DEPRECATED_MSG("Use order.sitePickupConfig.customerNameEditingEnabled instead");
+@property (nonatomic, readonly) BOOL projectMobileFlowPickupTypeSelectionEnabled SWIFT_DEPRECATED_MSG("Use order.sitePickupConfig.pickupTypeSelectionEnabled instead");
+@property (nonatomic, readonly) BOOL projectMobileFlowRequireVehicleInfoIfVisible SWIFT_DEPRECATED_MSG("Use requiredVehicleInfo for the pickup type in sitePickupConfig.availablePickupTypes");
+@property (nonatomic, readonly, copy) NSString * _Nullable curbsideLocalizedString SWIFT_DEPRECATED_MSG("Use pickupTypeLocalizedString for the pickup type in sitePickupConfig.availablePickupTypes");
+@property (nonatomic, readonly, copy) NSString * _Nullable pickupLocalizedString SWIFT_DEPRECATED_MSG("Use pickupTypeLocalizedString for the pickup type in sitePickupConfig.availablePickupTypes");
 @property (nonatomic, copy) NSString * _Nullable pushToken;
 @property (nonatomic, copy) NSString * _Nullable spotIdentifer;
 @property (nonatomic, copy) NSString * _Nullable spotIdentifierInputType;
@@ -1129,9 +1129,9 @@ SWIFT_CLASS_NAMED("OrdersManager")
 @end
 
 
-
 @interface FlyBuyOrdersManager (SWIFT_EXTENSION(FlyBuy)) <CLLocationManagerDelegate>
 @end
+
 
 
 enum OrdersManagerErrorType : NSInteger;
@@ -1244,6 +1244,7 @@ SWIFT_CLASS_NAMED("Site")
 /// Gets the distance between the given location and the site location.
 - (NSNumber * _Nullable)distanceFrom:(CLLocation * _Nonnull)loc SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 @class CLCircularRegion;
 

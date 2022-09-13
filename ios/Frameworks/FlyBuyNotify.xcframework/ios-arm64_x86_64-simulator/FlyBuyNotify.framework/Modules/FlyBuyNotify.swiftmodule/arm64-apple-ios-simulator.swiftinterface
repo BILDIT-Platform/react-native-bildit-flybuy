@@ -13,6 +13,8 @@ import _Concurrency
 public enum SyncHistory {
   public static var writeToDefaultsEnabled: Swift.Bool
   public static func addBGTaskExpiredEvent()
+  public static func addPushSyncAttemptEvent()
+  public static func addPushSyncCompleteEvent(error: Swift.Error?)
   public static func addBGFetchAttemptEvent()
   public static func addBGFetchCompleteEvent(error: Swift.Error?)
   public static func appendHistory(_ str: Swift.String)
@@ -52,7 +54,7 @@ extension FlyBuyNotify.Manager : FlyBuy.FlyBuyModuleManager {
   public func ordersUpdated(_ orders: [FlyBuy.Order])
   public func set(logLevel: FlyBuy.LogLevel)
   public func set(logWriteEnabled: Swift.Bool)
-  public func configUpdated(_ config: FlyBuy.AppConfig)
+  public func configUpdated(_ config: FlyBuy.AppConfig, pushData: FlyBuy.PushData?)
 }
 @objc public enum NotifyErrorType : Swift.Int {
   case noLocationPermission

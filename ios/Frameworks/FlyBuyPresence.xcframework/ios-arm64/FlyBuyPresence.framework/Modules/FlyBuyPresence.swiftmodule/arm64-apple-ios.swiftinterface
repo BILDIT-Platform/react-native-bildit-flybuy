@@ -23,7 +23,7 @@ import _Concurrency
   @objc override dynamic public init()
 }
 extension FlyBuyPresence.Manager : FlyBuy.FlyBuyModuleManager {
-  public func configUpdated(_ config: FlyBuy.AppConfig)
+  public func configUpdated(_ config: FlyBuy.AppConfig, pushData: FlyBuy.PushData?)
   public func set(logLevel: FlyBuy.LogLevel)
 }
 @objc public enum PresenceErrorType : Swift.Int {

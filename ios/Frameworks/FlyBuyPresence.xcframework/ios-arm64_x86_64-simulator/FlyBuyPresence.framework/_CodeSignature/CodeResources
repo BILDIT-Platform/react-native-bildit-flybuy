@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		/4HRkrDm444kdjIxYR9gGc8LNnk=
+		xju9vfXQs5Cq4V7jiuCgBHBcNvo=
 		</data>
 		<key>Modules/FlyBuyPresence.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/FlyBuyPresence.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		7G/Ygn/VF2jXgt8tEjuf0gUp4UI=
+		dLNxldsQ35aKS/pLVKSn2V/sHU0=
 		</data>
 		<key>Modules/FlyBuyPresence.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		xWPo0tTGjBhqctLOBKEy8NipjWw=
+		MMDzPEgtBqg8VaDcPJ6u/z57R4Q=
 		</data>
 		<key>Modules/FlyBuyPresence.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/FlyBuyPresence.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		547LCAhA3lGlsZw6Fj7dkbAwzFE=
+		csIDy1Y3mPjMZzcJrCc/l4gXMpE=
 		</data>
 		<key>Modules/FlyBuyPresence.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		nA+TDFGxO3HPkHvgb+fLzgAghNM=
+		BqVvnJD2tSE4O1/yDegs/5x7Msc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -72,14 +72,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/m90nrRo7VY5Ck0mQr9ZmQn9SbuTIghgOxxMMhzzyM8=
+			7wGcHvCxrYURx034GsAYl6nspYI/5JWenXPg20AKGC8=
 			</data>
 		</dict>
 		<key>Modules/FlyBuyPresence.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lPUCSz3EEm+QtufqQuBv3bmcDKQSh4Y104I+z6QNkbA=
+			NtWXMEOHlmN3FnHg5KE4m3fV+BhXCAVHDQUL8mQxbyA=
 			</data>
 		</dict>
 		<key>Modules/FlyBuyPresence.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -93,14 +93,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hok/DaC8SxBV1XQFSh7GDgFCoo0/GqGoqd+ToF326mo=
+			YVdh4J2hvVA/Qv7Zvk1sqAEwpevvY8LJIs+KS4lCW84=
 			</data>
 		</dict>
 		<key>Modules/FlyBuyPresence.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			04ASqr33gh5yiJnV2tbncjEe2xCOghoMPWg2LOp6PME=
+			wCsFFOGpamDEaF8Qbo2v4G81PSepM+WpFwd5r8kUPFM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -27,6 +27,8 @@ Most orders will have a pickup time of “ASAP”. If you have a different picku
 
 #### Params
 
+This function only needs an object as a param.
+
 | Name         | Type                                    | Example                                                                                                      |
 | ------------ | --------------------------------------- | ------------------------------------------------------------------------------------------------------------ | --- |
 | siteId       | Int                                     | `15942`                                                                                                      |
@@ -44,20 +46,20 @@ const pickupWindow = {
   end: new Date('2022-12-02').toISOString(),
 };
 
-FlyBuy.Core.Orders.createOrder(
-  15942,
-  '573836',
-  {
+FlyBuy.Core.Orders.createOrder({
+  siteId: 15942,
+  pid: '573836',
+  customerInfo: {
     name: 'Lamia Selmane',
     carType: 'Tesla',
     carColor: 'Silver',
     licensePlate: 'AB 0496',
     phone: '555-555-5555',
   },
-  pickupWindow,
-  'delayed',
-  'delivery'
-);
+  pickupWindow: pickupWindow,
+  orderState: 'delayed',
+  pickupType: 'delivery'
+});
 ```
 
 ## Create Order using Site Partner Identifier
@@ -69,6 +71,8 @@ Optionally, the `orderState`, `pickupType`, and `pickupWindow` can be set when c
 Most orders will have a pickup time of “ASAP”. If you have a different pickup window, you can pass a `pickupWindow` parameter. If you want the default of “ASAP”, omit the parameter.
 
 #### Params
+
+This function only needs an object as a param.
 
 | Name         | Type                                    | Example                                                                                                      |
 | ------------ | --------------------------------------- | ------------------------------------------------------------------------------------------------------------ | --- |
@@ -87,20 +91,20 @@ const pickupWindow = {
   end: new Date('2022-12-02').toISOString(),
 };
 
-FlyBuy.Core.Orders.createOrder(
-  '15942',
-  '573836',
-  {
+FlyBuy.Core.Orders.createOrder({
+  sitePid: '15942',
+  orderPid: '573836',
+  customerInfo: {
     name: 'Lamia Selmane',
     carType: 'Tesla',
     carColor: 'Silver',
     licensePlate: 'AB 0496',
     phone: '555-555-5555',
   },
-  pickupWindow,
-  'delayed',
-  'delivery'
-);
+  pickupWindow: pickupWindow,
+  orderState: 'delayed',
+  orderType: 'delivery'
+});
 ```
 
 

@@ -14,6 +14,8 @@ import com.radiusnetworks.flybuy.sdk.FlyBuyCore
 import com.radiusnetworks.flybuy.sdk.data.common.Pagination
 import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
+import com.radiusnetworks.flybuy.sdk.data.pickup_config.PickupConfig
+import com.radiusnetworks.flybuy.sdk.data.pickup_config.PickupTypeConfig
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Customer
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Order
 import com.radiusnetworks.flybuy.sdk.data.room.domain.PickupWindow
@@ -707,6 +709,39 @@ fun parseSites(items: List<Site>): WritableArray {
   return array
 }
 
+fun parsePickupTypeConfig(pickupTypeConfig: PickupTypeConfig): WritableMap {
+  val map = Arguments.createMap()
+  map.putString("pickupType", pickupTypeConfig.pickupType)
+  map.putString("pickupTypeLocalizedString", pickupTypeConfig.pickupTypeLocalizedString)
+  map.putBoolean("requireVehicleInfo", pickupTypeConfig.requireVehicleInfo)
+  map.putBoolean("showVehicleInfoFields", pickupTypeConfig.showVehicleInfoFields)
+
+  return map
+}
+
+fun parsePickupTypeConfigs(items: List<PickupTypeConfig>): WritableArray {
+  val array = WritableNativeArray()
+  for (item in items) {
+    array.pushMap(parsePickupTypeConfig(item))
+  }
+  return array
+}
+
+fun parsePickupConfig(pickupConfig: PickupConfig): WritableMap {
+  val map = Arguments.createMap()
+  map.putString("accentColor", pickupConfig.projectAccentColor)
+  map.putString("accentTextColor", pickupConfig.projectAccentTextColor)
+  map.putString("askToAskImageURL", pickupConfig.askToAskImageUrl)
+  map.putBoolean("customerNameEditingEnabled", pickupConfig.customerNameEditingEnabled)
+  map.putInt("id", pickupConfig.id)
+  map.putBoolean("pickupTypeSelectionEnabled", pickupConfig.pickupTypeSelectionEnabled)
+  map.putString("privacyPolicyURL", pickupConfig.privacyPolicyUrl)
+  map.putString("termsOfServiceURL", pickupConfig.termsOfServiceUrl)
+  map.putString("type", pickupConfig.type)
+  map.putArray("availablePickupTypes", parsePickupTypeConfigs(pickupConfig.availablePickupTypes))
+  return map
+}
+
 fun parseSite(site: Site): WritableMap {
   val map = Arguments.createMap()
   map.putInt("id", site.id)
@@ -724,6 +759,7 @@ fun parseSite(site: Site): WritableMap {
   map.putString("instructions", site.instructions)
   map.putString("description", site.description)
   map.putString("partnerIdentifier", site.partnerIdentifier)
+  map.putMap("pickupConfig", parsePickupConfig(site.pickupConfig))
 
   return map
 }
@@ -838,6 +874,8 @@ fun decodeSite(site: ReadableMap): Site {
   var description: String? = null
   var partnerIdentifier: String? = null
   var operationalStatus: String? = null
+  var pickupConfigId: Int? = null
+
 
   var id = site.getInt("id")!!
 
@@ -905,6 +943,10 @@ fun decodeSite(site: ReadableMap): Site {
     operationalStatus = site.getString("operationalStatus")
   }
 
+  if (site.hasKey("pickupConfigId")) {
+    pickupConfigId = site.getInt("pickupConfigId")
+  }
+
   var site = com.radiusnetworks.flybuy.api.model.Site(
     id = id,
     name = name,
@@ -925,16 +967,21 @@ fun decodeSite(site: ReadableMap): Site {
     type = type,
     displayName = displayName,
     operationalStatus = operationalStatus,
+    pickupConfigId = pickupConfigId,
     // TODO: Map this value from API response
     projectAccentColor = null,
     geofence = null,
     prearrivalSeconds = null,
     projectAccentTextColor = null,
     wrongSiteArrivalRadius = null,
+
   )
 
+  var pickupConfig = null
+
   return Site(
-    site
+    site,
+    pickupConfig
   )
 }
 

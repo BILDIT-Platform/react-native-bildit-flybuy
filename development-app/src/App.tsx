@@ -317,9 +317,9 @@ export default function App() {
 
   const fetchSiteByPartnerIdentifier = () => {
     FlyBuy.Core.Sites.fetchSiteByPartnerIdentifier({
-      partnerIdentifier: '123',
+      partnerIdentifier: 'NANGKA30',
     })
-      .then((site) => console.tron.log('site', site))
+      .then((site) => console.log('site', site))
       .catch((err) => console.tron.log('err', err));
   };
 

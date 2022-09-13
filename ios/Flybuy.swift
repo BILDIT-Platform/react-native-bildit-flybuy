@@ -617,6 +617,33 @@ class Flybuy: RCTEventEmitter {
         ]
     }
     
+    func parsePickupTypeConfig(pickupTypeConfig: PickupTypeConfig?) -> Dictionary<String, Any?>? {
+        if let pickupTypeConfig: PickupTypeConfig = pickupTypeConfig {
+            return [
+                "pickupType": pickupTypeConfig.pickupType,
+                "pickupTypeLocalizedString": pickupTypeConfig.pickupTypeLocalizedString,
+                "requireVehicleInfo": pickupTypeConfig.requireVehicleInfo,
+                "showVehicleInfoFields": pickupTypeConfig.showVehicleInfoFields
+            ]
+        } else { return nil }
+    }
+    
+    func parsePickupConfig(pickupConfig: PickupConfig?) -> Dictionary<String, Any?>? {
+        if let pickupConfig: PickupConfig = pickupConfig {
+            return [
+                "accentColor": pickupConfig.accentColor,
+                "accentTextColor": pickupConfig.accentTextColor,
+                "askToAskImageURL": pickupConfig.askToAskImageURL ?? "",
+                "availablePickupTypes": pickupConfig.availablePickupTypes.map { self.parsePickupTypeConfig(pickupTypeConfig: $0)},
+                "customerNameEditingEnabled": pickupConfig.customerNameEditingEnabled,
+                "id": pickupConfig.id,
+                "pickupTypeSelectionEnabled": pickupConfig.pickupTypeSelectionEnabled,
+                "privacyPolicyURL": pickupConfig.privacyPolicyURL ?? "",
+                "termsOfServiceURL": pickupConfig.termsOfServiceURL,
+                "type": pickupConfig.type,
+            ]
+        } else { return nil }
+    }
     
     func parseSite(site: Site?) -> Dictionary<String, Any?>? {
         if let site: Site = site {
@@ -636,6 +663,7 @@ class Flybuy: RCTEventEmitter {
                 "instructions": site.instructions,
                 "description": site.descriptionText,
                 "partnerIdentifier": site.partnerIdentifier,
+                "pickupConfig": self.parsePickupConfig(pickupConfig: site.pickupConfig)
             ]
             
         } else { return nil }

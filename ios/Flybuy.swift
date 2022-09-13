@@ -187,8 +187,8 @@ class Flybuy: RCTEventEmitter {
         }
     }
 
-    @objc(createOrder:withOrderPartnerIdentifier:withCustomerInfo:withPickupWindow:withOrderState:withPickupType:withResolver:withRejecter:)
-    func createOrder(sitePid: String,
+    @objc(createOrderWithPartnerIdentifier:withOrderPartnerIdentifier:withCustomerInfo:withPickupWindow:withOrderState:withPickupType:withResolver:withRejecter:)
+    func createOrderWithPartnerIdentifier(sitePid: String,
                      orderPid: String,
                      customerInfo: Dictionary<String, String>,
                      pickupWindow: Dictionary<String, String>? = nil,

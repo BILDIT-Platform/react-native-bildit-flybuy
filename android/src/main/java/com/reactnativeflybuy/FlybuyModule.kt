@@ -257,7 +257,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
-  fun createOrder(
+  fun createOrderWithPartnerIdentifier(
     sitePid: String,
     orderPid: String,
     customer: ReadableMap,

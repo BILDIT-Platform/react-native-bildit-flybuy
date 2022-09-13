@@ -10,7 +10,12 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import Button from './Button';
-import FlyBuy from 'react-native-bildit-flybuy';
+import FlyBuy, {
+  CustomerState,
+  IOrder,
+  OrderStateType,
+  PickupType,
+} from 'react-native-bildit-flybuy';
 import AppConfig from './AppConfig.json';
 
 // Add your Flybuy Sandbox Site ID Here
@@ -75,15 +80,15 @@ const OrderItem = ({ order, onUpdate }) => {
 };
 
 export default function App() {
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState<IOrder[]>([]);
   const [partnerId, setPartnerId] = useState('');
   const [loading, setLoading] = useState(false);
   // Orders
   const fetchOrders = () => {
     setLoading(true);
     FlyBuy.Core.Orders.fetchOrders()
-      .then((orders) => {
-        setOrders([...orders]);
+      .then((data: IOrder[]) => {
+        setOrders([...data]);
         setLoading(false);
       })
       .catch((err) => {
@@ -91,7 +96,6 @@ export default function App() {
         setLoading(false);
       });
   };
-
 
   // "pickupWindow", "OrderState", and "PickupType" are optional fields in the CreateOrder
   // If you leave out "pickupWindow", the pickup window will be set to ASAP
@@ -105,14 +109,14 @@ export default function App() {
       start: pickup_start.toISOString(),
       end: pickup_end.toISOString(),
     };
-    FlyBuy.Core.Orders.createOrder(
-      SITE_ID,
-      partnerId,
-      CUSTOMER_INFO,
-      pickupWindow,
-      'delayed',
-      'delivery'
-    )
+    FlyBuy.Core.Orders.createOrder({
+      siteId: SITE_ID,
+      pid: partnerId,
+      customerInfo: CUSTOMER_INFO,
+      pickupWindow: pickupWindow,
+      orderState: OrderStateType.DELAYED,
+      pickupType: PickupType.DELIVERY,
+    })
       .then((order) => {
         console.log('order is created!', order);
         fetchOrders();
@@ -120,8 +124,11 @@ export default function App() {
       .catch((err) => console.tron.log(err));
   };
 
-  const updateToStart = (order) => {
-    FlyBuy.Core.Orders.updateOrderCustomerState(order.id, 'en_route')
+  const updateToStart = (order: IOrder) => {
+    FlyBuy.Core.Orders.updateOrderCustomerState(
+      order.id,
+      CustomerState.EN_ROUTE
+    )
       .then(() => {
         fetchOrders();
       })
@@ -144,7 +151,7 @@ export default function App() {
     fetchOrders();
   }, []);
 
-  const renderItem = ({ item }) => (
+  const renderItem = ({ item }: { item: IOrder }) => (
     <OrderItem
       order={item}
       onUpdate={() => {

@@ -9,7 +9,12 @@ import {
   SafeAreaView,
 } from 'react-native';
 import Button from './Button';
-import FlyBuy, { ISite } from 'react-native-bildit-flybuy';
+import FlyBuy, {
+  CustomerState,
+  ISite,
+  OrderStateType,
+  PickupType,
+} from 'react-native-bildit-flybuy';
 import {
   requestMultiple,
   PERMISSIONS,
@@ -21,8 +26,8 @@ import AppConfig from './AppConfig.json';
 const ORDER_ID = 85300686;
 const SITE_ID = 15942;
 const NEW_PID = '01380326929';
-const SITE_PID = '12323';
-const ORDER_PID = '32325';
+const SITE_PID = 'NANGKA30';
+const ORDER_PID = '11111111';
 const CUSTOMER_INFO = {
   name: 'Lamia Selmane',
   carType: 'Tesla',
@@ -79,7 +84,11 @@ export default function App() {
   };
 
   const createOrderWithPartnerIdentification = () => {
-    FlyBuy.Core.Orders.createOrder(SITE_PID, ORDER_PID, CUSTOMER_INFO)
+    FlyBuy.Core.Orders.createOrder({
+      sitePid: SITE_PID,
+      orderPid: ORDER_PID,
+      customerInfo: CUSTOMER_INFO,
+    })
       .then((order) => console.tron.log('order', order))
       .catch((err) => console.tron.log(err));
   };
@@ -89,20 +98,24 @@ export default function App() {
       start: new Date().toISOString(),
       end: new Date('2022-12-02').toISOString(),
     };
-    FlyBuy.Core.Orders.createOrder(
-      SITE_ID,
-      NEW_PID,
-      CUSTOMER_INFO,
+    FlyBuy.Core.Orders.createOrder({
+      siteId: SITE_ID,
+      pid: NEW_PID,
+      customerInfo: CUSTOMER_INFO,
       pickupWindow,
-      'delayed',
-      'delivery'
-    )
+      orderState: OrderStateType.DELAYED,
+      pickupType: PickupType.DELIVERY,
+    })
       .then((order) => console.tron.log('order', order))
       .catch((err) => console.tron.log(err));
   };
 
   const createOrderWithThreeParams = () => {
-    FlyBuy.Core.Orders.createOrder(SITE_ID, NEW_PID, CUSTOMER_INFO)
+    FlyBuy.Core.Orders.createOrder({
+      siteId: SITE_ID,
+      pid: NEW_PID,
+      customerInfo: CUSTOMER_INFO,
+    })
       .then((order) => console.tron.log('order', order))
       .catch((err) => console.tron.log(err));
   };
@@ -112,12 +125,12 @@ export default function App() {
       start: new Date().toISOString(),
       end: new Date('2022-12-02').toISOString(),
     };
-    FlyBuy.Core.Orders.createOrder(
-      SITE_ID,
-      NEW_PID,
-      CUSTOMER_INFO,
-      pickupWindow
-    )
+    FlyBuy.Core.Orders.createOrder({
+      siteId: SITE_ID,
+      pid: NEW_PID,
+      customerInfo: CUSTOMER_INFO,
+      pickupWindow,
+    })
       .then((order) => console.tron.log('order', order))
       .catch((err) => console.tron.log(err));
   };
@@ -127,19 +140,23 @@ export default function App() {
       start: new Date().toISOString(),
       end: new Date('2022-12-02').toISOString(),
     };
-    FlyBuy.Core.Orders.createOrder(
-      SITE_ID,
-      NEW_PID,
-      CUSTOMER_INFO,
+    FlyBuy.Core.Orders.createOrder({
+      siteId: SITE_ID,
+      pid: NEW_PID,
+      customerInfo: CUSTOMER_INFO,
       pickupWindow,
-      'delayed'
-    )
+      orderState: OrderStateType.DELAYED,
+    })
       .then((order) => console.tron.log('order', order))
       .catch((err) => console.tron.log(err));
   };
 
   const claimOrder = () => {
-    FlyBuy.Core.Orders.claimOrder('385BQT5BMH', CUSTOMER_INFO, 'pickup')
+    FlyBuy.Core.Orders.claimOrder(
+      '385BQT5BMH',
+      CUSTOMER_INFO,
+      PickupType.PICKUP
+    )
       .then((order) => console.tron.log('claim order', order))
       .catch((err) => console.tron.log(err));
   };
@@ -151,7 +168,10 @@ export default function App() {
   };
 
   const updateOrderState = () => {
-    FlyBuy.Core.Orders.updateOrderState(ORDER_ID, 'driver_assigned')
+    FlyBuy.Core.Orders.updateOrderState(
+      ORDER_ID,
+      OrderStateType.DRIVER_ASSIGNED
+    )
       .then((order) => console.tron.log('updateOrderState', order))
       .catch((err) => console.tron.log(err));
   };
@@ -159,7 +179,7 @@ export default function App() {
   const updateOrderCustomerStateWithSpot = () => {
     FlyBuy.Core.Orders.updateOrderCustomerStateWithSpot(
       ORDER_ID,
-      'waiting',
+      CustomerState.WAITING,
       '1'
     )
       .then((order) =>
@@ -169,7 +189,10 @@ export default function App() {
   };
 
   const updateOrderCustomerState = () => {
-    FlyBuy.Core.Orders.updateOrderCustomerState(ORDER_ID, 'departed')
+    FlyBuy.Core.Orders.updateOrderCustomerState(
+      ORDER_ID,
+      CustomerState.DEPARTED
+    )
       .then((order) => console.tron.log('updateOrderCustomerState', order))
       .catch((err) => console.tron.log(err));
   };
@@ -338,14 +361,14 @@ export default function App() {
   React.useEffect(() => {
     const eventListener = FlyBuy.eventEmitter.addListener(
       'orderUpdated',
-      (event) => {
+      (event: any) => {
         console.tron.log('event', event);
       }
     );
 
     const notifyListener = FlyBuy.eventEmitter.addListener(
       'notifyEvents',
-      (event) => {
+      (event: any) => {
         console.log('notify event', event);
       }
     );

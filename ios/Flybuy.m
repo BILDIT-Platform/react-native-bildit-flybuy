@@ -51,7 +51,7 @@ RCT_EXTERN_METHOD(createOrder:(int)siteId
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
 
-RCT_EXTERN_METHOD(createOrder:(NSString *)sitePid
+RCT_EXTERN_METHOD(createOrderWithPartnerIdentifier:(NSString *)sitePid
                   withOrderPartnerIdentifier:(NSString *)pid
                   withCustomerInfo:(NSDictionary *)customerInfo
                   withPickupWindow:(NSDictionary)pickupWindow

@@ -1,0 +1,1 @@
+(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[5955],{9871:function(e){"use strict";e.exports=JSON.parse('{"allTagsPath":"/react-native-bildit-flybuy/blog/tags","slug":"facebook","name":"facebook","count":1,"permalink":"/react-native-bildit-flybuy/blog/tags/facebook"}')}}]);

@@ -64,6 +64,26 @@ export interface ISite {
   partnerIdentifier?: string | null;
 }
 
+export interface IPickupTypeConfig {
+  pickupType: string;
+  pickupTypeLocalizedString: string;
+  requireVehicleInfo: boolean;
+  showVehicleInfoFields: boolean;
+}
+
+export interface IPickupConfig {
+  accentColor: string;
+  accentTextColor: string;
+  askToAskImageURL?: string;
+  availablePickupTypes: IPickupTypeConfig[];
+  customerNameEditingEnabled: boolean;
+  id: number;
+  pickupTypeSelectionEnabled: boolean;
+  privacyPolicyURL?: string;
+  termsOfServiceURL?: string;
+  type: string;
+}
+
 export interface ICustomerInfo {
   name: string;
   carType: string;
@@ -77,12 +97,33 @@ export interface ICustomer {
   info: ICustomerInfo;
 }
 
+type CreateOrderWithSitePid = {
+  sitePid: string;
+  orderPid: string;
+  customerInfo: ICustomerInfo;
+  pickupWindow?: PickupWindow;
+  orderState?: OrderStateType;
+  pickupType?: PickupType;
+};
+
+type CreateOrderWithSiteId = {
+  siteId: number;
+  pid: string;
+  customerInfo: ICustomerInfo;
+  pickupWindow?: PickupWindow;
+  orderState?: OrderStateType;
+  pickupType?: PickupType;
+};
+
+type CreateOrderParamsType = Partial<CreateOrderWithSiteId> &
+  Partial<CreateOrderWithSitePid>;
+
 type PickupWindow = {
   start: string;
   end: string;
 };
 
-enum CustomerState {
+export enum CustomerState {
   CREATED = 'created',
   EN_ROUTE = 'en_route',
   NEARBY = 'nearby',
@@ -92,7 +133,7 @@ enum CustomerState {
   COMPLETED = 'completed',
 }
 
-enum OrderStateType {
+export enum OrderStateType {
   CREATED = 'created',
   READY = 'ready',
   DELAYED = 'delayed',
@@ -106,7 +147,7 @@ enum OrderStateType {
   COMPLETED = 'completed',
 }
 
-enum PickupType {
+export enum PickupType {
   CURBSIDE = 'curbside',
   PICKUP = 'pickup',
   DELIVERY = 'delivery',
@@ -116,14 +157,17 @@ const Flybuy = NativeModules.Flybuy ?? {};
 
 type Orders = {
   fetchOrders(): Promise<[IOrder]>;
-  createOrder(
-    siteId: number,
-    pid: string,
-    customerInfo: ICustomerInfo,
-    pickupWindow?: PickupWindow,
-    orderState?: OrderStateType,
-    pickupType?: PickupType
-  ): Promise<IOrder>;
+  /**
+   * This function supports two type of create order
+   *
+   * 1. Create Order using Site ID, the siteId and pid is a mandatory for this
+   *
+   * 2. Create Order using Site Partner Identifier, the sitePid and orderPid is a mandatory for this
+   *
+   *
+   * @param params Object based on CreateOrderParamsType
+   */
+  createOrder(params: CreateOrderParamsType): Promise<IOrder>;
   claimOrder(
     redeemCode: string,
     customerInfo: ICustomerInfo,
@@ -161,6 +205,9 @@ type Sites = {
     page: number;
     region: ICircularRegion;
   }): Promise<[ISite]>;
+  fetchSiteByPartnerIdentifier(params: {
+    partnerIdentifier: string;
+  }): Promise<ISite>;
 };
 
 type Notify = {
@@ -169,9 +216,9 @@ type Notify = {
   createForSitesInRegion(
     region: ICircularRegion,
     notification: INotificationInfo
-  ): Promise<[ISite]>;
+  ): Promise<ISite[]>;
   createForSites(
-    sites: [ISite],
+    sites: ISite[],
     notification: INotificationInfo
   ): Promise<void>;
   sync(force: Boolean): Promise<void>;
@@ -214,7 +261,7 @@ const FlyBuyModule = {
   },
   Notify: {
     configure: (bgTaskIdentifier?: string) => {
-      return Flybuy.notifyConfigure(bgTaskIdentifier)
+      return Flybuy.notifyConfigure(bgTaskIdentifier);
     },
     clearNotifications: Flybuy.clearNotifications,
     createForSitesInRegion: Flybuy.createForSitesInRegion,
@@ -233,22 +280,39 @@ const FlyBuyModule = {
     handleRemoteNotification: Flybuy.handleRemoteNotification,
     Orders: {
       fetchOrders: Flybuy.fetchOrders,
-      createOrder: (
-        siteId: number,
-        pid: string,
-        customerInfo: ICustomerInfo,
-        pickupWindow?: PickupWindow,
-        orderState?: OrderStateType,
-        pickupType?: PickupType
-      ) => {
-        return Flybuy.createOrder(
+      createOrder: (params: CreateOrderParamsType) => {
+        const {
           siteId,
+          sitePid,
+          orderPid,
           pid,
           customerInfo,
-          pickupWindow ?? null,
-          orderState ?? null,
-          pickupType ?? null
-        );
+          pickupType,
+          pickupWindow,
+          orderState,
+        } = params;
+
+        if (siteId && pid) {
+          return Flybuy.createOrder(
+            siteId,
+            pid,
+            customerInfo,
+            pickupWindow ?? null,
+            orderState ?? null,
+            pickupType ?? null
+          );
+        }
+
+        if (sitePid && orderPid) {
+          return Flybuy.createOrderWithPartnerIdentifier(
+            sitePid,
+            orderPid,
+            customerInfo,
+            pickupWindow ?? null,
+            orderState ?? null,
+            pickupType ?? null
+          );
+        }
       },
       claimOrder: Flybuy.claimOrder,
       fetchOrderByRedemptionCode: Flybuy.fetchOrderByRedemptionCode,
@@ -270,6 +334,7 @@ const FlyBuyModule = {
       fetchAllSites: Flybuy.fetchAllSites,
       fetchSitesByQuery: Flybuy.fetchSitesByQuery,
       fetchSitesByRegion: Flybuy.fetchSitesByRegion,
+      fetchSiteByPartnerIdentifier: Flybuy.fetchSiteByPartnerIdentifier,
     },
   },
   eventEmitter: new NativeEventEmitter(Flybuy),

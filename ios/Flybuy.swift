@@ -186,6 +186,38 @@ class Flybuy: RCTEventEmitter {
                 }
         }
     }
+
+    @objc(createOrderWithPartnerIdentifier:withOrderPartnerIdentifier:withCustomerInfo:withPickupWindow:withOrderState:withPickupType:withResolver:withRejecter:)
+    func createOrderWithPartnerIdentifier(sitePid: String,
+                     orderPid: String,
+                     customerInfo: Dictionary<String, String>,
+                     pickupWindow: Dictionary<String, String>? = nil,
+                     orderState: String? = nil,
+                     pickupType: String? = nil,
+                     resolve:@escaping RCTPromiseResolveBlock,
+                     reject:@escaping RCTPromiseRejectBlock) {
+        let info = decodeCustomerInfo(customer: customerInfo)
+        
+        func callbackHandler(order: Order?, error: Error?) {
+            if (error == nil && order != nil) {
+                resolve(self.parseOrder(order: order!))
+            } else {
+                reject(error.debugDescription, error?.localizedDescription, error )
+            }
+        }
+        
+        // TODO: adjust framework call based on params availability
+        if (pickupWindow != nil) {
+            let pickupWindowInfo = decodePickupWindow(pickupWindow: pickupWindow)
+            FlyBuy.Core.orders.create(sitePartnerIdentifier: sitePid, orderPartnerIdentifier: orderPid, customerInfo: info, pickupWindow: pickupWindowInfo, state: orderState ?? "created", pickupType: pickupType ?? "") {
+              (order, error) in callbackHandler(order: order, error: error)
+            }
+        } else if (pickupWindow == nil) {
+            FlyBuy.Core.orders.create(sitePartnerIdentifier: sitePid, orderPartnerIdentifier: orderPid, customerInfo: info, state: orderState ?? "created", pickupType: pickupType ?? "") {
+                    (order, error) in callbackHandler(order: order, error: error)
+                }
+        }
+    }
     
     @objc(claimOrder:withCustomer:withPickupType:withResolver:withRejecter:)
     func claimOrder(redeemCode: String,
@@ -331,6 +363,22 @@ class Flybuy: RCTEventEmitter {
             }
         }
     }
+
+    @objc(fetchSiteByPartnerIdentifier:withResolver:withRejecter:)
+    func fetchSiteByPartnerIdentifier(params: Dictionary<String, Any>,
+                            resolve:@escaping RCTPromiseResolveBlock,
+                            reject:@escaping RCTPromiseRejectBlock) {
+        let pid: String = params["partnerIdentifier"] as! String
+
+        FlyBuy.Core.sites.fetchByPartnerIdentifier(partnerIdentifier: pid) { (site, error) -> (Void) in
+            if (error == nil) {
+                resolve(self.parseSite(site: site))
+            } else {
+                reject(error?.localizedDescription,  error.debugDescription, error )
+            }
+        }
+    }
+    
     
     // Notify
     
@@ -569,6 +617,33 @@ class Flybuy: RCTEventEmitter {
         ]
     }
     
+    func parsePickupTypeConfig(pickupTypeConfig: PickupTypeConfig?) -> Dictionary<String, Any?>? {
+        if let pickupTypeConfig: PickupTypeConfig = pickupTypeConfig {
+            return [
+                "pickupType": pickupTypeConfig.pickupType,
+                "pickupTypeLocalizedString": pickupTypeConfig.pickupTypeLocalizedString,
+                "requireVehicleInfo": pickupTypeConfig.requireVehicleInfo,
+                "showVehicleInfoFields": pickupTypeConfig.showVehicleInfoFields
+            ]
+        } else { return nil }
+    }
+    
+    func parsePickupConfig(pickupConfig: PickupConfig?) -> Dictionary<String, Any?>? {
+        if let pickupConfig: PickupConfig = pickupConfig {
+            return [
+                "accentColor": pickupConfig.accentColor,
+                "accentTextColor": pickupConfig.accentTextColor,
+                "askToAskImageURL": pickupConfig.askToAskImageURL ?? "",
+                "availablePickupTypes": pickupConfig.availablePickupTypes.map { self.parsePickupTypeConfig(pickupTypeConfig: $0)},
+                "customerNameEditingEnabled": pickupConfig.customerNameEditingEnabled,
+                "id": pickupConfig.id,
+                "pickupTypeSelectionEnabled": pickupConfig.pickupTypeSelectionEnabled,
+                "privacyPolicyURL": pickupConfig.privacyPolicyURL ?? "",
+                "termsOfServiceURL": pickupConfig.termsOfServiceURL,
+                "type": pickupConfig.type,
+            ]
+        } else { return nil }
+    }
     
     func parseSite(site: Site?) -> Dictionary<String, Any?>? {
         if let site: Site = site {
@@ -588,6 +663,7 @@ class Flybuy: RCTEventEmitter {
                 "instructions": site.instructions,
                 "description": site.descriptionText,
                 "partnerIdentifier": site.partnerIdentifier,
+                "pickupConfig": self.parsePickupConfig(pickupConfig: site.pickupConfig)
             ]
             
         } else { return nil }

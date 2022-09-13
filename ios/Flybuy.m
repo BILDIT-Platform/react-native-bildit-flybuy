@@ -51,6 +51,15 @@ RCT_EXTERN_METHOD(createOrder:(int)siteId
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(createOrderWithPartnerIdentifier:(NSString *)sitePid
+                  withOrderPartnerIdentifier:(NSString *)pid
+                  withCustomerInfo:(NSDictionary *)customerInfo
+                  withPickupWindow:(NSDictionary)pickupWindow
+                  withOrderState:(NSString)orderState
+                  withPickupType:(NSString)pickupType
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
 RCT_EXTERN_METHOD(claimOrder:(NSString *)redeemCode
                   withCustomer:(NSDictionary *)customer
                   withPickupType:(NSString)pickupType
@@ -92,6 +101,10 @@ RCT_EXTERN_METHOD(fetchSitesByQuery:(NSDictionary *)params
                   withRejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(fetchSitesByRegion:(NSDictionary *)params
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(fetchSiteByPartnerIdentifier:(NSDictionary *)params
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
 

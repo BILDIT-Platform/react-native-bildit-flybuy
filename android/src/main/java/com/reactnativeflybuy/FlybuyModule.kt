@@ -14,6 +14,8 @@ import com.radiusnetworks.flybuy.sdk.FlyBuyCore
 import com.radiusnetworks.flybuy.sdk.data.common.Pagination
 import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
+import com.radiusnetworks.flybuy.sdk.data.pickup_config.PickupConfig
+import com.radiusnetworks.flybuy.sdk.data.pickup_config.PickupTypeConfig
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Customer
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Order
 import com.radiusnetworks.flybuy.sdk.data.room.domain.PickupWindow
@@ -33,32 +35,6 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
   override fun getName(): String {
     return "Flybuy"
   }
-
-  private fun registerLifecycleCallbacks(activity: Activity) {
-    activity.application.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
-      override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-        handleNotification(activity.intent)
-      }
-
-      override fun onActivityStarted(activity: Activity) {
-        FlyBuyCore.onActivityStarted()
-      }
-
-      override fun onActivityResumed(activity: Activity) {
-      }
-
-      override fun onActivityPaused(activity: Activity) {}
-
-      override fun onActivityStopped(activity: Activity) {
-        FlyBuyCore.onActivityStopped()
-      }
-
-      override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
-
-      override fun onActivityDestroyed(activity: Activity) {}
-    })
-  }
-
 
   private fun startObserving() {
     val orderObserver = Observer<List<Order>> {
@@ -95,7 +71,6 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
     FlyBuyCore.configure(reactApplicationContext.baseContext, token)
     val currentActivity = currentActivity
     if (currentActivity != null) {
-      registerLifecycleCallbacks(currentActivity)
       startObserving()
     }
   }
@@ -266,6 +241,39 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
     FlyBuyCore.orders.create(
       siteID = siteID,
       partnerIdentifier = pid,
+      customerInfo = customerInfo,
+      pickupWindow = pickupWindowInfo,
+      state = orderState,
+      pickupType = pickupType
+    ) { order, sdkError ->
+      sdkError?.let {
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        order?.let {
+          promise.resolve(parseOrder(order))
+        } ?: run {
+          promise.reject("Create Order Error", "Error retrieving order")
+        }
+      }
+    }
+  }
+
+  @ReactMethod
+  fun createOrderWithPartnerIdentifier(
+    sitePid: String,
+    orderPid: String,
+    customer: ReadableMap,
+    pickupWindow: ReadableMap? = null,
+    orderState: String? = null,
+    pickupType: String? = null,
+    promise: Promise
+  ) {
+    val customerInfo: CustomerInfo = decodeCustomerInfo(customer)
+    val pickupWindowInfo = pickupWindow?.let { decodePickupWindow(it) }
+
+    FlyBuyCore.orders.create(
+      sitePartnerIdentifier = sitePid,
+      orderPartnerIdentifier = orderPid,
       customerInfo = customerInfo,
       pickupWindow = pickupWindowInfo,
       state = orderState,
@@ -526,6 +534,25 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
     }
   }
 
+  @ReactMethod
+  fun fetchSiteByPartnerIdentifier(params: ReadableMap, promise: Promise) {
+    val pid = params.getString("partnerIdentifier")!!
+
+    FlyBuyCore.sites.fetchByPartnerIdentifier(pid) { site, sdkError ->
+      sdkError?.let {
+        handleFlyBuyError(it)
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        site?.let {
+          promise.resolve(parseSite(site))
+        } ?: run {
+          promise.reject("Fetch site by partnerIdentifier Error", "Error retrieving site")
+        }
+
+      }
+    }
+  }
+
   // Presence
 
   @ReactMethod
@@ -682,6 +709,39 @@ fun parseSites(items: List<Site>): WritableArray {
   return array
 }
 
+fun parsePickupTypeConfig(pickupTypeConfig: PickupTypeConfig): WritableMap {
+  val map = Arguments.createMap()
+  map.putString("pickupType", pickupTypeConfig.pickupType)
+  map.putString("pickupTypeLocalizedString", pickupTypeConfig.pickupTypeLocalizedString)
+  map.putBoolean("requireVehicleInfo", pickupTypeConfig.requireVehicleInfo)
+  map.putBoolean("showVehicleInfoFields", pickupTypeConfig.showVehicleInfoFields)
+
+  return map
+}
+
+fun parsePickupTypeConfigs(items: List<PickupTypeConfig>): WritableArray {
+  val array = WritableNativeArray()
+  for (item in items) {
+    array.pushMap(parsePickupTypeConfig(item))
+  }
+  return array
+}
+
+fun parsePickupConfig(pickupConfig: PickupConfig): WritableMap {
+  val map = Arguments.createMap()
+  map.putString("accentColor", pickupConfig.projectAccentColor)
+  map.putString("accentTextColor", pickupConfig.projectAccentTextColor)
+  map.putString("askToAskImageURL", pickupConfig.askToAskImageUrl)
+  map.putBoolean("customerNameEditingEnabled", pickupConfig.customerNameEditingEnabled)
+  map.putInt("id", pickupConfig.id)
+  map.putBoolean("pickupTypeSelectionEnabled", pickupConfig.pickupTypeSelectionEnabled)
+  map.putString("privacyPolicyURL", pickupConfig.privacyPolicyUrl)
+  map.putString("termsOfServiceURL", pickupConfig.termsOfServiceUrl)
+  map.putString("type", pickupConfig.type)
+  map.putArray("availablePickupTypes", parsePickupTypeConfigs(pickupConfig.availablePickupTypes))
+  return map
+}
+
 fun parseSite(site: Site): WritableMap {
   val map = Arguments.createMap()
   map.putInt("id", site.id)
@@ -699,6 +759,7 @@ fun parseSite(site: Site): WritableMap {
   map.putString("instructions", site.instructions)
   map.putString("description", site.description)
   map.putString("partnerIdentifier", site.partnerIdentifier)
+  map.putMap("pickupConfig", parsePickupConfig(site.pickupConfig))
 
   return map
 }
@@ -795,6 +856,8 @@ fun decodeSites(sitesList: ReadableArray): List<Site> {
 }
 
 fun decodeSite(site: ReadableMap): Site {
+  var type: String? = null
+  var displayName: String? = null
   var name: String? = null
   var phone: String? = null
   var streetAddress: String? = null
@@ -810,6 +873,9 @@ fun decodeSite(site: ReadableMap): Site {
   var instructions: String? = null
   var description: String? = null
   var partnerIdentifier: String? = null
+  var operationalStatus: String? = null
+  var pickupConfigId: Int? = null
+
 
   var id = site.getInt("id")!!
 
@@ -865,11 +931,23 @@ fun decodeSite(site: ReadableMap): Site {
     description = site.getString("description")
   }
 
+  if (site.hasKey("type")) {
+    type = site.getString("type")
+  }
+
   if (site.hasKey("partnerIdentifier")) {
     partnerIdentifier = site.getString("partnerIdentifier")
   }
 
-  return Site(
+  if (site.hasKey("operationalStatus")) {
+    operationalStatus = site.getString("operationalStatus")
+  }
+
+  if (site.hasKey("pickupConfigId")) {
+    pickupConfigId = site.getInt("pickupConfigId")
+  }
+
+  var site = com.radiusnetworks.flybuy.api.model.Site(
     id = id,
     name = name,
     phone = phone,
@@ -881,11 +959,29 @@ fun decodeSite(site: ReadableMap): Site {
     postalCode = postalCode,
     latitude = latitude,
     longitude = longitude,
-    coverPhotoUrl = coverPhotoUrl,
-    iconUrl = iconUrl,
+    coverPhotoURL = coverPhotoUrl,
+    projectLogoURL = iconUrl,
     instructions = instructions,
     description = description,
-    partnerIdentifier = partnerIdentifier
+    partnerIdentifier = partnerIdentifier,
+    type = type,
+    displayName = displayName,
+    operationalStatus = operationalStatus,
+    pickupConfigId = pickupConfigId,
+    // TODO: Map this value from API response
+    projectAccentColor = null,
+    geofence = null,
+    prearrivalSeconds = null,
+    projectAccentTextColor = null,
+    wrongSiteArrivalRadius = null,
+
+  )
+
+  var pickupConfig = null
+
+  return Site(
+    site,
+    pickupConfig
   )
 }
 

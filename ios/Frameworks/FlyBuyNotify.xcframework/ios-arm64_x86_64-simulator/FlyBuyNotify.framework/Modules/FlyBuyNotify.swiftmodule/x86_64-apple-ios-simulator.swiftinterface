@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
 // swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FlyBuyNotify
 import BackgroundTasks
 import CoreLocation
@@ -9,9 +9,12 @@ import Foundation
 import Swift
 import UIKit
 import UserNotifications
+import _Concurrency
 public enum SyncHistory {
   public static var writeToDefaultsEnabled: Swift.Bool
   public static func addBGTaskExpiredEvent()
+  public static func addPushSyncAttemptEvent()
+  public static func addPushSyncCompleteEvent(error: Swift.Error?)
   public static func addBGFetchAttemptEvent()
   public static func addBGFetchCompleteEvent(error: Swift.Error?)
   public static func appendHistory(_ str: Swift.String)
@@ -23,9 +26,8 @@ public enum SyncHistory {
   @objc final public let data: [Swift.AnyHashable : Any]?
   public init(title: Swift.String, content: Swift.String, data: [Swift.AnyHashable : Any]?)
   @objc deinit
-  @objc override dynamic public init()
 }
-extension NSNotification.Name {
+extension Foundation.NSNotification.Name {
   public static let notifyCampaignsUpdated: Foundation.Notification.Name
   public static let notifyCampaignsError: Foundation.Notification.Name
   public static let notifySitesError: Foundation.Notification.Name
@@ -48,11 +50,11 @@ extension NSNotification.Name {
   @objc public func isFlyBuyNotifyUserInfo(_ userInfo: [Swift.AnyHashable : Any]) -> Swift.Bool
   @objc override dynamic public init()
 }
-extension Manager : FlyBuy.FlyBuyModuleManager {
+extension FlyBuyNotify.Manager : FlyBuy.FlyBuyModuleManager {
   public func ordersUpdated(_ orders: [FlyBuy.Order])
   public func set(logLevel: FlyBuy.LogLevel)
   public func set(logWriteEnabled: Swift.Bool)
-  public func configUpdated(_ config: FlyBuy.AppConfig)
+  public func configUpdated(_ config: FlyBuy.AppConfig, pushData: FlyBuy.PushData?)
 }
 @objc public enum NotifyErrorType : Swift.Int {
   case noLocationPermission
@@ -66,8 +68,8 @@ extension Manager : FlyBuy.FlyBuyModuleManager {
   public var description: Swift.String {
     get
   }
-  public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
@@ -78,10 +80,9 @@ extension Manager : FlyBuy.FlyBuyModuleManager {
   @objc override dynamic public var description: Swift.String {
     @objc get
   }
-  @objc override dynamic public init()
   @objc deinit
 }
-extension Manager {
+extension FlyBuyNotify.Manager {
   @objc dynamic public func sync(force: Swift.Bool = false, callback: ((Swift.Error?) -> (Swift.Void))? = nil)
   @objc dynamic public func performFetchWithCompletionHandler(_ completionHandler: ((UIKit.UIBackgroundFetchResult) -> Swift.Void)? = nil)
   @objc dynamic public func handleNotification(_ response: UserNotifications.UNNotificationResponse) -> [Swift.String : Swift.String]?

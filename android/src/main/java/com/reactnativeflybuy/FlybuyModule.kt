@@ -67,6 +67,16 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
+  fun addListener() {
+    // Keep: Required for RN built in Event Emitter Calls.
+  }
+
+  @ReactMethod
+  fun removeListeners() {
+    // Keep: Required for RN built in Event Emitter Calls.
+  }
+
+  @ReactMethod
   fun configure(token: String, promise: Promise) {
     FlyBuyCore.configure(reactApplicationContext.baseContext, token)
     val currentActivity = currentActivity

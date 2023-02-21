@@ -23,6 +23,7 @@ export interface IOrder {
   redemptionCode?: string;
   customerRating?: string;
   customerComment?: string;
+  createdAt?: string;
 
   siteID: number;
   siteName?: string;

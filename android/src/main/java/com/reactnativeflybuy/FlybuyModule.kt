@@ -687,6 +687,7 @@ fun parseOrder(order: Order): WritableMap {
   map.putArray("pickupWindow", pickupWindow)
   map.putString("pickupType", order.pickupType)
   map.putString("etaAt", order.etaAt?.toString())
+  map.putString("createdAt", order.createdAt?.toString())
   map.putString("redemptionCode", order.redemptionCode)
   map.putString("redeemedAt", order.redeemedAt.toString())
   order.customerRatingValue?.let { map.putInt("customerRating", it) }

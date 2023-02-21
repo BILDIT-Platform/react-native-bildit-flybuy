@@ -593,6 +593,7 @@ class Flybuy: RCTEventEmitter {
             "etaAt": order.etaAt?.description,
             "redemptionCode": order.redemptionCode,
             "redeemedAt": order.redeemedAt?.description,
+            "createdAt": order.createdAt?.description,
             "customerRating": order.customerRating,
             "customerComment": order.customerComment,
             

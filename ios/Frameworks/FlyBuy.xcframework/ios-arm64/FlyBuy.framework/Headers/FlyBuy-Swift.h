@@ -216,6 +216,14 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 
+SWIFT_CLASS("_TtC6FlyBuy9AppConfig")
+@interface AppConfig : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
 SWIFT_CLASS("_TtC6FlyBuy10AppUpgrade")
 @interface AppUpgrade : NSObject
 @end
@@ -244,6 +252,7 @@ SWIFT_CLASS_NAMED("ClaimOrderInfo")
 @class FlyBuyCustomerManager;
 @class FlyBuySitesManager;
 @class FlyBuyLogger;
+@class NSUUID;
 @class NSData;
 
 /// The main access point for Core functionality
@@ -268,6 +277,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuySitesM
 + (FlyBuySitesManager * _Nonnull)sites SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyLogger * _Nonnull logger;)
 + (FlyBuyLogger * _Nonnull)logger SWIFT_WARN_UNUSED_RESULT;
+/// Set a callback to be notified when the app instance ID is updated.
++ (void)setAppInstanceIDUpdatedListenerWithCallback:(void (^ _Nullable)(NSUUID * _Nonnull))callback;
 /// Configures FlyBuy with the given options
 /// See <a href="https://www.radiusnetworks.com/developers/flybuy/#/">Flybuy Developer Docs</a> for additional details including all setup steps.
 /// Example:

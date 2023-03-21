@@ -1,6 +1,0 @@
-module Pods_FlybuyExample {
-  umbrella header "Pods-FlybuyExample-umbrella.h"
-
-  export *
-  module * { export * }
-}

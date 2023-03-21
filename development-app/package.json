@@ -6,18 +6,20 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "ios:m1": "arch -x86_64 react-native run-ios --simulator='iPhone 14 Pro Max'",
     "start": "react-native start"
   },
   "dependencies": {
-    "react": "16.13.1",
-    "react-native": "0.63.4",
-    "react-native-permissions": "^3.1.0"
+    "react": "17.0.2",
+    "react-native": "0.66.5",
+    "react-native-permissions": "3.7.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
+    "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-test-renderer": "17.0.2",
     "babel-plugin-module-resolver": "^4.0.0",
-    "metro-react-native-babel-preset": "^0.64.0",
     "reactotron-react-native": "^5.0.0"
   }
 }

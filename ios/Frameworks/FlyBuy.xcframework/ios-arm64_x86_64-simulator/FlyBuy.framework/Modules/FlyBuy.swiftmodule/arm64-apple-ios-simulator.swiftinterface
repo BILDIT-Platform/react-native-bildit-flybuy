@@ -415,7 +415,7 @@ extension FlyBuy.BaseApiRequest {
   required public init(from decoder: Swift.Decoder) throws
 }
 @objc(FlyBuyOrderEvent) open class OrderEvent : ObjectiveC.NSObject, Swift.Encodable {
-  public init(orderID: Swift.Int, location: CoreLocation.CLLocation, beacons: [FlyBuy.Beacon], etaSeconds: Foundation.NSNumber?, etaSource: Swift.String?, possibleWrongSiteId: Swift.Int?)
+  public init(orderID: Swift.Int, location: CoreLocation.CLLocation, beacons: [FlyBuy.Beacon], etaSeconds: Foundation.NSNumber?, etaSource: Swift.String?, possibleWrongSiteId: Swift.Int?, clientEtaExpiry: Swift.Int?, clientEtaAttempted: Swift.Bool?, clientEtaLog: Swift.String?)
   public init(orderID: Swift.Int, customerState: Swift.String, etaSeconds: Foundation.NSNumber?, etaSource: Swift.String?, location: CoreLocation.CLLocation? = nil)
   public init(orderID: Swift.Int, customerState: Swift.String, spotIdentifier: Swift.String?, location: CoreLocation.CLLocation?)
   public init(orderID: Swift.Int, state: Swift.String, location: CoreLocation.CLLocation? = nil)

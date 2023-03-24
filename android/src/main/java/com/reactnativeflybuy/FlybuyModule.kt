@@ -62,17 +62,18 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
     }
   }
 
+  @Deprecated("Deprecated in Java")
   override fun onCatalystInstanceDestroy() {
     stopObserving()
   }
 
   @ReactMethod
-  fun addListener() {
+  fun addListener(eventName: String) {
     // Keep: Required for RN built in Event Emitter Calls.
   }
 
   @ReactMethod
-  fun removeListeners() {
+  fun removeListeners(eventName: String) {
     // Keep: Required for RN built in Event Emitter Calls.
   }
 

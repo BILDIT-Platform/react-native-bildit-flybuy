@@ -61,3 +61,8 @@ android/keystores/debug.keystore
 lib/
 docusaurus-docs/.docusaurus
 development-app/src/AppConfig.json
+
+DevelopmentApp
+*.hprof
+development-app/ios/Build
+development-app/ios/Pods

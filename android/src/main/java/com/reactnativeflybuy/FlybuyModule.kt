@@ -1,11 +1,9 @@
 package com.reactnativeflybuy
 
-import android.app.Activity
-import android.app.Application.ActivityLifecycleCallbacks
 import android.content.Intent
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.facebook.react.bridge.*
@@ -25,6 +23,7 @@ import com.radiusnetworks.flybuy.sdk.notify.NotifyManager
 import com.radiusnetworks.flybuy.sdk.pickup.PickupManager
 import com.radiusnetworks.flybuy.sdk.presence.PresenceLocator
 import com.radiusnetworks.flybuy.sdk.presence.PresenceManager
+import com.radiusnetworks.flybuy.sdk.exceptions.FlyBuyRuntimeException
 import org.threeten.bp.Instant
 import java.util.*
 import java.util.concurrent.ExecutionException
@@ -79,10 +78,17 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun configure(token: String, promise: Promise) {
-    FlyBuyCore.configure(reactApplicationContext.baseContext, token)
-    val currentActivity = currentActivity
-    if (currentActivity != null) {
-      startObserving()
+    try {
+      FlyBuyCore.configure(reactApplicationContext, token)
+      val currentActivity = currentActivity
+      if (currentActivity != null) {
+        startObserving()
+      }
+
+      promise.resolve(true);
+    } catch (e: FlyBuyRuntimeException) {
+      promise.reject(e)
+      e.message?.let { Log.w("FlyBuy Wrapper", it) }
     }
   }
 
@@ -94,7 +100,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
       if (null != error) {
         // Handle error
         handleFlyBuyError(error)
-        promise.reject(error.userError())
+        promise.reject("TOKEN_LOGIN_ERROR", error.userError())
       } else {
         if (null != customer) {
           promise.resolve(parseCustomer(customer))
@@ -109,7 +115,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
       if (null != error) {
         // Handle error
         handleFlyBuyError(error)
-        promise.reject(error.userError())
+        promise.reject("LOGIN_ERROR", error.userError())
       } else {
         if (null != customer) {
           promise.resolve(parseCustomer(customer))
@@ -124,7 +130,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
       if (null != error) {
         // Handle error
         handleFlyBuyError(error)
-        promise.reject(error.userError())
+        promise.reject("SIGNUP_ERROR", error.userError())
       } else {
         if (null != customer) {
           promise.resolve(parseCustomer(customer))
@@ -139,7 +145,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
       if (null != error) {
         // Handle error
         handleFlyBuyError(error)
-        promise.reject(error.userError())
+        promise.reject("LOGOUT_ERROR", error.userError())
       } else {
         promise.resolve("ok")
       }
@@ -362,19 +368,32 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun pickupConfigure(promise: Promise) {
-    PickupManager.getInstance()?.configure(reactApplicationContext.baseContext)
+    try {
+      PickupManager.getInstance()?.configure(reactApplicationContext.baseContext)
+      promise.resolve(true)
+    } catch (e: FlyBuyRuntimeException) {
+      promise.reject(e)
+      e.message?.let { Log.w("FlyBuy Wrapper", it) }
+    }
+
   }
 
   @ReactMethod
   fun onPermissionChangedPickup() {
-    PickupManager.getInstance().onLocationPermissionChanged()
+    PickupManager.getInstance().onPermissionChanged()
   }
 
   // Notify
 
   @ReactMethod
   fun notifyConfigure(bgTaskIdentifier: String? = null, promise: Promise) {
-    NotifyManager.getInstance()?.configure(reactApplicationContext.baseContext)
+    try {
+      NotifyManager.getInstance()?.configure(reactApplicationContext.baseContext)
+      promise.resolve(true)
+    } catch (e: FlyBuyRuntimeException) {
+      promise.reject(e)
+      e.message?.let { Log.w("FlyBuy Wrapper", it) }
+    }
   }
 
   @ReactMethod
@@ -567,9 +586,15 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
   // Presence
 
   @ReactMethod
-  fun presenceConfigure(presenceUUID: String) {
-    val uid = UUID.fromString(presenceUUID)
-    PresenceManager.getInstance()?.configure(reactApplicationContext.baseContext, uid)
+  fun presenceConfigure(presenceUUID: String, promise: Promise) {
+    try {
+      val uid = UUID.fromString(presenceUUID)
+      PresenceManager.getInstance()?.configure(reactApplicationContext.baseContext, uid)
+      promise.resolve(true)
+    } catch (e: FlyBuyRuntimeException) {
+      promise.reject(e)
+      e.message?.let { Log.w("FlyBuy Wrapper", it) }
+    }
   }
 
   @ReactMethod

@@ -28,9 +28,16 @@ import org.threeten.bp.Instant
 import java.util.*
 import java.util.concurrent.ExecutionException
 
+object ConfiguredFeatures {
+  var core = false;
+  var pickup = false;
+  var notify = false;
+  var presence = false;
+}
 class FlybuyModule(reactContext: ReactApplicationContext) :
   ReactContextBaseJavaModule(reactContext) {
 
+  val TAG = "FlyBuy Wrapper"
   override fun getName(): String {
     return "Flybuy"
   }
@@ -79,6 +86,9 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
   @ReactMethod
   fun configure(token: String, promise: Promise) {
     try {
+      if (ConfiguredFeatures.core) {
+        return
+      }
       FlyBuyCore.configure(reactApplicationContext, token)
       val currentActivity = currentActivity
       if (currentActivity != null) {
@@ -86,9 +96,11 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
       }
 
       promise.resolve(true);
+      ConfiguredFeatures.core = true
+      Log.i(TAG, "Core configured")
     } catch (e: FlyBuyRuntimeException) {
       promise.reject(e)
-      e.message?.let { Log.w("FlyBuy Wrapper", it) }
+      e.message?.let { Log.w(TAG, it) }
     }
   }
 
@@ -369,11 +381,16 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
   @ReactMethod
   fun pickupConfigure(promise: Promise) {
     try {
+      if (ConfiguredFeatures.pickup) {
+        return
+      }
       PickupManager.getInstance()?.configure(reactApplicationContext.baseContext)
       promise.resolve(true)
+      ConfiguredFeatures.pickup = true
+      Log.i(TAG, "Pickup configured")
     } catch (e: FlyBuyRuntimeException) {
       promise.reject(e)
-      e.message?.let { Log.w("FlyBuy Wrapper", it) }
+      e.message?.let { Log.w(TAG, it) }
     }
 
   }
@@ -388,11 +405,16 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
   @ReactMethod
   fun notifyConfigure(bgTaskIdentifier: String? = null, promise: Promise) {
     try {
+      if (ConfiguredFeatures.notify) {
+        return
+      }
       NotifyManager.getInstance()?.configure(reactApplicationContext.baseContext)
       promise.resolve(true)
+      ConfiguredFeatures.notify = true
+      Log.i(TAG, "Notify configured")
     } catch (e: FlyBuyRuntimeException) {
       promise.reject(e)
-      e.message?.let { Log.w("FlyBuy Wrapper", it) }
+      e.message?.let { Log.w(TAG, it) }
     }
   }
 
@@ -588,12 +610,17 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
   @ReactMethod
   fun presenceConfigure(presenceUUID: String, promise: Promise) {
     try {
+      if (ConfiguredFeatures.presence) {
+        return
+      }
       val uid = UUID.fromString(presenceUUID)
       PresenceManager.getInstance()?.configure(reactApplicationContext.baseContext, uid)
       promise.resolve(true)
+      ConfiguredFeatures.presence = true
+      Log.i(TAG, "Presence configured")
     } catch (e: FlyBuyRuntimeException) {
       promise.reject(e)
-      e.message?.let { Log.w("FlyBuy Wrapper", it) }
+      e.message?.let { Log.w(TAG, it) }
     }
   }
 

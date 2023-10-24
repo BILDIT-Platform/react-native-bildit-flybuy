@@ -745,7 +745,7 @@ fun parseOrder(order: Order): WritableMap {
   map.putString("redeemedAt", order.redeemedAt.toString())
   order.customerRatingValue?.let { map.putInt("customerRating", it) }
   map.putString("customerComment", order.customerRatingComments)
-  map.putInt("siteID", order.site?.id)
+  map.putInt("siteID", order.site?.id!!)
   map.putString("siteName", order.site?.name)
   map.putString("sitePhone", order.site?.phone)
   map.putString("siteFullAddress", order.site?.fullAddress)

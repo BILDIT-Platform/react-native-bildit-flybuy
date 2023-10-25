@@ -19,5 +19,6 @@ fun handleFlyBuyError(sdkError: SdkError?) {
         }
       }
     }
+    else -> {}
   }
 }

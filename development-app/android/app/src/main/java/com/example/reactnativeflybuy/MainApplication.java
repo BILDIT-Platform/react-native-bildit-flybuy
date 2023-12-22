@@ -11,6 +11,10 @@ import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.reactnativeflybuy.FlybuyPackage;
+import com.radiusnetworks.flybuy.sdk.FlyBuyCore;
+import com.radiusnetworks.flybuy.sdk.pickup.PickupManager;
+
+import kotlin.Unit;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -47,6 +51,11 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager()); // Remove this line if you don't want Flipper enabled
+
+    FlyBuyCore.configure(this, "532.D18uTrGNpfSRRwQAzL9CH9Yh");
+
+    PickupManager.Companion.getInstance(Unit.INSTANCE).configure(this);
+
   }
 
   /**

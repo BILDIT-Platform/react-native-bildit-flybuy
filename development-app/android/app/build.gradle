@@ -197,6 +197,9 @@ dependencies {
 
     // implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
+    implementation platform("com.radiusnetworks.flybuy:bom:2.7.5")
+    implementation 'com.radiusnetworks.flybuy:pickup'
+
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
     }

@@ -349,9 +349,12 @@ export default function App() {
   };
 
   React.useEffect(() => {
-    FlyBuy.Core.configure(AppConfig.APP_TOKEN);
+    if (Platform.OS === 'ios') {
+      // This only called in iOS because android manually configured from native code
+      FlyBuy.Core.configure(AppConfig.APP_TOKEN);
+      FlyBuy.Pickup.configure();
+    }
     FlyBuy.Notify.configure();
-    FlyBuy.Pickup.configure();
     FlyBuy.Presence.configure(AppConfig.PRESENCE_UUID);
     FlyBuy.Notify.sync(true);
     getNotificationPermission();

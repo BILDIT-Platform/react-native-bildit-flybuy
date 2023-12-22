@@ -52,7 +52,7 @@ public class MainApplication extends Application implements ReactApplication {
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager()); // Remove this line if you don't want Flipper enabled
 
-    FlyBuyCore.configure(this, "532.D18uTrGNpfSRRwQAzL9CH9Yh");
+    FlyBuyCore.configure(this, "your key");
 
     PickupManager.Companion.getInstance(Unit.INSTANCE).configure(this);
 

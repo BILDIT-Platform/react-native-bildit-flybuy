@@ -1,6 +1,6 @@
 {
   "name": "react-native-bildit-flybuy",
-  "version": "2.1.5",
+  "version": "2.2.0",
   "description": "React Native FlyBuy module. Supports Core, Pickup, Notify, and Presence Native SDK APIs.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

@@ -1,11 +1,11 @@
 framework module FlyBuy {
   umbrella header "FlyBuy.h"
-
   export *
+
   module * { export * }
 }
 
 module FlyBuy.Swift {
-    header "FlyBuy-Swift.h"
-    requires objc
+  header "FlyBuy-Swift.h"
+  requires objc
 }

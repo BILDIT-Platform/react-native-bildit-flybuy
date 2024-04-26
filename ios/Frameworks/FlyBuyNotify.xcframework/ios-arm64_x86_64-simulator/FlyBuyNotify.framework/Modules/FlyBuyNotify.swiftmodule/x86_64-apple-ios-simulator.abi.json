@@ -1,0 +1,4259 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SyncHistory",
+        "printedName": "SyncHistory",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "writeToDefaultsEnabled",
+            "printedName": "writeToDefaultsEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12FlyBuyNotify11SyncHistoryO22writeToDefaultsEnabledSbvpZ",
+            "mangledName": "$s12FlyBuyNotify11SyncHistoryO22writeToDefaultsEnabledSbvpZ",
+            "moduleName": "FlyBuyNotify",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12FlyBuyNotify11SyncHistoryO22writeToDefaultsEnabledSbvgZ",
+                "mangledName": "$s12FlyBuyNotify11SyncHistoryO22writeToDefaultsEnabledSbvgZ",
+                "moduleName": "FlyBuyNotify",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12FlyBuyNotify11SyncHistoryO22writeToDefaultsEnabledSbvsZ",
+                "mangledName": "$s12FlyBuyNotify11SyncHistoryO22writeToDefaultsEnabledSbvsZ",
+                "moduleName": "FlyBuyNotify",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12FlyBuyNotify11SyncHistoryO22writeToDefaultsEnabledSbvMZ",
+                "mangledName": "$s12FlyBuyNotify11SyncHistoryO22writeToDefaultsEnabledSbvMZ",
+                "moduleName": "FlyBuyNotify",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "addBGTaskExpiredEvent",
+            "printedName": "addBGTaskExpiredEvent()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyNotify11SyncHistoryO21addBGTaskExpiredEventyyFZ",
+            "mangledName": "$s12FlyBuyNotify11SyncHistoryO21addBGTaskExpiredEventyyFZ",
+            "moduleName": "FlyBuyNotify",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addPushSyncAttemptEvent",
+            "printedName": "addPushSyncAttemptEvent()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyNotify11SyncHistoryO07addPushD12AttemptEventyyFZ",
+            "mangledName": "$s12FlyBuyNotify11SyncHistoryO07addPushD12AttemptEventyyFZ",
+            "moduleName": "FlyBuyNotify",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addPushSyncCompleteEvent",
+            "printedName": "addPushSyncCompleteEvent(error:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(any Swift.Error)?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyNotify11SyncHistoryO07addPushD13CompleteEvent5errorys5Error_pSg_tFZ",
+            "mangledName": "$s12FlyBuyNotify11SyncHistoryO07addPushD13CompleteEvent5errorys5Error_pSg_tFZ",
+            "moduleName": "FlyBuyNotify",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addBGFetchAttemptEvent",
+            "printedName": "addBGFetchAttemptEvent()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyNotify11SyncHistoryO22addBGFetchAttemptEventyyFZ",
+            "mangledName": "$s12FlyBuyNotify11SyncHistoryO22addBGFetchAttemptEventyyFZ",
+            "moduleName": "FlyBuyNotify",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addBGFetchCompleteEvent",
+            "printedName": "addBGFetchCompleteEvent(error:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(any Swift.Error)?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyNotify11SyncHistoryO23addBGFetchCompleteEvent5errorys5Error_pSg_tFZ",
+            "mangledName": "$s12FlyBuyNotify11SyncHistoryO23addBGFetchCompleteEvent5errorys5Error_pSg_tFZ",
+            "moduleName": "FlyBuyNotify",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "appendHistory",
+            "printedName": "appendHistory(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyNotify11SyncHistoryO06appendE0yySSFZ",
+            "mangledName": "$s12FlyBuyNotify11SyncHistoryO06appendE0yySSFZ",
+            "moduleName": "FlyBuyNotify",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "updateLastSync",
+            "printedName": "updateLastSync(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Date",
+                "printedName": "Foundation.Date",
+                "usr": "s:10Foundation4DateV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyNotify11SyncHistoryO010updateLastD0yy10Foundation4DateVFZ",
+            "mangledName": "$s12FlyBuyNotify11SyncHistoryO010updateLastD0yy10Foundation4DateVFZ",
+            "moduleName": "FlyBuyNotify",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:12FlyBuyNotify11SyncHistoryO",
+        "mangledName": "$s12FlyBuyNotify11SyncHistoryO",
+        "moduleName": "FlyBuyNotify",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "UserNotifications",
+        "printedName": "UserNotifications",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "UserNotifications",
+        "printedName": "UserNotifications",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "UserNotifications",
+        "printedName": "UserNotifications",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NotificationInfo",
+        "printedName": "NotificationInfo",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "title",
+            "printedName": "title",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)NotificationInfo(py)title",
+            "mangledName": "$s12FlyBuyNotify16NotificationInfoC5titleSSvp",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FlyBuyNotify@objc(cs)NotificationInfo(im)title",
+                "mangledName": "$s12FlyBuyNotify16NotificationInfoC5titleSSvg",
+                "moduleName": "FlyBuyNotify",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "content",
+            "printedName": "content",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)NotificationInfo(py)content",
+            "mangledName": "$s12FlyBuyNotify16NotificationInfoC7contentSSvp",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FlyBuyNotify@objc(cs)NotificationInfo(im)content",
+                "mangledName": "$s12FlyBuyNotify16NotificationInfoC7contentSSvg",
+                "moduleName": "FlyBuyNotify",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "data",
+            "printedName": "data",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.AnyHashable : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.AnyHashable : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AnyHashable",
+                        "printedName": "Swift.AnyHashable",
+                        "usr": "s:s11AnyHashableV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)NotificationInfo(py)data",
+            "mangledName": "$s12FlyBuyNotify16NotificationInfoC4dataSDys11AnyHashableVypGSgvp",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.AnyHashable : Any]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.AnyHashable : Any]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "AnyHashable",
+                            "printedName": "Swift.AnyHashable",
+                            "usr": "s:s11AnyHashableV"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FlyBuyNotify@objc(cs)NotificationInfo(im)data",
+                "mangledName": "$s12FlyBuyNotify16NotificationInfoC4dataSDys11AnyHashableVypGSgvg",
+                "moduleName": "FlyBuyNotify",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(title:content:data:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NotificationInfo",
+                "printedName": "FlyBuyNotify.NotificationInfo",
+                "usr": "c:@M@FlyBuyNotify@objc(cs)NotificationInfo"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.AnyHashable : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.AnyHashable : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AnyHashable",
+                        "printedName": "Swift.AnyHashable",
+                        "usr": "s:s11AnyHashableV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:12FlyBuyNotify16NotificationInfoC5title7content4dataACSS_SSSDys11AnyHashableVypGSgtcfc",
+            "mangledName": "$s12FlyBuyNotify16NotificationInfoC5title7content4dataACSS_SSSDys11AnyHashableVypGSgtcfc",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NotificationInfo",
+                "printedName": "FlyBuyNotify.NotificationInfo",
+                "usr": "c:@M@FlyBuyNotify@objc(cs)NotificationInfo"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)NotificationInfo(im)init",
+            "mangledName": "$s12FlyBuyNotify16NotificationInfoCACycfc",
+            "moduleName": "FlyBuyNotify",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FlyBuyNotify@objc(cs)NotificationInfo",
+        "mangledName": "$s12FlyBuyNotify16NotificationInfoC",
+        "moduleName": "FlyBuyNotify",
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "UserNotifications",
+        "printedName": "UserNotifications",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "Import",
+        "name": "BackgroundTasks",
+        "printedName": "BackgroundTasks",
+        "declKind": "Import",
+        "moduleName": "FlyBuyNotify"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Manager",
+        "printedName": "Manager",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "shared",
+            "printedName": "shared",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Manager",
+                "printedName": "FlyBuyNotify.Manager",
+                "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyManager"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyManager(cpy)shared",
+            "mangledName": "$s12FlyBuyNotify7ManagerC6sharedACvpZ",
+            "moduleName": "FlyBuyNotify",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Manager",
+                    "printedName": "FlyBuyNotify.Manager",
+                    "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyManager"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyManager(cm)shared",
+                "mangledName": "$s12FlyBuyNotify7ManagerC6sharedACvgZ",
+                "moduleName": "FlyBuyNotify",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "logger",
+            "printedName": "logger",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Logger",
+                "printedName": "FlyBuy.Logger",
+                "usr": "c:@M@FlyBuy@objc(cs)FlyBuyLogger"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12FlyBuyNotify7ManagerC6logger0aB06LoggerCvp",
+            "mangledName": "$s12FlyBuyNotify7ManagerC6logger0aB06LoggerCvp",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Logger",
+                    "printedName": "FlyBuy.Logger",
+                    "usr": "c:@M@FlyBuy@objc(cs)FlyBuyLogger"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12FlyBuyNotify7ManagerC6logger0aB06LoggerCvg",
+                "mangledName": "$s12FlyBuyNotify7ManagerC6logger0aB06LoggerCvg",
+                "moduleName": "FlyBuyNotify",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "lastSync",
+            "printedName": "lastSync",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Date?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Date",
+                    "printedName": "Foundation.Date",
+                    "usr": "s:10Foundation4DateV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12FlyBuyNotify7ManagerC8lastSync10Foundation4DateVSgvp",
+            "mangledName": "$s12FlyBuyNotify7ManagerC8lastSync10Foundation4DateVSgvp",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.Date?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Date",
+                        "printedName": "Foundation.Date",
+                        "usr": "s:10Foundation4DateV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12FlyBuyNotify7ManagerC8lastSync10Foundation4DateVSgvg",
+                "mangledName": "$s12FlyBuyNotify7ManagerC8lastSync10Foundation4DateVSgvg",
+                "moduleName": "FlyBuyNotify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "configure",
+            "printedName": "configure(bgTaskIdentifier:bgSyncCallback:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(((any Swift.Error)?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "((any Swift.Error)?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyManager(im)configureWithBgTaskIdentifier:bgSyncCallback:",
+            "mangledName": "$s12FlyBuyNotify7ManagerC9configure16bgTaskIdentifier0F12SyncCallbackySSSg_ys5Error_pSgcSgtF",
+            "moduleName": "FlyBuyNotify",
+            "objc_name": "configureWithBgTaskIdentifier:bgSyncCallback:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "createForSitesInRegion",
+            "printedName": "createForSitesInRegion(_:notification:callback:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CLCircularRegion",
+                "printedName": "CoreLocation.CLCircularRegion",
+                "usr": "c:objc(cs)CLCircularRegion"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NotificationInfo",
+                "printedName": "FlyBuyNotify.NotificationInfo",
+                "usr": "c:@M@FlyBuyNotify@objc(cs)NotificationInfo"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "([FlyBuy.Site]?, (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "([FlyBuy.Site]?, (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "[FlyBuy.Site]?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Array",
+                            "printedName": "[FlyBuy.Site]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Site",
+                                "printedName": "FlyBuy.Site",
+                                "usr": "c:@M@FlyBuy@objc(cs)FlyBuySite"
+                              }
+                            ],
+                            "usr": "s:Sa"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyManager(im)createForSitesInRegion:notification:callback:",
+            "mangledName": "$s12FlyBuyNotify7ManagerC22createForSitesInRegion_12notification8callbackySo010CLCircularI0C_AA16NotificationInfoCySay0aB04SiteCGSg_s5Error_pSgtctF",
+            "moduleName": "FlyBuyNotify",
+            "deprecated": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "Available",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "createForSites",
+            "printedName": "createForSites(_:notification:callback:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[FlyBuy.Site]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Site",
+                    "printedName": "FlyBuy.Site",
+                    "usr": "c:@M@FlyBuy@objc(cs)FlyBuySite"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NotificationInfo",
+                "printedName": "FlyBuyNotify.NotificationInfo",
+                "usr": "c:@M@FlyBuyNotify@objc(cs)NotificationInfo"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "((any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(any Swift.Error)?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Error",
+                        "printedName": "any Swift.Error",
+                        "usr": "s:s5ErrorP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyManager(im)createForSites:notification:callback:",
+            "mangledName": "$s12FlyBuyNotify7ManagerC14createForSites_12notification8callbackySay0aB04SiteCG_AA16NotificationInfoCys5Error_pSgctF",
+            "moduleName": "FlyBuyNotify",
+            "deprecated": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "Available",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "clear",
+            "printedName": "clear(callback:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "((any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(any Swift.Error)?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Error",
+                        "printedName": "any Swift.Error",
+                        "usr": "s:s5ErrorP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyManager(im)clearWithCallback:",
+            "mangledName": "$s12FlyBuyNotify7ManagerC5clear8callbackyys5Error_pSgc_tF",
+            "moduleName": "FlyBuyNotify",
+            "deprecated": true,
+            "objc_name": "clearWithCallback:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "Available",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "isFlyBuyNotifyUserInfo",
+            "printedName": "isFlyBuyNotifyUserInfo(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.AnyHashable : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AnyHashable",
+                    "printedName": "Swift.AnyHashable",
+                    "usr": "s:s11AnyHashableV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyManager(im)isFlyBuyNotifyUserInfo:",
+            "mangledName": "$s12FlyBuyNotify7ManagerC02isabC8UserInfoySbSDys11AnyHashableVypGF",
+            "moduleName": "FlyBuyNotify",
+            "deprecated": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "Available",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Manager",
+                "printedName": "FlyBuyNotify.Manager",
+                "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyManager"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyManager(im)init",
+            "mangledName": "$s12FlyBuyNotify7ManagerCACycfc",
+            "moduleName": "FlyBuyNotify",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "ordersUpdated",
+            "printedName": "ordersUpdated(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[FlyBuy.Order]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Order",
+                    "printedName": "FlyBuy.Order",
+                    "usr": "c:@M@FlyBuy@objc(cs)FlyBuyOrder"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyNotify7ManagerC13ordersUpdatedyySay0aB05OrderCGF",
+            "mangledName": "$s12FlyBuyNotify7ManagerC13ordersUpdatedyySay0aB05OrderCGF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "set",
+            "printedName": "set(logLevel:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogLevel",
+                "printedName": "FlyBuy.LogLevel",
+                "usr": "c:@M@FlyBuy@E@LogLevel"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyNotify7ManagerC3set8logLevely0aB003LogG0O_tF",
+            "mangledName": "$s12FlyBuyNotify7ManagerC3set8logLevely0aB003LogG0O_tF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "set",
+            "printedName": "set(logWriteEnabled:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyNotify7ManagerC3set15logWriteEnabledySb_tF",
+            "mangledName": "$s12FlyBuyNotify7ManagerC3set15logWriteEnabledySb_tF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "configUpdated",
+            "printedName": "configUpdated(_:pushData:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "AppConfig",
+                "printedName": "FlyBuy.AppConfig",
+                "usr": "c:@M@FlyBuy@objc(cs)AppConfig"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "FlyBuy.PushData?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushData",
+                    "printedName": "FlyBuy.PushData",
+                    "usr": "s:6FlyBuy8PushDataV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyNotify7ManagerC13configUpdated_8pushDatay0aB09AppConfigC_AF04PushH0VSgtF",
+            "mangledName": "$s12FlyBuyNotify7ManagerC13configUpdated_8pushDatay0aB09AppConfigC_AF04PushH0VSgtF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sync",
+            "printedName": "sync(force:callback:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(((any Swift.Error)?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "((any Swift.Error)?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FlyBuyNotify@objc(cs)FlyBuyNotifyManager(im)syncWithForce:callback:",
+            "mangledName": "$s12FlyBuyNotify7ManagerC4sync5force8callbackySb_ys5Error_pSgcSgtF",
+            "moduleName": "FlyBuyNotify",
+            "objc_name": "syncWithForce:callback:",
+            "declAttributes": [
+              "Dynamic",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "performFetchWithCompletionHandler",
+            "printedName": "performFetchWithCompletionHandler(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((UIKit.UIBackgroundFetchResult) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(UIKit.UIBackgroundFetchResult) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIBackgroundFetchResult",
+                        "printedName": "UIKit.UIBackgroundFetchResult",
+                        "usr": "c:@E@UIBackgroundFetchResult"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FlyBuyNotify@objc(cs)FlyBuyNotifyManager(im)performFetchWithCompletionHandler:",
+            "mangledName": "$s12FlyBuyNotify7ManagerC33performFetchWithCompletionHandleryyySo012UIBackgroundF6ResultVcSgF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "Dynamic",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "handleNotification",
+            "printedName": "handleNotification(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Swift.String]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UNNotificationResponse",
+                "printedName": "UserNotifications.UNNotificationResponse",
+                "usr": "c:objc(cs)UNNotificationResponse"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FlyBuyNotify@objc(cs)FlyBuyNotifyManager(im)handleNotification:",
+            "mangledName": "$s12FlyBuyNotify7ManagerC18handleNotificationySDyS2SGSgSo22UNNotificationResponseCF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "Dynamic",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyManager",
+        "mangledName": "$s12FlyBuyNotify7ManagerC",
+        "moduleName": "FlyBuyNotify",
+        "objc_name": "FlyBuyNotifyManager",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "FlyBuyModuleManager",
+            "printedName": "FlyBuyModuleManager",
+            "usr": "s:6FlyBuy0aB13ModuleManagerP",
+            "mangledName": "$s6FlyBuy0aB13ModuleManagerP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NotifyErrorType",
+        "printedName": "NotifyErrorType",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "noLocationPermission",
+            "printedName": "noLocationPermission",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FlyBuyNotify.NotifyErrorType.Type) -> FlyBuyNotify.NotifyErrorType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NotifyErrorType",
+                    "printedName": "FlyBuyNotify.NotifyErrorType",
+                    "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FlyBuyNotify.NotifyErrorType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NotifyErrorType",
+                        "printedName": "FlyBuyNotify.NotifyErrorType",
+                        "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType@NotifyErrorTypeNoLocationPermission",
+            "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO20noLocationPermissionyA2CmF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 0
+          },
+          {
+            "kind": "Var",
+            "name": "notificationPermissionDenied",
+            "printedName": "notificationPermissionDenied",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FlyBuyNotify.NotifyErrorType.Type) -> FlyBuyNotify.NotifyErrorType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NotifyErrorType",
+                    "printedName": "FlyBuyNotify.NotifyErrorType",
+                    "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FlyBuyNotify.NotifyErrorType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NotifyErrorType",
+                        "printedName": "FlyBuyNotify.NotifyErrorType",
+                        "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType@NotifyErrorTypeNotificationPermissionDenied",
+            "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO28notificationPermissionDeniedyA2CmF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 1
+          },
+          {
+            "kind": "Var",
+            "name": "reachedTheMaxNumberOfSites",
+            "printedName": "reachedTheMaxNumberOfSites",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FlyBuyNotify.NotifyErrorType.Type) -> FlyBuyNotify.NotifyErrorType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NotifyErrorType",
+                    "printedName": "FlyBuyNotify.NotifyErrorType",
+                    "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FlyBuyNotify.NotifyErrorType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NotifyErrorType",
+                        "printedName": "FlyBuyNotify.NotifyErrorType",
+                        "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType@NotifyErrorTypeReachedTheMaxNumberOfSites",
+            "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO26reachedTheMaxNumberOfSitesyA2CmF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 2
+          },
+          {
+            "kind": "Var",
+            "name": "notifyModuleNotConfigured",
+            "printedName": "notifyModuleNotConfigured",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FlyBuyNotify.NotifyErrorType.Type) -> FlyBuyNotify.NotifyErrorType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NotifyErrorType",
+                    "printedName": "FlyBuyNotify.NotifyErrorType",
+                    "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FlyBuyNotify.NotifyErrorType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NotifyErrorType",
+                        "printedName": "FlyBuyNotify.NotifyErrorType",
+                        "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType@NotifyErrorTypeNotifyModuleNotConfigured",
+            "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO25notifyModuleNotConfiguredyA2CmF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 3
+          },
+          {
+            "kind": "Var",
+            "name": "coreIsNotConfigured",
+            "printedName": "coreIsNotConfigured",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FlyBuyNotify.NotifyErrorType.Type) -> FlyBuyNotify.NotifyErrorType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NotifyErrorType",
+                    "printedName": "FlyBuyNotify.NotifyErrorType",
+                    "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FlyBuyNotify.NotifyErrorType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NotifyErrorType",
+                        "printedName": "FlyBuyNotify.NotifyErrorType",
+                        "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType@NotifyErrorTypeCoreIsNotConfigured",
+            "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO19coreIsNotConfiguredyA2CmF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 4
+          },
+          {
+            "kind": "Var",
+            "name": "notifyModuleNotEnabled",
+            "printedName": "notifyModuleNotEnabled",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FlyBuyNotify.NotifyErrorType.Type) -> FlyBuyNotify.NotifyErrorType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NotifyErrorType",
+                    "printedName": "FlyBuyNotify.NotifyErrorType",
+                    "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FlyBuyNotify.NotifyErrorType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NotifyErrorType",
+                        "printedName": "FlyBuyNotify.NotifyErrorType",
+                        "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType@NotifyErrorTypeNotifyModuleNotEnabled",
+            "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO22notifyModuleNotEnabledyA2CmF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 5
+          },
+          {
+            "kind": "Var",
+            "name": "beaconRangingNotAvailable",
+            "printedName": "beaconRangingNotAvailable",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FlyBuyNotify.NotifyErrorType.Type) -> FlyBuyNotify.NotifyErrorType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NotifyErrorType",
+                    "printedName": "FlyBuyNotify.NotifyErrorType",
+                    "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FlyBuyNotify.NotifyErrorType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NotifyErrorType",
+                        "printedName": "FlyBuyNotify.NotifyErrorType",
+                        "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType@NotifyErrorTypeBeaconRangingNotAvailable",
+            "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO25beaconRangingNotAvailableyA2CmF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 6
+          },
+          {
+            "kind": "Var",
+            "name": "noBeaconInRange",
+            "printedName": "noBeaconInRange",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FlyBuyNotify.NotifyErrorType.Type) -> FlyBuyNotify.NotifyErrorType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NotifyErrorType",
+                    "printedName": "FlyBuyNotify.NotifyErrorType",
+                    "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FlyBuyNotify.NotifyErrorType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NotifyErrorType",
+                        "printedName": "FlyBuyNotify.NotifyErrorType",
+                        "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType@NotifyErrorTypeNoBeaconInRange",
+            "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO15noBeaconInRangeyA2CmF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 7
+          },
+          {
+            "kind": "Var",
+            "name": "beaconRangingDisabledInBackground",
+            "printedName": "beaconRangingDisabledInBackground",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FlyBuyNotify.NotifyErrorType.Type) -> FlyBuyNotify.NotifyErrorType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NotifyErrorType",
+                    "printedName": "FlyBuyNotify.NotifyErrorType",
+                    "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FlyBuyNotify.NotifyErrorType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NotifyErrorType",
+                        "printedName": "FlyBuyNotify.NotifyErrorType",
+                        "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType@NotifyErrorTypeBeaconRangingDisabledInBackground",
+            "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO33beaconRangingDisabledInBackgroundyA2CmF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 8
+          },
+          {
+            "kind": "Var",
+            "name": "failedToAddNotificationRequest",
+            "printedName": "failedToAddNotificationRequest",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FlyBuyNotify.NotifyErrorType.Type) -> FlyBuyNotify.NotifyErrorType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NotifyErrorType",
+                    "printedName": "FlyBuyNotify.NotifyErrorType",
+                    "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FlyBuyNotify.NotifyErrorType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NotifyErrorType",
+                        "printedName": "FlyBuyNotify.NotifyErrorType",
+                        "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType@NotifyErrorTypeFailedToAddNotificationRequest",
+            "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO30failedToAddNotificationRequestyA2CmF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 9
+          },
+          {
+            "kind": "Var",
+            "name": "description",
+            "printedName": "description",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12FlyBuyNotify0C9ErrorTypeO11descriptionSSvp",
+            "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO11descriptionSSvp",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12FlyBuyNotify0C9ErrorTypeO11descriptionSSvg",
+                "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO11descriptionSSvg",
+                "moduleName": "FlyBuyNotify",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "string",
+            "printedName": "string",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12FlyBuyNotify0C9ErrorTypeO6stringSSvp",
+            "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO6stringSSvp",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12FlyBuyNotify0C9ErrorTypeO6stringSSvg",
+                "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO6stringSSvg",
+                "moduleName": "FlyBuyNotify",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "FlyBuyNotify.NotifyErrorType?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NotifyErrorType",
+                    "printedName": "FlyBuyNotify.NotifyErrorType",
+                    "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:12FlyBuyNotify0C9ErrorTypeO8rawValueACSgSi_tcfc",
+            "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO8rawValueACSgSi_tcfc",
+            "moduleName": "FlyBuyNotify",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12FlyBuyNotify0C9ErrorTypeO8rawValueSivp",
+            "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO8rawValueSivp",
+            "moduleName": "FlyBuyNotify",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12FlyBuyNotify0C9ErrorTypeO8rawValueSivg",
+                "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO8rawValueSivg",
+                "moduleName": "FlyBuyNotify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType",
+        "mangledName": "$s12FlyBuyNotify0C9ErrorTypeO",
+        "moduleName": "FlyBuyNotify",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "Int",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NotifyError",
+        "printedName": "NotifyError",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "type",
+            "printedName": "type",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NotifyErrorType",
+                "printedName": "FlyBuyNotify.NotifyErrorType",
+                "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyError(py)type",
+            "mangledName": "$s12FlyBuyNotify0C5ErrorC4typeAA0cD4TypeOvp",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NotifyErrorType",
+                    "printedName": "FlyBuyNotify.NotifyErrorType",
+                    "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyError(im)type",
+                "mangledName": "$s12FlyBuyNotify0C5ErrorC4typeAA0cD4TypeOvg",
+                "moduleName": "FlyBuyNotify",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NotifyError",
+                "printedName": "FlyBuyNotify.NotifyError",
+                "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyError"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NotifyErrorType",
+                "printedName": "FlyBuyNotify.NotifyErrorType",
+                "usr": "c:@M@FlyBuyNotify@E@NotifyErrorType"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyError(im)init:",
+            "mangledName": "$s12FlyBuyNotify0C5ErrorCyAcA0cD4TypeOcfc",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "description",
+            "printedName": "description",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyError(py)description",
+            "mangledName": "$s12FlyBuyNotify0C5ErrorC11descriptionSSvp",
+            "moduleName": "FlyBuyNotify",
+            "overriding": true,
+            "objc_name": "description",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl",
+              "Override",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyError(im)description",
+                "mangledName": "$s12FlyBuyNotify0C5ErrorC11descriptionSSvg",
+                "moduleName": "FlyBuyNotify",
+                "overriding": true,
+                "objc_name": "description",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NotifyError",
+                "printedName": "FlyBuyNotify.NotifyError",
+                "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyError"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyError(im)init",
+            "mangledName": "$s12FlyBuyNotify0C5ErrorCACycfc",
+            "moduleName": "FlyBuyNotify",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FlyBuyNotify@objc(cs)FlyBuyNotifyError",
+        "mangledName": "$s12FlyBuyNotify0C5ErrorC",
+        "moduleName": "FlyBuyNotify",
+        "objc_name": "FlyBuyNotifyError",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "FlyBuyError",
+            "printedName": "FlyBuyError",
+            "usr": "s:6FlyBuy0aB5ErrorP",
+            "mangledName": "$s6FlyBuy0aB5ErrorP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "LocalizedError",
+            "printedName": "LocalizedError",
+            "usr": "s:10Foundation14LocalizedErrorP",
+            "mangledName": "$s10Foundation14LocalizedErrorP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Error",
+            "printedName": "Error",
+            "usr": "s:s5ErrorP",
+            "mangledName": "$ss5ErrorP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "CLLocationManager",
+        "printedName": "CLLocationManager",
+        "declKind": "Class",
+        "usr": "c:objc(cs)CLLocationManager",
+        "moduleName": "CoreLocation",
+        "isOpen": true,
+        "intro_iOS": "2.0",
+        "objc_name": "CLLocationManager",
+        "declAttributes": [
+          "Available",
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "UNUserNotificationCenter",
+        "printedName": "UNUserNotificationCenter",
+        "declKind": "Class",
+        "usr": "c:objc(cs)UNUserNotificationCenter",
+        "moduleName": "UserNotifications",
+        "isOpen": true,
+        "intro_iOS": "10.0",
+        "objc_name": "UNUserNotificationCenter",
+        "declAttributes": [
+          "Available",
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Name",
+        "printedName": "Name",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "notifyCampaignsUpdated",
+            "printedName": "notifyCampaignsUpdated",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Name",
+                "printedName": "Foundation.NSNotification.Name",
+                "usr": "c:@T@NSNotificationName"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So18NSNotificationNamea12FlyBuyNotifyE22notifyCampaignsUpdatedABvpZ",
+            "mangledName": "$sSo18NSNotificationNamea12FlyBuyNotifyE22notifyCampaignsUpdatedABvpZ",
+            "moduleName": "FlyBuyNotify",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isFromExtension": true,
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Name",
+                    "printedName": "Foundation.NSNotification.Name",
+                    "usr": "c:@T@NSNotificationName"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So18NSNotificationNamea12FlyBuyNotifyE22notifyCampaignsUpdatedABvgZ",
+                "mangledName": "$sSo18NSNotificationNamea12FlyBuyNotifyE22notifyCampaignsUpdatedABvgZ",
+                "moduleName": "FlyBuyNotify",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "notifyCampaignsError",
+            "printedName": "notifyCampaignsError",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Name",
+                "printedName": "Foundation.NSNotification.Name",
+                "usr": "c:@T@NSNotificationName"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So18NSNotificationNamea12FlyBuyNotifyE20notifyCampaignsErrorABvpZ",
+            "mangledName": "$sSo18NSNotificationNamea12FlyBuyNotifyE20notifyCampaignsErrorABvpZ",
+            "moduleName": "FlyBuyNotify",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isFromExtension": true,
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Name",
+                    "printedName": "Foundation.NSNotification.Name",
+                    "usr": "c:@T@NSNotificationName"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So18NSNotificationNamea12FlyBuyNotifyE20notifyCampaignsErrorABvgZ",
+                "mangledName": "$sSo18NSNotificationNamea12FlyBuyNotifyE20notifyCampaignsErrorABvgZ",
+                "moduleName": "FlyBuyNotify",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "notifySitesError",
+            "printedName": "notifySitesError",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Name",
+                "printedName": "Foundation.NSNotification.Name",
+                "usr": "c:@T@NSNotificationName"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So18NSNotificationNamea12FlyBuyNotifyE16notifySitesErrorABvpZ",
+            "mangledName": "$sSo18NSNotificationNamea12FlyBuyNotifyE16notifySitesErrorABvpZ",
+            "moduleName": "FlyBuyNotify",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isFromExtension": true,
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Name",
+                    "printedName": "Foundation.NSNotification.Name",
+                    "usr": "c:@T@NSNotificationName"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So18NSNotificationNamea12FlyBuyNotifyE16notifySitesErrorABvgZ",
+                "mangledName": "$sSo18NSNotificationNamea12FlyBuyNotifyE16notifySitesErrorABvgZ",
+                "moduleName": "FlyBuyNotify",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "notifyNotificationsError",
+            "printedName": "notifyNotificationsError",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Name",
+                "printedName": "Foundation.NSNotification.Name",
+                "usr": "c:@T@NSNotificationName"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So18NSNotificationNamea12FlyBuyNotifyE24notifyNotificationsErrorABvpZ",
+            "mangledName": "$sSo18NSNotificationNamea12FlyBuyNotifyE24notifyNotificationsErrorABvpZ",
+            "moduleName": "FlyBuyNotify",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isFromExtension": true,
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Name",
+                    "printedName": "Foundation.NSNotification.Name",
+                    "usr": "c:@T@NSNotificationName"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So18NSNotificationNamea12FlyBuyNotifyE24notifyNotificationsErrorABvgZ",
+                "mangledName": "$sSo18NSNotificationNamea12FlyBuyNotifyE24notifyNotificationsErrorABvgZ",
+                "moduleName": "FlyBuyNotify",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "c:@T@NSNotificationName",
+        "moduleName": "Foundation",
+        "declAttributes": [
+          "SynthesizedProtocol",
+          "SynthesizedProtocol",
+          "SynthesizedProtocol",
+          "SynthesizedProtocol",
+          "SynthesizedProtocol",
+          "SynthesizedProtocol",
+          "Sendable"
+        ],
+        "isFromExtension": true,
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "_ObjectiveCBridgeable",
+            "printedName": "_ObjectiveCBridgeable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "_ObjectiveCType",
+                "printedName": "_ObjectiveCType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSString",
+                    "printedName": "Foundation.NSString",
+                    "usr": "c:objc(cs)NSString"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s21_ObjectiveCBridgeableP",
+            "mangledName": "$ss21_ObjectiveCBridgeableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_SwiftNewtypeWrapper",
+            "printedName": "_SwiftNewtypeWrapper",
+            "usr": "s:s20_SwiftNewtypeWrapperP",
+            "mangledName": "$ss20_SwiftNewtypeWrapperP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_HasCustomAnyHashableRepresentation",
+            "printedName": "_HasCustomAnyHashableRepresentation",
+            "usr": "s:s35_HasCustomAnyHashableRepresentationP",
+            "mangledName": "$ss35_HasCustomAnyHashableRepresentationP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyRepeatability.swift",
+      "kind": "IntegerLiteral",
+      "offset": 98,
+      "length": 4,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyInteractor.swift",
+      "kind": "Array",
+      "offset": 114,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyInteractor.swift",
+      "kind": "Array",
+      "offset": 145,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyInteractor.swift",
+      "kind": "Array",
+      "offset": 193,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyInteractor.swift",
+      "kind": "IntegerLiteral",
+      "offset": 605,
+      "length": 2,
+      "value": "20"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyInteractor.swift",
+      "kind": "IntegerLiteral",
+      "offset": 647,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyInteractor.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1451,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyInteractor.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5655,
+      "length": 2,
+      "value": "-1"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyInteractor.swift",
+      "kind": "Dictionary",
+      "offset": 5685,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyAnalyticsBody.swift",
+      "kind": "StringLiteral",
+      "offset": 194,
+      "length": 17,
+      "value": "\"app_instance_id\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyAnalyticsBody.swift",
+      "kind": "StringLiteral",
+      "offset": 194,
+      "length": 17,
+      "value": "\"app_instance_id\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyAnalyticsBody.swift",
+      "kind": "StringLiteral",
+      "offset": 25,
+      "length": 19,
+      "value": "\"FlyBuyNotify.NotifyAnalyticsBody\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/UserDefaultsKey.swift",
+      "kind": "StringLiteral",
+      "offset": 103,
+      "length": 23,
+      "value": "\"FlyBuyNotify.lastSync\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/UserDefaultsKey.swift",
+      "kind": "StringLiteral",
+      "offset": 149,
+      "length": 27,
+      "value": "\"FlyBuyNotify.lastLocation\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/UserDefaultsKey.swift",
+      "kind": "StringLiteral",
+      "offset": 202,
+      "length": 30,
+      "value": "\"FlyBuyNotify.loadedCampaigns\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/UserDefaultsKey.swift",
+      "kind": "StringLiteral",
+      "offset": 258,
+      "length": 30,
+      "value": "\"FlyBuyNotify.minSyncInterval\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/UserDefaultsKey.swift",
+      "kind": "StringLiteral",
+      "offset": 308,
+      "length": 24,
+      "value": "\"FlyBuyNotify.lastFetch\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/UserDefaultsKey.swift",
+      "kind": "StringLiteral",
+      "offset": 103,
+      "length": 23,
+      "value": "\"FlyBuyNotify.lastSync\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/UserDefaultsKey.swift",
+      "kind": "StringLiteral",
+      "offset": 149,
+      "length": 27,
+      "value": "\"FlyBuyNotify.lastLocation\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/UserDefaultsKey.swift",
+      "kind": "StringLiteral",
+      "offset": 202,
+      "length": 30,
+      "value": "\"FlyBuyNotify.loadedCampaigns\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/UserDefaultsKey.swift",
+      "kind": "StringLiteral",
+      "offset": 258,
+      "length": 30,
+      "value": "\"FlyBuyNotify.minSyncInterval\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/UserDefaultsKey.swift",
+      "kind": "StringLiteral",
+      "offset": 308,
+      "length": 24,
+      "value": "\"FlyBuyNotify.lastFetch\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/SyncHistory.swift",
+      "kind": "StringLiteral",
+      "offset": 262,
+      "length": 20,
+      "value": "\"NotifySDK.lastSync\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/SyncHistory.swift",
+      "kind": "StringLiteral",
+      "offset": 313,
+      "length": 19,
+      "value": "\"NotifySDK.bgFetch\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/SyncHistory.swift",
+      "kind": "BooleanLiteral",
+      "offset": 405,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifySite.swift",
+      "kind": "StringLiteral",
+      "offset": 316,
+      "length": 20,
+      "value": "\"partner_identifier\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifySite.swift",
+      "kind": "StringLiteral",
+      "offset": 363,
+      "length": 17,
+      "value": "\"distance_meters\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifySite.swift",
+      "kind": "StringLiteral",
+      "offset": 441,
+      "length": 14,
+      "value": "\"beacon_minor\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifySite.swift",
+      "kind": "StringLiteral",
+      "offset": 316,
+      "length": 20,
+      "value": "\"partner_identifier\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifySite.swift",
+      "kind": "StringLiteral",
+      "offset": 363,
+      "length": 17,
+      "value": "\"distance_meters\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifySite.swift",
+      "kind": "StringLiteral",
+      "offset": 441,
+      "length": 14,
+      "value": "\"beacon_minor\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifySite.swift",
+      "kind": "StringLiteral",
+      "offset": 59,
+      "length": 10,
+      "value": "\"FlyBuyNotify.NotifySite\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/Date.swift",
+      "kind": "StringLiteral",
+      "offset": 286,
+      "length": 12,
+      "value": "\"yyyy-MM-dd\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyAnalyticsEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 477,
+      "length": 13,
+      "value": "\"occurred_at\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyAnalyticsEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 513,
+      "length": 13,
+      "value": "\"campaign_id\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyAnalyticsEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 477,
+      "length": 13,
+      "value": "\"occurred_at\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyAnalyticsEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 513,
+      "length": 13,
+      "value": "\"campaign_id\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyAnalyticsEvent.swift",
+      "kind": "Dictionary",
+      "offset": 649,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyAnalyticsEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 39,
+      "length": 20,
+      "value": "\"FlyBuyNotify.NotifyAnalyticsEvent\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaignContent.swift",
+      "kind": "StringLiteral",
+      "offset": 241,
+      "length": 15,
+      "value": "\"deep_link_url\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaignContent.swift",
+      "kind": "StringLiteral",
+      "offset": 281,
+      "length": 14,
+      "value": "\"notification\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaignContent.swift",
+      "kind": "StringLiteral",
+      "offset": 241,
+      "length": 15,
+      "value": "\"deep_link_url\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaignContent.swift",
+      "kind": "StringLiteral",
+      "offset": 281,
+      "length": 14,
+      "value": "\"notification\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaignContent.swift",
+      "kind": "StringLiteral",
+      "offset": 25,
+      "length": 21,
+      "value": "\"FlyBuyNotify.NotifyCampaignContent\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/LocationManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 177,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/LocationManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 227,
+      "length": 2,
+      "value": "60"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/LocationManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 232,
+      "length": 2,
+      "value": "10"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyAnalyticsEventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 119,
+      "length": 19,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyAnalyticsEventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 146,
+      "length": 8,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyNotifications.swift",
+      "kind": "StringLiteral",
+      "offset": 201,
+      "length": 13,
+      "value": "\"campaign_id\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyNotifications.swift",
+      "kind": "StringLiteral",
+      "offset": 233,
+      "length": 9,
+      "value": "\"site_id\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyNotifications.swift",
+      "kind": "StringLiteral",
+      "offset": 201,
+      "length": 13,
+      "value": "\"campaign_id\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyNotifications.swift",
+      "kind": "StringLiteral",
+      "offset": 233,
+      "length": 9,
+      "value": "\"site_id\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Helpers\/LoadedCampaigns.swift",
+      "kind": "Dictionary",
+      "offset": 156,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyTriggerEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 215,
+      "length": 19,
+      "value": "\"last_triggered_at\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyTriggerEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 257,
+      "length": 13,
+      "value": "\"campaign_id\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyTriggerEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 289,
+      "length": 9,
+      "value": "\"site_id\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyTriggerEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 215,
+      "length": 19,
+      "value": "\"last_triggered_at\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyTriggerEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 257,
+      "length": 13,
+      "value": "\"campaign_id\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyTriggerEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 289,
+      "length": 9,
+      "value": "\"site_id\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyTriggerEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 39,
+      "length": 18,
+      "value": "\"FlyBuyNotify.NotifyTriggerEvent\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaignRegionType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 106,
+      "length": 6,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 439,
+      "length": 26,
+      "value": "\"FlyBuy.Notify.CampaignID\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 489,
+      "length": 22,
+      "value": "\"FlyBuy.Notify.SiteID\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 1168,
+      "length": 13,
+      "value": "\"region_type\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 1204,
+      "length": 13,
+      "value": "\"beacon_uuid\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 1241,
+      "length": 14,
+      "value": "\"beacon_major\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 1276,
+      "length": 11,
+      "value": "\"start_day\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 1306,
+      "length": 9,
+      "value": "\"end_day\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 1371,
+      "length": 24,
+      "value": "\"geofence_radius_meters\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 1438,
+      "length": 17,
+      "value": "\"defer_on_pickup\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 1168,
+      "length": 13,
+      "value": "\"region_type\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 1204,
+      "length": 13,
+      "value": "\"beacon_uuid\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 1241,
+      "length": 14,
+      "value": "\"beacon_major\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 1276,
+      "length": 11,
+      "value": "\"start_day\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 1306,
+      "length": 9,
+      "value": "\"end_day\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 1371,
+      "length": 24,
+      "value": "\"geofence_radius_meters\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 1438,
+      "length": 17,
+      "value": "\"defer_on_pickup\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaign.swift",
+      "kind": "StringLiteral",
+      "offset": 84,
+      "length": 14,
+      "value": "\"FlyBuyNotify.NotifyCampaign\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyNotificationsResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 334,
+      "length": 27,
+      "value": "\"min_sync_interval_seconds\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyNotificationsResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 334,
+      "length": 27,
+      "value": "\"min_sync_interval_seconds\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotifyCampaignNotification.swift",
+      "kind": "StringLiteral",
+      "offset": 25,
+      "length": 26,
+      "value": "\"FlyBuyNotify.NotifyCampaignNotification\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Model\/NotificationInfo.swift",
+      "kind": "StringLiteral",
+      "offset": 90,
+      "length": 16,
+      "value": "\"FlyBuyNotify.NotificationInfo\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 230,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "StringLiteral",
+      "offset": 259,
+      "length": 21,
+      "value": "\"FlyBuyNotify.sqlite\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 470,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 486,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 502,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 518,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 470,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 486,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 502,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 518,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 470,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 486,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 502,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 518,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/NotifyDBManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 610,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 207,
+      "length": 24,
+      "value": "\"notifyCampaignsUpdated\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 287,
+      "length": 22,
+      "value": "\"notifyCampaignsError\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 361,
+      "length": 18,
+      "value": "\"notifySitesError\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 439,
+      "length": 26,
+      "value": "\"notifyNotificationsError\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 843,
+      "length": 16,
+      "value": "\"message_source\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 898,
+      "length": 15,
+      "value": "\"flybuy.notify\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 954,
+      "length": 18,
+      "value": "\"flybuy.notify.v2\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 1022,
+      "length": 27,
+      "value": "\"flybuy.notify.deeplinkURL\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 1086,
+      "length": 14,
+      "value": "\"FlyBuyNotify\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1135,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1173,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 1372,
+      "length": 21,
+      "value": "\"FlyBuyNotify.serial\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1908,
+      "length": 2,
+      "value": "60"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1913,
+      "length": 2,
+      "value": "60"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1918,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 2106,
+      "length": 70,
+      "value": "\"Error clearing campaign notifications: \""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 2175,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1952,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2253,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5016,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "Dictionary",
+      "offset": 13977,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21332,
+      "length": 28,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21368,
+      "length": 26,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21402,
+      "length": 25,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21435,
+      "length": 19,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21462,
+      "length": 22,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21492,
+      "length": 25,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21525,
+      "length": 15,
+      "value": "7"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21548,
+      "length": 33,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21589,
+      "length": 30,
+      "value": "9"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21332,
+      "length": 28,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21368,
+      "length": 26,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21402,
+      "length": 25,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21435,
+      "length": 19,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21462,
+      "length": 22,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21492,
+      "length": 25,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21525,
+      "length": 15,
+      "value": "7"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21548,
+      "length": 33,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21589,
+      "length": 30,
+      "value": "9"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 23588,
+      "length": 11,
+      "value": "\"FlyBuyNotify.NotifyError\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 24655,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 34386,
+      "length": 5,
+      "value": "false"
+    }
+  ]
+}

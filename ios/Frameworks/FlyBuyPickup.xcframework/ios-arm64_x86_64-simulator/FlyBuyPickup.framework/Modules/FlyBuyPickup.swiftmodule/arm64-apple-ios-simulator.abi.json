@@ -438,6 +438,34 @@
       },
       {
         "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "MapKit",
+        "printedName": "MapKit",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
         "name": "CoreLocation",
         "printedName": "CoreLocation",
         "declKind": "Import",
@@ -866,35 +894,35 @@
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Manager.swift",
       "kind": "StringLiteral",
-      "offset": 11704,
+      "offset": 11721,
       "length": 16,
       "value": "\"locationUpdate\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Manager.swift",
       "kind": "StringLiteral",
-      "offset": 11790,
+      "offset": 11807,
       "length": 36,
       "value": "\"locationAuthorizationNotDetermined\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Manager.swift",
       "kind": "StringLiteral",
-      "offset": 11883,
+      "offset": 11900,
       "length": 23,
       "value": "\"locationNotAuthorized\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Manager.swift",
       "kind": "StringLiteral",
-      "offset": 11970,
+      "offset": 11987,
       "length": 30,
       "value": "\"locationAuthorizationChanged\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Manager.swift",
       "kind": "IntegerLiteral",
-      "offset": 12072,
+      "offset": 12089,
       "length": 2,
       "value": "30"
     },
@@ -908,28 +936,28 @@
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/ETAData.swift",
       "kind": "BooleanLiteral",
-      "offset": 274,
+      "offset": 224,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/ETACalculator.swift",
       "kind": "FloatLiteral",
-      "offset": 130,
+      "offset": 282,
       "length": 3,
       "value": "5.0"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/ETACalculator.swift",
       "kind": "FloatLiteral",
-      "offset": 191,
+      "offset": 343,
       "length": 3,
       "value": "0.8"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/ETACalculator.swift",
       "kind": "Dictionary",
-      "offset": 263,
+      "offset": 462,
       "length": 3,
       "value": "[]"
     }

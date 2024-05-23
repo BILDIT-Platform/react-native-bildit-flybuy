@@ -24,7 +24,7 @@ import com.radiusnetworks.flybuy.sdk.pickup.PickupManager
 import com.radiusnetworks.flybuy.sdk.presence.PresenceLocator
 import com.radiusnetworks.flybuy.sdk.presence.PresenceManager
 import com.radiusnetworks.flybuy.sdk.exceptions.FlyBuyRuntimeException
-import org.threeten.bp.Instant
+import java.time.Instant
 import java.util.*
 import java.util.concurrent.ExecutionException
 

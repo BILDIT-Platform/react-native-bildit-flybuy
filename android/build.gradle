@@ -127,27 +127,7 @@ dependencies {
   // noinspection GradleDynamicVersion
   api 'com.facebook.react:react-native:+'
   implementation platform("com.radiusnetworks.flybuy:bom:2.12.0")
-
-  // I believe it's the same as putting missingDimensionStrategy "flybuy", "default"
-  // I just want to be sure the issue will be solved first then I improve this code
-  implementation('com.radiusnetworks.flybuy:pickup') {
-    attributes {
-      attribute(Attribute.of("com.android.build.api.attributes.BuildTypeAttr", String), "debug")
-      attribute(Attribute.of("flybuy", String), "default")
-    }
-  }
-
-  implementation('com.radiusnetworks.flybuy:presence') {
-    attributes {
-      attribute(Attribute.of("com.android.build.api.attributes.BuildTypeAttr", String), "debug")
-      attribute(Attribute.of("flybuy", String), "default")
-    }
-  }
-
-  implementation('com.radiusnetworks.flybuy:notify') {
-    attributes {
-      attribute(Attribute.of("com.android.build.api.attributes.BuildTypeAttr", String), "debug")
-      attribute(Attribute.of("flybuy", String), "default")
-    }
-  }
+  implementation 'com.radiusnetworks.flybuy:pickup' // If using pickup feature
+  implementation 'com.radiusnetworks.flybuy:presence' // If using presence feature
+  implementation 'com.radiusnetworks.flybuy:notify' // If using notify feature
 }

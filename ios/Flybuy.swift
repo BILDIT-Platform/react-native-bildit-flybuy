@@ -491,7 +491,7 @@ class Flybuy: RCTEventEmitter {
     @objc(presenceConfigure:)
     func presenceConfigure(presenceUUID: String) {
         DispatchQueue.main.async {
-            let uuid = UUID(uuidString: presenceUUID)!
+            let uuid = UUID(uuidString: presenceUUID) ?? UUID()
             FlyBuyPresence.Manager.shared.configure(presenceUUID: uuid)
         }
     }

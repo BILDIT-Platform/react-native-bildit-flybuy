@@ -13,8 +13,12 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => "11.0" }
   s.source       = { :git => "https://github.com/BILDIT-Platform/react-native-bildit-flybuy.git", :tag => "#{s.version}" }
 
-  s.source_files = "ios/**/*.{h,m,mm,swift}"
+  s.source_files = "ios/*.{h,m,mm,swift}"
 
   s.dependency "React"
   s.vendored_frameworks = 'ios/Frameworks/FlyBuy.xcframework', 'ios/Frameworks/FlyBuyPickup.xcframework', 'ios/Frameworks/FlyBuyNotify.xcframework', 'ios/Frameworks/FlyBuyPresence.xcframework'
+
+  s.pod_target_xcconfig = {
+    'HEADER_SEARCH_PATHS' => '$(PODS_ROOT)/react-native-my-library/ios/**'
+  }
 end

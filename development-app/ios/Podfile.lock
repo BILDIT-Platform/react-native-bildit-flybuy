@@ -213,6 +213,8 @@ PODS:
   - React-jsinspector (0.66.5)
   - React-logger (0.66.5):
     - glog
+  - react-native-bildit-flybuy (2.3.2):
+    - React
   - React-perflogger (0.66.5)
   - React-RCTActionSheet (0.66.5):
     - React-Core/RCTActionSheetHeaders (= 0.66.5)
@@ -304,6 +306,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - react-native-bildit-flybuy (from `../..`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -362,6 +365,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-bildit-flybuy:
+    :path: "../.."
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -412,6 +417,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 50a73168582868421112609d2fb155e607e34ec8
   React-jsinspector: 953260b8580780a6e81f2a6d319a8d42fd5028d8
   React-logger: fa4ff1e9c7e115648f7c5dafb7c20822ab4f7a7e
+  react-native-bildit-flybuy: 6276c310172f31920d6b6dc87ec78de6d08440d8
   React-perflogger: 169fb34f60c5fd793b370002ee9c916eba9bc4ae
   React-RCTActionSheet: 2355539e02ad5cd4b1328682ab046487e1e1e920
   React-RCTAnimation: 150644a38c24d80f1f761859c10c727412303f57
@@ -427,6 +433,6 @@ SPEC CHECKSUMS:
   RNPermissions: 314155ed6ce65237e7bd9fb6239219cce83228d3
   Yoga: b316a990bb6d115afa1b436b5626ac7c61717d17
 
-PODFILE CHECKSUM: 672d1e2d31602e0cdae4c8e9044e041c0c4552c2
+PODFILE CHECKSUM: 3d482aa11f664084231d1d191b25aeaaab718372
 
 COCOAPODS: 1.14.3

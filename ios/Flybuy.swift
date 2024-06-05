@@ -1,4 +1,5 @@
 import FlyBuy
+import CoreLocation
 import FlyBuyPickup
 import FlyBuyPresence
 import FlyBuyNotify
@@ -491,8 +492,8 @@ class Flybuy: RCTEventEmitter {
     @objc(presenceConfigure:)
     func presenceConfigure(presenceUUID: String) {
         DispatchQueue.main.async {
-            let uuid = UUID(uuidString: presenceUUID)!
-            FlyBuyPresence.Manager.shared.configure(presenceUUID: uuid)
+            let uuid = UUID(uuidString: presenceUUID)
+            FlyBuyPresence.Manager.shared.configure(presenceUUID: uuid!)
         }
     }
     

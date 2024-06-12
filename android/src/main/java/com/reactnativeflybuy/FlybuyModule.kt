@@ -1,5 +1,6 @@
 package com.reactnativeflybuy
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
@@ -919,6 +920,7 @@ fun decodeSites(sitesList: ReadableArray): List<Site> {
   return list
 }
 
+@SuppressLint("RestrictedApi")
 fun decodeSite(site: ReadableMap): Site {
   var type: String? = null
   var displayName: String? = null

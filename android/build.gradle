@@ -8,7 +8,7 @@ buildscript {
   }
 
   dependencies {
-    classpath('com.android.tools.build:gradle:4.2.2')
+    classpath('com.android.tools.build:gradle:8.0.2')
     // noinspection DifferentKotlinGradleVersion
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
   }
@@ -29,7 +29,7 @@ android {
   compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
   buildToolsVersion getExtOrDefault('buildToolsVersion')
   defaultConfig {
-    minSdkVersion 17
+    minSdkVersion 24
     targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
     versionCode 1
     versionName "1.0"
@@ -48,6 +48,7 @@ android {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
   }
+  namespace 'com.reactnativeflybuy'
 }
 
 repositories {
@@ -126,8 +127,8 @@ def kotlin_version = getExtOrDefault('kotlinVersion')
 dependencies {
   // noinspection GradleDynamicVersion
   api 'com.facebook.react:react-native:+'
-  implementation platform("com.radiusnetworks.flybuy:bom:2.12.0")
-  implementation 'com.radiusnetworks.flybuy:pickup' // If using pickup feature
-  implementation 'com.radiusnetworks.flybuy:presence' // If using presence feature
-  implementation 'com.radiusnetworks.flybuy:notify' // If using notify feature
+  api platform("com.radiusnetworks.flybuy:bom:2.12.0")
+  api 'com.radiusnetworks.flybuy:pickup' // If using pickup feature
+  api 'com.radiusnetworks.flybuy:presence' // If using presence feature
+  api 'com.radiusnetworks.flybuy:notify' // If using notify feature
 }

@@ -42,7 +42,7 @@ class MainApplication : Application(), ReactApplication {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
       load()
     }
-    FlyBuyCore.configure(this, "532.D18uTrGNpfSRRwQAzL9CH9Yh");
+    FlyBuyCore.configure(this, "your_key_here");
     PickupManager.getInstance().configure(this);
     NotifyManager.getInstance().configure(this);
     NotifyManager.getInstance().sync(true);

@@ -81,6 +81,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        missingDimensionStrategy "flybuy", "noTelemetry"
     }
     signingConfigs {
         debug {
@@ -113,6 +114,10 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+    implementation platform("com.radiusnetworks.flybuy:bom:2.12.0")
+    implementation 'com.radiusnetworks.flybuy:pickup' // If using pickup feature
+    implementation 'com.radiusnetworks.flybuy:presence' // If using presence feature
+    implementation 'com.radiusnetworks.flybuy:notify' // If using notify feature
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

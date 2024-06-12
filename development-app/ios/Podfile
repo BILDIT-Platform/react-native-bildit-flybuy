@@ -11,7 +11,7 @@ end
 node_require('react-native/scripts/react_native_pods.rb')
 node_require('react-native-permissions/scripts/setup.rb')
 
-platform :ios, '13.0'
+platform :ios, '14.0'
 prepare_react_native_project!
 
 setup_permissions([
@@ -33,8 +33,6 @@ target 'FlybuyExample' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
-
-  pod 'react-native-bildit-flybuy', :path => '../..'
 
   target 'FlybuyExampleTests' do
     inherit! :complete

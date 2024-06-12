@@ -29,7 +29,7 @@ android {
   compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
   buildToolsVersion getExtOrDefault('buildToolsVersion')
   defaultConfig {
-    minSdkVersion 17
+    minSdkVersion 24
     targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
     versionCode 1
     versionName "1.0"
@@ -127,8 +127,8 @@ def kotlin_version = getExtOrDefault('kotlinVersion')
 dependencies {
   // noinspection GradleDynamicVersion
   api 'com.facebook.react:react-native:+'
-  implementation platform("com.radiusnetworks.flybuy:bom:2.12.0")
-  implementation 'com.radiusnetworks.flybuy:pickup' // If using pickup feature
-  implementation 'com.radiusnetworks.flybuy:presence' // If using presence feature
-  implementation 'com.radiusnetworks.flybuy:notify' // If using notify feature
+  api platform("com.radiusnetworks.flybuy:bom:2.12.0")
+  api 'com.radiusnetworks.flybuy:pickup' // If using pickup feature
+  api 'com.radiusnetworks.flybuy:presence' // If using presence feature
+  api 'com.radiusnetworks.flybuy:notify' // If using notify feature
 }

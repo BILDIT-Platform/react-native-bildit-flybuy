@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {Text, Pressable, StyleSheet} from 'react-native';
 
 type ButtonProps = {
   title: string;
@@ -8,14 +8,13 @@ type ButtonProps = {
   onPress?: () => void;
 };
 
-const Button = ({ title, color = '#841584', onPress }: ButtonProps) => {
+const Button = ({title, color = '#841584', onPress}: ButtonProps) => {
   return (
-    <TouchableOpacity
-      style={[styles.button, { backgroundColor: color }]}
-      onPress={onPress}
-    >
+    <Pressable
+      style={[styles.button, {backgroundColor: color}]}
+      onPress={onPress}>
       <Text style={styles.text}>{title}</Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

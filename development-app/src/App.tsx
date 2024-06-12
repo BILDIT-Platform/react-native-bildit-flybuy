@@ -1,12 +1,12 @@
 import * as React from 'react';
 
 import {
-  StyleSheet,
-  View,
-  Text,
-  ScrollView,
   Platform,
   SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import Button from './Button';
 import FlyBuy, {
@@ -16,10 +16,11 @@ import FlyBuy, {
   PickupType,
 } from 'react-native-bildit-flybuy';
 import {
-  requestMultiple,
+  Permission,
   PERMISSIONS,
-  RESULTS,
+  requestMultiple,
   requestNotifications,
+  RESULTS,
 } from 'react-native-permissions';
 import AppConfig from './AppConfig.json';
 
@@ -52,35 +53,36 @@ const REGION = {
 
 export default function App() {
   const getLocationPermissions = async () => {
-    const granted = await requestMultiple(
-      Platform.select({
-        android: [
-          PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
-          PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
-        ],
-        ios: [PERMISSIONS.IOS.LOCATION_WHEN_IN_USE],
-      }),
-      {
-        title: 'ExampleApp',
-        message: 'ExampleApp would like access to your location ',
-      }
-    );
-    return granted === RESULTS.GRANTED;
+    const locationPermissions = Platform.select({
+      android: [
+        PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
+        PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+      ],
+      ios: [PERMISSIONS.IOS.LOCATION_WHEN_IN_USE],
+    }) as Permission[];
+    const results = await requestMultiple(locationPermissions);
+    return Platform.select({
+      android: [
+        PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
+        PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+      ].every(permission => results[permission] === RESULTS.GRANTED),
+      ios: results[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] === RESULTS.GRANTED,
+    });
   };
 
   const getNotificationPermission = () => {
     requestNotifications(['alert', 'sound', 'badge']).then(
-      ({ status, settings }) => {
+      ({status, settings}) => {
         console.log(status, settings);
-      }
+      },
     );
   };
 
   // Orders
   const fetchOrders = () => {
     FlyBuy.Core.Orders.fetchOrders()
-      .then((orders) => console.tron.log('orders', orders))
-      .catch((err) => console.tron.log(err));
+      .then(orders => console.tron.log('orders', orders))
+      .catch(err => console.tron.log(err));
   };
 
   const createOrderWithPartnerIdentification = () => {
@@ -89,8 +91,8 @@ export default function App() {
       orderPid: ORDER_PID,
       customerInfo: CUSTOMER_INFO,
     })
-      .then((order) => console.tron.log('order', order))
-      .catch((err) => console.tron.log(err));
+      .then(order => console.tron.log('order', order))
+      .catch(err => console.tron.log(err));
   };
 
   const createOrder = () => {
@@ -106,8 +108,8 @@ export default function App() {
       orderState: OrderStateType.DELAYED,
       pickupType: PickupType.DELIVERY,
     })
-      .then((order) => console.tron.log('order', order))
-      .catch((err) => console.tron.log(err));
+      .then(order => console.log('order', order))
+      .catch(err => console.error(err));
   };
 
   const createOrderWithThreeParams = () => {
@@ -116,8 +118,8 @@ export default function App() {
       pid: NEW_PID,
       customerInfo: CUSTOMER_INFO,
     })
-      .then((order) => console.tron.log('order', order))
-      .catch((err) => console.tron.log(err));
+      .then(order => console.log('order', order))
+      .catch(err => console.error(err));
   };
 
   const createOrderWithFourParams = () => {
@@ -131,8 +133,8 @@ export default function App() {
       customerInfo: CUSTOMER_INFO,
       pickupWindow,
     })
-      .then((order) => console.tron.log('order', order))
-      .catch((err) => console.tron.log(err));
+      .then(order => console.tron.log('order', order))
+      .catch(err => console.tron.log(err));
   };
 
   const createOrderWithFiveParams = () => {
@@ -147,104 +149,105 @@ export default function App() {
       pickupWindow,
       orderState: OrderStateType.DELAYED,
     })
-      .then((order) => console.tron.log('order', order))
-      .catch((err) => console.tron.log(err));
+      .then(order => console.tron.log('order', order))
+      .catch(err => console.tron.log(err));
   };
 
   const claimOrder = () => {
     FlyBuy.Core.Orders.claimOrder(
       '385BQT5BMH',
       CUSTOMER_INFO,
-      PickupType.PICKUP
+      PickupType.PICKUP,
     )
-      .then((order) => console.tron.log('claim order', order))
-      .catch((err) => console.tron.log(err));
+      .then(order => console.tron.log('claim order', order))
+      .catch(err => console.tron.log(err));
   };
 
   const fetchOrderByRedemptionCode = () => {
     FlyBuy.Core.Orders.fetchOrderByRedemptionCode('QDWRBDKJJG')
-      .then((order) => console.tron.log('order by redemcode', order))
-      .catch((err) => console.tron.log(err));
+      .then(order => console.tron.log('order by redemcode', order))
+      .catch(err => console.tron.log(err));
   };
 
   const updateOrderState = () => {
     FlyBuy.Core.Orders.updateOrderState(
       ORDER_ID,
-      OrderStateType.DRIVER_ASSIGNED
+      OrderStateType.DRIVER_ASSIGNED,
     )
-      .then((order) => console.tron.log('updateOrderState', order))
-      .catch((err) => console.tron.log(err));
+      .then(order => console.tron.log('updateOrderState', order))
+      .catch(err => console.tron.log(err));
   };
 
   const updateOrderCustomerStateWithSpot = () => {
     FlyBuy.Core.Orders.updateOrderCustomerStateWithSpot(
       ORDER_ID,
       CustomerState.WAITING,
-      '1'
+      '1',
     )
-      .then((order) =>
-        console.tron.log('updateOrderCustomerStateWithSpot', order)
+      .then(order =>
+        console.tron.log('updateOrderCustomerStateWithSpot', order),
       )
-      .catch((err) => console.tron.log(err));
+      .catch(err => console.tron.log(err));
   };
 
   const updateOrderCustomerState = () => {
     FlyBuy.Core.Orders.updateOrderCustomerState(
       ORDER_ID,
-      CustomerState.DEPARTED
+      CustomerState.DEPARTED,
     )
-      .then((order) => console.tron.log('updateOrderCustomerState', order))
-      .catch((err) => console.tron.log(err));
+      .then(order => console.tron.log('updateOrderCustomerState', order))
+      .catch(err => console.tron.log(err));
   };
 
   const rateOrder = () => {
     FlyBuy.Core.Orders.rateOrder(ORDER_ID, 5, 'Awesome!')
-      .then((order) => console.tron.log('rateOrder', order))
-      .catch((err) => console.tron.log(err));
+      .then(order => console.tron.log('rateOrder', order))
+      .catch(err => console.tron.log(err));
   };
 
   // Customer
 
   const loginWithToken = () => {
     FlyBuy.Core.Customer.loginWithToken('mEVBKpwecm89bXh1juMwPuYk')
-      .then((customer) => console.tron.log('customer', customer))
-      .catch((err) => console.tron.log(err));
+      .then(customer => console.tron.log('customer', customer))
+      .catch(err => console.tron.log(err));
   };
 
   const login = () => {
     FlyBuy.Core.Customer.login('ha_zellat@esi.dz', 'password')
-      .then((customer) => console.tron.log('customer', customer))
-      .catch((err) => console.tron.log(err));
+      .then(customer => console.log(customer))
+      // .then(customer => console.tron.log('customer', customer))
+      .catch(err => console.error(err));
   };
 
   const signUp = () => {
     FlyBuy.Core.Customer.signUp('ha_zellat@esi.dz', 'password')
-      .then((customer) => console.tron.log('customer', customer))
-      .catch((err) => console.tron.log(err));
+      .then(customer => console.tron.log('customer', customer))
+      .catch(err => console.tron.log(err));
   };
 
   const logout = () => {
     FlyBuy.Core.Customer.logout()
       .then(() => console.tron.log('logout success'))
-      .catch((err) => console.tron.log(err));
+      .catch(err => console.tron.log(err));
   };
 
   const createCustomer = () => {
     FlyBuy.Core.Customer.createCustomer(CUSTOMER_INFO)
-      .then((customer) => console.tron.log('customer', customer))
-      .catch((err) => console.tron.log(err));
+      .then(customer => console.tron.log('customer', customer))
+      .catch(err => console.tron.log(err));
   };
 
   const updateCustomer = () => {
     FlyBuy.Core.Customer.updateCustomer(CUSTOMER_INFO)
-      .then((customer) => console.tron.log('customer', customer))
-      .catch((err) => console.tron.log(err));
+      .then(customer => console.tron.log('customer', customer))
+      .catch(err => console.tron.log(err));
   };
 
   const getCurrentCustomer = () => {
     FlyBuy.Core.Customer.getCurrentCustomer()
-      .then((customer) => console.tron.log('customer', customer))
-      .catch((err) => console.tron.log(err));
+      .then(customer => console.tron.log('customer', customer))
+      .catch(err => console.tron.log(err));
   };
 
   // Notify
@@ -252,13 +255,13 @@ export default function App() {
   const clearNotifications = () => {
     FlyBuy.Notify.clearNotifications()
       .then(() => console.tron.log('notifications cleared'))
-      .catch((err) => console.tron.log('err', err));
+      .catch(err => console.tron.log('err', err));
   };
 
   const createForSitesInRegion = () => {
     FlyBuy.Notify.createForSitesInRegion(REGION, NOTIFICATION)
-      .then((sites) => console.tron.log('notifications crated', sites))
-      .catch((err) => console.tron.log('err', err));
+      .then(sites => console.tron.log('notifications crated', sites))
+      .catch(err => console.tron.log('err', err));
   };
 
   const createForSites = () => {
@@ -285,15 +288,15 @@ export default function App() {
 
     FlyBuy.Notify.createForSites(sites, NOTIFICATION)
       .then(() => console.tron.log('notifications crated'))
-      .catch((err) => console.tron.log('err', err));
+      .catch(err => console.tron.log('err', err));
   };
 
   // Sites
 
   const fetchAllSites = () => {
     FlyBuy.Core.Sites.fetchAllSites()
-      .then((sites) => console.tron.log('sites', sites))
-      .catch((err) => console.tron.log('err', err));
+      .then(sites => console.tron.log('sites', sites))
+      .catch(err => console.tron.log('err', err));
   };
 
   const fetchSitesByQuery = () => {
@@ -301,8 +304,8 @@ export default function App() {
       query: 'Test',
       page: 1,
     })
-      .then((sites) => console.tron.log('sites', sites))
-      .catch((err) => console.tron.log('err', err));
+      .then(sites => console.tron.log('sites', sites))
+      .catch(err => console.tron.log('err', err));
   };
 
   const fetchSitesByRegion = () => {
@@ -311,16 +314,16 @@ export default function App() {
       page: 1,
       region: REGION,
     })
-      .then((sites) => console.tron.log('sites', sites))
-      .catch((err) => console.tron.log('err', err));
+      .then(sites => console.tron.log('sites', sites))
+      .catch(err => console.tron.log('err', err));
   };
 
   const fetchSiteByPartnerIdentifier = () => {
     FlyBuy.Core.Sites.fetchSiteByPartnerIdentifier({
       partnerIdentifier: 'NANGKA30',
     })
-      .then((site) => console.tron.log('site', site))
-      .catch((err) => console.tron.log('err', err));
+      .then(site => console.tron.log('site', site))
+      .catch(err => console.tron.log('err', err));
   };
 
   // Prescence
@@ -328,18 +331,18 @@ export default function App() {
   const startLocator = () => {
     FlyBuy.Presence.startLocatorWithIdentifier(
       '12345678',
-      "{'key':'value'}"
-    ).then((res) => {
+      "{'key':'value'}",
+    ).then(res => {
       console.tron.log('locatorRssi----->', res);
     });
   };
 
   const stopLocator = () => {
     FlyBuy.Presence.stopLocator()
-      .then((result) => {
+      .then(result => {
         console.tron.log(result);
       })
-      .catch((e) => {
+      .catch(e => {
         console.tron.log(e);
       });
   };
@@ -349,11 +352,13 @@ export default function App() {
   };
 
   React.useEffect(() => {
-    FlyBuy.Core.configure(AppConfig.APP_TOKEN);
-    FlyBuy.Notify.configure();
-    FlyBuy.Pickup.configure();
-    FlyBuy.Presence.configure(AppConfig.PRESENCE_UUID);
-    FlyBuy.Notify.sync(true);
+    if (Platform.OS === 'ios') {
+      FlyBuy.Core.configure(AppConfig.APP_TOKEN);
+      FlyBuy.Notify.configure();
+      FlyBuy.Pickup.configure();
+      FlyBuy.Presence.configure(AppConfig.PRESENCE_UUID);
+      FlyBuy.Notify.sync(true);
+    }
     getNotificationPermission();
     getLocationPermissions();
   }, []);
@@ -363,14 +368,14 @@ export default function App() {
       'orderUpdated',
       (event: any) => {
         console.tron.log('event', event);
-      }
+      },
     );
 
     const notifyListener = FlyBuy.eventEmitter.addListener(
       'notifyEvents',
       (event: any) => {
         console.log('notify event', event);
-      }
+      },
     );
 
     return () => {

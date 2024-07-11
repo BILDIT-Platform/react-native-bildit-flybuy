@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
   View,
+} from 'react-native'; 
 import Button from './Button';
 import FlyBuy, {
   CustomerState,

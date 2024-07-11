@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EC8C3BE2C3FFED40058C128 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA0BEEB2C3F204A007C320F /* CoreLocation.framework */; };
 		B0750E09266A9FE40085AC8D /* Flybuy.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* Flybuy.m */; };
 		B0750E2D266AA0320085AC8D /* Flybuy-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D5245B92E700C19C63 /* Flybuy-Bridging-Header.h */; };
 		F4FF95D7245B92E800C19C63 /* Flybuy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /* Flybuy.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libFlybuy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFlybuy.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EA0BEEB2C3F204A007C320F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		B3E7B5891CC2AC0600A0062D /* Flybuy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flybuy.m; sourceTree = "<group>"; };
 		F4FF95D5245B92E700C19C63 /* Flybuy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Flybuy-Bridging-Header.h"; sourceTree = "<group>"; };
 		F4FF95D6245B92E800C19C63 /* Flybuy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flybuy.swift; sourceTree = "<group>"; };
@@ -36,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EC8C3BE2C3FFED40058C128 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +53,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1EA0BEEA2C3F204A007C320F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1EA0BEEB2C3F204A007C320F /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +68,7 @@
 				B3E7B5891CC2AC0600A0062D /* Flybuy.m */,
 				F4FF95D5245B92E700C19C63 /* Flybuy-Bridging-Header.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				1EA0BEEA2C3F204A007C320F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

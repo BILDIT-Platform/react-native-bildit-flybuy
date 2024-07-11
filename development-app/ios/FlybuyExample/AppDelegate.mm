@@ -1,16 +1,47 @@
 #import "AppDelegate.h"
-
+#import <CoreLocation/CoreLocation.h>
 #import <React/RCTBundleURLProvider.h>
+#import "Flybuy-Umbrella.h"
+
+@interface AppDelegate () <CLLocationManagerDelegate>
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@end
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.moduleName = @"FlybuyExample";
-  // You can add your custom initial props in the dictionary below.
-  // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
+  
+  self.locationManager = [[CLLocationManager alloc] init];
+  self.locationManager.delegate = self;
+  [self.locationManager requestWhenInUseAuthorization];
 
+  // Load environment variables & initialize FlyBuy
+  NSString *appToken = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"FLYBUY_APP_TOKEN"];
+  NSString *presenceUUIDString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"FLYBUY_PRESENCE_UUID"];
+
+  FlyBuyConfigOptionsBuilder *builder = [FlyBuyConfigOptions BuilderWithToken:appToken];
+  FlyBuyConfigOptions *configOptions = [builder build];
+  [FlyBuyCore configureWithOptions:configOptions];
+  [[FlyBuyPickupManager shared] configure];
+  
+  NSUUID *presenceUUID = [[NSUUID alloc] initWithUUIDString:presenceUUIDString];
+  [[FlyBuyPresenceManager shared] configureWithPresenceUUID:presenceUUID];
+  NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+  NSString *bgTaskIdentifier = [NSString stringWithFormat:@"%@.refresh.task.identifier", bundleIdentifier];
+  [[FlyBuyNotifyManager shared] configureWithBgTaskIdentifier:bgTaskIdentifier bgSyncCallback:^(NSError * _Nullable error) {
+     if (error) {
+       NSLog(@"Error during background sync: %@", error.localizedDescription);
+     } else {
+       NSLog(@"Background sync completed successfully.");
+     }
+   }];
+  
+  // TODO: add button in wrapper to toggle
+  // ! this should be `false` in prod: https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify/050-testing?id=testing-and-debugging
+  // [[FlyBuyNotifyManager shared] syncWithForce:false callback:nil];
+  
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
@@ -26,6 +57,11 @@
 #else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
+}
+
+// Implement CLLocationManagerDelegate methods if needed
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    // Handle authorization status changes
 }
 
 @end

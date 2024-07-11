@@ -45,6 +45,6 @@ class MainApplication : Application(), ReactApplication {
     FlyBuyCore.configure(this, "your_key_here");
     PickupManager.getInstance().configure(this);
     NotifyManager.getInstance().configure(this);
-    NotifyManager.getInstance().sync(true);
+    // NotifyManager.getInstance().sync(true);
   }
 }

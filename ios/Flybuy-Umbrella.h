@@ -6,3 +6,5 @@
 #import <FlyBuyPickup/FlyBuyPickup.h>
 #import <FlyBuyPresence/FlyBuyPresence-Swift.h>
 #import <FlyBuyPresence/FlyBuyPresence.h>
+#import <FlyBuyLiveStatus/FlyBuyLiveStatus-Swift.h>
+#import <FlyBuyLiveStatus/FlyBuyLiveStatus.h>

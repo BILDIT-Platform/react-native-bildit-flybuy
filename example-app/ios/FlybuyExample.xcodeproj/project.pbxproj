@@ -361,6 +361,7 @@
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuyPickup.framework/FlyBuyPickup",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuyNotify.framework/FlyBuyNotify",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuyPresence.framework/FlyBuyPresence",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-bildit-flybuy/FlyBuyLiveStatus.framework/FlyBuyLiveStatus",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -368,6 +369,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlyBuyPickup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlyBuyNotify.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlyBuyPresence.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlyBuyLiveStatus.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

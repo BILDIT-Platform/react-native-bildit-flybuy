@@ -3,6 +3,7 @@ import CoreLocation
 import FlyBuyPickup
 import FlyBuyPresence
 import FlyBuyNotify
+import FlyBuyLiveStatus
 
 
 enum FlyBuySupportedEvents: String, CaseIterable {

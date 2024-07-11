@@ -71,3 +71,4 @@ development-app2/ios/Pods
 .yarn/cache
 install-state.gz
 Gemfile.lock
+.git_backup/

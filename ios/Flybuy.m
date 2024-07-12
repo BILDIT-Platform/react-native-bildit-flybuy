@@ -154,4 +154,8 @@ RCT_EXTERN_METHOD(updatePushToken:(NSString *)token)
 
 RCT_EXTERN_METHOD(handleRemoteNotification:(NSDictionary *)userInfo)
 
+// LiveStatus
+
+RCT_EXTERN_METHOD(liveStatusConfigure:(NSString *)iconName)
+
 @end

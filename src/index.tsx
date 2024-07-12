@@ -247,10 +247,12 @@ type FlyBuyType = {
   Core: {
     configure(token: string): void;
     updatePushToken(token: string): void;
+    // liveStatusConfigure:(icon: string) void; any: any;
     handleRemoteNotification(data: any): void;
     Orders: Orders;
     Customer: Customer;
     Sites: Sites;
+    
   };
   eventEmitter: any;
 };
@@ -278,6 +280,7 @@ const FlyBuyModule = {
   Core: {
     configure: Flybuy.configure,
     updatePushToken: Flybuy.updatePushToken,
+    // liveStatusConfigure:Flybuy.liveStatusConfigure,
     handleRemoteNotification: Flybuy.handleRemoteNotification,
     Orders: {
       fetchOrders: Flybuy.fetchOrders,
@@ -337,6 +340,9 @@ const FlyBuyModule = {
       fetchSitesByRegion: Flybuy.fetchSitesByRegion,
       fetchSiteByPartnerIdentifier: Flybuy.fetchSiteByPartnerIdentifier,
     },
+  },
+  LiveStatus:{
+    liveStatusConfigure :Flybuy.liveStatusConfigure
   },
   eventEmitter: new NativeEventEmitter(Flybuy),
 };

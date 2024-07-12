@@ -548,6 +548,18 @@ class Flybuy: RCTEventEmitter {
     func handleRemoteNotification(userInfo: Dictionary<String, Any>) {
         FlyBuy.Core.handleRemoteNotification(userInfo)
     }
+    //LiveStatus
+    
+    @objc(liveStatusConfigure:)
+    func liveStatusConfigure(iconName: String) {
+        if #available(iOS 16.2, *) {
+               var builder = LiveStatusOptions.Builder()
+               if !iconName.isEmpty {
+                 builder=builder.setIconName(iconName)
+               }
+               FlyBuyLiveStatusManager.shared.configure(withOptions: builder.build())
+           }
+    }
     
     // Parsers
     

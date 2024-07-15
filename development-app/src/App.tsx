@@ -13,7 +13,7 @@ import FlyBuy, {
   CustomerState,
   ISite,
   OrderStateType,
-  PickupType,
+  PickupType
 } from 'react-native-bildit-flybuy';
 import {
   Permission,
@@ -23,7 +23,6 @@ import {
   RESULTS,
 } from 'react-native-permissions';
 import AppConfig from './AppConfig.json';
-
 const ORDER_ID = 85300686;
 const SITE_ID = 15942;
 const NEW_PID = '01380326929';
@@ -347,6 +346,9 @@ export default function App() {
       });
   };
 
+  const liveStatus =(iconName?:string)=>{
+    FlyBuy.LiveStatus.configure(iconName)
+  };
   const notifySync = () => {
     FlyBuy.Notify.sync(true);
   };
@@ -449,6 +451,9 @@ export default function App() {
           <Text>Presence</Text>
           <Button title="start locator" onPress={startLocator} />
           <Button title="stop locator" onPress={stopLocator} />
+          <Text>Live Status</Text>
+          <Button title="Configure" onPress={liveStatus} />
+          <Button title="Configure with Icon" onPress={()=>liveStatus("AppIcon")} />
         </View>
       </ScrollView>
     </SafeAreaView>

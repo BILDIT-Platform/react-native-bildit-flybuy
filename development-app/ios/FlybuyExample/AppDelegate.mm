@@ -38,10 +38,6 @@
      }
    }];
   
-  // TODO: add button in wrapper to toggle
-  // ! this should be `false` in prod: https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/notify/050-testing?id=testing-and-debugging
-  // [[FlyBuyNotifyManager shared] syncWithForce:false callback:nil];
-  
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 

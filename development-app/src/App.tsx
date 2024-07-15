@@ -439,7 +439,6 @@ export default function App() {
           <Text>Presence</Text>
           <Button title="start locator" onPress={startLocator} />
           <Button title="stop locator" onPress={stopLocator} />
-          {/* TODO: add button for force-sync here */}
         </View>
       </ScrollView>
     </SafeAreaView>

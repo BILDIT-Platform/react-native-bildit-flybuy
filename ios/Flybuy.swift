@@ -5,7 +5,6 @@ import FlyBuyPresence
 import FlyBuyNotify
 import FlyBuyLiveStatus
 
-
 enum FlyBuySupportedEvents: String, CaseIterable {
     case ordersUpdated = "ordersUpdated";
     case ordersError = "ordersError";
@@ -548,6 +547,7 @@ class Flybuy: RCTEventEmitter {
     func handleRemoteNotification(userInfo: Dictionary<String, Any>) {
         FlyBuy.Core.handleRemoteNotification(userInfo)
     }
+    
     //LiveStatus
     
     @objc(liveStatusConfigure:)

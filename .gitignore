@@ -68,3 +68,7 @@ development-app/ios/Build
 development-app/ios/Pods
 development-app2/ios/Build
 development-app2/ios/Pods
+.yarn/cache
+install-state.gz
+Gemfile.lock
+.git_backup/

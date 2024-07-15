@@ -7,13 +7,13 @@ import {
   StyleSheet,
   Text,
   View,
-} from 'react-native'; 
+} from 'react-native';
 import Button from './Button';
 import FlyBuy, {
   CustomerState,
   ISite,
   OrderStateType,
-  PickupType
+  PickupType,
 } from 'react-native-bildit-flybuy';
 import {
   Permission,
@@ -22,7 +22,7 @@ import {
   requestNotifications,
   RESULTS,
 } from 'react-native-permissions';
-import AppConfig from './AppConfig.json';
+
 const ORDER_ID = 85300686;
 const SITE_ID = 15942;
 const NEW_PID = '01380326929';
@@ -57,7 +57,6 @@ export default function App() {
         PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
         PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
       ],
-      ios: [PERMISSIONS.IOS.LOCATION_WHEN_IN_USE],
     }) as Permission[];
     const results = await requestMultiple(locationPermissions);
     return Platform.select({
@@ -65,7 +64,6 @@ export default function App() {
         PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
         PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
       ].every(permission => results[permission] === RESULTS.GRANTED),
-      ios: results[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] === RESULTS.GRANTED,
     });
   };
 
@@ -346,21 +344,15 @@ export default function App() {
       });
   };
 
-  const liveStatus =(iconName?:string)=>{
-    FlyBuy.LiveStatus.configure(iconName)
+  const liveStatus = (iconName?: string) => {
+    FlyBuy.LiveStatus.configure(iconName);
   };
+
   const notifySync = () => {
     FlyBuy.Notify.sync(true);
   };
 
   React.useEffect(() => {
-    if (Platform.OS === 'ios') {
-      FlyBuy.Core.configure(AppConfig.APP_TOKEN);
-      FlyBuy.Notify.configure();
-      FlyBuy.Pickup.configure();
-      FlyBuy.Presence.configure(AppConfig.PRESENCE_UUID);
-      FlyBuy.Notify.sync(true);
-    }
     getNotificationPermission();
     getLocationPermissions();
   }, []);
@@ -453,7 +445,10 @@ export default function App() {
           <Button title="stop locator" onPress={stopLocator} />
           <Text>Live Status</Text>
           <Button title="Configure" onPress={liveStatus} />
-          <Button title="Configure with Icon" onPress={()=>liveStatus("AppIcon")} />
+          <Button
+            title="Configure with Icon"
+            onPress={() => liveStatus('AppIcon')}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

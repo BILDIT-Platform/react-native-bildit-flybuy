@@ -240,14 +240,15 @@ type Pickup = {
   onPermissionChanged(): void;
 };
 
-type LiveStatus ={
-   configure(iconName?:string):void;
-}
+type LiveStatus = {
+  configure(iconName?: string): void;
+};
+
 type FlyBuyType = {
   Pickup: Pickup;
   Notify: Notify;
   Presence: Presence;
-  LiveStatus:LiveStatus;
+  LiveStatus: LiveStatus;
   Core: {
     configure(token: string): void;
     updatePushToken(token: string): void;
@@ -342,8 +343,8 @@ const FlyBuyModule = {
       fetchSiteByPartnerIdentifier: Flybuy.fetchSiteByPartnerIdentifier,
     },
   },
-  LiveStatus:{
-    configure :(iconName='')=>Flybuy.liveStatusConfigure(iconName)
+  LiveStatus: {
+    configure: (iconName = '') => Flybuy.liveStatusConfigure(iconName),
   },
   eventEmitter: new NativeEventEmitter(Flybuy),
 };

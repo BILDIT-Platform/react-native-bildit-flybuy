@@ -55,9 +55,4 @@
 #endif
 }
 
-// Implement CLLocationManagerDelegate methods if needed
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-    // Handle authorization status changes
-}
-
 @end

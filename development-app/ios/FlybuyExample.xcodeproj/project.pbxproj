@@ -12,6 +12,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1E24D8AF2C46985300BB68D2 /* FlyBuyLiveStatusManagerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E24D8AE2C46985300BB68D2 /* FlyBuyLiveStatusManagerWrapper.swift */; };
 		1EDF28392C3EAD57008534E5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDF28382C3EAD57008534E5 /* CoreLocation.framework */; };
 		7699B88040F8A987B510C191 /* libPods-FlybuyExample-FlybuyExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-FlybuyExample-FlybuyExampleTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -40,6 +41,8 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FlybuyExample/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = FlybuyExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-FlybuyExample-FlybuyExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlybuyExample-FlybuyExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E24D8AD2C46985200BB68D2 /* FlybuyExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlybuyExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		1E24D8AE2C46985300BB68D2 /* FlyBuyLiveStatusManagerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyBuyLiveStatusManagerWrapper.swift; sourceTree = "<group>"; };
 		1EDF28382C3EAD57008534E5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3B4392A12AC88292D35C810B /* Pods-FlybuyExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlybuyExample.debug.xcconfig"; path = "Target Support Files/Pods-FlybuyExample/Pods-FlybuyExample.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-FlybuyExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlybuyExample.release.xcconfig"; path = "Target Support Files/Pods-FlybuyExample/Pods-FlybuyExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				A86AC66325679631CE37A931 /* PrivacyInfo.xcprivacy */,
+				1E24D8AE2C46985300BB68D2 /* FlyBuyLiveStatusManagerWrapper.swift */,
+				1E24D8AD2C46985200BB68D2 /* FlybuyExample-Bridging-Header.h */,
 			);
 			name = FlybuyExample;
 			sourceTree = "<group>";
@@ -215,7 +220,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1540;
 					};
 				};
 			};
@@ -402,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E24D8AF2C46985300BB68D2 /* FlyBuyLiveStatusManagerWrapper.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -422,6 +428,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-FlybuyExample-FlybuyExampleTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -449,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-FlybuyExample-FlybuyExampleTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = FlybuyExampleTests/Info.plist;
@@ -605,6 +613,7 @@
 					"$(SRCROOT)/../ios/Frameworks/**",
 				);
 				INFOPLIST_FILE = FlybuyExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -617,6 +626,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = FlybuyExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "FlybuyExample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -695,6 +705,7 @@
 					"$(SRCROOT)/../ios/Frameworks/**/**",
 				);
 				INFOPLIST_FILE = FlybuyExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -707,6 +718,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = FlybuyExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "FlybuyExample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

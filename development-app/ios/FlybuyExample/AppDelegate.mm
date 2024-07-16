@@ -2,6 +2,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <React/RCTBundleURLProvider.h>
 #import "Flybuy-Umbrella.h"
+#import "FlybuyExample-Swift.h"
 
 @interface AppDelegate () <CLLocationManagerDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -21,13 +22,20 @@
   NSString *appToken = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"FLYBUY_APP_TOKEN"];
   NSString *presenceUUIDString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"FLYBUY_PRESENCE_UUID"];
 
+  // FlyBuy configuration
   FlyBuyConfigOptionsBuilder *builder = [FlyBuyConfigOptions BuilderWithToken:appToken];
   FlyBuyConfigOptions *configOptions = [builder build];
   [FlyBuyCore configureWithOptions:configOptions];
   [[FlyBuyPickupManager shared] configure];
   
+  // Presence configuration
   NSUUID *presenceUUID = [[NSUUID alloc] initWithUUIDString:presenceUUIDString];
   [[FlyBuyPresenceManager shared] configureWithPresenceUUID:presenceUUID];
+  
+  // Optional: Enable Live Status live activity, configure it's options, & build them
+  [[FlyBuyLiveStatusManagerWrapper shared] configureLiveStatusWithIconName:@"AppIcon"];
+
+  // Background Task configuration
   NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
   NSString *bgTaskIdentifier = [NSString stringWithFormat:@"%@.refresh.task.identifier", bundleIdentifier];
   [[FlyBuyNotifyManager shared] configureWithBgTaskIdentifier:bgTaskIdentifier bgSyncCallback:^(NSError * _Nullable error) {

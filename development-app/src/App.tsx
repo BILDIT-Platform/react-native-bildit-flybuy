@@ -344,10 +344,6 @@ export default function App() {
       });
   };
 
-  const liveStatus = (iconName?: string) => {
-    FlyBuy.LiveStatus.configure(iconName);
-  };
-
   const notifySync = () => {
     FlyBuy.Notify.sync(true);
   };
@@ -443,12 +439,6 @@ export default function App() {
           <Text>Presence</Text>
           <Button title="start locator" onPress={startLocator} />
           <Button title="stop locator" onPress={stopLocator} />
-          <Text>Live Status</Text>
-          <Button title="Configure" onPress={liveStatus} />
-          <Button
-            title="Configure with Icon"
-            onPress={() => liveStatus('AppIcon')}
-          />
         </View>
       </ScrollView>
     </SafeAreaView>

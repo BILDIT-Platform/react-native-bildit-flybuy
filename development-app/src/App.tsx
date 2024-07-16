@@ -84,7 +84,7 @@ export default function App() {
 
   const createOrderWithPartnerIdentification = () => {
     FlyBuy.Core.Orders.createOrder({
-      sitePid: SITE_PID,
+      sitePartnerIdentifier: SITE_PID,
       orderPid: ORDER_PID,
       customerInfo: CUSTOMER_INFO,
     })

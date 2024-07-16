@@ -189,7 +189,7 @@ class Flybuy: RCTEventEmitter {
     }
 
     @objc(createOrderWithPartnerIdentifier:withOrderPartnerIdentifier:withCustomerInfo:withPickupWindow:withOrderState:withPickupType:withResolver:withRejecter:)
-    func createOrderWithPartnerIdentifier(sitePid: String,
+    func createOrderWithPartnerIdentifier(sitePartnerIdentifier: String,
                      orderPid: String,
                      customerInfo: Dictionary<String, String>,
                      pickupWindow: Dictionary<String, String>? = nil,
@@ -210,11 +210,11 @@ class Flybuy: RCTEventEmitter {
         // TODO: adjust framework call based on params availability
         if (pickupWindow != nil) {
             let pickupWindowInfo = decodePickupWindow(pickupWindow: pickupWindow)
-            FlyBuy.Core.orders.create(sitePartnerIdentifier: sitePid, orderPartnerIdentifier: orderPid, customerInfo: info, pickupWindow: pickupWindowInfo, state: orderState ?? "created", pickupType: pickupType ?? "") {
+            FlyBuy.Core.orders.create(sitePartnerIdentifier: sitePartnerIdentifier, orderPartnerIdentifier: orderPid, customerInfo: info, pickupWindow: pickupWindowInfo, state: orderState ?? "created", pickupType: pickupType ?? "") {
               (order, error) in callbackHandler(order: order, error: error)
             }
         } else if (pickupWindow == nil) {
-            FlyBuy.Core.orders.create(sitePartnerIdentifier: sitePid, orderPartnerIdentifier: orderPid, customerInfo: info, state: orderState ?? "created", pickupType: pickupType ?? "") {
+            FlyBuy.Core.orders.create(sitePartnerIdentifier: sitePartnerIdentifier, orderPartnerIdentifier: orderPid, customerInfo: info, state: orderState ?? "created", pickupType: pickupType ?? "") {
                     (order, error) in callbackHandler(order: order, error: error)
                 }
         }

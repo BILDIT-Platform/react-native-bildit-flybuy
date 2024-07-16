@@ -98,8 +98,8 @@ export interface ICustomer {
   info: ICustomerInfo;
 }
 
-type CreateOrderWithSitePid = {
-  sitePid: string;
+type CreateOrderWithSitePartnerIdentifier = {
+  sitePartnerIdentifier: string;
   orderPid: string;
   customerInfo: ICustomerInfo;
   pickupWindow?: PickupWindow;
@@ -117,7 +117,7 @@ type CreateOrderWithSiteId = {
 };
 
 type CreateOrderParamsType = Partial<CreateOrderWithSiteId> &
-  Partial<CreateOrderWithSitePid>;
+  Partial<CreateOrderWithSitePartnerIdentifier>;
 
 type PickupWindow = {
   start: string;
@@ -163,7 +163,7 @@ type Orders = {
    *
    * 1. Create Order using Site ID, the siteId and pid is a mandatory for this
    *
-   * 2. Create Order using Site Partner Identifier, the sitePid and orderPid is a mandatory for this
+   * 2. Create Order using Site Partner Identifier, the sitePartnerIdentifier and orderPid is a mandatory for this
    *
    *
    * @param params Object based on CreateOrderParamsType
@@ -289,7 +289,7 @@ const FlyBuyModule = {
       createOrder: (params: CreateOrderParamsType) => {
         const {
           siteId,
-          sitePid,
+          sitePartnerIdentifier,
           orderPid,
           pid,
           customerInfo,
@@ -309,9 +309,9 @@ const FlyBuyModule = {
           );
         }
 
-        if (sitePid && orderPid) {
+        if (sitePartnerIdentifier && orderPid) {
           return Flybuy.createOrderWithPartnerIdentifier(
-            sitePid,
+            sitePartnerIdentifier,
             orderPid,
             customerInfo,
             pickupWindow ?? null,

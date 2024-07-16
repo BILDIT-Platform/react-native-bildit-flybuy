@@ -290,7 +290,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun createOrderWithPartnerIdentifier(
-    sitePid: String,
+    sitePartnerIdentifier: String,
     orderPid: String,
     customer: ReadableMap,
     pickupWindow: ReadableMap? = null,
@@ -302,7 +302,7 @@ class FlybuyModule(reactContext: ReactApplicationContext) :
     val pickupWindowInfo = pickupWindow?.let { decodePickupWindow(it) }
 
     FlyBuyCore.orders.create(
-      sitePartnerIdentifier = sitePid,
+      sitePartnerIdentifier = sitePartnerIdentifier,
       orderPartnerIdentifier = orderPid,
       customerInfo = customerInfo,
       pickupWindow = pickupWindowInfo,

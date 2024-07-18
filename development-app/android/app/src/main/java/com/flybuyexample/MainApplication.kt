@@ -45,5 +45,8 @@ class MainApplication : Application(), ReactApplication {
     FlyBuyCore.configure(this, "your_key_here");
     PickupManager.getInstance().configure(this);
     NotifyManager.getInstance().configure(this);
+    // Configure Presence UUID
+    val presenceUUID = UUID.fromString("YOUR_PRESENCE_UUID_HERE")
+    PresenceManager.getInstance()?.configure(this, presenceUUID)
   }
 }

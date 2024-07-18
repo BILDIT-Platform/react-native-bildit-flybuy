@@ -76,7 +76,7 @@ This function only needs an object as a param.
 
 | Name         | Type                                    | Example                                                                                                      |
 | ------------ | --------------------------------------- | ------------------------------------------------------------------------------------------------------------ | --- |
-| sitePid      | Str                                     | sitePartnerIdentifier: `'15942'`                                                                                                      |
+| sitePartnerIdentifier      | Str                                     | sitePartnerIdentifier: `'15942'`                                                                                                      |
 | orderPid     | Str                                     | orderPartnerIdentifier: `'573836'`                                                                                                   |
 | customerInfo | [`CustomerInfo`](../Types/CustomerInfo) | `{name: 'Lamia Selmane',carType: 'Tesla',carColor: 'Silver',licensePlate: 'AB 0496' phone: '555-555-5555',}` |
 | pickupWindow | [`PickupWindow`](../Types/PickupWindow) | `{start: new Date().toISOString(),end: new Date('2022-12-02').toISOString(),}`                               |     |
@@ -92,7 +92,7 @@ const pickupWindow = {
 };
 
 FlyBuy.Core.Orders.createOrder({
-  sitePid: '15942',
+  sitePartnerIdentifier: '15942',
   orderPid: '573836',
   customerInfo: {
     name: 'Lamia Selmane',

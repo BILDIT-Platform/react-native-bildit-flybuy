@@ -51,7 +51,7 @@ RCT_EXTERN_METHOD(createOrder:(int)siteId
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
 
-RCT_EXTERN_METHOD(createOrderWithPartnerIdentifier:(NSString *)sitePid
+RCT_EXTERN_METHOD(createOrderWithPartnerIdentifier:(NSString *)sitePartnerIdentifier
                   withOrderPartnerIdentifier:(NSString *)pid
                   withCustomerInfo:(NSDictionary *)customerInfo
                   withPickupWindow:(NSDictionary)pickupWindow
@@ -153,5 +153,9 @@ RCT_EXTERN_METHOD(stopLocator:(RCTPromiseResolveBlock)resolve
 RCT_EXTERN_METHOD(updatePushToken:(NSString *)token)
 
 RCT_EXTERN_METHOD(handleRemoteNotification:(NSDictionary *)userInfo)
+
+// LiveStatus
+
+RCT_EXTERN_METHOD(liveStatusConfigure:(NSString *)iconName)
 
 @end

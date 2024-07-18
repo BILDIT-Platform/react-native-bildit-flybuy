@@ -98,8 +98,8 @@ export interface ICustomer {
   info: ICustomerInfo;
 }
 
-type CreateOrderWithSitePid = {
-  sitePid: string;
+type CreateOrderWithSitePartnerIdentifier = {
+  sitePartnerIdentifier: string;
   orderPid: string;
   customerInfo: ICustomerInfo;
   pickupWindow?: PickupWindow;
@@ -117,7 +117,7 @@ type CreateOrderWithSiteId = {
 };
 
 type CreateOrderParamsType = Partial<CreateOrderWithSiteId> &
-  Partial<CreateOrderWithSitePid>;
+  Partial<CreateOrderWithSitePartnerIdentifier>;
 
 type PickupWindow = {
   start: string;
@@ -163,7 +163,7 @@ type Orders = {
    *
    * 1. Create Order using Site ID, the siteId and pid is a mandatory for this
    *
-   * 2. Create Order using Site Partner Identifier, the sitePid and orderPid is a mandatory for this
+   * 2. Create Order using Site Partner Identifier, the sitePartnerIdentifier and orderPid is a mandatory for this
    *
    *
    * @param params Object based on CreateOrderParamsType
@@ -240,10 +240,15 @@ type Pickup = {
   onPermissionChanged(): void;
 };
 
+type LiveStatus = {
+  configure(iconName?: string): void;
+};
+
 type FlyBuyType = {
   Pickup: Pickup;
   Notify: Notify;
   Presence: Presence;
+  LiveStatus: LiveStatus;
   Core: {
     configure(token: string): void;
     updatePushToken(token: string): void;
@@ -256,10 +261,16 @@ type FlyBuyType = {
 };
 
 const FlyBuyModule = {
+  /**
+   * @deprecated This module is now initialized and configured natively.
+   */
   Pickup: {
     configure: Flybuy.pickupConfigure,
     onPermissionChanged: Flybuy.onPermissionChangedPickup,
   },
+  /**
+   * @deprecated This module is now initialized and configured natively.
+   */
   Notify: {
     configure: (bgTaskIdentifier?: string) => {
       return Flybuy.notifyConfigure(bgTaskIdentifier);
@@ -270,11 +281,17 @@ const FlyBuyModule = {
     sync: Flybuy.sync,
     onPermissionChanged: Flybuy.onPermissionChangedNotify,
   },
+  /**
+   * @deprecated This module is now initialized and configured natively.
+   */
   Presence: {
     configure: Flybuy.presenceConfigure,
     startLocatorWithIdentifier: Flybuy.startLocatorWithIdentifier,
     stopLocator: Flybuy.stopLocator,
   },
+  /**
+   * @deprecated This module is now initialized and configured natively.
+   */
   Core: {
     configure: Flybuy.configure,
     updatePushToken: Flybuy.updatePushToken,
@@ -284,7 +301,7 @@ const FlyBuyModule = {
       createOrder: (params: CreateOrderParamsType) => {
         const {
           siteId,
-          sitePid,
+          sitePartnerIdentifier,
           orderPid,
           pid,
           customerInfo,
@@ -304,9 +321,9 @@ const FlyBuyModule = {
           );
         }
 
-        if (sitePid && orderPid) {
+        if (sitePartnerIdentifier && orderPid) {
           return Flybuy.createOrderWithPartnerIdentifier(
-            sitePid,
+            sitePartnerIdentifier,
             orderPid,
             customerInfo,
             pickupWindow ?? null,
@@ -337,6 +354,12 @@ const FlyBuyModule = {
       fetchSitesByRegion: Flybuy.fetchSitesByRegion,
       fetchSiteByPartnerIdentifier: Flybuy.fetchSiteByPartnerIdentifier,
     },
+  },
+  /**
+   * @deprecated This module is now initialized and configured natively.
+   */
+  LiveStatus: {
+    configure: (iconName = '') => Flybuy.liveStatusConfigure(iconName),
   },
   eventEmitter: new NativeEventEmitter(Flybuy),
 };

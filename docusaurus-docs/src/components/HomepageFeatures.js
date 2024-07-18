@@ -6,17 +6,22 @@ const FeatureList = [
   {
     title: 'Pickup',
     Svg: require('../../static/img/code.svg').default,
-    link: "./docs/Modules/Pickup",
+    link: './docs/Modules/Pickup',
   },
   {
     title: 'Notify',
     Svg: require('../../static/img/code.svg').default,
-    link: "./docs/Modules/Notify",
+    link: './docs/Modules/Notify',
   },
   {
     title: 'Presence',
     Svg: require('../../static/img/code.svg').default,
-    link: "./docs/Modules/Presence",
+    link: './docs/Modules/Presence',
+  },
+  {
+    title: 'LiveStatus',
+    Svg: require('../../static/img/code.svg').default,
+    link: './docs/Modules/LiveStatus',
   },
 ];
 
@@ -27,7 +32,9 @@ function Feature({ Svg, title, link }) {
         <Svg className={styles.featureSvg} alt={title} />
       </div>
       <div className="text--center padding-horiz--md">
-        <a href={link}><h3>{title}</h3></a>
+        <a href={link}>
+          <h3>{title}</h3>
+        </a>
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.source_files = "ios/*.{h,m,mm,swift}"
 
   s.dependency "React"
-  s.vendored_frameworks = 'ios/Frameworks/FlyBuy.xcframework', 'ios/Frameworks/FlyBuyPickup.xcframework', 'ios/Frameworks/FlyBuyNotify.xcframework', 'ios/Frameworks/FlyBuyPresence.xcframework'
+  s.vendored_frameworks = 'ios/Frameworks/FlyBuy.xcframework', 'ios/Frameworks/FlyBuyPickup.xcframework', 'ios/Frameworks/FlyBuyNotify.xcframework', 'ios/Frameworks/FlyBuyPresence.xcframework', 'ios/Frameworks/FlyBuyLiveStatus.xcframework'
 
   s.pod_target_xcconfig = {
     'HEADER_SEARCH_PATHS' => '$(PODS_ROOT)/react-native-my-library/ios/**'

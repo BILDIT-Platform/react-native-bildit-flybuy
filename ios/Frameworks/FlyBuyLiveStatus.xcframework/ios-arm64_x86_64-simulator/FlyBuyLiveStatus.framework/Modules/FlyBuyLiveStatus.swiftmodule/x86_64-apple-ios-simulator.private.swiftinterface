@@ -1,0 +1,68 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name FlyBuyLiveStatus
+import ActivityKit
+import DeveloperToolsSupport
+import FlyBuy
+@_exported import FlyBuyLiveStatus
+import Foundation
+import Swift
+import SwiftUI
+import UIKit
+import WidgetKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_hasMissingDesignatedInitializers @objc(FlyBuyLiveStatusOptions) public class LiveStatusOptions : ObjectiveC.NSObject {
+  @objc public static func Builder() -> FlyBuyLiveStatus.LiveStatusOptionsBuilder
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(FlyBuyLiveStatusOptionsBuilder) public class LiveStatusOptionsBuilder : ObjectiveC.NSObject {
+  @objc public func build() -> FlyBuyLiveStatus.LiveStatusOptions
+  @objc public func setIconName(_ iconName: Swift.String?) -> FlyBuyLiveStatus.LiveStatusOptionsBuilder
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 16.2, *)
+@objc(FlyBuyLiveStatusManager) final public class FlyBuyLiveStatusManager : ObjectiveC.NSObject {
+  public static let shared: FlyBuyLiveStatus.FlyBuyLiveStatusManager
+  final public var liveStatusIconName: Swift.String?
+  final public func configure(withOptions configOptions: FlyBuyLiveStatus.LiveStatusOptions)
+  @objc deinit
+}
+@available(iOS 16.2, *)
+public struct FlyBuyWidget : SwiftUI.Widget {
+  public init()
+  public var body: some SwiftUI.WidgetConfiguration {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16FlyBuyLiveStatus0aB6WidgetV4bodyQrvp", 0) __
+}
+@_inheritsConvenienceInitializers @objc(FlyBuyOrderAttributes) public class OrderAttributes : ObjectiveC.NSObject, ActivityKit.ActivityAttributes {
+  public struct ContentState : Swift.Codable, Swift.Hashable {
+    public let status: Swift.String
+    public let statusLocalized: Swift.String
+    public let placeName: Swift.String?
+    public let orderId: Swift.String?
+    public let etr: Swift.String?
+    public let formatterETR: Swift.String?
+    public let progress: Swift.Int
+    public let iconName: Swift.String?
+    public init(status: Swift.String, statusLocalized: Swift.String, placeName: Swift.String? = nil, orderId: Swift.String? = nil, etr: Swift.String? = nil, iconName: Swift.String? = nil)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: FlyBuyLiveStatus.OrderAttributes.ContentState, b: FlyBuyLiveStatus.OrderAttributes.ContentState) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+extension FlyBuy.Order {
+  public func asOrderAttributes() -> FlyBuyLiveStatus.OrderAttributes.ContentState?
+  public func getOrderStatusLocalizedString() -> Swift.String?
+}

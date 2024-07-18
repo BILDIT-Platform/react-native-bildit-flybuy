@@ -1,0 +1,1945 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "LiveStatusOptions",
+        "printedName": "LiveStatusOptions",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "Builder",
+            "printedName": "Builder()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "LiveStatusOptionsBuilder",
+                "printedName": "FlyBuyLiveStatus.LiveStatusOptionsBuilder",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptionsBuilder"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptions(cm)Builder",
+            "mangledName": "$s16FlyBuyLiveStatus0cD7OptionsC7BuilderAA0cdeF0CyFZ",
+            "moduleName": "FlyBuyLiveStatus",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "LiveStatusOptions",
+                "printedName": "FlyBuyLiveStatus.LiveStatusOptions",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptions"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptions(im)init",
+            "mangledName": "$s16FlyBuyLiveStatus0cD7OptionsCACycfc",
+            "moduleName": "FlyBuyLiveStatus",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptions",
+        "mangledName": "$s16FlyBuyLiveStatus0cD7OptionsC",
+        "moduleName": "FlyBuyLiveStatus",
+        "objc_name": "FlyBuyLiveStatusOptions",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "LiveStatusOptionsBuilder",
+        "printedName": "LiveStatusOptionsBuilder",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "build",
+            "printedName": "build()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "LiveStatusOptions",
+                "printedName": "FlyBuyLiveStatus.LiveStatusOptions",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptions"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptionsBuilder(im)build",
+            "mangledName": "$s16FlyBuyLiveStatus0cD14OptionsBuilderC5buildAA0cdE0CyF",
+            "moduleName": "FlyBuyLiveStatus",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setIconName",
+            "printedName": "setIconName(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "LiveStatusOptionsBuilder",
+                "printedName": "FlyBuyLiveStatus.LiveStatusOptionsBuilder",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptionsBuilder"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptionsBuilder(im)setIconName:",
+            "mangledName": "$s16FlyBuyLiveStatus0cD14OptionsBuilderC11setIconNameyACSSSgF",
+            "moduleName": "FlyBuyLiveStatus",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "LiveStatusOptionsBuilder",
+                "printedName": "FlyBuyLiveStatus.LiveStatusOptionsBuilder",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptionsBuilder"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptionsBuilder(im)init",
+            "mangledName": "$s16FlyBuyLiveStatus0cD14OptionsBuilderCACycfc",
+            "moduleName": "FlyBuyLiveStatus",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptionsBuilder",
+        "mangledName": "$s16FlyBuyLiveStatus0cD14OptionsBuilderC",
+        "moduleName": "FlyBuyLiveStatus",
+        "objc_name": "FlyBuyLiveStatusOptionsBuilder",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "ActivityKit",
+        "printedName": "ActivityKit",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "FlyBuyLiveStatusManager",
+        "printedName": "FlyBuyLiveStatusManager",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "shared",
+            "printedName": "shared",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FlyBuyLiveStatusManager",
+                "printedName": "FlyBuyLiveStatus.FlyBuyLiveStatusManager",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusManager"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16FlyBuyLiveStatus0abcD7ManagerC6sharedACvpZ",
+            "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC6sharedACvpZ",
+            "moduleName": "FlyBuyLiveStatus",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FlyBuyLiveStatusManager",
+                    "printedName": "FlyBuyLiveStatus.FlyBuyLiveStatusManager",
+                    "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusManager"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16FlyBuyLiveStatus0abcD7ManagerC6sharedACvgZ",
+                "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC6sharedACvgZ",
+                "moduleName": "FlyBuyLiveStatus",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "liveStatusIconName",
+            "printedName": "liveStatusIconName",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16FlyBuyLiveStatus0abcD7ManagerC04liveD8IconNameSSSgvp",
+            "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC04liveD8IconNameSSSgvp",
+            "moduleName": "FlyBuyLiveStatus",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16FlyBuyLiveStatus0abcD7ManagerC04liveD8IconNameSSSgvg",
+                "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC04liveD8IconNameSSSgvg",
+                "moduleName": "FlyBuyLiveStatus",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16FlyBuyLiveStatus0abcD7ManagerC04liveD8IconNameSSSgvs",
+                "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC04liveD8IconNameSSSgvs",
+                "moduleName": "FlyBuyLiveStatus",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16FlyBuyLiveStatus0abcD7ManagerC04liveD8IconNameSSSgvM",
+                "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC04liveD8IconNameSSSgvM",
+                "moduleName": "FlyBuyLiveStatus",
+                "implicit": true,
+                "intro_iOS": "16.2",
+                "declAttributes": [
+                  "Final",
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "configure",
+            "printedName": "configure(withOptions:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LiveStatusOptions",
+                "printedName": "FlyBuyLiveStatus.LiveStatusOptions",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptions"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16FlyBuyLiveStatus0abcD7ManagerC9configure11withOptionsyAA0cdH0C_tF",
+            "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC9configure11withOptionsyAA0cdH0C_tF",
+            "moduleName": "FlyBuyLiveStatus",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusManager",
+        "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC",
+        "moduleName": "FlyBuyLiveStatus",
+        "intro_iOS": "16.2",
+        "objc_name": "FlyBuyLiveStatusManager",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "ObjC",
+          "Available"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "ActivityKit",
+        "printedName": "ActivityKit",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "WidgetKit",
+        "printedName": "WidgetKit",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "FlyBuyWidget",
+        "printedName": "FlyBuyWidget",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FlyBuyWidget",
+                "printedName": "FlyBuyLiveStatus.FlyBuyWidget",
+                "usr": "s:16FlyBuyLiveStatus0aB6WidgetV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:16FlyBuyLiveStatus0aB6WidgetVACycfc",
+            "mangledName": "$s16FlyBuyLiveStatus0aB6WidgetVACycfc",
+            "moduleName": "FlyBuyLiveStatus",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "body",
+            "printedName": "body",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OpaqueTypeArchetype",
+                "printedName": "some SwiftUI.WidgetConfiguration",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "WidgetConfiguration",
+                    "printedName": "SwiftUI.WidgetConfiguration",
+                    "usr": "s:7SwiftUI19WidgetConfigurationP"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16FlyBuyLiveStatus0aB6WidgetV4bodyQrvp",
+            "mangledName": "$s16FlyBuyLiveStatus0aB6WidgetV4bodyQrvp",
+            "moduleName": "FlyBuyLiveStatus",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OpaqueTypeArchetype",
+                    "printedName": "some SwiftUI.WidgetConfiguration",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "WidgetConfiguration",
+                        "printedName": "SwiftUI.WidgetConfiguration",
+                        "usr": "s:7SwiftUI19WidgetConfigurationP"
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16FlyBuyLiveStatus0aB6WidgetV4bodyQrvg",
+                "mangledName": "$s16FlyBuyLiveStatus0aB6WidgetV4bodyQrvg",
+                "moduleName": "FlyBuyLiveStatus",
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:16FlyBuyLiveStatus0aB6WidgetV",
+        "mangledName": "$s16FlyBuyLiveStatus0aB6WidgetV",
+        "moduleName": "FlyBuyLiveStatus",
+        "intro_iOS": "16.2",
+        "declAttributes": [
+          "AccessControl",
+          "Available"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Widget",
+            "printedName": "Widget",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Body",
+                "printedName": "Body",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OpaqueTypeArchetype",
+                    "printedName": "some SwiftUI.WidgetConfiguration",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "WidgetConfiguration",
+                        "printedName": "SwiftUI.WidgetConfiguration",
+                        "usr": "s:7SwiftUI19WidgetConfigurationP"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "usr": "s:7SwiftUI6WidgetP",
+            "mangledName": "$s7SwiftUI6WidgetP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "ActivityKit",
+        "printedName": "ActivityKit",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "OrderAttributes",
+        "printedName": "OrderAttributes",
+        "children": [
+          {
+            "kind": "TypeDecl",
+            "name": "ContentState",
+            "printedName": "ContentState",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "status",
+                "printedName": "status",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV6statusSSvp",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV6statusSSvp",
+                "moduleName": "FlyBuyLiveStatus",
+                "declAttributes": [
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV6statusSSvg",
+                    "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV6statusSSvg",
+                    "moduleName": "FlyBuyLiveStatus",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "statusLocalized",
+                "printedName": "statusLocalized",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV15statusLocalizedSSvp",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV15statusLocalizedSSvp",
+                "moduleName": "FlyBuyLiveStatus",
+                "declAttributes": [
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV15statusLocalizedSSvg",
+                    "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV15statusLocalizedSSvg",
+                    "moduleName": "FlyBuyLiveStatus",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "placeName",
+                "printedName": "placeName",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV9placeNameSSSgvp",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV9placeNameSSSgvp",
+                "moduleName": "FlyBuyLiveStatus",
+                "declAttributes": [
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV9placeNameSSSgvg",
+                    "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV9placeNameSSSgvg",
+                    "moduleName": "FlyBuyLiveStatus",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "orderId",
+                "printedName": "orderId",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV7orderIdSSSgvp",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV7orderIdSSSgvp",
+                "moduleName": "FlyBuyLiveStatus",
+                "declAttributes": [
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV7orderIdSSSgvg",
+                    "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV7orderIdSSSgvg",
+                    "moduleName": "FlyBuyLiveStatus",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "etr",
+                "printedName": "etr",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV3etrSSSgvp",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV3etrSSSgvp",
+                "moduleName": "FlyBuyLiveStatus",
+                "declAttributes": [
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV3etrSSSgvg",
+                    "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV3etrSSSgvg",
+                    "moduleName": "FlyBuyLiveStatus",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "formatterETR",
+                "printedName": "formatterETR",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV12formatterETRSSSgvp",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV12formatterETRSSSgvp",
+                "moduleName": "FlyBuyLiveStatus",
+                "declAttributes": [
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV12formatterETRSSSgvg",
+                    "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV12formatterETRSSSgvg",
+                    "moduleName": "FlyBuyLiveStatus",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "progress",
+                "printedName": "progress",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV8progressSivp",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV8progressSivp",
+                "moduleName": "FlyBuyLiveStatus",
+                "declAttributes": [
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV8progressSivg",
+                    "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV8progressSivg",
+                    "moduleName": "FlyBuyLiveStatus",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "iconName",
+                "printedName": "iconName",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV8iconNameSSSgvp",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV8iconNameSSSgvp",
+                "moduleName": "FlyBuyLiveStatus",
+                "declAttributes": [
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV8iconNameSSSgvg",
+                    "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV8iconNameSSSgvg",
+                    "moduleName": "FlyBuyLiveStatus",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Constructor",
+                "name": "init",
+                "printedName": "init(status:statusLocalized:placeName:orderId:etr:iconName:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ContentState",
+                    "printedName": "FlyBuyLiveStatus.OrderAttributes.ContentState",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Constructor",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV6status0I9Localized9placeName7orderId3etr04iconL0AESS_S2SSgA3Ltcfc",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV6status0I9Localized9placeName7orderId3etr04iconL0AESS_S2SSgA3Ltcfc",
+                "moduleName": "FlyBuyLiveStatus",
+                "declAttributes": [
+                  "AccessControl"
+                ],
+                "init_kind": "Designated"
+              },
+              {
+                "kind": "Constructor",
+                "name": "init",
+                "printedName": "init(from:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ContentState",
+                    "printedName": "FlyBuyLiveStatus.OrderAttributes.ContentState",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Decoder",
+                    "printedName": "any Swift.Decoder",
+                    "usr": "s:s7DecoderP"
+                  }
+                ],
+                "declKind": "Constructor",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV4fromAEs7Decoder_p_tKcfc",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV4fromAEs7Decoder_p_tKcfc",
+                "moduleName": "FlyBuyLiveStatus",
+                "implicit": true,
+                "throwing": true,
+                "init_kind": "Designated"
+              },
+              {
+                "kind": "Function",
+                "name": "encode",
+                "printedName": "encode(to:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Encoder",
+                    "printedName": "any Swift.Encoder",
+                    "usr": "s:s7EncoderP"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV6encode2toys7Encoder_p_tKF",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV6encode2toys7Encoder_p_tKF",
+                "moduleName": "FlyBuyLiveStatus",
+                "implicit": true,
+                "throwing": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Var",
+                "name": "hashValue",
+                "printedName": "hashValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV9hashValueSivp",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV9hashValueSivp",
+                "moduleName": "FlyBuyLiveStatus",
+                "implicit": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV9hashValueSivg",
+                    "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV9hashValueSivg",
+                    "moduleName": "FlyBuyLiveStatus",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Function",
+                "name": "hash",
+                "printedName": "hash(into:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Hasher",
+                    "printedName": "Swift.Hasher",
+                    "paramValueOwnership": "InOut",
+                    "usr": "s:s6HasherV"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV4hash4intoys6HasherVz_tF",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV4hash4intoys6HasherVz_tF",
+                "moduleName": "FlyBuyLiveStatus",
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Function",
+                "name": "==",
+                "printedName": "==(_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ContentState",
+                    "printedName": "FlyBuyLiveStatus.OrderAttributes.ContentState",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ContentState",
+                    "printedName": "FlyBuyLiveStatus.OrderAttributes.ContentState",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV2eeoiySbAE_AEtFZ",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV2eeoiySbAE_AEtFZ",
+                "moduleName": "FlyBuyLiveStatus",
+                "static": true,
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Struct",
+            "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV",
+            "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV",
+            "moduleName": "FlyBuyLiveStatus",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Decodable",
+                "printedName": "Decodable",
+                "usr": "s:Se",
+                "mangledName": "$sSe"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Encodable",
+                "printedName": "Encodable",
+                "usr": "s:SE",
+                "mangledName": "$sSE"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Hashable",
+                "printedName": "Hashable",
+                "usr": "s:SH",
+                "mangledName": "$sSH"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OrderAttributes",
+                "printedName": "FlyBuyLiveStatus.OrderAttributes",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyOrderAttributes"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyOrderAttributes(im)init",
+            "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesCACycfc",
+            "moduleName": "FlyBuyLiveStatus",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OrderAttributes",
+                "printedName": "FlyBuyLiveStatus.OrderAttributes",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyOrderAttributes"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:16FlyBuyLiveStatus15OrderAttributesC4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC4fromACs7Decoder_p_tKcfc",
+            "moduleName": "FlyBuyLiveStatus",
+            "implicit": true,
+            "declAttributes": [
+              "Required"
+            ],
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16FlyBuyLiveStatus15OrderAttributesC6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC6encode2toys7Encoder_p_tKF",
+            "moduleName": "FlyBuyLiveStatus",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyOrderAttributes",
+        "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC",
+        "moduleName": "FlyBuyLiveStatus",
+        "objc_name": "FlyBuyOrderAttributes",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "ActivityAttributes",
+            "printedName": "ActivityAttributes",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "ContentState",
+                "printedName": "ContentState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ContentState",
+                    "printedName": "FlyBuyLiveStatus.OrderAttributes.ContentState",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:11ActivityKit0A10AttributesP",
+            "mangledName": "$s11ActivityKit0A10AttributesP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "Import",
+        "name": "DeveloperToolsSupport",
+        "printedName": "DeveloperToolsSupport",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Order",
+        "printedName": "Order",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "asOrderAttributes",
+            "printedName": "asOrderAttributes()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "FlyBuyLiveStatus.OrderAttributes.ContentState?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ContentState",
+                    "printedName": "FlyBuyLiveStatus.OrderAttributes.ContentState",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6FlyBuy5OrderC0aB10LiveStatusE02asC10AttributesAD0cG0C12ContentStateVSgyF",
+            "mangledName": "$s6FlyBuy5OrderC0aB10LiveStatusE02asC10AttributesAD0cG0C12ContentStateVSgyF",
+            "moduleName": "FlyBuyLiveStatus",
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getOrderStatusLocalizedString",
+            "printedName": "getOrderStatusLocalizedString()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6FlyBuy5OrderC0aB10LiveStatusE03getcE15LocalizedStringSSSgyF",
+            "mangledName": "$s6FlyBuy5OrderC0aB10LiveStatusE03getcE15LocalizedStringSSSgyF",
+            "moduleName": "FlyBuyLiveStatus",
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FlyBuy@objc(cs)FlyBuyOrder",
+        "mangledName": "$s6FlyBuy5OrderC",
+        "moduleName": "FlyBuy",
+        "isOpen": true,
+        "objc_name": "FlyBuyOrder",
+        "declAttributes": [
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "isExternal": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "PersistableCodable",
+            "printedName": "PersistableCodable",
+            "usr": "s:6FlyBuy18PersistableCodableP",
+            "mangledName": "$s6FlyBuy18PersistableCodableP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyLiveStatus\/App\/LiveStatusOptions.swift",
+      "kind": "StringLiteral",
+      "offset": 254,
+      "length": 17,
+      "value": "\"FlyBuyLiveStatus.LiveStatusOptions\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyLiveStatus\/Extensions\/Bundle.swift",
+      "kind": "StringLiteral",
+      "offset": 89,
+      "length": 37,
+      "value": "\"com.radiusnetworks.FlyBuyLiveStatus\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/Library\/Developer\/Xcode\/DerivedData\/FlyBuy-hcbsporyuzickzgorsmoeoswpusb\/Build\/Intermediates.noindex\/ArchiveIntermediates\/FlyBuyLiveStatus\/IntermediateBuildFilesPath\/FlyBuySDK.build\/Release-iphonesimulator\/FlyBuyLiveStatus.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "kind": "StringLiteral",
+      "offset": 725,
+      "length": 8,
+      "value": "\"flybuy\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/Library\/Developer\/Xcode\/DerivedData\/FlyBuy-hcbsporyuzickzgorsmoeoswpusb\/Build\/Intermediates.noindex\/ArchiveIntermediates\/FlyBuyLiveStatus\/IntermediateBuildFilesPath\/FlyBuySDK.build\/Release-iphonesimulator\/FlyBuyLiveStatus.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "kind": "StringLiteral",
+      "offset": 869,
+      "length": 15,
+      "value": "\"icCompleteBig\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/Library\/Developer\/Xcode\/DerivedData\/FlyBuy-hcbsporyuzickzgorsmoeoswpusb\/Build\/Intermediates.noindex\/ArchiveIntermediates\/FlyBuyLiveStatus\/IntermediateBuildFilesPath\/FlyBuySDK.build\/Release-iphonesimulator\/FlyBuyLiveStatus.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "kind": "StringLiteral",
+      "offset": 1024,
+      "length": 17,
+      "value": "\"icCompleteSmall\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/Library\/Developer\/Xcode\/DerivedData\/FlyBuy-hcbsporyuzickzgorsmoeoswpusb\/Build\/Intermediates.noindex\/ArchiveIntermediates\/FlyBuyLiveStatus\/IntermediateBuildFilesPath\/FlyBuySDK.build\/Release-iphonesimulator\/FlyBuyLiveStatus.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "kind": "StringLiteral",
+      "offset": 1173,
+      "length": 13,
+      "value": "\"icPlacedBig\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/Library\/Developer\/Xcode\/DerivedData\/FlyBuy-hcbsporyuzickzgorsmoeoswpusb\/Build\/Intermediates.noindex\/ArchiveIntermediates\/FlyBuyLiveStatus\/IntermediateBuildFilesPath\/FlyBuySDK.build\/Release-iphonesimulator\/FlyBuyLiveStatus.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "kind": "StringLiteral",
+      "offset": 1322,
+      "length": 15,
+      "value": "\"icPlacedSmall\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/Library\/Developer\/Xcode\/DerivedData\/FlyBuy-hcbsporyuzickzgorsmoeoswpusb\/Build\/Intermediates.noindex\/ArchiveIntermediates\/FlyBuyLiveStatus\/IntermediateBuildFilesPath\/FlyBuySDK.build\/Release-iphonesimulator\/FlyBuyLiveStatus.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "kind": "StringLiteral",
+      "offset": 1475,
+      "length": 16,
+      "value": "\"icPreparingBig\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/Library\/Developer\/Xcode\/DerivedData\/FlyBuy-hcbsporyuzickzgorsmoeoswpusb\/Build\/Intermediates.noindex\/ArchiveIntermediates\/FlyBuyLiveStatus\/IntermediateBuildFilesPath\/FlyBuySDK.build\/Release-iphonesimulator\/FlyBuyLiveStatus.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "kind": "StringLiteral",
+      "offset": 1633,
+      "length": 18,
+      "value": "\"icPreparingSmall\""
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import CoreLocation
 import FlyBuyPickup
 import FlyBuyPresence
 import FlyBuyNotify
-
+import FlyBuyLiveStatus
 
 enum FlyBuySupportedEvents: String, CaseIterable {
     case ordersUpdated = "ordersUpdated";
@@ -189,7 +189,7 @@ class Flybuy: RCTEventEmitter {
     }
 
     @objc(createOrderWithPartnerIdentifier:withOrderPartnerIdentifier:withCustomerInfo:withPickupWindow:withOrderState:withPickupType:withResolver:withRejecter:)
-    func createOrderWithPartnerIdentifier(sitePid: String,
+    func createOrderWithPartnerIdentifier(sitePartnerIdentifier: String,
                      orderPid: String,
                      customerInfo: Dictionary<String, String>,
                      pickupWindow: Dictionary<String, String>? = nil,
@@ -210,11 +210,11 @@ class Flybuy: RCTEventEmitter {
         // TODO: adjust framework call based on params availability
         if (pickupWindow != nil) {
             let pickupWindowInfo = decodePickupWindow(pickupWindow: pickupWindow)
-            FlyBuy.Core.orders.create(sitePartnerIdentifier: sitePid, orderPartnerIdentifier: orderPid, customerInfo: info, pickupWindow: pickupWindowInfo, state: orderState ?? "created", pickupType: pickupType ?? "") {
+            FlyBuy.Core.orders.create(sitePartnerIdentifier: sitePartnerIdentifier, orderPartnerIdentifier: orderPid, customerInfo: info, pickupWindow: pickupWindowInfo, state: orderState ?? "created", pickupType: pickupType ?? "") {
               (order, error) in callbackHandler(order: order, error: error)
             }
         } else if (pickupWindow == nil) {
-            FlyBuy.Core.orders.create(sitePartnerIdentifier: sitePid, orderPartnerIdentifier: orderPid, customerInfo: info, state: orderState ?? "created", pickupType: pickupType ?? "") {
+            FlyBuy.Core.orders.create(sitePartnerIdentifier: sitePartnerIdentifier, orderPartnerIdentifier: orderPid, customerInfo: info, state: orderState ?? "created", pickupType: pickupType ?? "") {
                     (order, error) in callbackHandler(order: order, error: error)
                 }
         }
@@ -546,6 +546,19 @@ class Flybuy: RCTEventEmitter {
     @objc(handleRemoteNotification:)
     func handleRemoteNotification(userInfo: Dictionary<String, Any>) {
         FlyBuy.Core.handleRemoteNotification(userInfo)
+    }
+    
+    //LiveStatus
+    
+    @objc(liveStatusConfigure:)
+    func liveStatusConfigure(iconName: String) {
+        if #available(iOS 16.2, *) {
+               var builder = LiveStatusOptions.Builder()
+               if !iconName.isEmpty {
+                 builder=builder.setIconName(iconName)
+               }
+               FlyBuyLiveStatusManager.shared.configure(withOptions: builder.build())
+           }
     }
     
     // Parsers

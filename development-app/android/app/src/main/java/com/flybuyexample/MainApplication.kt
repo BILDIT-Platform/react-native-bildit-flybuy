@@ -11,6 +11,7 @@ import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.soloader.SoLoader
 import com.radiusnetworks.flybuy.sdk.FlyBuyCore
+import com.radiusnetworks.flybuy.sdk.livestatus.LiveStatusManager
 import com.radiusnetworks.flybuy.sdk.notify.NotifyManager
 import com.radiusnetworks.flybuy.sdk.pickup.PickupManager
 
@@ -42,11 +43,12 @@ class MainApplication : Application(), ReactApplication {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
       load()
     }
-    FlyBuyCore.configure(this, "your_key_here");
+    FlyBuyCore.configure(this, "APP_TOKEN_HERE");
     PickupManager.getInstance().configure(this);
     NotifyManager.getInstance().configure(this);
     // Configure Presence UUID
     val presenceUUID = UUID.fromString("YOUR_PRESENCE_UUID_HERE")
     PresenceManager.getInstance()?.configure(this, presenceUUID)
+    LiveStatusManager.getInstance().configure(this)
   }
 }

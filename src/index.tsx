@@ -261,10 +261,16 @@ type FlyBuyType = {
 };
 
 const FlyBuyModule = {
+  /**
+   * @deprecated This module is now initialized and configured natively.
+   */
   Pickup: {
     configure: Flybuy.pickupConfigure,
     onPermissionChanged: Flybuy.onPermissionChangedPickup,
   },
+  /**
+   * @deprecated This module is now initialized and configured natively.
+   */
   Notify: {
     configure: (bgTaskIdentifier?: string) => {
       return Flybuy.notifyConfigure(bgTaskIdentifier);
@@ -275,11 +281,17 @@ const FlyBuyModule = {
     sync: Flybuy.sync,
     onPermissionChanged: Flybuy.onPermissionChangedNotify,
   },
+  /**
+   * @deprecated This module is now initialized and configured natively.
+   */
   Presence: {
     configure: Flybuy.presenceConfigure,
     startLocatorWithIdentifier: Flybuy.startLocatorWithIdentifier,
     stopLocator: Flybuy.stopLocator,
   },
+  /**
+   * @deprecated This module is now initialized and configured natively.
+   */
   Core: {
     configure: Flybuy.configure,
     updatePushToken: Flybuy.updatePushToken,
@@ -343,6 +355,9 @@ const FlyBuyModule = {
       fetchSiteByPartnerIdentifier: Flybuy.fetchSiteByPartnerIdentifier,
     },
   },
+  /**
+   * @deprecated This module is now initialized and configured natively.
+   */
   LiveStatus: {
     configure: (iconName = '') => Flybuy.liveStatusConfigure(iconName),
   },

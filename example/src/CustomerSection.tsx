@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import * as FlyBuyCore from '@bildit-platform/rn-flybuy-core';
+import * as FlyBuyCore from '@bildit-platform/react-native-flybuy-core';
 import {Button} from './components';
 import {CUSTOMER_INFO} from './constants';
 

@@ -1,5 +1,5 @@
 {
-  "name": "@bildit-platform/rn-flybuy-notify",
+  "name": "@bildit-platform/react-native-flybuy-notify",
   "version": "2.20.0",
   "description": "React Native Wrapper for FlyBuy Notify SDK",
   "source": "./src/index.tsx",
@@ -33,7 +33,6 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace @bildit-platform/rn-flybuy-notify-example",
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -48,14 +47,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BILDIT-Platform/rn-flybuy.git"
+    "url": "git+https://github.com/BILDIT-Platform/react-native-bildit-flybuy.git"
   },
   "author": "Addin Gama Bertaqwa <addingama@gmail.com> (https://github.com/addingama)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BILDIT-Platform/rn-flybuy/issues"
+    "url": "https://github.com/BILDIT-Platform/react-native-bildit-flybuy/issues"
   },
-  "homepage": "https://github.com/BILDIT-Platform/rn-flybuy#readme",
+  "homepage": "https://github.com/BILDIT-Platform/react-native-bildit-flybuy#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -84,7 +83,7 @@
     "@types/react": "^18.2.44"
   },
   "dependencies": {
-    "@bildit-platform/rn-flybuy-core": "^2.20.0"
+    "@bildit-platform/react-native-flybuy-core": "^2.20.0"
   },
   "peerDependencies": {
     "react": "*",

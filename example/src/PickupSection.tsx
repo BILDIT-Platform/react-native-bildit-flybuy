@@ -1,4 +1,4 @@
-import * as FlyBuyPickup from '@bildit-platform/rn-flybuy-pickup';
+import * as FlyBuyPickup from '@bildit-platform/react-native-flybuy-pickup';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Button} from './components';

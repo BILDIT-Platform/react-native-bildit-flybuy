@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "@bildit-platform/rn-flybuy-notify": ["./src/index"]
+      "@bildit-platform/react-native-flybuy-notify": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

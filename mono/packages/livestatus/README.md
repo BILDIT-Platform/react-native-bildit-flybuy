@@ -1,18 +1,18 @@
-# @bildit-platform/rn-flybuy-livestatus
+# @bildit-platform/react-native-flybuy-livestatus
 
 React Native wrapper for FlyBuy LiveStatus SDK
 
 ## Installation
 
 ```sh
-npm install @bildit-platform/rn-flybuy-livestatus
+npm install @bildit-platform/react-native-flybuy-livestatus
 
 cd ios && pod install
 ```
 
 ## Configuration
 
-Please make sure to install `@bildit-platform/rn-flybuy-core` and follow the configuration.
+Please make sure to install `@bildit-platform/react-native-flybuy-core` and follow the configuration.
 
 
 ## Native Initialization
@@ -93,7 +93,7 @@ if (@available(iOS 16.2, *)) {
 This is not needed if the configuration added in native code.
 
 ```js
-import * as FlyBuyLiveStatus from '@bildit-platform/rn-flybuy-livestatus';
+import * as FlyBuyLiveStatus from '@bildit-platform/react-native-flybuy-livestatus';
 
 // ...
 

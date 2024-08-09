@@ -1,18 +1,18 @@
-# @bildit-platform/rn-flybuy-presence
+# @bildit-platform/react-native-flybuy-presence
 
 React Native wrapper for FlyBuy Presence SDK
 
 ## Installation
 
 ```sh
-npm install @bildit-platform/rn-flybuy-presence
+npm install @bildit-platform/react-native-flybuy-presence
 
 cd ios && pod install
 ```
 
 ## Configuration
 
-Please make sure to install `@bildit-platform/rn-flybuy-core` and follow the configuration.
+Please make sure to install `@bildit-platform/react-native-flybuy-core` and follow the configuration.
 
 
 ## Native Initialization
@@ -90,7 +90,7 @@ NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:presenceUuid];
 
 
 ```js
-import * as FlyBuyPresence from '@bildit-platform/rn-flybuy-presence';
+import * as FlyBuyPresence from '@bildit-platform/react-native-flybuy-presence';
 
 // ...
 

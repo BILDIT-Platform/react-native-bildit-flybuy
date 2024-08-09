@@ -1,4 +1,4 @@
-import * as FlyBuyNotify from '@bildit-platform/rn-flybuy-notify';
+import * as FlyBuyNotify from '@bildit-platform/react-native-flybuy-notify';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Button} from './components';

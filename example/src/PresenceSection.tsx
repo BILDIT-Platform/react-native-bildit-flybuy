@@ -1,4 +1,4 @@
-import * as FlyBuyPresence from '@bildit-platform/rn-flybuy-presence';
+import * as FlyBuyPresence from '@bildit-platform/react-native-flybuy-presence';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Button} from './components';

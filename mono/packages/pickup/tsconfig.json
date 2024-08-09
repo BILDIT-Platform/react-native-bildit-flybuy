@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "@bildit-platform/rn-flybuy-pickup": ["./src/index"]
+      "@bildit-platform/react-native-flybuy-pickup": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

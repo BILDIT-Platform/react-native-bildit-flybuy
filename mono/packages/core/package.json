@@ -1,5 +1,5 @@
 {
-  "name": "@bildit-platform/rn-flybuy-core",
+  "name": "@bildit-platform/react-native-flybuy-core",
   "version": "2.20.0",
   "description": "React Native wrapper for FlyBuy Core SDK",
   "source": "./src/index.tsx",
@@ -33,7 +33,6 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace @bildit-platform/rn-flybuy-core-example",
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -48,14 +47,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BILDIT-Platform/rn-flybuy.git"
+    "url": "git+https://github.com/BILDIT-Platform/react-native-bildit-flybuy.git"
   },
   "author": "Addin Gama Bertaqwa <addingama@gmail.com> (https://github.com/addingama)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BILDIT-Platform/rn-flybuy/issues"
+    "url": "https://github.com/BILDIT-Platform/react-native-bildit-flybuy/issues"
   },
-  "homepage": "https://github.com/BILDIT-Platform/rn-flybuy#readme",
+  "homepage": "https://github.com/BILDIT-Platform/react-native-bildit-flybuy#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

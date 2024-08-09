@@ -1,7 +1,7 @@
 import { NativeModules, Platform } from 'react-native';
 
 const LINKING_ERROR =
-  `The package '@bildit-platform/rn-flybuy-presence' doesn't seem to be linked. Make sure: \n\n` +
+  `The package '@bildit-platform/react-native-flybuy-presence' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';

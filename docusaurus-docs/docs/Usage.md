@@ -4,33 +4,69 @@ sidebar_position: 2
 
 # Usage
 
-## Initialize Flybuy on Launch
+## Initialize Flybuy on Native Code
 
-Configuration should happen as early as possible in your application's lifecycle. e.g. `useEffect` hook in your root container.
+### Android
 
-To configure everything properly pass your APP token to the `configure` method on `FlyBuy.Core`. Also, any modules that are used need to be configured.
+Modify `android/app/build.gradle`
 
-The following code snipper provides an example of configuring flybuy on application launch.
+```gradle
+  dependencies {
+      // .. other dependencies
 
-```js
-import * as React from 'react';
+      // Add below dependencies
+      implementation platform("com.radiusnetworks.flybuy:bom:$flybuyVersion")
+      implementation('com.radiusnetworks.flybuy:core')
+  }
+```
 
-import FlyBuy from 'react-native-bildit-flybuy';
+Modify `MainApplication.kt`
 
-export default function App() {
+```kotlin
+import com.radiusnetworks.flybuy.sdk.ConfigOptions
+import com.radiusnetworks.flybuy.sdk.FlyBuyCore
 
-React.useEffect(() => {
-  FlyBuy.Core.configure('YOUR_APP_TOKEN_HERE');
-  FlyBuy.Notify.configure(); // If using notify feature
-  FlyBuy.Notify.configure('your.unique.background.app.refresh.task.identifier'); // If using notify feature and background task
-  FlyBuy.Pickup.configure(); // If using pickup feature
-  FlyBuy.Presence.configure('YOUR_PRESENCE_UUID_HERE'); // If using presence feature
-}, []);
 
-return (...)
+class MainApplication : Application(), ReactApplication {
+  override fun onCreate() {
+    super.onCreate()
+    SoLoader.init(this, false)
+    if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
+      // If you opted-in for the New Architecture, we load the native entry point for this app.
+      load()
+    }
+
+    // Native configure
+    val configOptions = ConfigOptions.Builder("YourFlyBuyToken")
+      .build()
+    FlyBuyCore.configure(this, configOptions)
+  }
 }
+```
+
+### iOS
+
+
+Modify `iOS/yourproject/AppDelegate.mm`
+
+```objc
+
+// Add this import and make sure CoreLocation import always above FlyBuy import
+#import <CoreLocation/CoreLocation.h>
+#import <FlyBuy/FlyBuy-Swift.h>
 
 ```
+
+```objc
+
+// Load environment variables & initialize FlyBuy
+NSString *appToken = @"YourFlyBuyToken";
+// FlyBuy core configuration, always place this above all other FlyBuy configure
+FlyBuyConfigOptionsBuilder *builder = [FlyBuyConfigOptions BuilderWithToken:appToken];
+FlyBuyConfigOptions *configOptions = [builder build];
+[FlyBuyCore configureWithOptions:configOptions];
+```
+
 
 If you don’t already have an APP token please contact your Flybuy Account Executive to get set up.
 

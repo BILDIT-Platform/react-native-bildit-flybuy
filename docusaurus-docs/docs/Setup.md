@@ -9,7 +9,7 @@ sidebar_position: 2
 You can install the React Native Flybuy SDK with npm or yarn, as follows:
 
 ```bash npm2yarn
-npm install --save react-native-bildit-flybuy
+npm install --save @bildit-platform/react-native-flybuy-core
 
 # RN >= 0.60
 
@@ -17,7 +17,7 @@ cd ios && pod install
 
 # RN < 0.60
 
-react-native link react-native-bildit-flybuy
+react-native link @bildit-platform/react-native-flybuy-core
 ```
 
 ## Post-install Steps
@@ -35,6 +35,46 @@ If you have trouble running the app in Release mode with error `Undefined symbol
 ![XCode change](https://user-images.githubusercontent.com/2896774/144399782-46089446-0441-46e8-aa49-3865374bf2cf.png)
 
 ### Android
+
+#### Gradle 
+
+1. Modify `android/build.gradle`
+
+  ```
+    buildscript {
+      ext {
+          buildToolsVersion = "34.0.0"
+          minSdkVersion = 26 // <-- the minimum supported SDK for the latest FlyBuy SDK
+          compileSdkVersion = 34
+          targetSdkVersion = 34
+          ndkVersion = "26.1.10909125"
+          kotlinVersion = "1.9.22"
+          flybuyVersion = "2.12.1" // <-- add this line
+      }
+    }
+
+  ```
+
+  Note: Modify `flybuyVersion` with your desired SDK version, the default value is `2.12.1`
+
+2. Modify `android/app/build.gradle`
+
+  ```
+      {
+        android {
+          defaultConfig {
+            applicationId "your.package.name"
+            minSdkVersion rootProject.ext.minSdkVersion
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            versionCode 1
+            versionName "1.0"
+
+            missingDimensionStrategy "flybuy", "default" // <-- add this line
+          }
+        }
+      }
+  ```
+
 
 #### Google API Keys
 
@@ -83,12 +123,14 @@ Whenever the location permission changes (accepted or declined), make sure to ca
 
 ```js
 // If using pickup module
+import * as FlyBuyPickup from '@bildit-platform/react-native-flybuy-pickup'
 
-FlyBuy.Pickup.onPermissionChanged();
+FlyBuyPickup.onPermissionChanged();
 
 // If using notify module
+import * as FlyBuyNotify from '@bildit-platform/react-native-flybuy-notify'
 
-FlyBuy.Notify.onPermissionChanged();
+FlyBuyNotify.onPermissionChanged();
 ```
 
 :::

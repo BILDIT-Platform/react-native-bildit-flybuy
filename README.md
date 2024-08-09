@@ -45,3 +45,10 @@ Do you have a feature request, bug report, or patch? Great! See [CONTRIBUTING.md
 ### Development Notes
 
 - Android Min SDK version must be 26
+
+
+## TODO
+
+[ ] Re-write example app with the new module
+[ ] Update docusaurus documentation using the latest package
+[ ] Put migration documentation on docusaurus

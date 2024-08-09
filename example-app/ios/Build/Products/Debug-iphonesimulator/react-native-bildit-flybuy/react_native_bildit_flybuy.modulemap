@@ -1,0 +1,12 @@
+module react_native_bildit_flybuy {
+  umbrella header "react-native-bildit-flybuy-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+
+module react_native_bildit_flybuy.Swift {
+  header "/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Build/Products/Debug-iphonesimulator/react-native-bildit-flybuy/Swift Compatibility Header/react_native_bildit_flybuy-Swift.h"
+  requires objc
+}

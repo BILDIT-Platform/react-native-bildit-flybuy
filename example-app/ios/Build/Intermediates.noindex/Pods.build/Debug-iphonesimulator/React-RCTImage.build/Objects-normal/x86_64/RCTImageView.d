@@ -1,0 +1,43 @@
+dependencies: \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/node_modules/react-native/Libraries/Image/RCTImageView.mm \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Target\ Support\ Files/React-RCTImage/React-RCTImage-prefix.pch \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTImageView.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTView.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTBorderStyle.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTComponent.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTPointerEvents.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTResizeMode.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTConvert.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTAnimationType.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTDefines.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTInspectorDevServerHelper.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTPackagerConnection.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTLog.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTAssert.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTUtils.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTTextDecorationLineType.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/Yoga/yoga/Yoga.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/Yoga/yoga/YGEnums.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/Yoga/yoga/YGMacros.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/Yoga/yoga/YGValue.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTBridge.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTBridgeDelegate.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTJavaScriptLoader.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTBridgeModule.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTFrameUpdate.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTInvalidating.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTImageBlurUtils.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTImageSource.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTImageUtils.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTImageLoaderWithAttributionProtocol.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTImageLoaderProtocol.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTURLRequestHandler.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTURLRequestDelegate.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTImageDataDecoder.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTImageURLLoader.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTImageCache.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTImageURLLoaderWithAttribution.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTImageLoaderLoggable.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTUIImageViewAnimated.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/RCTAnimatedImage.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/React-Core/React/UIView+React.h

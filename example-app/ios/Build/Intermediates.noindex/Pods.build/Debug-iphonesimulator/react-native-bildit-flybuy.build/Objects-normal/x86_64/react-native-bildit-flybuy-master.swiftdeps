@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
+options: "7eb8c77c13b62eaa75092dd7fc02e5c1c324c757ab57f3bd3417f34b75a393ff"
+build_start_time: [1679404767, 148335933]
+build_end_time: [1679404770, 813719987]
+inputs:
+  "/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/ios/Flybuy.swift": [1677016480, 761025905]

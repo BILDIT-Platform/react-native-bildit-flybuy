@@ -1,0 +1,41 @@
+dependencies: \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/RCT-Folly/folly/FileUtil.cpp \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Target\ Support\ Files/RCT-Folly/RCT-Folly-prefix.pch \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/FileUtil.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/Portability.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/CPortability.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/portability/Config.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/Range.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/hash/SpookyHashV2.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/lang/CString.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/lang/Exception.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/CppAttributes.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/Traits.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/Utility.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/lang/TypeInfo.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/portability/Constexpr.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/fmt/fmt/format.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Public/fmt/fmt/core.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/CpuId.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/Likely.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/detail/RangeCommon.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/detail/RangeSse42.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/ScopeGuard.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/Preprocessor.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/lang/UncaughtExceptions.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/net/NetworkSocket.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/net/detail/SocketFileDescriptorMap.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/portability/Windows.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/portability/Fcntl.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/portability/SysUio.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/portability/IOVec.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/portability/SysTypes.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/portability/Unistd.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/detail/FileUtilDetail.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/detail/FileUtilVectorDetail.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/net/NetOps.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/portability/Time.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/portability/Sockets.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/portability/Stdlib.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/portability/SysFile.h \
+  /Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/ios/Pods/Headers/Private/RCT-Folly/folly/portability/SysStat.h

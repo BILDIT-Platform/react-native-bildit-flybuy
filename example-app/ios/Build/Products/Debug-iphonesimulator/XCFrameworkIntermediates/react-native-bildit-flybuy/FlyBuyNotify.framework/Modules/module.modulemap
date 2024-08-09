@@ -1,0 +1,11 @@
+framework module FlyBuyNotify {
+  umbrella header "FlyBuyNotify.h"
+
+  export *
+  module * { export * }
+}
+
+module FlyBuyNotify.Swift {
+    header "FlyBuyNotify-Swift.h"
+    requires objc
+}

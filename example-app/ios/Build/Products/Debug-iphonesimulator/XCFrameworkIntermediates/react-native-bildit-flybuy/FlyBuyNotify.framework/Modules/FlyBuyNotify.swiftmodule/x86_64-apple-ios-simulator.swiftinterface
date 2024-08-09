@@ -1,0 +1,92 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FlyBuyNotify
+import BackgroundTasks
+import CoreLocation
+import FlyBuy
+@_exported import FlyBuyNotify
+import Foundation
+import Swift
+import UIKit
+import UserNotifications
+import _Concurrency
+public enum SyncHistory {
+  public static var writeToDefaultsEnabled: Swift.Bool
+  public static func addBGTaskExpiredEvent()
+  public static func addPushSyncAttemptEvent()
+  public static func addPushSyncCompleteEvent(error: Swift.Error?)
+  public static func addBGFetchAttemptEvent()
+  public static func addBGFetchCompleteEvent(error: Swift.Error?)
+  public static func appendHistory(_ str: Swift.String)
+  public static func updateLastSync(_ date: Foundation.Date)
+}
+@objc open class NotificationInfo : ObjectiveC.NSObject {
+  @objc final public let title: Swift.String
+  @objc final public let content: Swift.String
+  @objc final public let data: [Swift.AnyHashable : Any]?
+  public init(title: Swift.String, content: Swift.String, data: [Swift.AnyHashable : Any]?)
+  @objc deinit
+}
+extension Foundation.NSNotification.Name {
+  public static let notifyCampaignsUpdated: Foundation.Notification.Name
+  public static let notifyCampaignsError: Foundation.Notification.Name
+  public static let notifySitesError: Foundation.Notification.Name
+}
+@_inheritsConvenienceInitializers @objc(FlyBuyNotifyManager) public class Manager : ObjectiveC.NSObject {
+  @objc public static let shared: FlyBuyNotify.Manager
+  final public let logger: FlyBuy.Logger
+  public var lastSync: Foundation.Date? {
+    get
+  }
+  @objc public func configure(bgTaskIdentifier: Swift.String? = nil, bgSyncCallback: ((Swift.Error?) -> (Swift.Void))? = nil)
+  @objc deinit
+  @available(*, deprecated, message: "This method for using Notify has been deprecated.")
+  @objc public func createForSitesInRegion(_ region: CoreLocation.CLCircularRegion, notification: FlyBuyNotify.NotificationInfo, callback: @escaping (([FlyBuy.Site]?, Swift.Error?) -> (Swift.Void)))
+  @available(*, deprecated, message: "This method for using Notify has been deprecated.")
+  @objc public func createForSites(_ sites: [FlyBuy.Site], notification: FlyBuyNotify.NotificationInfo, callback: @escaping ((Swift.Error?) -> (Swift.Void)))
+  @available(*, deprecated, message: "This method for using Notify has been deprecated.")
+  @objc public func clear(callback: @escaping (Swift.Error?) -> (Swift.Void))
+  @available(*, deprecated, message: "This method for using Notify has been deprecated.")
+  @objc public func isFlyBuyNotifyUserInfo(_ userInfo: [Swift.AnyHashable : Any]) -> Swift.Bool
+  @objc override dynamic public init()
+}
+extension FlyBuyNotify.Manager : FlyBuy.FlyBuyModuleManager {
+  public func ordersUpdated(_ orders: [FlyBuy.Order])
+  public func set(logLevel: FlyBuy.LogLevel)
+  public func set(logWriteEnabled: Swift.Bool)
+  public func configUpdated(_ config: FlyBuy.AppConfig, pushData: FlyBuy.PushData?)
+}
+@objc public enum NotifyErrorType : Swift.Int {
+  case noLocationPermission
+  case reachedTheMaxNumberOfSites
+  case notifyModuleNotConfigured
+  case coreIsNotConfigured
+  case notifyModuleNotEnabled
+  case beaconRangingNotAvailable
+  case noBeaconInRange
+  case beaconRangingDisabledInBackground
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(FlyBuyNotifyError) public class NotifyError : ObjectiveC.NSObject, FlyBuy.FlyBuyError {
+  @objc final public let type: FlyBuyNotify.NotifyErrorType
+  @objc public init(_ typeIn: FlyBuyNotify.NotifyErrorType)
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+extension FlyBuyNotify.Manager {
+  @objc dynamic public func sync(force: Swift.Bool = false, callback: ((Swift.Error?) -> (Swift.Void))? = nil)
+  @objc dynamic public func performFetchWithCompletionHandler(_ completionHandler: ((UIKit.UIBackgroundFetchResult) -> Swift.Void)? = nil)
+  @objc dynamic public func handleNotification(_ response: UserNotifications.UNNotificationResponse) -> [Swift.String : Swift.String]?
+}
+extension FlyBuyNotify.NotifyErrorType : Swift.Equatable {}
+extension FlyBuyNotify.NotifyErrorType : Swift.Hashable {}
+extension FlyBuyNotify.NotifyErrorType : Swift.RawRepresentable {}

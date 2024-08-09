@@ -1,0 +1,14 @@
+com/example/reactnativeflybuy/MainApplication.java
+ com.example.reactnativeflybuy.MainApplication
+ com.example.reactnativeflybuy.MainApplication$1
+com/example/reactnativeflybuy/MainActivity.java
+ com.example.reactnativeflybuy.MainActivity
+com/example/reactnativeflybuy/BuildConfig.java
+ com.example.reactnativeflybuy.BuildConfig
+com/example/reactnativeflybuy/ReactNativeFlipper.java
+ com.example.reactnativeflybuy.ReactNativeFlipper
+ com.example.reactnativeflybuy.ReactNativeFlipper$1
+ com.example.reactnativeflybuy.ReactNativeFlipper$2
+ com.example.reactnativeflybuy.ReactNativeFlipper$2$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList

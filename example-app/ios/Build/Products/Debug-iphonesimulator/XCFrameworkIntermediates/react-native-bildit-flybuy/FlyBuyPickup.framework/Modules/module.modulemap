@@ -1,0 +1,11 @@
+framework module FlyBuyPickup {
+  umbrella header "FlyBuyPickup.h"
+
+  export *
+  module * { export * }
+}
+
+module FlyBuyPickup.Swift {
+    header "FlyBuyPickup-Swift.h"
+    requires objc
+}

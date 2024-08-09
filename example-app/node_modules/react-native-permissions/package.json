@@ -1,0 +1,82 @@
+{
+  "name": "react-native-permissions",
+  "version": "3.7.3",
+  "license": "MIT",
+  "description": "An unified permissions API for React Native on iOS, Android and Windows",
+  "author": "Mathieu Acthernoene <zoontek@gmail.com>",
+  "homepage": "https://github.com/zoontek/react-native-permissions#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zoontek/react-native-permissions.git"
+  },
+  "keywords": [
+    "react-native",
+    "react native",
+    "react-native-windows",
+    "permission",
+    "authorization"
+  ],
+  "types": "dist/typescript/index.d.ts",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/module/index.js",
+  "files": [
+    "/android",
+    "!/android/build",
+    "/dist",
+    "/ios",
+    "/windows",
+    "/src",
+    "/*.podspec",
+    "react-native.config.js",
+    "mock.js"
+  ],
+  "scripts": {
+    "format": "prettier '**/*' -u -w",
+    "lint": "eslint \"./**/*.{js,ts,tsx}\"",
+    "setup-hooks": "git config --local core.hooksPath .hooks",
+    "prepack": "bob build",
+    "typecheck": "tsc --project ./ --noEmit"
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "dist",
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx}": "eslint",
+    "*": "prettier -u -w"
+  },
+  "peerDependencies": {
+    "react": ">=16.13.1",
+    "react-native": ">=0.63.3",
+    "react-native-windows": ">=0.62.0"
+  },
+  "peerDependenciesMeta": {
+    "react-native-windows": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "picocolors": "^1.0.0",
+    "pkg-dir": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "eslint": "^8.35.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4",
+    "prettier-plugin-organize-imports": "^3.2.2",
+    "react": "^18.2.0",
+    "react-native": "^0.71.3",
+    "react-native-builder-bob": "^0.20.3",
+    "typescript": "^4.9.5"
+  }
+}

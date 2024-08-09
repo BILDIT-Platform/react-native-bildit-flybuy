@@ -1,0 +1,1 @@
+{"version":3,"names":["PERMISSIONS","Object","freeze","ANDROID","IOS","WINDOWS","exports"],"sourceRoot":"../../src","sources":["permissions.ts"],"mappings":";;;;;;AAIO,MAAMA,WAAW,GAAGC,MAAM,CAACC,MAAM,CAAC;EACvCC,OAAO,EAAE,CAAC,CAAyB;EACnCC,GAAG,EAAE,CAAC,CAAqB;EAC3BC,OAAO,EAAE,CAAC;AACZ,CAAC,CAAU;AAACC,OAAA,CAAAN,WAAA,GAAAA,WAAA"}

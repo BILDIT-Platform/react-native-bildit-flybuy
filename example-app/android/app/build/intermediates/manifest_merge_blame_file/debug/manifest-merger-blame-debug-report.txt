@@ -1,0 +1,407 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.reactnativeflybuy"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="33" />
+10
+11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+11-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/debug/AndroidManifest.xml:5:5-77
+11-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/debug/AndroidManifest.xml:5:22-75
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:4:5-67
+12-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:4:22-64
+13    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+13-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:5:5-79
+13-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:5:22-76
+14    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+14-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:6:5-85
+14-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:6:22-82
+15    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- Request legacy Bluetooth permissions on older devices. -->
+15-->[com.facebook.flipper:flipper:0.99.0] /Users/addingama/.gradle/caches/transforms-3/2f5725507f1929c6ddf8255f0bef77bd/transformed/jetified-flipper-0.99.0/AndroidManifest.xml:16:5-76
+15-->[com.facebook.flipper:flipper:0.99.0] /Users/addingama/.gradle/caches/transforms-3/2f5725507f1929c6ddf8255f0bef77bd/transformed/jetified-flipper-0.99.0/AndroidManifest.xml:16:22-73
+16    <uses-permission
+16-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:9:5-11:38
+17        android:name="android.permission.BLUETOOTH"
+17-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:10:9-52
+18        android:maxSdkVersion="30" />
+18-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:11:9-35
+19    <uses-permission
+19-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:12:5-14:38
+20        android:name="android.permission.BLUETOOTH_ADMIN"
+20-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:13:9-58
+21        android:maxSdkVersion="30" />
+21-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:14:9-35
+22    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+22-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:15:5-78
+22-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:15:22-75
+23    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+23-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:16:5-76
+23-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:16:22-73
+24
+25    <uses-feature
+25-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:18:5-20:36
+26        android:name="android.hardware.bluetooth"
+26-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:19:9-50
+27        android:required="false" />
+27-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:20:9-33
+28
+29    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+29-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:11:5-81
+29-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:11:22-78
+30    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+30-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:21:5-73
+30-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:21:22-70
+31    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+31-->[com.radiusnetworks.flybuy:pickup:2.7.5] /Users/addingama/.gradle/caches/transforms-3/2e65bf81c790fd04384cf086d030708a/transformed/jetified-pickup-2.7.5/AndroidManifest.xml:18:5-77
+31-->[com.radiusnetworks.flybuy:pickup:2.7.5] /Users/addingama/.gradle/caches/transforms-3/2e65bf81c790fd04384cf086d030708a/transformed/jetified-pickup-2.7.5/AndroidManifest.xml:18:22-74
+32    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+32-->[com.radiusnetworks.flybuy:core:2.7.5] /Users/addingama/.gradle/caches/transforms-3/74099e540ad6f5f29deaa2ca538fe054/transformed/jetified-core-2.7.5/AndroidManifest.xml:10:5-79
+32-->[com.radiusnetworks.flybuy:core:2.7.5] /Users/addingama/.gradle/caches/transforms-3/74099e540ad6f5f29deaa2ca538fe054/transformed/jetified-core-2.7.5/AndroidManifest.xml:10:22-76
+33    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+33-->[com.radiusnetworks.flybuy:core:2.7.5] /Users/addingama/.gradle/caches/transforms-3/74099e540ad6f5f29deaa2ca538fe054/transformed/jetified-core-2.7.5/AndroidManifest.xml:12:5-81
+33-->[com.radiusnetworks.flybuy:core:2.7.5] /Users/addingama/.gradle/caches/transforms-3/74099e540ad6f5f29deaa2ca538fe054/transformed/jetified-core-2.7.5/AndroidManifest.xml:12:22-78
+34    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+34-->[com.radiusnetworks.flybuy:core:2.7.5] /Users/addingama/.gradle/caches/transforms-3/74099e540ad6f5f29deaa2ca538fe054/transformed/jetified-core-2.7.5/AndroidManifest.xml:13:5-77
+34-->[com.radiusnetworks.flybuy:core:2.7.5] /Users/addingama/.gradle/caches/transforms-3/74099e540ad6f5f29deaa2ca538fe054/transformed/jetified-core-2.7.5/AndroidManifest.xml:13:22-74
+35    <uses-permission android:name="android.permission.WAKE_LOCK" />
+35-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:25:5-68
+35-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:25:22-65
+36
+37    <application
+37-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:7:5-26:19
+38        android:name="com.example.reactnativeflybuy.MainApplication"
+38-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:8:7-38
+39        android:allowBackup="false"
+39-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:12:7-34
+40        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+40-->[androidx.core:core:1.8.0] /Users/addingama/.gradle/caches/transforms-3/3a0d39f63637a2df6686f9f5dba47b21/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
+41        android:dataExtractionRules="@xml/flybuy_core_backup_rules"
+41-->[com.radiusnetworks.flybuy:core:2.7.5] /Users/addingama/.gradle/caches/transforms-3/74099e540ad6f5f29deaa2ca538fe054/transformed/jetified-core-2.7.5/AndroidManifest.xml:16:9-68
+42        android:debuggable="true"
+43        android:fullBackupContent="@xml/flybuy_core_backup_rules_11u"
+43-->[com.radiusnetworks.flybuy:core:2.7.5] /Users/addingama/.gradle/caches/transforms-3/74099e540ad6f5f29deaa2ca538fe054/transformed/jetified-core-2.7.5/AndroidManifest.xml:17:9-70
+44        android:icon="@mipmap/ic_launcher"
+44-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:10:7-41
+45        android:label="@string/app_name"
+45-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:9:7-39
+46        android:roundIcon="@mipmap/ic_launcher_round"
+46-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:11:7-52
+47        android:theme="@style/AppTheme"
+47-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:13:7-38
+48        android:usesCleartextTraffic="true" >
+48-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/debug/AndroidManifest.xml:8:9-44
+49        <activity
+49-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/debug/AndroidManifest.xml:11:9-110
+50            android:name="com.facebook.react.devsupport.DevSettingsActivity"
+50-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/debug/AndroidManifest.xml:11:19-83
+51            android:exported="false" />
+51-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/debug/AndroidManifest.xml:11:84-108
+52        <activity
+52-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:14:7-25:18
+53            android:name="com.example.reactnativeflybuy.MainActivity"
+53-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:15:9-37
+54            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+54-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:17:9-86
+55            android:exported="true"
+55-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:20:9-32
+56            android:label="@string/app_name"
+56-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:16:9-41
+57            android:launchMode="singleTask"
+57-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:18:9-40
+58            android:windowSoftInputMode="adjustResize" >
+58-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:19:9-51
+59            <intent-filter>
+59-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:21:9-24:25
+60                <action android:name="android.intent.action.MAIN" />
+60-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:22:13-65
+60-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:22:21-62
+61
+62                <category android:name="android.intent.category.LAUNCHER" />
+62-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:23:13-73
+62-->/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example-app/android/app/src/main/AndroidManifest.xml:23:23-70
+63            </intent-filter>
+64        </activity>
+65
+66        <service android:name="com.radiusnetworks.flybuy.sdk.presence.PresenceService" />
+66-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:23:9-90
+66-->[com.radiusnetworks.flybuy:presence:2.7.5] /Users/addingama/.gradle/caches/transforms-3/a6a0c74422cf09a6e6e77be93878927c/transformed/jetified-presence-2.7.5/AndroidManifest.xml:23:18-87
+67
+68        <receiver
+68-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:24:9-28:47
+69            android:name="com.radiusnetworks.flybuy.sdk.notify.geofence.GeofenceBroadcastReceiver"
+69-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:25:13-99
+70            android:enabled="true"
+70-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:26:13-35
+71            android:exported="true" />
+71-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:27:13-36
+72
+73        <service android:name="com.radiusnetworks.flybuy.sdk.notify.beacon.BeaconService" />
+73-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:30:9-93
+73-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:30:18-90
+74
+75        <meta-data
+75-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:32:9-34:69
+76            android:name="com.google.android.gms.version"
+76-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:33:13-58
+77            android:value="@integer/google_play_services_version" />
+77-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:34:13-66
+78
+79        <service
+79-->[com.radiusnetworks.flybuy:pickup:2.7.5] /Users/addingama/.gradle/caches/transforms-3/2e65bf81c790fd04384cf086d030708a/transformed/jetified-pickup-2.7.5/AndroidManifest.xml:27:9-36:19
+80            android:name="com.radiusnetworks.flybuy.sdk.pickup.service.LocationService"
+80-->[com.radiusnetworks.flybuy:pickup:2.7.5] /Users/addingama/.gradle/caches/transforms-3/2e65bf81c790fd04384cf086d030708a/transformed/jetified-pickup-2.7.5/AndroidManifest.xml:28:13-88
+81            android:enabled="true"
+81-->[com.radiusnetworks.flybuy:pickup:2.7.5] /Users/addingama/.gradle/caches/transforms-3/2e65bf81c790fd04384cf086d030708a/transformed/jetified-pickup-2.7.5/AndroidManifest.xml:29:13-35
+82            android:exported="false"
+82-->[com.radiusnetworks.flybuy:pickup:2.7.5] /Users/addingama/.gradle/caches/transforms-3/2e65bf81c790fd04384cf086d030708a/transformed/jetified-pickup-2.7.5/AndroidManifest.xml:30:13-37
+83            android:foregroundServiceType="location" >
+83-->[com.radiusnetworks.flybuy:pickup:2.7.5] /Users/addingama/.gradle/caches/transforms-3/2e65bf81c790fd04384cf086d030708a/transformed/jetified-pickup-2.7.5/AndroidManifest.xml:31:13-53
+84            <meta-data
+84-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:32:9-34:69
+85                android:name="com.google.android.gms.version"
+85-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:33:13-58
+86                android:value="@integer/google_play_services_version" />
+86-->[com.radiusnetworks.flybuy:notify:2.7.5] /Users/addingama/.gradle/caches/transforms-3/49519f3a4c529d3efab8e3e77db28119/transformed/jetified-notify-2.7.5/AndroidManifest.xml:34:13-66
+87        </service>
+88
+89        <receiver
+89-->[com.radiusnetworks.flybuy:core:2.7.5] /Users/addingama/.gradle/caches/transforms-3/74099e540ad6f5f29deaa2ca538fe054/transformed/jetified-core-2.7.5/AndroidManifest.xml:19:9-22:40
+90            android:name="com.radiusnetworks.flybuy.sdk.sync.SyncBootReceiver"
+90-->[com.radiusnetworks.flybuy:core:2.7.5] /Users/addingama/.gradle/caches/transforms-3/74099e540ad6f5f29deaa2ca538fe054/transformed/jetified-core-2.7.5/AndroidManifest.xml:20:13-79
+91            android:enabled="true"
+91-->[com.radiusnetworks.flybuy:core:2.7.5] /Users/addingama/.gradle/caches/transforms-3/74099e540ad6f5f29deaa2ca538fe054/transformed/jetified-core-2.7.5/AndroidManifest.xml:21:13-35
+92            android:exported="false" />
+92-->[com.radiusnetworks.flybuy:core:2.7.5] /Users/addingama/.gradle/caches/transforms-3/74099e540ad6f5f29deaa2ca538fe054/transformed/jetified-core-2.7.5/AndroidManifest.xml:22:13-37
+93
+94        <provider
+94-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:31:9-39:20
+95            android:name="androidx.startup.InitializationProvider"
+95-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:32:13-67
+96            android:authorities="com.example.reactnativeflybuy.androidx-startup"
+96-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:33:13-68
+97            android:exported="false" >
+97-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:34:13-37
+98            <meta-data
+98-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:36:13-38:52
+99                android:name="androidx.work.WorkManagerInitializer"
+99-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:37:17-68
+100                android:value="androidx.startup" />
+100-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:38:17-49
+101            <meta-data
+101-->[androidx.emoji2:emoji2:1.2.0] /Users/addingama/.gradle/caches/transforms-3/1e58f5123f2c5f922d640f967e82518d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+102                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+102-->[androidx.emoji2:emoji2:1.2.0] /Users/addingama/.gradle/caches/transforms-3/1e58f5123f2c5f922d640f967e82518d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+103                android:value="androidx.startup" />
+103-->[androidx.emoji2:emoji2:1.2.0] /Users/addingama/.gradle/caches/transforms-3/1e58f5123f2c5f922d640f967e82518d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+104            <meta-data
+104-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/addingama/.gradle/caches/transforms-3/bee68c3e5c0507eb96d5cc6472c9744c/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+105                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+105-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/addingama/.gradle/caches/transforms-3/bee68c3e5c0507eb96d5cc6472c9744c/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+106                android:value="androidx.startup" />
+106-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/addingama/.gradle/caches/transforms-3/bee68c3e5c0507eb96d5cc6472c9744c/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+107        </provider>
+108
+109        <service
+109-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:41:9-46:35
+110            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+110-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:42:13-88
+111            android:directBootAware="false"
+111-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:43:13-44
+112            android:enabled="@bool/enable_system_alarm_service_default"
+112-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:44:13-72
+113            android:exported="false" />
+113-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:45:13-37
+114        <service
+114-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:47:9-53:35
+115            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+115-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:48:13-84
+116            android:directBootAware="false"
+116-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:49:13-44
+117            android:enabled="@bool/enable_system_job_service_default"
+117-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:50:13-70
+118            android:exported="true"
+118-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:51:13-36
+119            android:permission="android.permission.BIND_JOB_SERVICE" />
+119-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:52:13-69
+120        <service
+120-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:54:9-59:35
+121            android:name="androidx.work.impl.foreground.SystemForegroundService"
+121-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:55:13-81
+122            android:directBootAware="false"
+122-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:56:13-44
+123            android:enabled="@bool/enable_system_foreground_service_default"
+123-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:57:13-77
+124            android:exported="false" />
+124-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:58:13-37
+125
+126        <receiver
+126-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:61:9-66:35
+127            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+127-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:62:13-88
+128            android:directBootAware="false"
+128-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:63:13-44
+129            android:enabled="true"
+129-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:64:13-35
+130            android:exported="false" />
+130-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:65:13-37
+131        <receiver
+131-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:67:9-77:20
+132            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+132-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:68:13-106
+133            android:directBootAware="false"
+133-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:69:13-44
+134            android:enabled="false"
+134-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:70:13-36
+135            android:exported="false" >
+135-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:71:13-37
+136            <intent-filter>
+136-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:73:13-76:29
+137                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+137-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:74:17-87
+137-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:74:25-84
+138                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+138-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:75:17-90
+138-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:75:25-87
+139            </intent-filter>
+140        </receiver>
+141        <receiver
+141-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:78:9-88:20
+142            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+142-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:79:13-104
+143            android:directBootAware="false"
+143-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:80:13-44
+144            android:enabled="false"
+144-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:81:13-36
+145            android:exported="false" >
+145-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:82:13-37
+146            <intent-filter>
+146-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:84:13-87:29
+147                <action android:name="android.intent.action.BATTERY_OKAY" />
+147-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:85:17-77
+147-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:85:25-74
+148                <action android:name="android.intent.action.BATTERY_LOW" />
+148-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:86:17-76
+148-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:86:25-73
+149            </intent-filter>
+150        </receiver>
+151        <receiver
+151-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:89:9-99:20
+152            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+152-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:90:13-104
+153            android:directBootAware="false"
+153-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:91:13-44
+154            android:enabled="false"
+154-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:92:13-36
+155            android:exported="false" >
+155-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:93:13-37
+156            <intent-filter>
+156-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:95:13-98:29
+157                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+157-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:96:17-83
+157-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:96:25-80
+158                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+158-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:97:17-82
+158-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:97:25-79
+159            </intent-filter>
+160        </receiver>
+161        <receiver
+161-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:100:9-109:20
+162            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+162-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:101:13-103
+163            android:directBootAware="false"
+163-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:102:13-44
+164            android:enabled="false"
+164-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:103:13-36
+165            android:exported="false" >
+165-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:104:13-37
+166            <intent-filter>
+166-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:106:13-108:29
+167                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+167-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:107:17-79
+167-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:107:25-76
+168            </intent-filter>
+169        </receiver>
+170        <receiver
+170-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:110:9-121:20
+171            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+171-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:111:13-88
+172            android:directBootAware="false"
+172-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:112:13-44
+173            android:enabled="false"
+173-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:113:13-36
+174            android:exported="false" >
+174-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:114:13-37
+175            <intent-filter>
+175-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:116:13-120:29
+176                <action android:name="android.intent.action.BOOT_COMPLETED" />
+176-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:117:17-79
+176-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:117:25-76
+177                <action android:name="android.intent.action.TIME_SET" />
+177-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:118:17-73
+177-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:118:25-70
+178                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+178-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:119:17-81
+178-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:119:25-78
+179            </intent-filter>
+180        </receiver>
+181        <receiver
+181-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:122:9-131:20
+182            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+182-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:123:13-99
+183            android:directBootAware="false"
+183-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:124:13-44
+184            android:enabled="@bool/enable_system_alarm_service_default"
+184-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:125:13-72
+185            android:exported="false" >
+185-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:126:13-37
+186            <intent-filter>
+186-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:128:13-130:29
+187                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+187-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:129:17-98
+187-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:129:25-95
+188            </intent-filter>
+189        </receiver>
+190        <receiver
+190-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:132:9-142:20
+191            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+191-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:133:13-78
+192            android:directBootAware="false"
+192-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:134:13-44
+193            android:enabled="true"
+193-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:135:13-35
+194            android:exported="true"
+194-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:136:13-36
+195            android:permission="android.permission.DUMP" >
+195-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:137:13-57
+196            <intent-filter>
+196-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:139:13-141:29
+197                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+197-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:140:17-88
+197-->[androidx.work:work-runtime:2.7.1] /Users/addingama/.gradle/caches/transforms-3/193f86ea4e6532f50d73ab239a4e9bbd/transformed/work-runtime-2.7.1/AndroidManifest.xml:140:25-85
+198            </intent-filter>
+199        </receiver>
+200
+201        <service
+201-->[androidx.room:room-runtime:2.4.3] /Users/addingama/.gradle/caches/transforms-3/ce64f95f99a0ba35a06044016ec140f8/transformed/room-runtime-2.4.3/AndroidManifest.xml:25:9-28:40
+202            android:name="androidx.room.MultiInstanceInvalidationService"
+202-->[androidx.room:room-runtime:2.4.3] /Users/addingama/.gradle/caches/transforms-3/ce64f95f99a0ba35a06044016ec140f8/transformed/room-runtime-2.4.3/AndroidManifest.xml:26:13-74
+203            android:directBootAware="true"
+203-->[androidx.room:room-runtime:2.4.3] /Users/addingama/.gradle/caches/transforms-3/ce64f95f99a0ba35a06044016ec140f8/transformed/room-runtime-2.4.3/AndroidManifest.xml:27:13-43
+204            android:exported="false" />
+204-->[androidx.room:room-runtime:2.4.3] /Users/addingama/.gradle/caches/transforms-3/ce64f95f99a0ba35a06044016ec140f8/transformed/room-runtime-2.4.3/AndroidManifest.xml:28:13-37
+205
+206        <activity
+206-->[com.google.android.gms:play-services-base:18.1.0] /Users/addingama/.gradle/caches/transforms-3/32c8c4edf0e6202811c9620a5b764351/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
+207            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+207-->[com.google.android.gms:play-services-base:18.1.0] /Users/addingama/.gradle/caches/transforms-3/32c8c4edf0e6202811c9620a5b764351/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:19-85
+208            android:exported="false"
+208-->[com.google.android.gms:play-services-base:18.1.0] /Users/addingama/.gradle/caches/transforms-3/32c8c4edf0e6202811c9620a5b764351/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:22:19-43
+209            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+209-->[com.google.android.gms:play-services-base:18.1.0] /Users/addingama/.gradle/caches/transforms-3/32c8c4edf0e6202811c9620a5b764351/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:21:19-78
+210    </application>
+211
+212</manifest>

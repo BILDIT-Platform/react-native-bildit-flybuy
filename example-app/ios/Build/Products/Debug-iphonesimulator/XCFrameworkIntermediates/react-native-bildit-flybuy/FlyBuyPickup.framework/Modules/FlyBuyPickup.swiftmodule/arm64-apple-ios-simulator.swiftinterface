@@ -1,0 +1,33 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FlyBuyPickup
+import CoreLocation
+import FlyBuy
+@_exported import FlyBuyPickup
+import Foundation
+import MapKit
+import NotificationCenter
+import Swift
+import UIKit
+import _Concurrency
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(FlyBuyPickupManager) public class Manager : ObjectiveC.NSObject {
+  @objc public static let shared: FlyBuyPickup.Manager
+  @objc public func configure()
+  @objc deinit
+  public func stop()
+}
+extension FlyBuyPickup.Manager : CoreLocation.CLLocationManagerDelegate {
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didChangeAuthorization status: CoreLocation.CLAuthorizationStatus)
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didUpdateLocations locations: [CoreLocation.CLLocation])
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didRangeBeacons beacons: [CoreLocation.CLBeacon], in region: CoreLocation.CLBeaconRegion)
+}
+extension Foundation.NSNotification.Name {
+  public static let locationUpdate: Foundation.Notification.Name
+  public static let locationAuthorizationNotDetermined: Foundation.Notification.Name
+  public static let locationNotAuthorized: Foundation.Notification.Name
+  public static let locationAuthorizationChanged: Foundation.Notification.Name
+}
+extension FlyBuyPickup.Manager : FlyBuy.FlyBuyModuleManager {
+  public func configUpdated(_ config: FlyBuy.AppConfig, pushData: FlyBuy.PushData?)
+  public func set(logLevel: FlyBuy.LogLevel)
+}

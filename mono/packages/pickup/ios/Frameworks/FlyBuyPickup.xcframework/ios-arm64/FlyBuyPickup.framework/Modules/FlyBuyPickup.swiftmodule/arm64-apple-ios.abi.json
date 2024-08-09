@@ -1,0 +1,965 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "NotificationCenter",
+        "printedName": "NotificationCenter",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Manager",
+        "printedName": "Manager",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "shared",
+            "printedName": "shared",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Manager",
+                "printedName": "FlyBuyPickup.Manager",
+                "usr": "c:@M@FlyBuyPickup@objc(cs)FlyBuyPickupManager"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FlyBuyPickup@objc(cs)FlyBuyPickupManager(cpy)shared",
+            "mangledName": "$s12FlyBuyPickup7ManagerC6sharedACvpZ",
+            "moduleName": "FlyBuyPickup",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Manager",
+                    "printedName": "FlyBuyPickup.Manager",
+                    "usr": "c:@M@FlyBuyPickup@objc(cs)FlyBuyPickupManager"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FlyBuyPickup@objc(cs)FlyBuyPickupManager(cm)shared",
+                "mangledName": "$s12FlyBuyPickup7ManagerC6sharedACvgZ",
+                "moduleName": "FlyBuyPickup",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "configure",
+            "printedName": "configure()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FlyBuyPickup@objc(cs)FlyBuyPickupManager(im)configure",
+            "mangledName": "$s12FlyBuyPickup7ManagerC9configureyyF",
+            "moduleName": "FlyBuyPickup",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stop",
+            "printedName": "stop()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyPickup7ManagerC4stopyyF",
+            "mangledName": "$s12FlyBuyPickup7ManagerC4stopyyF",
+            "moduleName": "FlyBuyPickup",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "locationManager",
+            "printedName": "locationManager(_:didChangeAuthorization:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CLLocationManager",
+                "printedName": "CoreLocation.CLLocationManager",
+                "usr": "c:objc(cs)CLLocationManager"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CLAuthorizationStatus",
+                "printedName": "CoreLocation.CLAuthorizationStatus",
+                "usr": "c:@E@CLAuthorizationStatus"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FlyBuyPickup@objc(cs)FlyBuyPickupManager(im)locationManager:didChangeAuthorizationStatus:",
+            "mangledName": "$s12FlyBuyPickup7ManagerC08locationD0_22didChangeAuthorizationySo010CLLocationD0C_So21CLAuthorizationStatusVtF",
+            "moduleName": "FlyBuyPickup",
+            "objc_name": "locationManager:didChangeAuthorizationStatus:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "locationManager",
+            "printedName": "locationManager(_:didUpdateLocations:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CLLocationManager",
+                "printedName": "CoreLocation.CLLocationManager",
+                "usr": "c:objc(cs)CLLocationManager"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[CoreLocation.CLLocation]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CLLocation",
+                    "printedName": "CoreLocation.CLLocation",
+                    "usr": "c:objc(cs)CLLocation"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FlyBuyPickup@objc(cs)FlyBuyPickupManager(im)locationManager:didUpdateLocations:",
+            "mangledName": "$s12FlyBuyPickup7ManagerC08locationD0_18didUpdateLocationsySo010CLLocationD0C_SaySo0I0CGtF",
+            "moduleName": "FlyBuyPickup",
+            "objc_name": "locationManager:didUpdateLocations:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "locationManager",
+            "printedName": "locationManager(_:didRangeBeacons:in:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CLLocationManager",
+                "printedName": "CoreLocation.CLLocationManager",
+                "usr": "c:objc(cs)CLLocationManager"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[CoreLocation.CLBeacon]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CLBeacon",
+                    "printedName": "CoreLocation.CLBeacon",
+                    "usr": "c:objc(cs)CLBeacon"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CLBeaconRegion",
+                "printedName": "CoreLocation.CLBeaconRegion",
+                "usr": "c:objc(cs)CLBeaconRegion"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FlyBuyPickup@objc(cs)FlyBuyPickupManager(im)locationManager:didRangeBeacons:inRegion:",
+            "mangledName": "$s12FlyBuyPickup7ManagerC08locationD0_15didRangeBeacons2inySo010CLLocationD0C_SaySo8CLBeaconCGSo0K6RegionCtF",
+            "moduleName": "FlyBuyPickup",
+            "objc_name": "locationManager:didRangeBeacons:inRegion:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "configUpdated",
+            "printedName": "configUpdated(_:pushData:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "AppConfig",
+                "printedName": "FlyBuy.AppConfig",
+                "usr": "c:@M@FlyBuy@objc(cs)AppConfig"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "FlyBuy.PushData?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushData",
+                    "printedName": "FlyBuy.PushData",
+                    "usr": "s:6FlyBuy8PushDataV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyPickup7ManagerC13configUpdated_8pushDatay0aB09AppConfigC_AF04PushH0VSgtF",
+            "mangledName": "$s12FlyBuyPickup7ManagerC13configUpdated_8pushDatay0aB09AppConfigC_AF04PushH0VSgtF",
+            "moduleName": "FlyBuyPickup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "set",
+            "printedName": "set(logLevel:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogLevel",
+                "printedName": "FlyBuy.LogLevel",
+                "usr": "c:@M@FlyBuy@E@LogLevel"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyPickup7ManagerC3set8logLevely0aB003LogG0O_tF",
+            "mangledName": "$s12FlyBuyPickup7ManagerC3set8logLevely0aB003LogG0O_tF",
+            "moduleName": "FlyBuyPickup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FlyBuyPickup@objc(cs)FlyBuyPickupManager",
+        "mangledName": "$s12FlyBuyPickup7ManagerC",
+        "moduleName": "FlyBuyPickup",
+        "objc_name": "FlyBuyPickupManager",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "FlyBuyModuleManager",
+            "printedName": "FlyBuyModuleManager",
+            "usr": "s:6FlyBuy0aB13ModuleManagerP",
+            "mangledName": "$s6FlyBuy0aB13ModuleManagerP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "MapKit",
+        "printedName": "MapKit",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "FlyBuy",
+        "printedName": "FlyBuy",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "Import",
+        "name": "MapKit",
+        "printedName": "MapKit",
+        "declKind": "Import",
+        "moduleName": "FlyBuyPickup"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Name",
+        "printedName": "Name",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "locationUpdate",
+            "printedName": "locationUpdate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Name",
+                "printedName": "Foundation.NSNotification.Name",
+                "usr": "c:@T@NSNotificationName"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So18NSNotificationNamea12FlyBuyPickupE14locationUpdateABvpZ",
+            "mangledName": "$sSo18NSNotificationNamea12FlyBuyPickupE14locationUpdateABvpZ",
+            "moduleName": "FlyBuyPickup",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isFromExtension": true,
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Name",
+                    "printedName": "Foundation.NSNotification.Name",
+                    "usr": "c:@T@NSNotificationName"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So18NSNotificationNamea12FlyBuyPickupE14locationUpdateABvgZ",
+                "mangledName": "$sSo18NSNotificationNamea12FlyBuyPickupE14locationUpdateABvgZ",
+                "moduleName": "FlyBuyPickup",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "locationAuthorizationNotDetermined",
+            "printedName": "locationAuthorizationNotDetermined",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Name",
+                "printedName": "Foundation.NSNotification.Name",
+                "usr": "c:@T@NSNotificationName"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So18NSNotificationNamea12FlyBuyPickupE34locationAuthorizationNotDeterminedABvpZ",
+            "mangledName": "$sSo18NSNotificationNamea12FlyBuyPickupE34locationAuthorizationNotDeterminedABvpZ",
+            "moduleName": "FlyBuyPickup",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isFromExtension": true,
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Name",
+                    "printedName": "Foundation.NSNotification.Name",
+                    "usr": "c:@T@NSNotificationName"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So18NSNotificationNamea12FlyBuyPickupE34locationAuthorizationNotDeterminedABvgZ",
+                "mangledName": "$sSo18NSNotificationNamea12FlyBuyPickupE34locationAuthorizationNotDeterminedABvgZ",
+                "moduleName": "FlyBuyPickup",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "locationNotAuthorized",
+            "printedName": "locationNotAuthorized",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Name",
+                "printedName": "Foundation.NSNotification.Name",
+                "usr": "c:@T@NSNotificationName"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So18NSNotificationNamea12FlyBuyPickupE21locationNotAuthorizedABvpZ",
+            "mangledName": "$sSo18NSNotificationNamea12FlyBuyPickupE21locationNotAuthorizedABvpZ",
+            "moduleName": "FlyBuyPickup",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isFromExtension": true,
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Name",
+                    "printedName": "Foundation.NSNotification.Name",
+                    "usr": "c:@T@NSNotificationName"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So18NSNotificationNamea12FlyBuyPickupE21locationNotAuthorizedABvgZ",
+                "mangledName": "$sSo18NSNotificationNamea12FlyBuyPickupE21locationNotAuthorizedABvgZ",
+                "moduleName": "FlyBuyPickup",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "locationAuthorizationChanged",
+            "printedName": "locationAuthorizationChanged",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Name",
+                "printedName": "Foundation.NSNotification.Name",
+                "usr": "c:@T@NSNotificationName"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So18NSNotificationNamea12FlyBuyPickupE28locationAuthorizationChangedABvpZ",
+            "mangledName": "$sSo18NSNotificationNamea12FlyBuyPickupE28locationAuthorizationChangedABvpZ",
+            "moduleName": "FlyBuyPickup",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isFromExtension": true,
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Name",
+                    "printedName": "Foundation.NSNotification.Name",
+                    "usr": "c:@T@NSNotificationName"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So18NSNotificationNamea12FlyBuyPickupE28locationAuthorizationChangedABvgZ",
+                "mangledName": "$sSo18NSNotificationNamea12FlyBuyPickupE28locationAuthorizationChangedABvgZ",
+                "moduleName": "FlyBuyPickup",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "c:@T@NSNotificationName",
+        "moduleName": "Foundation",
+        "declAttributes": [
+          "SynthesizedProtocol",
+          "SynthesizedProtocol",
+          "SynthesizedProtocol",
+          "SynthesizedProtocol",
+          "SynthesizedProtocol",
+          "SynthesizedProtocol",
+          "Sendable"
+        ],
+        "isFromExtension": true,
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "_ObjectiveCBridgeable",
+            "printedName": "_ObjectiveCBridgeable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "_ObjectiveCType",
+                "printedName": "_ObjectiveCType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSString",
+                    "printedName": "Foundation.NSString",
+                    "usr": "c:objc(cs)NSString"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s21_ObjectiveCBridgeableP",
+            "mangledName": "$ss21_ObjectiveCBridgeableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_SwiftNewtypeWrapper",
+            "printedName": "_SwiftNewtypeWrapper",
+            "usr": "s:s20_SwiftNewtypeWrapperP",
+            "mangledName": "$ss20_SwiftNewtypeWrapperP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_HasCustomAnyHashableRepresentation",
+            "printedName": "_HasCustomAnyHashableRepresentation",
+            "usr": "s:s35_HasCustomAnyHashableRepresentationP",
+            "mangledName": "$ss35_HasCustomAnyHashableRepresentationP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/UserDefaultsKey.swift",
+      "kind": "StringLiteral",
+      "offset": 88,
+      "length": 24,
+      "value": "\"Last Known Auth Status\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/UserDefaultsKey.swift",
+      "kind": "StringLiteral",
+      "offset": 139,
+      "length": 32,
+      "value": "\"FlyBuyPickup.Migration Version\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/UserDefaultsKey.swift",
+      "kind": "StringLiteral",
+      "offset": 88,
+      "length": 24,
+      "value": "\"Last Known Auth Status\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/UserDefaultsKey.swift",
+      "kind": "StringLiteral",
+      "offset": 139,
+      "length": 32,
+      "value": "\"FlyBuyPickup.Migration Version\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/LocationEventGenerator.swift",
+      "kind": "IntegerLiteral",
+      "offset": 386,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/LocationEventGenerator.swift",
+      "kind": "Array",
+      "offset": 932,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/LocationEventGenerator.swift",
+      "kind": "StringLiteral",
+      "offset": 172,
+      "length": 22,
+      "value": "\"FlyBuyPickup.LocationEventGenerator\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Manager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1548,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Manager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1571,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 2065,
+      "length": 14,
+      "value": "\"FlyBuyPickup\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 11721,
+      "length": 16,
+      "value": "\"locationUpdate\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 11807,
+      "length": 36,
+      "value": "\"locationAuthorizationNotDetermined\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 11900,
+      "length": 23,
+      "value": "\"locationNotAuthorized\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Manager.swift",
+      "kind": "StringLiteral",
+      "offset": 11987,
+      "length": 30,
+      "value": "\"locationAuthorizationChanged\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Manager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 12089,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/ETAData.swift",
+      "kind": "IntegerLiteral",
+      "offset": 154,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/ETAData.swift",
+      "kind": "BooleanLiteral",
+      "offset": 224,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/ETACalculator.swift",
+      "kind": "FloatLiteral",
+      "offset": 282,
+      "length": 3,
+      "value": "5.0"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/ETACalculator.swift",
+      "kind": "FloatLiteral",
+      "offset": 343,
+      "length": 3,
+      "value": "0.8"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/ETACalculator.swift",
+      "kind": "Dictionary",
+      "offset": 462,
+      "length": 3,
+      "value": "[]"
+    }
+  ]
+}

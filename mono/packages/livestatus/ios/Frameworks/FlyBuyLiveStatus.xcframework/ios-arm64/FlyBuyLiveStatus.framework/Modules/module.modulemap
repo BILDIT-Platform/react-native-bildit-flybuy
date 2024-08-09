@@ -1,0 +1,11 @@
+framework module FlyBuyLiveStatus {
+  umbrella header "FlyBuyLiveStatus.h"
+  export *
+
+  module * { export * }
+}
+
+module FlyBuyLiveStatus.Swift {
+  header "FlyBuyLiveStatus-Swift.h"
+  requires objc
+}

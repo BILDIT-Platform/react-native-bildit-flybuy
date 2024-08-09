@@ -1701,9 +1701,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bildit-platform/rn-flybuy-core@3.0.0, @bildit-platform/rn-flybuy-core@workspace:packages/core":
+"@bildit-platform/react-native-flybuy-core@^2.20.0, @bildit-platform/react-native-flybuy-core@workspace:packages/core":
   version: 0.0.0-use.local
-  resolution: "@bildit-platform/rn-flybuy-core@workspace:packages/core"
+  resolution: "@bildit-platform/react-native-flybuy-core@workspace:packages/core"
   dependencies:
     "@commitlint/config-conventional": ^17.0.2
     "@evilmartians/lefthook": ^1.5.0
@@ -1730,9 +1730,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bildit-platform/rn-flybuy-livestatus@workspace:packages/livestatus":
+"@bildit-platform/react-native-flybuy-livestatus@workspace:packages/livestatus":
   version: 0.0.0-use.local
-  resolution: "@bildit-platform/rn-flybuy-livestatus@workspace:packages/livestatus"
+  resolution: "@bildit-platform/react-native-flybuy-livestatus@workspace:packages/livestatus"
   dependencies:
     "@commitlint/config-conventional": ^17.0.2
     "@evilmartians/lefthook": ^1.5.0
@@ -1759,11 +1759,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bildit-platform/rn-flybuy-notify@workspace:packages/notify":
+"@bildit-platform/react-native-flybuy-notify@workspace:packages/notify":
   version: 0.0.0-use.local
-  resolution: "@bildit-platform/rn-flybuy-notify@workspace:packages/notify"
+  resolution: "@bildit-platform/react-native-flybuy-notify@workspace:packages/notify"
   dependencies:
-    "@bildit-platform/rn-flybuy-core": 3.0.0
+    "@bildit-platform/react-native-flybuy-core": ^2.20.0
     "@commitlint/config-conventional": ^17.0.2
     "@evilmartians/lefthook": ^1.5.0
     "@react-native/eslint-config": ^0.73.1
@@ -1789,9 +1789,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bildit-platform/rn-flybuy-pickup@workspace:packages/pickup":
+"@bildit-platform/react-native-flybuy-pickup@workspace:packages/pickup":
   version: 0.0.0-use.local
-  resolution: "@bildit-platform/rn-flybuy-pickup@workspace:packages/pickup"
+  resolution: "@bildit-platform/react-native-flybuy-pickup@workspace:packages/pickup"
   dependencies:
     "@commitlint/config-conventional": ^17.0.2
     "@evilmartians/lefthook": ^1.5.0
@@ -1818,9 +1818,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bildit-platform/rn-flybuy-presence@workspace:packages/presence":
+"@bildit-platform/react-native-flybuy-presence@workspace:packages/presence":
   version: 0.0.0-use.local
-  resolution: "@bildit-platform/rn-flybuy-presence@workspace:packages/presence"
+  resolution: "@bildit-platform/react-native-flybuy-presence@workspace:packages/presence"
   dependencies:
     "@commitlint/config-conventional": ^17.0.2
     "@evilmartians/lefthook": ^1.5.0
@@ -14694,7 +14694,7 @@ __metadata:
 
 "typescript@patch:typescript@>=3 < 6#~builtin<compat/typescript>, typescript@patch:typescript@^4.6.4 || ^5.2.2#~builtin<compat/typescript>, typescript@patch:typescript@^5.2.2#~builtin<compat/typescript>":
   version: 5.5.3
-  resolution: "typescript@patch:typescript@npm%3A5.5.3#~builtin<compat/typescript>::version=5.5.3&hash=14eedb"
+  resolution: "typescript@patch:typescript@npm%3A5.5.3#~builtin<compat/typescript>::version=5.5.3&hash=29ae49"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver

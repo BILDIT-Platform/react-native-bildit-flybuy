@@ -1,6 +1,14 @@
+
+<p align="center">
+  <a href="https://bildit-platform.github.io/react-native-bildit-flybuy/">
+    <img src="logo.svg" height="128">
+  </a>
+</p>
+
+
 # React Native FlyBuy SDK Wrapper
 
-The wrapper from FlyBuy SDK for React Native. 
+The FlyBuy cloud service and mobile SDK enables developers to add FlyBuy functionality directly into their react native apps for a full white label implementation of the service.
 
 Included SDKs:
 
@@ -18,9 +26,22 @@ SDK that supports React Native New Architecture:
 - [ ] FlyBuy Presence
 - [ ] FlyBuy Notify
 
+The code is supports React Native New Architecture but we haven't test it.
+
+
+## Documentation
+
+Visit [react-native-bildit-flybuy](https://bildit-platform.github.io/react-native-bildit-flybuy/) to view the full documentation.
+
+## Contributing
+
+Do you have a feature request, bug report, or patch? Great! See [CONTRIBUTING.md](./CONTRIBUTING.md) for information on what you can do about that. Contributions are welcome and appreciated !
+
+## License
+
+[MIT](./LICENSE)
 
 
 ### Development Notes
 
 - Android Min SDK version must be 26
-- Afer modifying any `packages/*`, we need to re-build the packages using `npx lerna run prepare` then go to `example` project and run `yarn install --force`

@@ -1,0 +1,13 @@
+current directory: /Users/addingama/Workspace/react-native/bildit-flybuy/example/vendor/bundle/ruby/2.7.0/gems/json-2.7.2/ext/json
+/Users/addingama/.rvm/rubies/ruby-2.7.4/bin/ruby -I /Users/addingama/.rvm/rubies/ruby-2.7.4/lib/ruby/2.7.0 -r ./siteconf20240718-44165-1yfnnmj.rb extconf.rb
+creating Makefile
+
+current directory: /Users/addingama/Workspace/react-native/bildit-flybuy/example/vendor/bundle/ruby/2.7.0/gems/json-2.7.2/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/addingama/Workspace/react-native/bildit-flybuy/example/vendor/bundle/ruby/2.7.0/gems/json-2.7.2/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/addingama/Workspace/react-native/bildit-flybuy/example/vendor/bundle/ruby/2.7.0/gems/json-2.7.2/ext/json
+make "DESTDIR=" install

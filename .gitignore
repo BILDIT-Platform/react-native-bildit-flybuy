@@ -79,7 +79,7 @@ yarn-error.log
 
 
 packages/core/example/*
-example/.env
-example/vendor/
-example-full/.env
-example-full/vendor
+development-app/.env
+development-app/vendor/
+example-app/.env
+example-epp/vendor

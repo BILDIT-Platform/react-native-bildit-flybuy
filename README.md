@@ -20,6 +20,7 @@ Included SDKs:
 
 
 SDK that supports React Native New Architecture:
+Right now the new architecture is in [https://reactnative.dev/docs/the-new-architecture/landing-page#should-i-use-the-new-architecture-today](Beta test)
 
 - [ ] FlyBuy Core
 - [ ] FlyBuy Pickup

@@ -49,6 +49,7 @@ Do you have a feature request, bug report, or patch? Great! See [CONTRIBUTING.md
 
 ## TODO
 
-[ ] Re-write example app with the new module
-[ ] Update docusaurus documentation using the latest package
-[ ] Put migration documentation on docusaurus
+[X] Re-write example app with the new module
+[X] Update docusaurus documentation using the latest package
+[X] Put migration documentation on docusaurus
+[ ] Test with react native new architecture

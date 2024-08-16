@@ -1,5 +1,5 @@
 {
-  "name": "example",
+  "name": "development-app",
   "version": "0.0.1",
   "description": "The development app for contributor to test the wrapper changes locally",
   "private": true,

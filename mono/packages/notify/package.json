@@ -1,6 +1,6 @@
 {
   "name": "@bildit-platform/react-native-flybuy-notify",
-  "version": "2.20.1",
+  "version": "2.20.2",
   "description": "React Native Wrapper for FlyBuy Notify SDK",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -82,7 +82,7 @@
     "@types/react": "^18.2.44"
   },
   "dependencies": {
-    "@bildit-platform/react-native-flybuy-core": "^2.20.1"
+    "@bildit-platform/react-native-flybuy-core": "^2.20.2"
   },
   "peerDependencies": {
     "react": "*",

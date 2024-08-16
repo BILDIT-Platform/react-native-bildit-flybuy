@@ -9,7 +9,7 @@
 #endif
 
 
-
+// Authentication
 - (void)login:(NSString *)email
     withPassword:(NSString *)password
     withResolver:(RCTPromiseResolveBlock)resolve

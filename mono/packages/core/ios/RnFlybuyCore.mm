@@ -10,7 +10,7 @@ RCT_EXPORT_METHOD(login:(NSString *)email
                   withPassword:(NSString *)password
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject) {
-    
+
     [[FlyBuyCore customer] loginWithEmailAddress:email password:password callback:^(FlyBuyCustomer *customer, NSError *error) {
         if (error == nil && customer != nil) {
             // Assuming you have a method `parserCustomer:` in this class that parses the customer
@@ -77,7 +77,7 @@ RCT_EXPORT_METHOD(createCustomer:(NSDictionary *)customer
             reject([error localizedDescription], [error debugDescription], error);
         }
     }];
-    
+
 }
 
 RCT_EXPORT_METHOD(updateCustomer:(NSDictionary *)customer
@@ -114,7 +114,7 @@ RCT_EXPORT_METHOD(fetchSitesByQuery:(NSDictionary *)params
                   withRejecter:(RCTPromiseRejectBlock)reject) {
     NSString *query = [RCTConvert NSString:params[@"query"]];
       NSInteger page = [RCTConvert NSInteger:params[@"page"]];
-      
+
     [[FlyBuyCore sites] fetchWithQuery:query page:page callback:^(NSArray<FlyBuySite *> *sites, FlyBuyPagination *pagination, NSError *error) {
         if (error == nil) {
               NSMutableDictionary *result = [NSMutableDictionary dictionary];
@@ -124,7 +124,7 @@ RCT_EXPORT_METHOD(fetchSitesByQuery:(NSDictionary *)params
               }
               result[@"data"] = parsedSites;
               result[@"pagination"] = [self parsePagination:pagination] ?: [NSNull null];
-              
+
               resolve(result);
             } else {
               reject([error localizedDescription], [error debugDescription], error);
@@ -139,7 +139,7 @@ RCT_EXPORT_METHOD(fetchSitesByRegion:(NSDictionary *)params
     NSInteger page = [RCTConvert NSInteger:params[@"page"]];
       NSInteger per = [RCTConvert NSInteger:params[@"per"]];
       CLCircularRegion *region = [self decodeRegion:params[@"region"]];
-    
+
     [[FlyBuyCore sites] fetchWithRegion:region page:page per:per callback:^(NSArray<FlyBuySite *> *sites, NSError *error) {
         if (error == nil) {
           NSMutableArray *result = [NSMutableArray array];
@@ -151,7 +151,7 @@ RCT_EXPORT_METHOD(fetchSitesByRegion:(NSDictionary *)params
           reject([error localizedDescription], [error debugDescription], error);
         }
     }];
-    
+
 }
 
 RCT_EXPORT_METHOD(fetchSiteByPartnerIdentifier:(NSDictionary *)params
@@ -162,7 +162,7 @@ RCT_EXPORT_METHOD(fetchSiteByPartnerIdentifier:(NSDictionary *)params
         reject(@"invalid_parameter", @"partnerIdentifier must be a string", nil);
         return;
     }
-    
+
     [[FlyBuyCore sites] fetchByPartnerIdentifierWithPartnerIdentifier:pid callback:^(FlyBuySite *site, NSError *error) {
         if (error == nil) {
           resolve([self parseSite:site]);
@@ -183,6 +183,180 @@ RCT_EXPORT_METHOD(handleRemoteNotification:(NSDictionary *)userInfo)
 {
   [FlyBuyCore handleRemoteNotification:userInfo];
 }
+
+
+// Orders
+
+RCT_EXPORT_METHOD(fetchOrders:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
+    [[FlyBuyCore orders] fetchWithCallback:^(NSArray<FlyBuyOrder *> *orders, NSError *error) {
+        if (error == nil) {
+            NSMutableArray *parsedOrders = [NSMutableArray array];
+            for (FlyBuyOrder *order in orders) { // Replace 'OrderType' with the correct type
+                [parsedOrders addObject:[self parseOrder:order]];
+            }
+            resolve(parsedOrders);
+        } else {
+            reject(error.localizedDescription, error.debugDescription, error);
+        }
+    }];
+}
+
+RCT_EXPORT_METHOD(createOrder:(NSInteger)siteId
+                  withPartnerIdentifier:(NSString *)pid
+                  withCustomerInfo:(NSDictionary *)customerInfo
+                  withPickupWindow:(NSDictionary *)pickupWindow
+                  withOrderState:(NSString *)orderState
+                  withPickupType:(NSString *)pickupType
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    FlyBuyCustomerInfo *info = [self decodeCustomerInfo:customerInfo];
+
+    void (^callbackHandler)(FlyBuyOrder *order, NSError *error) = ^(FlyBuyOrder *order, NSError *error) {
+        if (error == nil && order != nil) {
+            resolve([self parseOrder:order]);
+        } else {
+            reject(error.debugDescription, error.localizedDescription, error);
+        }
+    };
+
+    if (pickupWindow != nil) {
+        FlyBuyPickupWindow *pickupWindowInfo = [self decodePickupWindowWithPickupWindow:pickupWindow];
+
+
+        [[FlyBuyCore orders] createWithSiteID:siteId partnerIdentifier:pid customerInfo:info pickupWindow:pickupWindowInfo state:orderState pickupType:pickupType callback:^(FlyBuyOrder *order, NSError *error) {
+            callbackHandler(order, error);
+        }];
+    } else {
+        [[FlyBuyCore orders] createWithSiteID:siteId partnerIdentifier:pid customerInfo:info state:orderState pickupType:pickupType callback:^(FlyBuyOrder *order, NSError *error) {
+            callbackHandler(order, error);
+        }];
+    }
+}
+
+RCT_EXPORT_METHOD(createOrderWithPartnerIdentifier:(NSString *)sitePartnerIdentifier
+                  withOrderPartnerIdentifier:(NSString *)orderPid
+                  withCustomerInfo:(NSDictionary *)customerInfo
+                  withPickupWindow:(NSDictionary *)pickupWindow
+                  withOrderState:(NSString *)orderState
+                  withPickupType:(NSString *)pickupType
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    FlyBuyCustomerInfo *info = [self decodeCustomerInfo:customerInfo];
+
+    void (^callbackHandler)(FlyBuyOrder *order, NSError *error) = ^(FlyBuyOrder *order, NSError *error) {
+        if (error == nil && order != nil) {
+            resolve([self parseOrder:order]);
+        } else {
+            reject(error.debugDescription, error.localizedDescription, error);
+        }
+    };
+
+    if (pickupWindow != nil) {
+        FlyBuyPickupWindow *pickupWindowInfo = [self decodePickupWindowWithPickupWindow:pickupWindow];
+
+
+        [[FlyBuyCore orders] createWithSitePartnerIdentifier:sitePartnerIdentifier orderPartnerIdentifier:orderPid customerInfo:info pickupWindow:pickupWindowInfo state:orderState pickupType:pickupType callback:^(FlyBuyOrder *order, NSError *error) {
+            callbackHandler(order, error);
+        }];
+    } else {
+        [[FlyBuyCore orders] createWithSitePartnerIdentifier:sitePartnerIdentifier orderPartnerIdentifier:orderPid customerInfo:info state:orderState pickupType:pickupType callback:^(FlyBuyOrder *order, NSError *error) {
+            callbackHandler(order, error);
+        }];
+    }
+}
+
+RCT_EXPORT_METHOD(claimOrder:(NSString *)redeemCode
+                  withCustomer:(NSDictionary *)customer
+                  withPickupType:(NSString *)pickupType
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    FlyBuyCustomerInfo *customerInfo = [self decodeCustomerInfo:customer];
+
+    [[FlyBuyCore orders] claimWithRedemptionCode:redeemCode customerInfo:customerInfo pickupType:pickupType callback:^(FlyBuyOrder *order, NSError *error) {
+        if (error == nil && order != nil) {
+            resolve([self parseOrder:order]);
+        } else {
+            reject(error.localizedDescription, error.debugDescription, error);
+        }
+    }];
+}
+
+RCT_EXPORT_METHOD(fetchOrderByRedemptionCode:(NSString *)redemCode
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    [[FlyBuyCore orders] fetchWithRedemptionCode:redemCode callback:^(FlyBuyOrder *order, NSError *error) {
+        if (error) {
+            reject(error.localizedDescription, error.localizedDescription, error);
+        } else {
+            resolve([self parseOrder:order]);
+        }
+    }];
+}
+
+RCT_EXPORT_METHOD(updateOrderState:(NSInteger)orderId
+                  withState:(NSString *)state
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    [[FlyBuyCore orders] updateOrderStateWithOrderID:orderId state:state callback:^(FlyBuyOrder *order, NSError *error) {
+        if (error) {
+            reject(error.localizedDescription, error.debugDescription, error);
+        } else {
+            resolve([self parseOrder:order]);
+        }
+    }];
+}
+
+RCT_EXPORT_METHOD(updateOrderCustomerState:(NSInteger)orderId
+                  withState:(NSString *)state
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    [[FlyBuyCore orders] updateCustomerStateWithOrderID:orderId customerState:state callback:^(FlyBuyOrder *order, NSError *error) {
+        if (error) {
+            reject(error.localizedDescription, error.debugDescription, error);
+        } else {
+            resolve([self parseOrder:order]);
+        }
+    } ];
+}
+
+RCT_EXPORT_METHOD(updateOrderCustomerStateWithSpot:(NSInteger)orderId
+                  withState:(NSString *)state
+                  withSpot:(NSString *)spot
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    [[FlyBuyCore orders] updateCustomerStateWithOrderID:orderId customerState:state spotIdentifier:spot callback:^(FlyBuyOrder *order, NSError *error) {
+        if (error) {
+            reject(error.localizedDescription, error.debugDescription, error);
+        } else {
+            resolve([self parseOrder:order]);
+        }
+    }];
+}
+
+RCT_EXPORT_METHOD(rateOrder:(NSInteger)orderId
+                  withRating:(NSInteger)rating
+                  withComments:(NSString *)comments
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    [[FlyBuyCore orders] rateOrderWithOrderID:orderId rating:rating comments:comments callback:^(FlyBuyOrder *order, NSError *error) {
+        if (error) {
+            reject(error.localizedDescription, error.debugDescription, error);
+        } else {
+            resolve([self parseOrder:order]);
+        }
+    }];
+}
+
 
 
 
@@ -207,7 +381,7 @@ RCT_EXPORT_METHOD(handleRemoteNotification:(NSDictionary *)userInfo)
 
 - (NSDictionary *)parseSite:(FlyBuySite *)site {
   NSMutableDictionary *map = [NSMutableDictionary dictionary];
-  
+
   map[@"id"] = @(site.id);
   map[@"name"] = site.name ?: @"";
   map[@"phone"] = site.phone ?: @"";
@@ -229,28 +403,28 @@ RCT_EXPORT_METHOD(handleRemoteNotification:(NSDictionary *)userInfo)
 
 - (NSDictionary *)parsePickupTypeConfig:(PickupTypeConfig *)pickupTypeConfig {
   NSMutableDictionary *map = [NSMutableDictionary dictionary];
-  
+
   map[@"pickupType"] = pickupTypeConfig.pickupType ?: @"";
   map[@"pickupTypeLocalizedString"] = pickupTypeConfig.pickupTypeLocalizedString ?: @"";
   map[@"requireVehicleInfo"] = @(pickupTypeConfig.requireVehicleInfo);
   map[@"showVehicleInfoFields"] = @(pickupTypeConfig.showVehicleInfoFields);
-  
+
   return map;
 }
 
 - (NSArray *)parsePickupTypeConfigs:(NSArray<PickupTypeConfig *> *)items {
   NSMutableArray *array = [NSMutableArray array];
-  
+
   for (PickupTypeConfig *item in items) {
     [array addObject:[self parsePickupTypeConfig:item]];
   }
-  
+
   return array;
 }
 
 - (NSDictionary *)parsePickupConfig:(PickupConfig *)pickupConfig {
   NSMutableDictionary *map = [NSMutableDictionary dictionary];
-  
+
   map[@"accentColor"] = pickupConfig.accentColor ?: @"";
   map[@"accentTextColor"] = pickupConfig.accentTextColor ?: @"";
     map[@"askToAskImageURL"] = pickupConfig.askToAskImageURL ?: @"";
@@ -261,7 +435,7 @@ RCT_EXPORT_METHOD(handleRemoteNotification:(NSDictionary *)userInfo)
     map[@"termsOfServiceURL"] = pickupConfig.termsOfServiceURL ?: @"";
   map[@"type"] = pickupConfig.type ?: @"";
   map[@"availablePickupTypes"] = [self parsePickupTypeConfigs:pickupConfig.availablePickupTypes];
-  
+
   return map;
 }
 
@@ -277,6 +451,48 @@ RCT_EXPORT_METHOD(handleRemoteNotification:(NSDictionary *)userInfo)
   }
 }
 
+- (NSDictionary *)parseOrder:(FlyBuyOrder *)order {
+    return @{
+        @"id":  @(order.id),
+        @"state": order.state ?: [NSNull null],
+        @"customerState": order.customerState.description.lowercaseString ?: [NSNull null],
+        @"partnerIdentifier": order.partnerIdentifier ?: [NSNull null],
+        @"partnerIdentifierForCustomer": order.partnerIdentifierForCustomer ?: [NSNull null],
+        @"partnerIdentifierForCrew": order.partnerIdentifierForCrew ?: [NSNull null],
+        @"pickupWindow": @[
+            order.pickupWindow.start.description ?: [NSNull null],
+            order.pickupWindow.end.description ?: [NSNull null]
+        ],
+        @"pickupType": order.pickupType ?: [NSNull null],
+        @"etaAt": order.etaAt.description ?: [NSNull null],
+        @"redemptionCode": order.redemptionCode ?: [NSNull null],
+        @"redeemedAt": order.redeemedAt.description ?: [NSNull null],
+        @"createdAt": order.createdAt.description ?: [NSNull null],
+        @"customerRating": order.customerRating ?: [NSNull null],
+        @"customerComment": order.customerComment ?: [NSNull null],
+
+        @"siteID": @(order.siteID),
+        @"siteName": order.siteName ?: [NSNull null],
+        @"sitePhone": order.sitePhone ?: [NSNull null],
+        @"siteFullAddress": order.siteFullAddress ?: [NSNull null],
+        @"siteLongitude": order.siteLongitude ?: [NSNull null],
+        @"siteLatitude": order.siteLatitude ?: [NSNull null],
+        @"siteInstructions": order.siteInstructions ?: [NSNull null],
+        @"siteDescription": order.siteDescription ?: [NSNull null],
+        @"siteCoverPhotoURL": order.siteCoverPhotoURL ?: [NSNull null],
+
+        @"customerName": order.customerName ?: [NSNull null],
+        @"customerCarType": order.customerCarType ?: [NSNull null],
+        @"customerCarColor": order.customerCarColor ?: [NSNull null],
+        @"customerLicensePlate": order.customerLicensePlate ?: [NSNull null],
+
+        @"spotIdentifer": order.spotIdentifer ?: [NSNull null],
+        // TODO: check the SDK
+//        @"spotIdentifierEntryEnabled": @(order.spotIdentifierEntryEnabled),
+        @"spotIdentifierInputType": order.spotIdentifierInputType ?: [NSNull null]
+    };
+}
+
 
 
 // Decoder
@@ -286,7 +502,7 @@ RCT_EXPORT_METHOD(handleRemoteNotification:(NSDictionary *)userInfo)
     NSString *carColor = customer[@"carColor"] ?: @"";
     NSString *licensePlate = customer[@"licensePlate"] ?: @"";
     NSString *phone = customer[@"phone"] ?: @"";
-    
+
     FlyBuyCustomerInfo *customerInfo = [[FlyBuyCustomerInfo alloc] initWithName:name
                                                                         carType:carType
                                                                        carColor:carColor
@@ -299,11 +515,24 @@ RCT_EXPORT_METHOD(handleRemoteNotification:(NSDictionary *)userInfo)
   CLLocationDegrees latitude = [regionDict[@"latitude"] doubleValue];
   CLLocationDegrees longitude = [regionDict[@"longitude"] doubleValue];
   CLLocationDistance radius = [regionDict[@"radius"] doubleValue];
-  
+
   CLLocationCoordinate2D center = CLLocationCoordinate2DMake(latitude, longitude);
   CLCircularRegion *region = [[CLCircularRegion alloc] initWithCenter:center radius:radius identifier:[[NSUUID UUID] UUIDString]];
-  
+
   return region;
+}
+
+- (FlyBuyPickupWindow *)decodePickupWindowWithPickupWindow:(NSDictionary<NSString *, NSString *> *)pickupWindow {
+    NSISO8601DateFormatter *formatter = [[NSISO8601DateFormatter alloc] init];
+    formatter.formatOptions = (NSISO8601DateFormatOptions)(NSISO8601DateFormatWithFullDate |
+                                                           NSISO8601DateFormatWithTime |
+                                                           NSISO8601DateFormatWithDashSeparatorInDate |
+                                                           NSISO8601DateFormatWithColonSeparatorInTime);
+
+    NSDate *start = [formatter dateFromString:pickupWindow[@"start"]] ?: [NSDate date]; // Replace with a fallback if needed
+    NSDate *end = [formatter dateFromString:pickupWindow[@"end"]] ?: [NSDate date]; // Replace with a fallback if needed
+
+    return [[FlyBuyPickupWindow alloc] initWithStart:start end:end];
 }
 
 

@@ -81,3 +81,5 @@ yarn-error.log
 packages/core/example/*
 example/.env
 example/vendor/
+example-full/.env
+example-full/vendor

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/addingama/Workspace/react-native/react-native-bildit-flybuy/example/ios/development-app.xcodeproj">
+      location = "group:development-app.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

@@ -3,6 +3,7 @@ import {
   OrderStateType,
   CustomerState,
   PickupType,
+  IOrder,
 } from '@bildit-platform/react-native-flybuy-core';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
@@ -10,6 +11,7 @@ import {Button} from './components';
 import {
   CUSTOMER_INFO,
   NEW_PID,
+  ORDER_ID,
   ORDER_PID,
   SITE_ID,
   SITE_PID,
@@ -18,7 +20,7 @@ import {
 export const OrdersSection = () => {
   const fetchOrders = () => {
     FlyBuyCore.fetchOrders()
-      .then(orders => console.log('orders', orders))
+      .then((orders: IOrder[]) => console.log('orders', orders))
       .catch(err => console.log(err));
   };
 
@@ -28,14 +30,17 @@ export const OrdersSection = () => {
       orderPid: ORDER_PID,
       customerInfo: CUSTOMER_INFO,
     })
-      .then(order => console.log('order', order))
+      .then((order: IOrder) => console.log('order', order))
       .catch(err => console.log(err));
   };
 
   const createOrder = () => {
+    const startDate = new Date();
+    const endDate = new Date(startDate);
+    endDate.setHours(startDate.getHours() + 1);
     const pickupWindow = {
-      start: new Date().toISOString(),
-      end: new Date('2022-12-02').toISOString(),
+      start: startDate.toISOString(),
+      end: endDate.toISOString(),
     };
     FlyBuyCore.createOrder({
       siteId: SITE_ID,
@@ -45,7 +50,7 @@ export const OrdersSection = () => {
       orderState: OrderStateType.DELAYED,
       pickupType: PickupType.DELIVERY,
     })
-      .then(order => console.log('order', order))
+      .then((order: IOrder) => console.log('order', order))
       .catch(err => console.error(err));
   };
 
@@ -55,7 +60,7 @@ export const OrdersSection = () => {
       pid: NEW_PID,
       customerInfo: CUSTOMER_INFO,
     })
-      .then(order => console.log('order', order))
+      .then((order: IOrder) => console.log('order with 3 params', order))
       .catch(err => console.error(err));
   };
 
@@ -70,7 +75,7 @@ export const OrdersSection = () => {
       customerInfo: CUSTOMER_INFO,
       pickupWindow,
     })
-      .then(order => console.log('order', order))
+      .then((order: IOrder) => console.log('order', order))
       .catch(err => console.log(err));
   };
 
@@ -86,7 +91,7 @@ export const OrdersSection = () => {
       pickupWindow,
       orderState: OrderStateType.DELAYED,
     })
-      .then(order => console.log('order', order))
+      .then((order: IOrder) => console.log('order', order))
       .catch(err => console.log(err));
   };
 
@@ -96,19 +101,19 @@ export const OrdersSection = () => {
       CUSTOMER_INFO,
       FlyBuyCore.PickupType.PICKUP,
     )
-      .then(order => console.log('claim order', order))
+      .then((order: IOrder) => console.log('claim order', order))
       .catch(err => console.log(err));
   };
 
   const fetchOrderByRedemptionCode = () => {
     FlyBuyCore.fetchOrderByRedemptionCode('QDWRBDKJJG')
-      .then(order => console.log('order by redemcode', order))
+      .then((order: IOrder) => console.log('order by redemcode', order))
       .catch(err => console.log(err));
   };
 
   const updateOrderState = () => {
     FlyBuyCore.updateOrderState(ORDER_ID, OrderStateType.DRIVER_ASSIGNED)
-      .then(order => console.log('updateOrderState', order))
+      .then((order: IOrder) => console.log('updateOrderState', order))
       .catch(err => console.log(err));
   };
 
@@ -118,13 +123,13 @@ export const OrdersSection = () => {
       CustomerState.WAITING,
       '1',
     )
-      .then(order => console.log('updateOrderCustomerStateWithSpot', order))
+      .then((order: IOrder) => console.log('updateOrderCustomerStateWithSpot', order))
       .catch(err => console.log(err));
   };
 
   const updateOrderCustomerState = () => {
     FlyBuyCore.updateOrderCustomerState(ORDER_ID, CustomerState.DEPARTED)
-      .then(order => console.log('updateOrderCustomerState', order))
+      .then((order: IOrder) => console.log('updateOrderCustomerState', order))
       .catch(err => console.log(err));
   };
 

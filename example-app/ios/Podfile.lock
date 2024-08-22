@@ -1,5 +1,5 @@
 PODS:
-  - bildit-platform-rn-flybuy-core (2.20.3):
+  - bildit-platform-rn-flybuy-core (2.20.4):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -20,7 +20,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-livestatus (2.20.1):
+  - bildit-platform-rn-flybuy-livestatus (2.20.4):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -42,7 +42,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-notify (2.20.1):
+  - bildit-platform-rn-flybuy-notify (2.20.4):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -64,7 +64,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-pickup (2.20.1):
+  - bildit-platform-rn-flybuy-pickup (2.20.4):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -86,7 +86,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-presence (2.20.1):
+  - bildit-platform-rn-flybuy-presence (2.20.4):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -1283,11 +1283,11 @@ PODS:
   - Yoga (0.0.0)
 
 DEPENDENCIES:
-  - "bildit-platform-rn-flybuy-core (from `../node_modules/@bildit-platform/react-native-flybuy-core`)"
-  - "bildit-platform-rn-flybuy-livestatus (from `../node_modules/@bildit-platform/react-native-flybuy-livestatus`)"
-  - "bildit-platform-rn-flybuy-notify (from `../node_modules/@bildit-platform/react-native-flybuy-notify`)"
-  - "bildit-platform-rn-flybuy-pickup (from `../node_modules/@bildit-platform/react-native-flybuy-pickup`)"
-  - "bildit-platform-rn-flybuy-presence (from `../node_modules/@bildit-platform/react-native-flybuy-presence`)"
+  - bildit-platform-rn-flybuy-core (from `../node_modules/react-native-bildit-flybuy-core`)
+  - bildit-platform-rn-flybuy-livestatus (from `../node_modules/react-native-bildit-flybuy-livestatus`)
+  - bildit-platform-rn-flybuy-notify (from `../node_modules/react-native-bildit-flybuy-notify`)
+  - bildit-platform-rn-flybuy-pickup (from `../node_modules/react-native-bildit-flybuy-pickup`)
+  - bildit-platform-rn-flybuy-presence (from `../node_modules/react-native-bildit-flybuy-presence`)
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
@@ -1353,15 +1353,15 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   bildit-platform-rn-flybuy-core:
-    :path: "../node_modules/@bildit-platform/react-native-flybuy-core"
+    :path: "../node_modules/react-native-bildit-flybuy-core"
   bildit-platform-rn-flybuy-livestatus:
-    :path: "../node_modules/@bildit-platform/react-native-flybuy-livestatus"
+    :path: "../node_modules/react-native-bildit-flybuy-livestatus"
   bildit-platform-rn-flybuy-notify:
-    :path: "../node_modules/@bildit-platform/react-native-flybuy-notify"
+    :path: "../node_modules/react-native-bildit-flybuy-notify"
   bildit-platform-rn-flybuy-pickup:
-    :path: "../node_modules/@bildit-platform/react-native-flybuy-pickup"
+    :path: "../node_modules/react-native-bildit-flybuy-pickup"
   bildit-platform-rn-flybuy-presence:
-    :path: "../node_modules/@bildit-platform/react-native-flybuy-presence"
+    :path: "../node_modules/react-native-bildit-flybuy-presence"
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
   DoubleConversion:
@@ -1477,11 +1477,11 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  bildit-platform-rn-flybuy-core: 13fb0db2fc52500c37d3abffc1f80c531fb09cc9
-  bildit-platform-rn-flybuy-livestatus: cd2d5a422e1017e47a172718e21479a46f69f08e
-  bildit-platform-rn-flybuy-notify: f2bfa128e76801b2dfef412ef299e388132e7e42
-  bildit-platform-rn-flybuy-pickup: 5c7170da493df4ae8a6cb05de0ad62a35c92930d
-  bildit-platform-rn-flybuy-presence: 2341fd2dbbfb19e7d35c9f8e014b05b47b1dbf7e
+  bildit-platform-rn-flybuy-core: ef8a00d78bcb6e435e66542e70b6f08522b75c7b
+  bildit-platform-rn-flybuy-livestatus: 134f157a7dd72e5e78cb67597e464deb527f4559
+  bildit-platform-rn-flybuy-notify: 0208d8a6743572bd4572d3490dc11b847e336a6e
+  bildit-platform-rn-flybuy-pickup: aa0c00bde12470e6ff55cbcb0b4317cef3fb6690
+  bildit-platform-rn-flybuy-presence: 2700554b6f53d9b0e51877c326341131078ca783
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   FBLazyVector: 7e977dd099937dc5458851233141583abba49ff2

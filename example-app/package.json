@@ -11,11 +11,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "@bildit-platform/react-native-flybuy-core": "2.20.3",
-    "@bildit-platform/react-native-flybuy-livestatus": "2.20.1",
-    "@bildit-platform/react-native-flybuy-notify": "2.20.1",
-    "@bildit-platform/react-native-flybuy-pickup": "2.20.1",
-    "@bildit-platform/react-native-flybuy-presence": "2.20.1",
+    "react-native-bildit-flybuy-core": "2.20.4",
+    "react-native-bildit-flybuy-livestatus": "2.20.4",
+    "react-native-bildit-flybuy-notify": "2.20.4",
+    "react-native-bildit-flybuy-pickup": "2.20.4",
+    "react-native-bildit-flybuy-presence": "2.20.4",
     "react": "18.2.0",
     "react-native": "0.74.3",
     "react-native-config": "^1.5.2",

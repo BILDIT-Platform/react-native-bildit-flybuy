@@ -11,10 +11,10 @@ import {
 } from 'react-native';
 import AppConfig from './AppConfig.json';
 
-import * as FlyBuyCore from '@bildit-platform/react-native-flybuy-core';
-import * as FlyBuyPickup from '@bildit-platform/react-native-flybuy-pickup';
-import * as FlyBuyNotify from '@bildit-platform/react-native-flybuy-notify';
-import * as FlyBuyPresence from '@bildit-platform/react-native-flybuy-presence';
+import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
+import * as FlyBuyPickup from 'react-native-bildit-flybuy-pickup';
+import * as FlyBuyNotify from 'react-native-bildit-flybuy-notify';
+import * as FlyBuyPresence from 'react-native-bildit-flybuy-presence';
 import { Button } from './components';
 
 // Add your Flybuy Sandbox Site ID Here

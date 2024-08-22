@@ -15,7 +15,7 @@ Once your app receives a token for your push notification service, the token nee
 #### Example
 
 ```js
-import * as FlyBuyCore from '@bildit-platform/react-native-flybuy-core';
+import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
 
 FlyBuyCore.updatePushToken(
   '740f4707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bb78ad'
@@ -41,7 +41,7 @@ import { useEffect, useState } from 'react';
 import messaging, {
   FirebaseMessagingTypes,
 } from '@react-native-firebase/messaging';
-import * as FlyBuyCore from '@bildit-platform/react-native-flybuy-core'
+import * as FlyBuyCore from 'react-native-bildit-flybuy-core'
 
 const App = () => {
   const [orderState, setOrderState] = useState('');

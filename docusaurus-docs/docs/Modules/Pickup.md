@@ -11,7 +11,7 @@ _Important:_ Complete all steps in the Android and iOS [Setup guides](../Setup.m
 ### Module Installation
 
 ```sh
-npm install @bildit-platform/react-native-flybuy-pickup
+npm install react-native-bildit-flybuy-pickup
 
 cd ios && pod install
 ```

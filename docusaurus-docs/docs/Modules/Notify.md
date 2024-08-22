@@ -7,7 +7,7 @@ _Important:_ Complete all steps in the Android and iOS [Setup guides](../Setup.m
 ### Module Installation
 
 ```sh
-npm install @bildit-platform/react-native-flybuy-notify
+npm install react-native-bildit-flybuy-notify
 
 cd ios && pod install
 ```
@@ -99,7 +99,7 @@ Call this method to create a notification for a list of sites in a given circula
 #### Example
 
 ```js
-import * as FlyBuyNotify from '@bildit-platform/react-native-flybuy-notify';
+import * as FlyBuyNotify from 'react-native-bildit-flybuy-notify';
 
 const region = {
   latitude: 47.6234207,

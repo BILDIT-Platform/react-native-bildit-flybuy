@@ -1,4 +1,4 @@
-import type { ICircularRegion, ISite } from '@bildit-platform/react-native-flybuy-core';
+import type { ICircularRegion, ISite } from 'react-native-bildit-flybuy-core';
 import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
 import type { INotificationInfo } from './types';

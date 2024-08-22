@@ -12,11 +12,11 @@
     "iosWatcher": "cd scripts && ./watch-and-copy.sh"
   },
   "dependencies": {
-    "@bildit-platform/react-native-flybuy-core": "file:../mono/packages/core",
-    "@bildit-platform/react-native-flybuy-livestatus": "file:../mono/packages/livestatus",
-    "@bildit-platform/react-native-flybuy-notify": "file:../mono/packages/notify",
-    "@bildit-platform/react-native-flybuy-pickup": "file:../mono/packages/pickup",
-    "@bildit-platform/react-native-flybuy-presence": "file:../mono/packages/presence",
+    "react-native-bildit-flybuy-core": "file:../mono/packages/core",
+    "react-native-bildit-flybuy-livestatus": "file:../mono/packages/livestatus",
+    "react-native-bildit-flybuy-notify": "file:../mono/packages/notify",
+    "react-native-bildit-flybuy-pickup": "file:../mono/packages/pickup",
+    "react-native-bildit-flybuy-presence": "file:../mono/packages/presence",
     "react": "18.2.0",
     "react-native": "0.74.3",
     "react-native-config": "^1.5.2",

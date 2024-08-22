@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "@bildit-platform/react-native-flybuy-livestatus": ["./src/index"]
+      "react-native-bildit-flybuy-livestatus": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

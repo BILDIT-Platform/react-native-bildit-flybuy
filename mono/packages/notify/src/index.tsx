@@ -1,9 +1,9 @@
 import { NativeModules, Platform } from 'react-native';
 import type { INotificationInfo } from './types';
-import type { ICircularRegion, ISite } from '@bildit-platform/react-native-flybuy-core';
+import type { ICircularRegion, ISite } from 'react-native-bildit-flybuy-core';
 
 const LINKING_ERROR =
-  `The package '@bildit-platform/react-native-flybuy-notify' doesn't seem to be linked. Make sure: \n\n` +
+  `The package 'react-native-bildit-flybuy-notify' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';

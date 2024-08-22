@@ -1,5 +1,5 @@
 {
-  "name": "@bildit-platform/react-native-flybuy-livestatus",
+  "name": "react-native-bildit-flybuy-livestatus",
   "version": "2.20.1",
   "description": "React Native Wrapper for FlyBuy LiveStatus SDK",
   "source": "./src/index.tsx",

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "@bildit-platform/react-native-flybuy-presence": ["./src/index"]
+      "react-native-bildit-flybuy-presence": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

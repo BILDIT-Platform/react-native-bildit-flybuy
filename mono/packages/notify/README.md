@@ -1,18 +1,18 @@
-# @bildit-platform/react-native-flybuy-notify
+# react-native-bildit-flybuy-notify
 
 React Native wrapper for FlyBuy Notify SDK
 
 ## Installation
 
 ```sh
-npm install @bildit-platform/react-native-flybuy-notify
+npm install react-native-bildit-flybuy-notify
 
 cd ios && pod install
 ```
 
 ## Configuration
 
-Please make sure to install `@bildit-platform/react-native-flybuy-core` and follow the configuration.
+Please make sure to install `react-native-bildit-flybuy-core` and follow the configuration.
 
 
 ## Native Initialization
@@ -92,7 +92,7 @@ Modify `iOS/yourproject/AppDelegate.mm`
 
 
 ```js
-import * as FlyBuyNotify from '@bildit-platform/react-native-flybuy-notify';
+import * as FlyBuyNotify from 'react-native-bildit-flybuy-notify';
 
 // ...
 

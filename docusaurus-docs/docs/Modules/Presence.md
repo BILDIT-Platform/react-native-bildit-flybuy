@@ -11,7 +11,7 @@ _Important:_ Complete all steps in the Android and iOS [Setup guides](../Setup.m
 ### Module Installation
 
 ```sh
-npm install @bildit-platform/react-native-flybuy-presence
+npm install react-native-bildit-flybuy-presence
 
 cd ios && pod install
 ```
@@ -105,7 +105,7 @@ Create and start a Presence Locator. A Presence Locator is a Bluetooth advertise
 #### Example
 
 ```jsx
-import * as FlyBuyPresence from '@bildit-platform/react-native-flybuy-presence';
+import * as FlyBuyPresence from 'react-native-bildit-flybuy-presence';
 
 FlyBuyPresence.startLocatorWithIdentifier('12345678', "{'key':'value'}");
 ```

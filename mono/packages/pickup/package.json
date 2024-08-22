@@ -1,5 +1,5 @@
 {
-  "name": "@bildit-platform/react-native-flybuy-pickup",
+  "name": "react-native-bildit-flybuy-pickup",
   "version": "2.20.1",
   "description": "React Native Wrapper for FlyBuy Pickup SDK",
   "source": "./src/index.tsx",

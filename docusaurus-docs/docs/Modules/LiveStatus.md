@@ -13,7 +13,7 @@ _Important:_ Complete all steps in the Android and iOS [Setup guides](../Setup.m
 ### Module Installation
 
 ```sh
-npm install @bildit-platform/react-native-flybuy-livestatus
+npm install react-native-bildit-flybuy-livestatus
 
 cd ios && pod install
 ```

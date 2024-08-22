@@ -1,18 +1,18 @@
-# @bildit-platform/react-native-flybuy-pickup
+# react-native-bildit-flybuy-pickup
 
 React Native wrapper for FlyBuy Pickup SDK
 
 ## Installation
 
 ```sh
-npm install @bildit-platform/react-native-flybuy-pickup
+npm install react-native-bildit-flybuy-pickup
 
 cd ios && pod install
 ```
 
 ## Configuration
 
-Please make sure to install `@bildit-platform/react-native-flybuy-core` and follow the configuration.
+Please make sure to install `react-native-bildit-flybuy-core` and follow the configuration.
 
 
 ## Native Initialization
@@ -86,7 +86,7 @@ Modify `iOS/yourproject/AppDelegate.mm`
 
 
 ```js
-import * as FlyBuyPickup from '@bildit-platform/react-native-flybuy-pickup';
+import * as FlyBuyPickup from 'react-native-bildit-flybuy-pickup';
 
 // ...
 

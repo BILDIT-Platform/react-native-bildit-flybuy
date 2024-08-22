@@ -9,7 +9,7 @@ sidebar_position: 2
 You can install the React Native Flybuy SDK with npm or yarn, as follows:
 
 ```bash npm2yarn
-npm install --save @bildit-platform/react-native-flybuy-core
+npm install --save react-native-bildit-flybuy-core
 
 # RN >= 0.60
 
@@ -17,7 +17,7 @@ cd ios && pod install
 
 # RN < 0.60
 
-react-native link @bildit-platform/react-native-flybuy-core
+react-native link react-native-bildit-flybuy-core
 ```
 
 ## Post-install Steps
@@ -123,12 +123,12 @@ Whenever the location permission changes (accepted or declined), make sure to ca
 
 ```js
 // If using pickup module
-import * as FlyBuyPickup from '@bildit-platform/react-native-flybuy-pickup'
+import * as FlyBuyPickup from 'react-native-bildit-flybuy-pickup'
 
 FlyBuyPickup.onPermissionChanged();
 
 // If using notify module
-import * as FlyBuyNotify from '@bildit-platform/react-native-flybuy-notify'
+import * as FlyBuyNotify from 'react-native-bildit-flybuy-notify'
 
 FlyBuyNotify.onPermissionChanged();
 ```

@@ -1,10 +1,10 @@
-import * as FlyBuyCore from '@bildit-platform/react-native-flybuy-core';
+import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
 import {
   OrderStateType,
   CustomerState,
   PickupType,
   IOrder,
-} from '@bildit-platform/react-native-flybuy-core';
+} from 'react-native-bildit-flybuy-core';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Button} from './components';

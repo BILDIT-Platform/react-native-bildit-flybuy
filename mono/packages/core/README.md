@@ -1,11 +1,11 @@
-# @bildit-platform/react-native-flybuy-core
+# react-native-bildit-flybuy-core
 
 React Native wrapper for FlyBuy Core SDK
 
 ## Installation
 
 ```sh
-npm install @bildit-platform/react-native-flybuy-core
+npm install react-native-bildit-flybuy-core
 
 cd ios && pod install
 ```
@@ -126,7 +126,7 @@ FlyBuyConfigOptions *configOptions = [builder build];
 
 
 ```js
-import * as FlyBuyCore from '@bildit-platform/react-native-flybuy-core';
+import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
 
 // ...
 
@@ -148,7 +148,7 @@ Version 2.x
 Version 3.0
 
 ```js
-  import * as FlyBuyCore from '@bildit-platform/react-native-flybuy-core';
+  import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
 
   FlyBuyCore.fetchOrders()
       .then(orders => console.tron.log('orders', orders))

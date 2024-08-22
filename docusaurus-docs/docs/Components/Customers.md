@@ -17,7 +17,7 @@ Create a customer account using information from the user
 #### Example
 
 ```jsx
-import * as FlyBuyCore from '@bildit-platform/react-native-flybuy-core';
+import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
 
 FlyBuyCore.Customer.createCustomer({
   name: 'Abdelkhalek Zellat',

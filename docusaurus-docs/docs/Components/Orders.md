@@ -13,7 +13,7 @@ Return the list of orders for the current user.
 | None | None |
 
 ```js
-import * as FlyBuyCore from '@bildit-platform/react-native-flybuy-core';
+import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
 
 FlyBuyCore.fetchOrders();
 ```

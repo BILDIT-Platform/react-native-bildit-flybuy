@@ -13,7 +13,7 @@
   "dependencies": {
     "react-native-bildit-flybuy-core": "2.20.5",
     "react-native-bildit-flybuy-livestatus": "2.20.4",
-    "react-native-bildit-flybuy-notify": "2.20.5",
+    "react-native-bildit-flybuy-notify": "2.20.6",
     "react-native-bildit-flybuy-pickup": "2.20.4",
     "react-native-bildit-flybuy-presence": "2.20.4",
     "react": "18.2.0",

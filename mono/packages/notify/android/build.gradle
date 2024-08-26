@@ -118,8 +118,6 @@ dependencies {
 
   implementation platform("com.radiusnetworks.flybuy:bom:$flybuy_version")
   implementation('com.radiusnetworks.flybuy:notify')
-
-  implementation project(':bildit-platform_rn-flybuy-core')
 }
 
 if (isNewArchitectureEnabled()) {

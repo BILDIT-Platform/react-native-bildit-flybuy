@@ -2,8 +2,6 @@ package com.bilditplatform.rnflybuynotify
 
 import android.content.Intent
 import android.util.Log
-import com.bilditplatform.rnflybuycore.decodeRegion
-import com.bilditplatform.rnflybuycore.parseSites
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext

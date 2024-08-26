@@ -59,7 +59,7 @@ Login the user with a previously obtained customer API token
 #### Eample
 
 ```jsx
-FlyBuyCore.loginWithToken(`<token>`);
+FlyBuyCore.Customer.loginWithToken(`<token>`);
 ```
 
 
@@ -76,7 +76,7 @@ Logs out the current customer.
 #### Example
 
 ```jsx
-FlyBuyCore.logout();
+FlyBuyCore.Customer.logout();
 ```
 
 
@@ -93,7 +93,7 @@ Update customer info for the logged in user
 #### Example
 
 ```jsx
-FlyBuyCore.updateCustomer({
+FlyBuyCore.Customer.updateCustomer({
   name: 'Abdelkhalek Zellat',
   carType: 'Tesla',
   carColor: 'Purple',
@@ -117,7 +117,7 @@ Link an email and password with the current anonymous logged in user.
 #### Example
 
 ```jsx
-FlyBuyCore.signUp('ha_zellat@esi.dz', 'password');
+FlyBuyCore.Customer.signUp('ha_zellat@esi.dz', 'password');
 ```
 
 
@@ -134,6 +134,6 @@ Returns an instance of the current customer
 #### Example
 
 ```jsx
-FlyBuyCore.getCurrentCustomer();
+FlyBuyCore.Customer.getCurrentCustomer();
 ```
 

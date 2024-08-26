@@ -19,7 +19,7 @@ Fetch all sites for the app.
 ```js
 import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
 
-FlyBuyCore.fetchAllSites();
+FlyBuyCore.Sites.fetchAllSites();
 ```
 
 
@@ -36,7 +36,7 @@ Fetch sites for the app. The `query` parameter will return results that match th
 #### Example
 
 ```js
-FlyBuyCore.fetchSitesByQuery({
+FlyBuyCore.Sites.fetchSitesByQuery({
   query: 'Test',
   page: 1,
 });
@@ -63,7 +63,7 @@ const region = {
   longitude: -122.3300605,
   radius: 100,
 };
-FlyBuyCore.fetchSitesByRegion({
+FlyBuyCore.Sites.fetchSitesByRegion({
   per: 20,
   page: 1,
   region,
@@ -84,7 +84,7 @@ Fetch a site based on Partner Identifier.
 #### Example
 
 ```js
-FlyBuyCore.fetchSiteByPartnerIdentifier({
+FlyBuyCore.Sites.fetchSiteByPartnerIdentifier({
   partnerIdentifier: "123"
 });
 ```

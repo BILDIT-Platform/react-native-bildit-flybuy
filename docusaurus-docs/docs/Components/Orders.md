@@ -15,7 +15,7 @@ Return the list of orders for the current user.
 ```js
 import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
 
-FlyBuyCore.fetchOrders();
+FlyBuyCore.Orders.fetchOrders();
 ```
 
 
@@ -48,7 +48,7 @@ const pickupWindow = {
   end: new Date('2022-12-02').toISOString(),
 };
 
-FlyBuyCore.createOrder({
+FlyBuyCore.Orders.createOrder({
   siteId: 15942,
   pid: '573836',
   customerInfo: {
@@ -93,7 +93,7 @@ const pickupWindow = {
   end: new Date('2022-12-02').toISOString(),
 };
 
-FlyBuyCore.createOrder({
+FlyBuyCore.Orders.createOrder({
   sitePartnerIdentifier: '15942',
   orderPid: '573836',
   customerInfo: {
@@ -125,7 +125,7 @@ Claim an order for the current customer.
 #### Example
 
 ```js
-FlyBuyCore.claimOrder(
+FlyBuyCore.Orders.claimOrder(
   '9898899',
   {
     name: 'Lamia Selmane',
@@ -153,7 +153,7 @@ You can update an order’s state, if necessary, with any valid state:
 #### Example
 
 ```jsx
-FlyBuyCore.updateOrderState(46084566, 'ready');
+FlyBuyCore.Orders.updateOrderState(46084566, 'ready');
 ```
 
 
@@ -169,7 +169,7 @@ FlyBuyCore.updateOrderState(46084566, 'ready');
 #### Example
 
 ```jsx
-FlyBuyCore.updateOrderCustomerState(46084566, 'departed');
+FlyBuyCore.Orders.updateOrderCustomerState(46084566, 'departed');
 ```
 
 
@@ -186,7 +186,7 @@ FlyBuyCore.updateOrderCustomerState(46084566, 'departed');
 #### Example
 
 ```jsx
-FlyBuyCore.updateOrderCustomerStateWithSpot(46084566, 'departed', '1');
+FlyBuyCore.Orders.updateOrderCustomerStateWithSpot(46084566, 'departed', '1');
 ```
 
 
@@ -205,7 +205,7 @@ If you collect customer ratings in your app, you can pass them to Flybuy.
 #### Example
 
 ```jsx
-FlyBuyCore.rateOrder(46084566, 5, 'Awesome!');
+FlyBuyCore.Orders.rateOrder(46084566, 5, 'Awesome!');
 ```
 
 

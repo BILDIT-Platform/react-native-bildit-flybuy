@@ -5610,22 +5610,22 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-bildit-flybuy-core@2.20.4, react-native-bildit-flybuy-core@^2.20.4:
-  version "2.20.4"
-  resolved "https://registry.npmjs.org/react-native-bildit-flybuy-core/-/react-native-bildit-flybuy-core-2.20.4.tgz#1818e8d9f6f130e24bfd49351a4fd7645eadbdb8"
-  integrity sha512-o0pah4TU7LrqnqFX84mh8x/5BasJr0mMxNFXCZ3PDAa0DY7DgR90TRKQuUO0YX9py0tTwyFunXKxLCRip7jnqQ==
+react-native-bildit-flybuy-core@2.20.5, react-native-bildit-flybuy-core@^2.20.5:
+  version "2.20.5"
+  resolved "https://registry.npmjs.org/react-native-bildit-flybuy-core/-/react-native-bildit-flybuy-core-2.20.5.tgz#01f1460f13f8ed49af8e5185650b13676c5f98fc"
+  integrity sha512-nPle1jJpQsENFfQVEO2PwfvEQRDNnUKEKmdPIU2fw0EQZzuuDVDmAzzEmgaPLsfZMCD6rHQd3bDSi+AA+shCqA==
 
 react-native-bildit-flybuy-livestatus@2.20.4:
   version "2.20.4"
   resolved "https://registry.npmjs.org/react-native-bildit-flybuy-livestatus/-/react-native-bildit-flybuy-livestatus-2.20.4.tgz#1db92ac4957026f07ac17dc4c79d00d61f3b0c63"
   integrity sha512-zl+hJFzzW02xGBRRO5DbZNM1MVT1kq0tF2ORnNXTnO4UufgDz7dqEdbxaZuDEwKeoKGrqOYR0miw9sOj+/zKBA==
 
-react-native-bildit-flybuy-notify@2.20.4:
-  version "2.20.4"
-  resolved "https://registry.npmjs.org/react-native-bildit-flybuy-notify/-/react-native-bildit-flybuy-notify-2.20.4.tgz#2d2522644fd9654d88b38808dd0ebdf4331dfe3a"
-  integrity sha512-sDQuuiB79MkmI0mjtyQBn7U/4gi/e7qursGCVftX6K+RvcFvyV2/+5u7i6QNYTs6ZfV0HhMhVqz1X1x34JJChg==
+react-native-bildit-flybuy-notify@2.20.5:
+  version "2.20.5"
+  resolved "https://registry.npmjs.org/react-native-bildit-flybuy-notify/-/react-native-bildit-flybuy-notify-2.20.5.tgz#621e6269f1509c902eeaf7b9fab8205777a08836"
+  integrity sha512-1B5OcW9TgPT/nICqA9QeFy98lxFU47tGs0tiuiGAS01jI5aftmicMCnTzo39z+TOZBCyQJYvEz4TYxfX2gwdgA==
   dependencies:
-    react-native-bildit-flybuy-core "^2.20.4"
+    react-native-bildit-flybuy-core "^2.20.5"
 
 react-native-bildit-flybuy-pickup@2.20.4:
   version "2.20.4"

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,13 +9,12 @@ import {
   TextInput,
   ActivityIndicator,
 } from 'react-native';
-import AppConfig from './AppConfig.json';
 
 import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
 import * as FlyBuyPickup from 'react-native-bildit-flybuy-pickup';
 import * as FlyBuyNotify from 'react-native-bildit-flybuy-notify';
 import * as FlyBuyPresence from 'react-native-bildit-flybuy-presence';
-import { Button } from './components';
+import {Button} from './components';
 
 // Add your Flybuy Sandbox Site ID Here
 
@@ -34,23 +33,23 @@ const CUSTOMER_INFO = {
 const Header = () => {
   return (
     <View style={styles.header}>
-      <View style={{ flex: 1 }}>
+      <View style={{flex: 1}}>
         <Text>{'#id'}</Text>
       </View>
-      <View style={{ flex: 1 }}>
+      <View style={{flex: 1}}>
         <Text>{'#PatnerId'}</Text>
       </View>
-      <View style={{ flex: 1 }}>
+      <View style={{flex: 1}}>
         <Text numberOfLines={1}>{'Customer'}</Text>
       </View>
-      <View style={{ flex: 1 }}>
-        <Text style={{ textAlign: 'right' }}>{'State'}</Text>
+      <View style={{flex: 1}}>
+        <Text style={{textAlign: 'right'}}>{'State'}</Text>
       </View>
     </View>
   );
 };
 
-const OrderItem = ({ order, onUpdate }) => {
+const OrderItem = ({order, onUpdate}) => {
   return (
     <View style={styles.orderItem}>
       <View style={styles.flexOne}>
@@ -85,12 +84,12 @@ export default function App() {
   // Orders
   const fetchOrders = () => {
     setLoading(true);
-    FlyBuyCore.fetchOrders()
+    FlyBuyCore.Orders.fetchOrders()
       .then((data: FlyBuyCore.IOrder[]) => {
         setOrders([...data]);
         setLoading(false);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
         setLoading(false);
       });
@@ -108,7 +107,7 @@ export default function App() {
       start: pickup_start.toISOString(),
       end: pickup_end.toISOString(),
     };
-    FlyBuyCore.createOrder({
+    FlyBuyCore.Orders.createOrder({
       siteId: SITE_ID,
       pid: partnerId,
       customerInfo: CUSTOMER_INFO,
@@ -120,34 +119,34 @@ export default function App() {
         console.log('order is created!', order);
         fetchOrders();
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   };
 
   const updateToStart = (order: FlyBuyCore.IOrder) => {
-    FlyBuyCore.updateOrderCustomerState(
+    FlyBuyCore.Orders.updateOrderCustomerState(
       order.id,
-      FlyBuyCore.CustomerState.EN_ROUTE
+      FlyBuyCore.CustomerState.EN_ROUTE,
     )
       .then(() => {
         fetchOrders();
       })
-      .catch((err) => console.log('error on catch-->', err));
+      .catch(err => console.log('error on catch-->', err));
   };
 
   const login = () => {
-    FlyBuyCore.login('ha_zellat@esi.dz', 'password')
-      .then((customer) => {
+    FlyBuyCore.Customer.login('ha_zellat@esi.dz', 'password')
+      .then(customer => {
         console.log('customer', customer);
         fetchOrders();
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   };
 
   React.useEffect(() => {
     fetchOrders();
   }, []);
 
-  const renderItem = ({ item }: { item: FlyBuyCore.IOrder }) => (
+  const renderItem = ({item}: {item: FlyBuyCore.IOrder}) => (
     <OrderItem
       order={item}
       onUpdate={() => {
@@ -155,7 +154,7 @@ export default function App() {
       }}
     />
   );
-  const onChangePid = (e) => {
+  const onChangePid = e => {
     setPartnerId(e);
   };
   return (
@@ -164,17 +163,17 @@ export default function App() {
       <Header />
       {loading && <ActivityIndicator color="white" size="large" />}
       <FlatList
-        style={{ width: '100%', paddingHorizontal: 10 }}
+        style={{width: '100%', paddingHorizontal: 10}}
         data={orders}
         renderItem={renderItem}
-        keyExtractor={(item) => String(item.id)}
+        keyExtractor={item => String(item.id)}
       />
       <Button title="New Order With" onPress={createOrder} />
       <TextInput
         placeholder="Partner ID"
         style={styles.partner}
         value={partnerId}
-        onChangeText={(e) => {
+        onChangeText={e => {
           onChangePid(e);
         }}
       />

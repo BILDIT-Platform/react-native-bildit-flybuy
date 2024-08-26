@@ -1178,23 +1178,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"react-native-bildit-flybuy-core@^2.20.1-alpha.0", "react-native-bildit-flybuy-core@file:../mono/packages/core":
-  version "2.20.1-alpha.0"
-
-"react-native-bildit-flybuy-livestatus@file:../mono/packages/livestatus":
-  version "2.20.1-alpha.0"
-
-"react-native-bildit-flybuy-notify@file:../mono/packages/notify":
-  version "2.20.1-alpha.0"
-  dependencies:
-    "react-native-bildit-flybuy-core" "^2.20.1-alpha.0"
-
-"react-native-bildit-flybuy-pickup@file:../mono/packages/pickup":
-  version "2.20.1-alpha.0"
-
-"react-native-bildit-flybuy-presence@file:../mono/packages/presence":
-  version "2.20.1-alpha.0"
-
 "@eslint-community/eslint-utils@^4.2.0", "@eslint-community/eslint-utils@^4.4.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.4.0.tgz#a23514e8fb9af1269d5f7788aa556798d61c6b59"
@@ -5626,6 +5609,23 @@ react-is@^17.0.1:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
+
+react-native-bildit-flybuy-core@^2.20.4, "react-native-bildit-flybuy-core@file:../mono/packages/core":
+  version "2.20.4"
+
+"react-native-bildit-flybuy-livestatus@file:../mono/packages/livestatus":
+  version "2.20.4"
+
+"react-native-bildit-flybuy-notify@file:../mono/packages/notify":
+  version "2.20.4"
+  dependencies:
+    react-native-bildit-flybuy-core "^2.20.4"
+
+"react-native-bildit-flybuy-pickup@file:../mono/packages/pickup":
+  version "2.20.4"
+
+"react-native-bildit-flybuy-presence@file:../mono/packages/presence":
+  version "2.20.4"
 
 react-native-config@^1.5.2:
   version "1.5.2"

@@ -19,13 +19,13 @@ import {
 
 export const OrdersSection = () => {
   const fetchOrders = () => {
-    FlyBuyCore.fetchOrders()
+    FlyBuyCore.Orders.fetchOrders()
       .then((orders: IOrder[]) => console.log('orders', orders))
       .catch(err => console.log(err));
   };
 
   const createOrderWithPartnerIdentification = () => {
-    FlyBuyCore.createOrder({
+    FlyBuyCore.Orders.createOrder({
       sitePartnerIdentifier: SITE_PID,
       orderPid: ORDER_PID,
       customerInfo: CUSTOMER_INFO,
@@ -42,7 +42,7 @@ export const OrdersSection = () => {
       start: startDate.toISOString(),
       end: endDate.toISOString(),
     };
-    FlyBuyCore.createOrder({
+    FlyBuyCore.Orders.createOrder({
       siteId: SITE_ID,
       pid: NEW_PID,
       customerInfo: CUSTOMER_INFO,
@@ -55,7 +55,7 @@ export const OrdersSection = () => {
   };
 
   const createOrderWithThreeParams = () => {
-    FlyBuyCore.createOrder({
+    FlyBuyCore.Orders.createOrder({
       siteId: SITE_ID,
       pid: NEW_PID,
       customerInfo: CUSTOMER_INFO,
@@ -69,7 +69,7 @@ export const OrdersSection = () => {
       start: new Date().toISOString(),
       end: new Date('2024-12-02').toISOString(),
     };
-    FlyBuyCore.createOrder({
+    FlyBuyCore.Orders.createOrder({
       siteId: SITE_ID,
       pid: NEW_PID,
       customerInfo: CUSTOMER_INFO,
@@ -84,7 +84,7 @@ export const OrdersSection = () => {
       start: new Date().toISOString(),
       end: new Date('2024-12-02').toISOString(),
     };
-    FlyBuyCore.createOrder({
+    FlyBuyCore.Orders.createOrder({
       siteId: SITE_ID,
       pid: NEW_PID,
       customerInfo: CUSTOMER_INFO,
@@ -96,7 +96,7 @@ export const OrdersSection = () => {
   };
 
   const claimOrder = () => {
-    FlyBuyCore.claimOrder(
+    FlyBuyCore.Orders.claimOrder(
       '385BQT5BMH',
       CUSTOMER_INFO,
       FlyBuyCore.PickupType.PICKUP,
@@ -106,35 +106,37 @@ export const OrdersSection = () => {
   };
 
   const fetchOrderByRedemptionCode = () => {
-    FlyBuyCore.fetchOrderByRedemptionCode('QDWRBDKJJG')
+    FlyBuyCore.Orders.fetchOrderByRedemptionCode('QDWRBDKJJG')
       .then((order: IOrder) => console.log('order by redemcode', order))
       .catch(err => console.log(err));
   };
 
   const updateOrderState = () => {
-    FlyBuyCore.updateOrderState(ORDER_ID, OrderStateType.DRIVER_ASSIGNED)
+    FlyBuyCore.Orders.updateOrderState(ORDER_ID, OrderStateType.DRIVER_ASSIGNED)
       .then((order: IOrder) => console.log('updateOrderState', order))
       .catch(err => console.log(err));
   };
 
   const updateOrderCustomerStateWithSpot = () => {
-    FlyBuyCore.updateOrderCustomerStateWithSpot(
+    FlyBuyCore.Orders.updateOrderCustomerStateWithSpot(
       ORDER_ID,
       CustomerState.WAITING,
       '1',
     )
-      .then((order: IOrder) => console.log('updateOrderCustomerStateWithSpot', order))
+      .then((order: IOrder) =>
+        console.log('updateOrderCustomerStateWithSpot', order),
+      )
       .catch(err => console.log(err));
   };
 
   const updateOrderCustomerState = () => {
-    FlyBuyCore.updateOrderCustomerState(ORDER_ID, CustomerState.DEPARTED)
+    FlyBuyCore.Orders.updateOrderCustomerState(ORDER_ID, CustomerState.DEPARTED)
       .then((order: IOrder) => console.log('updateOrderCustomerState', order))
       .catch(err => console.log(err));
   };
 
   const rateOrder = () => {
-    FlyBuyCore.rateOrder(ORDER_ID, 5, 'Awesome!')
+    FlyBuyCore.Orders.rateOrder(ORDER_ID, 5, 'Awesome!')
       .then(order => console.log('rateOrder', order))
       .catch(err => console.log(err));
   };

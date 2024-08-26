@@ -48,51 +48,47 @@ export function handleRemoteNotification(data: any): Promise<void> {
 }
 
 // customer functions
-export function login(email: string, password: string): Promise<ICustomer> {
+function login(email: string, password: string): Promise<ICustomer> {
   return RnFlybuyCore.login(email, password);
 }
 
-export function loginWithToken(token: string): Promise<ICustomer> {
+function loginWithToken(token: string): Promise<ICustomer> {
   return RnFlybuyCore.loginWithToken(token);
 }
 
-export function logout(): Promise<void> {
+function logout(): Promise<void> {
   return RnFlybuyCore.logout();
 }
 
-export function signUp(email: string, password: string): Promise<ICustomer> {
+function signUp(email: string, password: string): Promise<ICustomer> {
   return RnFlybuyCore.signUp(email, password);
 }
 
-export function createCustomer(
-  customerInfo: ICustomerInfo
-): Promise<ICustomer> {
+function createCustomer(customerInfo: ICustomerInfo): Promise<ICustomer> {
   return RnFlybuyCore.createCustomer(customerInfo);
 }
 
-export function updateCustomer(
-  customerInfo: ICustomerInfo
-): Promise<ICustomer> {
+function updateCustomer(customerInfo: ICustomerInfo): Promise<ICustomer> {
   return RnFlybuyCore.updateCustomer(customerInfo);
 }
 
-export function getCurrentCustomer(): Promise<ICustomer> {
+function getCurrentCustomer(): Promise<ICustomer> {
   return RnFlybuyCore.getCurrentCustomer();
 }
 
 // Sites functions
-export function fetchAllSites(): Promise<ISite[]> {
+function fetchAllSites(): Promise<ISite[]> {
   return RnFlybuyCore.fetchAllSites();
 }
 
-export function fetchSitesByQuery(params: {
+function fetchSitesByQuery(params: {
   query: string;
   page: number;
 }): Promise<ISite[]> {
   return RnFlybuyCore.fetchSitesByQuery(params);
 }
 
-export function fetchSitesByRegion(params: {
+function fetchSitesByRegion(params: {
   per: number;
   page: number;
   region: ICircularRegion;
@@ -100,17 +96,17 @@ export function fetchSitesByRegion(params: {
   return RnFlybuyCore.fetchSitesByRegion(params);
 }
 
-export function fetchSiteByPartnerIdentifier(params: {
+function fetchSiteByPartnerIdentifier(params: {
   partnerIdentifier: string;
 }): Promise<ISite> {
   return RnFlybuyCore.fetchSiteByPartnerIdentifier(params);
 }
 
 // Orders
-export function fetchOrders(): Promise<IOrder[]> {
+function fetchOrders(): Promise<IOrder[]> {
   return RnFlybuyCore.fetchOrders();
 }
-export function createOrder(params: CreateOrderParamsType) {
+function createOrder(params: CreateOrderParamsType) {
   const {
     siteId,
     sitePartnerIdentifier,
@@ -144,39 +140,123 @@ export function createOrder(params: CreateOrderParamsType) {
     );
   }
 }
-export function claimOrder(
+function claimOrder(
   redeemCode: string,
   customerInfo: ICustomerInfo,
   pickupType?: PickupType
 ): Promise<IOrder> {
   return RnFlybuyCore.claimOrder(redeemCode, customerInfo, pickupType);
 }
-export function fetchOrderByRedemptionCode(redemCode: string): Promise<IOrder> {
+function fetchOrderByRedemptionCode(redemCode: string): Promise<IOrder> {
   return RnFlybuyCore.fetchOrderByRedemptionCode(redemCode);
 }
-export function updateOrderState(
+function updateOrderState(
   orderId: number,
   state: OrderStateType
 ): Promise<IOrder> {
   return RnFlybuyCore.updateOrderState(orderId, state);
 }
-export function updateOrderCustomerState(
+function updateOrderCustomerState(
   orderId: number,
   state: CustomerState
 ): Promise<IOrder> {
   return RnFlybuyCore.updateOrderCustomerState(orderId, state);
 }
-export function updateOrderCustomerStateWithSpot(
+function updateOrderCustomerStateWithSpot(
   orderId: number,
   state: CustomerState,
   spot: string
 ): Promise<IOrder> {
   return RnFlybuyCore.updateOrderCustomerStateWithSpot(orderId, state, spot);
 }
-export function rateOrder(
+function rateOrder(
   orderId: number,
   rating: number,
   comments: string
 ): Promise<IOrder> {
   return RnFlybuyCore.rateOrder(orderId, rating, comments);
 }
+
+type ICustomers = {
+  loginWithToken(code: string): Promise<any>;
+  login(email: string, password: string): Promise<any>;
+  logout(): Promise<any>;
+  signUp(email: string, password: string): Promise<any>;
+  createCustomer(customerInfo: ICustomerInfo): Promise<ICustomer>;
+  updateCustomer(customerInfo: ICustomerInfo): Promise<ICustomer>;
+  getCurrentCustomer(): Promise<ICustomer>;
+};
+
+export const Customer: ICustomers = {
+  login,
+  loginWithToken,
+  logout,
+  signUp,
+  createCustomer,
+  updateCustomer,
+  getCurrentCustomer,
+};
+
+type ISites = {
+  fetchAllSites(): Promise<ISite[]>;
+  fetchSitesByQuery(params: { query: string; page: number }): Promise<ISite[]>;
+  fetchSitesByRegion(params: {
+    per: number;
+    page: number;
+    region: ICircularRegion;
+  }): Promise<ISite[]>;
+  fetchSiteByPartnerIdentifier(params: {
+    partnerIdentifier: string;
+  }): Promise<ISite>;
+};
+
+export const Sites: ISites = {
+  fetchAllSites,
+  fetchSitesByQuery,
+  fetchSitesByRegion,
+  fetchSiteByPartnerIdentifier,
+};
+
+type IOrders = {
+  fetchOrders(): Promise<IOrder[]>;
+  /**
+   * This function supports two type of create order
+   *
+   * 1. Create Order using Site ID, the siteId and pid is a mandatory for this
+   *
+   * 2. Create Order using Site Partner Identifier, the sitePartnerIdentifier and orderPid is a mandatory for this
+   *
+   *
+   * @param params Object based on CreateOrderParamsType
+   */
+  createOrder(params: CreateOrderParamsType): Promise<IOrder>;
+  claimOrder(
+    redeemCode: string,
+    customerInfo: ICustomerInfo,
+    pickupType?: PickupType
+  ): Promise<IOrder>;
+  fetchOrderByRedemptionCode(redemCode: string): Promise<IOrder>;
+  updateOrderState(orderId: number, state: OrderStateType): Promise<IOrder>;
+  updateOrderCustomerState(
+    orderId: number,
+    state: CustomerState
+  ): Promise<IOrder>;
+  updateOrderCustomerStateWithSpot(
+    orderId: number,
+    state: CustomerState,
+    spot: string
+  ): Promise<IOrder>;
+  rateOrder(orderId: number, rating: number, comments: string): Promise<IOrder>;
+};
+
+export const Orders: IOrders = {
+  fetchOrders,
+  createOrder,
+  claimOrder,
+  fetchOrderByRedemptionCode,
+  updateOrderState,
+  updateOrderCustomerState,
+  updateOrderCustomerStateWithSpot,
+  rateOrder,
+};
+

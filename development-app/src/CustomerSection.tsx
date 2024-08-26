@@ -6,44 +6,44 @@ import {CUSTOMER_INFO} from './constants';
 
 export const CustomerSection = () => {
   const login = () => {
-    FlyBuyCore.login('ha_zellat@esi.dz', 'password')
+    FlyBuyCore.Customer.login('ha_zellat@esi.dz', 'password')
       .then(customer => console.log(customer))
       // .then(customer => console.tron.log('customer', customer))
       .catch(err => console.error(err));
   };
 
   const loginWithToken = () => {
-    FlyBuyCore.loginWithToken('mEVBKpwecm89bXh1juMwPuYk')
+    FlyBuyCore.Customer.loginWithToken('mEVBKpwecm89bXh1juMwPuYk')
       .then(customer => console.log('customer', customer))
       .catch(err => console.log(err));
   };
 
   const signUp = () => {
-    FlyBuyCore.signUp('ha_zellat@esi.dz', 'password')
+    FlyBuyCore.Customer.signUp('ha_zellat@esi.dz', 'password')
       .then(customer => console.log('customer', customer))
       .catch(err => console.log(err));
   };
 
   const logout = () => {
-    FlyBuyCore.logout()
+    FlyBuyCore.Customer.logout()
       .then(() => console.log('logout success'))
       .catch(err => console.log(err));
   };
 
   const createCustomer = () => {
-    FlyBuyCore.createCustomer(CUSTOMER_INFO)
+    FlyBuyCore.Customer.createCustomer(CUSTOMER_INFO)
       .then(customer => console.log('customer', customer))
       .catch(err => console.log(err));
   };
 
   const updateCustomer = () => {
-    FlyBuyCore.updateCustomer(CUSTOMER_INFO)
+    FlyBuyCore.Customer.updateCustomer(CUSTOMER_INFO)
       .then(customer => console.log('customer', customer))
       .catch(err => console.log(err));
   };
 
   const getCurrentCustomer = () => {
-    FlyBuyCore.getCurrentCustomer()
+    FlyBuyCore.Customer.getCurrentCustomer()
       .then(customer => console.log('customer', customer))
       .catch(err => console.log(err));
   };

@@ -6,13 +6,13 @@ import {REGION} from './constants';
 
 export const SitesSection = () => {
   const fetchAllSites = () => {
-    FlyBuyCore.fetchAllSites()
+    FlyBuyCore.Sites.fetchAllSites()
       .then(sites => console.log('sites', sites))
       .catch(err => console.log('err', err));
   };
 
   const fetchSitesByQuery = () => {
-    FlyBuyCore.fetchSitesByQuery({
+    FlyBuyCore.Sites.fetchSitesByQuery({
       query: 'Test',
       page: 1,
     })
@@ -21,7 +21,7 @@ export const SitesSection = () => {
   };
 
   const fetchSitesByRegion = () => {
-    FlyBuyCore.fetchSitesByRegion({
+    FlyBuyCore.Sites.fetchSitesByRegion({
       per: 20,
       page: 1,
       region: REGION,
@@ -31,7 +31,7 @@ export const SitesSection = () => {
   };
 
   const fetchSiteByPartnerIdentifier = () => {
-    FlyBuyCore.fetchSiteByPartnerIdentifier({
+    FlyBuyCore.Sites.fetchSiteByPartnerIdentifier({
       partnerIdentifier: 'NANGKA30',
     })
       .then(site => console.log('site', site))

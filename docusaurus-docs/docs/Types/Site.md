@@ -92,4 +92,4 @@ sidebar_position: 3
 
 ## Used by
 
-- [`createForSites`](../Modules/Notify#create-for-sites)
+- [`createForSites`](../../docs/Modules/Notify#create-for-sites)

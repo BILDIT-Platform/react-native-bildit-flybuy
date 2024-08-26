@@ -28,5 +28,5 @@ sidebar_position: 6
 
 ## Used by
 
-- [`createForSitesInRegion`](../Modules/Notify#create-for-sites-in-region)
-- [`fetchSitesByRegion`](../Components/Sites#fetch-sites-by-region)
+- [`createForSitesInRegion`](../../docs/Modules/Notify#create-for-sites-in-region)
+- [`fetchSitesByRegion`](../../docs/Components/Sites#fetch-sites-by-region)

@@ -42,9 +42,9 @@ sidebar_position: 4
 
 ## Returned in
 
-- [`createOrder`](../../Components/Orders#create-order)
-- [`fetchOrders`](../../Components/Orders#fetch-orders)
-- [`claimOrder`](../../Components/Orders#claim-order)
-- [`updateOrderState`](../../Components/Orders#update-order-state)
-- [`updateOrderCustomerState`](../../Components/Orders#update-order-customer-state)
-- [`rateOrder`](../../Components/Orders#rate-order)
+- [`createOrder`](../Components/Orders#create-order)
+- [`fetchOrders`](../Components/Orders#fetch-orders)
+- [`claimOrder`](../Components/Orders#claim-order)
+- [`updateOrderState`](../Components/Orders#update-order-state)
+- [`updateOrderCustomerState`](../Components/Orders#update-order-customer-state)
+- [`rateOrder`](../Components/Orders#rate-order)

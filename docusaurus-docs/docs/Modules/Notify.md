@@ -2,11 +2,88 @@
 
 The Flybuy SDK must be initialized when the application starts in order to configure the app authorization token and handle appropriate lifecycle methods.
 
-_Important:_ Complete all steps in the Android and iOS setup guides. Key steps are highlighted below.
+_Important:_ Complete all steps in the Android and iOS [Setup guides](../Setup.md#installation).
 
-1.  [Install SDK](../Setup.md#installation)
-2.  Post-install Steps for [iOS](../Setup.md#ios) and [Android](../Setup.md#android)
-3.  [Initialize SDK on launch](../Usage.md#initialize-sdk-on-launch)
+### Module Installation
+
+```sh
+npm install react-native-bildit-flybuy-notify
+
+cd ios && pod install
+```
+
+### Native Initialization
+
+#### Android
+
+Modify `android/app/build.gradle`
+
+```gradle
+  dependencies {
+      // .. other dependencies
+
+      // Add below dependencies
+      implementation platform("com.radiusnetworks.flybuy:bom:$flybuyVersion")
+      implementation('com.radiusnetworks.flybuy:core')
+      implementation('com.radiusnetworks.flybuy:notify') // add this line
+  }
+```
+
+Modify `MainApplication.kt`
+
+```kotlin
+import com.radiusnetworks.flybuy.sdk.ConfigOptions
+import com.radiusnetworks.flybuy.sdk.FlyBuyCore
+import com.radiusnetworks.flybuy.sdk.notify.NotifyManager // <-- add this import
+
+
+class MainApplication : Application(), ReactApplication {
+  override fun onCreate() {
+    super.onCreate()
+    SoLoader.init(this, false)
+    if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
+      // If you opted-in for the New Architecture, we load the native entry point for this app.
+      load()
+    }
+
+    // Native configure
+    val configOptions = ConfigOptions.Builder("YourFlyBuyToken")
+      .build()
+    FlyBuyCore.configure(this, configOptions)
+
+   // Native configuration for FlyBuy Notify
+    NotifyManager.getInstance().configure(applicationContext) // add this line
+  }
+}
+```
+
+
+#### iOS
+
+
+Modify `iOS/yourproject/AppDelegate.mm`
+
+```objc
+
+// Add this import and make sure CoreLocation import always above FlyBuy import
+#import <CoreLocation/CoreLocation.h>
+#import <FlyBuy/FlyBuy-Swift.h>
+#import <FlyBuyNotify/FlyBuyNotify-Swift.h> // add this line
+
+```
+
+```objc
+
+// below FlyBuy Core configuration
+// Notify native configure
+[[FlyBuyNotifyManager shared] configureWithBgTaskIdentifier:@"notifyBgTaskId" bgSyncCallback:^(NSError *error) {
+    if (error == nil) {
+      NSLog(@"Notify campaign content updated via a background task");
+    } else {
+      NSLog(@"Notify Background Sync Error: %@", error.description);
+    }
+  }];
+```
 
 ## Create for Sites in Region
 
@@ -22,6 +99,8 @@ Call this method to create a notification for a list of sites in a given circula
 #### Example
 
 ```js
+import * as FlyBuyNotify from 'react-native-bildit-flybuy-notify';
+
 const region = {
   latitude: 47.6234207,
   longitude: -122.3300605,
@@ -37,7 +116,7 @@ const notification = {
   },
 };
 
-FlyBuy.Notify.createForSitesInRegion(region, notification);
+FlyBuyNotify.createForSitesInRegion(region, notification);
 ```
 
 
@@ -54,7 +133,7 @@ Clear all geofence notifications.
 #### Example
 
 ```jsx
-FlyBuy.Notify.clearNotifications();
+FlyBuyNotify.clearNotifications();
 ```
 
 
@@ -102,7 +181,7 @@ const sites = [
   },
 ];
 
-FlyBuy.Notify.createForSites(sites, notification);
+FlyBuyNotify.createForSites(sites, notification);
 ```
 
 
@@ -119,9 +198,11 @@ Notify `sync` method is provided as a development tool, in production applicatio
 #### Example
 
 ```js
-FlyBuy.Notify.sync(true);
+FlyBuyNotify.sync(true);
 ```
 
+
+# TODO: check all sections below
 
 ## Background Data Refresh (iOS only)
 

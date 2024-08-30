@@ -13,7 +13,9 @@ Return the list of orders for the current user.
 | None | None |
 
 ```js
-FlyBuy.Core.Orders.fetchOrders();
+import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
+
+FlyBuyCore.Orders.fetchOrders();
 ```
 
 
@@ -46,7 +48,7 @@ const pickupWindow = {
   end: new Date('2022-12-02').toISOString(),
 };
 
-FlyBuy.Core.Orders.createOrder({
+FlyBuyCore.Orders.createOrder({
   siteId: 15942,
   pid: '573836',
   customerInfo: {
@@ -91,7 +93,7 @@ const pickupWindow = {
   end: new Date('2022-12-02').toISOString(),
 };
 
-FlyBuy.Core.Orders.createOrder({
+FlyBuyCore.Orders.createOrder({
   sitePartnerIdentifier: '15942',
   orderPid: '573836',
   customerInfo: {
@@ -123,7 +125,7 @@ Claim an order for the current customer.
 #### Example
 
 ```js
-FlyBuy.Core.Orders.claimOrder(
+FlyBuyCore.Orders.claimOrder(
   '9898899',
   {
     name: 'Lamia Selmane',
@@ -151,7 +153,7 @@ You can update an order’s state, if necessary, with any valid state:
 #### Example
 
 ```jsx
-FlyBuy.Core.Orders.updateOrderState(46084566, 'ready');
+FlyBuyCore.Orders.updateOrderState(46084566, 'ready');
 ```
 
 
@@ -167,7 +169,7 @@ FlyBuy.Core.Orders.updateOrderState(46084566, 'ready');
 #### Example
 
 ```jsx
-FlyBuy.Core.Orders.updateOrderCustomerState(46084566, 'departed');
+FlyBuyCore.Orders.updateOrderCustomerState(46084566, 'departed');
 ```
 
 
@@ -184,7 +186,7 @@ FlyBuy.Core.Orders.updateOrderCustomerState(46084566, 'departed');
 #### Example
 
 ```jsx
-FlyBuy.Core.Orders.updateOrderCustomerStateWithSpot(46084566, 'departed', '1');
+FlyBuyCore.Orders.updateOrderCustomerStateWithSpot(46084566, 'departed', '1');
 ```
 
 
@@ -203,7 +205,7 @@ If you collect customer ratings in your app, you can pass them to Flybuy.
 #### Example
 
 ```jsx
-FlyBuy.Core.Orders.rateOrder(46084566, 5, 'Awesome!');
+FlyBuyCore.Orders.rateOrder(46084566, 5, 'Awesome!');
 ```
 
 
@@ -214,8 +216,9 @@ Set up event listeners to get updates about orders.
 #### Example
 
 ```jsx
+// TODO: check this again
 React.useEffect(() => {
-  const eventListener = FlyBuy.eventEmitter.addListener(
+  const eventListener = FlyBuyCore.eventEmitter.addListener(
     'orderUpdated',
     (event) => {
       console.log('event', event);

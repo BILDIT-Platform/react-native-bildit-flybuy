@@ -34,7 +34,7 @@ sidebar_position: 2
 
 ## Used by
 
-- [`createOrder`](../../Components/Orders#create-order)
-- [`claimOrder`](../../Components/Orders#claim-order)
-- [`createCustomer`](../../Components/Customers#create-customer)
-- [`updateCustomer`](../../Components/Customers#update-customer)
+- [`createOrder`](../../docs/Components/Orders#create-order)
+- [`claimOrder`](../../docs/Components/Orders#claim-order)
+- [`createCustomer`](../../docs/Components/Customers#create-customer)
+- [`updateCustomer`](../../docs/Components/Customers#update-customer)

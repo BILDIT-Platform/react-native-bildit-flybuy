@@ -17,7 +17,9 @@ Create a customer account using information from the user
 #### Example
 
 ```jsx
-FlyBuy.Core.Customer.createCustomer({
+import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
+
+FlyBuyCore.Customer.createCustomer({
   name: 'Abdelkhalek Zellat',
   carType: 'Tesla',
   carColor: 'Silver',
@@ -40,7 +42,7 @@ Login the user in using existing credentials
 #### Example
 
 ```jsx
-FlyBuy.Core.Customer.login(`<email>`, `<password>`);
+FlyBuyCore.Customer.login(`<email>`, `<password>`);
 ```
 
 
@@ -57,7 +59,7 @@ Login the user with a previously obtained customer API token
 #### Eample
 
 ```jsx
-FlyBuy.Core.Customer.loginWithToken(`<token>`);
+FlyBuyCore.Customer.loginWithToken(`<token>`);
 ```
 
 
@@ -74,7 +76,7 @@ Logs out the current customer.
 #### Example
 
 ```jsx
-FlyBuy.Core.Customer.logout();
+FlyBuyCore.Customer.logout();
 ```
 
 
@@ -91,7 +93,7 @@ Update customer info for the logged in user
 #### Example
 
 ```jsx
-FlyBuy.Core.Customer.updateCustomer({
+FlyBuyCore.Customer.updateCustomer({
   name: 'Abdelkhalek Zellat',
   carType: 'Tesla',
   carColor: 'Purple',
@@ -115,7 +117,7 @@ Link an email and password with the current anonymous logged in user.
 #### Example
 
 ```jsx
-FlyBuy.Core.Customer.signUp('ha_zellat@esi.dz', 'password');
+FlyBuyCore.Customer.signUp('ha_zellat@esi.dz', 'password');
 ```
 
 
@@ -132,6 +134,6 @@ Returns an instance of the current customer
 #### Example
 
 ```jsx
-FlyBuy.Core.Customer.getCurrentCustomer();
+FlyBuyCore.Customer.getCurrentCustomer();
 ```
 

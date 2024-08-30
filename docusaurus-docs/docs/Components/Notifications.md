@@ -15,7 +15,9 @@ Once your app receives a token for your push notification service, the token nee
 #### Example
 
 ```js
-FlyBuy.Core.updatePushToken(
+import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
+
+FlyBuyCore.updatePushToken(
   '740f4707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bb78ad'
 );
 ```
@@ -32,14 +34,14 @@ This method is used to handle remote notification and update the order data in t
 
 #### Example
 
-This example provide a full use case of using FCM listner and calling flybuy methods.
+This example provide a full use case of using FCM listener and calling flybuy methods.
 
 ```tsx
 import { useEffect, useState } from 'react';
 import messaging, {
   FirebaseMessagingTypes,
 } from '@react-native-firebase/messaging';
-import FlyBuy from 'react-native-bildit-flybuy';
+import * as FlyBuyCore from 'react-native-bildit-flybuy-core'
 
 const App = () => {
   const [orderState, setOrderState] = useState('');
@@ -50,11 +52,11 @@ const App = () => {
     messaging()
       .getToken()
       .then((token) => {
-        FlyBuy.Core.updatePushToken(token);
+        FlyBuyCore.updatePushToken(token);
       });
 
     return messaging().onTokenRefresh((token) => {
-      FlyBuy.Core.updatePushToken(token);
+      FlyBuyCore.updatePushToken(token);
     });
   }, []);
 
@@ -70,7 +72,7 @@ const App = () => {
           // ...Update order state locally
           setOrderState(order_state);
           customerState(customer_state);
-          FlyBuy.Core.handleRemoteNotification(remoteMessage.data);
+          FlyBuyCore.handleRemoteNotification(remoteMessage.data);
         }
       }
     );

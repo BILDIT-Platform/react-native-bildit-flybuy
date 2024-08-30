@@ -8,7 +8,7 @@ module.exports = {
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
-  organizationName: 'bildit-llc', // Usually your GitHub org/user name.
+  organizationName: 'BILDIT-Platform', // Usually your GitHub org/user name.
   projectName: 'react-native-bildit-flybuy', // Usually your repo name.
   themeConfig: {
     navbar: {

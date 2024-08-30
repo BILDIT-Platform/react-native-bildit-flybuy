@@ -32,5 +32,5 @@ sidebar_position: 7
 
 ## Used by
 
-- [`createForSitesInRegion`](../../Modules/Notify#create-for-sites-in-region)
-- [`createForSites`](../../Modules/Notify#create-for-sites)
+- [`createForSitesInRegion`](../../docs/Modules/Notify#create-for-sites-in-region)
+- [`createForSites`](../../docs/Modules/Notify#create-for-sites)

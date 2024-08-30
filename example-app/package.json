@@ -1,25 +1,44 @@
 {
-  "name": "react-native-bildit-flybuy-start-order-example",
-  "description": "Start Order Example app for react-native-bildit-flybuy",
+  "name": "example-app",
+  "description": "The sample usage of the react-native-bildit-flybuy with full flow",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "ios:m1": "arch -x86_64 react-native run-ios --simulator='iPhone 14 Pro Max'",
-    "start": "react-native start"
+    "lint": "eslint .",
+    "start": "react-native start",
+    "test": "jest"
   },
   "dependencies": {
-    "react": "17.0.2",
-    "react-native": "0.66.5",
-    "react-native-permissions": "3.7.3"
+    "react-native-bildit-flybuy-core": "2.20.5",
+    "react-native-bildit-flybuy-livestatus": "2.20.4",
+    "react-native-bildit-flybuy-notify": "2.20.6",
+    "react-native-bildit-flybuy-pickup": "2.20.4",
+    "react-native-bildit-flybuy-presence": "2.20.4",
+    "react": "18.2.0",
+    "react-native": "0.74.3",
+    "react-native-config": "^1.5.2",
+    "react-native-permissions": "^4.1.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "@babel/runtime": "^7.12.5",
-    "metro-react-native-babel-preset": "^0.66.2",
-    "react-test-renderer": "17.0.2",
-    "babel-plugin-module-resolver": "^4.0.0",
-    "reactotron-react-native": "^5.0.0"
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/runtime": "^7.20.0",
+    "@react-native/babel-preset": "0.74.85",
+    "@react-native/eslint-config": "0.74.85",
+    "@react-native/metro-config": "0.74.85",
+    "@react-native/typescript-config": "0.74.85",
+    "@types/react": "^18.2.6",
+    "@types/react-test-renderer": "^18.0.0",
+    "babel-jest": "^29.6.3",
+    "eslint": "^8.19.0",
+    "jest": "^29.6.3",
+    "prettier": "2.8.8",
+    "react-test-renderer": "18.2.0",
+    "typescript": "5.0.4"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

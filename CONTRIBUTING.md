@@ -12,24 +12,24 @@ yarn
 
 > While it's possible to use [`npm`](https://github.com/npm/cli), the tooling is built around [`yarn`](https://classic.yarnpkg.com/), so you'll have an easier time if you use `yarn` for development.
 
-While developing, you can run the [example app](/example/) to test your changes. Any changes you make in your library's JavaScript code will be reflected in the example app without a rebuild. If you change any native code, then you'll need to rebuild the example app.
+While developing, you can run the [example](/example/) to test your changes. Any changes you make in your library's JavaScript code will be reflected in the example app, the changes only reflected after running `yarn install --force` to copy all the changes from the library. If you change any native code, then you'll need to rebuild the example app.
 
 To start the packager:
 
 ```sh
-yarn example start
+cd example && yarn start
 ```
 
 To run the example app on Android:
 
 ```sh
-yarn example android
+cd example && yarn android
 ```
 
 To run the example app on iOS:
 
 ```sh
-yarn example ios
+cd example && yarn ios
 ```
 
 Make sure your code passes TypeScript and ESLint. Run the following to verify:
@@ -51,9 +51,7 @@ Remember to add tests for your change if possible. Run the unit tests by:
 yarn test
 ```
 
-To edit the Objective-C files, open `example/ios/FlybuyExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > react-native-bildit-flybuy`.
-
-To edit the Kotlin files, open `example/android` in Android studio and find the source files at `reactnativeflybuy` under `Android`.
+### TODO: add notes on how to change the files locally
 
 ### Commit message convention
 
@@ -78,12 +76,10 @@ Our pre-commit hooks verify that the linter and tests pass when committing.
 
 ### Publishing to npm
 
-We use [release-it](https://github.com/release-it/release-it) to make it easier to publish new versions. It handles common tasks like bumping version based on semver, creating tags and releases etc.
-
 To publish new versions, run the following:
 
 ```sh
-yarn release
+npx lerna publish
 ```
 
 ### Scripts

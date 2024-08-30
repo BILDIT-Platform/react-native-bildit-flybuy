@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -74,14 +75,15 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.flybuyexample"
+    namespace "com.example"
     defaultConfig {
-        applicationId "com.flybuyexample"
+        applicationId "com.example"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        missingDimensionStrategy "flybuy", "noTelemetry"
+
+        missingDimensionStrategy "flybuy", "default"
     }
     signingConfigs {
         debug {
@@ -114,11 +116,16 @@ dependencies {
     } else {
         implementation jscFlavor
     }
-    implementation platform("com.radiusnetworks.flybuy:bom:2.12.1")
-    implementation 'com.radiusnetworks.flybuy:pickup' // If using pickup feature
-    implementation 'com.radiusnetworks.flybuy:presence' // If using presence feature
-    implementation 'com.radiusnetworks.flybuy:notify' // If using notify feature
-    implementation 'com.radiusnetworks.flybuy:live-status' // If using live status feature
+
+    // This is mandatory to do the native configure
+    implementation platform("com.radiusnetworks.flybuy:bom:$flybuyVersion")
+    implementation('com.radiusnetworks.flybuy:core')
+    // Optional depends on usage
+    implementation('com.radiusnetworks.flybuy:pickup')
+    implementation('com.radiusnetworks.flybuy:presence')
+    implementation('com.radiusnetworks.flybuy:notify')
+    implementation('com.radiusnetworks.flybuy:live-status')
+
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

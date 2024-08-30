@@ -26,4 +26,4 @@ end: new Date('2022-12-02').toISOString(),
 
 ## Used by
 
-- [`createOrder`](../../Components/Orders#create-order)
+- [`createOrder`](../../docs/Components/Orders#create-order)

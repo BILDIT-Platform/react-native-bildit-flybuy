@@ -1,14 +1,34 @@
+
 <p align="center">
   <a href="https://bildit-platform.github.io/react-native-bildit-flybuy/">
     <img src="logo.svg" height="128">
   </a>
 </p>
 
-[![npm version](https://badge.fury.io/js/react-native-bildit-flybuy.svg)](//npmjs.com/package/react-native-bildit-flybuy)
+
+# React Native FlyBuy SDK Wrapper
 
 The FlyBuy cloud service and mobile SDK enables developers to add FlyBuy functionality directly into their react native apps for a full white label implementation of the service.
 
-This library was bootstrapped with [create-react-native-module](https://github.com/brodybits/create-react-native-module)
+Included SDKs:
+
+- [X] FlyBuy Core
+- [X] FlyBuy Pickup
+- [X] FlyBuy Presence
+- [X] FlyBuy Notify
+- [X] FlyBuy LiveStatus
+
+
+SDK that supports React Native New Architecture:
+Right now the new architecture is in [https://reactnative.dev/docs/the-new-architecture/landing-page#should-i-use-the-new-architecture-today](Beta test)
+
+- [ ] FlyBuy Core
+- [ ] FlyBuy Pickup
+- [ ] FlyBuy Presence
+- [ ] FlyBuy Notify
+
+The code is supports React Native New Architecture but we haven't test it.
+
 
 ## Documentation
 
@@ -21,3 +41,16 @@ Do you have a feature request, bug report, or patch? Great! See [CONTRIBUTING.md
 ## License
 
 [MIT](./LICENSE)
+
+
+### Development Notes
+
+- Android Min SDK version must be 26
+
+
+## TODO
+
+[X] Re-write example app with the new module
+[X] Update docusaurus documentation using the latest package
+[X] Put migration documentation on docusaurus
+[ ] Test with react native new architecture

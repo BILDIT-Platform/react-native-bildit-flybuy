@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,14 +9,12 @@ import {
   TextInput,
   ActivityIndicator,
 } from 'react-native';
-import Button from './Button';
-import FlyBuy, {
-  CustomerState,
-  IOrder,
-  OrderStateType,
-  PickupType,
-} from 'react-native-bildit-flybuy';
-import AppConfig from './AppConfig.json';
+
+import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
+import * as FlyBuyPickup from 'react-native-bildit-flybuy-pickup';
+import * as FlyBuyNotify from 'react-native-bildit-flybuy-notify';
+import * as FlyBuyPresence from 'react-native-bildit-flybuy-presence';
+import {Button} from './components';
 
 // Add your Flybuy Sandbox Site ID Here
 
@@ -35,23 +33,23 @@ const CUSTOMER_INFO = {
 const Header = () => {
   return (
     <View style={styles.header}>
-      <View style={{ flex: 1 }}>
+      <View style={{flex: 1}}>
         <Text>{'#id'}</Text>
       </View>
-      <View style={{ flex: 1 }}>
+      <View style={{flex: 1}}>
         <Text>{'#PatnerId'}</Text>
       </View>
-      <View style={{ flex: 1 }}>
+      <View style={{flex: 1}}>
         <Text numberOfLines={1}>{'Customer'}</Text>
       </View>
-      <View style={{ flex: 1 }}>
-        <Text style={{ textAlign: 'right' }}>{'State'}</Text>
+      <View style={{flex: 1}}>
+        <Text style={{textAlign: 'right'}}>{'State'}</Text>
       </View>
     </View>
   );
 };
 
-const OrderItem = ({ order, onUpdate }) => {
+const OrderItem = ({order, onUpdate}) => {
   return (
     <View style={styles.orderItem}>
       <View style={styles.flexOne}>
@@ -80,18 +78,18 @@ const OrderItem = ({ order, onUpdate }) => {
 };
 
 export default function App() {
-  const [orders, setOrders] = useState<IOrder[]>([]);
+  const [orders, setOrders] = useState<FlyBuyCore.IOrder[]>([]);
   const [partnerId, setPartnerId] = useState('');
   const [loading, setLoading] = useState(false);
   // Orders
   const fetchOrders = () => {
     setLoading(true);
-    FlyBuy.Core.Orders.fetchOrders()
-      .then((data: IOrder[]) => {
+    FlyBuyCore.Orders.fetchOrders()
+      .then((data: FlyBuyCore.IOrder[]) => {
         setOrders([...data]);
         setLoading(false);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
         setLoading(false);
       });
@@ -109,49 +107,46 @@ export default function App() {
       start: pickup_start.toISOString(),
       end: pickup_end.toISOString(),
     };
-    FlyBuy.Core.Orders.createOrder({
+    FlyBuyCore.Orders.createOrder({
       siteId: SITE_ID,
       pid: partnerId,
       customerInfo: CUSTOMER_INFO,
       pickupWindow: pickupWindow,
-      orderState: OrderStateType.DELAYED,
-      pickupType: PickupType.DELIVERY,
+      orderState: FlyBuyCore.OrderStateType.DELAYED,
+      pickupType: FlyBuyCore.PickupType.DELIVERY,
     })
-      .then((order) => {
+      .then((order: FlyBuyCore.IOrder) => {
         console.log('order is created!', order);
         fetchOrders();
       })
-      .catch((err) => console.tron.log(err));
+      .catch(err => console.log(err));
   };
 
-  const updateToStart = (order: IOrder) => {
-    FlyBuy.Core.Orders.updateOrderCustomerState(
+  const updateToStart = (order: FlyBuyCore.IOrder) => {
+    FlyBuyCore.Orders.updateOrderCustomerState(
       order.id,
-      CustomerState.EN_ROUTE
+      FlyBuyCore.CustomerState.EN_ROUTE,
     )
       .then(() => {
         fetchOrders();
       })
-      .catch((err) => console.log('error on catch-->', err));
+      .catch(err => console.log('error on catch-->', err));
   };
 
   const login = () => {
-    FlyBuy.Core.Customer.login('ha_zellat@esi.dz', 'password')
-      .then((customer) => {
-        console.tron.log('customer', customer);
+    FlyBuyCore.Customer.login('ha_zellat@esi.dz', 'password')
+      .then(customer => {
+        console.log('customer', customer);
         fetchOrders();
       })
-      .catch((err) => console.tron.log(err));
+      .catch(err => console.log(err));
   };
 
   React.useEffect(() => {
-    FlyBuy.Core.configure(AppConfig.APP_TOKEN);
-    FlyBuy.Notify.configure();
-    FlyBuy.Pickup.configure();
     fetchOrders();
   }, []);
 
-  const renderItem = ({ item }: { item: IOrder }) => (
+  const renderItem = ({item}: {item: FlyBuyCore.IOrder}) => (
     <OrderItem
       order={item}
       onUpdate={() => {
@@ -159,7 +154,7 @@ export default function App() {
       }}
     />
   );
-  const onChangePid = (e) => {
+  const onChangePid = e => {
     setPartnerId(e);
   };
   return (
@@ -168,17 +163,17 @@ export default function App() {
       <Header />
       {loading && <ActivityIndicator color="white" size="large" />}
       <FlatList
-        style={{ width: '100%', paddingHorizontal: 10 }}
+        style={{width: '100%', paddingHorizontal: 10}}
         data={orders}
         renderItem={renderItem}
-        keyExtractor={(item) => String(item.id)}
+        keyExtractor={item => String(item.id)}
       />
       <Button title="New Order With" onPress={createOrder} />
       <TextInput
         placeholder="Partner ID"
         style={styles.partner}
         value={partnerId}
-        onChangeText={(e) => {
+        onChangeText={e => {
           onChangePid(e);
         }}
       />

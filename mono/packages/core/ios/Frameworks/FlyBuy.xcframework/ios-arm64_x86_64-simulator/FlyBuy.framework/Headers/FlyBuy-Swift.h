@@ -366,9 +366,17 @@ SWIFT_CLASS_NAMED("ConfigOptionsBuilder")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+SWIFT_CLASS_NAMED("Coordinate")
+@interface FlyBuyCoordinate : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @class FlyBuyOrdersManager;
 @class FlyBuyCustomerManager;
 @class FlyBuySitesManager;
+@class FlyBuyPlacesManager;
 @class FlyBuyLogger;
 @class NSUUID;
 @class NSData;
@@ -393,6 +401,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyCustom
 /// Gets the <code>SitesManager</code> instance
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuySitesManager * _Nonnull sites;)
 + (FlyBuySitesManager * _Nonnull)sites SWIFT_WARN_UNUSED_RESULT;
+/// Gets the <code>PlacesManager</code> instance
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyPlacesManager * _Nonnull places;)
++ (FlyBuyPlacesManager * _Nonnull)places SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyLogger * _Nonnull logger;)
 + (FlyBuyLogger * _Nonnull)logger SWIFT_WARN_UNUSED_RESULT;
 /// Set a callback to be notified when the app instance ID is updated.
@@ -709,6 +720,26 @@ typedef SWIFT_ENUM(NSInteger, FlyBuyAPIErrorType, open) {
   FlyBuyAPIErrorTypeResponseError = 1,
 };
 
+
+SWIFT_CLASS_NAMED("FlyBuyRegion")
+@interface FlyBuyRegion : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS_NAMED("FlyBuyBeaconRegion")
+@interface FlyBuyBeaconRegion : FlyBuyRegion
+- (nonnull instancetype)initWithUuid:(NSUUID * _Nonnull)uuid major:(uint16_t)major minor:(uint16_t)minor identifier:(NSString * _Nonnull)identifier OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS_NAMED("FlyBuyCircularRegion")
+@interface FlyBuyCircularRegion : FlyBuyRegion
+- (nonnull instancetype)initWithLatitude:(double)latitude longitude:(double)longitude radius:(double)radius identifier:(NSString * _Nonnull)identifier OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 typedef SWIFT_ENUM(NSInteger, FlybuyLinkType, open) {
   FlybuyLinkTypeDineIn = 0,
   FlybuyLinkTypeRedemption = 1,
@@ -888,6 +919,30 @@ SWIFT_CLASS_NAMED("OrderOptions")
 
 SWIFT_CLASS_NAMED("Builder")
 @interface FlyBuyOrderOptionsBuilder : NSObject
+- (nonnull instancetype)initWithCustomerName:(NSString * _Nonnull)customerName OBJC_DESIGNATED_INITIALIZER;
+/// Set the customer’s [name] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setCustomerName:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
+/// Set the customer’s [customerPhone] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setCustomerPhone:(NSString * _Nullable)customerPhone SWIFT_WARN_UNUSED_RESULT;
+/// Set the customer’s [customerCarColor] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setCustomerCarColor:(NSString * _Nullable)customerCarColor SWIFT_WARN_UNUSED_RESULT;
+/// Set the customer’s [customerCarType] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setCustomerCarType:(NSString * _Nullable)customerCarType SWIFT_WARN_UNUSED_RESULT;
+/// Set the customer’s [customerCarPlate] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setCustomerCarPlate:(NSString * _Nullable)customerCarPlate SWIFT_WARN_UNUSED_RESULT;
+/// Set the order’s [partnerIdentifier] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setPartnerIdentifier:(NSString * _Nullable)partnerIdentifier SWIFT_WARN_UNUSED_RESULT;
+/// Set the order’s [pickupWindow] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setPickupWindow:(FlyBuyPickupWindow * _Nullable)pickupWindow SWIFT_WARN_UNUSED_RESULT;
+/// Set the order’s [state] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setState:(NSString * _Nullable)state SWIFT_WARN_UNUSED_RESULT;
+/// Set the order’s [pickupType] property when creating or claiming an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setPickupType:(NSString * _Nullable)pickupType SWIFT_WARN_UNUSED_RESULT;
+/// Set the order’s [spotIdentifier] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setSpotIdentifier:(NSString * _Nullable)spotIdentifier SWIFT_WARN_UNUSED_RESULT;
+/// Set the order’s [handoffVehicleLocation] property when creating or claiming an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setHandoffVehicleLocation:(NSString * _Nullable)handoffVehicleLocation SWIFT_WARN_UNUSED_RESULT;
+- (FlyBuyOrderOptions * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1055,6 +1110,12 @@ SWIFT_CLASS_NAMED("OrdersManager")
 /// \param callback called once either an <code>Order</code> is created or an error is encountered. Optional.
 ///
 - (void)createWithSitePartnerIdentifier:(NSString * _Nonnull)sitePartnerIdentifier orderOptions:(FlyBuyOrderOptions * _Nonnull)orderOptions callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
+/// creates an order event using the Flybuy web API
+/// \param info contains the information needed to create the event
+///
+/// \param callback Gets called at completion with the <code>Order</code> or any error encountered. Optional.
+///
+- (void)eventWithInfo:(FlyBuyOrderEvent * _Nonnull)info callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
 /// Update the customerState for an order with the given orderId.
 /// Example:
 /// \code
@@ -1227,6 +1288,77 @@ SWIFT_CLASS_NAMED("PickupWindow")
 @end
 
 
+SWIFT_CLASS_NAMED("Place")
+@interface FlyBuyPlace : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString * _Nonnull placeFormatted;
+@property (nonatomic, readonly) double distance;
+@property (nonatomic, readonly, copy) NSString * _Nullable address;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+enum PlaceType : NSInteger;
+
+SWIFT_CLASS_NAMED("PlaceSuggestionOptions")
+@interface FlyBuyPlaceOptions : NSObject
+@property (nonatomic, readonly) double latitude;
+@property (nonatomic, readonly) double longitude;
+@property (nonatomic, readonly) enum PlaceType type;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS_NAMED("Builder")
+@interface FlyBuyPlaceOptionsBuilder : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+typedef SWIFT_ENUM(NSInteger, PlaceType, open) {
+  PlaceTypeAddress = 0,
+  PlaceTypeRegion = 1,
+  PlaceTypePostalcode = 2,
+  PlaceTypeCity = 3,
+  PlaceTypePoi = 4,
+};
+
+
+SWIFT_CLASS_NAMED("PlacesManager")
+@interface FlyBuyPlacesManager : NSObject
+/// Fetch  <code>Place</code>s for a query string.
+/// Provide query parameter  to return a list of <code>Place</code>, where the address, zip, region or city matches the provided string.
+/// Example:
+/// \code
+/// FlyBuy.Core.sites.suggest(query: "1600 Pennsylvania Avenue Washington", options: placeSuggestionOptions.build()) { (places, error) -> (Void) in
+///   if let error = error {
+///    // Handle error
+///   } else {
+///    // Handle success
+///   }
+/// }
+///
+/// \endcode\param query a string to search for
+///
+/// \param options A <code>PlaceSuggestionOptions</code> where we can set the proximity latitude, longitude, the search type and the language of the response
+///
+/// \param callback Gets called at completion with a list of <code>Place</code> or any error encountered. Optional.
+///
+- (void)suggestWithQuery:(NSString * _Nonnull)query options:(FlyBuyPlaceOptions * _Nonnull)options callback:(void (^ _Nullable)(NSArray<FlyBuyPlace *> * _Nullable, NSError * _Nullable))callback;
+/// Fetch  a <code>PlaceLocation</code> for a <code>Place</code>
+/// \code
+///
+///
+/// \endcode\param place A <code>Place</code> instance, from the callback of the <code>suggest(query:options:callback:)</code> function.
+///
+/// \param callback Gets called at completion with a list of <code>Place</code> or any error encountered. Optional.
+///
+- (void)retrieveWithPlace:(FlyBuyPlace * _Nonnull)place callback:(void (^ _Nullable)(FlyBuyCoordinate * _Nullable, NSError * _Nullable))callback;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 /// Data model for sites.
 SWIFT_CLASS_NAMED("Site")
 @interface FlyBuySite : NSObject
@@ -1262,7 +1394,24 @@ SWIFT_CLASS_NAMED("Site")
 @property (nonatomic, readonly, strong) PickupConfig * _Nonnull pickupConfig;
 @end
 
-@class CLCircularRegion;
+
+SWIFT_CLASS_NAMED("SiteOptions")
+@interface FlyBuySiteOptions : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull operationalStatus;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS_NAMED("Builder")
+@interface FlyBuySiteOptionsBuilder : NSObject
+- (void)setOperationalStatus:(NSString * _Nonnull)operationalStatus;
+- (void)setPage:(NSInteger)page;
+- (void)setPer:(NSInteger)per;
+- (FlyBuySiteOptions * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 /// Manager for site operations
 /// Example:
@@ -1291,98 +1440,48 @@ SWIFT_CLASS_NAMED("SitesManager")
 ///
 /// \endcode\param partnerIdentifier partner identifier for the site.
 ///
+/// \param options A <code>SiteOptions</code> instance.
+///
+/// \param callback Gets called at completion with the <code>Site</code> or any error encountered. Optional.
+///
+- (void)fetchByPartnerIdentifierWithPartnerIdentifier:(NSString * _Nonnull)partnerIdentifier options:(FlyBuySiteOptions * _Nonnull)options callback:(void (^ _Nullable)(FlyBuySite * _Nullable, NSError * _Nullable))callback;
+/// Fetches the list of sites from the FlyBuy web API via search region
+/// \param region a <code>FlyBuyCircularRegion</code> for the search region.
+///
+/// \param options A <code>SiteOptions</code> instance.
+///
+/// \param callback will get called on completion with the array of <code>Site</code>s or any errors encountered. Optional.
+///
+- (void)fetchWithRegion:(FlyBuyCircularRegion * _Nonnull)region options:(FlyBuySiteOptions * _Nonnull)options callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
+/// Fetch  nearby <code>Site</code>s for a <code>Place</code> within the given radius .
+/// Provide place and radius parameters to return the sites within the range near the <code>Place</code>
+/// If sites are found, they will be returned in the callback; otherwise, an error will be returned
+/// in the callback.
+/// \param partnerIdentifier partner identifier for the site.
+///
 /// \param operationalStatus operation status of the site.
 ///
-/// \param callback Gets called at completion with the <code>Site</code> or any error encountered. Optional.
+/// \param callback Gets called at completion with the <code>Site</code>s or any error encountered. Optional.
 ///
-- (void)fetchByPartnerIdentifierWithPartnerIdentifier:(NSString * _Nonnull)partnerIdentifier operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(FlyBuySite * _Nullable, NSError * _Nullable))callback;
-/// Fetch a <code>Site</code> by partner identifier.
-/// Provide partnerIdentifier parameter to return the site with the same partner identifier. If
-/// the site is found, it will be returned in the callback; otherwise, an error will be returned
-/// in the callback.
-/// Example:
-/// \code
-/// FlyBuy.Core.sites.fetchByPartnerIdentifier(partnerIdentifier: "123") { (site, error) -> (Void) in
-///   if let error = error {
-///    // Handle error
-///   } else {
-///    // Handle success
-///   }
-/// }
-///
-/// \endcode\param partnerIdentifier partner identifier for the site.
-///
-/// \param callback Gets called at completion with the <code>Site</code> or any error encountered. Optional.
-///
-- (void)fetchByPartnerIdentifierWithPartnerIdentifier:(NSString * _Nonnull)partnerIdentifier callback:(void (^ _Nullable)(FlyBuySite * _Nullable, NSError * _Nullable))callback;
-/// fetches the list of sites from the FlyBuy web API via query string
-/// \param query the query string. Optional.
-///
-/// \param page the desired page number. Optional.
-///
-/// \param callback will get called on completion with the array of <code>Site</code>s or any errors encountered. Optional.
-///
-- (void)fetchWithQuery:(NSString * _Nullable)query page:(NSInteger)page callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, FlyBuyPagination * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetchByPartnerIdentifier instead.");
-/// fetches the list of sites from the FlyBuy web API
-/// \param query the query string. Optional.
-///
-/// \param page the desired page number. Optional.
-///
-/// \param operationalStatus the operational status filter string.
-///
-/// \param callback will get called on completion with the array of <code>Site</code>s or any errors encountered. Optional.
-///
-- (void)fetchWithQuery:(NSString * _Nullable)query page:(NSInteger)page operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, FlyBuyPagination * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetchByPartnerIdentifier instead.");
-/// fetches the list of sites from the FlyBuy web API via search region
-/// \param region a CLCircularRegion for the search region.
-///
-/// \param page the desired page number. Optional.
-///
-/// \param callback will get called on completion with the array of <code>Site</code>s or any errors encountered. Optional.
-///
-- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
-/// fetches the list of sites from the FlyBuy web API via search region
-/// \param region a CLCircularRegion for the search region.
-///
-/// \param page the desired page number. Optional.
-///
-/// \param operationalStatus the operational status filter string.
-///
-/// \param callback will get called on completion with the array of <code>Site</code>s or any errors encountered. Optional.
-///
-- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
-/// fetches the list of sites from the FlyBuy web API via search region
-/// \param region a CLCircularRegion for the search region.
-///
-/// \param page the desired page number.
-///
-/// \param per the amount of sites returned per page.
-///
-/// \param callback will get called on completion with the array of <code>Site</code>s or any errors encountered. Optional.
-///
-- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page per:(NSInteger)per callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
-/// fetches the list of sites from the FlyBuy web API via search region
-/// \param region a CLCircularRegion for the search region.
-///
-/// \param page the desired page number.
-///
-/// \param per the amount of sites returned per page.
-///
-/// \param operationalStatus the operational status filter string.
-///
-/// \param callback will get called on completion with the array of <code>Site</code>s or any errors encountered. Optional.
-///
-- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page per:(NSInteger)per operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
-/// fetches the complete list of sites from the FlyBuy web API that matches the query string
-/// \param query the query string. Optional.
-///
-/// \param callback will get called on completion with the array of <code>Site</code>s and any errors encountered. Optional.
-///
-- (void)fetchAllWithQuery:(NSString * _Nullable)query callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuyCore.sites.fetchByPartnerIdentifier instead.");
+- (void)fetchNearWithPlace:(FlyBuyPlace * _Nonnull)place radius:(double)radius options:(FlyBuySiteOptions * _Nonnull)options callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
+
+@class CLCircularRegion;
+
+@interface FlyBuySitesManager (SWIFT_EXTENSION(FlyBuy))
+- (void)fetchByPartnerIdentifierWithPartnerIdentifier:(NSString * _Nonnull)partnerIdentifier callback:(void (^ _Nullable)(FlyBuySite * _Nullable, NSError * _Nullable))callback;
+- (void)fetchByPartnerIdentifierWithPartnerIdentifier:(NSString * _Nonnull)partnerIdentifier operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(FlyBuySite * _Nullable, NSError * _Nullable))callback;
+- (void)fetchWithQuery:(NSString * _Nullable)query page:(NSInteger)page callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, FlyBuyPagination * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetchByPartnerIdentifier instead.");
+- (void)fetchWithQuery:(NSString * _Nullable)query page:(NSInteger)page operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, FlyBuyPagination * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetchByPartnerIdentifier instead.");
+- (void)fetchAllWithQuery:(NSString * _Nullable)query callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuyCore.sites.fetchByPartnerIdentifier instead.");
+- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetch(region:, options:) instead.");
+- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page per:(NSInteger)per callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetch(region:, options:) instead.");
+- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page per:(NSInteger)per operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetch(region:, options:) instead.");
+- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetch(region:, options:) instead.");
+@end
 
 
 /// Error that may be returned from SitesManager methods.
@@ -1399,6 +1498,7 @@ SWIFT_CLASS_NAMED("SitesManagerError")
 /// The type that may be associated with a SitesManagerError.
 typedef SWIFT_ENUM(NSInteger, SitesManagerErrorType, open) {
   SitesManagerErrorTypeCoreIsNotConfigured = 0,
+  SitesManagerErrorTypeMapboxTokenIsMissing = 1,
 };
 
 
@@ -1786,9 +1886,17 @@ SWIFT_CLASS_NAMED("ConfigOptionsBuilder")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+SWIFT_CLASS_NAMED("Coordinate")
+@interface FlyBuyCoordinate : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @class FlyBuyOrdersManager;
 @class FlyBuyCustomerManager;
 @class FlyBuySitesManager;
+@class FlyBuyPlacesManager;
 @class FlyBuyLogger;
 @class NSUUID;
 @class NSData;
@@ -1813,6 +1921,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyCustom
 /// Gets the <code>SitesManager</code> instance
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuySitesManager * _Nonnull sites;)
 + (FlyBuySitesManager * _Nonnull)sites SWIFT_WARN_UNUSED_RESULT;
+/// Gets the <code>PlacesManager</code> instance
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyPlacesManager * _Nonnull places;)
++ (FlyBuyPlacesManager * _Nonnull)places SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyLogger * _Nonnull logger;)
 + (FlyBuyLogger * _Nonnull)logger SWIFT_WARN_UNUSED_RESULT;
 /// Set a callback to be notified when the app instance ID is updated.
@@ -2129,6 +2240,26 @@ typedef SWIFT_ENUM(NSInteger, FlyBuyAPIErrorType, open) {
   FlyBuyAPIErrorTypeResponseError = 1,
 };
 
+
+SWIFT_CLASS_NAMED("FlyBuyRegion")
+@interface FlyBuyRegion : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS_NAMED("FlyBuyBeaconRegion")
+@interface FlyBuyBeaconRegion : FlyBuyRegion
+- (nonnull instancetype)initWithUuid:(NSUUID * _Nonnull)uuid major:(uint16_t)major minor:(uint16_t)minor identifier:(NSString * _Nonnull)identifier OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS_NAMED("FlyBuyCircularRegion")
+@interface FlyBuyCircularRegion : FlyBuyRegion
+- (nonnull instancetype)initWithLatitude:(double)latitude longitude:(double)longitude radius:(double)radius identifier:(NSString * _Nonnull)identifier OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 typedef SWIFT_ENUM(NSInteger, FlybuyLinkType, open) {
   FlybuyLinkTypeDineIn = 0,
   FlybuyLinkTypeRedemption = 1,
@@ -2308,6 +2439,30 @@ SWIFT_CLASS_NAMED("OrderOptions")
 
 SWIFT_CLASS_NAMED("Builder")
 @interface FlyBuyOrderOptionsBuilder : NSObject
+- (nonnull instancetype)initWithCustomerName:(NSString * _Nonnull)customerName OBJC_DESIGNATED_INITIALIZER;
+/// Set the customer’s [name] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setCustomerName:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
+/// Set the customer’s [customerPhone] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setCustomerPhone:(NSString * _Nullable)customerPhone SWIFT_WARN_UNUSED_RESULT;
+/// Set the customer’s [customerCarColor] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setCustomerCarColor:(NSString * _Nullable)customerCarColor SWIFT_WARN_UNUSED_RESULT;
+/// Set the customer’s [customerCarType] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setCustomerCarType:(NSString * _Nullable)customerCarType SWIFT_WARN_UNUSED_RESULT;
+/// Set the customer’s [customerCarPlate] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setCustomerCarPlate:(NSString * _Nullable)customerCarPlate SWIFT_WARN_UNUSED_RESULT;
+/// Set the order’s [partnerIdentifier] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setPartnerIdentifier:(NSString * _Nullable)partnerIdentifier SWIFT_WARN_UNUSED_RESULT;
+/// Set the order’s [pickupWindow] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setPickupWindow:(FlyBuyPickupWindow * _Nullable)pickupWindow SWIFT_WARN_UNUSED_RESULT;
+/// Set the order’s [state] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setState:(NSString * _Nullable)state SWIFT_WARN_UNUSED_RESULT;
+/// Set the order’s [pickupType] property when creating or claiming an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setPickupType:(NSString * _Nullable)pickupType SWIFT_WARN_UNUSED_RESULT;
+/// Set the order’s [spotIdentifier] property when creating an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setSpotIdentifier:(NSString * _Nullable)spotIdentifier SWIFT_WARN_UNUSED_RESULT;
+/// Set the order’s [handoffVehicleLocation] property when creating or claiming an [Order]
+- (FlyBuyOrderOptionsBuilder * _Nonnull)setHandoffVehicleLocation:(NSString * _Nullable)handoffVehicleLocation SWIFT_WARN_UNUSED_RESULT;
+- (FlyBuyOrderOptions * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2475,6 +2630,12 @@ SWIFT_CLASS_NAMED("OrdersManager")
 /// \param callback called once either an <code>Order</code> is created or an error is encountered. Optional.
 ///
 - (void)createWithSitePartnerIdentifier:(NSString * _Nonnull)sitePartnerIdentifier orderOptions:(FlyBuyOrderOptions * _Nonnull)orderOptions callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
+/// creates an order event using the Flybuy web API
+/// \param info contains the information needed to create the event
+///
+/// \param callback Gets called at completion with the <code>Order</code> or any error encountered. Optional.
+///
+- (void)eventWithInfo:(FlyBuyOrderEvent * _Nonnull)info callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
 /// Update the customerState for an order with the given orderId.
 /// Example:
 /// \code
@@ -2647,6 +2808,77 @@ SWIFT_CLASS_NAMED("PickupWindow")
 @end
 
 
+SWIFT_CLASS_NAMED("Place")
+@interface FlyBuyPlace : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString * _Nonnull placeFormatted;
+@property (nonatomic, readonly) double distance;
+@property (nonatomic, readonly, copy) NSString * _Nullable address;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+enum PlaceType : NSInteger;
+
+SWIFT_CLASS_NAMED("PlaceSuggestionOptions")
+@interface FlyBuyPlaceOptions : NSObject
+@property (nonatomic, readonly) double latitude;
+@property (nonatomic, readonly) double longitude;
+@property (nonatomic, readonly) enum PlaceType type;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS_NAMED("Builder")
+@interface FlyBuyPlaceOptionsBuilder : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+typedef SWIFT_ENUM(NSInteger, PlaceType, open) {
+  PlaceTypeAddress = 0,
+  PlaceTypeRegion = 1,
+  PlaceTypePostalcode = 2,
+  PlaceTypeCity = 3,
+  PlaceTypePoi = 4,
+};
+
+
+SWIFT_CLASS_NAMED("PlacesManager")
+@interface FlyBuyPlacesManager : NSObject
+/// Fetch  <code>Place</code>s for a query string.
+/// Provide query parameter  to return a list of <code>Place</code>, where the address, zip, region or city matches the provided string.
+/// Example:
+/// \code
+/// FlyBuy.Core.sites.suggest(query: "1600 Pennsylvania Avenue Washington", options: placeSuggestionOptions.build()) { (places, error) -> (Void) in
+///   if let error = error {
+///    // Handle error
+///   } else {
+///    // Handle success
+///   }
+/// }
+///
+/// \endcode\param query a string to search for
+///
+/// \param options A <code>PlaceSuggestionOptions</code> where we can set the proximity latitude, longitude, the search type and the language of the response
+///
+/// \param callback Gets called at completion with a list of <code>Place</code> or any error encountered. Optional.
+///
+- (void)suggestWithQuery:(NSString * _Nonnull)query options:(FlyBuyPlaceOptions * _Nonnull)options callback:(void (^ _Nullable)(NSArray<FlyBuyPlace *> * _Nullable, NSError * _Nullable))callback;
+/// Fetch  a <code>PlaceLocation</code> for a <code>Place</code>
+/// \code
+///
+///
+/// \endcode\param place A <code>Place</code> instance, from the callback of the <code>suggest(query:options:callback:)</code> function.
+///
+/// \param callback Gets called at completion with a list of <code>Place</code> or any error encountered. Optional.
+///
+- (void)retrieveWithPlace:(FlyBuyPlace * _Nonnull)place callback:(void (^ _Nullable)(FlyBuyCoordinate * _Nullable, NSError * _Nullable))callback;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 /// Data model for sites.
 SWIFT_CLASS_NAMED("Site")
 @interface FlyBuySite : NSObject
@@ -2682,7 +2914,24 @@ SWIFT_CLASS_NAMED("Site")
 @property (nonatomic, readonly, strong) PickupConfig * _Nonnull pickupConfig;
 @end
 
-@class CLCircularRegion;
+
+SWIFT_CLASS_NAMED("SiteOptions")
+@interface FlyBuySiteOptions : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull operationalStatus;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS_NAMED("Builder")
+@interface FlyBuySiteOptionsBuilder : NSObject
+- (void)setOperationalStatus:(NSString * _Nonnull)operationalStatus;
+- (void)setPage:(NSInteger)page;
+- (void)setPer:(NSInteger)per;
+- (FlyBuySiteOptions * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 /// Manager for site operations
 /// Example:
@@ -2711,98 +2960,48 @@ SWIFT_CLASS_NAMED("SitesManager")
 ///
 /// \endcode\param partnerIdentifier partner identifier for the site.
 ///
+/// \param options A <code>SiteOptions</code> instance.
+///
+/// \param callback Gets called at completion with the <code>Site</code> or any error encountered. Optional.
+///
+- (void)fetchByPartnerIdentifierWithPartnerIdentifier:(NSString * _Nonnull)partnerIdentifier options:(FlyBuySiteOptions * _Nonnull)options callback:(void (^ _Nullable)(FlyBuySite * _Nullable, NSError * _Nullable))callback;
+/// Fetches the list of sites from the FlyBuy web API via search region
+/// \param region a <code>FlyBuyCircularRegion</code> for the search region.
+///
+/// \param options A <code>SiteOptions</code> instance.
+///
+/// \param callback will get called on completion with the array of <code>Site</code>s or any errors encountered. Optional.
+///
+- (void)fetchWithRegion:(FlyBuyCircularRegion * _Nonnull)region options:(FlyBuySiteOptions * _Nonnull)options callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
+/// Fetch  nearby <code>Site</code>s for a <code>Place</code> within the given radius .
+/// Provide place and radius parameters to return the sites within the range near the <code>Place</code>
+/// If sites are found, they will be returned in the callback; otherwise, an error will be returned
+/// in the callback.
+/// \param partnerIdentifier partner identifier for the site.
+///
 /// \param operationalStatus operation status of the site.
 ///
-/// \param callback Gets called at completion with the <code>Site</code> or any error encountered. Optional.
+/// \param callback Gets called at completion with the <code>Site</code>s or any error encountered. Optional.
 ///
-- (void)fetchByPartnerIdentifierWithPartnerIdentifier:(NSString * _Nonnull)partnerIdentifier operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(FlyBuySite * _Nullable, NSError * _Nullable))callback;
-/// Fetch a <code>Site</code> by partner identifier.
-/// Provide partnerIdentifier parameter to return the site with the same partner identifier. If
-/// the site is found, it will be returned in the callback; otherwise, an error will be returned
-/// in the callback.
-/// Example:
-/// \code
-/// FlyBuy.Core.sites.fetchByPartnerIdentifier(partnerIdentifier: "123") { (site, error) -> (Void) in
-///   if let error = error {
-///    // Handle error
-///   } else {
-///    // Handle success
-///   }
-/// }
-///
-/// \endcode\param partnerIdentifier partner identifier for the site.
-///
-/// \param callback Gets called at completion with the <code>Site</code> or any error encountered. Optional.
-///
-- (void)fetchByPartnerIdentifierWithPartnerIdentifier:(NSString * _Nonnull)partnerIdentifier callback:(void (^ _Nullable)(FlyBuySite * _Nullable, NSError * _Nullable))callback;
-/// fetches the list of sites from the FlyBuy web API via query string
-/// \param query the query string. Optional.
-///
-/// \param page the desired page number. Optional.
-///
-/// \param callback will get called on completion with the array of <code>Site</code>s or any errors encountered. Optional.
-///
-- (void)fetchWithQuery:(NSString * _Nullable)query page:(NSInteger)page callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, FlyBuyPagination * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetchByPartnerIdentifier instead.");
-/// fetches the list of sites from the FlyBuy web API
-/// \param query the query string. Optional.
-///
-/// \param page the desired page number. Optional.
-///
-/// \param operationalStatus the operational status filter string.
-///
-/// \param callback will get called on completion with the array of <code>Site</code>s or any errors encountered. Optional.
-///
-- (void)fetchWithQuery:(NSString * _Nullable)query page:(NSInteger)page operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, FlyBuyPagination * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetchByPartnerIdentifier instead.");
-/// fetches the list of sites from the FlyBuy web API via search region
-/// \param region a CLCircularRegion for the search region.
-///
-/// \param page the desired page number. Optional.
-///
-/// \param callback will get called on completion with the array of <code>Site</code>s or any errors encountered. Optional.
-///
-- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
-/// fetches the list of sites from the FlyBuy web API via search region
-/// \param region a CLCircularRegion for the search region.
-///
-/// \param page the desired page number. Optional.
-///
-/// \param operationalStatus the operational status filter string.
-///
-/// \param callback will get called on completion with the array of <code>Site</code>s or any errors encountered. Optional.
-///
-- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
-/// fetches the list of sites from the FlyBuy web API via search region
-/// \param region a CLCircularRegion for the search region.
-///
-/// \param page the desired page number.
-///
-/// \param per the amount of sites returned per page.
-///
-/// \param callback will get called on completion with the array of <code>Site</code>s or any errors encountered. Optional.
-///
-- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page per:(NSInteger)per callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
-/// fetches the list of sites from the FlyBuy web API via search region
-/// \param region a CLCircularRegion for the search region.
-///
-/// \param page the desired page number.
-///
-/// \param per the amount of sites returned per page.
-///
-/// \param operationalStatus the operational status filter string.
-///
-/// \param callback will get called on completion with the array of <code>Site</code>s or any errors encountered. Optional.
-///
-- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page per:(NSInteger)per operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
-/// fetches the complete list of sites from the FlyBuy web API that matches the query string
-/// \param query the query string. Optional.
-///
-/// \param callback will get called on completion with the array of <code>Site</code>s and any errors encountered. Optional.
-///
-- (void)fetchAllWithQuery:(NSString * _Nullable)query callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuyCore.sites.fetchByPartnerIdentifier instead.");
+- (void)fetchNearWithPlace:(FlyBuyPlace * _Nonnull)place radius:(double)radius options:(FlyBuySiteOptions * _Nonnull)options callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
+
+@class CLCircularRegion;
+
+@interface FlyBuySitesManager (SWIFT_EXTENSION(FlyBuy))
+- (void)fetchByPartnerIdentifierWithPartnerIdentifier:(NSString * _Nonnull)partnerIdentifier callback:(void (^ _Nullable)(FlyBuySite * _Nullable, NSError * _Nullable))callback;
+- (void)fetchByPartnerIdentifierWithPartnerIdentifier:(NSString * _Nonnull)partnerIdentifier operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(FlyBuySite * _Nullable, NSError * _Nullable))callback;
+- (void)fetchWithQuery:(NSString * _Nullable)query page:(NSInteger)page callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, FlyBuyPagination * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetchByPartnerIdentifier instead.");
+- (void)fetchWithQuery:(NSString * _Nullable)query page:(NSInteger)page operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, FlyBuyPagination * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetchByPartnerIdentifier instead.");
+- (void)fetchAllWithQuery:(NSString * _Nullable)query callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuyCore.sites.fetchByPartnerIdentifier instead.");
+- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetch(region:, options:) instead.");
+- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page per:(NSInteger)per callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetch(region:, options:) instead.");
+- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page per:(NSInteger)per operationalStatus:(NSString * _Nonnull)operationalStatus callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetch(region:, options:) instead.");
+- (void)fetchWithRegion:(CLCircularRegion * _Nonnull)region page:(NSInteger)page callback:(void (^ _Nullable)(NSArray<FlyBuySite *> * _Nullable, NSError * _Nullable))callback SWIFT_DEPRECATED_MSG("This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetch(region:, options:) instead.");
+@end
 
 
 /// Error that may be returned from SitesManager methods.
@@ -2819,6 +3018,7 @@ SWIFT_CLASS_NAMED("SitesManagerError")
 /// The type that may be associated with a SitesManagerError.
 typedef SWIFT_ENUM(NSInteger, SitesManagerErrorType, open) {
   SitesManagerErrorTypeCoreIsNotConfigured = 0,
+  SitesManagerErrorTypeMapboxTokenIsMissing = 1,
 };
 
 

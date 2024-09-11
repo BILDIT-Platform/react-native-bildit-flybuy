@@ -485,10 +485,9 @@ RCT_EXPORT_METHOD(rateOrder:(NSInteger)orderId
         @"customerCarType": order.customerCarType ?: [NSNull null],
         @"customerCarColor": order.customerCarColor ?: [NSNull null],
         @"customerLicensePlate": order.customerLicensePlate ?: [NSNull null],
-
         @"spotIdentifer": order.spotIdentifer ?: [NSNull null],
-        // TODO: check the SDK
-//        @"spotIdentifierEntryEnabled": @(order.spotIdentifierEntryEnabled),
+        @"spotIdentifier": order.spotIdentifier ?: [NSNull null],
+        @"spotIdentifierEntryEnabled": @(order.spotIdentifierEntryEnabled),
         @"spotIdentifierInputType": order.spotIdentifierInputType ?: [NSNull null]
     };
 }

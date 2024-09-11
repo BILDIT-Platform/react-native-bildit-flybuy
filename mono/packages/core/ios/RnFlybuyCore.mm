@@ -487,6 +487,8 @@ RCT_EXPORT_METHOD(rateOrder:(NSInteger)orderId
         @"customerLicensePlate": order.customerLicensePlate ?: [NSNull null],
 
         @"spotIdentifer": order.spotIdentifer ?: [NSNull null],
+        // The iOS SDK only expose order.spotIdentifer, and android expose spotIdentifer.
+        @"spotIdentifier": order.spotIdentifer ?: [NSNull null],
         // TODO: check the SDK
 //        @"spotIdentifierEntryEnabled": @(order.spotIdentifierEntryEnabled),
         @"spotIdentifierInputType": order.spotIdentifierInputType ?: [NSNull null]

@@ -486,8 +486,10 @@ RCT_EXPORT_METHOD(rateOrder:(NSInteger)orderId
         @"customerCarColor": order.customerCarColor ?: [NSNull null],
         @"customerLicensePlate": order.customerLicensePlate ?: [NSNull null],
         @"spotIdentifer": order.spotIdentifer ?: [NSNull null],
-        @"spotIdentifier": order.spotIdentifier ?: [NSNull null],
-        @"spotIdentifierEntryEnabled": @(order.spotIdentifierEntryEnabled),
+        // The iOS SDK only expose order.spotIdentifer, and android expose spotIdentifer.
+        @"spotIdentifier": order.spotIdentifer ?: [NSNull null],
+        // TODO: check the SDK
+        // @"spotIdentifierEntryEnabled": @(order.spotIdentifierEntryEnabled),
         @"spotIdentifierInputType": order.spotIdentifierInputType ?: [NSNull null]
     };
 }

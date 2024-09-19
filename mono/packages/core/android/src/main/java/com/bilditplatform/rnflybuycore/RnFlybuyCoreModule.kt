@@ -1,32 +1,23 @@
 package com.bilditplatform.rnflybuycore
 
-import android.util.Log
-import androidx.lifecycle.Observer
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactMethod
-import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.facebook.react.bridge.*
+import androidx.lifecycle.Observer
+import com.facebook.react.bridge.Arguments
+import com.facebook.react.bridge.Promise
+import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEmitter
 import com.radiusnetworks.flybuy.sdk.FlyBuyCore
-import com.radiusnetworks.flybuy.sdk.data.common.Pagination
 import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
-import com.radiusnetworks.flybuy.sdk.data.pickup_config.PickupConfig
-import com.radiusnetworks.flybuy.sdk.data.pickup_config.PickupTypeConfig
-import com.radiusnetworks.flybuy.sdk.data.room.domain.Customer
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Order
-import com.radiusnetworks.flybuy.sdk.data.room.domain.PickupWindow
-import com.radiusnetworks.flybuy.sdk.data.room.domain.Site
 import com.radiusnetworks.flybuy.sdk.exceptions.FlyBuyRuntimeException
-import java.time.Instant
-import java.util.*
-import java.util.concurrent.ExecutionException
 
 
 object ConfiguredFeatures {
@@ -46,7 +37,8 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
     return NAME
   }
 
-  private fun startObserving() {
+  @ReactMethod
+  override fun startObserver() {
     val orderObserver = Observer<List<Order>> {
       orderProgress(it)
     }
@@ -64,7 +56,8 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
     }
   }
 
-  private fun stopObserving() {
+  @ReactMethod
+  override fun stopObserver() {
     (currentActivity as AppCompatActivity?)?.let {
       if (FlyBuyCore.orders.openLiveData.hasObservers()) {
         FlyBuyCore.orders.openLiveData.removeObservers(it)
@@ -75,6 +68,11 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
 
   @ReactMethod
   fun addListener(eventName: String) {
+    // Keep: Required for RN built in Event Emitter Calls.
+  }
+
+  @ReactMethod
+  fun removeListeners(eventName: String) {
     // Keep: Required for RN built in Event Emitter Calls.
   }
 
@@ -89,7 +87,7 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
       FlyBuyCore.configure(reactApplicationContext, token)
       val currentActivity = currentActivity
       if (currentActivity != null) {
-        startObserving()
+        startObserver()
       }
 
       promise.resolve(true);

@@ -8,6 +8,8 @@ import com.facebook.react.bridge.ReadableMap
 abstract class RnFlybuyCoreSpec internal constructor(context: ReactApplicationContext) :
   ReactContextBaseJavaModule(context) {
 
+    abstract fun startObserver()
+    abstract fun stopObserver()
   // Notification related function
   abstract fun configure(token: String, promise: Promise)
   abstract fun updatePushToken(token: String)

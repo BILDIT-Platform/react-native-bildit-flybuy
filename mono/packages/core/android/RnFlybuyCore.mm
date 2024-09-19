@@ -9,19 +9,19 @@ RCT_EXPORT_MODULE()
     return @[@"orderUpdated", @"ordersUpdated", @"ordersError", @"orderEventError", @"notifyEvents"];
 }
 
-- (void)startObserving {
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"orderUpdated" object:nil queue:nil usingBlock:^(NSNotification *notification) {
-        Order *order = notification.object;
-        if ([order isKindOfClass:[Order class]]) {
-            NSString *event = FlyBuySupportedEventsOrderUpdated;
-            NSDictionary *body = [self parseOrder:order];
-            [[Flybuy shared] sendEventWithName:event body:body];
-        }
-    }];
+- (void)stopObserving {
+  [[NSNotificationCenter defaultCenter] removeObserver:[FlyBuyCore share]];
 }
 
-- (void)stopObserving {
-    [[NSNotificationCenter defaultCenter] removeObserver:[Flybuy shared]];
+- (void)startObserving {
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"orderUpdated" object:nil queue:nil usingBlock:^(NSNotification *notification) {
+      FlyBuyOrder *order = notification.object;
+      if ([order isKindOfClass:[FlyBuyOrder class]]) {
+            NSString *event = FlyBuySupportedEventsOrderUpdated;
+            NSDictionary *body = [self parseOrder:order];
+        [[FlyBuyCore self] sendevent]
+        }
+    }];
 }
 
 
@@ -504,11 +504,10 @@ RCT_EXPORT_METHOD(rateOrder:(NSInteger)orderId
         @"customerCarType": order.customerCarType ?: [NSNull null],
         @"customerCarColor": order.customerCarColor ?: [NSNull null],
         @"customerLicensePlate": order.customerLicensePlate ?: [NSNull null],
+
         @"spotIdentifer": order.spotIdentifer ?: [NSNull null],
-        // The iOS SDK only expose order.spotIdentifer, and android expose spotIdentifer.
-        @"spotIdentifier": order.spotIdentifer ?: [NSNull null],
         // TODO: check the SDK
-        // @"spotIdentifierEntryEnabled": @(order.spotIdentifierEntryEnabled),
+//        @"spotIdentifierEntryEnabled": @(order.spotIdentifierEntryEnabled),
         @"spotIdentifierInputType": order.spotIdentifierInputType ?: [NSNull null]
     };
 }

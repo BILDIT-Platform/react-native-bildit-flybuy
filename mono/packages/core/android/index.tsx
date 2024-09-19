@@ -38,14 +38,14 @@ const RnFlybuyCore = RnFlybuyCoreModule
     );
 
 // Core functions
-
-export function startObserver(): void {
+export function startObserver() {
   return RnFlybuyCore.startObserver();
 }
 
-export function stopObserver(): void {
+export function stopObserver() {
   return RnFlybuyCore.stopObserver();
 }
+
 
 export function updatePushToken(token: string): Promise<void> {
   return RnFlybuyCore.updatePushToken(token);

@@ -109,7 +109,8 @@
 - (void)updatePushToken:(NSString *)token;
 
 - (void)handleRemoteNotification:(NSDictionary *)userInfo;
-
-
+- (NSArray<NSString *> *)supportedEvents;
+- (void)startObserver;
+- (void)stopObserver;
 
 @end

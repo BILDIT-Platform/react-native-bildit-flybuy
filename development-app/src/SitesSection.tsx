@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Button} from './components';
+import {Button, SectionTitle} from './components';
 import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
 import {REGION} from './constants';
 
@@ -40,7 +40,7 @@ export const SitesSection = () => {
 
   return (
     <View style={styles.root}>
-      <Text>Sites</Text>
+      <SectionTitle title="Sites" />
       <Button title="fetchAllSites" onPress={fetchAllSites} />
       <Button title="fetchSitesByQuery" onPress={fetchSitesByQuery} />
       <Button title="fetchSitesByRegion" onPress={fetchSitesByRegion} />
@@ -54,7 +54,6 @@ export const SitesSection = () => {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
     marginTop: 24,
   },
 });

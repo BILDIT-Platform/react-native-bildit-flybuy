@@ -15,6 +15,7 @@ import {
   RESULTS,
 } from 'react-native-permissions';
 import {NotifySection} from './NotifySection';
+import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -26,6 +27,13 @@ function App(): React.JSX.Element {
   React.useEffect(() => {
     getNotificationPermission();
     getLocationPermissions();
+  }, []);
+
+  React.useEffect(() => {
+    FlyBuyCore.startObserver();
+    return () => {
+      FlyBuyCore.stopObserver();
+    };
   }, []);
 
   const getLocationPermissions = async () => {

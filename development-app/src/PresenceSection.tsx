@@ -1,7 +1,7 @@
 import * as FlyBuyPresence from 'react-native-bildit-flybuy-presence';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Button} from './components';
+import {Button, SectionTitle} from './components';
 
 export const PresenceSection = () => {
   const startLocatorWithIdentifier = () => {
@@ -16,7 +16,7 @@ export const PresenceSection = () => {
 
   return (
     <View style={styles.root}>
-      <Text>Presence</Text>
+      <SectionTitle title="Presence" />
       <Button
         title="startLocatorWithIdentifier"
         onPress={startLocatorWithIdentifier}
@@ -28,7 +28,6 @@ export const PresenceSection = () => {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
     marginTop: 24,
   },
 });

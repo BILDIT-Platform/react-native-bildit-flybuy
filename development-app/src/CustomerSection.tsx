@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
-import {Button} from './components';
+import {Button, SectionTitle} from './components';
 import {CUSTOMER_INFO} from './constants';
 
 export const CustomerSection = () => {
@@ -50,7 +50,7 @@ export const CustomerSection = () => {
 
   return (
     <View style={styles.root}>
-      <Text>Customer</Text>
+      <SectionTitle title="Customer" />
       <Button title="Login" onPress={login} />
       <Button title="signUp" onPress={signUp} />
       <Button title="loginWithToken" onPress={loginWithToken} />
@@ -64,7 +64,11 @@ export const CustomerSection = () => {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
     marginTop: 24,
+  },
+  title: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
 });

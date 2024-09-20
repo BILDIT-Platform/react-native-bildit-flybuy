@@ -1,9 +1,19 @@
 import React from 'react';
-import {ButtonProps, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {
+  ButtonProps,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  ViewStyle,
+} from 'react-native';
 
-export const Button = ({title, ...rest}: ButtonProps) => {
+type Props = {
+  containerStyle?: StyleProp<ViewStyle>;
+} & ButtonProps;
+export const Button = ({title, containerStyle, ...rest}: Props) => {
   return (
-    <TouchableOpacity style={styles.root} {...rest}>
+    <TouchableOpacity style={[styles.root, containerStyle]} {...rest}>
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );
@@ -12,7 +22,6 @@ export const Button = ({title, ...rest}: ButtonProps) => {
 const styles = StyleSheet.create({
   root: {
     backgroundColor: '#841584',
-    width: '60%',
     padding: 10,
     margin: 5,
     borderRadius: 10,

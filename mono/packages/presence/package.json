@@ -1,6 +1,6 @@
 {
   "name": "react-native-bildit-flybuy-presence",
-  "version": "2.20.4",
+  "version": "2.20.7",
   "description": "React Native Wrapper for FlyBuy Presence SDK",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",

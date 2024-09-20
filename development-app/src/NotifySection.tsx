@@ -1,7 +1,7 @@
 import * as FlyBuyNotify from 'react-native-bildit-flybuy-notify';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Button} from './components';
+import {Button, SectionTitle} from './components';
 import {NOTIFICATION, REGION} from './constants';
 
 export const NotifySection = () => {
@@ -23,7 +23,7 @@ export const NotifySection = () => {
 
   return (
     <View style={styles.root}>
-      <Text>Notify</Text>
+      <SectionTitle title="Notify" />
       <Button title="sync" onPress={notifySync} />
       <Button title="clearNotifications" onPress={clearNotifications} />
       <Button title="createForSitesInRegion" onPress={createForSitesInRegion} />
@@ -33,7 +33,6 @@ export const NotifySection = () => {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
     marginTop: 24,
   },
 });

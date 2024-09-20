@@ -5,9 +5,15 @@ import {
   PickupType,
   IOrder,
 } from 'react-native-bildit-flybuy-core';
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {Button} from './components';
+import React, {useEffect, useState} from 'react';
+import {
+  NativeEventEmitter,
+  NativeModules,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import {Button, OrderItem, SectionTitle} from './components';
 import {
   CUSTOMER_INFO,
   NEW_PID,
@@ -18,9 +24,26 @@ import {
 } from './constants';
 
 export const OrdersSection = () => {
+  useEffect(() => {
+    const eventEmitter = new NativeEventEmitter(NativeModules.RnFlybuyCore);
+    const listener = eventEmitter.addListener(
+      'orderUpdated',
+      (event: IOrder) => {
+        console.log('order updated', event);
+      },
+    );
+    return () => {
+      listener.remove();
+    };
+  }, []);
+
+  const [orders, setOrders] = useState<IOrder[]>([]);
   const fetchOrders = () => {
     FlyBuyCore.Orders.fetchOrders()
-      .then((orders: IOrder[]) => console.log('orders', orders))
+      .then((result: IOrder[]) => {
+        console.log('orders', result);
+        setOrders(result);
+      })
       .catch(err => console.log(err));
   };
 
@@ -30,7 +53,10 @@ export const OrdersSection = () => {
       orderPid: ORDER_PID,
       customerInfo: CUSTOMER_INFO,
     })
-      .then((order: IOrder) => console.log('order', order))
+      .then((order: IOrder) => {
+        console.log('order', order);
+        fetchOrders();
+      })
       .catch(err => console.log(err));
   };
 
@@ -50,7 +76,10 @@ export const OrdersSection = () => {
       orderState: OrderStateType.DELAYED,
       pickupType: PickupType.DELIVERY,
     })
-      .then((order: IOrder) => console.log('order', order))
+      .then((order: IOrder) => {
+        console.log('order', order);
+        fetchOrders();
+      })
       .catch(err => console.error(err));
   };
 
@@ -60,7 +89,10 @@ export const OrdersSection = () => {
       pid: NEW_PID,
       customerInfo: CUSTOMER_INFO,
     })
-      .then((order: IOrder) => console.log('order with 3 params', order))
+      .then((order: IOrder) => {
+        console.log('order', order);
+        fetchOrders();
+      })
       .catch(err => console.error(err));
   };
 
@@ -75,7 +107,10 @@ export const OrdersSection = () => {
       customerInfo: CUSTOMER_INFO,
       pickupWindow,
     })
-      .then((order: IOrder) => console.log('order', order))
+      .then((order: IOrder) => {
+        console.log('order', order);
+        fetchOrders();
+      })
       .catch(err => console.log(err));
   };
 
@@ -91,7 +126,10 @@ export const OrdersSection = () => {
       pickupWindow,
       orderState: OrderStateType.DELAYED,
     })
-      .then((order: IOrder) => console.log('order', order))
+      .then((order: IOrder) => {
+        console.log('order', order);
+        fetchOrders();
+      })
       .catch(err => console.log(err));
   };
 
@@ -111,9 +149,15 @@ export const OrdersSection = () => {
       .catch(err => console.log(err));
   };
 
-  const updateOrderState = () => {
-    FlyBuyCore.Orders.updateOrderState(ORDER_ID, OrderStateType.DRIVER_ASSIGNED)
-      .then((order: IOrder) => console.log('updateOrderState', order))
+  const updateOrderState = (
+    orderId = ORDER_ID,
+    orderState = OrderStateType.DRIVER_ASSIGNED,
+  ) => {
+    FlyBuyCore.Orders.updateOrderState(orderId, orderState)
+      .then((order: IOrder) => {
+        console.log('updateOrderState', order);
+        fetchOrders();
+      })
       .catch(err => console.log(err));
   };
 
@@ -135,16 +179,30 @@ export const OrdersSection = () => {
       .catch(err => console.log(err));
   };
 
-  const rateOrder = () => {
-    FlyBuyCore.Orders.rateOrder(ORDER_ID, 5, 'Awesome!')
+  const rateOrder = (orderId: number) => {
+    FlyBuyCore.Orders.rateOrder(orderId ?? ORDER_ID, 5, 'Awesome!')
       .then(order => console.log('rateOrder', order))
       .catch(err => console.log(err));
   };
 
   return (
     <View style={styles.root}>
-      <Text>Order</Text>
+      <SectionTitle title="Orders" />
       <Button title="Fetch orders" onPress={fetchOrders} />
+
+      {orders.map(item => {
+        return (
+          <OrderItem
+            key={item.id}
+            data={item}
+            onUpdateOrderState={orderState =>
+              updateOrderState(item.id, orderState)
+            }
+            onRateOrder={rateOrder}
+          />
+        );
+      })}
+
       <Button title="Create order" onPress={createOrder} />
       <Button
         title="Create order 3 Params"
@@ -176,6 +234,7 @@ export const OrdersSection = () => {
       <Button
         title="updateOrderCustomerState"
         onPress={updateOrderCustomerState}
+        style={styles.button}
       />
     </View>
   );
@@ -183,7 +242,10 @@ export const OrdersSection = () => {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
     marginTop: 24,
+  },
+
+  button: {
+    textAlign: 'center',
   },
 });

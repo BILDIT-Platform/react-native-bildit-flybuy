@@ -1,7 +1,7 @@
 import * as FlyBuyPickup from 'react-native-bildit-flybuy-pickup';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Button} from './components';
+import {Button, SectionTitle} from './components';
 
 export const PickupSection = () => {
   const onPermissionChanged = () => {
@@ -10,7 +10,7 @@ export const PickupSection = () => {
 
   return (
     <View style={styles.root}>
-      <Text>Pickup</Text>
+      <SectionTitle title="Pickup" />
       <Button title="onPermissionChanged" onPress={onPermissionChanged} />
     </View>
   );
@@ -18,7 +18,6 @@ export const PickupSection = () => {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
     marginTop: 24,
   },
 });

@@ -1,6 +1,6 @@
 {
   "name": "react-native-bildit-flybuy-core",
-  "version": "2.20.8",
+  "version": "2.20.9",
   "description": "React Native wrapper for FlyBuy Core SDK",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",

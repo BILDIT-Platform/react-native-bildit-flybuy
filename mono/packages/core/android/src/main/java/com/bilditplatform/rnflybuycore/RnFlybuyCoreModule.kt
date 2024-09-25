@@ -29,6 +29,8 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
 
   val TAG = "FlyBuy Core Wrapper"
 
+  private var listenerCount = 0
+
   companion object {
     const val NAME = "RnFlybuyCore"
   }
@@ -68,12 +70,23 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
 
   @ReactMethod
   fun addListener(eventName: String) {
+    Log.d("RNFBC", "add listener $eventName")
     // Keep: Required for RN built in Event Emitter Calls.
+    if (listenerCount == 0) {
+      // Set up any upstream listeners or background tasks as necessary
+    }
+
+    listenerCount += 1
   }
 
   @ReactMethod
-  fun removeListeners(eventName: String) {
+  fun removeListeners(count: Int) {
+    Log.d("RNFBC", "remove listener $count")
     // Keep: Required for RN built in Event Emitter Calls.
+    listenerCount -= count
+    if (listenerCount == 0) {
+      // Remove upstream listeners, stop unnecessary background tasks
+    }
   }
 
   // Core functions

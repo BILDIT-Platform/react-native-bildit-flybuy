@@ -11,6 +11,7 @@ import type {
   ISite,
   OrderStateType,
   PickupType,
+  PlaceType,
 } from './types';
 
 export * from './types';
@@ -58,7 +59,7 @@ export interface Spec extends TurboModule {
   // Places functions
   placesSuggest(
     keyword: string,
-    options: { latitude: number; longitude: number }
+    options: { latitude?: number; longitude?: number; type?: PlaceType }
   ): Promise<IPlace[]>;
   placesRetrieve(place: IPlace): Promise<IPlace>;
 

@@ -314,7 +314,8 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
     }
   }
 
-  override fun fetchSitesNearPlace(place: ReadableMap, radius: Float, promise: Promise) {
+  @ReactMethod
+  override fun fetchSitesNearPlace(place: ReadableMap, distance: Float, promise: Promise) {
     val decodedPlace = decodePlace(place)
 
     // Define the callback function
@@ -331,17 +332,35 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
 
       }
     }
-    FlyBuyCore.sites.fetchNear(decodedPlace, radius, null, callback)
+    FlyBuyCore.sites.fetchNear(decodedPlace, distance, null, callback)
   }
 
+
+
   // Places related functions
+  @ReactMethod
   override fun placesSuggest(query: String, options: ReadableMap, promise: Promise) {
-    var latitude = options.getDouble("latitude")
-    var longitude = options.getDouble("longitude")
-    val options = PlaceSuggestionOptions.Builder().apply {
-      setType(PlaceType.ADDRESS)        // Set place type to return
-      setProximity(latitude, longitude) // Set location if available for context
-    }.build()
+
+    val optionsBuilder = PlaceSuggestionOptions.Builder().apply {
+      setType(PlaceType.ADDRESS)
+    }
+
+    if (options.hasKey("latitude") && options.hasKey("longitude")) {
+      var latitude = options.getDouble("latitude")
+      var longitude = options.getDouble("longitude")
+      optionsBuilder.setProximity(latitude, longitude)
+    }
+
+    if (options.hasKey("type")) {
+      var inputType = options.getInt("type")
+      var type = intToPlaceTypeEnum(inputType)
+      if (type != null) {
+        optionsBuilder.setType(type)
+      }
+    }
+
+
+    val options = optionsBuilder.build()
     FlyBuyCore.places.suggest(query, options) { places, sdkError ->
       sdkError?.let {
         handleFlyBuyError(it)
@@ -357,6 +376,7 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
     }
   }
 
+  @ReactMethod
   override fun placesRetrieve(place: ReadableMap, promise: Promise) {
     var decodedPlace = decodePlace(place)
 

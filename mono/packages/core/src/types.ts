@@ -95,6 +95,15 @@ export enum CustomerState {
   COMPLETED = 'completed',
 }
 
+export enum PlaceType {
+  ADDRESS = 0,
+  REGION = 1,
+  POSTAL_CODE = 2,
+  CITY = 3,
+  // Point of Interest
+  POI = 4,
+}
+
 export enum OrderStateType {
   CREATED = 'created',
   READY = 'ready',

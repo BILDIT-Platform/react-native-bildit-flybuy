@@ -10,6 +10,7 @@ import type {
   ISite,
   OrderStateType,
   PickupType,
+  PlaceType,
 } from './types';
 
 export * from './types';
@@ -121,7 +122,7 @@ function fetchSitesNearPlace(
 // Places functions
 function placesSuggest(
   keyword: string,
-  options: { latitude: number; longitude: number }
+  options: { latitude?: number; longitude?: number; type?: PlaceType }
 ): Promise<IPlace[]> {
   return RnFlybuyCore.placesSuggest(keyword, options);
 }

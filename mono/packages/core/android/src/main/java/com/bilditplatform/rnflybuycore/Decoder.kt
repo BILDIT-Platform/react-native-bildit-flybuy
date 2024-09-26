@@ -79,8 +79,16 @@ fun decodePlace(place: ReadableMap): Place {
   val id = place.getString("id")!!
   var name = place.getString("name")!!
   var placeFormatted = place.getString("placeFormatted")!!
-  var distance = place.getDouble("distance")
-  var address = place.getString("address")
+  var distance: Double? = null
+  var address: String? = null
+
+  if (place.hasKey("distance")) {
+    distance = place.getDouble("distance")
+  }
+
+  if (place.hasKey("address")) {
+    address = place.getString("address")
+  }
 
   return Place(
     id = id,
@@ -88,7 +96,6 @@ fun decodePlace(place: ReadableMap): Place {
     placeFormatted = placeFormatted,
     address = address,
     distance = distance,
-
   )
 }
 

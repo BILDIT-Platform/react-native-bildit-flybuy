@@ -12,6 +12,19 @@ export interface ICustomerInfo {
   phone?: string;
 }
 
+export interface IPlace {
+  name: string;
+  id: string;
+  placeFormatted: string;
+  address?: string;
+  distance?: number;
+}
+
+export interface IPlaceLocation {
+  latitude: number;
+  longitude: number;
+}
+
 export interface ISite {
   id: number;
   name?: string;

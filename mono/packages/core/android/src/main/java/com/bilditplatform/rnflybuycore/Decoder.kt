@@ -9,6 +9,7 @@ import com.facebook.react.bridge.ReadableMapKeySetIterator
 import com.facebook.react.bridge.ReadableType
 import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
+import com.radiusnetworks.flybuy.sdk.data.places.Place
 import com.radiusnetworks.flybuy.sdk.data.room.domain.PickupWindow
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Site
 import java.time.Instant
@@ -71,6 +72,23 @@ fun decodeRegion(region: ReadableMap): CircularRegion {
     latitude = latitude,
     longitude = longitude,
     radius = radius
+  )
+}
+
+fun decodePlace(place: ReadableMap): Place {
+  val id = place.getString("id")!!
+  var name = place.getString("name")!!
+  var placeFormatted = place.getString("placeFormatted")!!
+  var distance = place.getDouble("distance")
+  var address = place.getString("address")
+
+  return Place(
+    id = id,
+    name = name,
+    placeFormatted = placeFormatted,
+    address = address,
+    distance = distance,
+
   )
 }
 

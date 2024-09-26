@@ -6,6 +6,7 @@ import type {
   ICustomer,
   ICustomerInfo,
   IOrder,
+  IPlace,
   ISite,
   OrderStateType,
   PickupType,
@@ -110,6 +111,25 @@ function fetchSiteByPartnerIdentifier(params: {
   return RnFlybuyCore.fetchSiteByPartnerIdentifier(params);
 }
 
+function fetchSitesNearPlace(
+  place: IPlace,
+  distance: number
+): Promise<ISite[]> {
+  return RnFlybuyCore.fetchSitesNearPlace(place, distance);
+}
+
+// Places functions
+function placesSuggest(
+  keyword: string,
+  options: { latitude: number; longitude: number }
+): Promise<IPlace[]> {
+  return RnFlybuyCore.placesSuggest(keyword, options);
+}
+
+function placesRetrieve(place: IPlace): Promise<IPlace> {
+  return RnFlybuyCore.placesRetrieve(place);
+}
+
 // Orders
 function fetchOrders(): Promise<IOrder[]> {
   return RnFlybuyCore.fetchOrders();
@@ -205,6 +225,19 @@ export const Customer: ICustomers = {
   getCurrentCustomer,
 };
 
+type IPlaces = {
+  suggest(
+    keyword: string,
+    options: { latitude: number; longitude: number }
+  ): Promise<IPlace[]>;
+  retrieve(place: IPlace): Promise<IPlace>;
+};
+
+export const Places: IPlaces = {
+  suggest: placesSuggest,
+  retrieve: placesRetrieve,
+};
+
 type ISites = {
   fetchAllSites(): Promise<ISite[]>;
   fetchSitesByQuery(params: { query: string; page: number }): Promise<ISite[]>;
@@ -216,6 +249,7 @@ type ISites = {
   fetchSiteByPartnerIdentifier(params: {
     partnerIdentifier: string;
   }): Promise<ISite>;
+  fetchSitesNearPlace(place: IPlace, distance: number): Promise<ISite[]>;
 };
 
 export const Sites: ISites = {
@@ -223,6 +257,7 @@ export const Sites: ISites = {
   fetchSitesByQuery,
   fetchSitesByRegion,
   fetchSiteByPartnerIdentifier,
+  fetchSitesNearPlace,
 };
 
 type IOrders = {
@@ -267,4 +302,3 @@ export const Orders: IOrders = {
   updateOrderCustomerStateWithSpot,
   rateOrder,
 };
-

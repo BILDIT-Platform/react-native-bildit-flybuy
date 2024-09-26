@@ -14,10 +14,14 @@ import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEmitter
 import com.radiusnetworks.flybuy.sdk.FlyBuyCore
+import com.radiusnetworks.flybuy.sdk.data.common.SdkError
 import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
+import com.radiusnetworks.flybuy.sdk.data.places.PlaceType
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Order
+import com.radiusnetworks.flybuy.sdk.data.room.domain.Site
 import com.radiusnetworks.flybuy.sdk.exceptions.FlyBuyRuntimeException
+import com.radiusnetworks.flybuy.sdk.manager.builder.PlaceSuggestionOptions
 
 
 object ConfiguredFeatures {
@@ -306,6 +310,66 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
           promise.reject("Fetch site by partnerIdentifier Error", "Error retrieving site")
         }
 
+      }
+    }
+  }
+
+  override fun fetchSitesNearPlace(place: ReadableMap, radius: Float, promise: Promise) {
+    val decodedPlace = decodePlace(place)
+
+    // Define the callback function
+    val callback: (List<Site>?, SdkError?) -> Unit = { sites, sdkError ->
+      sdkError?.let {
+        handleFlyBuyError(it)
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        sites?.let {
+          promise.resolve(parseSites(sites))
+        } ?: run {
+          promise.reject("Fetch sites near place Error", "Error retrieving sites")
+        }
+
+      }
+    }
+    FlyBuyCore.sites.fetchNear(decodedPlace, radius, null, callback)
+  }
+
+  // Places related functions
+  override fun placesSuggest(query: String, options: ReadableMap, promise: Promise) {
+    var latitude = options.getDouble("latitude")
+    var longitude = options.getDouble("longitude")
+    val options = PlaceSuggestionOptions.Builder().apply {
+      setType(PlaceType.ADDRESS)        // Set place type to return
+      setProximity(latitude, longitude) // Set location if available for context
+    }.build()
+    FlyBuyCore.places.suggest(query, options) { places, sdkError ->
+      sdkError?.let {
+        handleFlyBuyError(it)
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        places?.let {
+          promise.resolve(parsePlaces(places))
+        } ?: run {
+          promise.reject("Fetch places suggestion Error", "Error retrieving suggested places")
+        }
+
+      }
+    }
+  }
+
+  override fun placesRetrieve(place: ReadableMap, promise: Promise) {
+    var decodedPlace = decodePlace(place)
+
+    FlyBuyCore.places.retrieve(decodedPlace) { coordinate, sdkError ->
+      sdkError?.let {
+        handleFlyBuyError(it)
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        if (coordinate != null) {
+          promise.resolve(parsePlaceLocation(coordinate))
+        } else {
+          promise.reject("Fetch place location Error", "Error retrieving place location")
+        }
       }
     }
   }

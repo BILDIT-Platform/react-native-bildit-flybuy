@@ -3,15 +3,17 @@ const chokidar = require('chokidar');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const packageName = process.argv[2]; // core notify pickup presence livestatus
-const platform = process.argv[3]; // android ios
+const packageName = process.argv[3]; // core notify pickup presence livestatus
+const platform = process.argv[4]; // android ios
 
 let sourceFolderPath = path.join(__dirname, `../node_modules/react-native-bildit-flybuy-${packageName}` );
+let destinationFolderPath = path.join(__dirname, `../../mono/packages/${packageName}`);
 if (platform) {
   sourceFolderPath = sourceFolderPath + '/' + platform
+  destinationFolderPath = destinationFolderPath + '/' + platform
 }
 
-const destinationFolderPath = path.join(__dirname, '../../mono/packages/core/android');
+
 
 // Initialize chokidar to watch the folder for changes
 const watcher = chokidar.watch(sourceFolderPath);

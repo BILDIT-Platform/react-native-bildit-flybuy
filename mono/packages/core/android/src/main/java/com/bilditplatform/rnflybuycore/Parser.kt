@@ -7,6 +7,8 @@ import com.facebook.react.bridge.WritableNativeArray
 import com.radiusnetworks.flybuy.sdk.data.common.Pagination
 import com.radiusnetworks.flybuy.sdk.data.pickup_config.PickupConfig
 import com.radiusnetworks.flybuy.sdk.data.pickup_config.PickupTypeConfig
+import com.radiusnetworks.flybuy.sdk.data.places.Place
+import com.radiusnetworks.flybuy.sdk.data.places.PlaceLocation
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Customer
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Order
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Site
@@ -72,6 +74,34 @@ fun parseCustomer(customer: Customer): WritableMap {
   info.putString("phone", customer.phone)
 
   map.putMap("info", info)
+
+  return map
+}
+
+fun parsePlace(place: Place): WritableMap {
+  val map = Arguments.createMap()
+  map.putString("id", place.id)
+  map.putString("name", place.name)
+  map.putString("placeFormatted", place.placeFormatted)
+  place.distance?.let { map.putDouble("distance", it) }
+  place.address?.let { map.putString("address", it) }
+
+  return map
+}
+
+fun parsePlaces(items: List<Place>): WritableArray {
+  val array = WritableNativeArray()
+  for (item in items) {
+    array.pushMap(parsePlace(item))
+  }
+  return array
+}
+
+fun parsePlaceLocation(placeLocation: PlaceLocation): WritableMap {
+  val map = Arguments.createMap()
+
+  map.putDouble("latitude", placeLocation.latitude)
+  map.putDouble("longitude", placeLocation.longitude)
 
   return map
 }

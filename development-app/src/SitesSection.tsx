@@ -38,6 +38,17 @@ export const SitesSection = () => {
       .catch(err => console.log('err', err));
   };
 
+  const fetchSitesNearPlace = () => {
+    const place: FlyBuyCore.IPlace = {
+      id: 'test',
+      name: 'Mataram',
+      placeFormatted: 'Mataram',
+    };
+    FlyBuyCore.Sites.fetchSitesNearPlace(place, 1000)
+      .then(sites => console.log('sites', sites))
+      .catch(err => console.log('err', err));
+  };
+
   return (
     <View style={styles.root}>
       <SectionTitle title="Sites" />
@@ -48,6 +59,7 @@ export const SitesSection = () => {
         title="fetchSiteByPartnerIdentifier"
         onPress={fetchSiteByPartnerIdentifier}
       />
+      <Button title="fetchSitesNearPlace" onPress={fetchSitesNearPlace} />
     </View>
   );
 };

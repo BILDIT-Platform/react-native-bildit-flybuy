@@ -2664,6 +2664,13 @@ char-regex@^1.0.2:
   resolved "https://registry.yarnpkg.com/char-regex/-/char-regex-1.0.2.tgz#d744358226217f981ed58f479b1d6bcc29545dcf"
   integrity sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==
 
+chokidar@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/chokidar/-/chokidar-4.0.1.tgz#4a6dff66798fb0f72a94f616abbd7e1a19f31d41"
+  integrity sha512-n8enUVCED/KVRQlab1hr3MVpcVMvxtZjmEa956u+4YijlmQED223XMSYj2tLuKvr4jcCTzNNMpQDUer72MMmzA==
+  dependencies:
+    readdirp "^4.0.1"
+
 chrome-launcher@^0.15.2:
   version "0.15.2"
   resolved "https://registry.yarnpkg.com/chrome-launcher/-/chrome-launcher-0.15.2.tgz#4e6404e32200095fdce7f6a1e1004f9bd36fa5da"
@@ -5610,22 +5617,22 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-bildit-flybuy-core@^2.20.5, "react-native-bildit-flybuy-core@file:../mono/packages/core":
-  version "2.20.5"
+react-native-bildit-flybuy-core@^2.21.0, "react-native-bildit-flybuy-core@file:../mono/packages/core":
+  version "2.21.0"
 
 "react-native-bildit-flybuy-livestatus@file:../mono/packages/livestatus":
-  version "2.20.4"
+  version "2.21.0"
 
 "react-native-bildit-flybuy-notify@file:../mono/packages/notify":
-  version "2.20.6"
+  version "2.21.0"
   dependencies:
-    react-native-bildit-flybuy-core "^2.20.5"
+    react-native-bildit-flybuy-core "^2.21.0"
 
 "react-native-bildit-flybuy-pickup@file:../mono/packages/pickup":
-  version "2.20.4"
+  version "2.21.0"
 
 "react-native-bildit-flybuy-presence@file:../mono/packages/presence":
-  version "2.20.4"
+  version "2.21.0"
 
 react-native-config@^1.5.2:
   version "1.5.2"
@@ -5730,6 +5737,11 @@ readable-stream@~2.3.6:
     safe-buffer "~5.1.1"
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
+
+readdirp@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/readdirp/-/readdirp-4.0.1.tgz#b2fe35f8dca63183cd3b86883ecc8f720ea96ae6"
+  integrity sha512-GkMg9uOTpIWWKbSsgwb5fA4EavTR+SG/PMPoAY8hkhHfEEY0/vqljY+XHqtDf2cr2IJtoNRDbrrEpZUiZCkYRw==
 
 readline@^1.3.0:
   version "1.3.0"

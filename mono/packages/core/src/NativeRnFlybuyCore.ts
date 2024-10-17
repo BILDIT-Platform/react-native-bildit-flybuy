@@ -7,9 +7,11 @@ import type {
   ICustomer,
   ICustomerInfo,
   IOrder,
+  IPlace,
   ISite,
   OrderStateType,
   PickupType,
+  PlaceType,
 } from './types';
 
 export * from './types';
@@ -52,6 +54,14 @@ export interface Spec extends TurboModule {
   fetchSiteByPartnerIdentifier(params: {
     partnerIdentifier: string;
   }): Promise<ISite>;
+  fetchSitesNearPlace(place: IPlace, distance: number): Promise<ISite[]>;
+
+  // Places functions
+  placesSuggest(
+    keyword: string,
+    options: { latitude?: number; longitude?: number; type?: PlaceType }
+  ): Promise<IPlace[]>;
+  placesRetrieve(place: IPlace): Promise<IPlace>;
 
   // Orders functions
   fetchOrders(): Promise<IOrder[]>;

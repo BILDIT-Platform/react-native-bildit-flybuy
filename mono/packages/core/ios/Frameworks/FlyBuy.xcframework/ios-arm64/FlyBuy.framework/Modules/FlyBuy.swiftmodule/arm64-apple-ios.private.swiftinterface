@@ -456,6 +456,7 @@ extension FlyBuy.BaseApiRequest {
   public init(orderID: Swift.Int, state: Swift.String, location: CoreLocation.CLLocation? = nil)
   public init(orderID: Swift.Int, locationAuthStatus: FlyBuy.LocationAuthStatus)
   public init(orderID: Swift.Int, customerRating: Swift.Int, customerComments: Swift.String?)
+  public init(orderID: Swift.Int, pickupType: Swift.String)
   @objc deinit
   open func encode(to encoder: any Swift.Encoder) throws
 }
@@ -865,9 +866,9 @@ extension Swift.String {
   @objc final public let type: FlyBuy.PlaceType
   public init(latitude: Swift.Double, longitude: Swift.Double, type: FlyBuy.PlaceType)
   @_inheritsConvenienceInitializers @objc(FlyBuyPlaceOptionsBuilder) public class Builder : ObjectiveC.NSObject {
-    public func setProximity(latitude: Swift.Double, longitude: Swift.Double) -> FlyBuy.PlaceSuggestionOptions.Builder
-    public func setType(_ type: FlyBuy.PlaceType) -> FlyBuy.PlaceSuggestionOptions.Builder
-    public func build() -> FlyBuy.PlaceSuggestionOptions
+    @objc public func setProximity(latitude: Swift.Double, longitude: Swift.Double) -> FlyBuy.PlaceSuggestionOptions.Builder
+    @objc public func setType(_ type: FlyBuy.PlaceType) -> FlyBuy.PlaceSuggestionOptions.Builder
+    @objc public func build() -> FlyBuy.PlaceSuggestionOptions
     @objc override dynamic public init()
     @objc deinit
   }
@@ -939,6 +940,7 @@ public struct PickupStates : Swift.Codable {
   @objc public func updateCustomerState(orderID: Swift.Int, customerState: Swift.String, spotIdentifier: Swift.String?, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
   @objc public func updateOrderState(orderID: Swift.Int, state: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
   @objc public func rateOrder(orderID: Swift.Int, rating: Swift.Int, comments: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc public func changePickupType(orderID: Swift.Int, pickupType: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
   @objc deinit
 }
 extension Foundation.NSNotification.Name {
@@ -948,12 +950,15 @@ extension Foundation.NSNotification.Name {
   public static let orderEventError: Foundation.Notification.Name
 }
 @objc public enum OrdersManagerErrorType : Swift.Int {
+  case orderNotFound
   case loadingCustomer
   case loadingApiUrl
   case alreadyFetching
   case invalidCustomerState
   case invalidOrderState
   case coreIsNotConfigured
+  case invalidPickupType
+  case orderIsNotOpen
   public var description: Swift.String {
     get
   }
@@ -1076,6 +1081,7 @@ extension FlyBuy.OrdersManager : CoreLocation.CLLocationManagerDelegate {
   @objc public var completedAt: Foundation.Date?
   @objc public var createdAt: Foundation.Date?
   @objc public var updatedAt: Foundation.Date?
+  @objc public var orderFiredAt: Foundation.Date?
   @objc public var customerRating: Swift.String?
   @objc public var customerComment: Swift.String?
   @objc final public let siteName: Swift.String?

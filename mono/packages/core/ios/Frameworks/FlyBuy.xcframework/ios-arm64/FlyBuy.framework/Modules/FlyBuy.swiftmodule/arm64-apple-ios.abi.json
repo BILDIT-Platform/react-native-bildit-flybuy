@@ -15200,6 +15200,39 @@
           {
             "kind": "Constructor",
             "name": "init",
+            "printedName": "init(orderID:pickupType:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OrderEvent",
+                "printedName": "FlyBuy.OrderEvent",
+                "usr": "c:@M@FlyBuy@objc(cs)FlyBuyOrderEvent"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6FlyBuy10OrderEventC7orderID10pickupTypeACSi_SStcfc",
+            "mangledName": "$s6FlyBuy10OrderEventC7orderID10pickupTypeACSi_SStcfc",
+            "moduleName": "FlyBuy",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
             "printedName": "init()",
             "children": [
               {
@@ -27214,8 +27247,10 @@
                 "usr": "s:6FlyBuy22PlaceSuggestionOptionsC7BuilderC12setProximity8latitude9longitudeAESd_SdtF",
                 "mangledName": "$s6FlyBuy22PlaceSuggestionOptionsC7BuilderC12setProximity8latitude9longitudeAESd_SdtF",
                 "moduleName": "FlyBuy",
+                "objc_name": "setProximityWithLatitude:longitude:",
                 "declAttributes": [
-                  "AccessControl"
+                  "AccessControl",
+                  "ObjC"
                 ],
                 "funcSelfKind": "NonMutating"
               },
@@ -27242,7 +27277,8 @@
                 "mangledName": "$s6FlyBuy22PlaceSuggestionOptionsC7BuilderC7setTypeyAeA0cH0OF",
                 "moduleName": "FlyBuy",
                 "declAttributes": [
-                  "AccessControl"
+                  "AccessControl",
+                  "ObjC"
                 ],
                 "funcSelfKind": "NonMutating"
               },
@@ -27263,7 +27299,8 @@
                 "mangledName": "$s6FlyBuy22PlaceSuggestionOptionsC7BuilderC5buildACyF",
                 "moduleName": "FlyBuy",
                 "declAttributes": [
-                  "AccessControl"
+                  "AccessControl",
+                  "ObjC"
                 ],
                 "funcSelfKind": "NonMutating"
               },
@@ -31306,6 +31343,97 @@
               "RawDocComment"
             ],
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "changePickupType",
+            "printedName": "changePickupType(orderID:pickupType:callback:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((FlyBuy.Order?, (any Swift.Error)?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(FlyBuy.Order?, (any Swift.Error)?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(FlyBuy.Order?, (any Swift.Error)?)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "FlyBuy.Order?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Order",
+                                "printedName": "FlyBuy.Order",
+                                "usr": "c:@M@FlyBuy@objc(cs)FlyBuyOrder"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "(any Swift.Error)?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Error",
+                                "printedName": "any Swift.Error",
+                                "usr": "s:s5ErrorP"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FlyBuy@objc(cs)FlyBuyOrdersManager(im)changePickupTypeWithOrderID:pickupType:callback:",
+            "mangledName": "$s6FlyBuy13OrdersManagerC16changePickupType7orderID06pickupG08callbackySi_SSyAA5OrderCSg_s5Error_pSgtcSgtF",
+            "moduleName": "FlyBuy",
+            "objc_name": "changePickupTypeWithOrderID:pickupType:callback:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Class",
@@ -31383,6 +31511,47 @@
         "children": [
           {
             "kind": "Var",
+            "name": "orderNotFound",
+            "printedName": "orderNotFound",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FlyBuy.OrdersManagerErrorType.Type) -> FlyBuy.OrdersManagerErrorType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OrdersManagerErrorType",
+                    "printedName": "FlyBuy.OrdersManagerErrorType",
+                    "usr": "c:@M@FlyBuy@E@OrdersManagerErrorType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FlyBuy.OrdersManagerErrorType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OrdersManagerErrorType",
+                        "printedName": "FlyBuy.OrdersManagerErrorType",
+                        "usr": "c:@M@FlyBuy@E@OrdersManagerErrorType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FlyBuy@E@OrdersManagerErrorType@OrdersManagerErrorTypeOrderNotFound",
+            "mangledName": "$s6FlyBuy22OrdersManagerErrorTypeO13orderNotFoundyA2CmF",
+            "moduleName": "FlyBuy",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 0
+          },
+          {
+            "kind": "Var",
             "name": "loadingCustomer",
             "printedName": "loadingCustomer",
             "children": [
@@ -31420,7 +31589,7 @@
             "declAttributes": [
               "ObjC"
             ],
-            "fixedbinaryorder": 0
+            "fixedbinaryorder": 1
           },
           {
             "kind": "Var",
@@ -31461,7 +31630,7 @@
             "declAttributes": [
               "ObjC"
             ],
-            "fixedbinaryorder": 1
+            "fixedbinaryorder": 2
           },
           {
             "kind": "Var",
@@ -31502,7 +31671,7 @@
             "declAttributes": [
               "ObjC"
             ],
-            "fixedbinaryorder": 2
+            "fixedbinaryorder": 3
           },
           {
             "kind": "Var",
@@ -31543,7 +31712,7 @@
             "declAttributes": [
               "ObjC"
             ],
-            "fixedbinaryorder": 3
+            "fixedbinaryorder": 4
           },
           {
             "kind": "Var",
@@ -31584,7 +31753,7 @@
             "declAttributes": [
               "ObjC"
             ],
-            "fixedbinaryorder": 4
+            "fixedbinaryorder": 5
           },
           {
             "kind": "Var",
@@ -31625,7 +31794,89 @@
             "declAttributes": [
               "ObjC"
             ],
-            "fixedbinaryorder": 5
+            "fixedbinaryorder": 6
+          },
+          {
+            "kind": "Var",
+            "name": "invalidPickupType",
+            "printedName": "invalidPickupType",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FlyBuy.OrdersManagerErrorType.Type) -> FlyBuy.OrdersManagerErrorType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OrdersManagerErrorType",
+                    "printedName": "FlyBuy.OrdersManagerErrorType",
+                    "usr": "c:@M@FlyBuy@E@OrdersManagerErrorType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FlyBuy.OrdersManagerErrorType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OrdersManagerErrorType",
+                        "printedName": "FlyBuy.OrdersManagerErrorType",
+                        "usr": "c:@M@FlyBuy@E@OrdersManagerErrorType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FlyBuy@E@OrdersManagerErrorType@OrdersManagerErrorTypeInvalidPickupType",
+            "mangledName": "$s6FlyBuy22OrdersManagerErrorTypeO013invalidPickupF0yA2CmF",
+            "moduleName": "FlyBuy",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 7
+          },
+          {
+            "kind": "Var",
+            "name": "orderIsNotOpen",
+            "printedName": "orderIsNotOpen",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FlyBuy.OrdersManagerErrorType.Type) -> FlyBuy.OrdersManagerErrorType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OrdersManagerErrorType",
+                    "printedName": "FlyBuy.OrdersManagerErrorType",
+                    "usr": "c:@M@FlyBuy@E@OrdersManagerErrorType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FlyBuy.OrdersManagerErrorType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OrdersManagerErrorType",
+                        "printedName": "FlyBuy.OrdersManagerErrorType",
+                        "usr": "c:@M@FlyBuy@E@OrdersManagerErrorType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FlyBuy@E@OrdersManagerErrorType@OrdersManagerErrorTypeOrderIsNotOpen",
+            "mangledName": "$s6FlyBuy22OrdersManagerErrorTypeO14orderIsNotOpenyA2CmF",
+            "moduleName": "FlyBuy",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 8
           },
           {
             "kind": "Var",
@@ -36444,6 +36695,123 @@
                 "declKind": "Accessor",
                 "usr": "s:6FlyBuy5OrderC9updatedAt10Foundation4DateVSgvM",
                 "mangledName": "$s6FlyBuy5OrderC9updatedAt10Foundation4DateVSgvM",
+                "moduleName": "FlyBuy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "orderFiredAt",
+            "printedName": "orderFiredAt",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Date?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Date",
+                    "printedName": "Foundation.Date",
+                    "usr": "s:10Foundation4DateV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FlyBuy@objc(cs)FlyBuyOrder(py)orderFiredAt",
+            "mangledName": "$s6FlyBuy5OrderC12orderFiredAt10Foundation4DateVSgvp",
+            "moduleName": "FlyBuy",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.Date?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Date",
+                        "printedName": "Foundation.Date",
+                        "usr": "s:10Foundation4DateV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FlyBuy@objc(cs)FlyBuyOrder(im)orderFiredAt",
+                "mangledName": "$s6FlyBuy5OrderC12orderFiredAt10Foundation4DateVSgvg",
+                "moduleName": "FlyBuy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.Date?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Date",
+                        "printedName": "Foundation.Date",
+                        "usr": "s:10Foundation4DateV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FlyBuy@objc(cs)FlyBuyOrder(im)setOrderFiredAt:",
+                "mangledName": "$s6FlyBuy5OrderC12orderFiredAt10Foundation4DateVSgvs",
+                "moduleName": "FlyBuy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6FlyBuy5OrderC12orderFiredAt10Foundation4DateVSgvM",
+                "mangledName": "$s6FlyBuy5OrderC12orderFiredAt10Foundation4DateVSgvM",
                 "moduleName": "FlyBuy",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -44410,65 +44778,9 @@
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 498,
-      "length": 1,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 514,
-      "length": 1,
-      "value": "2"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 530,
-      "length": 1,
-      "value": "3"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 546,
-      "length": 1,
-      "value": "4"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 562,
-      "length": 1,
-      "value": "5"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 578,
-      "length": 1,
-      "value": "6"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 594,
-      "length": 1,
-      "value": "7"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 610,
-      "length": 1,
-      "value": "8"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 626,
-      "length": 1,
-      "value": "9"
+      "offset": 643,
+      "length": 2,
+      "value": "10"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
@@ -44532,11 +44844,88 @@
       "offset": 626,
       "length": 1,
       "value": "9"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 643,
+      "length": 2,
+      "value": "10"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 498,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 514,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 530,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 546,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 562,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 578,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 594,
+      "length": 1,
+      "value": "7"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 610,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 626,
+      "length": 1,
+      "value": "9"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 643,
+      "length": 2,
+      "value": "10"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 717,
+      "offset": 735,
       "length": 4,
       "value": "true"
     },
@@ -47007,282 +47396,296 @@
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 712,
+      "offset": 738,
       "length": 10,
       "value": "\"order_id\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 744,
+      "offset": 770,
       "length": 12,
       "value": "\"event_type\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 778,
+      "offset": 804,
       "length": 11,
       "value": "\"longitude\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 810,
+      "offset": 836,
       "length": 10,
       "value": "\"latitude\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 841,
+      "offset": 867,
       "length": 10,
       "value": "\"accuracy\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 869,
+      "offset": 895,
       "length": 7,
       "value": "\"speed\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 896,
+      "offset": 922,
       "length": 9,
       "value": "\"beacons\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 928,
+      "offset": 954,
       "length": 13,
       "value": "\"eta_seconds\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 963,
+      "offset": 989,
       "length": 12,
       "value": "\"eta_source\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1001,
+      "offset": 1027,
       "length": 16,
       "value": "\"customer_state\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1035,
+      "offset": 1061,
       "length": 7,
       "value": "\"state\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1073,
+      "offset": 1099,
       "length": 21,
       "value": "\"location_permission\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1121,
+      "offset": 1147,
       "length": 23,
       "value": "\"customer_rating_value\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1173,
+      "offset": 1199,
       "length": 26,
       "value": "\"customer_rating_comments\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1226,
+      "offset": 1252,
       "length": 17,
       "value": "\"spot_identifier\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1275,
+      "offset": 1301,
       "length": 24,
       "value": "\"possible_wrong_site_id\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1322,
+      "offset": 1348,
       "length": 13,
       "value": "\"location_at\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1363,
+      "offset": 1389,
       "length": 19,
       "value": "\"client_eta_expiry\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1413,
+      "offset": 1439,
       "length": 22,
       "value": "\"client_eta_attempted\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1460,
+      "offset": 1486,
       "length": 16,
       "value": "\"client_eta_log\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 712,
+      "offset": 1525,
+      "length": 13,
+      "value": "\"pickup_type\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 738,
       "length": 10,
       "value": "\"order_id\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 744,
+      "offset": 770,
       "length": 12,
       "value": "\"event_type\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 778,
+      "offset": 804,
       "length": 11,
       "value": "\"longitude\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 810,
+      "offset": 836,
       "length": 10,
       "value": "\"latitude\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 841,
+      "offset": 867,
       "length": 10,
       "value": "\"accuracy\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 869,
+      "offset": 895,
       "length": 7,
       "value": "\"speed\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 896,
+      "offset": 922,
       "length": 9,
       "value": "\"beacons\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 928,
+      "offset": 954,
       "length": 13,
       "value": "\"eta_seconds\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 963,
+      "offset": 989,
       "length": 12,
       "value": "\"eta_source\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1001,
+      "offset": 1027,
       "length": 16,
       "value": "\"customer_state\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1035,
+      "offset": 1061,
       "length": 7,
       "value": "\"state\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1073,
+      "offset": 1099,
       "length": 21,
       "value": "\"location_permission\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1121,
+      "offset": 1147,
       "length": 23,
       "value": "\"customer_rating_value\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1173,
+      "offset": 1199,
       "length": 26,
       "value": "\"customer_rating_comments\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1226,
+      "offset": 1252,
       "length": 17,
       "value": "\"spot_identifier\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1275,
+      "offset": 1301,
       "length": 24,
       "value": "\"possible_wrong_site_id\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1322,
+      "offset": 1348,
       "length": 13,
       "value": "\"location_at\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1363,
+      "offset": 1389,
       "length": 19,
       "value": "\"client_eta_expiry\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1413,
+      "offset": 1439,
       "length": 22,
       "value": "\"client_eta_attempted\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
       "kind": "StringLiteral",
-      "offset": 1460,
+      "offset": 1486,
       "length": 16,
       "value": "\"client_eta_log\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 1525,
+      "length": 13,
+      "value": "\"pickup_type\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEvent.swift",
@@ -47514,6 +47917,13 @@
       "offset": 266,
       "length": 17,
       "value": "\"customer_rating\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/OrderEventType.swift",
+      "kind": "StringLiteral",
+      "offset": 323,
+      "length": 20,
+      "value": "\"pickup_type_change\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/Builders\/SiteOptions.swift",
@@ -48393,105 +48803,147 @@
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "StringLiteral",
-      "offset": 23462,
+      "offset": 24396,
       "length": 15,
       "value": "\"ordersUpdated\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "StringLiteral",
-      "offset": 23524,
+      "offset": 24458,
       "length": 13,
       "value": "\"ordersError\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "StringLiteral",
-      "offset": 23585,
+      "offset": 24519,
       "length": 14,
       "value": "\"orderUpdated\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "StringLiteral",
-      "offset": 23650,
+      "offset": 24584,
       "length": 17,
       "value": "\"orderEventError\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 23832,
-      "length": 13,
+      "offset": 24764,
+      "length": 15,
       "value": "1"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 23853,
-      "length": 15,
+      "offset": 24787,
+      "length": 13,
       "value": "2"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 23876,
-      "length": 20,
+      "offset": 24808,
+      "length": 15,
       "value": "3"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 23904,
-      "length": 17,
+      "offset": 24831,
+      "length": 20,
       "value": "4"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 23929,
-      "length": 19,
+      "offset": 24859,
+      "length": 17,
       "value": "5"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 23832,
-      "length": 13,
+      "offset": 24884,
+      "length": 19,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 24911,
+      "length": 17,
+      "value": "7"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 24936,
+      "length": 14,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 24764,
+      "length": 15,
       "value": "1"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 23853,
-      "length": 15,
+      "offset": 24787,
+      "length": 13,
       "value": "2"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 23876,
-      "length": 20,
+      "offset": 24808,
+      "length": 15,
       "value": "3"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 23904,
-      "length": 17,
+      "offset": 24831,
+      "length": 20,
       "value": "4"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 23929,
-      "length": 19,
+      "offset": 24859,
+      "length": 17,
       "value": "5"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 24884,
+      "length": 19,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 24911,
+      "length": 17,
+      "value": "7"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 24936,
+      "length": 14,
+      "value": "8"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/OrdersManager.swift",
       "kind": "StringLiteral",
-      "offset": 24579,
+      "offset": 25795,
       "length": 18,
       "value": "\"FlyBuy.OrdersManagerError\""
     },
@@ -48550,6 +49002,13 @@
       "offset": 88,
       "length": 2,
       "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/API\/Interactors\/OrdersInteractor.swift",
+      "kind": "StringLiteral",
+      "offset": 15408,
+      "length": 28,
+      "value": "\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Logger\/Logger.swift",
@@ -48932,441 +49391,448 @@
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6135,
+      "offset": 6196,
       "length": 4,
       "value": "\"id\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6154,
+      "offset": 6215,
       "length": 9,
       "value": "\"site_id\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6177,
+      "offset": 6238,
       "length": 7,
       "value": "\"state\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6204,
+      "offset": 6265,
       "length": 13,
       "value": "\"customer_id\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6239,
+      "offset": 6300,
       "length": 16,
       "value": "\"customer_state\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6278,
+      "offset": 6339,
       "length": 30,
       "value": "\"customer_rating_value_string\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6332,
+      "offset": 6393,
       "length": 26,
       "value": "\"customer_rating_comments\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6384,
+      "offset": 6445,
       "length": 20,
       "value": "\"partner_identifier\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6427,
+      "offset": 6488,
       "length": 17,
       "value": "\"redemption_code\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6463,
+      "offset": 6524,
       "length": 13,
       "value": "\"redeemed_at\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6496,
+      "offset": 6557,
       "length": 14,
       "value": "\"display_name\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6531,
+      "offset": 6592,
       "length": 15,
       "value": "\"pickup_window\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6565,
+      "offset": 6626,
       "length": 13,
       "value": "\"pickup_type\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6592,
+      "offset": 6653,
       "length": 8,
       "value": "\"eta_at\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6618,
+      "offset": 6679,
       "length": 12,
       "value": "\"created_at\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6650,
+      "offset": 6711,
       "length": 14,
       "value": "\"completed_at\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6682,
+      "offset": 6743,
       "length": 12,
       "value": "\"updated_at\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6711,
+      "offset": 6776,
+      "length": 16,
+      "value": "\"order_fired_at\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
+      "kind": "StringLiteral",
+      "offset": 6809,
       "length": 11,
       "value": "\"site_name\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6740,
+      "offset": 6838,
       "length": 12,
       "value": "\"site_phone\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6778,
+      "offset": 6876,
       "length": 21,
       "value": "\"site_street_address\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6823,
+      "offset": 6921,
       "length": 19,
       "value": "\"site_full_address\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6863,
+      "offset": 6961,
       "length": 15,
       "value": "\"site_locality\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6897,
+      "offset": 6995,
       "length": 13,
       "value": "\"site_region\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6930,
+      "offset": 7028,
       "length": 14,
       "value": "\"site_country\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 6967,
+      "offset": 7065,
       "length": 18,
       "value": "\"site_postal_code\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7007,
+      "offset": 7105,
       "length": 16,
       "value": "\"site_longitude\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7044,
+      "offset": 7142,
       "length": 15,
       "value": "\"site_latitude\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7084,
+      "offset": 7182,
       "length": 19,
       "value": "\"site_instructions\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7127,
+      "offset": 7225,
       "length": 18,
       "value": "\"site_description\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7171,
+      "offset": 7269,
       "length": 22,
       "value": "\"site_cover_photo_url\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7219,
+      "offset": 7317,
       "length": 21,
       "value": "\"site_beacon_regions\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7270,
+      "offset": 7368,
       "length": 25,
       "value": "\"site_partner_identifier\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7322,
+      "offset": 7420,
       "length": 22,
       "value": "\"project_accent_color\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7375,
+      "offset": 7473,
       "length": 27,
       "value": "\"project_accent_text_color\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7425,
+      "offset": 7523,
       "length": 18,
       "value": "\"project_logo_url\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7496,
+      "offset": 7594,
       "length": 53,
       "value": "\"project_mobile_flow_always_show_vehicle_info_fields\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7601,
+      "offset": 7699,
       "length": 51,
       "value": "\"project_mobile_flow_customer_name_editing_enabled\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7704,
+      "offset": 7802,
       "length": 51,
       "value": "\"project_mobile_flow_pickup_type_selection_enabled\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7808,
+      "offset": 7906,
       "length": 53,
       "value": "\"project_mobile_flow_require_vehicle_info_if_visible\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7893,
+      "offset": 7991,
       "length": 27,
       "value": "\"curbside_localized_string\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7950,
+      "offset": 8048,
       "length": 25,
       "value": "\"pickup_localized_string\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 7996,
+      "offset": 8094,
       "length": 15,
       "value": "\"customer_name\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8035,
+      "offset": 8133,
       "length": 19,
       "value": "\"customer_car_type\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8079,
+      "offset": 8177,
       "length": 20,
       "value": "\"customer_car_color\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8128,
+      "offset": 8226,
       "length": 24,
       "value": "\"customer_license_plate\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8170,
+      "offset": 8268,
       "length": 12,
       "value": "\"push_token\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8209,
+      "offset": 8307,
       "length": 20,
       "value": "\"prearrival_seconds\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8263,
+      "offset": 8361,
       "length": 27,
       "value": "\"location_tracking_enabled\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8325,
+      "offset": 8423,
       "length": 31,
       "value": "\"spot_identifier_entry_enabled\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8379,
+      "offset": 8477,
       "length": 17,
       "value": "\"spot_identifier\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8428,
+      "offset": 8526,
       "length": 28,
       "value": "\"spot_identifier_input_type\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8493,
+      "offset": 8591,
       "length": 33,
       "value": "\"partner_identifier_for_customer\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8559,
+      "offset": 8657,
       "length": 29,
       "value": "\"partner_identifier_for_crew\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8623,
+      "offset": 8721,
       "length": 30,
       "value": "\"wrong_site_detection_enabled\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8673,
+      "offset": 8771,
       "length": 15,
       "value": "\"wrong_site_id\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8723,
+      "offset": 8821,
       "length": 29,
       "value": "\"distance_filtering_disabled\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8783,
+      "offset": 8881,
       "length": 26,
       "value": "\"wrong_site_search_radius\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8833,
+      "offset": 8931,
       "length": 18,
       "value": "\"pickup_config_id\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8882,
+      "offset": 8980,
       "length": 26,
       "value": "\"handoff_vehicle_location\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 8933,
+      "offset": 9031,
       "length": 20,
       "value": "\"estimated_ready_at\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 9089,
+      "offset": 9187,
       "length": 10,
       "value": "\"state_v2\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 9121,
+      "offset": 9219,
       "length": 19,
       "value": "\"customer_state_v2\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/Order.swift",
       "kind": "StringLiteral",
-      "offset": 9167,
+      "offset": 9265,
       "length": 25,
       "value": "\"site_prearrival_seconds\""
     },

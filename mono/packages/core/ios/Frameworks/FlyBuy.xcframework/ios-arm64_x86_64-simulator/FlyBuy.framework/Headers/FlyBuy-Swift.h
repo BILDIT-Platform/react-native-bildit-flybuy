@@ -696,6 +696,7 @@ typedef SWIFT_ENUM(NSInteger, CustomerManagerErrorType, open) {
 
 
 
+
 SWIFT_CLASS("_TtC6FlyBuy9ETAConfig")
 @interface ETAConfig : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -831,6 +832,7 @@ SWIFT_CLASS_NAMED("Order")
 @property (nonatomic, copy) NSDate * _Nullable completedAt;
 @property (nonatomic, copy) NSDate * _Nullable createdAt;
 @property (nonatomic, copy) NSDate * _Nullable updatedAt;
+@property (nonatomic, copy) NSDate * _Nullable orderFiredAt;
 @property (nonatomic, copy) NSString * _Nullable customerRating;
 @property (nonatomic, copy) NSString * _Nullable customerComment;
 @property (nonatomic, readonly, copy) NSString * _Nullable siteName;
@@ -1196,6 +1198,24 @@ SWIFT_CLASS_NAMED("OrdersManager")
 /// \param callback Gets called at completion with the <code>Order</code> or any error encountered. Optional.
 ///
 - (void)rateOrderWithOrderID:(NSInteger)orderID rating:(NSInteger)rating comments:(NSString * _Nullable)comments callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
+/// Change pickup type for an <code>Order</code> with the give orderId.
+/// Example:
+/// \code
+/// FlyBuy.Core.orders.changePickupType(orderID: 123, pickupType: "pickup") { order, error ->
+///   if let error = error {
+///     // Handle error
+///   } else {
+///     // Handle success
+///   }
+/// }
+///
+/// \endcode\param orderID specifies which order ID this event relates to
+///
+/// \param pickupType the new pickup type
+///
+/// \param callback Gets called at completion with the <code>Order</code> or any error encountered. Optional.
+///
+- (void)changePickupTypeWithOrderID:(NSInteger)orderID pickupType:(NSString * _Nonnull)pickupType callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
 @end
 
 
@@ -1220,12 +1240,15 @@ SWIFT_CLASS_NAMED("OrdersManagerError")
 
 /// The type that may be associated with a OrdersManagerError.
 typedef SWIFT_ENUM(NSInteger, OrdersManagerErrorType, open) {
-  OrdersManagerErrorTypeLoadingCustomer = 0,
-  OrdersManagerErrorTypeLoadingApiUrl = 1,
-  OrdersManagerErrorTypeAlreadyFetching = 2,
-  OrdersManagerErrorTypeInvalidCustomerState = 3,
-  OrdersManagerErrorTypeInvalidOrderState = 4,
-  OrdersManagerErrorTypeCoreIsNotConfigured = 5,
+  OrdersManagerErrorTypeOrderNotFound = 0,
+  OrdersManagerErrorTypeLoadingCustomer = 1,
+  OrdersManagerErrorTypeLoadingApiUrl = 2,
+  OrdersManagerErrorTypeAlreadyFetching = 3,
+  OrdersManagerErrorTypeInvalidCustomerState = 4,
+  OrdersManagerErrorTypeInvalidOrderState = 5,
+  OrdersManagerErrorTypeCoreIsNotConfigured = 6,
+  OrdersManagerErrorTypeInvalidPickupType = 7,
+  OrdersManagerErrorTypeOrderIsNotOpen = 8,
 };
 
 
@@ -1313,6 +1336,9 @@ SWIFT_CLASS_NAMED("PlaceSuggestionOptions")
 
 SWIFT_CLASS_NAMED("Builder")
 @interface FlyBuyPlaceOptionsBuilder : NSObject
+- (FlyBuyPlaceOptionsBuilder * _Nonnull)setProximityWithLatitude:(double)latitude longitude:(double)longitude SWIFT_WARN_UNUSED_RESULT;
+- (FlyBuyPlaceOptionsBuilder * _Nonnull)setType:(enum PlaceType)type SWIFT_WARN_UNUSED_RESULT;
+- (FlyBuyPlaceOptions * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2216,6 +2242,7 @@ typedef SWIFT_ENUM(NSInteger, CustomerManagerErrorType, open) {
 
 
 
+
 SWIFT_CLASS("_TtC6FlyBuy9ETAConfig")
 @interface ETAConfig : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -2351,6 +2378,7 @@ SWIFT_CLASS_NAMED("Order")
 @property (nonatomic, copy) NSDate * _Nullable completedAt;
 @property (nonatomic, copy) NSDate * _Nullable createdAt;
 @property (nonatomic, copy) NSDate * _Nullable updatedAt;
+@property (nonatomic, copy) NSDate * _Nullable orderFiredAt;
 @property (nonatomic, copy) NSString * _Nullable customerRating;
 @property (nonatomic, copy) NSString * _Nullable customerComment;
 @property (nonatomic, readonly, copy) NSString * _Nullable siteName;
@@ -2716,6 +2744,24 @@ SWIFT_CLASS_NAMED("OrdersManager")
 /// \param callback Gets called at completion with the <code>Order</code> or any error encountered. Optional.
 ///
 - (void)rateOrderWithOrderID:(NSInteger)orderID rating:(NSInteger)rating comments:(NSString * _Nullable)comments callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
+/// Change pickup type for an <code>Order</code> with the give orderId.
+/// Example:
+/// \code
+/// FlyBuy.Core.orders.changePickupType(orderID: 123, pickupType: "pickup") { order, error ->
+///   if let error = error {
+///     // Handle error
+///   } else {
+///     // Handle success
+///   }
+/// }
+///
+/// \endcode\param orderID specifies which order ID this event relates to
+///
+/// \param pickupType the new pickup type
+///
+/// \param callback Gets called at completion with the <code>Order</code> or any error encountered. Optional.
+///
+- (void)changePickupTypeWithOrderID:(NSInteger)orderID pickupType:(NSString * _Nonnull)pickupType callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
 @end
 
 
@@ -2740,12 +2786,15 @@ SWIFT_CLASS_NAMED("OrdersManagerError")
 
 /// The type that may be associated with a OrdersManagerError.
 typedef SWIFT_ENUM(NSInteger, OrdersManagerErrorType, open) {
-  OrdersManagerErrorTypeLoadingCustomer = 0,
-  OrdersManagerErrorTypeLoadingApiUrl = 1,
-  OrdersManagerErrorTypeAlreadyFetching = 2,
-  OrdersManagerErrorTypeInvalidCustomerState = 3,
-  OrdersManagerErrorTypeInvalidOrderState = 4,
-  OrdersManagerErrorTypeCoreIsNotConfigured = 5,
+  OrdersManagerErrorTypeOrderNotFound = 0,
+  OrdersManagerErrorTypeLoadingCustomer = 1,
+  OrdersManagerErrorTypeLoadingApiUrl = 2,
+  OrdersManagerErrorTypeAlreadyFetching = 3,
+  OrdersManagerErrorTypeInvalidCustomerState = 4,
+  OrdersManagerErrorTypeInvalidOrderState = 5,
+  OrdersManagerErrorTypeCoreIsNotConfigured = 6,
+  OrdersManagerErrorTypeInvalidPickupType = 7,
+  OrdersManagerErrorTypeOrderIsNotOpen = 8,
 };
 
 
@@ -2833,6 +2882,9 @@ SWIFT_CLASS_NAMED("PlaceSuggestionOptions")
 
 SWIFT_CLASS_NAMED("Builder")
 @interface FlyBuyPlaceOptionsBuilder : NSObject
+- (FlyBuyPlaceOptionsBuilder * _Nonnull)setProximityWithLatitude:(double)latitude longitude:(double)longitude SWIFT_WARN_UNUSED_RESULT;
+- (FlyBuyPlaceOptionsBuilder * _Nonnull)setType:(enum PlaceType)type SWIFT_WARN_UNUSED_RESULT;
+- (FlyBuyPlaceOptions * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

@@ -1198,10 +1198,10 @@ SWIFT_CLASS_NAMED("OrdersManager")
 /// \param callback Gets called at completion with the <code>Order</code> or any error encountered. Optional.
 ///
 - (void)rateOrderWithOrderID:(NSInteger)orderID rating:(NSInteger)rating comments:(NSString * _Nullable)comments callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
-/// Change pickup type for an <code>Order</code> with the give orderId.
+/// Update the pickup type for an <code>Order</code> with the give orderId.
 /// Example:
 /// \code
-/// FlyBuy.Core.orders.changePickupType(orderID: 123, pickupType: "pickup") { order, error ->
+/// FlyBuy.Core.orders.updatePickupType(orderID: 123, pickupType: "pickup") { order, error ->
 ///   if let error = error {
 ///     // Handle error
 ///   } else {
@@ -1215,7 +1215,7 @@ SWIFT_CLASS_NAMED("OrdersManager")
 ///
 /// \param callback Gets called at completion with the <code>Order</code> or any error encountered. Optional.
 ///
-- (void)changePickupTypeWithOrderID:(NSInteger)orderID pickupType:(NSString * _Nonnull)pickupType callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
+- (void)updatePickupTypeWithOrderID:(NSInteger)orderID pickupType:(NSString * _Nonnull)pickupType callback:(void (^ _Nullable)(FlyBuyOrder * _Nullable, NSError * _Nullable))callback;
 @end
 
 
@@ -1318,6 +1318,7 @@ SWIFT_CLASS_NAMED("Place")
 @property (nonatomic, readonly, copy) NSString * _Nonnull placeFormatted;
 @property (nonatomic, readonly) double distance;
 @property (nonatomic, readonly, copy) NSString * _Nullable address;
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id name:(NSString * _Nonnull)name placeFormatted:(NSString * _Nonnull)placeFormatted address:(NSString * _Nullable)address distance:(double)distance OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

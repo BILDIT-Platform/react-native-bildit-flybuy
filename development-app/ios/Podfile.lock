@@ -1,5 +1,5 @@
 PODS:
-  - bildit-platform-rn-flybuy-core (2.20.5):
+  - bildit-platform-rn-flybuy-core (2.21.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -20,7 +20,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-livestatus (2.20.4):
+  - bildit-platform-rn-flybuy-livestatus (2.21.1):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -42,7 +42,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-notify (2.20.6):
+  - bildit-platform-rn-flybuy-notify (2.21.1):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -64,7 +64,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-pickup (2.20.4):
+  - bildit-platform-rn-flybuy-pickup (2.21.1):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -86,7 +86,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-presence (2.20.4):
+  - bildit-platform-rn-flybuy-presence (2.21.1):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -1477,11 +1477,11 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  bildit-platform-rn-flybuy-core: f9feecac8f5da39d73cae25b9dcac7647c05f77f
-  bildit-platform-rn-flybuy-livestatus: 134f157a7dd72e5e78cb67597e464deb527f4559
-  bildit-platform-rn-flybuy-notify: bfd12f33632683809331f4cb1f81abae64d85f53
-  bildit-platform-rn-flybuy-pickup: aa0c00bde12470e6ff55cbcb0b4317cef3fb6690
-  bildit-platform-rn-flybuy-presence: 2700554b6f53d9b0e51877c326341131078ca783
+  bildit-platform-rn-flybuy-core: ae1e34b85389a82df6b2e4bcfd9b5e7c796211ef
+  bildit-platform-rn-flybuy-livestatus: 8175fa439a4f5bead6908a3cf2c0727014c317f1
+  bildit-platform-rn-flybuy-notify: fe5855b0d0ffdf0519f096b1651a11d45d9b6371
+  bildit-platform-rn-flybuy-pickup: 76afedd2f5f349910d7b02ec01ce3fa48a16e35b
+  bildit-platform-rn-flybuy-presence: a680968c502dc86084e556a608d83760e1c1adbe
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   FBLazyVector: 7e977dd099937dc5458851233141583abba49ff2

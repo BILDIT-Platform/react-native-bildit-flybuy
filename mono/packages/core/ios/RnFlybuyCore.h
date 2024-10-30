@@ -1,13 +1,18 @@
 #ifdef RCT_NEW_ARCH_ENABLED
 #import "RNRnFlybuyCoreSpec.h"
+#import <React/RCTEventEmitter.h>
 
-@interface RnFlybuyCore : NSObject <NativeRnFlybuyCoreSpec>
+
+@interface RnFlybuyCore : RCTEventEmitter <NativeRnFlybuyCoreSpec>
 #else
 #import <React/RCTBridgeModule.h>
+#import <React/RCTEventEmitter.h>
 
-@interface RnFlybuyCore : NSObject <RCTBridgeModule>
+@interface RnFlybuyCore : RCTEventEmitter <RCTBridgeModule>
 #endif
 
+- (void)startObserver;
+- (void)stopObserver;
 
 // Authentication
 - (void)login:(NSString *)email
@@ -110,6 +115,13 @@
 
 - (void)handleRemoteNotification:(NSDictionary *)userInfo;
 
+- (void)placesSuggest:(NSString *)query
+          withOptions: (NSDictionary *)options
+         withResolver:(RCTPromiseResolveBlock)resolve
+       withRejecter:(RCTPromiseRejectBlock)reject;
 
+- (void)placesRetrieve:(NSDictionary *)place
+         withResolver:(RCTPromiseResolveBlock)resolve
+       withRejecter:(RCTPromiseRejectBlock)reject;
 
 @end

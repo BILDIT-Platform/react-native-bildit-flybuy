@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "watcher": "node ./scripts/watchAndCopy.js core "
+    "watcher": "node ./scripts/watchAndCopy.js core ",
+    "pod": "cd ios && bundle exec pod install"
   },
   "dependencies": {
     "react": "18.2.0",

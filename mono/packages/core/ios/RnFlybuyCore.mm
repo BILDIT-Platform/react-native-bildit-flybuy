@@ -9,19 +9,18 @@ RCT_EXPORT_MODULE()
     return @[@"orderUpdated", @"ordersUpdated", @"ordersError", @"orderEventError", @"notifyEvents"];
 }
 
-- (void)startObserving {
+RCT_EXPORT_METHOD(startObserver) {
     [[NSNotificationCenter defaultCenter] addObserverForName:@"orderUpdated" object:nil queue:nil usingBlock:^(NSNotification *notification) {
-        Order *order = notification.object;
-        if ([order isKindOfClass:[Order class]]) {
-            NSString *event = FlyBuySupportedEventsOrderUpdated;
+      FlyBuyOrder *order = notification.object;
+      if ([order isKindOfClass:[FlyBuyOrder class]]) {
             NSDictionary *body = [self parseOrder:order];
-            [[Flybuy shared] sendEventWithName:event body:body];
+            [self sendEventWithName:@"orderUpdated" body:body];
         }
     }];
 }
 
-- (void)stopObserving {
-    [[NSNotificationCenter defaultCenter] removeObserver:[Flybuy shared]];
+RCT_EXPORT_METHOD(stopObserver) {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -376,6 +375,68 @@ RCT_EXPORT_METHOD(rateOrder:(NSInteger)orderId
     }];
 }
 
+RCT_EXPORT_METHOD(placesSuggest:(NSString *)query
+                  withOptions: (NSDictionary *)options
+                 withResolver:(RCTPromiseResolveBlock)resolve
+               withRejecter:(RCTPromiseRejectBlock)reject)
+{
+  NSNumber *type = options[@"type"] ?: @(0);
+  double latitude = [options[@"latitude"] doubleValue];
+  double longitude = [options[@"longitude"] doubleValue];
+
+
+  FlyBuyPlaceOptionsBuilder* builder = [[FlyBuyPlaceOptionsBuilder alloc] init];
+
+  if ([type  isEqual: @(0)]) {
+    builder = [builder setType: PlaceTypeAddress];
+  } else if ([type   isEqual: @(1)]) {
+    builder = [builder setType: PlaceTypeRegion];
+  } else if ([type  isEqual: @(2)]) {
+    builder = [builder setType: PlaceTypeRegion];
+  } else if ([type  isEqual: @(3)]) {
+    builder = [builder setType: PlaceTypeCity];
+  } else if ([type  isEqual: @(4)]) {
+    builder = [builder setType: PlaceTypePoi];
+  }
+
+  if (latitude && longitude) {
+    builder = [builder setProximityWithLatitude: latitude longitude: longitude];
+  }
+
+  FlyBuyPlaceOptions* placeOptions = [builder build];
+
+
+  [[FlyBuyCore places] suggestWithQuery:query options:placeOptions callback:^(NSArray<FlyBuyPlace *> * _Nullable places, NSError * _Nullable error) {
+        if (error == nil) {
+            NSMutableArray *parsedPlaces = [NSMutableArray array];
+            for (FlyBuyPlace *place in places) { // Replace 'OrderType' with the correct type
+              [parsedPlaces addObject:[self parsePlace:place]];
+            }
+            resolve(parsedPlaces);
+        } else {
+            reject(error.localizedDescription, error.debugDescription, error);
+        }
+      }];
+
+}
+
+RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
+                 withResolver:(RCTPromiseResolveBlock)resolve
+               withRejecter:(RCTPromiseRejectBlock)reject)
+{
+  FlyBuyPlace *placeInfo = [self decodePlace:place];
+  [[FlyBuyCore places] retrieveWithPlace:placeInfo callback:^(FlyBuyCoordinate * _Nullable coordinate, NSError * _Nullable error) {
+    if (error == nil) {
+      if (coordinate == nil) {
+        reject(@"Fetch place location Error", @"Error retrieving place location", nil);
+      } else {
+        resolve([self parseLocation:coordinate]);
+      }
+    } else {
+        reject(error.localizedDescription, error.debugDescription, error);
+    }
+  }];
+}
 
 
 
@@ -513,6 +574,28 @@ RCT_EXPORT_METHOD(rateOrder:(NSInteger)orderId
     };
 }
 
+- (NSDictionary *)parsePlace:(FlyBuyPlace *)place {
+
+    return @{
+        @"id": place.id ?: [NSNull null],
+        @"name": place.name ?: [NSNull null],
+        @"address": place.address ?: [NSNull null],
+        @"distance": @(place.distance),
+        @"placeFormatted": place.placeFormatted ?: [NSNull null]
+    };
+}
+
+
+- (NSDictionary *)parseLocation:(FlyBuyCoordinate *)location {
+
+  // TODO: uncomment this once the attribute exposed on the SDK
+    return @{
+//        @"latitude": @(location.latitude),
+//        @"longitude": @(location.longitude),
+    };
+}
+
+
 
 
 // Decoder
@@ -553,6 +636,17 @@ RCT_EXPORT_METHOD(rateOrder:(NSInteger)orderId
     NSDate *end = [formatter dateFromString:pickupWindow[@"end"]] ?: [NSDate date]; // Replace with a fallback if needed
 
     return [[FlyBuyPickupWindow alloc] initWithStart:start end:end];
+}
+
+- (FlyBuyPlace *)decodePlace:(NSDictionary<NSString *, NSString *> *)placeDict {
+    NSString *id = placeDict[@"id"] ?: @"";
+    NSString *name = placeDict[@"name"] ?: @"";
+    NSString *address = placeDict[@"address"] ?: @"";
+    double distance = [placeDict[@"distance"] doubleValue];
+    NSString *placeFormatted = placeDict[@"placeFormatted"] ?: @"";
+
+  FlyBuyPlace* place = [[FlyBuyPlace alloc] initWithId:id name:name placeFormatted:placeFormatted address:address distance:distance];
+    return place;
 }
 
 

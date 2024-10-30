@@ -1,12 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Alert, StyleSheet, Text, TextInput, View} from 'react-native';
 import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
 import {Button, SectionTitle} from './components';
 
@@ -37,7 +30,6 @@ export const PlacesSection = () => {
   const handleSuggestedLocationPress = (place: FlyBuyCore.IPlace) => {
     clearSuggestion();
     setSelectedPlace(place);
-    console.log('place', place)
     FlyBuyCore.Sites.fetchSitesNearPlace(place, 1000)
       .then(console.log)
       .catch(console.warn);

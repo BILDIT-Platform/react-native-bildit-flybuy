@@ -1,6 +1,6 @@
-import * as FlyBuyPickup from 'react-native-bildit-flybuy-pickup';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import * as FlyBuyPickup from 'react-native-bildit-flybuy-pickup';
 import {Button, SectionTitle} from './components';
 
 export const PickupSection = () => {

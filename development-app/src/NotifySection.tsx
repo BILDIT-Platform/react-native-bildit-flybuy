@@ -1,6 +1,6 @@
 import * as FlyBuyNotify from 'react-native-bildit-flybuy-notify';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Button, SectionTitle} from './components';
 import {NOTIFICATION, REGION} from './constants';
 

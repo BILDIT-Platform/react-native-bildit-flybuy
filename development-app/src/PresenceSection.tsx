@@ -1,6 +1,6 @@
-import * as FlyBuyPresence from 'react-native-bildit-flybuy-presence';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import * as FlyBuyPresence from 'react-native-bildit-flybuy-presence';
 import {Button, SectionTitle} from './components';
 
 export const PresenceSection = () => {

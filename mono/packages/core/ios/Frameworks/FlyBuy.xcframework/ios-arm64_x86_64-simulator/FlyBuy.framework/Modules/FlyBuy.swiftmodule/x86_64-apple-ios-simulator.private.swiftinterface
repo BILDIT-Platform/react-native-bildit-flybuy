@@ -21,12 +21,13 @@ import _SwiftConcurrencyShims
 extension FlyBuy.AppConfig {
   public static let defaultLocationFilters: FlyBuy.PickupLocationFilters
 }
-@_hasMissingDesignatedInitializers @objc(FlyBuyPlace) public class Place : ObjectiveC.NSObject, Swift.Codable {
+@objc(FlyBuyPlace) public class Place : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let id: Swift.String
   @objc final public let name: Swift.String
   @objc final public let placeFormatted: Swift.String
   @objc final public let distance: Swift.Double
   @objc final public let address: Swift.String?
+  @objc public init(id: Swift.String, name: Swift.String, placeFormatted: Swift.String, address: Swift.String?, distance: Swift.Double = Double.zero)
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -940,7 +941,7 @@ public struct PickupStates : Swift.Codable {
   @objc public func updateCustomerState(orderID: Swift.Int, customerState: Swift.String, spotIdentifier: Swift.String?, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
   @objc public func updateOrderState(orderID: Swift.Int, state: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
   @objc public func rateOrder(orderID: Swift.Int, rating: Swift.Int, comments: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func changePickupType(orderID: Swift.Int, pickupType: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc public func updatePickupType(orderID: Swift.Int, pickupType: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
   @objc deinit
 }
 extension Foundation.NSNotification.Name {

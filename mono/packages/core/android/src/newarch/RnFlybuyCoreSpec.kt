@@ -25,6 +25,11 @@ abstract class RnFlybuyCoreSpec internal constructor(context: ReactApplicationCo
   abstract fun fetchSitesByQuery(params: ReadableMap, promise: Promise)
   abstract fun fetchSitesByRegion(params: ReadableMap, promise: Promise)
   abstract fun fetchSiteByPartnerIdentifier(params: ReadableMap, promise: Promise)
+  abstract fun fetchSitesNearPlace(place: ReadableMap, distance: Float, promise: Promise)
+
+  // Places related functions
+  abstract fun placesSuggest(keyword: String, options: ReadableMap, promise: Promise)
+  abstract fun placesRetrieve(place: ReadableMap, promise: Promise)
 
   // Orders related functions
   abstract fun fetchOrders(promise: Promise)

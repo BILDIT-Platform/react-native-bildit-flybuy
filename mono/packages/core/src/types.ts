@@ -12,6 +12,19 @@ export interface ICustomerInfo {
   phone?: string;
 }
 
+export interface IPlace {
+  name: string;
+  id: string;
+  placeFormatted: string;
+  address?: string;
+  distance?: number;
+}
+
+export interface IPlaceLocation {
+  latitude: number;
+  longitude: number;
+}
+
 export interface ISite {
   id: number;
   name?: string;
@@ -80,6 +93,15 @@ export enum CustomerState {
   WAITING = 'waiting',
   DEPARTED = 'departed',
   COMPLETED = 'completed',
+}
+
+export enum PlaceType {
+  ADDRESS = 0,
+  REGION = 1,
+  POSTAL_CODE = 2,
+  CITY = 3,
+  // Point of Interest
+  POI = 4,
 }
 
 export enum OrderStateType {

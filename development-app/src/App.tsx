@@ -16,6 +16,7 @@ import {
 } from 'react-native-permissions';
 import {NotifySection} from './NotifySection';
 import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
+import {PlacesSection} from './PlacesSection';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -75,6 +76,7 @@ function App(): React.JSX.Element {
         style={backgroundStyle}>
         <CustomerSection />
         <SitesSection />
+        <PlacesSection />
         <OrdersSection />
         <PickupSection />
         <PresenceSection />

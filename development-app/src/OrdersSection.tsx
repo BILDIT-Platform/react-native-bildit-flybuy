@@ -1,18 +1,17 @@
-import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
-import {
-  OrderStateType,
-  CustomerState,
-  PickupType,
-  IOrder,
-} from 'react-native-bildit-flybuy-core';
 import React, {useEffect, useState} from 'react';
 import {
   NativeEventEmitter,
   NativeModules,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
+import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
+import {
+  CustomerState,
+  IOrder,
+  OrderStateType,
+  PickupType,
+} from 'react-native-bildit-flybuy-core';
 import {Button, OrderItem, SectionTitle} from './components';
 import {
   CUSTOMER_INFO,
@@ -225,16 +224,14 @@ export const OrdersSection = () => {
         onPress={fetchOrderByRedemptionCode}
       />
       <Button title="claimOrder" onPress={claimOrder} />
-      <Button title="updateOrderState" onPress={updateOrderState} />
       <Button
         title="updateOrderCustomerStateWithSpot"
         onPress={updateOrderCustomerStateWithSpot}
       />
-      <Button title="rateOrder" onPress={rateOrder} />
       <Button
         title="updateOrderCustomerState"
         onPress={updateOrderCustomerState}
-        style={styles.button}
+        titleStyle={styles.button}
       />
     </View>
   );

@@ -1,8 +1,8 @@
 {
   "ABIRoot": {
     "kind": "Root",
-    "name": "TopLevel",
-    "printedName": "TopLevel",
+    "name": "FlyBuyPresence",
+    "printedName": "FlyBuyPresence",
     "children": [
       {
         "kind": "Import",
@@ -601,10 +601,17 @@
         "conformances": [
           {
             "kind": "Conformance",
-            "name": "FlyBuyModuleManager",
-            "printedName": "FlyBuyModuleManager",
-            "usr": "s:6FlyBuy0aB13ModuleManagerP",
-            "mangledName": "$s6FlyBuy0aB13ModuleManagerP"
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -654,6 +661,13 @@
             "printedName": "CustomDebugStringConvertible",
             "usr": "s:s28CustomDebugStringConvertibleP",
             "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "FlyBuyModuleManager",
+            "printedName": "FlyBuyModuleManager",
+            "usr": "s:6FlyBuy0aB13ModuleManagerP",
+            "mangledName": "$s6FlyBuy0aB13ModuleManagerP"
           }
         ]
       },
@@ -1198,6 +1212,20 @@
         "conformances": [
           {
             "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
@@ -1416,6 +1444,20 @@
             "printedName": "FlyBuyError",
             "usr": "s:6FlyBuy0aB5ErrorP",
             "mangledName": "$s6FlyBuy0aB5ErrorP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -1786,6 +1828,20 @@
         "conformances": [
           {
             "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
@@ -1978,6 +2034,22 @@
           "AccessControl",
           "ObjC",
           "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
         ]
       },
       {
@@ -2312,6 +2384,20 @@
         "conformances": [
           {
             "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
@@ -2450,76 +2536,6 @@
       "value": "9"
     },
     {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/Manager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6284,
-      "length": 20,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/Manager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6312,
-      "length": 21,
-      "value": "2"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/Manager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6341,
-      "length": 24,
-      "value": "3"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/Manager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6373,
-      "length": 24,
-      "value": "4"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/Manager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6405,
-      "length": 17,
-      "value": "5"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/Manager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6430,
-      "length": 19,
-      "value": "6"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/Manager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6457,
-      "length": 21,
-      "value": "7"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/Manager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6486,
-      "length": 20,
-      "value": "8"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/Manager.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6514,
-      "length": 28,
-      "value": "9"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/Manager.swift",
-      "kind": "StringLiteral",
-      "offset": 7690,
-      "length": 13,
-      "value": "\"FlyBuyPresence.PresenceError\""
-    },
-    {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/PresenceAdvertiser.swift",
       "kind": "BooleanLiteral",
       "offset": 273,
@@ -2527,13 +2543,6 @@
       "value": "false"
     },
     {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/PresenceAdvertiser.swift",
-      "kind": "StringLiteral",
-      "offset": 89,
-      "length": 18,
-      "value": "\"FlyBuyPresence.PresenceAdvertiser\""
-    },
-    {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/PresenceLocator.swift",
       "kind": "IntegerLiteral",
       "offset": 161,
@@ -2560,41 +2569,6 @@
       "offset": 217,
       "length": 1,
       "value": "4"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/PresenceLocator.swift",
-      "kind": "IntegerLiteral",
-      "offset": 161,
-      "length": 1,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/PresenceLocator.swift",
-      "kind": "IntegerLiteral",
-      "offset": 178,
-      "length": 1,
-      "value": "2"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/PresenceLocator.swift",
-      "kind": "IntegerLiteral",
-      "offset": 197,
-      "length": 1,
-      "value": "3"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/PresenceLocator.swift",
-      "kind": "IntegerLiteral",
-      "offset": 217,
-      "length": 1,
-      "value": "4"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPresence\/PresenceLocator.swift",
-      "kind": "StringLiteral",
-      "offset": 1012,
-      "length": 15,
-      "value": "\"FlyBuyPresence.PresenceLocator\""
     }
   ]
 }

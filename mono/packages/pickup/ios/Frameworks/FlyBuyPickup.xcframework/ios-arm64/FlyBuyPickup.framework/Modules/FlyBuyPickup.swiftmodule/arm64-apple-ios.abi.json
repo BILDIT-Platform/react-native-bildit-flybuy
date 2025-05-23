@@ -1,8 +1,8 @@
 {
   "ABIRoot": {
     "kind": "Root",
-    "name": "TopLevel",
-    "printedName": "TopLevel",
+    "name": "FlyBuyPickup",
+    "printedName": "FlyBuyPickup",
     "children": [
       {
         "kind": "Import",
@@ -373,10 +373,17 @@
         "conformances": [
           {
             "kind": "Conformance",
-            "name": "FlyBuyModuleManager",
-            "printedName": "FlyBuyModuleManager",
-            "usr": "s:6FlyBuy0aB13ModuleManagerP",
-            "mangledName": "$s6FlyBuy0aB13ModuleManagerP"
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -426,6 +433,13 @@
             "printedName": "CustomDebugStringConvertible",
             "usr": "s:s28CustomDebugStringConvertibleP",
             "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "FlyBuyModuleManager",
+            "printedName": "FlyBuyModuleManager",
+            "usr": "s:6FlyBuy0aB13ModuleManagerP",
+            "mangledName": "$s6FlyBuy0aB13ModuleManagerP"
           }
         ]
       },
@@ -738,6 +752,20 @@
         "conformances": [
           {
             "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
             "name": "_ObjectiveCBridgeable",
             "printedName": "_ObjectiveCBridgeable",
             "children": [
@@ -836,20 +864,6 @@
       "value": "\"FlyBuyPickup.Migration Version\""
     },
     {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/UserDefaultsKey.swift",
-      "kind": "StringLiteral",
-      "offset": 88,
-      "length": 24,
-      "value": "\"Last Known Auth Status\""
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/UserDefaultsKey.swift",
-      "kind": "StringLiteral",
-      "offset": 139,
-      "length": 32,
-      "value": "\"FlyBuyPickup.Migration Version\""
-    },
-    {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/LocationEventGenerator.swift",
       "kind": "IntegerLiteral",
       "offset": 386,
@@ -862,13 +876,6 @@
       "offset": 932,
       "length": 2,
       "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Helpers\/LocationEventGenerator.swift",
-      "kind": "StringLiteral",
-      "offset": 172,
-      "length": 22,
-      "value": "\"FlyBuyPickup.LocationEventGenerator\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyPickup\/Manager.swift",

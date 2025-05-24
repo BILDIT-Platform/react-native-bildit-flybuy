@@ -14,6 +14,7 @@ import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEmitter
 import com.radiusnetworks.flybuy.sdk.FlyBuyCore
+import com.radiusnetworks.flybuy.sdk.FlyBuyLinks
 import com.radiusnetworks.flybuy.sdk.data.common.SdkError
 import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
@@ -94,6 +95,17 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
   }
 
   // Core functions
+  @ReactMethod
+  override fun parseReferrerUrl(referrerUrl: String, promise: Promise) {
+    try {
+      FlyBuyLinks.parseReferrerUrl(referrerUrl)?.let { linkDetails ->
+        promise.resolve(parseLinkDetails(linkDetails))
+      }
+    } catch (e: FlyBuyRuntimeException) {
+      promise.reject(e)
+      e.message?.let { Log.w(TAG, it) }
+    }
+  }
   @ReactMethod
   override fun configure(token: String, promise: Promise) {
     // TODO: separate the configure function for New and Old Architechture

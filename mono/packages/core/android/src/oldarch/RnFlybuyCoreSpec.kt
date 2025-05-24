@@ -10,6 +10,10 @@ abstract class RnFlybuyCoreSpec internal constructor(context: ReactApplicationCo
 
     abstract fun startObserver()
     abstract fun stopObserver()
+
+  // Deeplinks related functions
+  abstract fun parseReferrerUrl(referrerUrl: String, promise: Promise)
+
   // Notification related function
   abstract fun configure(token: String, promise: Promise)
   abstract fun updatePushToken(token: String)

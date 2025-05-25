@@ -10,8 +10,9 @@ import type {
   ISite,
   LinkDetails,
   OrderStateType,
+  PickupMethodOptions,
   PickupType,
-  PlaceType,
+  PlaceSuggestOptions,
 } from './types';
 
 export * from './types';
@@ -132,7 +133,7 @@ function fetchSitesNearPlace(
 // Places functions
 function placesSuggest(
   keyword: string,
-  options: { latitude?: number; longitude?: number; type?: PlaceType }
+  options: PlaceSuggestOptions
 ): Promise<IPlace[]> {
   return RnFlybuyCore.placesSuggest(keyword, options);
 }
@@ -214,6 +215,13 @@ function rateOrder(
   comments: string
 ): Promise<IOrder> {
   return RnFlybuyCore.rateOrder(orderId, rating, comments);
+}
+
+function updatePickupMethod(
+  orderId: number,
+  options: PickupMethodOptions
+): Promise<IOrder> {
+  return RnFlybuyCore.updatePickupMethod(orderId, options);
 }
 
 type ILinks = {
@@ -309,6 +317,10 @@ type IOrders = {
     spot: string
   ): Promise<IOrder>;
   rateOrder(orderId: number, rating: number, comments: string): Promise<IOrder>;
+  updatePickupMethod(
+    orderId: number,
+    options: PickupMethodOptions
+  ): Promise<IOrder>;
 };
 
 export const Orders: IOrders = {
@@ -320,4 +332,5 @@ export const Orders: IOrders = {
   updateOrderCustomerState,
   updateOrderCustomerStateWithSpot,
   rateOrder,
+  updatePickupMethod,
 };

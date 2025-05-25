@@ -1,11 +1,17 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {IOrder, OrderStateType} from 'react-native-bildit-flybuy-core';
+import {
+  IOrder,
+  OrderStateType,
+  PickupMethodOptions,
+  PickupType,
+} from 'react-native-bildit-flybuy-core';
 import {OrderStateModal} from './OrderStateModal';
 
 type Props = {
   data: IOrder;
   onUpdateOrderState: (orderState: OrderStateType) => void;
+  onUpdatePickupMethod: (options: PickupMethodOptions) => void;
   onRateOrder: (orderId: number) => void;
 };
 
@@ -29,7 +35,12 @@ const Row = ({
     </TouchableOpacity>
   );
 };
-export const OrderItem = ({data, onUpdateOrderState, onRateOrder}: Props) => {
+export const OrderItem = ({
+  data,
+  onUpdateOrderState,
+  onUpdatePickupMethod,
+  onRateOrder,
+}: Props) => {
   const [showOrderStateModal, setShowOrderStateModal] = useState(false);
 
   if (!data) {
@@ -62,6 +73,17 @@ export const OrderItem = ({data, onUpdateOrderState, onRateOrder}: Props) => {
           onRateOrder(data.id);
         }}
       />
+      <Row
+        label="Car Color"
+        value={data.customerCarColor ?? 'Click add car color'}
+        onPress={() => {
+          onUpdatePickupMethod({
+            pickupType: PickupType.CURBSIDE,
+            customerCarColor: 'Red',
+          });
+        }}
+      />
+
       <OrderStateModal
         onClose={() => setShowOrderStateModal(false)}
         visible={showOrderStateModal}

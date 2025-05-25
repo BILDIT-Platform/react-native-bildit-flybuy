@@ -70,4 +70,5 @@ abstract class RnFlybuyCoreSpec internal constructor(context: ReactApplicationCo
   abstract fun rateOrder(orderId: Int, rating: Int, comments: String, promise: Promise)
   abstract fun updateOrderCustomerState(orderId: Int, state: String, promise: Promise)
   abstract fun updateOrderCustomerStateWithSpot(orderId: Int, state: String, spot: String, promise: Promise)
+  abstract fun updatePickupMethod(orderId: Int, options: ReadableMap, promise: Promise)
 }

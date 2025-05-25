@@ -185,8 +185,6 @@ fun parseLinkDetails(data: LinkDetails): WritableMap {
   map.putString("url", data.url)
   map.putString("type", data.type.name)
 
-  // TODO: handle orderOptions
-
   val params = Arguments.createMap()
   for ((key, value) in data.params) {
     params.putString(key, value)

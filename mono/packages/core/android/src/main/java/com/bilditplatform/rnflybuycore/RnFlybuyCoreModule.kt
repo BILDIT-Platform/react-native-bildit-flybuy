@@ -98,8 +98,13 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
   @ReactMethod
   override fun parseReferrerUrl(referrerUrl: String, promise: Promise) {
     try {
-      FlyBuyLinks.parseReferrerUrl(referrerUrl)?.let { linkDetails ->
-        promise.resolve(parseLinkDetails(linkDetails))
+      Log.d(TAG, "parseReferrerUrl input: $referrerUrl")
+      val linkDetails = FlyBuyLinks.parseReferrerUrl(referrerUrl)
+      Log.d(TAG, "parseReferrerUrl output: $linkDetails")
+      linkDetails?.let {
+        promise.resolve(parseLinkDetails(it))
+      } ?: run {
+        promise.reject("NULL_LINK_DETAILS", "No link details could be parsed from the referrer URL.")
       }
     } catch (e: FlyBuyRuntimeException) {
       promise.reject(e)

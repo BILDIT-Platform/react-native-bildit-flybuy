@@ -63,6 +63,7 @@ export interface IOrder {
   customerRating?: string;
   customerComment?: string;
   createdAt?: string;
+  orderFiredAt?: string;
 
   siteID: number;
   siteName?: string;
@@ -149,3 +150,17 @@ export type PickupWindow = {
   start: string;
   end: string;
 };
+
+export enum LinkDetailType {
+  DINE_IN = 'dine_in',
+  REDEMPTION = 'redemption',
+  OTHER = 'other'
+}
+
+export type LinkDetails = {
+  url: string;
+  type: LinkDetailType;
+  params: Record<string, string|number|boolean>;
+  // TODO: double check any type
+  orderOptions?: any;
+}

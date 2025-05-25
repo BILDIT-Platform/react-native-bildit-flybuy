@@ -183,7 +183,7 @@ fun parseOrders(items: List<Order>): WritableArray {
 fun parseLinkDetails(data: LinkDetails): WritableMap {
   val map = Arguments.createMap()
   map.putString("url", data.url)
-  map.putString("type", data.type)
+  map.putString("type", data.type.name)
 
   // TODO: handle orderOptions
 

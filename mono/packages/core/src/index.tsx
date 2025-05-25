@@ -8,6 +8,7 @@ import type {
   IOrder,
   IPlace,
   ISite,
+  LinkDetails,
   OrderStateType,
   PickupType,
   PlaceType,
@@ -55,6 +56,15 @@ export function updatePushToken(token: string): Promise<void> {
 
 export function handleRemoteNotification(data: any): Promise<void> {
   return RnFlybuyCore.handleRemoteNotification(data);
+}
+
+export function parseReferrerUrl(referrerUrl: string): Promise<LinkDetails> {
+  if (Platform.OS === 'ios') {
+    return new Promise((_, reject) => {
+      reject(new Error('Not implemented'));
+    });
+  }
+  return RnFlybuyCore.parseReferrerUrl(referrerUrl);
 }
 
 // customer functions
@@ -206,6 +216,10 @@ function rateOrder(
   return RnFlybuyCore.rateOrder(orderId, rating, comments);
 }
 
+type ILinks = {
+  parseReferrerUrl(referrerUrl: string): Promise<LinkDetails>;
+};
+
 type ICustomers = {
   loginWithToken(code: string): Promise<any>;
   login(email: string, password: string): Promise<any>;
@@ -214,6 +228,10 @@ type ICustomers = {
   createCustomer(customerInfo: ICustomerInfo): Promise<ICustomer>;
   updateCustomer(customerInfo: ICustomerInfo): Promise<ICustomer>;
   getCurrentCustomer(): Promise<ICustomer>;
+};
+
+export const Links: ILinks = {
+  parseReferrerUrl,
 };
 
 export const Customer: ICustomers = {

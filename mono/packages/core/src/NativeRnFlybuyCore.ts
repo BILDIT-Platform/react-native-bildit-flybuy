@@ -9,6 +9,7 @@ import type {
   IOrder,
   IPlace,
   ISite,
+  LinkDetails,
   OrderStateType,
   PickupType,
   PlaceType,
@@ -83,6 +84,9 @@ export interface Spec extends TurboModule {
     spot: string
   ): Promise<IOrder>;
   rateOrder(orderId: number, rating: number, comments: string): Promise<IOrder>;
+
+  // Deeplinks
+  parseReferrerUrl(referrerUrl: string): Promise<LinkDetails>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('RnFlybuyCore');

@@ -375,28 +375,84 @@ RCT_EXPORT_METHOD(rateOrder:(NSInteger)orderId
     }];
 }
 
+RCT_EXPORT_METHOD(updatePickupMethod:(NSInteger)orderId
+                  withOptions: (NSDictionary *)options
+                 withResolver:(RCTPromiseResolveBlock)resolve
+               withRejecter:(RCTPromiseRejectBlock)reject)
+{
+  NSString *pickupType = options[@"pickupType"] ?: @"pickup";
+  NSString *customerCarColor = options[@"customerCarColor"];
+  NSString *customerCarType = options[@"customerCarType"];
+  NSString *customerLicensePlate = options[@"customerLicensePlate"];
+  NSString *handoffVehicleLocation = options[@"handoffVehicleLocation"];
+  
+  FlyBuyPickupMethodOptionsBuilder* builder = [[FlyBuyPickupMethodOptionsBuilder alloc] initWithPickupType:pickupType];
+  
+  FlyBuyPickupMethodOptions* pickupMethodOptions = [builder build];
+  
+  if (customerCarType != NULL) {
+    builder = [builder setCustomerCarType:customerCarType];
+  }
+  if (customerCarType != NULL) {
+    builder = [builder setCustomerCarColor:customerCarType];
+  }
+  if (customerLicensePlate != NULL) {
+    builder = [builder setCustomerLicensePlate:customerLicensePlate];
+  }
+  if (handoffVehicleLocation != NULL) {
+    builder = [builder setHandoffVehicleLocation:handoffVehicleLocation];
+  }
+  
+  [[FlyBuyCore orders] updatePickupMethodWithOrderID:orderId pickupMethodOptions:pickupMethodOptions callback:^(FlyBuyOrder *order, NSError *error) {
+    if (error) {
+        reject(error.localizedDescription, error.debugDescription, error);
+    } else {
+        resolve([self parseOrder:order]);
+    }
+  }];
+
+}
+
 RCT_EXPORT_METHOD(placesSuggest:(NSString *)query
                   withOptions: (NSDictionary *)options
                  withResolver:(RCTPromiseResolveBlock)resolve
                withRejecter:(RCTPromiseRejectBlock)reject)
 {
+  FlyBuyPlaceOptionsBuilder* builder = [[FlyBuyPlaceOptionsBuilder alloc] init];
+  
   NSNumber *type = options[@"type"] ?: @(0);
   double latitude = [options[@"latitude"] doubleValue];
   double longitude = [options[@"longitude"] doubleValue];
+  NSString *countryCode = options[@"countryCode"];
+  
+  // Handle single country code
+  if (countryCode != NULL) {
+    builder = [builder addCountryCode:countryCode];
+  }
+  
+  // Handle countryCodes (NSArray<NSString *>)
+  NSArray<NSString *> *countryCodes = options[@"countryCodes"];
+  if ([countryCodes isKindOfClass:[NSArray class]]) {
+    NSMutableArray<NSString *> *codes = [NSMutableArray array];
+    for (id code in countryCodes) {
+      if ([code isKindOfClass:[NSString class]]) {
+        builder = [builder addCountryCode:code];
+      }
+    }
+    
+  }
 
+  NSArray<NSNumber *> *placeTypes = options[@"placeTypes"];
+  if ([placeTypes isKindOfClass:[NSArray class]]) {
+    for (id num in placeTypes) {
+      if ([num isKindOfClass:[NSNumber class]]) {
+        builder = [builder addType:[self placeTypeForNumber:num]];
+      }
+    }
+  }
 
-  FlyBuyPlaceOptionsBuilder* builder = [[FlyBuyPlaceOptionsBuilder alloc] init];
-
-  if ([type  isEqual: @(0)]) {
-    builder = [builder setType: PlaceTypeAddress];
-  } else if ([type   isEqual: @(1)]) {
-    builder = [builder setType: PlaceTypeRegion];
-  } else if ([type  isEqual: @(2)]) {
-    builder = [builder setType: PlaceTypeRegion];
-  } else if ([type  isEqual: @(3)]) {
-    builder = [builder setType: PlaceTypeCity];
-  } else if ([type  isEqual: @(4)]) {
-    builder = [builder setType: PlaceTypePoi];
+  if (type != NULL) {
+    builder = [builder setType:[self placeTypeForNumber:type]];
   }
 
   if (latitude && longitude) {
@@ -438,7 +494,22 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
   }];
 }
 
-
+// Utils
+- (PlaceType)placeTypeForNumber:(NSNumber *)type {
+  switch ([type integerValue]) {
+    case 0:
+      return PlaceTypeAddress;
+    case 1:
+    case 2:
+      return PlaceTypeRegion;
+    case 3:
+      return PlaceTypeCity;
+    case 4:
+      return PlaceTypePoi;
+    default:
+      return PlaceTypeAddress;
+  }
+}
 
 // Parser
 - (NSDictionary<NSString *, NSString *> *)parseCustomerInfo:(FlyBuyCustomerInfo *)info {
@@ -548,6 +619,7 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
         @"redemptionCode": order.redemptionCode ?: [NSNull null],
         @"redeemedAt": order.redeemedAt.description ?: [NSNull null],
         @"createdAt": order.createdAt.description ?: [NSNull null],
+        @"orderFiredAt": order.orderFiredAt.description ?: [NSNull null],
         @"customerRating": order.customerRating ?: [NSNull null],
         @"customerComment": order.customerComment ?: [NSNull null],
 

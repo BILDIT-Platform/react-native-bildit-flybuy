@@ -5,7 +5,7 @@ import {Button, SectionTitle} from './components';
 
 export const LinksSection = () => {
   const parseReferrerUrl = async () => {
-    const url = 'https://pickup.example.com/m/o?r=CODE';
+    const url = 'utm_source=flybuy&utm_content=flyb.uy/m/o?r=CODE';
     const referrer = await FlyBuyCore.parseReferrerUrl(url);
     console.log('referrer', referrer);
   };

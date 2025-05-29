@@ -211,12 +211,22 @@ FlyBuyCore.Orders.rateOrder(46084566, 5, 'Awesome!');
 
 ## Listen to orders update
 
-Set up event listeners to get updates about orders.
+Set up event listeners to get updates about orders. 
+
+You need to invoke the  `startObserver`  function so that the wrapper can listen to the FlyBuy Order live data event and forward it as React Native event
 
 #### Example
 
 ```jsx
-// TODO: check this again
+// App.tsx
+React.useEffect(() => {
+    FlyBuyCore.startObserver();
+    return () => {
+      FlyBuyCore.stopObserver();
+    };
+  }, []);
+
+
 React.useEffect(() => {
   const eventListener = FlyBuyCore.eventEmitter.addListener(
     'orderUpdated',

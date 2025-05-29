@@ -28,6 +28,18 @@ react-native link react-native-bildit-flybuy-core
 
 Refer to the [Flybuy Documentation on configuring permissions](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/ios?id=setting-permissions) on iOS.
 
+#### Fix Development Build
+
+By default, you don't have to modify the Podfile to run this library. If you have issue with dynamic framework, you can include the library as static framework by adding this code in Podfile.
+
+```
+  $static_framework += [
+    # adjust the packages that you used in your project.
+    'bildit-platform-rn-flybuy-core',
+    'bildit-platform-rn-flybuy-pickup'
+  ]
+```
+
 #### Fix Release Build
 
 If you have trouble running the app in Release mode with error `Undefined symbol: _OBJC_CLASS_$_Flybuy`, you can fix it by changing your project `Build Settings` and set `Build Active Architecture Only` to `Yes`.

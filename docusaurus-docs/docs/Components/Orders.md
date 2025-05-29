@@ -172,6 +172,32 @@ FlyBuyCore.Orders.updateOrderState(46084566, 'ready');
 FlyBuyCore.Orders.updateOrderCustomerState(46084566, 'departed');
 ```
 
+## Update Order Pickup Method
+
+#### Params
+
+| Name         | Type                                    | Example                                                                                                      |
+| ------------ | --------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| pid          | Str                                     | `'9898899'`                                                                                                  |
+| options | [`PickupMethodOptions`](../Types/PickupMethodOptions) | `{pickupType: 'pickup',customerCarColor: 'Red',customerCarType: 'Tesla',customerLicensePlate: 'AB 0496',handoffVehicleLocation: 'everywhere'}` |
+
+#### Example
+
+```js
+FlyBuyCore.Orders.updatePickupMethod(
+  '9898899',
+  {
+    pickupType: 'pickup',
+    customerCarColor: 'Red',
+    customerCarType: 'Tesla',
+    customerLicensePlate: 'AB 0496',
+    handoffVehicleLocation: 'everywhere'
+  }
+)
+.then(order => console.log('updatePickupMethod', order))
+.catch(err => console.log(err));;
+```
+
 
 ## Send spot identifier
 

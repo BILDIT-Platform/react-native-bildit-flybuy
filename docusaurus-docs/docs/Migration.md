@@ -19,11 +19,3 @@ Remove `"react-native-bildit-flybuy"` from package.json dependencies, and includ
     "react-native-bildit-flybuy-presence": "2.20.4"
   }
 ```
-
-
-
-:::info
-
-Version 2.20.x only tested on React Native version 0.74.x. This wrapper should work with any latest React Native version.
-
-:::

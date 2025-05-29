@@ -20,6 +20,13 @@ cd ios && pod install
 react-native link react-native-bildit-flybuy-core
 ```
 
+:::info
+
+This wrapper only tested on React Native version 0.74.x. This wrapper should work with any latest React Native version that using Android Gradle Plugin version 8.2.1 or more. Minimum deployment target for iOS is 13.4
+
+:::
+
+
 ## Post-install Steps
 
 ### iOS

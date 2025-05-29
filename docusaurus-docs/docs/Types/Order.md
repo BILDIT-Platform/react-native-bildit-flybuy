@@ -48,3 +48,4 @@ sidebar_position: 4
 - [`updateOrderState`](../../docs/Components/Orders#update-order-state)
 - [`updateOrderCustomerState`](../../docs/Components/Orders#update-order-customer-state)
 - [`rateOrder`](../../docs/Components/Orders#rate-order)
+- [`updatePickuMethod`](../../docs/Components/Orders#update-order-pickup-method)

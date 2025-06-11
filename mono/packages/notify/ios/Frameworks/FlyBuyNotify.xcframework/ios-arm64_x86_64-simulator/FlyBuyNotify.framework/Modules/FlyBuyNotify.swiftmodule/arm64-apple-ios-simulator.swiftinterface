@@ -95,10 +95,12 @@ extension FlyBuyNotify.Manager : FlyBuy.FlyBuyModuleManager {
   }
   @objc deinit
 }
-extension FlyBuyNotify.Manager {
+extension FlyBuyNotify.Manager : FlyBuy.NotificationHandler {
   @objc dynamic public func sync(force: Swift.Bool = false, callback: (((any Swift.Error)?) -> Swift.Void)? = nil)
   @objc dynamic public func performFetchWithCompletionHandler(_ completionHandler: ((UIKit.UIBackgroundFetchResult) -> Swift.Void)? = nil)
+  @available(*, deprecated, message: "This method for handling notification responses is deprecated. Use FlyBuy.Core.handleNotification(response:) instead")
   @objc dynamic public func handleNotification(_ response: UserNotifications.UNNotificationResponse) -> [Swift.String : Swift.String]?
+  public func handle(response: UserNotifications.UNNotificationResponse) -> [Swift.String : Swift.String]?
 }
 extension FlyBuyNotify.NotifyErrorType : Swift.Equatable {}
 extension FlyBuyNotify.NotifyErrorType : Swift.Hashable {}

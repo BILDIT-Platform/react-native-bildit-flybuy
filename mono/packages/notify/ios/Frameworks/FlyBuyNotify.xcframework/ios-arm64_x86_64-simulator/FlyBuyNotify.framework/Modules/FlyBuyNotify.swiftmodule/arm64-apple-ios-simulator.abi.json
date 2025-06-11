@@ -1997,10 +1997,62 @@
             "usr": "c:@CM@FlyBuyNotify@objc(cs)FlyBuyNotifyManager(im)handleNotification:",
             "mangledName": "$s12FlyBuyNotify7ManagerC18handleNotificationySDyS2SGSgSo22UNNotificationResponseCF",
             "moduleName": "FlyBuyNotify",
+            "deprecated": true,
             "declAttributes": [
               "Dynamic",
               "AccessControl",
-              "ObjC"
+              "ObjC",
+              "Available"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "handle",
+            "printedName": "handle(response:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Swift.String]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UNNotificationResponse",
+                "printedName": "UserNotifications.UNNotificationResponse",
+                "usr": "c:objc(cs)UNNotificationResponse"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FlyBuyNotify7ManagerC6handle8responseSDyS2SGSgSo22UNNotificationResponseC_tF",
+            "mangledName": "$s12FlyBuyNotify7ManagerC6handle8responseSDyS2SGSgSo22UNNotificationResponseC_tF",
+            "moduleName": "FlyBuyNotify",
+            "declAttributes": [
+              "AccessControl"
             ],
             "isFromExtension": true,
             "funcSelfKind": "NonMutating"
@@ -2091,6 +2143,13 @@
             "printedName": "FlyBuyModuleManager",
             "usr": "s:6FlyBuy0aB13ModuleManagerP",
             "mangledName": "$s6FlyBuy0aB13ModuleManagerP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "NotificationHandler",
+            "printedName": "NotificationHandler",
+            "usr": "s:6FlyBuy19NotificationHandlerP",
+            "mangledName": "$s6FlyBuy19NotificationHandlerP"
           }
         ]
       },
@@ -4031,91 +4090,91 @@
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
       "kind": "BooleanLiteral",
-      "offset": 5223,
+      "offset": 5275,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
       "kind": "Dictionary",
-      "offset": 14184,
+      "offset": 14236,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
       "kind": "IntegerLiteral",
-      "offset": 21707,
+      "offset": 21759,
       "length": 28,
       "value": "1"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
       "kind": "IntegerLiteral",
-      "offset": 21743,
+      "offset": 21795,
       "length": 26,
       "value": "2"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
       "kind": "IntegerLiteral",
-      "offset": 21777,
+      "offset": 21829,
       "length": 25,
       "value": "3"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
       "kind": "IntegerLiteral",
-      "offset": 21810,
+      "offset": 21862,
       "length": 19,
       "value": "4"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
       "kind": "IntegerLiteral",
-      "offset": 21837,
+      "offset": 21889,
       "length": 22,
       "value": "5"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
       "kind": "IntegerLiteral",
-      "offset": 21867,
+      "offset": 21919,
       "length": 25,
       "value": "6"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
       "kind": "IntegerLiteral",
-      "offset": 21900,
+      "offset": 21952,
       "length": 15,
       "value": "7"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
       "kind": "IntegerLiteral",
-      "offset": 21923,
+      "offset": 21975,
       "length": 33,
       "value": "8"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
       "kind": "IntegerLiteral",
-      "offset": 21964,
+      "offset": 22016,
       "length": 30,
       "value": "9"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
       "kind": "BooleanLiteral",
-      "offset": 25030,
+      "offset": 25102,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyNotify\/Manager.swift",
       "kind": "BooleanLiteral",
-      "offset": 34761,
+      "offset": 35113,
       "length": 5,
       "value": "false"
     }

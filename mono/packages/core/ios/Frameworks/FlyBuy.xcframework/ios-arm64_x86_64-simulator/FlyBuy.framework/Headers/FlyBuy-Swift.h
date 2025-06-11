@@ -386,6 +386,7 @@ SWIFT_CLASS_NAMED("Coordinate")
 @class FlyBuyPlacesManager;
 @class FlyBuyLogger;
 @class NSUUID;
+@class UNNotificationResponse;
 @class NSData;
 /// The main access point for Core functionality
 /// See <a href="https://www.radiusnetworks.com/developers/flybuy/#/">Flybuy Developer Docs</a> for additional details including all setup steps.
@@ -438,6 +439,37 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyLogger
 /// \param data contains the <code>userInfo</code> data from a remote notification
 ///
 + (void)handleRemoteNotification:(NSDictionary * _Nonnull)data;
+/// Handles the response to clicking a notification, looking up any associated data. This will open a deep link if present.
+/// handleNotification() takes a notification response, looks up any associated data, opens the associated deep link if present, and returns the metadata associated with the Notify campaign if applicable. If the metadata object is not nil, then the notification came from a campaign, and the metadata can be used to decide what to do. Otherwise, handle the notification normally.
+/// note:
+/// As a prerequisite, the delegate for UNUserNotificationCenter must be assigned before the app finishes launching.
+/// note:
+/// This will return nil if the notification is not handled by Flybuy.
+/// note:
+/// To receive notifications while the app is in the foreground, the app must also implement UNUserNotificationCenter‘s delegate method userNotificationCenter(_:willPresent:withCompletionHandler:) as noted in the example.
+/// Example:
+/// \code
+/// extension AppDelegate: UNUserNotificationCenterDelegate{
+/// func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+/// if let metadata = FlyBuy.Core.handleNotification(response), metadata.isEmpty == false {
+/// // This is a Flybuy notification.
+/// } else {
+/// // Handle other notifications here
+/// }
+/// completionHandler()
+/// }
+///
+/// // Enables app to receive notifications while in the foreground
+/// func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+/// completionHandler([.badge, .sound, .alert])
+/// }
+/// }
+///
+///
+/// \endcode
+/// returns:
+/// The associated meta data
++ (NSDictionary<NSString *, NSString *> * _Nullable)handleNotification:(UNNotificationResponse * _Nonnull)response SWIFT_WARN_UNUSED_RESULT;
 /// Updates the push token that FlyBuy uses to send push messages to the app.
 + (void)updatePushToken:(NSString * _Nonnull)newPushToken;
 /// Updates the APNs device token that FlyBuy uses to send pushes to the app. This should only be used
@@ -1996,6 +2028,7 @@ SWIFT_CLASS_NAMED("Coordinate")
 @class FlyBuyPlacesManager;
 @class FlyBuyLogger;
 @class NSUUID;
+@class UNNotificationResponse;
 @class NSData;
 /// The main access point for Core functionality
 /// See <a href="https://www.radiusnetworks.com/developers/flybuy/#/">Flybuy Developer Docs</a> for additional details including all setup steps.
@@ -2048,6 +2081,37 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyLogger
 /// \param data contains the <code>userInfo</code> data from a remote notification
 ///
 + (void)handleRemoteNotification:(NSDictionary * _Nonnull)data;
+/// Handles the response to clicking a notification, looking up any associated data. This will open a deep link if present.
+/// handleNotification() takes a notification response, looks up any associated data, opens the associated deep link if present, and returns the metadata associated with the Notify campaign if applicable. If the metadata object is not nil, then the notification came from a campaign, and the metadata can be used to decide what to do. Otherwise, handle the notification normally.
+/// note:
+/// As a prerequisite, the delegate for UNUserNotificationCenter must be assigned before the app finishes launching.
+/// note:
+/// This will return nil if the notification is not handled by Flybuy.
+/// note:
+/// To receive notifications while the app is in the foreground, the app must also implement UNUserNotificationCenter‘s delegate method userNotificationCenter(_:willPresent:withCompletionHandler:) as noted in the example.
+/// Example:
+/// \code
+/// extension AppDelegate: UNUserNotificationCenterDelegate{
+/// func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+/// if let metadata = FlyBuy.Core.handleNotification(response), metadata.isEmpty == false {
+/// // This is a Flybuy notification.
+/// } else {
+/// // Handle other notifications here
+/// }
+/// completionHandler()
+/// }
+///
+/// // Enables app to receive notifications while in the foreground
+/// func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+/// completionHandler([.badge, .sound, .alert])
+/// }
+/// }
+///
+///
+/// \endcode
+/// returns:
+/// The associated meta data
++ (NSDictionary<NSString *, NSString *> * _Nullable)handleNotification:(UNNotificationResponse * _Nonnull)response SWIFT_WARN_UNUSED_RESULT;
 /// Updates the push token that FlyBuy uses to send push messages to the app.
 + (void)updatePushToken:(NSString * _Nonnull)newPushToken;
 /// Updates the APNs device token that FlyBuy uses to send pushes to the app. This should only be used

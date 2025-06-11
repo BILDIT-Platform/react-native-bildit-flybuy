@@ -376,7 +376,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyNotify
 /// \endcode\param completionHandler The completion handler that is passed to the appdelegate by iOS.
 ///
 - (void)performFetchWithCompletionHandler:(void (^ _Nullable)(UIBackgroundFetchResult))completionHandler;
-- (NSDictionary<NSString *, NSString *> * _Nullable)handleNotification:(UNNotificationResponse * _Nonnull)response SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, NSString *> * _Nullable)handleNotification:(UNNotificationResponse * _Nonnull)response SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method for handling notification responses is deprecated. Use FlyBuy.Core.handleNotification(response:) instead");
 @end
 
 /// Data model for notification info provided to Notify V1.
@@ -803,7 +803,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyNotify
 /// \endcode\param completionHandler The completion handler that is passed to the appdelegate by iOS.
 ///
 - (void)performFetchWithCompletionHandler:(void (^ _Nullable)(UIBackgroundFetchResult))completionHandler;
-- (NSDictionary<NSString *, NSString *> * _Nullable)handleNotification:(UNNotificationResponse * _Nonnull)response SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, NSString *> * _Nullable)handleNotification:(UNNotificationResponse * _Nonnull)response SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method for handling notification responses is deprecated. Use FlyBuy.Core.handleNotification(response:) instead");
 @end
 
 /// Data model for notification info provided to Notify V1.

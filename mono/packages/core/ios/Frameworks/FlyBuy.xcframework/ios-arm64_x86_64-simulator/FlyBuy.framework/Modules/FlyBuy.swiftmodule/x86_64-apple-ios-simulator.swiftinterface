@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
-// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name FlyBuy
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name FlyBuy
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
 import CoreBluetooth
 import CoreLocation
 @_exported import FlyBuy
@@ -97,9 +98,9 @@ extension FlyBuy.PickupLocationFilterData {
   required public init(from decoder: any Swift.Decoder) throws
 }
 public struct BeaconIdentifiers : Swift.Hashable, Swift.Codable {
-  public func hash(into hasher: inout Swift.Hasher)
   public static func == (a: FlyBuy.BeaconIdentifiers, b: FlyBuy.BeaconIdentifiers) -> Swift.Bool
   public func encode(to encoder: any Swift.Encoder) throws
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
@@ -175,6 +176,17 @@ extension FlyBuy.Site {
     @objc get
   }
 }
+public enum PushServiceType : Swift.String, Swift.Codable {
+  case fcm
+  case airship
+  case oneSignal
+  case apns
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 @objc(FlyBuyGeofence) open class Geofence : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let latitude: Swift.String
   @objc final public let longitude: Swift.String
@@ -202,6 +214,24 @@ final public class PersistManager : FlyBuy.FlyBuyDBProtocol {
   final public var dbManager: FlyBuy.FlyBuyDBManager
   final public var needsInit: Swift.Bool
   public init(atPath path: Swift.String = PersistManager.defaultDBPath, migrate: Swift.Bool = true)
+  @objc deinit
+}
+@objc(FlyBuyPickupMethodOptions) public class PickupMethodOptions : ObjectiveC.NSObject {
+  @objc final public let customerCarColor: Swift.String?
+  @objc final public let customerCarType: Swift.String?
+  @objc final public let customerLicensePlate: Swift.String?
+  @objc final public let pickupType: Swift.String
+  @objc final public let handoffVehicleLocation: Swift.String?
+  @objc public init(customerCarColor: Swift.String?, customerCarType: Swift.String?, customerLicensePlate: Swift.String?, pickupType: Swift.String, handoffVehicleLocation: Swift.String?)
+  @objc(FlyBuyPickupMethodOptionsBuilder) public class Builder : ObjectiveC.NSObject {
+    @objc public init(pickupType: Swift.String)
+    @objc public func setCustomerCarColor(_ customerCarColor: Swift.String?) -> FlyBuy.PickupMethodOptions.Builder
+    @objc public func setCustomerCarType(_ customerCarType: Swift.String?) -> FlyBuy.PickupMethodOptions.Builder
+    @objc public func setCustomerLicensePlate(_ customerLicensePlate: Swift.String?) -> FlyBuy.PickupMethodOptions.Builder
+    @objc public func setHandoffVehicleLocation(_ handoffVehicleLocation: Swift.String?) -> FlyBuy.PickupMethodOptions.Builder
+    @objc public func build() -> FlyBuy.PickupMethodOptions
+    @objc deinit
+  }
   @objc deinit
 }
 @objc public enum LocationAuthStatus : Swift.Int, Swift.Codable {
@@ -450,6 +480,11 @@ extension FlyBuy.BaseApiRequest {
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
+public class FirebaseTopicSubscriber : FlyBuy.PushTopicSubscriber {
+  public init()
+  public func subscribeToTopics(newTopics: Swift.Set<FlyBuy.PushTopic>, storedTopics: Swift.Set<FlyBuy.PushTopic>, completion: @escaping (_ subscribedTopics: Swift.Set<FlyBuy.PushTopic>?, _ errors: [any Swift.Error]?) -> Swift.Void)
+  @objc deinit
+}
 @objc(FlyBuyOrderEvent) open class OrderEvent : ObjectiveC.NSObject, Swift.Encodable {
   public init(orderID: Swift.Int, location: CoreLocation.CLLocation, beacons: [FlyBuy.Beacon], etaSeconds: Foundation.NSNumber?, etaSource: Swift.String?, possibleWrongSiteId: Swift.Int?, clientEtaExpiry: Swift.Int?, clientEtaAttempted: Swift.Bool?, clientEtaLog: Swift.String?)
   public init(orderID: Swift.Int, customerState: Swift.String, etaSeconds: Foundation.NSNumber?, etaSource: Swift.String?, location: CoreLocation.CLLocation? = nil)
@@ -458,12 +493,13 @@ extension FlyBuy.BaseApiRequest {
   public init(orderID: Swift.Int, locationAuthStatus: FlyBuy.LocationAuthStatus)
   public init(orderID: Swift.Int, customerRating: Swift.Int, customerComments: Swift.String?)
   public init(orderID: Swift.Int, pickupType: Swift.String)
+  public init(orderID: Swift.Int, eventType: Swift.String, longitude: Swift.Double? = nil, latitude: Swift.Double? = nil, accuracy: Swift.Double? = nil, speed: Swift.Double? = nil, etaSeconds: Swift.Int? = nil, etaSource: Swift.String? = nil, customerState: Swift.String? = nil, state: Swift.String? = nil, beacons: [FlyBuy.Beacon]? = nil, locationAuthStatus: FlyBuy.LocationAuthStatus? = nil, customerRating: Swift.Int? = nil, customerComments: Swift.String? = nil, spotIdentifier: Swift.String? = nil, possibleWrongSiteId: Swift.Int? = nil, locationAt: Swift.String? = nil, clientEtaExpiry: Swift.Int? = nil, clientEtaAttempted: Swift.Bool? = nil, clientEtaLog: Swift.String? = nil, pickupType: Swift.String? = nil, handoffVehicleLocation: Swift.String? = nil, customerCarType: Swift.String? = nil, customerCarColor: Swift.String? = nil, customerLicensePlate: Swift.String? = nil)
   @objc deinit
   open func encode(to encoder: any Swift.Encoder) throws
 }
 @_hasMissingDesignatedInitializers @objc(FlyBuyCoordinate) public class Coordinate : ObjectiveC.NSObject {
-  final public let latitude: Swift.Double
-  final public let longitude: Swift.Double
+  @objc final public let latitude: Swift.Double
+  @objc final public let longitude: Swift.Double
   @objc deinit
 }
 public struct AppConfigData : Swift.Codable {
@@ -476,6 +512,8 @@ public struct AppConfigData : Swift.Codable {
   public let wrongSiteArrivalConfig: FlyBuy.WrongSiteArrivalConfig?
   public let etaSettings: FlyBuy.ETAConfig?
   public let places: FlyBuy.PlacesConfig?
+  public let pushServiceType: FlyBuy.PushServiceType?
+  public let pushTopics: Swift.Set<FlyBuy.PushTopic>?
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -489,13 +527,18 @@ public struct BeaconRegion : Swift.Codable, Swift.Hashable {
   public let major: Swift.UInt16?
   public let minor: Swift.UInt16?
   public func region() -> CoreLocation.CLBeaconRegion
-  public func hash(into hasher: inout Swift.Hasher)
   public static func == (a: FlyBuy.BeaconRegion, b: FlyBuy.BeaconRegion) -> Swift.Bool
   public func encode(to encoder: any Swift.Encoder) throws
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
   public init(from decoder: any Swift.Decoder) throws
+}
+public class AirshipTopicSubscriber : FlyBuy.PushTopicSubscriber {
+  public init()
+  public func subscribeToTopics(newTopics: Swift.Set<FlyBuy.PushTopic>, storedTopics: Swift.Set<FlyBuy.PushTopic>, completion: @escaping (_ subscribedTopics: Swift.Set<FlyBuy.PushTopic>?, _ errors: [any Swift.Error]?) -> Swift.Void)
+  @objc deinit
 }
 public protocol FlyBuyModuleManager {
   func configUpdated(_ config: FlyBuy.AppConfig, pushData: FlyBuy.PushData?)
@@ -510,6 +553,7 @@ extension FlyBuy.FlyBuyModuleManager {
   @objc public static let customer: FlyBuy.CustomerManager
   @objc public static let sites: FlyBuy.SitesManager
   @objc public static let places: FlyBuy.PlacesManager
+  public static let notifications: FlyBuy.NotificationsManager
   @objc public static let logger: FlyBuy.Logger
   public static var isCoreConfigured: Swift.Bool {
     get
@@ -517,16 +561,33 @@ extension FlyBuy.FlyBuyModuleManager {
   public static var deferredLocationTracking: Swift.Bool {
     get
   }
-  @objc public static func setAppInstanceIDUpdatedListener(callback: ((Foundation.UUID) -> (Swift.Void))? = nil)
+  @objc public static func setAppInstanceIDUpdatedListener(callback: ((Foundation.UUID) -> Swift.Void)? = nil)
   @available(*, deprecated, message: "This method for configuring Flybuy Core has been deprecated. Use FlyBuy.Core.configure(withOptions configOptions: ConfigOptions) instead.")
   @objc public static func configure(_ opts: [Swift.String : Any])
   @objc public static func configure(withOptions configOptions: FlyBuy.ConfigOptions)
   public static func appInstanceID() -> Foundation.UUID
   @objc public static func handleRemoteNotification(_ data: [Swift.AnyHashable : Any])
+  @objc public static func handleNotification(_ response: UserNotifications.UNNotificationResponse) -> [Swift.String : Swift.String]?
   @objc public static func updatePushToken(_ newPushToken: Swift.String)
   @objc public static func updateAPNPushToken(_ deviceToken: Foundation.Data)
   public static func cancelRunningURLSessions()
   @objc deinit
+}
+@objc public class PushTopic : ObjectiveC.NSObject, Swift.Codable {
+  final public let id: Swift.Int
+  final public let pushTopicType: Swift.String
+  final public let topic: Swift.String
+  final public let timezone: Swift.String?
+  final public let pushServicesTopics: FlyBuy.PushServicesTopics
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+extension FlyBuy.PushTopic {
+  @objc override dynamic public var hash: Swift.Int {
+    @objc get
+  }
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
 }
 public struct RuntimeError : Swift.Error, Swift.Codable {
   public var localizedDescription: Swift.String {
@@ -556,6 +617,11 @@ extension Swift.Error {
   @objc final public let pickupType: Swift.String?
   @objc final public let spotIdentifier: Swift.String?
   @objc final public let handoffVehicleLocation: Swift.String?
+  @objc final public let partnerIdentifierForCustomer: Swift.String?
+  @objc final public let partnerIdentifierForCrew: Swift.String?
+  final public let disableOrderFire: Swift.Bool?
+  final public let disablePromiseTimeScheduling: Swift.Bool?
+  final public let orderFireMakeIntervalSeconds: Swift.Int?
   @objc(FlyBuyOrderOptionsBuilder) public class Builder : ObjectiveC.NSObject {
     @objc public init(customerName: Swift.String)
     @objc public func setCustomerName(_ name: Swift.String) -> FlyBuy.OrderOptions.Builder
@@ -569,6 +635,11 @@ extension Swift.Error {
     @objc public func setPickupType(_ pickupType: Swift.String?) -> FlyBuy.OrderOptions.Builder
     @objc public func setSpotIdentifier(_ spotIdentifier: Swift.String?) -> FlyBuy.OrderOptions.Builder
     @objc public func setHandoffVehicleLocation(_ handoffVehicleLocation: Swift.String?) -> FlyBuy.OrderOptions.Builder
+    @objc public func setPartnerIdentifierForCustomer(_ partnerIdentifierForCustomer: Swift.String?) -> FlyBuy.OrderOptions.Builder
+    @objc public func setPartnerIdentifierForCrew(_ partnerIdentifierForCrew: Swift.String?) -> FlyBuy.OrderOptions.Builder
+    @objc public func setDisableOrderFire(_ disableOrderFire: Swift.Bool) -> FlyBuy.OrderOptions.Builder
+    @objc public func setDisablePromiseTimeScheduling(_ disablePromiseTimeScheduling: Swift.Bool) -> FlyBuy.OrderOptions.Builder
+    @objc public func setOrderFireMakeIntervalSeconds(_ orderFireMakeIntervalSeconds: Swift.Int) -> FlyBuy.OrderOptions.Builder
     @objc public func build() -> FlyBuy.OrderOptions
     @objc deinit
   }
@@ -595,6 +666,19 @@ extension FlyBuy._AnyDecodable {
     @objc override dynamic public init()
     @objc deinit
   }
+  @objc deinit
+}
+public class OneSignalTopicSubscriber : FlyBuy.PushTopicSubscriber {
+  public init()
+  public func subscribeToTopics(newTopics: Swift.Set<FlyBuy.PushTopic>, storedTopics: Swift.Set<FlyBuy.PushTopic>, completion: @escaping (_ subscribedTopics: Swift.Set<FlyBuy.PushTopic>?, _ errors: [any Swift.Error]?) -> Swift.Void)
+  @objc deinit
+}
+public protocol NotificationHandler : AnyObject {
+  func handle(response: UserNotifications.UNNotificationResponse) -> [Swift.String : Swift.String]?
+}
+@_hasMissingDesignatedInitializers public class NotificationsManager {
+  public func addNotificationHandler(_ handler: any FlyBuy.NotificationHandler)
+  public func removeNotificationHandler(_ handler: any FlyBuy.NotificationHandler)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(FlyBuyBeaconRegion) public class FlyBuyBeaconRegion : FlyBuy.FlyBuyRegion {
@@ -649,6 +733,13 @@ extension Foundation.DateFormatter {
 extension Swift.Double {
   public func round(to places: Swift.Int) -> Swift.Double
 }
+@objc public class OneSignalTopic : ObjectiveC.NSObject, Swift.Codable {
+  final public let tagKey: Swift.String
+  final public let tagValue: Swift.String
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
 @_hasMissingDesignatedInitializers @objc(FlyBuyCustomer) open class Customer : ObjectiveC.NSObject, Swift.Decodable {
   @objc final public let id: Swift.Int
   @objc final public let token: Swift.String
@@ -681,6 +772,14 @@ public struct PlacesConfig : Swift.Codable {
   @objc public func retrieve(place: FlyBuy.Place, callback: ((FlyBuy.Coordinate?, (any Swift.Error)?) -> Swift.Void)? = nil)
   @objc override dynamic public init()
   @objc deinit
+}
+@objc public class PushServicesTopics : ObjectiveC.NSObject, Swift.Codable {
+  final public let fcm: Swift.String
+  final public let airship: Swift.String
+  final public let oneSignal: FlyBuy.OneSignalTopic
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
 }
 public protocol FlyBuyError : Foundation.LocalizedError {
   var description: Swift.String { get }
@@ -733,9 +832,9 @@ extension Swift.Array where Element : FlyBuy.AvailableHandoffVehicleLocation {
   @objc public var all: [FlyBuy.Site]? {
     get
   }
-  @objc public func fetchByPartnerIdentifier(partnerIdentifier: Swift.String, options: FlyBuy.SiteOptions, callback: ((FlyBuy.Site?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func fetch(region: FlyBuy.FlyBuyCircularRegion, options: FlyBuy.SiteOptions, callback: (([FlyBuy.Site]?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func fetchNear(place: FlyBuy.Place, radius: Swift.Double, options: FlyBuy.SiteOptions, callback: (([FlyBuy.Site]?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc public func fetchByPartnerIdentifier(partnerIdentifier: Swift.String, options: FlyBuy.SiteOptions, callback: ((FlyBuy.Site?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func fetch(region: FlyBuy.FlyBuyCircularRegion, options: FlyBuy.SiteOptions, callback: (([FlyBuy.Site]?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func fetchNear(place: FlyBuy.Place, radius: Swift.Double, options: FlyBuy.SiteOptions, callback: (([FlyBuy.Site]?, (any Swift.Error)?) -> Swift.Void)? = nil)
   @objc override dynamic public init()
   @objc deinit
 }
@@ -762,22 +861,22 @@ extension Swift.Array where Element : FlyBuy.AvailableHandoffVehicleLocation {
   @objc deinit
 }
 extension FlyBuy.SitesManager {
-  @objc dynamic public func fetchByPartnerIdentifier(partnerIdentifier: Swift.String, callback: ((FlyBuy.Site?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc dynamic public func fetchByPartnerIdentifier(partnerIdentifier: Swift.String, operationalStatus: Swift.String = "live", callback: ((FlyBuy.Site?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc dynamic public func fetchByPartnerIdentifier(partnerIdentifier: Swift.String, callback: ((FlyBuy.Site?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc dynamic public func fetchByPartnerIdentifier(partnerIdentifier: Swift.String, operationalStatus: Swift.String = "live", callback: ((FlyBuy.Site?, (any Swift.Error)?) -> Swift.Void)? = nil)
   @available(*, deprecated, message: "This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetchByPartnerIdentifier instead.")
-  @objc dynamic public func fetch(query: Swift.String? = nil, page: Swift.Int = 1, callback: (([FlyBuy.Site]?, FlyBuy.Pagination?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc dynamic public func fetch(query: Swift.String? = nil, page: Swift.Int = 1, callback: (([FlyBuy.Site]?, FlyBuy.Pagination?, (any Swift.Error)?) -> Swift.Void)? = nil)
   @available(*, deprecated, message: "This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetchByPartnerIdentifier instead.")
-  @objc dynamic public func fetch(query: Swift.String? = nil, page: Swift.Int = 1, operationalStatus: Swift.String = "live", callback: (([FlyBuy.Site]?, FlyBuy.Pagination?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc dynamic public func fetch(query: Swift.String? = nil, page: Swift.Int = 1, operationalStatus: Swift.String = "live", callback: (([FlyBuy.Site]?, FlyBuy.Pagination?, (any Swift.Error)?) -> Swift.Void)? = nil)
   @available(*, deprecated, message: "This method for fetching sites has been deprecated. Use FlyBuyCore.sites.fetchByPartnerIdentifier instead.")
-  @objc dynamic public func fetchAll(query: Swift.String? = nil, callback: (([FlyBuy.Site]?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc dynamic public func fetchAll(query: Swift.String? = nil, callback: (([FlyBuy.Site]?, (any Swift.Error)?) -> Swift.Void)? = nil)
   @available(*, deprecated, message: "This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetch(region:, options:) instead.")
-  @objc dynamic public func fetch(region: CoreLocation.CLCircularRegion, page: Swift.Int = 1, operationalStatus: Swift.String = "live", callback: (([FlyBuy.Site]?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc dynamic public func fetch(region: CoreLocation.CLCircularRegion, page: Swift.Int = 1, operationalStatus: Swift.String = "live", callback: (([FlyBuy.Site]?, (any Swift.Error)?) -> Swift.Void)? = nil)
   @available(*, deprecated, message: "This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetch(region:, options:) instead.")
-  @objc dynamic public func fetch(region: CoreLocation.CLCircularRegion, page: Swift.Int, per: Swift.Int, callback: (([FlyBuy.Site]?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc dynamic public func fetch(region: CoreLocation.CLCircularRegion, page: Swift.Int, per: Swift.Int, callback: (([FlyBuy.Site]?, (any Swift.Error)?) -> Swift.Void)? = nil)
   @available(*, deprecated, message: "This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetch(region:, options:) instead.")
-  @objc dynamic public func fetch(region: CoreLocation.CLCircularRegion, page: Swift.Int, per: Swift.Int, operationalStatus: Swift.String = "live", callback: (([FlyBuy.Site]?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc dynamic public func fetch(region: CoreLocation.CLCircularRegion, page: Swift.Int, per: Swift.Int, operationalStatus: Swift.String = "live", callback: (([FlyBuy.Site]?, (any Swift.Error)?) -> Swift.Void)? = nil)
   @available(*, deprecated, message: "This method for fetching sites has been deprecated. Use FlyBuy.Core.sites.fetch(region:, options:) instead.")
-  @objc dynamic public func fetch(region: CoreLocation.CLCircularRegion, page: Swift.Int = 1, callback: (([FlyBuy.Site]?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc dynamic public func fetch(region: CoreLocation.CLCircularRegion, page: Swift.Int = 1, callback: (([FlyBuy.Site]?, (any Swift.Error)?) -> Swift.Void)? = nil)
 }
 public enum RemoteNotificationMessageType : Swift.String {
   case backgroundSync
@@ -849,14 +948,22 @@ extension Swift.String {
   }
   public func removeDirectory()
 }
-@objc public enum PlaceType : Swift.Int {
+@objc public enum PlaceType : Swift.Int, Swift.CaseIterable {
   case address
   case region
   case postalcode
   case city
   case poi
+  public var stringValue: Swift.String {
+    get
+  }
+  public static func from(string: Swift.String) -> FlyBuy.PlaceType?
   public init?(rawValue: Swift.Int)
+  public typealias AllCases = [FlyBuy.PlaceType]
   public typealias RawValue = Swift.Int
+  nonisolated public static var allCases: [FlyBuy.PlaceType] {
+    get
+  }
   public var rawValue: Swift.Int {
     get
   }
@@ -864,11 +971,17 @@ extension Swift.String {
 @objc(FlyBuyPlaceOptions) public class PlaceSuggestionOptions : ObjectiveC.NSObject {
   @objc final public let latitude: Swift.Double
   @objc final public let longitude: Swift.Double
-  @objc final public let type: FlyBuy.PlaceType
-  public init(latitude: Swift.Double, longitude: Swift.Double, type: FlyBuy.PlaceType)
+  final public let types: [FlyBuy.PlaceType]
+  final public let countryCodes: [Swift.String]
+  public init(latitude: Swift.Double, longitude: Swift.Double, types: [FlyBuy.PlaceType], countryCodes: [Swift.String])
   @_inheritsConvenienceInitializers @objc(FlyBuyPlaceOptionsBuilder) public class Builder : ObjectiveC.NSObject {
     @objc public func setProximity(latitude: Swift.Double, longitude: Swift.Double) -> FlyBuy.PlaceSuggestionOptions.Builder
     @objc public func setType(_ type: FlyBuy.PlaceType) -> FlyBuy.PlaceSuggestionOptions.Builder
+    @objc public func addType(_ type: FlyBuy.PlaceType) -> FlyBuy.PlaceSuggestionOptions.Builder
+    public func setTypes(_ types: [FlyBuy.PlaceType]) -> FlyBuy.PlaceSuggestionOptions.Builder
+    @objc public func setCountryCode(_ countryCode: Swift.String) -> FlyBuy.PlaceSuggestionOptions.Builder
+    @objc public func addCountryCode(_ countryCode: Swift.String) -> FlyBuy.PlaceSuggestionOptions.Builder
+    public func setCountryCodes(_ countryCodes: [Swift.String]) -> FlyBuy.PlaceSuggestionOptions.Builder
     @objc public func build() -> FlyBuy.PlaceSuggestionOptions
     @objc override dynamic public init()
     @objc deinit
@@ -905,43 +1018,47 @@ public struct PickupStates : Swift.Codable {
     @objc get
   }
   @objc public var orderStates: [Swift.String]
+  public var openOrderStates: [Swift.String]
   public var deferredOrderStates: [Swift.String]
   @objc public var customerStates: [Swift.String]
+  public var openCustomerStates: [Swift.String]
   public var deferredCustomerStates: [Swift.String]
   @objc override dynamic public init()
-  @objc public func fetch(callback: (([FlyBuy.Order]?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func fetch(withRedemptionCode redemptionCode: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func claim(withRedemptionCode redemptionCode: Swift.String, orderOptions: FlyBuy.OrderOptions, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc public func fetch(callback: (([FlyBuy.Order]?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func fetch(withRedemptionCode redemptionCode: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func claim(withRedemptionCode redemptionCode: Swift.String, orderOptions: FlyBuy.OrderOptions, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)? = nil)
   @available(*, deprecated, message: "This method for claiming an order has been deprecated. Use claim(withRedemptionCode, orderOptions) instead.")
-  @objc public func claim(withRedemptionCode redemptionCode: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc public func claim(withRedemptionCode redemptionCode: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)? = nil)
   @available(*, deprecated, message: "This method for creating an order has been deprecated. Use create(siteID, orderOptions) instead.")
-  @objc public func create(sitePartnerIdentifier: Swift.String, orderPartnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, state: Swift.String? = nil, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))?)
+  @objc public func create(sitePartnerIdentifier: Swift.String, orderPartnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, state: Swift.String? = nil, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)?)
   @available(*, deprecated, message: "This method for creating an order has been deprecated. Use create(siteID, orderOptions) instead.")
-  @objc public func create(sitePartnerIdentifier: Swift.String, orderPartnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, state: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))?)
+  @objc public func create(sitePartnerIdentifier: Swift.String, orderPartnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, state: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)?)
   @available(*, deprecated, message: "This method for creating an order has been deprecated. Use create(siteID, orderOptions) instead.")
-  @objc public func create(sitePartnerIdentifier: Swift.String, orderPartnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))?)
+  @objc public func create(sitePartnerIdentifier: Swift.String, orderPartnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)?)
   @available(*, deprecated, message: "This method for creating an order has been deprecated. Use create(siteID, orderOptions) instead.")
-  @objc public func create(sitePartnerIdentifier: Swift.String, orderPartnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))?)
+  @objc public func create(sitePartnerIdentifier: Swift.String, orderPartnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)?)
   @available(*, deprecated, message: "This method for creating an order has been deprecated. Use create(siteID, orderOptions) instead.")
-  @objc public func create(sitePartnerIdentifier: Swift.String, orderPartnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, state: Swift.String?, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))?)
+  @objc public func create(sitePartnerIdentifier: Swift.String, orderPartnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, state: Swift.String?, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)?)
   @available(*, deprecated, message: "This method for creating an order has been deprecated. Use create(siteID, orderOptions) instead.")
-  @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, state: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))?)
+  @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, state: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)?)
   @available(*, deprecated, message: "This method for creating an order has been deprecated. Use create(siteID, orderOptions) instead.")
-  @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, state: Swift.String, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))?)
+  @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, state: Swift.String, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)?)
   @available(*, deprecated, message: "This method for creating an order has been deprecated. Use create(siteID, orderOptions) instead.")
-  @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))?)
+  @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)?)
   @available(*, deprecated, message: "This method for creating an order has been deprecated. Use create(siteID, orderOptions) instead.")
-  @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))?)
+  @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, pickupWindow: FlyBuy.PickupWindow? = nil, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)?)
   @available(*, deprecated, message: "This method for creating an order has been deprecated. Use create(siteID, orderOptions) instead.")
-  @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, state: Swift.String?, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))?)
-  @objc public func create(siteID: Swift.Int, orderOptions: FlyBuy.OrderOptions, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))?)
-  @objc public func create(sitePartnerIdentifier: Swift.String, orderOptions: FlyBuy.OrderOptions, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))?)
+  @objc public func create(siteID: Swift.Int, partnerIdentifier: Swift.String, customerInfo: FlyBuy.CustomerInfo, state: Swift.String?, pickupType: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func create(siteID: Swift.Int, orderOptions: FlyBuy.OrderOptions, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func create(sitePartnerIdentifier: Swift.String, orderOptions: FlyBuy.OrderOptions, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)?)
   @objc public func event(info: FlyBuy.OrderEvent, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> ())? = nil)
-  @objc public func updateCustomerState(orderID: Swift.Int, customerState: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func updateCustomerState(orderID: Swift.Int, customerState: Swift.String, spotIdentifier: Swift.String?, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func updateOrderState(orderID: Swift.Int, state: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func rateOrder(orderID: Swift.Int, rating: Swift.Int, comments: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func updatePickupType(orderID: Swift.Int, pickupType: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc public func updateCustomerState(orderID: Swift.Int, customerState: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func updateCustomerState(orderID: Swift.Int, customerState: Swift.String, spotIdentifier: Swift.String?, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func updateOrderState(orderID: Swift.Int, state: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func rateOrder(orderID: Swift.Int, rating: Swift.Int, comments: Swift.String? = nil, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @available(*, deprecated, message: "This method for updating the pickup type of an order has been deprecated. Use updatePickupMethod(orderID:, pickupMethodOptions:) instead.")
+  @objc public func updatePickupType(orderID: Swift.Int, pickupType: Swift.String, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func updatePickupMethod(orderID: Swift.Int, pickupMethodOptions: FlyBuy.PickupMethodOptions, callback: ((FlyBuy.Order?, (any Swift.Error)?) -> Swift.Void)? = nil)
   @objc deinit
 }
 extension Foundation.NSNotification.Name {
@@ -986,14 +1103,14 @@ extension FlyBuy.OrdersManager : CoreLocation.CLLocationManagerDelegate {
   @objc public var current: FlyBuy.Customer? {
     @objc get
   }
-  @objc public func create(_ customerInfo: FlyBuy.CustomerInfo, termsOfService: Swift.Bool, ageVerification: Swift.Bool, callback: ((FlyBuy.Customer?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func create(_ customerInfo: FlyBuy.CustomerInfo, email: Swift.String, password: Swift.String, customerConsent: FlyBuy.CustomerConsent, callback: ((FlyBuy.Customer?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func update(_ customerInfo: FlyBuy.CustomerInfo, callback: ((FlyBuy.Customer?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func login(emailAddress: Swift.String, password: Swift.String, callback: ((FlyBuy.Customer?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func loginWithToken(token: Swift.String, callback: ((FlyBuy.Customer?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func signUp(emailAddress: Swift.String, password: Swift.String, callback: ((FlyBuy.Customer?, (any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func requestNewPassword(emailAddress: Swift.String, callback: (((any Swift.Error)?) -> (Swift.Void))? = nil)
-  @objc public func setNewPassword(resetPasswordToken: Swift.String, password: Swift.String, confirmation: Swift.String, callback: ((FlyBuy.Customer?, (any Swift.Error)?) -> (Swift.Void))? = nil)
+  @objc public func create(_ customerInfo: FlyBuy.CustomerInfo, termsOfService: Swift.Bool, ageVerification: Swift.Bool, callback: ((FlyBuy.Customer?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func create(_ customerInfo: FlyBuy.CustomerInfo, email: Swift.String, password: Swift.String, customerConsent: FlyBuy.CustomerConsent, callback: ((FlyBuy.Customer?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func update(_ customerInfo: FlyBuy.CustomerInfo, callback: ((FlyBuy.Customer?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func login(emailAddress: Swift.String, password: Swift.String, callback: ((FlyBuy.Customer?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func loginWithToken(token: Swift.String, callback: ((FlyBuy.Customer?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func signUp(emailAddress: Swift.String, password: Swift.String, callback: ((FlyBuy.Customer?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func requestNewPassword(emailAddress: Swift.String, callback: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func setNewPassword(resetPasswordToken: Swift.String, password: Swift.String, confirmation: Swift.String, callback: ((FlyBuy.Customer?, (any Swift.Error)?) -> Swift.Void)? = nil)
   @objc public func logout()
   @objc override dynamic public init()
   @objc deinit
@@ -1059,9 +1176,20 @@ extension FlyBuy.OrdersManager : CoreLocation.CLLocationManagerDelegate {
   @objc public func setOptions(_ opts: [Swift.String : Any]) -> FlyBuy.ConfigOptionsBuilder
   @objc deinit
 }
+public protocol PushTopicSubscriber {
+  func subscribeToTopics(newTopics: Swift.Set<FlyBuy.PushTopic>, storedTopics: Swift.Set<FlyBuy.PushTopic>, completion: @escaping (_ subscribedTopics: Swift.Set<FlyBuy.PushTopic>?, _ errors: [any Swift.Error]?) -> Swift.Void)
+}
 @_inheritsConvenienceInitializers @objc(FlyBuyLinks) public class Links : ObjectiveC.NSObject {
   @objc public static func parse(url: Foundation.URL) -> FlyBuy.LinkDetails
   @objc override dynamic public init()
+  @objc deinit
+}
+extension CoreLocation.CLLocationManager {
+  public func requestWhenInUseAuthorizationWithDelegateHandler(delegateHandler: FlyBuy.CLLocationManagerDelegateHandler?)
+}
+@objc public class CLLocationManagerDelegateHandler : ObjectiveC.NSObject, CoreLocation.CLLocationManagerDelegate {
+  public init(completion: @escaping (CoreLocation.CLAuthorizationStatus) -> Swift.Void)
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didChangeAuthorization status: CoreLocation.CLAuthorizationStatus)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(FlyBuyRegion) public class FlyBuyRegion : ObjectiveC.NSObject {
@@ -1106,9 +1234,9 @@ extension FlyBuy.OrdersManager : CoreLocation.CLLocationManagerDelegate {
   @objc final public let projectAccentTextColor: Swift.String?
   @objc final public let projectLogoURL: Swift.String?
   @objc final public let customerName: Swift.String?
-  @objc final public let customerCarType: Swift.String?
-  @objc final public let customerCarColor: Swift.String?
-  @objc final public let customerLicensePlate: Swift.String?
+  @objc public var customerCarType: Swift.String?
+  @objc public var customerCarColor: Swift.String?
+  @objc public var customerLicensePlate: Swift.String?
   @available(*, deprecated, message: "Use showVehicleInfoFields for the pickup type in sitePickupConfig.availablePickupTypes")
   @objc final public let projectMobileFlowAlwaysShowVehicleInfoFields: Swift.Bool
   @available(*, deprecated, message: "Use order.sitePickupConfig.customerNameEditingEnabled instead")
@@ -1139,7 +1267,7 @@ extension FlyBuy.OrdersManager : CoreLocation.CLLocationManagerDelegate {
     @objc get
   }
   final public let _pickupConfigID: Swift.Int?
-  final public let handoffVehicleLocation: Swift.String?
+  public var handoffVehicleLocation: Swift.String?
   public var estimatedReadyAt: Swift.String?
   required public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
@@ -1179,6 +1307,9 @@ extension FlyBuy.Order {
 extension FlyBuy.FlybuyLinkType : Swift.Equatable {}
 extension FlyBuy.FlybuyLinkType : Swift.Hashable {}
 extension FlyBuy.FlybuyLinkType : Swift.RawRepresentable {}
+extension FlyBuy.PushServiceType : Swift.Equatable {}
+extension FlyBuy.PushServiceType : Swift.Hashable {}
+extension FlyBuy.PushServiceType : Swift.RawRepresentable {}
 extension FlyBuy.LocationAuthStatus : Swift.Equatable {}
 extension FlyBuy.LocationAuthStatus : Swift.Hashable {}
 extension FlyBuy.LocationAuthStatus : Swift.RawRepresentable {}

@@ -11,6 +11,7 @@ import {
   IOrder,
   OrderStateType,
   PickupType,
+  PickupMethodOptions,
 } from 'react-native-bildit-flybuy-core';
 import {Button, OrderItem, SectionTitle} from './components';
 import {
@@ -184,6 +185,15 @@ export const OrdersSection = () => {
       .catch(err => console.log(err));
   };
 
+  const updatePickupMethod = (
+    orderId: number,
+    options: PickupMethodOptions,
+  ) => {
+    FlyBuyCore.Orders.updatePickupMethod(orderId, options)
+      .then(order => console.log('updatePickupMethod', order))
+      .catch(err => console.log(err));
+  };
+
   return (
     <View style={styles.root}>
       <SectionTitle title="Orders" />
@@ -194,6 +204,9 @@ export const OrdersSection = () => {
           <OrderItem
             key={item.id}
             data={item}
+            onUpdatePickupMethod={options => {
+              updatePickupMethod(item.id, options);
+            }}
             onUpdateOrderState={orderState =>
               updateOrderState(item.id, orderState)
             }

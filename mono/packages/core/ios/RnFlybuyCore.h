@@ -111,6 +111,11 @@
       withResolver:(RCTPromiseResolveBlock)resolve
     withRejecter:(RCTPromiseRejectBlock)reject;
 
+- (void)updatePickupMethod:(NSInteger)orderId
+          withOptions: (NSDictionary *)options
+         withResolver:(RCTPromiseResolveBlock)resolve
+       withRejecter:(RCTPromiseRejectBlock)reject;
+
 - (void)updatePushToken:(NSString *)token;
 
 - (void)handleRemoteNotification:(NSDictionary *)userInfo;

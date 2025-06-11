@@ -18,3 +18,4 @@ Remove `"react-native-bildit-flybuy"` from package.json dependencies, and includ
     "react-native-bildit-flybuy-pickup": "2.20.4",
     "react-native-bildit-flybuy-presence": "2.20.4"
   }
+```

@@ -10,8 +10,11 @@ import com.facebook.react.bridge.ReadableType
 import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
 import com.radiusnetworks.flybuy.sdk.data.places.Place
+import com.radiusnetworks.flybuy.sdk.data.places.PlaceType
 import com.radiusnetworks.flybuy.sdk.data.room.domain.PickupWindow
 import com.radiusnetworks.flybuy.sdk.data.room.domain.Site
+import com.radiusnetworks.flybuy.sdk.manager.builder.OrderOptions
+import com.radiusnetworks.flybuy.sdk.manager.builder.PickupMethodOptions
 import java.time.Instant
 
 
@@ -63,6 +66,64 @@ fun decodeCustomerInfo(customer: ReadableMap): CustomerInfo {
   )
 }
 
+fun decodePickupMethodOptions(options: ReadableMap): PickupMethodOptions {
+  var pickupType = "pickup"
+
+  if (options.hasKey("pickupType")) {
+    pickupType = options.getString("pickupType")!!
+  }
+
+  return PickupMethodOptions.Builder(pickupType).apply {
+    if (options.hasKey("customerCarColor")) {
+      setCustomerCarColor(options.getString("customerCarColor"))
+    }
+    if (options.hasKey("customerCarType")) {
+      setCustomerCarType(options.getString("customerCarType"))
+    }
+    if (options.hasKey("customerLicensePlate")) {
+      setCustomerLicensePlate(options.getString("customerLicensePlate"))
+    }
+    if (options.hasKey("handoffVehicleLocation")) {
+      setHandoffVehicleLocation(options.getString("handoffVehicleLocation"))
+    }
+
+  }.build()
+
+}
+
+fun decodeOrderOptions(options: ReadableMap): OrderOptions {
+  var customerName = ""
+
+  if (options.hasKey("customerName")) {
+    customerName = options.getString("customerName")!!
+  }
+
+  return OrderOptions.Builder(customerName).apply {
+    if (options.hasKey("customerCarType")) {
+      setCustomerCarType(options.getString("customerCarType"))
+    }
+    if (options.hasKey("partnerIdentifierForCrew")) {
+      setPartnerIdentifierForCrew(options.getString("partnerIdentifierForCrew"))
+    }
+    if (options.hasKey("partnerIdentifierForCustomer")) {
+      setPartnerIdentifierForCustomer(options.getString("partnerIdentifierForCustomer"))
+    }
+    if (options.hasKey("handoffVehicleLocation")) {
+      setHandoffVehicleLocation(options.getString("handoffVehicleLocation"))
+    }
+    if (options.hasKey("disableOrderFire")) {
+      setDisableOrderFire(options.getBoolean("disableOrderFire"))
+    }
+    if (options.hasKey("disablePromiseTimeScheduling")) {
+      setDisablePromiseTimeScheduling(options.getBoolean("disablePromiseTimeScheduling"))
+    }
+    if (options.hasKey("orderFireMakeIntervalSeconds")) {
+      setOrderFireMakeIntervalSeconds(options.getInt("orderFireMakeIntervalSeconds"))
+    }
+
+  }.build()
+}
+
 fun decodeRegion(region: ReadableMap): CircularRegion {
   var latitude = region.getDouble("latitude")!!
   var longitude = region.getDouble("longitude")!!
@@ -107,6 +168,16 @@ fun decodeSites(sitesList: ReadableArray): List<Site> {
   }
 
   return list
+}
+
+fun mapStringToPlaceType(value: String): PlaceType {
+  return when (value) {
+    "region" -> PlaceType.REGION
+    "postalCode" -> PlaceType.POSTAL_CODE
+    "city" -> PlaceType.CITY
+    "poi" -> PlaceType.POI
+    else -> PlaceType.ADDRESS
+  }
 }
 
 @SuppressLint("RestrictedApi")

@@ -1,6 +1,7 @@
 package com.bilditplatform.rnflybuycore
 
 import android.util.Log
+import com.facebook.react.bridge.ReadableArray
 import com.radiusnetworks.flybuy.sdk.data.common.SdkError
 import com.radiusnetworks.flybuy.sdk.data.places.PlaceType
 import com.radiusnetworks.flybuy.sdk.jobs.ResponseEventType
@@ -37,3 +38,12 @@ fun intToPlaceTypeEnum(value: Int): PlaceType? {
   return null // Handle invalid integer values
 }
 
+
+
+fun readableArrayToStringList(array: ReadableArray): List<String> {
+  val list = mutableListOf<String>()
+  for (i in 0 until array.size()) {
+    list.add(array.getString(i) ?: "")
+  }
+  return list
+}

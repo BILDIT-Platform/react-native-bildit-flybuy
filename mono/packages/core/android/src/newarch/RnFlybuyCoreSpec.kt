@@ -7,6 +7,9 @@ import com.facebook.react.bridge.ReadableMap
 abstract class RnFlybuyCoreSpec internal constructor(context: ReactApplicationContext) :
   NativeRnFlybuyCoreSpec(context) {
 
+  // Deeplinks related functions
+  abstract fun parseReferrerUrl(referrerUrl: String, promise: Promise)
+
   // Notification related function
   abstract fun updatePushToken(token: String)
   abstract fun handleRemoteNotification(data: ReadableMap)

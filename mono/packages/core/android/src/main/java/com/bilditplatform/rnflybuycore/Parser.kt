@@ -5,6 +5,7 @@ import com.facebook.react.bridge.WritableArray
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeArray
 import com.radiusnetworks.flybuy.sdk.data.common.Pagination
+import com.radiusnetworks.flybuy.sdk.data.links.LinkDetails
 import com.radiusnetworks.flybuy.sdk.data.pickup_config.PickupConfig
 import com.radiusnetworks.flybuy.sdk.data.pickup_config.PickupTypeConfig
 import com.radiusnetworks.flybuy.sdk.data.places.Place
@@ -30,6 +31,7 @@ fun parseOrder(order: Order): WritableMap {
   map.putString("createdAt", order.createdAt?.toString())
   map.putString("redemptionCode", order.redemptionCode)
   map.putString("redeemedAt", order.redeemedAt?.toString())
+  map.putString("orderFiredAt", order.orderFiredAt?.toString())
   order.customerRatingValue?.let { map.putInt("customerRating", it) }
   map.putString("customerComment", order.customerRatingComments)
   map.putInt("siteID", order.site?.id!!)
@@ -176,4 +178,19 @@ fun parseOrders(items: List<Order>): WritableArray {
     array.pushMap(parseOrder(item))
   }
   return array
+}
+
+fun parseLinkDetails(data: LinkDetails): WritableMap {
+  val map = Arguments.createMap()
+  map.putString("url", data.url)
+  map.putString("type", data.type.name)
+
+  val params = Arguments.createMap()
+  for ((key, value) in data.params) {
+    params.putString(key, value)
+  }
+
+  map.putMap("params", params)
+
+  return map
 }

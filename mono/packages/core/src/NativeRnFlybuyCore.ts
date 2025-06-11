@@ -9,9 +9,11 @@ import type {
   IOrder,
   IPlace,
   ISite,
+  LinkDetails,
   OrderStateType,
+  PickupMethodOptions,
   PickupType,
-  PlaceType,
+  PlaceSuggestOptions,
 } from './types';
 
 export * from './types';
@@ -59,7 +61,7 @@ export interface Spec extends TurboModule {
   // Places functions
   placesSuggest(
     keyword: string,
-    options: { latitude?: number; longitude?: number; type?: PlaceType }
+    options: PlaceSuggestOptions
   ): Promise<IPlace[]>;
   placesRetrieve(place: IPlace): Promise<IPlace>;
 
@@ -83,6 +85,13 @@ export interface Spec extends TurboModule {
     spot: string
   ): Promise<IOrder>;
   rateOrder(orderId: number, rating: number, comments: string): Promise<IOrder>;
+  updatePickupMethod(
+    orderId: number,
+    options: PickupMethodOptions
+  ): Promise<IOrder>;
+
+  // Deeplinks
+  parseReferrerUrl(referrerUrl: string): Promise<LinkDetails>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('RnFlybuyCore');

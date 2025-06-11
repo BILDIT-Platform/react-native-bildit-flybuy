@@ -8,9 +8,11 @@ import type {
   IOrder,
   IPlace,
   ISite,
+  LinkDetails,
   OrderStateType,
+  PickupMethodOptions,
   PickupType,
-  PlaceType,
+  PlaceSuggestOptions,
 } from './types';
 
 export * from './types';
@@ -55,6 +57,15 @@ export function updatePushToken(token: string): Promise<void> {
 
 export function handleRemoteNotification(data: any): Promise<void> {
   return RnFlybuyCore.handleRemoteNotification(data);
+}
+
+export function parseReferrerUrl(referrerUrl: string): Promise<LinkDetails> {
+  if (Platform.OS === 'ios') {
+    return new Promise((_, reject) => {
+      reject(new Error('Not implemented'));
+    });
+  }
+  return RnFlybuyCore.parseReferrerUrl(referrerUrl);
 }
 
 // customer functions
@@ -122,7 +133,7 @@ function fetchSitesNearPlace(
 // Places functions
 function placesSuggest(
   keyword: string,
-  options: { latitude?: number; longitude?: number; type?: PlaceType }
+  options: PlaceSuggestOptions
 ): Promise<IPlace[]> {
   return RnFlybuyCore.placesSuggest(keyword, options);
 }
@@ -206,6 +217,17 @@ function rateOrder(
   return RnFlybuyCore.rateOrder(orderId, rating, comments);
 }
 
+function updatePickupMethod(
+  orderId: number,
+  options: PickupMethodOptions
+): Promise<IOrder> {
+  return RnFlybuyCore.updatePickupMethod(orderId, options);
+}
+
+type ILinks = {
+  parseReferrerUrl(referrerUrl: string): Promise<LinkDetails>;
+};
+
 type ICustomers = {
   loginWithToken(code: string): Promise<any>;
   login(email: string, password: string): Promise<any>;
@@ -214,6 +236,10 @@ type ICustomers = {
   createCustomer(customerInfo: ICustomerInfo): Promise<ICustomer>;
   updateCustomer(customerInfo: ICustomerInfo): Promise<ICustomer>;
   getCurrentCustomer(): Promise<ICustomer>;
+};
+
+export const Links: ILinks = {
+  parseReferrerUrl,
 };
 
 export const Customer: ICustomers = {
@@ -291,6 +317,10 @@ type IOrders = {
     spot: string
   ): Promise<IOrder>;
   rateOrder(orderId: number, rating: number, comments: string): Promise<IOrder>;
+  updatePickupMethod(
+    orderId: number,
+    options: PickupMethodOptions
+  ): Promise<IOrder>;
 };
 
 export const Orders: IOrders = {
@@ -302,4 +332,5 @@ export const Orders: IOrders = {
   updateOrderCustomerState,
   updateOrderCustomerStateWithSpot,
   rateOrder,
+  updatePickupMethod,
 };

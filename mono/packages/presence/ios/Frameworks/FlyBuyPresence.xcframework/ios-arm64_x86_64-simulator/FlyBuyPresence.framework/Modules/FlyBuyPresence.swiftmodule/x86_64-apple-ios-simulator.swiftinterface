@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
-// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name FlyBuyPresence
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name FlyBuyPresence
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
 import CoreBluetooth
 import CoreLocation
 import FlyBuy
@@ -18,10 +19,10 @@ import _SwiftConcurrencyShims
   }
   @objc public func configure(presenceUUID: Foundation.UUID)
   @objc deinit
-  @objc public func createLocator(payload: Swift.String? = nil, callback: ((FlyBuyPresence.PresenceLocator?, (any Swift.Error)?) -> (Swift.Void)))
-  @objc public func createLocatorWithIdentifier(_ presenceIdentifier: Foundation.Data, payload: Swift.String? = nil, callback: ((FlyBuyPresence.PresenceLocator?, (any Swift.Error)?) -> (Swift.Void)))
+  @objc public func createLocator(payload: Swift.String? = nil, callback: (FlyBuyPresence.PresenceLocator?, (any Swift.Error)?) -> Swift.Void)
+  @objc public func createLocatorWithIdentifier(_ presenceIdentifier: Foundation.Data, payload: Swift.String? = nil, callback: (FlyBuyPresence.PresenceLocator?, (any Swift.Error)?) -> Swift.Void)
   @objc public func start(_ locator: FlyBuyPresence.PresenceLocator)
-  @objc public func stop() -> ((any Swift.Error)?)
+  @objc public func stop() -> (any Swift.Error)?
   @objc override dynamic public init()
 }
 extension FlyBuyPresence.Manager : FlyBuy.FlyBuyModuleManager {

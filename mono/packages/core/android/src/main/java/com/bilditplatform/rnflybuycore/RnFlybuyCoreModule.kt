@@ -14,6 +14,7 @@ import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEmitter
 import com.radiusnetworks.flybuy.sdk.FlyBuyCore
+import com.radiusnetworks.flybuy.sdk.FlyBuyLinks
 import com.radiusnetworks.flybuy.sdk.data.common.SdkError
 import com.radiusnetworks.flybuy.sdk.data.customer.CustomerInfo
 import com.radiusnetworks.flybuy.sdk.data.location.CircularRegion
@@ -94,6 +95,22 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
   }
 
   // Core functions
+  @ReactMethod
+  override fun parseReferrerUrl(referrerUrl: String, promise: Promise) {
+    try {
+      Log.d(TAG, "parseReferrerUrl input: $referrerUrl")
+      val linkDetails = FlyBuyLinks.parseReferrerUrl(referrerUrl)
+      Log.d(TAG, "parseReferrerUrl output: $linkDetails")
+      linkDetails?.let {
+        promise.resolve(parseLinkDetails(it))
+      } ?: run {
+        promise.reject("NULL_LINK_DETAILS", "No link details could be parsed from the referrer URL.")
+      }
+    } catch (e: FlyBuyRuntimeException) {
+      promise.reject(e)
+      e.message?.let { Log.w(TAG, it) }
+    }
+  }
   @ReactMethod
   override fun configure(token: String, promise: Promise) {
     // TODO: separate the configure function for New and Old Architechture
@@ -339,29 +356,53 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
 
   // Places related functions
   @ReactMethod
-  override fun placesSuggest(query: String, options: ReadableMap, promise: Promise) {
+  override fun placesSuggest(keyword: String, options: ReadableMap, promise: Promise) {
 
     val optionsBuilder = PlaceSuggestionOptions.Builder().apply {
       setType(PlaceType.ADDRESS)
     }
 
     if (options.hasKey("latitude") && options.hasKey("longitude")) {
-      var latitude = options.getDouble("latitude")
-      var longitude = options.getDouble("longitude")
+      val latitude = options.getDouble("latitude")
+      val longitude = options.getDouble("longitude")
       optionsBuilder.setProximity(latitude, longitude)
     }
 
     if (options.hasKey("type")) {
-      var inputType = options.getInt("type")
-      var type = intToPlaceTypeEnum(inputType)
+      val inputType = options.getInt("type")
+      val type = intToPlaceTypeEnum(inputType)
       if (type != null) {
         optionsBuilder.setType(type)
       }
     }
 
+    if (options.hasKey("countryCode")) {
+      val countryCode = options.getString("countryCode")
+      if (countryCode != null) {
+        optionsBuilder.setCountryCode(countryCode)
+      }
+    }
 
-    val options = optionsBuilder.build()
-    FlyBuyCore.places.suggest(query, options) { places, sdkError ->
+    if (options.hasKey("countryCodes")) {
+      val countryCodes = options.getArray("countryCodes")
+      if (countryCodes != null && countryCodes.size() > 0) {
+        optionsBuilder.setCountryCodes(readableArrayToStringList(countryCodes))
+      }
+    }
+
+    if (options.hasKey("placeTypes")) {
+      val placeTypes = options.getArray("placeTypes")
+      if (placeTypes != null && placeTypes.size() > 0) {
+        for (i in 0 until placeTypes.size()) {
+          val type = placeTypes.getInt(i)
+          intToPlaceTypeEnum(type)?.let { optionsBuilder.addType(it) }
+        }
+      }
+    }
+
+
+    val suggestionOptions = optionsBuilder.build()
+    FlyBuyCore.places.suggest(keyword, suggestionOptions) { places, sdkError ->
       sdkError?.let {
         handleFlyBuyError(it)
         promise.reject(it.userError(), it.userError())
@@ -555,6 +596,22 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
   @ReactMethod
   override fun updateOrderCustomerStateWithSpot(orderId: Int, state: String, spot: String, promise: Promise) {
     FlyBuyCore.orders.updateCustomerState(orderId, state, spot) { order, sdkError ->
+      sdkError?.let {
+        promise.reject(it.userError(), it.userError())
+      } ?: run {
+        order?.let { promise.resolve(parseOrder(it)) } ?: run {
+          promise.reject("null", "Null order")
+        }
+      }
+    }
+  }
+
+  @ReactMethod
+  override fun updatePickupMethod(orderId: Int, options: ReadableMap, promise: Promise) {
+
+    val optionsBuilder = decodePickupMethodOptions(options)
+
+    FlyBuyCore.orders.updatePickupMethod(orderId, optionsBuilder) { order, sdkError ->
       sdkError?.let {
         promise.reject(it.userError(), it.userError())
       } ?: run {

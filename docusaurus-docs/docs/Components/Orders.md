@@ -172,6 +172,32 @@ FlyBuyCore.Orders.updateOrderState(46084566, 'ready');
 FlyBuyCore.Orders.updateOrderCustomerState(46084566, 'departed');
 ```
 
+## Update Order Pickup Method
+
+#### Params
+
+| Name         | Type                                    | Example                                                                                                      |
+| ------------ | --------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| pid          | Str                                     | `'9898899'`                                                                                                  |
+| options | [`PickupMethodOptions`](../Types/PickupMethodOptions) | `{pickupType: 'pickup',customerCarColor: 'Red',customerCarType: 'Tesla',customerLicensePlate: 'AB 0496',handoffVehicleLocation: 'everywhere'}` |
+
+#### Example
+
+```js
+FlyBuyCore.Orders.updatePickupMethod(
+  '9898899',
+  {
+    pickupType: 'pickup',
+    customerCarColor: 'Red',
+    customerCarType: 'Tesla',
+    customerLicensePlate: 'AB 0496',
+    handoffVehicleLocation: 'everywhere'
+  }
+)
+.then(order => console.log('updatePickupMethod', order))
+.catch(err => console.log(err));;
+```
+
 
 ## Send spot identifier
 
@@ -211,12 +237,22 @@ FlyBuyCore.Orders.rateOrder(46084566, 5, 'Awesome!');
 
 ## Listen to orders update
 
-Set up event listeners to get updates about orders.
+Set up event listeners to get updates about orders. 
+
+You need to invoke the  `startObserver`  function so that the wrapper can listen to the FlyBuy Order live data event and forward it as React Native event
 
 #### Example
 
 ```jsx
-// TODO: check this again
+// App.tsx
+React.useEffect(() => {
+    FlyBuyCore.startObserver();
+    return () => {
+      FlyBuyCore.stopObserver();
+    };
+  }, []);
+
+
 React.useEffect(() => {
   const eventListener = FlyBuyCore.eventEmitter.addListener(
     'orderUpdated',

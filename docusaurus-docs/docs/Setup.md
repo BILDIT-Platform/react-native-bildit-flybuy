@@ -20,6 +20,13 @@ cd ios && pod install
 react-native link react-native-bildit-flybuy-core
 ```
 
+:::info
+
+This wrapper only tested on React Native version 0.74.x. This wrapper should work with any latest React Native version that using Android Gradle Plugin version 8.2.1 or more. Minimum deployment target for iOS is 13.4
+
+:::
+
+
 ## Post-install Steps
 
 ### iOS
@@ -27,6 +34,18 @@ react-native link react-native-bildit-flybuy-core
 #### Setting Permissions
 
 Refer to the [Flybuy Documentation on configuring permissions](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/ios?id=setting-permissions) on iOS.
+
+#### Fix Development Build
+
+By default, you don't have to modify the Podfile to run this library. If you have issue with dynamic framework, you can include the library as static framework by adding this code in Podfile.
+
+```
+  $static_framework += [
+    # adjust the packages that you used in your project.
+    'bildit-platform-rn-flybuy-core',
+    'bildit-platform-rn-flybuy-pickup'
+  ]
+```
 
 #### Fix Release Build
 

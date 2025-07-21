@@ -26,6 +26,13 @@
         "moduleName": "FlyBuyLiveStatus"
       },
       {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "FlyBuyLiveStatus"
+      },
+      {
         "kind": "TypeDecl",
         "name": "LiveStatusOptions",
         "printedName": "LiveStatusOptions",
@@ -223,7 +230,82 @@
             "moduleName": "FlyBuyLiveStatus",
             "declAttributes": [
               "AccessControl",
-              "ObjC"
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setStatusTintColor",
+            "printedName": "setStatusTintColor(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "LiveStatusOptionsBuilder",
+                "printedName": "FlyBuyLiveStatus.LiveStatusOptionsBuilder",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptionsBuilder"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIColor?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptionsBuilder(im)setStatusTintColor:",
+            "mangledName": "$s16FlyBuyLiveStatus0cD14OptionsBuilderC03setD9TintColoryACSo7UIColorCSgF",
+            "moduleName": "FlyBuyLiveStatus",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setStatusTintColorDarkMode",
+            "printedName": "setStatusTintColorDarkMode(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "LiveStatusOptionsBuilder",
+                "printedName": "FlyBuyLiveStatus.LiveStatusOptionsBuilder",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptionsBuilder"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIColor?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusOptionsBuilder(im)setStatusTintColorDarkMode:",
+            "mangledName": "$s16FlyBuyLiveStatus0cD14OptionsBuilderC03setD17TintColorDarkModeyACSo7UIColorCSgF",
+            "moduleName": "FlyBuyLiveStatus",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
             ],
             "funcSelfKind": "NonMutating"
           },
@@ -546,6 +628,256 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "liveStatusTintColor",
+            "printedName": "liveStatusTintColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIColor?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusManager(py)liveStatusTintColor",
+            "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC04liveD9TintColorSo7UIColorCSgvp",
+            "moduleName": "FlyBuyLiveStatus",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusManager(im)liveStatusTintColor",
+                "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC04liveD9TintColorSo7UIColorCSgvg",
+                "moduleName": "FlyBuyLiveStatus",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusManager(im)setLiveStatusTintColor:",
+                "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC04liveD9TintColorSo7UIColorCSgvs",
+                "moduleName": "FlyBuyLiveStatus",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16FlyBuyLiveStatus0abcD7ManagerC04liveD9TintColorSo7UIColorCSgvM",
+                "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC04liveD9TintColorSo7UIColorCSgvM",
+                "moduleName": "FlyBuyLiveStatus",
+                "implicit": true,
+                "intro_iOS": "16.2",
+                "declAttributes": [
+                  "Final",
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "liveStatusTintColorDarkMode",
+            "printedName": "liveStatusTintColorDarkMode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIColor?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusManager(py)liveStatusTintColorDarkMode",
+            "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC04liveD17TintColorDarkModeSo7UIColorCSgvp",
+            "moduleName": "FlyBuyLiveStatus",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusManager(im)liveStatusTintColorDarkMode",
+                "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC04liveD17TintColorDarkModeSo7UIColorCSgvg",
+                "moduleName": "FlyBuyLiveStatus",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FlyBuyLiveStatus@objc(cs)FlyBuyLiveStatusManager(im)setLiveStatusTintColorDarkMode:",
+                "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC04liveD17TintColorDarkModeSo7UIColorCSgvs",
+                "moduleName": "FlyBuyLiveStatus",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16FlyBuyLiveStatus0abcD7ManagerC04liveD17TintColorDarkModeSo7UIColorCSgvM",
+                "mangledName": "$s16FlyBuyLiveStatus0abcD7ManagerC04liveD17TintColorDarkModeSo7UIColorCSgvM",
+                "moduleName": "FlyBuyLiveStatus",
+                "implicit": true,
+                "intro_iOS": "16.2",
+                "declAttributes": [
+                  "Final",
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "configure",
             "printedName": "configure(withOptions:)",
@@ -570,7 +902,8 @@
             "declAttributes": [
               "Final",
               "AccessControl",
-              "ObjC"
+              "ObjC",
+              "RawDocComment"
             ],
             "funcSelfKind": "NonMutating"
           }
@@ -585,7 +918,8 @@
           "Final",
           "AccessControl",
           "ObjC",
-          "Available"
+          "Available",
+          "RawDocComment"
         ],
         "superclassUsr": "c:objc(cs)NSObject",
         "hasMissingDesignatedInitializers": true,
@@ -1314,9 +1648,129 @@
                 ]
               },
               {
+                "kind": "Var",
+                "name": "tintColorHexString",
+                "printedName": "tintColorHexString",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV18tintColorHexStringSSSgvp",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV18tintColorHexStringSSSgvp",
+                "moduleName": "FlyBuyLiveStatus",
+                "declAttributes": [
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV18tintColorHexStringSSSgvg",
+                    "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV18tintColorHexStringSSSgvg",
+                    "moduleName": "FlyBuyLiveStatus",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "tintColorDarkModeHexString",
+                "printedName": "tintColorDarkModeHexString",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV26tintColorDarkModeHexStringSSSgvp",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV26tintColorDarkModeHexStringSSSgvp",
+                "moduleName": "FlyBuyLiveStatus",
+                "declAttributes": [
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV26tintColorDarkModeHexStringSSSgvg",
+                    "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV26tintColorDarkModeHexStringSSSgvg",
+                    "moduleName": "FlyBuyLiveStatus",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
                 "kind": "Constructor",
                 "name": "init",
-                "printedName": "init(status:statusLocalized:placeName:orderId:etr:iconName:)",
+                "printedName": "init(status:statusLocalized:placeName:orderId:etr:iconName:tintColorHexString:tintColorDarkModeHexString:)",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -1395,11 +1849,41 @@
                     ],
                     "hasDefaultArg": true,
                     "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Constructor",
-                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV6status0I9Localized9placeName7orderId3etr04iconL0AESS_S2SSgA3Ltcfc",
-                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV6status0I9Localized9placeName7orderId3etr04iconL0AESS_S2SSgA3Ltcfc",
+                "usr": "s:16FlyBuyLiveStatus15OrderAttributesC12ContentStateV6status0I9Localized9placeName7orderId3etr04iconL018tintColorHexString0qr8DarkModesT0AESS_S2SSgA5Ntcfc",
+                "mangledName": "$s16FlyBuyLiveStatus15OrderAttributesC12ContentStateV6status0I9Localized9placeName7orderId3etr04iconL018tintColorHexString0qr8DarkModesT0AESS_S2SSgA5Ntcfc",
                 "moduleName": "FlyBuyLiveStatus",
                 "declAttributes": [
                   "AccessControl"
@@ -2002,6 +2486,20 @@
       "offset": 89,
       "length": 37,
       "value": "\"com.radiusnetworks.FlyBuyLiveStatus\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyLiveStatus\/Widget\/StatusView\/StatusViewModel.swift",
+      "kind": "StringLiteral",
+      "offset": 699,
+      "length": 9,
+      "value": "\"#02174F\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyLiveStatus\/Widget\/StatusView\/StatusViewModel.swift",
+      "kind": "StringLiteral",
+      "offset": 750,
+      "length": 9,
+      "value": "\"#1DAEFC\""
     },
     {
       "filePath": "\/Users\/radbot\/Library\/Developer\/Xcode\/DerivedData\/FlyBuy-hcbsporyuzickzgorsmoeoswpusb\/Build\/Intermediates.noindex\/ArchiveIntermediates\/FlyBuyLiveStatus\/IntermediateBuildFilesPath\/FlyBuySDK.build\/Release-iphonesimulator\/FlyBuyLiveStatus.build\/DerivedSources\/GeneratedAssetSymbols.swift",

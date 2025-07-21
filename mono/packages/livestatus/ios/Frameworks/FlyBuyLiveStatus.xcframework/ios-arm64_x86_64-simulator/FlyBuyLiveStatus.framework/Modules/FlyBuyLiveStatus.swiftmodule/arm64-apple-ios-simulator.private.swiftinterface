@@ -21,6 +21,8 @@ import _SwiftConcurrencyShims
 @_inheritsConvenienceInitializers @objc(FlyBuyLiveStatusOptionsBuilder) public class LiveStatusOptionsBuilder : ObjectiveC.NSObject {
   @objc public func build() -> FlyBuyLiveStatus.LiveStatusOptions
   @objc public func setIconName(_ iconName: Swift.String?) -> FlyBuyLiveStatus.LiveStatusOptionsBuilder
+  @objc public func setStatusTintColor(_ tintColor: UIKit.UIColor?) -> FlyBuyLiveStatus.LiveStatusOptionsBuilder
+  @objc public func setStatusTintColorDarkMode(_ tintColor: UIKit.UIColor?) -> FlyBuyLiveStatus.LiveStatusOptionsBuilder
   @objc override dynamic public init()
   @objc deinit
 }
@@ -28,6 +30,8 @@ import _SwiftConcurrencyShims
 @objc(FlyBuyLiveStatusManager) final public class FlyBuyLiveStatusManager : ObjectiveC.NSObject {
   @objc public static let shared: FlyBuyLiveStatus.FlyBuyLiveStatusManager
   @objc final public var liveStatusIconName: Swift.String?
+  @objc final public var liveStatusTintColor: UIKit.UIColor?
+  @objc final public var liveStatusTintColorDarkMode: UIKit.UIColor?
   @objc final public func configure(withOptions configOptions: FlyBuyLiveStatus.LiveStatusOptions)
   @objc deinit
 }
@@ -50,7 +54,9 @@ import _SwiftConcurrencyShims
     public let formatterETR: Swift.String?
     public let progress: Swift.Int
     public let iconName: Swift.String?
-    public init(status: Swift.String, statusLocalized: Swift.String, placeName: Swift.String? = nil, orderId: Swift.String? = nil, etr: Swift.String? = nil, iconName: Swift.String? = nil)
+    public let tintColorHexString: Swift.String?
+    public let tintColorDarkModeHexString: Swift.String?
+    public init(status: Swift.String, statusLocalized: Swift.String, placeName: Swift.String? = nil, orderId: Swift.String? = nil, etr: Swift.String? = nil, iconName: Swift.String? = nil, tintColorHexString: Swift.String? = nil, tintColorDarkModeHexString: Swift.String? = nil)
     public static func == (a: FlyBuyLiveStatus.OrderAttributes.ContentState, b: FlyBuyLiveStatus.OrderAttributes.ContentState) -> Swift.Bool
     public func encode(to encoder: any Swift.Encoder) throws
     public func hash(into hasher: inout Swift.Hasher)

@@ -305,14 +305,41 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if defined(__OBJC__)
 
 @class NSString;
+@class UIColor;
 @class FlyBuyLiveStatusOptions;
+/// Manager for Live Status module.
+/// See <a href="https://www.radiusnetworks.com/developers/flybuy/#/">Flybuy Developer Docs</a> for additional details including all setup steps.
 SWIFT_CLASS_NAMED("FlyBuyLiveStatusManager") SWIFT_AVAILABILITY(ios,introduced=16.2)
 @interface FlyBuyLiveStatusManager : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyLiveStatusManager * _Nonnull shared;)
 + (FlyBuyLiveStatusManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, copy) NSString * _Nullable liveStatusIconName;
+@property (nonatomic, strong) UIColor * _Nullable liveStatusTintColor;
+@property (nonatomic, strong) UIColor * _Nullable liveStatusTintColorDarkMode;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Configure and initialize the Live Status module.
+/// If your app wants to use the Live Status notification for pickup, initialize the live status module after initializing the Flybuy core and pickup modules.
+/// See <a href="https://www.radiusnetworks.com/developers/flybuy/#/">Flybuy Developer Docs</a> for additional details including all setup steps.
+/// Example:
+/// \code
+/// func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+///    // Configure Core
+///    FlyBuy.Core.configure(["token": "TOKEN_HERE"])
+///
+///    // Configure Pickup
+///    FlyBuyPickup.Manager.shared.configure()
+///
+///    // Configure Live Status
+///    let builder = LiveStatusOptions.Builder()
+///      .setIconName("flybuy")
+///      .setStatusTintColor(UIColor("#A162F7"))
+///      .setStatusTintColorDarkMode(UIColor("#00E5C8"))
+///    FlyBuyLiveStatusManager.shared.configure(withOptions: builder.build())
+///    return true
+/// }
+///
+/// \endcode
 - (void)configureWithOptions:(FlyBuyLiveStatusOptions * _Nonnull)configOptions;
 @end
 
@@ -337,7 +364,21 @@ SWIFT_CLASS_NAMED("LiveStatusOptionsBuilder")
 @interface FlyBuyLiveStatusOptionsBuilder : NSObject
 /// Returns finalized options to pass to FlyBuy.Core.configure(withOptions configOptions: ConfigOptions)
 - (FlyBuyLiveStatusOptions * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+/// Sets the icon that will appear in the Live Status view
+/// \code
+///
+/// \endcode
 - (FlyBuyLiveStatusOptionsBuilder * _Nonnull)setIconName:(NSString * _Nullable)iconName SWIFT_WARN_UNUSED_RESULT;
+/// Sets the tint color in the Live Status view for light mode
+/// \code
+///
+/// \endcode
+- (FlyBuyLiveStatusOptionsBuilder * _Nonnull)setStatusTintColor:(UIColor * _Nullable)tintColor SWIFT_WARN_UNUSED_RESULT;
+/// Sets the tint color in the Live Status view for dark mode
+/// \code
+///
+/// \endcode
+- (FlyBuyLiveStatusOptionsBuilder * _Nonnull)setStatusTintColorDarkMode:(UIColor * _Nullable)tintColor SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

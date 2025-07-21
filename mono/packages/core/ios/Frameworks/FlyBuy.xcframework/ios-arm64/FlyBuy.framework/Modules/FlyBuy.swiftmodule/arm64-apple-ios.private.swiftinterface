@@ -553,6 +553,7 @@ extension FlyBuy.FlyBuyModuleManager {
   @objc public static let customer: FlyBuy.CustomerManager
   @objc public static let sites: FlyBuy.SitesManager
   @objc public static let places: FlyBuy.PlacesManager
+  public static let notifications: FlyBuy.NotificationsManager
   @objc public static let logger: FlyBuy.Logger
   public static var isCoreConfigured: Swift.Bool {
     get
@@ -566,6 +567,7 @@ extension FlyBuy.FlyBuyModuleManager {
   @objc public static func configure(withOptions configOptions: FlyBuy.ConfigOptions)
   public static func appInstanceID() -> Foundation.UUID
   @objc public static func handleRemoteNotification(_ data: [Swift.AnyHashable : Any])
+  @objc public static func handleNotification(_ response: UserNotifications.UNNotificationResponse) -> [Swift.String : Swift.String]?
   @objc public static func updatePushToken(_ newPushToken: Swift.String)
   @objc public static func updateAPNPushToken(_ deviceToken: Foundation.Data)
   public static func cancelRunningURLSessions()
@@ -669,6 +671,14 @@ extension FlyBuy._AnyDecodable {
 public class OneSignalTopicSubscriber : FlyBuy.PushTopicSubscriber {
   public init()
   public func subscribeToTopics(newTopics: Swift.Set<FlyBuy.PushTopic>, storedTopics: Swift.Set<FlyBuy.PushTopic>, completion: @escaping (_ subscribedTopics: Swift.Set<FlyBuy.PushTopic>?, _ errors: [any Swift.Error]?) -> Swift.Void)
+  @objc deinit
+}
+public protocol NotificationHandler : AnyObject {
+  func handle(response: UserNotifications.UNNotificationResponse) -> [Swift.String : Swift.String]?
+}
+@_hasMissingDesignatedInitializers public class NotificationsManager {
+  public func addNotificationHandler(_ handler: any FlyBuy.NotificationHandler)
+  public func removeNotificationHandler(_ handler: any FlyBuy.NotificationHandler)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(FlyBuyBeaconRegion) public class FlyBuyBeaconRegion : FlyBuy.FlyBuyRegion {

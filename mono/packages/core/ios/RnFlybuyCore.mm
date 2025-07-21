@@ -202,6 +202,21 @@ RCT_EXPORT_METHOD(handleRemoteNotification:(NSDictionary *)userInfo)
   [FlyBuyCore handleRemoteNotification:userInfo];
 }
 
+RCT_EXPORT_METHOD(handleNotification:(NSDictionary *)response
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+{
+  @try {
+    NSDictionary *result = [FlyBuyCore handleNotification:response];
+    if (result != nil) {
+      resolve(result);
+    } else {
+      resolve([NSNull null]);
+    }
+  } @catch (NSException *exception) {
+    reject(@"handleNotification_error", exception.reason, nil);
+  }
+}
 
 // Orders
 

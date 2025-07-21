@@ -25,6 +25,7 @@ export interface Spec extends TurboModule {
   updatePushToken(token: string): void;
   // TODO: change any
   handleRemoteNotification(data: any): void;
+  handleNotification(data: any): Promise<any>;
 
   // TODO: double check promise reject type
   //Customers functions

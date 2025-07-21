@@ -18,6 +18,7 @@ import {NotifySection} from './NotifySection';
 import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
 import {PlacesSection} from './PlacesSection';
 import {LinksSection} from './LinksSection';
+import * as LiveStatus from 'react-native-bildit-flybuy-livestatus';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -29,6 +30,8 @@ function App(): React.JSX.Element {
   React.useEffect(() => {
     getNotificationPermission();
     getLocationPermissions();
+    // Configure LiveStatus with example options
+    LiveStatus.configure('AppIcon', '#A162F7', '#00E5C8').catch(console.warn);
   }, []);
 
   React.useEffect(() => {

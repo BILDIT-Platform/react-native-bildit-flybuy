@@ -104,6 +104,10 @@ class RnFlybuyNotifyModule internal constructor(context: ReactApplicationContext
     return map
   }
 
+  /**
+   * @deprecated Use FlyBuyCore.handleNotification instead. This will be removed in a future release.
+   * TODO: Migrate to FlyBuyCore.handleNotification
+   */
   fun handleNotification(intent: Intent?) {
     intent?.let {
       val notifyMetadata = NotifyManager.getInstance().handleNotification(it)

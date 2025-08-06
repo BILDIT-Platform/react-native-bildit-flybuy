@@ -24,6 +24,41 @@ const RnFlybuyLivestatus = RnFlybuyLivestatusModule
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return RnFlybuyLivestatus.multiply(a, b);
+/**
+ * Configure LiveStatus with options.
+ * @param icon - The icon name to use.
+ * @param statusTintColor - The status tint color (hex string, e.g. '#A162F7').
+ * @param statusTintDarkModeColor - The status tint color for dark mode (hex string, e.g. '#00E5C8').
+ * @returns Promise<string>
+ */
+export function configure(
+  icon: string,
+  statusTintColor?: string,
+  statusTintDarkModeColor?: string
+): Promise<string> {
+  return RnFlybuyLivestatus.configure(
+    icon,
+    statusTintColor,
+    statusTintDarkModeColor
+  );
+}
+
+/**
+ * Configure LiveStatus with options.
+ * @param icon - The icon name to use.
+ * @param statusTintColor - The status tint color (hex string, e.g. '#A162F7').
+ * @param statusTintDarkModeColor - The status tint color for dark mode (hex string, e.g. '#00E5C8').
+ * @returns Promise<string>
+ * @deprecated Use configure instead
+ */
+export function configureWithOptions(
+  icon: string,
+  statusTintColor?: string,
+  statusTintDarkModeColor?: string
+): Promise<string> {
+  return RnFlybuyLivestatus.configure(
+    icon,
+    statusTintColor,
+    statusTintDarkModeColor
+  );
 }

@@ -59,6 +59,15 @@ export function handleRemoteNotification(data: any): Promise<void> {
   return RnFlybuyCore.handleRemoteNotification(data);
 }
 
+/**
+ * Handles a notification response (for notification tap events).
+ * @param data - The notification response data (platform-specific).
+ * @returns Promise<any> - The metadata or null if not handled.
+ */
+export function handleNotification(data: any): Promise<any> {
+  return RnFlybuyCore.handleNotification(data);
+}
+
 export function parseReferrerUrl(referrerUrl: string): Promise<LinkDetails> {
   if (Platform.OS === 'ios') {
     return new Promise((_, reject) => {

@@ -144,6 +144,12 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
     FlyBuyCore.onMessageReceived(dataMap, null)
   }
 
+  @ReactMethod
+  fun handleNotification(data: ReadableMap, promise: Promise) {
+    // TODO: Update this when FlyBuyCore.handleNotification is available in the Android SDK
+    promise.reject("not_implemented", "FlyBuyCore.handleNotification is not implemented on Android SDK yet.")
+  }
+
   // Customer related functions
   @ReactMethod
   override fun login(email: String, password: String, promise: Promise) {

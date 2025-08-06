@@ -14,7 +14,7 @@ RCT_EXPORT_METHOD(configure:(NSString *)icon
                   statusTintDarkModeColor:(NSString *)statusTintDarkModeColorHex
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject) {
-    FlyBuyLiveStatusOptionsBuilder *builder = [[FlyBuyLiveStatusOptions Builder] init];
+    FlyBuyLiveStatusOptionsBuilder *builder = [FlyBuyLiveStatusOptions Builder];
     builder = [builder setIconName:icon];
     if (statusTintColorHex != nil && [statusTintColorHex length] > 0) {
         UIColor *color = [self colorFromHexString:statusTintColorHex];

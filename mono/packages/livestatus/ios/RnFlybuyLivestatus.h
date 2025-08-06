@@ -10,6 +10,8 @@
 #endif
 
 - (void)configure:(NSString *)icon
+     statusTintColor:(NSString *)statusTintColorHex
+     statusTintDarkModeColor:(NSString *)statusTintDarkModeColorHex
      withResolver:(RCTPromiseResolveBlock)resolve
      withRejecter:(RCTPromiseRejectBlock)reject;
 

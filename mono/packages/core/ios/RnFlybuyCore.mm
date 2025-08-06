@@ -207,12 +207,11 @@ RCT_EXPORT_METHOD(handleNotification:(NSDictionary *)response
                   withRejecter:(RCTPromiseRejectBlock)reject)
 {
   @try {
-    NSDictionary *result = [FlyBuyCore handleNotification:response];
-    if (result != nil) {
-      resolve(result);
-    } else {
-      resolve([NSNull null]);
-    }
+    // For React Native integration, we should use handleRemoteNotification
+    // The handleNotification method is meant to be used by the UNUserNotificationCenter delegate
+    // when handling notification tap events in the native iOS app
+    [FlyBuyCore handleRemoteNotification:response];
+    resolve([NSNull null]);
   } @catch (NSException *exception) {
     reject(@"handleNotification_error", exception.reason, nil);
   }

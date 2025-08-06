@@ -31,7 +31,7 @@ function App(): React.JSX.Element {
     getNotificationPermission();
     getLocationPermissions();
     // Configure LiveStatus with example options
-    LiveStatus.configure('AppIcon', '#A162F7', '#00E5C8').catch(console.warn);
+    LiveStatus.configureWithOptions('AppIcon', '#A162F7', '#00E5C8').catch(console.warn);
   }, []);
 
   React.useEffect(() => {

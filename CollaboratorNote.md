@@ -48,23 +48,13 @@
 
 ## How to Release
 
-1. **Bump the version:**
-   - Use the release script or manually update the `version` field in each package's `package.json`.
-2. **Publish to npm:**
+1. **Publish to npm:**
    - From the monorepo root, run:
      ```sh
      npx lerna publish
      ```
-   - Or, for Yarn workspaces with changesets:
-     ```sh
-     yarn changeset version
-     yarn changeset publish
-     ```
-3. **Tag and push:**
-   - Ensure tags are pushed to the remote:
-     ```sh
-     git push --follow-tags
-     ```
+2. **Select the version:**
+   
 
 ---
 

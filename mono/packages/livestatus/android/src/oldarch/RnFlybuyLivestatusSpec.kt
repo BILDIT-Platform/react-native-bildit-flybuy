@@ -7,5 +7,10 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule
 abstract class RnFlybuyLivestatusSpec internal constructor(context: ReactApplicationContext) :
   ReactContextBaseJavaModule(context) {
 
-  abstract fun configure(icon: String, promise: Promise)
+  abstract fun configure(
+    icon: String,
+    statusTintColor: String?,
+    statusTintDarkModeColor: String?,
+    promise: Promise
+  )
 }

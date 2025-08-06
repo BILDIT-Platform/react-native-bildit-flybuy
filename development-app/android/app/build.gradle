@@ -84,6 +84,9 @@ android {
         versionName "1.0"
 
         missingDimensionStrategy "flybuy", "default"
+        
+        // Support for vector drawables in older API levels
+        vectorDrawables.useSupportLibrary = true
     }
     signingConfigs {
         debug {
@@ -96,6 +99,8 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            applicationIdSuffix ".debug"
+            debuggable true
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -103,13 +108,41 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            
+            // Enable R8 optimizations
+            shrinkResources enableProguardInReleaseBuilds
         }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled true
+    }
+    
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    
+    // Ensure consistent Java toolchain usage
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+    
+    packagingOptions {
+        pickFirst '**/libc++_shared.so'
+        pickFirst '**/libjsc.so'
     }
 }
 
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+
+    // Core library desugaring for Java 8+ language features
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")

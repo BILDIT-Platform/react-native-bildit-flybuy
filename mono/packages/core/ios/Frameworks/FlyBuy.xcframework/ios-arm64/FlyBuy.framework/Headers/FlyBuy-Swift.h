@@ -471,11 +471,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FlyBuyLogger
 /// The associated meta data
 + (NSDictionary<NSString *, NSString *> * _Nullable)handleNotification:(UNNotificationResponse * _Nonnull)response SWIFT_WARN_UNUSED_RESULT;
 /// Updates the push token that FlyBuy uses to send push messages to the app.
+/// See <a href="https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/setup/push-message-handling">Flybuy Developer Docs</a> for additional details.
 + (void)updatePushToken:(NSString * _Nonnull)newPushToken;
 /// Updates the APNs device token that FlyBuy uses to send pushes to the app. This should only be used
 /// when FlyBuy is configured to send pushes through APNs directly. If using a 3rd party service such as
 /// Airship, OneSignal, etc, the correct method to call is <code>updatePushToken</code>.
-+ (void)updateAPNPushToken:(NSData * _Nonnull)deviceToken;
++ (void)updateAPNPushToken:(NSData * _Nonnull)deviceToken SWIFT_DEPRECATED_MSG("This method for updating the APNs device token has been deprecated. Use FlyBuy.Core.updatePushToken(_:) instead. See https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/setup/push-message-handling?id=apns");
 @end
 
 @class FlyBuyCustomerInfo;
@@ -1321,6 +1322,7 @@ SWIFT_CLASS("_TtC6FlyBuy12PickupConfig")
 @property (nonatomic, readonly, copy) NSArray<PickupTypeConfig *> * _Nonnull availablePickupTypes;
 @property (nonatomic, readonly, copy) NSArray<AvailableHandoffVehicleLocation *> * _Nonnull availableHandoffVehicleLocation;
 @property (nonatomic, readonly, copy) NSArray<OrderProgressState *> * _Nonnull orderProgressStates;
+@property (nonatomic, readonly) BOOL customerFeedbackEnabled;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

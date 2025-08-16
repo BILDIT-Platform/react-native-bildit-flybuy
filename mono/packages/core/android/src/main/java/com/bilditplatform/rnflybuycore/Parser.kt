@@ -115,6 +115,7 @@ fun parsePickupConfig(pickupConfig: PickupConfig): WritableMap {
   map.putString("accentTextColor", pickupConfig.projectAccentTextColor)
   map.putString("askToAskImageURL", pickupConfig.askToAskImageUrl)
   map.putBoolean("customerNameEditingEnabled", pickupConfig.customerNameEditingEnabled)
+  map.putBoolean("enableCustomerFeedback", pickupConfig.enableCustomerFeedback)
   map.putInt("id", pickupConfig.id)
   map.putBoolean("pickupTypeSelectionEnabled", pickupConfig.pickupTypeSelectionEnabled)
   map.putString("privacyPolicyURL", pickupConfig.privacyPolicyUrl)

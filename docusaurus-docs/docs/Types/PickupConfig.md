@@ -15,6 +15,7 @@ sidebar_position: 1
   askToAskImageURL?: string;
   availablePickupTypes: IPickupTypeConfig[];
   customerNameEditingEnabled: boolean;
+  enableCustomerFeedback?: boolean;
   id: number;
   pickupTypeSelectionEnabled: boolean;
   privacyPolicyURL?: string;

@@ -352,6 +352,7 @@ public enum HTTPStatusCode : Swift.Int, Swift.Error {
   @objc final public let availablePickupTypes: [FlyBuy.PickupTypeConfig]
   @objc final public let availableHandoffVehicleLocation: [FlyBuy.AvailableHandoffVehicleLocation]
   @objc final public let orderProgressStates: [FlyBuy.OrderProgressState]
+  @objc final public let customerFeedbackEnabled: Swift.Bool
   required public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
   @objc deinit
@@ -569,6 +570,7 @@ extension FlyBuy.FlyBuyModuleManager {
   @objc public static func handleRemoteNotification(_ data: [Swift.AnyHashable : Any])
   @objc public static func handleNotification(_ response: UserNotifications.UNNotificationResponse) -> [Swift.String : Swift.String]?
   @objc public static func updatePushToken(_ newPushToken: Swift.String)
+  @available(*, deprecated, message: "This method for updating the APNs device token has been deprecated. Use FlyBuy.Core.updatePushToken(_:) instead. See https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/setup/push-message-handling?id=apns")
   @objc public static func updateAPNPushToken(_ deviceToken: Foundation.Data)
   public static func cancelRunningURLSessions()
   @objc deinit

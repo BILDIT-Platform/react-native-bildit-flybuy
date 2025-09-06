@@ -12835,6 +12835,56 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "customerFeedbackEnabled",
+            "printedName": "customerFeedbackEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FlyBuy@objc(cs)PickupConfig(py)customerFeedbackEnabled",
+            "mangledName": "$s6FlyBuy12PickupConfigC23customerFeedbackEnabledSbvp",
+            "moduleName": "FlyBuy",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FlyBuy@objc(cs)PickupConfig(im)customerFeedbackEnabled",
+                "mangledName": "$s6FlyBuy12PickupConfigC23customerFeedbackEnabledSbvg",
+                "moduleName": "FlyBuy",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(from:)",
@@ -17553,23 +17603,6 @@
         "moduleName": "FlyBuy"
       },
       {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "FlyBuy",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "FlyBuy"
-      },
-      {
         "kind": "TypeDecl",
         "name": "Coordinate",
         "printedName": "Coordinate",
@@ -18681,6 +18714,23 @@
             "usr": "s:s9EscapableP",
             "mangledName": "$ss9EscapableP"
           }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuy"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FlyBuy",
+        "declAttributes": [
+          "RawDocComment"
         ]
       },
       {
@@ -20185,10 +20235,12 @@
             "mangledName": "$s6FlyBuy4CoreC18updateAPNPushTokenyy10Foundation4DataVFZ",
             "moduleName": "FlyBuy",
             "static": true,
+            "deprecated": true,
             "declAttributes": [
               "Final",
               "AccessControl",
               "ObjC",
+              "Available",
               "RawDocComment"
             ],
             "funcSelfKind": "NonMutating"
@@ -51230,8 +51282,15 @@
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 679,
+      "length": 2,
+      "value": "12"
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/PersistManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 753,
+      "offset": 771,
       "length": 4,
       "value": "true"
     },
@@ -51889,86 +51948,93 @@
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/PickupConfig\/PickupConfig.swift",
       "kind": "StringLiteral",
-      "offset": 1026,
+      "offset": 1073,
       "length": 6,
       "value": "\"type\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/PickupConfig\/PickupConfig.swift",
       "kind": "StringLiteral",
-      "offset": 1047,
+      "offset": 1094,
       "length": 4,
       "value": "\"id\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/PickupConfig\/PickupConfig.swift",
       "kind": "StringLiteral",
-      "offset": 1090,
+      "offset": 1137,
       "length": 51,
       "value": "\"project_mobile_flow_customer_name_editing_enabled\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/PickupConfig\/PickupConfig.swift",
       "kind": "StringLiteral",
-      "offset": 1180,
+      "offset": 1227,
       "length": 51,
       "value": "\"project_mobile_flow_pickup_type_selection_enabled\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/PickupConfig\/PickupConfig.swift",
       "kind": "StringLiteral",
-      "offset": 1260,
+      "offset": 1307,
       "length": 22,
       "value": "\"ask_to_ask_image_url\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/PickupConfig\/PickupConfig.swift",
       "kind": "StringLiteral",
-      "offset": 1306,
+      "offset": 1353,
       "length": 22,
       "value": "\"project_accent_color\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/PickupConfig\/PickupConfig.swift",
       "kind": "StringLiteral",
-      "offset": 1356,
+      "offset": 1403,
       "length": 27,
       "value": "\"project_accent_text_color\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/PickupConfig\/PickupConfig.swift",
       "kind": "StringLiteral",
-      "offset": 1413,
+      "offset": 1460,
       "length": 22,
       "value": "\"terms_of_service_url\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/PickupConfig\/PickupConfig.swift",
       "kind": "StringLiteral",
-      "offset": 1464,
+      "offset": 1511,
       "length": 20,
       "value": "\"privacy_policy_url\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/PickupConfig\/PickupConfig.swift",
       "kind": "StringLiteral",
-      "offset": 1517,
+      "offset": 1564,
       "length": 24,
       "value": "\"available_pickup_types\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/PickupConfig\/PickupConfig.swift",
       "kind": "StringLiteral",
-      "offset": 1585,
+      "offset": 1632,
       "length": 37,
       "value": "\"available_handoff_vehicle_locations\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/PickupConfig\/PickupConfig.swift",
       "kind": "StringLiteral",
-      "offset": 1654,
+      "offset": 1701,
       "length": 23,
       "value": "\"order_progress_states\""
+    },
+    {
+      "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Models\/Order\/PickupConfig\/PickupConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 1760,
+      "length": 27,
+      "value": "\"customer_feedback_enabled\""
     },
     {
       "filePath": "\/Users\/radbot\/actions-runner\/_work\/iris-ios\/iris-ios\/FlyBuySDK\/FlyBuyCore\/Sqlite\/SQLite.swift",

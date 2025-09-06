@@ -6,7 +6,7 @@ buildscript {
         targetSdkVersion = 35
         ndkVersion = "26.1.10909125"
         kotlinVersion = "1.9.22"
-        flybuyVersion = "2.15.0" // Modify this to update the version
+        flybuyVersion = "2.15.1" // Modify this to update the version
     }
     repositories {
         google()

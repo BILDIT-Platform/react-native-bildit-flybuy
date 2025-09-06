@@ -563,6 +563,9 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
   map[@"description"] = site.description ?: @"";
   map[@"partnerIdentifier"] = site.partnerIdentifier ?: @"";
   map[@"pickupConfig"] = [self parsePickupConfig:site.pickupConfig];
+  map[@"operationalStatus"] = site.operationalStatus ?: @"";
+  map[@"prearrivalSeconds"] = @(site.prearrivalSeconds);
+
   return map;
 }
 
@@ -657,6 +660,12 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
         // TODO: check the SDK
         // @"spotIdentifierEntryEnabled": @(order.spotIdentifierEntryEnabled),
         @"spotIdentifierInputType": order.spotIdentifierInputType ?: [NSNull null]
+
+        @"estimatedReadyAt": order.estimatedReadyAt.description ?: [NSNull null],
+        @"partnerIdentifierForCustomer": order.partnerIdentifierForCustomer ?: [NSNull null],
+        @"partnerIdentifierForCrew": order.partnerIdentifierForCrew ?: [NSNull null],
+        @"displayName": order.displayName ?: [NSNull null],
+        @"handoffVehicleLocation": order.handoffVehicleLocation ?: [NSNull null],
     };
 }
 

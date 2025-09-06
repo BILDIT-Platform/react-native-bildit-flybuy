@@ -100,6 +100,8 @@ RCT_EXPORT_METHOD(sync:(BOOL *)force
   map[@"description"] = site.description ?: @"";
   map[@"partnerIdentifier"] = site.partnerIdentifier ?: @"";
   map[@"pickupConfig"] = [self parsePickupConfig:site.pickupConfig];
+  map[@"operationalStatus"] = site.operationalStatus ?: @"";
+  map[@"prearrivalSeconds"] = @(site.prearrivalSeconds);
   return map;
 }
 

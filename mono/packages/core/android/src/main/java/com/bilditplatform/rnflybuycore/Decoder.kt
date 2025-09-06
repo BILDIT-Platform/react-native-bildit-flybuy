@@ -200,6 +200,7 @@ fun decodeSite(site: ReadableMap): Site {
   var description: String? = null
   var partnerIdentifier: String? = null
   var operationalStatus: String? = null
+  var prearrivalSeconds: Int? = null
   var pickupConfigId: Int? = null
 
 
@@ -269,6 +270,10 @@ fun decodeSite(site: ReadableMap): Site {
     operationalStatus = site.getString("operationalStatus")
   }
 
+  if (site.hasKey("prearrivalSeconds")) {
+    prearrivalSeconds = site.getInt("prearrivalSeconds")
+  }
+
   if (site.hasKey("pickupConfigId")) {
     pickupConfigId = site.getInt("pickupConfigId")
   }
@@ -293,11 +298,11 @@ fun decodeSite(site: ReadableMap): Site {
     type = type,
     displayName = displayName,
     operationalStatus = operationalStatus,
+    prearrivalSeconds = prearrivalSeconds,
     pickupConfigId = pickupConfigId,
     // TODO: Map this value from API response
     projectAccentColor = null,
     geofence = null,
-    prearrivalSeconds = null,
     projectAccentTextColor = null,
     wrongSiteArrivalRadius = null,
 

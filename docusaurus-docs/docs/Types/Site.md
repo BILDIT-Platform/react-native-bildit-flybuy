@@ -27,6 +27,8 @@ sidebar_position: 3
   description?: string | null;
   partnerIdentifier?: string | null;
   pickupConfig?: PickupConfig | null;
+  operationalStatus?: string | null;
+  prearrivalSeconds?: number | null;
 }
 ```
 

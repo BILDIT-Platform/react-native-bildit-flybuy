@@ -50,6 +50,11 @@ fun parseOrder(order: Order): WritableMap {
   map.putString("spotIdentifier", order.spotIdentifier)
   map.putBoolean("spotIdentifierEntryEnabled", order.spotIdentifierEntryEnabled)
   map.putString("spotIdentifierInputType", order.spotIdentifierInputType.toString())
+  map.putString("estimatedReadyAt", order.estimatedReadyAt?.toString())
+  map.putString("partnerIdentifierForCustomer", order.partnerIdentifierForCustomer)
+  map.putString("partnerIdentifierForCrew", order.partnerIdentifierForCrew)
+  map.putString("displayName", order.displayName)
+  map.putString("handoffVehicleLocation", order.handoffVehicleLocation)
 
   return map
 }
@@ -114,14 +119,16 @@ fun parsePickupConfig(pickupConfig: PickupConfig): WritableMap {
   map.putString("accentColor", pickupConfig.projectAccentColor)
   map.putString("accentTextColor", pickupConfig.projectAccentTextColor)
   map.putString("askToAskImageURL", pickupConfig.askToAskImageUrl)
+  map.putString("availableHandoffVehicleLocation", pickupConfig.availableHandoffVehicleLocation)
+  map.putArray("availablePickupTypes", parsePickupTypeConfigs(pickupConfig.availablePickupTypes))
+  map.putBoolean("customerFeedbackEnabled", pickupConfig.customerFeedbackEnabled)
   map.putBoolean("customerNameEditingEnabled", pickupConfig.customerNameEditingEnabled)
-  map.putBoolean("enableCustomerFeedback", pickupConfig.enableCustomerFeedback)
   map.putInt("id", pickupConfig.id)
+  // TODO: find a way to parse orderProgressStates
   map.putBoolean("pickupTypeSelectionEnabled", pickupConfig.pickupTypeSelectionEnabled)
   map.putString("privacyPolicyURL", pickupConfig.privacyPolicyUrl)
   map.putString("termsOfServiceURL", pickupConfig.termsOfServiceUrl)
   map.putString("type", pickupConfig.type)
-  map.putArray("availablePickupTypes", parsePickupTypeConfigs(pickupConfig.availablePickupTypes))
   return map
 }
 
@@ -143,6 +150,8 @@ fun parseSite(site: Site): WritableMap {
   map.putString("description", site.description)
   map.putString("partnerIdentifier", site.partnerIdentifier)
   map.putMap("pickupConfig", parsePickupConfig(site.pickupConfig))
+  map.putString("operationalStatus", site.operationalStatus)
+  map.putInt("prearrivalSeconds", site.prearrivalSeconds)
 
   return map
 }

@@ -14,9 +14,11 @@ sidebar_position: 1
   accentTextColor: string;
   askToAskImageURL?: string;
   availablePickupTypes: IPickupTypeConfig[];
+  availableHandoffVehicleLocation?: string;
   customerNameEditingEnabled: boolean;
-  enableCustomerFeedback?: boolean;
+  customerFeedbackEnabled?: boolean;
   id: number;
+  orderProgressStates?: string;
   pickupTypeSelectionEnabled: boolean;
   privacyPolicyURL?: string;
   termsOfServiceURL?: string;

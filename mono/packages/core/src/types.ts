@@ -42,6 +42,8 @@ export interface ISite {
   instructions?: string | null;
   description?: string | null;
   partnerIdentifier?: string | null;
+  operationalStatus?: string | null;
+  prearrivalSeconds?: number | null;
 }
 
 export interface ICircularRegion {
@@ -52,8 +54,9 @@ export interface ICircularRegion {
 
 export interface IOrder {
   id: number;
+  type?: string;
   state: string;
-  customerState: CustomerState;
+  customerState: string;
   partnerIdentifier?: string;
   pickupWindow?: [string];
   pickupType?: string;
@@ -64,6 +67,11 @@ export interface IOrder {
   customerComment?: string;
   createdAt?: string;
   orderFiredAt?: string;
+  estimatedReadyAt?: string;
+  partnerIdentifierForCustomer?: string;
+  partnerIdentifierForCrew?: string;
+  displayName?: string;
+  handoffVehicleLocation?: string;
 
   siteID: number;
   siteName?: string;
@@ -83,9 +91,10 @@ export interface IOrder {
 
   spotIdentifier?: string;
   spotIdentifierEntryEnabled?: boolean;
-  spotIdentifierInputType?: string;
+  spotIdentifierInputType?: string; 
 }
 
+// @deprecated this enum is deprecated, use string instead
 export enum CustomerState {
   CREATED = 'created',
   EN_ROUTE = 'en_route',
@@ -105,6 +114,7 @@ export enum PlaceType {
   POI = 4,
 }
 
+// @deprecated this enum is deprecated, use string instead
 export enum OrderStateType {
   CREATED = 'created',
   READY = 'ready',
@@ -119,6 +129,7 @@ export enum OrderStateType {
   COMPLETED = 'completed',
 }
 
+// @deprecated this enum is deprecated, use string instead
 export enum PickupType {
   CURBSIDE = 'curbside',
   PICKUP = 'pickup',
@@ -130,8 +141,8 @@ export type CreateOrderWithSitePid = {
   orderPid: string;
   customerInfo: ICustomerInfo;
   pickupWindow?: PickupWindow;
-  orderState?: OrderStateType;
-  pickupType?: PickupType;
+  orderState?: string;
+  pickupType?: string;
 };
 
 export type CreateOrderWithSiteId = {
@@ -139,8 +150,8 @@ export type CreateOrderWithSiteId = {
   pid: string;
   customerInfo: ICustomerInfo;
   pickupWindow?: PickupWindow;
-  orderState?: OrderStateType;
-  pickupType?: PickupType;
+  orderState?: string;
+  pickupType?: string;
 };
 
 export type CreateOrderParamsType = Partial<CreateOrderWithSiteId> &
@@ -181,7 +192,7 @@ export type PlaceSuggestOptions = {
 };
 
 export type PickupMethodOptions = {
-  pickupType: PickupType;
+  pickupType: string;
   customerCarColor?: string;
   customerCarType?: string;
   customerLicensePlate?: string;

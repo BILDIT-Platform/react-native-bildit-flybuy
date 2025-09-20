@@ -1,5 +1,5 @@
 PODS:
-  - bildit-platform-rn-flybuy-core (2.23.0):
+  - bildit-platform-rn-flybuy-core (2.24.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -20,7 +20,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-livestatus (2.23.0):
+  - bildit-platform-rn-flybuy-livestatus (2.24.0):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -42,7 +42,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-notify (2.23.0):
+  - bildit-platform-rn-flybuy-notify (2.24.0):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -64,7 +64,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-pickup (2.23.0):
+  - bildit-platform-rn-flybuy-pickup (2.24.0):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -86,7 +86,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-presence (2.23.0):
+  - bildit-platform-rn-flybuy-presence (2.24.0):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -1477,11 +1477,11 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  bildit-platform-rn-flybuy-core: 825f4d50d65661dc2909a8ec31e37ca4a1e93aea
-  bildit-platform-rn-flybuy-livestatus: bec850056d68e7444b22b52e3c38ead076203379
-  bildit-platform-rn-flybuy-notify: 6f0fe7af92666b0d3ca1de399728de3d6beb1251
-  bildit-platform-rn-flybuy-pickup: f44d01ca5c62f918ceadcf0a9ede18068e9e324e
-  bildit-platform-rn-flybuy-presence: 9faa26ff3220842283a38395783e87082a06c6c0
+  bildit-platform-rn-flybuy-core: 9fac7b858e386b5add9675457285a3e09679b397
+  bildit-platform-rn-flybuy-livestatus: ee697cfe0ecb3f66c169b3f158edcf3bb39927a5
+  bildit-platform-rn-flybuy-notify: 611c79abc7ecbc3c26a4155d07c665414dfedcff
+  bildit-platform-rn-flybuy-pickup: d8aa30c23ea78cebaca9c771e54d33da546ff30d
+  bildit-platform-rn-flybuy-presence: b826085a08d384aebf98bb40309b42da25fdbb84
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   FBLazyVector: 7e977dd099937dc5458851233141583abba49ff2
@@ -1538,8 +1538,8 @@ SPEC CHECKSUMS:
   ReactCommon: f00e436b3925a7ae44dfa294b43ef360fbd8ccc4
   RNPermissions: 1e2f1a5aebd3bae402939e7da398170a3e5a625e
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
-  Yoga: 04f1db30bb810187397fa4c37dd1868a27af229c
+  Yoga: 88480008ccacea6301ff7bf58726e27a72931c8d
 
-PODFILE CHECKSUM: 4d92f6c00b25a01b9a70014ab24a9c43f51259a5
+PODFILE CHECKSUM: 322edf148fbf45927375370716696ab805901b2c
 
 COCOAPODS: 1.14.3

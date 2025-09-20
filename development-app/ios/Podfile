@@ -19,6 +19,7 @@ setup_permissions([
   'Notifications'
 ])
 
+ENV['RCT_NEW_ARCH_ENABLED'] = '0'
 linkage = ENV['USE_FRAMEWORKS']
 if linkage != nil
   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green

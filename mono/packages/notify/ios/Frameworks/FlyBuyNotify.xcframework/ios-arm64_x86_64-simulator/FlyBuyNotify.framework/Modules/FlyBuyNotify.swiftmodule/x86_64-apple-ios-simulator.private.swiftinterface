@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
-// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name FlyBuyNotify
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name FlyBuyNotify
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
 import BackgroundTasks
 import CoreLocation
@@ -26,6 +26,219 @@ public enum SyncHistory {
   public static func updateAppInstanceID()
   public static func appVersion() -> Swift.String
   public static func updateAppVersion()
+}
+open class Context {
+  public init(dictionary: [Swift.String : FlyBuyNotify.Token.Value]? = nil)
+  public init(dictionary: [Swift.String : Any?])
+  open func getValue(for key: Swift.String) -> FlyBuyNotify.Token.Value?
+  open func set(value: FlyBuyNotify.Token.Value, for key: Swift.String)
+  open func set(value: Any?, for key: Swift.String)
+  open func incrementCounter(for key: Swift.String) -> Swift.Int
+  open func decrementCounter(for key: Swift.String) -> Swift.Int
+  open func next(in group: [FlyBuyNotify.Token.Value], identifier: Swift.String?) -> FlyBuyNotify.Token.Value?
+  @objc deinit
+}
+extension FlyBuyNotify.Context {
+  public func makeSupplement(with variables: [Swift.String : FlyBuyNotify.Token.Value]) -> FlyBuyNotify.Context
+}
+public enum Token : Swift.Equatable {
+  case text(value: Swift.String)
+  case variable(value: Swift.String)
+  case tag(value: Swift.String)
+  public static func == (lhs: FlyBuyNotify.Token, rhs: FlyBuyNotify.Token) -> Swift.Bool
+  indirect public enum Value : Swift.Hashable {
+    case `nil`
+    case bool(Swift.Bool)
+    case string(Swift.String)
+    case integer(Swift.Int)
+    case decimal(Foundation.Decimal)
+    case array([FlyBuyNotify.Token.Value])
+    case dictionary([Swift.String : FlyBuyNotify.Token.Value])
+    case range(Swift.ClosedRange<Swift.Int>)
+    public var stringValue: Swift.String {
+      get
+    }
+    public var decimalValue: Foundation.Decimal? {
+      get
+    }
+    public var doubleValue: Swift.Double? {
+      get
+    }
+    public var integerValue: Swift.Int? {
+      get
+    }
+    public var isFalsy: Swift.Bool {
+      get
+    }
+    public var isTruthy: Swift.Bool {
+      get
+    }
+    public var isEmptyString: Swift.Bool {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: FlyBuyNotify.Token.Value, b: FlyBuyNotify.Token.Value) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+public protocol TokenValueConvertible {
+  var tokenValue: FlyBuyNotify.Token.Value { get }
+}
+extension Swift.Dictionary : FlyBuyNotify.TokenValueConvertible where Key == Swift.String, Value == any FlyBuyNotify.TokenValueConvertible {
+  public var tokenValue: FlyBuyNotify.Token.Value {
+    get
+  }
+}
+extension Swift.Array : FlyBuyNotify.TokenValueConvertible where Element : FlyBuyNotify.TokenValueConvertible {
+  public var tokenValue: FlyBuyNotify.Token.Value {
+    get
+  }
+}
+extension Swift.Int : FlyBuyNotify.TokenValueConvertible {
+  public var tokenValue: FlyBuyNotify.Token.Value {
+    get
+  }
+}
+extension Swift.String : FlyBuyNotify.TokenValueConvertible {
+  public var tokenValue: FlyBuyNotify.Token.Value {
+    get
+  }
+}
+extension Swift.Float : FlyBuyNotify.TokenValueConvertible {
+  public var tokenValue: FlyBuyNotify.Token.Value {
+    get
+  }
+}
+extension Swift.Double : FlyBuyNotify.TokenValueConvertible {
+  public var tokenValue: FlyBuyNotify.Token.Value {
+    get
+  }
+}
+extension Swift.Bool : FlyBuyNotify.TokenValueConvertible {
+  public var tokenValue: FlyBuyNotify.Token.Value {
+    get
+  }
+}
+extension Swift.Range : FlyBuyNotify.TokenValueConvertible where Bound : Swift.SignedInteger {
+  public var tokenValue: FlyBuyNotify.Token.Value {
+    get
+  }
+}
+extension Swift.ClosedRange : FlyBuyNotify.TokenValueConvertible where Bound : Swift.SignedInteger {
+  public var tokenValue: FlyBuyNotify.Token.Value {
+    get
+  }
+}
+extension Swift.String {
+  public func firstIndex(reverse: Swift.Bool, where predicate: (Swift.Character) throws -> Swift.Bool) rethrows -> Swift.String.Index?
+}
+open class Filter {
+  public init(identifier: Swift.String, lambda: @escaping (FlyBuyNotify.Token.Value, [FlyBuyNotify.Token.Value]) -> FlyBuyNotify.Token.Value)
+  @objc deinit
+}
+extension FlyBuyNotify.Filter {
+  public static func parseDate(string inputString: Swift.String) -> Foundation.Date?
+}
+open class Parser {
+  public init(tokens: [FlyBuyNotify.Token], context: FlyBuyNotify.Context)
+  open func registerFilters()
+  open func registerTags()
+  open func registerOperators()
+  public func parse() -> [Swift.String]
+  public func register(filter: FlyBuyNotify.Filter)
+  public func register(operator: FlyBuyNotify.Operator)
+  public func register(tag: FlyBuyNotify.Tag.Type)
+  @_hasMissingDesignatedInitializers open class Scope {
+    @objc deinit
+  }
+  public enum ParseErrors : Swift.Error {
+    case malformedExpression(Swift.String)
+    public var localizedDescription: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+public struct Lexer {
+  public init(templateString: Swift.String)
+  public func tokenize() -> [FlyBuyNotify.Token]
+}
+@_hasMissingDesignatedInitializers open class Operator {
+  @objc deinit
+}
+public struct TemplateSyntaxError : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible {
+  public let description: Swift.String
+  public init(_ description: Swift.String)
+  public static func == (lhs: FlyBuyNotify.TemplateSyntaxError, rhs: FlyBuyNotify.TemplateSyntaxError) -> Swift.Bool
+}
+open class Tag {
+  open class var keyword: Swift.String {
+    get
+  }
+  open var tagExpression: [FlyBuyNotify.Tag.ExpressionSegment] {
+    get
+  }
+  open var parameters: [Swift.String] {
+    get
+  }
+  public var compiledExpression: [Swift.String : Any] {
+    get
+  }
+  final public let context: FlyBuyNotify.Context
+  open var definesScope: Swift.Bool {
+    get
+  }
+  open var terminatesScopesWithTags: [FlyBuyNotify.Tag.Type]? {
+    get
+  }
+  open var terminatesParentScope: Swift.Bool {
+    get
+  }
+  open var tagKindsToSkip: Swift.Set<FlyBuyNotify.Tag.Kind>?
+  open func didTerminate(scope: FlyBuyNotify.Parser.Scope, parser: FlyBuyNotify.Parser)
+  open func didDefine(scope: FlyBuyNotify.Parser.Scope, parser: FlyBuyNotify.Parser)
+  public var output: [FlyBuyNotify.Token.Value]?
+  required public init(context: FlyBuyNotify.Context)
+  open func parse(statement: Swift.String, using parser: FlyBuyNotify.Parser, currentScope: FlyBuyNotify.Parser.Scope) throws
+  public enum ExpressionSegment {
+    case literal(Swift.String)
+    case identifier(Swift.String)
+    case variable(Swift.String)
+    case group(Swift.String)
+  }
+  public enum Errors : Swift.Error {
+    case malformedStatement(Swift.String)
+    case missingArtifacts
+  }
+  @objc deinit
+}
+extension FlyBuyNotify.Tag {
+  public typealias Kind = Swift.Int
+  public class var kind: FlyBuyNotify.Tag.Kind {
+    get
+  }
+}
+extension Swift.String {
+  public struct HTMLEscapeOptions {
+    public static var allowUnsafeSymbols: Swift.Bool
+    public static var decimal: Swift.Bool
+    public static var encodeEverything: Swift.Bool
+    public static var useNamedReferences: Swift.Bool
+  }
+  public func htmlEscape(allowUnsafeSymbols: Swift.Bool = false, decimal: Swift.Bool = false, encodeEverything: Swift.Bool = false, useNamedReferences: Swift.Bool = false) -> Swift.String
+  public func htmlUnescape(strict: Swift.Bool) throws -> Swift.String
+  public func htmlUnescape() -> Swift.String
+}
+public enum ParseError : Swift.Error {
+  case DeprecatedNumericReference(Swift.String)
+  case DisallowedNumericReference(Swift.String)
+  case IllegalArgument(Swift.String)
+  case InvalidNamedReference(Swift.String)
+  case MalformedNumericReference(Swift.String)
+  case MissingSemicolon(Swift.String)
+  case OutsideValidUnicodeRange(Swift.String)
 }
 @objc open class NotificationInfo : ObjectiveC.NSObject {
   @objc final public let title: Swift.String
@@ -101,6 +314,9 @@ extension FlyBuyNotify.Manager : FlyBuy.NotificationHandler {
   @available(*, deprecated, message: "This method for handling notification responses is deprecated. Use FlyBuy.Core.handleNotification(response:) instead")
   @objc dynamic public func handleNotification(_ response: UserNotifications.UNNotificationResponse) -> [Swift.String : Swift.String]?
   public func handle(response: UserNotifications.UNNotificationResponse) -> [Swift.String : Swift.String]?
+}
+extension FlyBuyNotify.Manager {
+  public func updateCustomTemplateContent(_ content: [Swift.String : Swift.String])
 }
 extension FlyBuyNotify.NotifyErrorType : Swift.Equatable {}
 extension FlyBuyNotify.NotifyErrorType : Swift.Hashable {}

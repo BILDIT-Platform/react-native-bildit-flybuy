@@ -5604,32 +5604,32 @@ react-is@^17.0.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-bildit-flybuy-core@2.24.0, react-native-bildit-flybuy-core@^2.24.0:
-  version "2.24.0"
-  resolved "https://registry.npmjs.org/react-native-bildit-flybuy-core/-/react-native-bildit-flybuy-core-2.24.0.tgz#772bcf8a9741a9f02da65a9f5e3b950f91cfdf8c"
-  integrity sha512-DxPICUe7dT3uGQ1upbGENxpoDR2jZpIx2jKHkDliwtW2okGmR9xtnAbEQBatcspHpL1/+USOUzeEEQQTP9yilg==
+react-native-bildit-flybuy-core@2.24.1, react-native-bildit-flybuy-core@^2.24.1:
+  version "2.24.1"
+  resolved "https://registry.npmjs.org/react-native-bildit-flybuy-core/-/react-native-bildit-flybuy-core-2.24.1.tgz#ea96ecfaeb3fc39dfd33d84ac087e943238cc014"
+  integrity sha512-EX3E2sE3+oXAotGBuMXcM1OB5yiJrNeilttSMhdm5Hlz41gZhhemzuh9uM3y+jkNTW+Y/ZhAnLszLJuDMVm9gw==
 
-react-native-bildit-flybuy-livestatus@2.24.0:
-  version "2.24.0"
-  resolved "https://registry.npmjs.org/react-native-bildit-flybuy-livestatus/-/react-native-bildit-flybuy-livestatus-2.24.0.tgz#66ff9a6bf175c8cda453ce211636452603c89cd2"
-  integrity sha512-7a6Z3UdjdJuP2cCwV4dmDzcZNyalPoKWIt+0Pjxeyk6siUcAge4TOZFY9ggHq8YTYrw7frG1/BefuGiQO9Mfxw==
+react-native-bildit-flybuy-livestatus@2.24.1:
+  version "2.24.1"
+  resolved "https://registry.npmjs.org/react-native-bildit-flybuy-livestatus/-/react-native-bildit-flybuy-livestatus-2.24.1.tgz#2d55bc3f47a5052b94a9fb9ba7e77e98975f10c0"
+  integrity sha512-P+gv0LB+rdjKfz728hnW9hlY+FyKlsyBr7zlG4sbhiiwXVIuPSs3FCbMxLsGd9j9qPkz9dRT5IekMHCD1Cg7eQ==
 
-react-native-bildit-flybuy-notify@2.24.0:
-  version "2.24.0"
-  resolved "https://registry.npmjs.org/react-native-bildit-flybuy-notify/-/react-native-bildit-flybuy-notify-2.24.0.tgz#1378347ad91c72d3c767d1ee97fb08ba34c53e10"
-  integrity sha512-D4NsPNqqoUcBXzsHzU2c49ebi3VcHQKNhWzvc3hDn0sPbfP3vftoFAyi5Nh09FkXrKb1wDQKoZ2DtHYuPOJ1jQ==
+react-native-bildit-flybuy-notify@2.24.1:
+  version "2.24.1"
+  resolved "https://registry.npmjs.org/react-native-bildit-flybuy-notify/-/react-native-bildit-flybuy-notify-2.24.1.tgz#b8ebdad88d7de035789814cdaf8439939df4675a"
+  integrity sha512-6cfkV1cwf6PqXKwXdEB7JfDGXknBQxP9sUdtxlkHOeuBRQD7WuCkd31GI9Tv34b6z4llkXm1KnaYvD3tHT/pfg==
   dependencies:
-    react-native-bildit-flybuy-core "^2.24.0"
+    react-native-bildit-flybuy-core "^2.24.1"
 
-react-native-bildit-flybuy-pickup@2.24.0:
-  version "2.24.0"
-  resolved "https://registry.npmjs.org/react-native-bildit-flybuy-pickup/-/react-native-bildit-flybuy-pickup-2.24.0.tgz#0ceeffa9d38d7c495490b209e759b134eb37a3d6"
-  integrity sha512-WYZgItCsNAacY61cy7zcZAA2v5DgGVwoZNrr0MPKHXQhAvADL+EKTgZYuXe9GBTqE8FnsGjqgmsBQ8wm/LIw/Q==
+react-native-bildit-flybuy-pickup@2.24.1:
+  version "2.24.1"
+  resolved "https://registry.npmjs.org/react-native-bildit-flybuy-pickup/-/react-native-bildit-flybuy-pickup-2.24.1.tgz#3fb86df57d05298c5271480fab9794137b715304"
+  integrity sha512-833LfvmvZzqsmtEmah51+Ih4OKDpKfhKepqqkKV80apw57CwtDoCthgXVQFhqle38TtlJsuZAcwhTslGvfeXuA==
 
-react-native-bildit-flybuy-presence@2.24.0:
-  version "2.24.0"
-  resolved "https://registry.npmjs.org/react-native-bildit-flybuy-presence/-/react-native-bildit-flybuy-presence-2.24.0.tgz#36eef5cff0eaa69bac62c62b35d514640640a729"
-  integrity sha512-BGy0mKWJ8ZoeI8kLhexra2WbnKccnubH/1133f2fMR73a4ou+3PoiJFmuYRqAyDCoVpnOa7jbpeG8dlqKOX6hQ==
+react-native-bildit-flybuy-presence@2.24.1:
+  version "2.24.1"
+  resolved "https://registry.npmjs.org/react-native-bildit-flybuy-presence/-/react-native-bildit-flybuy-presence-2.24.1.tgz#33a5d49ba27b0ec887b680b8f7d8e231c2603360"
+  integrity sha512-W0wdDsgof8DwL/SAe00hCanNv9mdWw+hArAFepCNLbqnSeK48pEajt/iJ7bE01jI6a4s+FEeWH5FBpCqUV7pfg==
 
 react-native-config@^1.5.2:
   version "1.5.9"

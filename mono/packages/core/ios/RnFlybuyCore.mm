@@ -659,11 +659,9 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
         @"spotIdentifier": order.spotIdentifer ?: [NSNull null],
         // TODO: check the SDK
         // @"spotIdentifierEntryEnabled": @(order.spotIdentifierEntryEnabled),
-        @"spotIdentifierInputType": order.spotIdentifierInputType ?: [NSNull null]
+        @"spotIdentifierInputType": order.spotIdentifierInputType ?: [NSNull null],
 
         @"estimatedReadyAt": order.estimatedReadyAt.description ?: [NSNull null],
-        @"partnerIdentifierForCustomer": order.partnerIdentifierForCustomer ?: [NSNull null],
-        @"partnerIdentifierForCrew": order.partnerIdentifierForCrew ?: [NSNull null],
         @"displayName": order.displayName ?: [NSNull null],
         @"handoffVehicleLocation": order.handoffVehicleLocation ?: [NSNull null],
     };

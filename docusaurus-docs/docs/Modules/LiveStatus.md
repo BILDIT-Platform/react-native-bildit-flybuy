@@ -95,3 +95,57 @@ if (@available(iOS 16.2, *)) {
 ### Usage
 
 Refer to the [Flybuy Docs](https://www.radiusnetworks.com/developers/flybuy/#/sdk-2.0/pickup/065-live-status?id=live-status) for a complete guide on usage of the Live Status module.
+
+
+### Additional Notes
+
+#### iOS
+
+- Make sure that your iOS project target iOS 17 and above
+- Add this section in your project Podfile
+
+  ```ruby
+    post_install do |installer|
+      # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
+      react_native_post_install(
+        installer,
+        config[:reactNativePath],
+        :mac_catalyst_enabled => false,
+        # :ccache_enabled => true
+      )
+  
+      # Set Swift version for all pods <<< Add this section to fix Swift build issue in XCode 26 >>>
+      installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+          config.build_settings['SWIFT_VERSION'] = '5.0'
+          config.build_settings['SWIFT_USE_TOOLCHAIN_VERSION'] = 'NO'
+          # Set deployment target for all pods to match the app target
+          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '17.0'
+          # Force the SDK to use the same Swift version
+          if config.build_settings['SWIFT_VERSION']
+            config.build_settings['SWIFT_TOOLCHAIN_FLAGS'] = '-use-ld=lld'
+          end
+        end
+      end
+    end
+
+  ```
+
+- Add FlyBuy.xcframework and FlyBuyLiveStatus.xcframework on your widget Framework and Library section in xcode
+
+- On the widget `xxBundle` file, please import `FlyBuy` and `FlyBuyLiveStatus`
+
+  ```swift
+    import WidgetKit
+    import SwiftUI
+    import FlyBuy
+    import FlyBuyLiveStatus
+
+    @main
+    struct FBLiveStatusBundle: WidgetBundle {
+        var body: some Widget {
+            FlyBuyWidget()
+        }
+    }
+  ```
+

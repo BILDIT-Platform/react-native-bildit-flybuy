@@ -39,6 +39,8 @@
 	<string>To accurately locate you for order delivery</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To accurately locate you for order delivery</string>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-peripheral</string>

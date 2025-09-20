@@ -82,4 +82,4 @@ packages/core/example/*
 development-app/.env
 development-app/vendor/
 example-app/.env
-example-epp/vendor
+example-epp/vendor/

@@ -145,7 +145,7 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
   }
 
   @ReactMethod
-  fun handleNotification(data: ReadableMap, promise: Promise) {
+  override fun handleNotification(data: ReadableMap, promise: Promise) {
     // TODO: Update this when FlyBuyCore.handleNotification is available in the Android SDK
     promise.reject("not_implemented", "FlyBuyCore.handleNotification is not implemented on Android SDK yet.")
   }
@@ -338,7 +338,7 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
   }
 
   @ReactMethod
-  override fun fetchSitesNearPlace(place: ReadableMap, distance: Float, promise: Promise) {
+  override fun fetchSitesNearPlace(place: ReadableMap, distance: Double, promise: Promise) {
     val decodedPlace = decodePlace(place)
 
     // Define the callback function
@@ -355,7 +355,7 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
 
       }
     }
-    FlyBuyCore.sites.fetchNear(decodedPlace, distance, null, callback)
+    FlyBuyCore.sites.fetchNear(decodedPlace, distance.toFloat(), null, callback)
   }
 
 
@@ -488,6 +488,33 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
     }
   }
 
+  @ReactMethod
+  override fun createOrder(customer: ReadableMap, promise: Promise) {
+    if (customer.hasKey("siteId") && customer.hasKey("pid")) {
+      createOrder(
+        customer.getInt("siteId"),
+        customer.getString("pid")!!,
+        customer.getMap("customerInfo") ?: customer,
+        if (customer.hasKey("pickupWindow")) customer.getMap("pickupWindow") else null,
+        if (customer.hasKey("orderState")) customer.getString("orderState") else null,
+        if (customer.hasKey("pickupType")) customer.getString("pickupType") else null,
+        promise
+      )
+    } else if (customer.hasKey("sitePartnerIdentifier") && customer.hasKey("orderPid")) {
+      createOrderWithPartnerIdentifier(
+        customer.getString("sitePartnerIdentifier")!!,
+        customer.getString("orderPid")!!,
+        customer.getMap("customerInfo") ?: customer,
+        if (customer.hasKey("pickupWindow")) customer.getMap("pickupWindow") else null,
+        if (customer.hasKey("orderState")) customer.getString("orderState") else null,
+        if (customer.hasKey("pickupType")) customer.getString("pickupType") else null,
+        promise
+      )
+    } else {
+      promise.reject("INVALID_PARAMS", "params must include (siteId, pid) or (sitePartnerIdentifier, orderPid)")
+    }
+  }
+
   @RequiresApi(Build.VERSION_CODES.O)
   @ReactMethod
   override fun createOrder(
@@ -557,8 +584,8 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
   }
 
   @ReactMethod
-  override fun updateOrderState(orderId: Int, state: String, promise: Promise) {
-    FlyBuyCore.orders.updateState(orderId, state) { order, sdkError ->
+  override fun updateOrderState(orderId: Double, state: String, promise: Promise) {
+    FlyBuyCore.orders.updateState(orderId.toInt(), state) { order, sdkError ->
       sdkError?.let {
         promise.reject(it.userError(), it.userError())
       } ?: run {
@@ -570,10 +597,10 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
   }
 
   @ReactMethod
-  override fun rateOrder(orderId: Int, rating: Int, comments: String, promise: Promise) {
+  override fun rateOrder(orderId: Double, rating: Double, comments: String, promise: Promise) {
     FlyBuyCore.orders.rateOrder(
-      orderId = orderId,
-      rating = rating,
+      orderId = orderId.toInt(),
+      rating = rating.toInt(),
       comments = comments
     ) { order, sdkError ->
       sdkError?.let {
@@ -587,8 +614,8 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
   }
 
   @ReactMethod
-  override fun updateOrderCustomerState(orderId: Int, state: String, promise: Promise) {
-    FlyBuyCore.orders.updateCustomerState(orderId, state) { order, sdkError ->
+  override fun updateOrderCustomerState(orderId: Double, state: String, promise: Promise) {
+    FlyBuyCore.orders.updateCustomerState(orderId.toInt(), state) { order, sdkError ->
       sdkError?.let {
         promise.reject(it.userError(), it.userError())
       } ?: run {
@@ -600,8 +627,8 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
   }
 
   @ReactMethod
-  override fun updateOrderCustomerStateWithSpot(orderId: Int, state: String, spot: String, promise: Promise) {
-    FlyBuyCore.orders.updateCustomerState(orderId, state, spot) { order, sdkError ->
+  override fun updateOrderCustomerStateWithSpot(orderId: Double, state: String, spot: String, promise: Promise) {
+    FlyBuyCore.orders.updateCustomerState(orderId.toInt(), state, spot) { order, sdkError ->
       sdkError?.let {
         promise.reject(it.userError(), it.userError())
       } ?: run {
@@ -613,11 +640,11 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
   }
 
   @ReactMethod
-  override fun updatePickupMethod(orderId: Int, options: ReadableMap, promise: Promise) {
+  override fun updatePickupMethod(orderId: Double, options: ReadableMap, promise: Promise) {
 
     val optionsBuilder = decodePickupMethodOptions(options)
 
-    FlyBuyCore.orders.updatePickupMethod(orderId, optionsBuilder) { order, sdkError ->
+    FlyBuyCore.orders.updatePickupMethod(orderId.toInt(), optionsBuilder) { order, sdkError ->
       sdkError?.let {
         promise.reject(it.userError(), it.userError())
       } ?: run {

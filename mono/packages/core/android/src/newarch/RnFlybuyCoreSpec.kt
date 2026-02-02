@@ -1,48 +1,52 @@
 package com.bilditplatform.rnflybuycore
 
+import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
-
 import com.facebook.react.bridge.ReadableMap
 
 abstract class RnFlybuyCoreSpec internal constructor(context: ReactApplicationContext) :
   NativeRnFlybuyCoreSpec(context) {
 
+  // Configure (not in TS spec; used by native implementation)
+  abstract fun configure(token: String, promise: Promise)
+
   // Deeplinks related functions
-  abstract fun parseReferrerUrl(referrerUrl: String, promise: Promise)
+  override abstract fun parseReferrerUrl(referrerUrl: String, promise: Promise)
 
   // Notification related function
-  abstract fun updatePushToken(token: String)
-  abstract fun handleRemoteNotification(data: ReadableMap)
+  override abstract fun updatePushToken(token: String)
+  override abstract fun handleRemoteNotification(data: ReadableMap)
 
   // Customer related functions
-  abstract fun login(email: String, password: String, promise: Promise)
-  abstract fun loginWithToken(token: String, promise: Promise)
-  abstract fun logout(promise: Promise)
-  abstract fun signUp(email: String, password: String, promise: Promise)
-  abstract fun createCustomer(customer: ReadableMap, promise: Promise)
-  abstract fun updateCustomer(customer: ReadableMap, promise: Promise)
-  abstract fun getCurrentCustomer(promise: Promise)
+  override abstract fun login(email: String, password: String, promise: Promise)
+  override abstract fun loginWithToken(token: String, promise: Promise)
+  override abstract fun logout(promise: Promise)
+  override abstract fun signUp(email: String, password: String, promise: Promise)
+  override abstract fun createCustomer(customer: ReadableMap, promise: Promise)
+  override abstract fun updateCustomer(customer: ReadableMap, promise: Promise)
+  override abstract fun getCurrentCustomer(promise: Promise)
 
   // Sites related functions
-  abstract fun fetchAllSites(promise: Promise)
-  abstract fun fetchSitesByQuery(params: ReadableMap, promise: Promise)
-  abstract fun fetchSitesByRegion(params: ReadableMap, promise: Promise)
-  abstract fun fetchSiteByPartnerIdentifier(params: ReadableMap, promise: Promise)
-  abstract fun fetchSitesNearPlace(place: ReadableMap, distance: Float, promise: Promise)
+  override abstract fun fetchAllSites(promise: Promise)
+  override abstract fun fetchSitesByQuery(params: ReadableMap, promise: Promise)
+  override abstract fun fetchSitesByRegion(params: ReadableMap, promise: Promise)
+  override abstract fun fetchSiteByPartnerIdentifier(params: ReadableMap, promise: Promise)
+  override abstract fun fetchSitesNearPlace(place: ReadableMap, distance: Double, promise: Promise)
 
   // Places related functions
-  abstract fun placesSuggest(keyword: String, options: ReadableMap, promise: Promise)
-  abstract fun placesRetrieve(place: ReadableMap, promise: Promise)
+  override abstract fun placesSuggest(keyword: String, options: ReadableMap, promise: Promise)
+  override abstract fun placesRetrieve(place: ReadableMap, promise: Promise)
 
   // Orders related functions
-  abstract fun fetchOrders(promise: Promise)
-  abstract fun claimOrder(
+  override abstract fun fetchOrders(promise: Promise)
+  override abstract fun claimOrder(
     redeemCode: String,
     customer: ReadableMap,
-    pickupType: String? = null,
+    pickupType: String?,
     promise: Promise
   )
-  abstract fun fetchOrderByRedemptionCode(redeemCode: String, promise: Promise)
+  override abstract fun fetchOrderByRedemptionCode(redeemCode: String, promise: Promise)
+  override abstract fun createOrder(customer: ReadableMap, promise: Promise)
   abstract fun createOrder(
     siteID: Int,
     pid: String,
@@ -61,8 +65,9 @@ abstract class RnFlybuyCoreSpec internal constructor(context: ReactApplicationCo
     pickupType: String? = null,
     promise: Promise
   )
-  abstract fun updateOrderState(orderId: Int, state: String, promise: Promise)
-  abstract fun rateOrder(orderId: Int, rating: Int, comments: String, promise: Promise)
-  abstract fun updateOrderCustomerState(orderId: Int, state: String, promise: Promise)
-  abstract fun updateOrderCustomerStateWithSpot(orderId: Int, state: String, spot: String, promise: Promise)
+  override abstract fun updateOrderState(orderId: Double, state: String, promise: Promise)
+  override abstract fun rateOrder(orderId: Double, rating: Double, comments: String, promise: Promise)
+  override abstract fun updateOrderCustomerState(orderId: Double, state: String, promise: Promise)
+  override abstract fun updateOrderCustomerStateWithSpot(orderId: Double, state: String, spot: String, promise: Promise)
+  override abstract fun updatePickupMethod(orderId: Double, options: ReadableMap, promise: Promise)
 }

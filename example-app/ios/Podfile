@@ -19,6 +19,9 @@ setup_permissions([
   'Notifications'
 ])
 
+# Disable New Architecture
+ENV['RCT_NEW_ARCH_ENABLED'] = '0'
+
 linkage = ENV['USE_FRAMEWORKS']
 if linkage != nil
   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
@@ -31,12 +34,18 @@ target 'example' do
   use_react_native!(
     :path => config[:reactNativePath],
     # An absolute path to your application root.
-    :app_path => "#{Pod::Config.instance.installation_root}/.."
+    :app_path => "#{Pod::Config.instance.installation_root}/..",
+    :hermes_enabled => true,
+    :fabric_enabled => false
   )
 
   target 'exampleTests' do
     inherit! :complete
     # Pods for testing
+  end
+
+  pre_install do |installer|
+    Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
   end
 
   post_install do |installer|
@@ -47,5 +56,19 @@ target 'example' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+    
+    # Set Swift version for all pods
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['SWIFT_VERSION'] = '5.0'
+        config.build_settings['SWIFT_USE_TOOLCHAIN_VERSION'] = 'NO'
+        # Set deployment target for all pods to match the app target
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '17.0'
+        # Force the SDK to use the same Swift version
+        if config.build_settings['SWIFT_VERSION']
+          config.build_settings['SWIFT_TOOLCHAIN_FLAGS'] = '-use-ld=lld'
+        end
+      end
+    end
   end
 end

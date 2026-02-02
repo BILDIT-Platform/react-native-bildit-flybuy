@@ -35,3 +35,6 @@ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+
+
+If you have problem with SSL in your local, try `export NODE_OPTIONS=--openssl-legacy-provider && yarn start`

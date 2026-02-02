@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,16 @@
 		77D831F9D9C13694F6515D85 /* libPods-example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48080FC7FF24CF4D5B6763A9 /* libPods-example.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		CB257F797FD43A4A37E8C3A4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C61BDA3F645B7FCE7750929B /* PrivacyInfo.xcprivacy */; };
+		D47890782E7EE83C00049CCD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47890772E7EE83C00049CCD /* WidgetKit.framework */; };
+		D478907A2E7EE83C00049CCD /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47890792E7EE83C00049CCD /* SwiftUI.framework */; };
+		D47890872E7EE83D00049CCD /* FBLiveStatusExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D47890762E7EE83C00049CCD /* FBLiveStatusExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D478908E2E7EE86100049CCD /* FlyBuyLiveStatus.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D478908D2E7EE86100049CCD /* FlyBuyLiveStatus.xcframework */; };
+		D478908F2E7EE86100049CCD /* FlyBuyLiveStatus.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D478908D2E7EE86100049CCD /* FlyBuyLiveStatus.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D47890942E7EE89100049CCD /* FBLiveStatusBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47890912E7EE89100049CCD /* FBLiveStatusBundle.swift */; };
+		D47890EC2E7EEC4D00049CCD /* FlyBuy.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47890EB2E7EEC4D00049CCD /* FlyBuy.xcframework */; };
+		D47890ED2E7EEC4D00049CCD /* FlyBuy.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D47890EB2E7EEC4D00049CCD /* FlyBuy.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D47890F02E7EEC6E00049CCD /* FBLiveStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47890EE2E7EEC6E00049CCD /* FBLiveStatus.swift */; };
+		D47890F12E7EEC6E00049CCD /* FBLiveStatusLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47890EF2E7EEC6E00049CCD /* FBLiveStatusLiveActivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,7 +35,40 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = example;
 		};
+		D47890852E7EE83D00049CCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D47890752E7EE83C00049CCD;
+			remoteInfo = FBLiveStatusExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D47890882E7EE83D00049CCD /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D47890872E7EE83D00049CCD /* FBLiveStatusExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D47890902E7EE86100049CCD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D47890ED2E7EEC4D00049CCD /* FlyBuy.xcframework in Embed Frameworks */,
+				D478908F2E7EE86100049CCD /* FlyBuyLiveStatus.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* exampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = exampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +89,15 @@
 		92544FA1933EE4AD5EF1A0AB /* Pods-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.debug.xcconfig"; path = "Target Support Files/Pods-example/Pods-example.debug.xcconfig"; sourceTree = "<group>"; };
 		C61BDA3F645B7FCE7750929B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = example/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		CF2E472C2B3A7969B9154FB4 /* Pods-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.release.xcconfig"; path = "Target Support Files/Pods-example/Pods-example.release.xcconfig"; sourceTree = "<group>"; };
+		D47890762E7EE83C00049CCD /* FBLiveStatusExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FBLiveStatusExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D47890772E7EE83C00049CCD /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D47890792E7EE83C00049CCD /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D478908D2E7EE86100049CCD /* FlyBuyLiveStatus.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:2Z2S6NCD7P:Radius Networks, Inc."; lastKnownFileType = wrapper.xcframework; name = FlyBuyLiveStatus.xcframework; path = "../node_modules/react-native-bildit-flybuy-livestatus/ios/Frameworks/FlyBuyLiveStatus.xcframework"; sourceTree = "<group>"; };
+		D47890912E7EE89100049CCD /* FBLiveStatusBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLiveStatusBundle.swift; sourceTree = "<group>"; };
+		D47890932E7EE89100049CCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D47890EB2E7EEC4D00049CCD /* FlyBuy.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:2Z2S6NCD7P:Radius Networks, Inc."; lastKnownFileType = wrapper.xcframework; name = FlyBuy.xcframework; path = "../node_modules/react-native-bildit-flybuy-core/ios/Frameworks/FlyBuy.xcframework"; sourceTree = "<group>"; };
+		D47890EE2E7EEC6E00049CCD /* FBLiveStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLiveStatus.swift; sourceTree = "<group>"; };
+		D47890EF2E7EEC6E00049CCD /* FBLiveStatusLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLiveStatusLiveActivity.swift; sourceTree = "<group>"; };
 		D4A0A5142C4AA7EA0088A120 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -64,6 +116,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				77D831F9D9C13694F6515D85 /* libPods-example.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D47890732E7EE83C00049CCD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D47890EC2E7EEC4D00049CCD /* FlyBuy.xcframework in Frameworks */,
+				D478908E2E7EE86100049CCD /* FlyBuyLiveStatus.xcframework in Frameworks */,
+				D478907A2E7EE83C00049CCD /* SwiftUI.framework in Frameworks */,
+				D47890782E7EE83C00049CCD /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,10 +168,14 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D47890EB2E7EEC4D00049CCD /* FlyBuy.xcframework */,
+				D478908D2E7EE86100049CCD /* FlyBuyLiveStatus.xcframework */,
 				D4A0A5142C4AA7EA0088A120 /* CoreLocation.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				48080FC7FF24CF4D5B6763A9 /* libPods-example.a */,
 				8E7988D12AE5B9502D3469F6 /* libPods-example-exampleTests.a */,
+				D47890772E7EE83C00049CCD /* WidgetKit.framework */,
+				D47890792E7EE83C00049CCD /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -126,6 +193,7 @@
 				13B07FAE1A68108700A75B9A /* example */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* exampleTests */,
+				D478907B2E7EE83C00049CCD /* FBLiveStatus */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -140,6 +208,7 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* example.app */,
 				00E356EE1AD99517003FC87E /* exampleTests.xctest */,
+				D47890762E7EE83C00049CCD /* FBLiveStatusExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,6 +222,17 @@
 				8B635C594F00E6A468AA3AD2 /* Pods-example-exampleTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D478907B2E7EE83C00049CCD /* FBLiveStatus */ = {
+			isa = PBXGroup;
+			children = (
+				D47890EE2E7EEC6E00049CCD /* FBLiveStatus.swift */,
+				D47890EF2E7EEC6E00049CCD /* FBLiveStatusLiveActivity.swift */,
+				D47890912E7EE89100049CCD /* FBLiveStatusBundle.swift */,
+				D47890932E7EE89100049CCD /* Info.plist */,
+			);
+			path = FBLiveStatus;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,15 +270,35 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				82F27AB87814B513314E3C9A /* [CP] Embed Pods Frameworks */,
 				4642B6E800F9B5C2E84FBA8E /* [CP] Copy Pods Resources */,
+				D47890882E7EE83D00049CCD /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D47890862E7EE83D00049CCD /* PBXTargetDependency */,
 			);
 			name = example;
 			productName = example;
 			productReference = 13B07F961A680F5B00A75B9A /* example.app */;
 			productType = "com.apple.product-type.application";
+		};
+		D47890752E7EE83C00049CCD /* FBLiveStatusExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D478908C2E7EE83D00049CCD /* Build configuration list for PBXNativeTarget "FBLiveStatusExtension" */;
+			buildPhases = (
+				D47890722E7EE83C00049CCD /* Sources */,
+				D47890732E7EE83C00049CCD /* Frameworks */,
+				D47890742E7EE83C00049CCD /* Resources */,
+				D47890902E7EE86100049CCD /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FBLiveStatusExtension;
+			productName = FBLiveStatusExtension;
+			productReference = D47890762E7EE83C00049CCD /* FBLiveStatusExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -206,6 +306,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -214,6 +315,9 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1540;
+					};
+					D47890752E7EE83C00049CCD = {
+						CreatedOnToolsVersion = 26.0;
 					};
 				};
 			};
@@ -232,6 +336,7 @@
 			targets = (
 				13B07F861A680F5B00A75B9A /* example */,
 				00E356ED1AD99517003FC87E /* exampleTests */,
+				D47890752E7EE83C00049CCD /* FBLiveStatusExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -251,6 +356,13 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				CB257F797FD43A4A37E8C3A4 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D47890742E7EE83C00049CCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,9 +393,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-example-exampleTests/Pods-example-exampleTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-example-exampleTests/Pods-example-exampleTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -298,9 +414,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-example/Pods-example-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-example/Pods-example-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -337,9 +457,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-example/Pods-example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-example/Pods-example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -376,9 +500,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-example-exampleTests/Pods-example-exampleTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-example-exampleTests/Pods-example-exampleTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -405,6 +533,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D47890722E7EE83C00049CCD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D47890942E7EE89100049CCD /* FBLiveStatusBundle.swift in Sources */,
+				D47890F02E7EEC6E00049CCD /* FBLiveStatus.swift in Sources */,
+				D47890F12E7EEC6E00049CCD /* FBLiveStatusLiveActivity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -412,6 +550,11 @@
 			isa = PBXTargetDependency;
 			target = 13B07F861A680F5B00A75B9A /* example */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+		D47890862E7EE83D00049CCD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D47890752E7EE83C00049CCD /* FBLiveStatusExtension */;
+			targetProxy = D47890852E7EE83D00049CCD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -426,7 +569,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = exampleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -450,7 +593,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = exampleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -475,8 +618,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				INFOPLIST_FILE = example/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "RNBFB Sample";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -490,7 +635,7 @@
 					"-fmodule-map-file=\"${PODS_ROOT}/Headers/Public/RCTTypeSafety/RCTTypeSafety.modulemap\"",
 					"-fmodule-map-file=\"${PODS_ROOT}/Headers/Public/React/React-Core.modulemap\"",
 					"-fmodule-map-file=\"${PODS_ROOT}/Headers/Public/ReactCommon/ReactCommon.modulemap\"",
-					"-fmodule-map-file=\"${PODS_ROOT}/Headers/Public/React_Codegen/React-Codegen.modulemap\"",
+					"-fmodule-map-file=\"${PODS_ROOT}/Headers/Public/React_Codegen/ReactCodegen.modulemap\"",
 					"-fmodule-map-file=\"${PODS_ROOT}/Headers/Public/React_Fabric/React-Fabric.modulemap\"",
 					"-fmodule-map-file=\"${PODS_ROOT}/Headers/Public/React_NativeModulesApple/React-NativeModulesApple.modulemap\"",
 					"-fmodule-map-file=\"${PODS_ROOT}/Headers/Public/React_RCTAppDelegate/React-RCTAppDelegate.modulemap\"",
@@ -525,7 +670,7 @@
 				PRODUCT_NAME = example;
 				SWIFT_OBJC_BRIDGING_HEADER = "example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.10;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -539,6 +684,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = example/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "RNBFB Sample";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -552,7 +698,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bildit-flybuy.example.--PRODUCT-NAME-rfc1034identifier-";
 				PRODUCT_NAME = example;
 				SWIFT_OBJC_BRIDGING_HEADER = "example-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.10;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -606,7 +752,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -626,12 +772,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				USE_HERMES = true;
 			};
 			name = Debug;
@@ -678,7 +822,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -697,14 +841,101 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D47890892E7EE83D00049CCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FBLiveStatus/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FBLiveStatus;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bildit-flybuy.example.--PRODUCT-NAME-rfc1034identifier-.FBLiveStatus";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_USE_TOOLCHAIN_VERSION = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D478908A2E7EE83D00049CCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FBLiveStatus/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FBLiveStatus;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bildit-flybuy.example.--PRODUCT-NAME-rfc1034identifier-.FBLiveStatus";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -734,6 +965,15 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D478908C2E7EE83D00049CCD /* Build configuration list for PBXNativeTarget "FBLiveStatusExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D47890892E7EE83D00049CCD /* Debug */,
+				D478908A2E7EE83D00049CCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

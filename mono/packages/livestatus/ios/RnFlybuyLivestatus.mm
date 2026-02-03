@@ -50,6 +50,21 @@ RCT_EXPORT_METHOD(configure:(NSString *)icon
 
 // Don't compile this code when we build for the old architecture.
 #ifdef RCT_NEW_ARCH_ENABLED
+// New Architecture protocol uses configure:statusTintColor:statusTintDarkModeColor:resolve:reject: (codegen selector).
+// Forward to existing implementation that uses withResolver:withRejecter:.
+- (void)configure:(NSString *)icon
+  statusTintColor:(NSString *)statusTintColor
+  statusTintDarkModeColor:(NSString *)statusTintDarkModeColor
+          resolve:(RCTPromiseResolveBlock)resolve
+           reject:(RCTPromiseRejectBlock)reject
+{
+  [self configure:icon
+    statusTintColor:statusTintColor
+    statusTintDarkModeColor:statusTintDarkModeColor
+    withResolver:resolve
+    withRejecter:reject];
+}
+
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
     (const facebook::react::ObjCTurboModule::InitParams &)params
 {

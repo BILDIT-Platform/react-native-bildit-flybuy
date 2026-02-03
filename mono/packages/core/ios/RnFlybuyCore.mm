@@ -508,6 +508,60 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
   }];
 }
 
+#ifdef RCT_NEW_ARCH_ENABLED
+// New Architecture protocol uses placesSuggest:options:resolve:reject: (codegen selector).
+// Forward to existing implementation that uses withOptions:withResolver:withRejecter:.
+- (void)placesSuggest:(NSString *)keyword
+              options:(JS::NativeRnFlybuyCore::SpecPlacesSuggestOptions &)options
+              resolve:(RCTPromiseResolveBlock)resolve
+               reject:(RCTPromiseRejectBlock)reject
+{
+  NSMutableDictionary *optionsDict = [NSMutableDictionary dictionary];
+  if (options.latitude()) {
+    optionsDict[@"latitude"] = @(*options.latitude());
+  }
+  if (options.longitude()) {
+    optionsDict[@"longitude"] = @(*options.longitude());
+  }
+  if (options.type()) {
+    optionsDict[@"type"] = @(*options.type());
+  }
+  if (options.countryCodes()) {
+    auto vec = *options.countryCodes();
+    NSMutableArray *arr = [NSMutableArray array];
+    for (decltype(vec.size()) i = 0; i < vec.size(); i++) {
+      [arr addObject:vec[i]];
+    }
+    optionsDict[@"countryCodes"] = arr;
+  }
+  if (options.placeTypes()) {
+    auto vec = *options.placeTypes();
+    NSMutableArray *arr = [NSMutableArray array];
+    for (decltype(vec.size()) i = 0; i < vec.size(); i++) {
+      [arr addObject:@(vec[i])];
+    }
+    optionsDict[@"placeTypes"] = arr;
+  }
+  [self placesSuggest:keyword withOptions:optionsDict withResolver:resolve withRejecter:reject];
+}
+
+// New Architecture protocol uses placesRetrieve:resolve:reject: (codegen selector).
+- (void)placesRetrieve:(JS::NativeRnFlybuyCore::SpecPlacesRetrievePlace &)place
+               resolve:(RCTPromiseResolveBlock)resolve
+                reject:(RCTPromiseRejectBlock)reject
+{
+  NSMutableDictionary *placeDict = [NSMutableDictionary dictionary];
+  placeDict[@"name"] = place.name();
+  placeDict[@"id"] = place.id_();
+  placeDict[@"placeFormatted"] = place.placeFormatted();
+  placeDict[@"address"] = place.address() ? place.address() : @"";
+  if (place.distance()) {
+    placeDict[@"distance"] = @(*place.distance());
+  }
+  [self placesRetrieve:placeDict withResolver:resolve withRejecter:reject];
+}
+#endif
+
 // Utils
 - (PlaceType)placeTypeForNumber:(NSNumber *)type {
   switch ([type integerValue]) {
@@ -564,7 +618,9 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
   map[@"partnerIdentifier"] = site.partnerIdentifier ?: @"";
   map[@"pickupConfig"] = [self parsePickupConfig:site.pickupConfig];
   map[@"operationalStatus"] = site.operationalStatus ?: @"";
-  map[@"prearrivalSeconds"] = @(site.prearrivalSeconds);
+  // Use KVC: prearrivalSeconds may not exist on FlyBuySite in all SDK versions
+  NSNumber *prearrival = [site valueForKey:@"prearrivalSeconds"];
+  map[@"prearrivalSeconds"] = prearrival ? @([prearrival integerValue]) : @0;
 
   return map;
 }
@@ -620,6 +676,9 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
 }
 
 - (NSDictionary *)parseOrder:(FlyBuyOrder *)order {
+    // Use KVC for optional SDK properties that may be missing in some FlyBuy SDK versions
+    id estimatedReadyAtVal = [order valueForKey:@"estimatedReadyAt"];
+    id handoffVehicleLocationVal = [order valueForKey:@"handoffVehicleLocation"];
     return @{
         @"id":  @(order.id),
         @"state": order.state ?: [NSNull null],
@@ -661,9 +720,9 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
         // @"spotIdentifierEntryEnabled": @(order.spotIdentifierEntryEnabled),
         @"spotIdentifierInputType": order.spotIdentifierInputType ?: [NSNull null],
 
-        @"estimatedReadyAt": order.estimatedReadyAt.description ?: [NSNull null],
+        @"estimatedReadyAt": estimatedReadyAtVal ? [estimatedReadyAtVal description] : [NSNull null],
         @"displayName": order.displayName ?: [NSNull null],
-        @"handoffVehicleLocation": order.handoffVehicleLocation ?: [NSNull null],
+        @"handoffVehicleLocation": handoffVehicleLocationVal ?: [NSNull null],
     };
 }
 

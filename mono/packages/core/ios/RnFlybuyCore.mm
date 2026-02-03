@@ -301,6 +301,44 @@ RCT_EXPORT_METHOD(createOrderWithPartnerIdentifier:(NSString *)sitePartnerIdenti
     }
 }
 
+#ifdef RCT_NEW_ARCH_ENABLED
+- (void)createOrderWithParams:(NSDictionary *)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+    NSNumber *siteIdNum = params[@"siteId"];
+    NSString *pid = params[@"pid"];
+    NSDictionary *customerInfo = params[@"customerInfo"];
+    NSDictionary *pickupWindow = params[@"pickupWindow"];
+    NSString *orderState = params[@"orderState"];
+    NSString *pickupType = params[@"pickupType"];
+    NSString *sitePartnerIdentifier = params[@"sitePartnerIdentifier"];
+    NSString *orderPid = params[@"orderPid"];
+
+    if (siteIdNum != nil && pid != nil) {
+        [self createOrder:[siteIdNum integerValue]
+    withPartnerIdentifier:pid
+        withCustomerInfo:customerInfo ?: @{}
+        withPickupWindow:pickupWindow
+          withOrderState:orderState
+          withPickupType:pickupType
+            withResolver:resolve
+            withRejecter:reject];
+        return;
+    }
+    if (sitePartnerIdentifier != nil && orderPid != nil) {
+        [self createOrderWithPartnerIdentifier:sitePartnerIdentifier
+            withOrderPartnerIdentifier:orderPid
+                  withCustomerInfo:customerInfo ?: @{}
+                  withPickupWindow:pickupWindow
+                    withOrderState:orderState
+                    withPickupType:pickupType
+                      withResolver:resolve
+                      withRejecter:reject];
+        return;
+    }
+    reject(@"INVALID_PARAMS", @"params must include (siteId, pid) or (sitePartnerIdentifier, orderPid)", nil);
+}
+#endif
+
 RCT_EXPORT_METHOD(claimOrder:(NSString *)redeemCode
                   withCustomer:(NSDictionary *)customer
                   withPickupType:(NSString *)pickupType

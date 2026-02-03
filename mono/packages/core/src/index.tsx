@@ -216,26 +216,36 @@ function createOrder(params: CreateOrderParamsType) {
   } = params;
 
   if (siteId && pid) {
-    return RnFlybuyCore.createOrder(
-      siteId,
-      pid,
-      customerInfo,
-      pickupWindow ?? null,
-      orderState ?? null,
-      pickupType ?? null
-    );
+    return isTurboModuleEnabled
+      ? RnFlybuyCore.createOrder(params)
+      : RnFlybuyCore.createOrder(
+          siteId,
+          pid,
+          customerInfo,
+          pickupWindow ?? null,
+          orderState ?? null,
+          pickupType ?? null
+        );
   }
 
   if (sitePartnerIdentifier && orderPid) {
-    return RnFlybuyCore.createOrderWithPartnerIdentifier(
-      sitePartnerIdentifier,
-      orderPid,
-      customerInfo,
-      pickupWindow ?? null,
-      orderState ?? null,
-      pickupType ?? null
-    );
+    return isTurboModuleEnabled
+      ? RnFlybuyCore.createOrder(params)
+      : RnFlybuyCore.createOrderWithPartnerIdentifier(
+          sitePartnerIdentifier,
+          orderPid,
+          customerInfo,
+          pickupWindow ?? null,
+          orderState ?? null,
+          pickupType ?? null
+        );
   }
+
+  return Promise.reject(
+    new Error(
+      'params must include (siteId, pid) or (sitePartnerIdentifier, orderPid)'
+    )
+  );
 }
 function claimOrder(
   redeemCode: string,

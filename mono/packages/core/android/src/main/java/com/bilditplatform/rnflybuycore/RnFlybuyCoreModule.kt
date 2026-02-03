@@ -517,7 +517,7 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
 
   @RequiresApi(Build.VERSION_CODES.O)
   @ReactMethod
-  override fun createOrder(
+  fun createOrder(
     siteID: Int,
     pid: String,
     customer: ReadableMap,
@@ -551,7 +551,7 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
 
   @RequiresApi(Build.VERSION_CODES.O)
   @ReactMethod
-  override fun createOrderWithPartnerIdentifier(
+  fun createOrderWithPartnerIdentifier(
     sitePid: String,
     orderPid: String,
     customer: ReadableMap,

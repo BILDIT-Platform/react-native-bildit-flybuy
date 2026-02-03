@@ -47,24 +47,6 @@ abstract class RnFlybuyCoreSpec internal constructor(context: ReactApplicationCo
   )
   override abstract fun fetchOrderByRedemptionCode(redeemCode: String, promise: Promise)
   override abstract fun createOrder(customer: ReadableMap, promise: Promise)
-  abstract fun createOrder(
-    siteID: Int,
-    pid: String,
-    customer: ReadableMap,
-    pickupWindow: ReadableMap? = null,
-    orderState: String? = null,
-    pickupType: String? = null,
-    promise: Promise
-  )
-  abstract fun createOrderWithPartnerIdentifier(
-    sitePartnerIdentifier: String,
-    orderPid: String,
-    customer: ReadableMap,
-    pickupWindow: ReadableMap? = null,
-    orderState: String? = null,
-    pickupType: String? = null,
-    promise: Promise
-  )
   override abstract fun updateOrderState(orderId: Double, state: String, promise: Promise)
   override abstract fun rateOrder(orderId: Double, rating: Double, comments: String, promise: Promise)
   override abstract fun updateOrderCustomerState(orderId: Double, state: String, promise: Promise)

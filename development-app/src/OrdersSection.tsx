@@ -1,12 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {
-  NativeEventEmitter,
-  NativeModules,
-  StyleSheet,
-  View,
-} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import * as FlyBuyCore from 'react-native-bildit-flybuy-core';
 import {
+  addOrderUpdatedListener,
   CustomerState,
   IOrder,
   OrderStateType,
@@ -25,16 +21,10 @@ import {
 
 export const OrdersSection = () => {
   useEffect(() => {
-    const eventEmitter = new NativeEventEmitter(NativeModules.RnFlybuyCore);
-    const listener = eventEmitter.addListener(
-      'orderUpdated',
-      (event: IOrder) => {
-        console.log('order updated', event);
-      },
-    );
-    return () => {
-      listener.remove();
-    };
+    const subscription = addOrderUpdatedListener((event: IOrder) => {
+      console.log('order updated', event);
+    });
+    return () => subscription.remove();
   }, []);
 
   const [orders, setOrders] = useState<IOrder[]>([]);

@@ -645,12 +645,10 @@ class RnFlybuyCoreModule internal constructor(context: ReactApplicationContext) 
     val optionsBuilder = decodePickupMethodOptions(options)
 
     FlyBuyCore.orders.updatePickupMethod(orderId.toInt(), optionsBuilder) { order, sdkError ->
-      sdkError?.let {
-        promise.reject(it.userError(), it.userError())
-      } ?: run {
-        order?.let { promise.resolve(parseOrder(it)) } ?: run {
-          promise.reject("null", "Null order")
-        }
+      when {
+        sdkError != null -> promise.reject(sdkError.userError(), sdkError.userError())
+        order != null -> promise.resolve(parseOrder(order))
+        else -> promise.reject("null", "Null order")
       }
     }
   }

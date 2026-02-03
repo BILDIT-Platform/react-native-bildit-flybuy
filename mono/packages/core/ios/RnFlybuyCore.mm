@@ -301,8 +301,7 @@ RCT_EXPORT_METHOD(createOrderWithPartnerIdentifier:(NSString *)sitePartnerIdenti
     }
 }
 
-#ifdef RCT_NEW_ARCH_ENABLED
-- (void)createOrderWithParams:(NSDictionary *)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+- (void)createOrderWithParamsImpl:(NSDictionary *)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
     NSNumber *siteIdNum = params[@"siteId"];
     NSString *pid = params[@"pid"];
@@ -336,6 +335,19 @@ RCT_EXPORT_METHOD(createOrderWithPartnerIdentifier:(NSString *)sitePartnerIdenti
         return;
     }
     reject(@"INVALID_PARAMS", @"params must include (siteId, pid) or (sitePartnerIdentifier, orderPid)", nil);
+}
+
+RCT_EXPORT_METHOD(createOrderWithParams:(NSDictionary *)params
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    [self createOrderWithParamsImpl:params resolve:resolve reject:reject];
+}
+
+#ifdef RCT_NEW_ARCH_ENABLED
+- (void)createOrderWithParams:(NSDictionary *)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+    [self createOrderWithParamsImpl:params resolve:resolve reject:reject];
 }
 #endif
 

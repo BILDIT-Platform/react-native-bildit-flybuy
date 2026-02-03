@@ -209,43 +209,25 @@ function createOrder(params: CreateOrderParamsType) {
     sitePartnerIdentifier,
     orderPid,
     pid,
-    customerInfo,
-    pickupType,
-    pickupWindow,
-    orderState,
   } = params;
 
-  if (siteId && pid) {
-    return isTurboModuleEnabled
-      ? RnFlybuyCore.createOrder(params)
-      : RnFlybuyCore.createOrder(
-          siteId,
-          pid,
-          customerInfo,
-          pickupWindow ?? null,
-          orderState ?? null,
-          pickupType ?? null
-        );
+  if (!siteId && !pid && !sitePartnerIdentifier && !orderPid) {
+    return Promise.reject(
+      new Error(
+        'params must include (siteId, pid) or (sitePartnerIdentifier, orderPid)'
+      )
+    );
   }
 
-  if (sitePartnerIdentifier && orderPid) {
-    return isTurboModuleEnabled
-      ? RnFlybuyCore.createOrder(params)
-      : RnFlybuyCore.createOrderWithPartnerIdentifier(
-          sitePartnerIdentifier,
-          orderPid,
-          customerInfo,
-          pickupWindow ?? null,
-          orderState ?? null,
-          pickupType ?? null
-        );
+  // Always pass a single params object: TurboModule expects createOrder(params); iOS bridge expects createOrderWithParams(params); Android bridge has createOrder(params)
+  if (isTurboModuleEnabled) {
+    return RnFlybuyCore.createOrder(params);
   }
-
-  return Promise.reject(
-    new Error(
-      'params must include (siteId, pid) or (sitePartnerIdentifier, orderPid)'
-    )
-  );
+  if (Platform.OS === 'ios') {
+    return (RnFlybuyCore as { createOrderWithParams?: (p: CreateOrderParamsType) => Promise<IOrder> })
+      .createOrderWithParams?.(params) ?? Promise.reject(new Error('createOrderWithParams not available'));
+  }
+  return RnFlybuyCore.createOrder(params);
 }
 function claimOrder(
   redeemCode: string,

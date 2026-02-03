@@ -82,3 +82,5 @@ packages/core/example/*
 development-app/.env
 example-app/.env
 **/vendor/
+.cursor/
+.vscode/

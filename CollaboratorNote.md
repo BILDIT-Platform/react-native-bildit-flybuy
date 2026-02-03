@@ -48,12 +48,28 @@
 
 ## How to Release
 
-1. **Publish to npm:**
+**Prerequisite:** Two-factor authentication (2FA) or a granular access token with **bypass 2FA** enabled is required to publish packages. Use your npm token as follows.
+
+1. **Configure your npm token** (choose one):
+   - **Option A – Environment variable (CI or local):**  
+     Create or edit `mono/.npmrc` (do not commit the token). Add:
+     ```ini
+     //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+     ```
+     Then run:
+     ```sh
+     export NPM_TOKEN=your_npm_token_here
+     cd mono && npx lerna publish
+     ```
+   - **Option B – Log in once:**  
+     From `mono/` run `npm login` and follow the prompts. Then run `npx lerna publish` as needed.
+
+2. **Publish to npm:**
    - From the monorepo root, run:
      ```sh
-     npx lerna publish
+     cd mono && npx lerna publish
      ```
-2. **Select the version:**
+3. **Select the version:**
    
 
 ---

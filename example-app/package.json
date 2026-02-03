@@ -12,9 +12,9 @@
     "pod": "cd ios && bundle exec pod install"
   },
   "dependencies": {
-    "react-native-bildit-flybuy-core": "2.25.1-alpha.0",
+    "react-native-bildit-flybuy-core": "2.25.1-alpha.1",
     "react-native-bildit-flybuy-livestatus": "2.25.0",
-    "react-native-bildit-flybuy-notify": "2.25.1-alpha.0",
+    "react-native-bildit-flybuy-notify": "2.25.1-alpha.1",
     "react-native-bildit-flybuy-pickup": "2.25.0",
     "react-native-bildit-flybuy-presence": "2.25.0",
     "react": "19.0.0",

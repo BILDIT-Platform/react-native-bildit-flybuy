@@ -235,6 +235,14 @@ RCT_EXPORT_METHOD(fetchOrders:(RCTPromiseResolveBlock)resolve
     }];
 }
 
+#ifdef RCT_NEW_ARCH_ENABLED
+// New Architecture protocol uses fetchOrders:resolve:reject: (codegen selector).
+- (void)fetchOrders:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self fetchOrders:resolve rejecter:reject];
+}
+#endif
+
 RCT_EXPORT_METHOD(createOrder:(NSInteger)siteId
                   withPartnerIdentifier:(NSString *)pid
                   withCustomerInfo:(NSDictionary *)customerInfo
@@ -303,38 +311,42 @@ RCT_EXPORT_METHOD(createOrderWithPartnerIdentifier:(NSString *)sitePartnerIdenti
 
 - (void)createOrderWithParamsImpl:(NSDictionary *)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
-    NSNumber *siteIdNum = params[@"siteId"];
-    NSString *pid = params[@"pid"];
-    NSDictionary *customerInfo = params[@"customerInfo"];
-    NSDictionary *pickupWindow = params[@"pickupWindow"];
-    NSString *orderState = params[@"orderState"];
-    NSString *pickupType = params[@"pickupType"];
-    NSString *sitePartnerIdentifier = params[@"sitePartnerIdentifier"];
-    NSString *orderPid = params[@"orderPid"];
+    @try {
+        NSNumber *siteIdNum = params[@"siteId"];
+        NSString *pid = params[@"pid"];
+        NSDictionary *customerInfo = params[@"customerInfo"];
+        NSDictionary *pickupWindow = params[@"pickupWindow"];
+        NSString *orderState = params[@"orderState"];
+        NSString *pickupType = params[@"pickupType"];
+        NSString *sitePartnerIdentifier = params[@"sitePartnerIdentifier"];
+        NSString *orderPid = params[@"orderPid"];
 
-    if (siteIdNum != nil && pid != nil) {
-        [self createOrder:[siteIdNum integerValue]
-    withPartnerIdentifier:pid
-        withCustomerInfo:customerInfo ?: @{}
-        withPickupWindow:pickupWindow
-          withOrderState:orderState
-          withPickupType:pickupType
-            withResolver:resolve
-            withRejecter:reject];
-        return;
+        if (siteIdNum != nil && pid != nil) {
+            [self createOrder:[siteIdNum integerValue]
+        withPartnerIdentifier:pid
+            withCustomerInfo:customerInfo ?: @{}
+            withPickupWindow:pickupWindow
+              withOrderState:orderState
+              withPickupType:pickupType
+                withResolver:resolve
+                withRejecter:reject];
+            return;
+        }
+        if (sitePartnerIdentifier != nil && orderPid != nil) {
+            [self createOrderWithPartnerIdentifier:sitePartnerIdentifier
+                withOrderPartnerIdentifier:orderPid
+                      withCustomerInfo:customerInfo ?: @{}
+                      withPickupWindow:pickupWindow
+                        withOrderState:orderState
+                        withPickupType:pickupType
+                          withResolver:resolve
+                          withRejecter:reject];
+            return;
+        }
+        reject(@"INVALID_PARAMS", @"params must include (siteId, pid) or (sitePartnerIdentifier, orderPid)", nil);
+    } @catch (NSException *exception) {
+        reject(@"CREATE_ORDER_ERROR", exception.reason ?: [exception description], nil);
     }
-    if (sitePartnerIdentifier != nil && orderPid != nil) {
-        [self createOrderWithPartnerIdentifier:sitePartnerIdentifier
-            withOrderPartnerIdentifier:orderPid
-                  withCustomerInfo:customerInfo ?: @{}
-                  withPickupWindow:pickupWindow
-                    withOrderState:orderState
-                    withPickupType:pickupType
-                      withResolver:resolve
-                      withRejecter:reject];
-        return;
-    }
-    reject(@"INVALID_PARAMS", @"params must include (siteId, pid) or (sitePartnerIdentifier, orderPid)", nil);
 }
 
 RCT_EXPORT_METHOD(createOrderWithParams:(NSDictionary *)params
@@ -345,6 +357,11 @@ RCT_EXPORT_METHOD(createOrderWithParams:(NSDictionary *)params
 }
 
 #ifdef RCT_NEW_ARCH_ENABLED
+// New Architecture protocol uses createOrder:resolve:reject: (codegen selector).
+- (void)createOrder:(NSDictionary *)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+    [self createOrderWithParamsImpl:params resolve:resolve reject:reject];
+}
 - (void)createOrderWithParams:(NSDictionary *)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
     [self createOrderWithParamsImpl:params resolve:resolve reject:reject];
@@ -610,6 +627,36 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
   }
   [self placesRetrieve:placeDict withResolver:resolve withRejecter:reject];
 }
+
+// New Architecture protocol uses resolve:reject: (codegen selector); implementation uses withResolver:withRejecter:.
+- (void)login:(NSString *)email password:(NSString *)password resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self login:email withPassword:password withResolver:resolve withRejecter:reject];
+}
+- (void)loginWithToken:(NSString *)token resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self loginWithToken:token withResolver:resolve withRejecter:reject];
+}
+- (void)logout:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self logout:resolve withRejecter:reject];
+}
+- (void)signUp:(NSString *)email password:(NSString *)password resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self signUp:email withPassword:password withResolver:resolve withRejecter:reject];
+}
+- (void)getCurrentCustomer:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self getCurrentCustomer:resolve withRejecter:reject];
+}
+- (void)fetchAllSites:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self fetchAllSites:resolve withRejecter:reject];
+}
+- (void)handleNotification:(NSDictionary *)data resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self handleNotification:data withResolver:resolve withRejecter:reject];
+}
 #endif
 
 // Utils
@@ -726,9 +773,16 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
 }
 
 - (NSDictionary *)parseOrder:(FlyBuyOrder *)order {
-    // Use KVC for optional SDK properties that may be missing in some FlyBuy SDK versions
-    id estimatedReadyAtVal = [order valueForKey:@"estimatedReadyAt"];
-    id handoffVehicleLocationVal = [order valueForKey:@"handoffVehicleLocation"];
+    // Use KVC for optional SDK properties that may be missing in some FlyBuy SDK versions.
+    // Wrap in @try/@catch so we don't crash when the class is not KVC-compliant for these keys.
+    id estimatedReadyAtVal = nil;
+    id handoffVehicleLocationVal = nil;
+    @try {
+        estimatedReadyAtVal = [order valueForKey:@"estimatedReadyAt"];
+    } @catch (NSException *) {}
+    @try {
+        handoffVehicleLocationVal = [order valueForKey:@"handoffVehicleLocation"];
+    } @catch (NSException *) {}
     return @{
         @"id":  @(order.id),
         @"state": order.state ?: [NSNull null],
@@ -832,10 +886,16 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
     formatter.formatOptions = (NSISO8601DateFormatOptions)(NSISO8601DateFormatWithFullDate |
                                                            NSISO8601DateFormatWithTime |
                                                            NSISO8601DateFormatWithDashSeparatorInDate |
-                                                           NSISO8601DateFormatWithColonSeparatorInTime);
+                                                           NSISO8601DateFormatWithColonSeparatorInTime |
+                                                           NSISO8601DateFormatWithFractionalSeconds);
 
-    NSDate *start = [formatter dateFromString:pickupWindow[@"start"]] ?: [NSDate date]; // Replace with a fallback if needed
-    NSDate *end = [formatter dateFromString:pickupWindow[@"end"]] ?: [NSDate date]; // Replace with a fallback if needed
+    // Accept string or other types (e.g. from TurboModule); use description so we always pass a string to dateFromString
+    id startVal = pickupWindow[@"start"];
+    id endVal = pickupWindow[@"end"];
+    NSString *startStr = [startVal isKindOfClass:[NSString class]] ? startVal : (startVal ? [startVal description] : @"");
+    NSString *endStr = [endVal isKindOfClass:[NSString class]] ? endVal : (endVal ? [endVal description] : @"");
+    NSDate *start = (startStr.length > 0 ? [formatter dateFromString:startStr] : nil) ?: [NSDate date];
+    NSDate *end = (endStr.length > 0 ? [formatter dateFromString:endStr] : nil) ?: [NSDate date];
 
     return [[FlyBuyPickupWindow alloc] initWithStart:start end:end];
 }

@@ -219,15 +219,18 @@ function createOrder(params: CreateOrderParamsType) {
     );
   }
 
-  // Always pass a single params object: TurboModule expects createOrder(params); iOS bridge expects createOrderWithParams(params); Android bridge has createOrder(params)
-  if (isTurboModuleEnabled) {
-    return RnFlybuyCore.createOrder(params);
-  }
+  // Plain object for native (avoids JSI/HostFunction conversion issues).
+  const plain = JSON.parse(JSON.stringify(params)) as CreateOrderParamsType;
+  // On iOS, use bridge only (createOrderWithParams) to avoid TurboModule HostFunction exception.
   if (Platform.OS === 'ios') {
-    return (RnFlybuyCore as { createOrderWithParams?: (p: CreateOrderParamsType) => Promise<IOrder> })
-      .createOrderWithParams?.(params) ?? Promise.reject(new Error('createOrderWithParams not available'));
+    const bridge = NativeModules.RnFlybuyCore as { createOrderWithParams?: (p: CreateOrderParamsType) => Promise<IOrder> } | null;
+    if (bridge != null && typeof bridge.createOrderWithParams === 'function') {
+      return bridge.createOrderWithParams(plain);
+    }
+    // Fallback: TurboModule with plain object
+    return RnFlybuyCore.createOrder(plain);
   }
-  return RnFlybuyCore.createOrder(params);
+  return RnFlybuyCore.createOrder(plain);
 }
 function claimOrder(
   redeemCode: string,

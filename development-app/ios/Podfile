@@ -18,7 +18,8 @@ prepare_react_native_project!
 
 setup_permissions([
   'LocationWhenInUse',
-  'Notifications'
+  'Notifications',
+  'LocationAlways',
 ])
 
 # Enable New Architecture
@@ -59,7 +60,7 @@ target 'development-app' do
     modulemap_dst = File.join(codegen_headers, 'React-Codegen.modulemap')
     umbrella_src = File.join(codegen_target_support, 'ReactCodegen-umbrella.h')
     umbrella_dst = File.join(codegen_headers, 'ReactCodegen-umbrella.h')
-    FileUtils.cp(modulemap_src, modulemap_dst, :force => true) if File.exist?(modulemap_src)
-    FileUtils.cp(umbrella_src, umbrella_dst, :force => true) if File.exist?(umbrella_src)
+    FileUtils.cp(modulemap_src, modulemap_dst) if File.exist?(modulemap_src)
+    FileUtils.cp(umbrella_src, umbrella_dst) if File.exist?(umbrella_src)
   end
 end

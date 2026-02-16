@@ -1,5 +1,5 @@
 PODS:
-  - bildit-platform-rn-flybuy-core (2.24.1):
+  - bildit-platform-rn-flybuy-core (2.25.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -23,7 +23,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-livestatus (2.24.1):
+  - bildit-platform-rn-flybuy-livestatus (2.25.1):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -48,7 +48,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-notify (2.24.1):
+  - bildit-platform-rn-flybuy-notify (2.25.1):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -73,7 +73,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-pickup (2.24.1):
+  - bildit-platform-rn-flybuy-pickup (2.25.1):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -98,7 +98,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - bildit-platform-rn-flybuy-presence (2.24.1):
+  - bildit-platform-rn-flybuy-presence (2.25.1):
     - bildit-platform-rn-flybuy-core
     - DoubleConversion
     - glog
@@ -1456,10 +1456,32 @@ PODS:
     - React-jsiexecutor
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
-  - react-native-config (1.5.2):
-    - react-native-config/App (= 1.5.2)
-  - react-native-config/App (1.5.2):
+  - react-native-config (1.6.1):
+    - react-native-config/App (= 1.6.1)
+  - react-native-config/App (1.6.1):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
     - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-hermes
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - React-NativeModulesApple (0.79.7):
     - glog
     - hermes-engine
@@ -1782,7 +1804,7 @@ PODS:
     - React-logger (= 0.79.7)
     - React-perflogger (= 0.79.7)
     - React-utils (= 0.79.7)
-  - RNPermissions (4.1.5):
+  - RNPermissions (5.4.4):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2052,11 +2074,11 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  bildit-platform-rn-flybuy-core: 5a4fd5119e06b73ad127b9d8fe0a7796eaa8a943
-  bildit-platform-rn-flybuy-livestatus: 5a84a189f0804d9aeaf1ad65b12784fdc58bde10
-  bildit-platform-rn-flybuy-notify: 07b4b02813ed5f3717d88dd9c2f995e6e5632623
-  bildit-platform-rn-flybuy-pickup: 72e1f60c24233285391ec09e0b7602bc30aafff5
-  bildit-platform-rn-flybuy-presence: 148fd0f7e86aa5c35f6b784ce3dde8ed0472faa0
+  bildit-platform-rn-flybuy-core: efd144c1ea6934813e7374cd2dfe6e46db4374a3
+  bildit-platform-rn-flybuy-livestatus: 8d221dc255513f58f3a95d715c34d08e6f2c1e84
+  bildit-platform-rn-flybuy-notify: 549362ac2a921b69f36e09dd2075de4108dfd144
+  bildit-platform-rn-flybuy-pickup: 5ea5b9f6c645193b63b7ebf99e3d0808c68aa924
+  bildit-platform-rn-flybuy-presence: fc82090c6bd816dda44d45df2acbae0a50c782e3
   boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
   DoubleConversion: cb417026b2400c8f53ae97020b2be961b59470cb
   fast_float: 06eeec4fe712a76acc9376682e4808b05ce978b6
@@ -2095,7 +2117,7 @@ SPEC CHECKSUMS:
   React-logger: 6d6f432994f3d58b769945551af2bd4fb21ad866
   React-Mapbuffer: b47a3289a3fe38e665347e48579f67a37be42bb3
   React-microtasksnativemodule: c1a3d5195c3985a2246f130ad3f3cad587b79b03
-  react-native-config: d7d8a0c65f7fa523197879f6b777997abbfc987e
+  react-native-config: 56a7436fc8a5b3e5b61cae72f8e832ea478173b0
   React-NativeModulesApple: 1ed1401e841d89df68c9a429c785d51272fc21a5
   React-oscompat: 0047f0ce53a328ce225777a6c617970556602c7c
   React-perflogger: 1c412889c280d87f3e3a21d9c848ff0dca2500a7
@@ -2127,10 +2149,10 @@ SPEC CHECKSUMS:
   ReactAppDependencyProvider: 65c525dfdca3ae0cea9af8421314a9d3ff3ef75d
   ReactCodegen: e61df93a81081dc282796fa3c62b89725f4a009a
   ReactCommon: 6297fb8da56a0e1b493f8793563fde011b87591d
-  RNPermissions: 17e395bab04040e29ec0b37b2285dad7a87164f1
+  RNPermissions: 3ed79db0df5652e0433479190d46c8c0c574e87d
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 9663a18d096f7f7e17a535cf00849db756709955
 
-PODFILE CHECKSUM: 1f201c831d228da0f188932d0d87110bc718512f
+PODFILE CHECKSUM: 9dfa9e5b653ae90edb4c755a37224819a49347e2
 
 COCOAPODS: 1.14.3

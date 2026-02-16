@@ -6030,22 +6030,22 @@ react-is@^19.0.0:
   resolved "https://registry.npmjs.org/react-is/-/react-is-19.2.4.tgz#a080758243c572ccd4a63386537654298c99d135"
   integrity sha512-W+EWGn2v0ApPKgKKCy/7s7WHXkboGcsrXE+2joLyVxkbyVQfO3MUEaUQDHoSmb8TFFrSKYa9mw64WZHNHSDzYA==
 
-react-native-bildit-flybuy-core@^2.25.1-alpha.1, "react-native-bildit-flybuy-core@file:../mono/packages/core":
-  version "2.25.1-alpha.1"
+react-native-bildit-flybuy-core@2.25.1, "react-native-bildit-flybuy-core@file:../mono/packages/core":
+  version "2.25.1"
 
 "react-native-bildit-flybuy-livestatus@file:../mono/packages/livestatus":
-  version "2.25.0"
+  version "2.25.1"
 
 "react-native-bildit-flybuy-notify@file:../mono/packages/notify":
-  version "2.25.1-alpha.1"
+  version "2.25.1"
   dependencies:
-    react-native-bildit-flybuy-core "^2.25.1-alpha.1"
+    react-native-bildit-flybuy-core "2.25.1"
 
 "react-native-bildit-flybuy-pickup@file:../mono/packages/pickup":
-  version "2.25.0"
+  version "2.25.1"
 
 "react-native-bildit-flybuy-presence@file:../mono/packages/presence":
-  version "2.25.0"
+  version "2.25.1"
 
 react-native-config@^1.6.1:
   version "1.6.1"

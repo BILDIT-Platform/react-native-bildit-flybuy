@@ -653,9 +653,61 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
 {
   [self fetchAllSites:resolve withRejecter:reject];
 }
+- (void)fetchSitesByRegion:(NSDictionary *)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self fetchSitesByRegion:params withResolver:resolve withRejecter:reject];
+}
+- (void)fetchSiteByPartnerIdentifier:(NSDictionary *)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self fetchSiteByPartnerIdentifier:params withResolver:resolve withRejecter:reject];
+}
 - (void)handleNotification:(NSDictionary *)data resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
   [self handleNotification:data withResolver:resolve withRejecter:reject];
+}
+- (void)createCustomer:(NSDictionary *)customerInfo resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self createCustomer:customerInfo withResolver:resolve withRejecter:reject];
+}
+- (void)updateCustomer:(NSDictionary *)customerInfo resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self updateCustomer:customerInfo withResolver:resolve withRejecter:reject];
+}
+- (void)fetchSitesByQuery:(NSDictionary *)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self fetchSitesByQuery:params withResolver:resolve withRejecter:reject];
+}
+- (void)claimOrder:(NSString *)redeemCode
+      customerInfo:(NSDictionary *)customerInfo
+       pickupType:(NSString *)pickupType
+           resolve:(RCTPromiseResolveBlock)resolve
+            reject:(RCTPromiseRejectBlock)reject
+{
+  [self claimOrder:redeemCode withCustomer:customerInfo withPickupType:pickupType withResolver:resolve withRejecter:reject];
+}
+- (void)fetchOrderByRedemptionCode:(NSString *)redemCode resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self fetchOrderByRedemptionCode:redemCode withResolver:resolve withRejecter:reject];
+}
+- (void)updateOrderState:(NSInteger)orderId state:(NSString *)state resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self updateOrderState:orderId withState:state withResolver:resolve withRejecter:reject];
+}
+- (void)updateOrderCustomerState:(NSInteger)orderId state:(NSString *)state resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self updateOrderCustomerState:orderId withState:state withResolver:resolve withRejecter:reject];
+}
+- (void)updateOrderCustomerStateWithSpot:(NSInteger)orderId state:(NSString *)state spot:(NSString *)spot resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self updateOrderCustomerStateWithSpot:orderId withState:state withSpot:spot withResolver:resolve withRejecter:reject];
+}
+- (void)rateOrder:(NSInteger)orderId rating:(NSInteger)rating comments:(NSString *)comments resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self rateOrder:orderId withRating:rating withComments:comments withResolver:resolve withRejecter:reject];
+}
+- (void)updatePickupMethod:(NSInteger)orderId options:(NSDictionary *)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+{
+  [self updatePickupMethod:orderId withOptions:options withResolver:resolve withRejecter:reject];
 }
 #endif
 

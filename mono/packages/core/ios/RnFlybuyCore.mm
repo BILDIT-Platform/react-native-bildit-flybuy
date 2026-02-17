@@ -190,6 +190,26 @@ RCT_EXPORT_METHOD(fetchSiteByPartnerIdentifier:(NSDictionary *)params
     }];
 }
 
+RCT_EXPORT_METHOD(fetchSitesNearPlace:(NSDictionary *)place
+                  withDistance:(double)distance
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+{
+  FlyBuyPlace *placeInfo = [self decodePlace:place];
+  FlyBuySiteOptions *options = [[[FlyBuySiteOptionsBuilder alloc] init] build];
+  [[FlyBuyCore sites] fetchNearWithPlace:placeInfo radius:distance options:options callback:^(NSArray<FlyBuySite *> * _Nullable sites, NSError * _Nullable error) {
+    if (error == nil) {
+      NSMutableArray *result = [NSMutableArray array];
+      for (FlyBuySite *site in sites) {
+        [result addObject:[self parseSite:site]];
+      }
+      resolve(result);
+    } else {
+      reject([error localizedDescription], [error debugDescription], error);
+    }
+  }];
+}
+
 // Notifications
 
 RCT_EXPORT_METHOD(updatePushToken:(NSString *)token)
@@ -628,6 +648,23 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
   [self placesRetrieve:placeDict withResolver:resolve withRejecter:reject];
 }
 
+// New Architecture protocol uses fetchSitesNearPlace:distance:resolve:reject: (codegen selector).
+- (void)fetchSitesNearPlace:(JS::NativeRnFlybuyCore::SpecFetchSitesNearPlacePlace &)place
+                  distance:(double)distance
+                   resolve:(RCTPromiseResolveBlock)resolve
+                    reject:(RCTPromiseRejectBlock)reject
+{
+  NSMutableDictionary *placeDict = [NSMutableDictionary dictionary];
+  placeDict[@"name"] = place.name();
+  placeDict[@"id"] = place.id_();
+  placeDict[@"placeFormatted"] = place.placeFormatted();
+  placeDict[@"address"] = place.address() ? place.address() : @"";
+  if (place.distance()) {
+    placeDict[@"distance"] = @(*place.distance());
+  }
+  [self fetchSitesNearPlace:placeDict withDistance:distance withResolver:resolve withRejecter:reject];
+}
+
 // New Architecture protocol uses resolve:reject: (codegen selector); implementation uses withResolver:withRejecter:.
 - (void)login:(NSString *)email password:(NSString *)password resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
@@ -653,13 +690,26 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
 {
   [self fetchAllSites:resolve withRejecter:reject];
 }
-- (void)fetchSitesByRegion:(NSDictionary *)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+- (void)fetchSitesByRegion:(JS::NativeRnFlybuyCore::SpecFetchSitesByRegionParams &)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
-  [self fetchSitesByRegion:params withResolver:resolve withRejecter:reject];
+  auto region = params.region();
+  NSDictionary *paramsDict = @{
+    @"per": @(params.per()),
+    @"page": @(params.page()),
+    @"region": @{
+      @"latitude": @(region.latitude()),
+      @"longitude": @(region.longitude()),
+      @"radius": @(region.radius())
+    }
+  };
+  [self fetchSitesByRegion:paramsDict withResolver:resolve withRejecter:reject];
 }
-- (void)fetchSiteByPartnerIdentifier:(NSDictionary *)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+- (void)fetchSiteByPartnerIdentifier:(JS::NativeRnFlybuyCore::SpecFetchSiteByPartnerIdentifierParams &)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
-  [self fetchSiteByPartnerIdentifier:params withResolver:resolve withRejecter:reject];
+  NSDictionary *paramsDict = @{
+    @"partnerIdentifier": params.partnerIdentifier() ?: @""
+  };
+  [self fetchSiteByPartnerIdentifier:paramsDict withResolver:resolve withRejecter:reject];
 }
 - (void)handleNotification:(NSDictionary *)data resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
@@ -673,9 +723,13 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
 {
   [self updateCustomer:customerInfo withResolver:resolve withRejecter:reject];
 }
-- (void)fetchSitesByQuery:(NSDictionary *)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+- (void)fetchSitesByQuery:(JS::NativeRnFlybuyCore::SpecFetchSitesByQueryParams &)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
-  [self fetchSitesByQuery:params withResolver:resolve withRejecter:reject];
+  NSDictionary *paramsDict = @{
+    @"query": params.query() ?: @"",
+    @"page": @(params.page())
+  };
+  [self fetchSitesByQuery:paramsDict withResolver:resolve withRejecter:reject];
 }
 - (void)claimOrder:(NSString *)redeemCode
       customerInfo:(NSDictionary *)customerInfo
@@ -768,8 +822,17 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
   map[@"pickupConfig"] = [self parsePickupConfig:site.pickupConfig];
   map[@"operationalStatus"] = site.operationalStatus ?: @"";
   // Use KVC: prearrivalSeconds may not exist on FlyBuySite in all SDK versions
-  NSNumber *prearrival = [site valueForKey:@"prearrivalSeconds"];
-  map[@"prearrivalSeconds"] = prearrival ? @([prearrival integerValue]) : @0;
+  NSInteger prearrivalSeconds = 0;
+  @try {
+    id prearrivalVal = [site valueForKey:@"prearrivalSeconds"];
+    if ([prearrivalVal isKindOfClass:[NSNumber class]]) {
+      prearrivalSeconds = [(NSNumber *)prearrivalVal integerValue];
+    }
+  } @catch (NSException *exception) {
+    // Key may not exist or may not be KVC-compliant on this SDK version
+    (void)exception;
+  }
+  map[@"prearrivalSeconds"] = @(prearrivalSeconds);
 
   return map;
 }

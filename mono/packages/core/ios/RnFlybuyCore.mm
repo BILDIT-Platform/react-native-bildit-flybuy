@@ -2,6 +2,10 @@
 #import "RnFlybuyCore.h"
 #import "RnFlybuyCore-Umbrella.h"
 
+@interface RnFlybuyCore ()
+- (NSDictionary *)parseLinkDetails:(FlybuyLink *)link;
+@end
+
 @implementation RnFlybuyCore
 RCT_EXPORT_MODULE()
 
@@ -595,6 +599,27 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
   }];
 }
 
+RCT_EXPORT_METHOD(parseReferrerUrl:(NSString *)referrerUrl
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+{
+  @try {
+    NSURL *url = [NSURL URLWithString:referrerUrl ?: @""];
+    if (url == nil) {
+      reject(@"invalid_referrer_url", @"Invalid referrer URL", nil);
+      return;
+    }
+    FlybuyLink *link = [FlyBuyLinks parseWithUrl:url];
+    if (link == nil) {
+      reject(@"parse_referrer_error", @"Unable to parse referrer URL", nil);
+      return;
+    }
+    resolve([self parseLinkDetails:link]);
+  } @catch (NSException *exception) {
+    reject(@"parse_referrer_exception", exception.reason ?: @"Unknown parse exception", nil);
+  }
+}
+
 #ifdef RCT_NEW_ARCH_ENABLED
 // New Architecture protocol uses placesSuggest:options:resolve:reject: (codegen selector).
 // Forward to existing implementation that uses withOptions:withResolver:withRejecter:.
@@ -715,13 +740,33 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
 {
   [self handleNotification:data withResolver:resolve withRejecter:reject];
 }
-- (void)createCustomer:(NSDictionary *)customerInfo resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+- (void)createCustomer:(JS::NativeRnFlybuyCore::SpecCreateCustomerCustomerInfo &)customerInfo
+               resolve:(RCTPromiseResolveBlock)resolve
+                reject:(RCTPromiseRejectBlock)reject
 {
-  [self createCustomer:customerInfo withResolver:resolve withRejecter:reject];
+  NSMutableDictionary *customerInfoDict = [NSMutableDictionary dictionary];
+  customerInfoDict[@"name"] = customerInfo.name() ?: @"";
+  customerInfoDict[@"carType"] = customerInfo.carType() ?: @"";
+  customerInfoDict[@"carColor"] = customerInfo.carColor() ?: @"";
+  customerInfoDict[@"licensePlate"] = customerInfo.licensePlate() ?: @"";
+  if (customerInfo.phone() != nil) {
+    customerInfoDict[@"phone"] = customerInfo.phone();
+  }
+  [self createCustomer:customerInfoDict withResolver:resolve withRejecter:reject];
 }
-- (void)updateCustomer:(NSDictionary *)customerInfo resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+- (void)updateCustomer:(JS::NativeRnFlybuyCore::SpecUpdateCustomerCustomerInfo &)customerInfo
+               resolve:(RCTPromiseResolveBlock)resolve
+                reject:(RCTPromiseRejectBlock)reject
 {
-  [self updateCustomer:customerInfo withResolver:resolve withRejecter:reject];
+  NSMutableDictionary *customerInfoDict = [NSMutableDictionary dictionary];
+  customerInfoDict[@"name"] = customerInfo.name() ?: @"";
+  customerInfoDict[@"carType"] = customerInfo.carType() ?: @"";
+  customerInfoDict[@"carColor"] = customerInfo.carColor() ?: @"";
+  customerInfoDict[@"licensePlate"] = customerInfo.licensePlate() ?: @"";
+  if (customerInfo.phone() != nil) {
+    customerInfoDict[@"phone"] = customerInfo.phone();
+  }
+  [self updateCustomer:customerInfoDict withResolver:resolve withRejecter:reject];
 }
 - (void)fetchSitesByQuery:(JS::NativeRnFlybuyCore::SpecFetchSitesByQueryParams &)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
@@ -732,36 +777,67 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
   [self fetchSitesByQuery:paramsDict withResolver:resolve withRejecter:reject];
 }
 - (void)claimOrder:(NSString *)redeemCode
-      customerInfo:(NSDictionary *)customerInfo
-       pickupType:(NSString *)pickupType
+      customerInfo:(JS::NativeRnFlybuyCore::SpecClaimOrderCustomerInfo &)customerInfo
+        pickupType:(NSString *)pickupType
            resolve:(RCTPromiseResolveBlock)resolve
             reject:(RCTPromiseRejectBlock)reject
 {
-  [self claimOrder:redeemCode withCustomer:customerInfo withPickupType:pickupType withResolver:resolve withRejecter:reject];
+  NSMutableDictionary *customerInfoDict = [NSMutableDictionary dictionary];
+  customerInfoDict[@"name"] = customerInfo.name() ?: @"";
+  customerInfoDict[@"carType"] = customerInfo.carType() ?: @"";
+  customerInfoDict[@"carColor"] = customerInfo.carColor() ?: @"";
+  customerInfoDict[@"licensePlate"] = customerInfo.licensePlate() ?: @"";
+  if (customerInfo.phone() != nil) {
+    customerInfoDict[@"phone"] = customerInfo.phone();
+  }
+  [self claimOrder:redeemCode withCustomer:customerInfoDict withPickupType:pickupType withResolver:resolve withRejecter:reject];
 }
 - (void)fetchOrderByRedemptionCode:(NSString *)redemCode resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
   [self fetchOrderByRedemptionCode:redemCode withResolver:resolve withRejecter:reject];
 }
-- (void)updateOrderState:(NSInteger)orderId state:(NSString *)state resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+- (void)updateOrderState:(double)orderId state:(NSString *)state resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
-  [self updateOrderState:orderId withState:state withResolver:resolve withRejecter:reject];
+  [self updateOrderState:(NSInteger)orderId withState:state withResolver:resolve withRejecter:reject];
 }
-- (void)updateOrderCustomerState:(NSInteger)orderId state:(NSString *)state resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+- (void)updateOrderCustomerState:(double)orderId state:(NSString *)state resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
-  [self updateOrderCustomerState:orderId withState:state withResolver:resolve withRejecter:reject];
+  [self updateOrderCustomerState:(NSInteger)orderId withState:state withResolver:resolve withRejecter:reject];
 }
-- (void)updateOrderCustomerStateWithSpot:(NSInteger)orderId state:(NSString *)state spot:(NSString *)spot resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+- (void)updateOrderCustomerStateWithSpot:(double)orderId state:(NSString *)state spot:(NSString *)spot resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
-  [self updateOrderCustomerStateWithSpot:orderId withState:state withSpot:spot withResolver:resolve withRejecter:reject];
+  [self updateOrderCustomerStateWithSpot:(NSInteger)orderId withState:state withSpot:spot withResolver:resolve withRejecter:reject];
 }
-- (void)rateOrder:(NSInteger)orderId rating:(NSInteger)rating comments:(NSString *)comments resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+- (void)rateOrder:(double)orderId rating:(double)rating comments:(NSString *)comments resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
-  [self rateOrder:orderId withRating:rating withComments:comments withResolver:resolve withRejecter:reject];
+  [self rateOrder:(NSInteger)orderId withRating:(NSInteger)rating withComments:comments withResolver:resolve withRejecter:reject];
 }
-- (void)updatePickupMethod:(NSInteger)orderId options:(NSDictionary *)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+- (void)updatePickupMethod:(double)orderId
+                   options:(JS::NativeRnFlybuyCore::SpecUpdatePickupMethodOptions &)options
+                   resolve:(RCTPromiseResolveBlock)resolve
+                    reject:(RCTPromiseRejectBlock)reject
 {
-  [self updatePickupMethod:orderId withOptions:options withResolver:resolve withRejecter:reject];
+  NSMutableDictionary *optionsDict = [NSMutableDictionary dictionary];
+  optionsDict[@"pickupType"] = options.pickupType() ?: @"pickup";
+  if (options.customerCarColor() != nil) {
+    optionsDict[@"customerCarColor"] = options.customerCarColor();
+  }
+  if (options.customerCarType() != nil) {
+    optionsDict[@"customerCarType"] = options.customerCarType();
+  }
+  if (options.customerLicensePlate() != nil) {
+    optionsDict[@"customerLicensePlate"] = options.customerLicensePlate();
+  }
+  if (options.handoffVehicleLocation() != nil) {
+    optionsDict[@"handoffVehicleLocation"] = options.handoffVehicleLocation();
+  }
+  [self updatePickupMethod:(NSInteger)orderId withOptions:optionsDict withResolver:resolve withRejecter:reject];
+}
+- (void)parseReferrerUrl:(NSString *)referrerUrl
+                 resolve:(RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject
+{
+  [self parseReferrerUrl:referrerUrl withResolver:resolve withRejecter:reject];
 }
 #endif
 
@@ -965,8 +1041,6 @@ RCT_EXPORT_METHOD(placesRetrieve:(NSDictionary *)place
 //        @"longitude": @(location.longitude),
     };
 }
-
-
 
 
 // Decoder

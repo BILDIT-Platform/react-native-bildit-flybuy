@@ -267,14 +267,14 @@ RCT_EXPORT_METHOD(fetchOrders:(RCTPromiseResolveBlock)resolve
 }
 #endif
 
-RCT_EXPORT_METHOD(createOrder:(NSInteger)siteId
-                  withPartnerIdentifier:(NSString *)pid
-                  withCustomerInfo:(NSDictionary *)customerInfo
-                  withPickupWindow:(NSDictionary *)pickupWindow
-                  withOrderState:(NSString *)orderState
-                  withPickupType:(NSString *)pickupType
-                  withResolver:(RCTPromiseResolveBlock)resolve
-                  withRejecter:(RCTPromiseRejectBlock)reject)
+- (void)createOrderLegacyWithSiteId:(NSInteger)siteId
+               withPartnerIdentifier:(NSString *)pid
+                   withCustomerInfo:(NSDictionary *)customerInfo
+                   withPickupWindow:(NSDictionary *)pickupWindow
+                     withOrderState:(NSString *)orderState
+                     withPickupType:(NSString *)pickupType
+                       withResolver:(RCTPromiseResolveBlock)resolve
+                       withRejecter:(RCTPromiseRejectBlock)reject
 {
     FlyBuyCustomerInfo *info = [self decodeCustomerInfo:customerInfo];
 
@@ -300,14 +300,14 @@ RCT_EXPORT_METHOD(createOrder:(NSInteger)siteId
     }
 }
 
-RCT_EXPORT_METHOD(createOrderWithPartnerIdentifier:(NSString *)sitePartnerIdentifier
-                  withOrderPartnerIdentifier:(NSString *)orderPid
-                  withCustomerInfo:(NSDictionary *)customerInfo
-                  withPickupWindow:(NSDictionary *)pickupWindow
-                  withOrderState:(NSString *)orderState
-                  withPickupType:(NSString *)pickupType
-                  withResolver:(RCTPromiseResolveBlock)resolve
-                  withRejecter:(RCTPromiseRejectBlock)reject)
+- (void)createOrderLegacyWithSitePartnerIdentifier:(NSString *)sitePartnerIdentifier
+                         withOrderPartnerIdentifier:(NSString *)orderPid
+                                   withCustomerInfo:(NSDictionary *)customerInfo
+                                   withPickupWindow:(NSDictionary *)pickupWindow
+                                     withOrderState:(NSString *)orderState
+                                     withPickupType:(NSString *)pickupType
+                                       withResolver:(RCTPromiseResolveBlock)resolve
+                                       withRejecter:(RCTPromiseRejectBlock)reject
 {
     FlyBuyCustomerInfo *info = [self decodeCustomerInfo:customerInfo];
 
@@ -333,38 +333,104 @@ RCT_EXPORT_METHOD(createOrderWithPartnerIdentifier:(NSString *)sitePartnerIdenti
     }
 }
 
+#ifndef RCT_NEW_ARCH_ENABLED
+RCT_EXPORT_METHOD(createOrder:(NSInteger)siteId
+                  withPartnerIdentifier:(NSString *)pid
+                  withCustomerInfo:(NSDictionary *)customerInfo
+                  withPickupWindow:(NSDictionary *)pickupWindow
+                  withOrderState:(NSString *)orderState
+                  withPickupType:(NSString *)pickupType
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    [self createOrderLegacyWithSiteId:siteId
+                withPartnerIdentifier:pid
+                    withCustomerInfo:customerInfo
+                    withPickupWindow:pickupWindow
+                      withOrderState:orderState
+                      withPickupType:pickupType
+                        withResolver:resolve
+                        withRejecter:reject];
+}
+
+RCT_EXPORT_METHOD(createOrderWithPartnerIdentifier:(NSString *)sitePartnerIdentifier
+                  withOrderPartnerIdentifier:(NSString *)orderPid
+                  withCustomerInfo:(NSDictionary *)customerInfo
+                  withPickupWindow:(NSDictionary *)pickupWindow
+                  withOrderState:(NSString *)orderState
+                  withPickupType:(NSString *)pickupType
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    [self createOrderLegacyWithSitePartnerIdentifier:sitePartnerIdentifier
+                          withOrderPartnerIdentifier:orderPid
+                                    withCustomerInfo:customerInfo
+                                    withPickupWindow:pickupWindow
+                                      withOrderState:orderState
+                                      withPickupType:pickupType
+                                        withResolver:resolve
+                                        withRejecter:reject];
+}
+#endif
+
+// Safely extract a string from params (JS may send string or number).
+static NSString *_Nullable stringFromParams(NSDictionary *params, NSString *key) {
+    id value = params[key];
+    if (value == nil) return nil;
+    if ([value isKindOfClass:[NSString class]]) return (NSString *)value;
+    if ([value isKindOfClass:[NSNumber class]]) return [(NSNumber *)value stringValue];
+    return nil;
+}
+
+// Safely extract siteId as NSInteger. Returns YES if valid, NO if missing or wrong type (e.g. dict passed by mistake).
+static BOOL integerFromParams(NSDictionary *params, NSString *key, NSInteger *outValue) {
+    id value = params[key];
+    if (value == nil) return NO;
+    if ([value isKindOfClass:[NSDictionary class]]) return NO; // Avoid passing whole params as number
+    if ([value isKindOfClass:[NSNumber class]]) {
+        *outValue = [(NSNumber *)value integerValue];
+        return YES;
+    }
+    if ([value isKindOfClass:[NSString class]]) {
+        *outValue = [(NSString *)value integerValue];
+        return YES;
+    }
+    return NO;
+}
+
 - (void)createOrderWithParamsImpl:(NSDictionary *)params resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
     @try {
-        NSNumber *siteIdNum = params[@"siteId"];
-        NSString *pid = params[@"pid"];
+        NSInteger siteId = 0;
+        BOOL hasSiteId = integerFromParams(params, @"siteId", &siteId);
+        NSString *pid = stringFromParams(params, @"pid");
         NSDictionary *customerInfo = params[@"customerInfo"];
         NSDictionary *pickupWindow = params[@"pickupWindow"];
         NSString *orderState = params[@"orderState"];
         NSString *pickupType = params[@"pickupType"];
-        NSString *sitePartnerIdentifier = params[@"sitePartnerIdentifier"];
-        NSString *orderPid = params[@"orderPid"];
+        NSString *sitePartnerIdentifier = stringFromParams(params, @"sitePartnerIdentifier");
+        NSString *orderPid = stringFromParams(params, @"orderPid");
 
-        if (siteIdNum != nil && pid != nil) {
-            [self createOrder:[siteIdNum integerValue]
-        withPartnerIdentifier:pid
-            withCustomerInfo:customerInfo ?: @{}
-            withPickupWindow:pickupWindow
-              withOrderState:orderState
-              withPickupType:pickupType
-                withResolver:resolve
-                withRejecter:reject];
+        if (hasSiteId && pid != nil && pid.length > 0) {
+            [self createOrderLegacyWithSiteId:siteId
+                         withPartnerIdentifier:pid
+                             withCustomerInfo:customerInfo ?: @{}
+                             withPickupWindow:pickupWindow
+                               withOrderState:orderState
+                               withPickupType:pickupType
+                                 withResolver:resolve
+                                 withRejecter:reject];
             return;
         }
-        if (sitePartnerIdentifier != nil && orderPid != nil) {
-            [self createOrderWithPartnerIdentifier:sitePartnerIdentifier
-                withOrderPartnerIdentifier:orderPid
-                      withCustomerInfo:customerInfo ?: @{}
-                      withPickupWindow:pickupWindow
-                        withOrderState:orderState
-                        withPickupType:pickupType
-                          withResolver:resolve
-                          withRejecter:reject];
+        if (sitePartnerIdentifier != nil && sitePartnerIdentifier.length > 0 && orderPid != nil && orderPid.length > 0) {
+            [self createOrderLegacyWithSitePartnerIdentifier:sitePartnerIdentifier
+                                  withOrderPartnerIdentifier:orderPid
+                                            withCustomerInfo:customerInfo ?: @{}
+                                            withPickupWindow:pickupWindow
+                                              withOrderState:orderState
+                                              withPickupType:pickupType
+                                                withResolver:resolve
+                                                withRejecter:reject];
             return;
         }
         reject(@"INVALID_PARAMS", @"params must include (siteId, pid) or (sitePartnerIdentifier, orderPid)", nil);

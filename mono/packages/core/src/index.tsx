@@ -1,4 +1,4 @@
-import { NativeModules, Platform } from 'react-native';
+import { NativeEventEmitter, NativeModules, Platform } from 'react-native';
 import type {
   CreateOrderParamsType,
   CustomerState,
@@ -40,6 +40,54 @@ const RnFlybuyCore = RnFlybuyCoreModule
         },
       }
     );
+
+/**
+ * Returns the native module used for event emitter (orderUpdated, etc.).
+ * On iOS, NativeEventEmitter requires a non-null module with addListener; the TurboModule
+ * proxy does not qualify, so we only use NativeModules.RnFlybuyCore (bridge module).
+ */
+function getRnFlybuyCoreEventEmitterModule():
+  | (typeof NativeModules)['RnFlybuyCore']
+  | null {
+  const bridgeModule = NativeModules.RnFlybuyCore;
+  // Only use module that has addListener (required by NativeEventEmitter on iOS).
+  if (
+    bridgeModule != null &&
+    typeof (bridgeModule as {addListener?: unknown}).addListener === 'function'
+  ) {
+    return bridgeModule;
+  }
+  return null;
+}
+
+/**
+ * Subscribe to order updated events. Works in both bridge and TurboModule mode.
+ * When only TurboModule is available (e.g. New Arch), returns a no-op subscription
+ * so callers never pass null to NativeEventEmitter (which throws on iOS).
+ * @param callback - Called when an order is updated.
+ * @returns Subscription with remove() to unsubscribe.
+ */
+export function addOrderUpdatedListener(callback: (event: IOrder) => void): {
+  remove: () => void;
+} {
+  const nativeModule = getRnFlybuyCoreEventEmitterModule();
+  if (nativeModule == null) {
+    if (__DEV__) {
+      console.warn(
+        '[react-native-bildit-flybuy-core] addOrderUpdatedListener: native event emitter not available (e.g. TurboModule-only), order events will not be received.'
+      );
+    }
+    return { remove: () => {} };
+  }
+  const eventEmitter = new NativeEventEmitter(nativeModule);
+  const subscription = eventEmitter.addListener(
+    'orderUpdated',
+    (event: IOrder) => callback(event)
+  );
+  return {
+    remove: () => subscription.remove(),
+  };
+}
 
 // Core functions
 
@@ -161,33 +209,28 @@ function createOrder(params: CreateOrderParamsType) {
     sitePartnerIdentifier,
     orderPid,
     pid,
-    customerInfo,
-    pickupType,
-    pickupWindow,
-    orderState,
   } = params;
 
-  if (siteId && pid) {
-    return RnFlybuyCore.createOrder(
-      siteId,
-      pid,
-      customerInfo,
-      pickupWindow ?? null,
-      orderState ?? null,
-      pickupType ?? null
+  if (!siteId && !pid && !sitePartnerIdentifier && !orderPid) {
+    return Promise.reject(
+      new Error(
+        'params must include (siteId, pid) or (sitePartnerIdentifier, orderPid)'
+      )
     );
   }
 
-  if (sitePartnerIdentifier && orderPid) {
-    return RnFlybuyCore.createOrderWithPartnerIdentifier(
-      sitePartnerIdentifier,
-      orderPid,
-      customerInfo,
-      pickupWindow ?? null,
-      orderState ?? null,
-      pickupType ?? null
-    );
+  // Plain object for native (avoids JSI/HostFunction conversion issues).
+  const plain = JSON.parse(JSON.stringify(params)) as CreateOrderParamsType;
+  // On iOS, use bridge only (createOrderWithParams) to avoid TurboModule HostFunction exception.
+  if (Platform.OS === 'ios') {
+    const bridge = NativeModules.RnFlybuyCore as { createOrderWithParams?: (p: CreateOrderParamsType) => Promise<IOrder> } | null;
+    if (bridge != null && typeof bridge.createOrderWithParams === 'function') {
+      return bridge.createOrderWithParams(plain);
+    }
+    // Fallback: TurboModule with plain object
+    return RnFlybuyCore.createOrder(plain);
   }
+  return RnFlybuyCore.createOrder(plain);
 }
 function claimOrder(
   redeemCode: string,

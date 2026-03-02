@@ -1,98 +1,127 @@
 import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
-import type {
-  CreateOrderParamsType,
-  CustomerState,
-  ICircularRegion,
-  ICustomer,
-  ICustomerInfo,
-  IOrder,
-  IPlace,
-  ISite,
-  LinkDetails,
-  OrderStateType,
-  PickupMethodOptions,
-  PickupType,
-  PlaceSuggestOptions,
-} from './types';
 
 export * from './types';
 
+/**
+ * NativeModule spec uses only inline types so React Native codegen can parse it.
+ * Public API types remain in ./types.
+ */
 export interface Spec extends TurboModule {
   // Core functions
   startObserver(): void;
   stopObserver(): void;
   updatePushToken(token: string): void;
-  // TODO: change any
-  handleRemoteNotification(data: any): void;
-  handleNotification(data: any): Promise<any>;
+  handleRemoteNotification(data: Object): void;
+  handleNotification(data: Object): Promise<Object>;
 
-  // TODO: double check promise reject type
-  //Customers functions
-  login(email: string, password: string): Promise<ICustomer>;
-  loginWithToken(token: string): Promise<ICustomer>;
+  // Customers functions
+  login(email: string, password: string): Promise<Object>;
+  loginWithToken(token: string): Promise<Object>;
   logout(): Promise<string>;
-  signUp(email: string, password: string): Promise<ICustomer>;
-  createCustomer(customerInfo: ICustomerInfo): Promise<ICustomer>;
-  updateCustomer(customerInfo: ICustomerInfo): Promise<ICustomer>;
-  getCurrentCustomer(): Promise<ICustomer>;
+  signUp(email: string, password: string): Promise<Object>;
+  createCustomer(customerInfo: {
+    name: string;
+    carType: string;
+    carColor: string;
+    licensePlate: string;
+    phone?: string;
+  }): Promise<Object>;
+  updateCustomer(customerInfo: {
+    name: string;
+    carType: string;
+    carColor: string;
+    licensePlate: string;
+    phone?: string;
+  }): Promise<Object>;
+  getCurrentCustomer(): Promise<Object>;
 
   // Sites functions
   /**
    * @deprecated
    */
-  fetchAllSites(): Promise<ISite[]>;
+  fetchAllSites(): Promise<Object[]>;
   /**
    * @deprecated
    */
-  fetchSitesByQuery(params: { query: string; page: number }): Promise<[ISite]>;
+  fetchSitesByQuery(params: { query: string; page: number }): Promise<[Object]>;
   /**
    * @deprecated
    */
   fetchSitesByRegion(params: {
     per: number;
     page: number;
-    region: ICircularRegion;
-  }): Promise<ISite[]>;
+    region: { latitude: number; longitude: number; radius: number };
+  }): Promise<Object[]>;
   fetchSiteByPartnerIdentifier(params: {
     partnerIdentifier: string;
-  }): Promise<ISite>;
-  fetchSitesNearPlace(place: IPlace, distance: number): Promise<ISite[]>;
+  }): Promise<Object>;
+  fetchSitesNearPlace(
+    place: {
+      name: string;
+      id: string;
+      placeFormatted: string;
+      address?: string;
+      distance?: number;
+    },
+    distance: number
+  ): Promise<Object[]>;
 
   // Places functions
   placesSuggest(
     keyword: string,
-    options: PlaceSuggestOptions
-  ): Promise<IPlace[]>;
-  placesRetrieve(place: IPlace): Promise<IPlace>;
+    options: {
+      latitude?: number;
+      longitude?: number;
+      type?: number;
+      countryCodes?: string[];
+      placeTypes?: number[];
+    }
+  ): Promise<Object[]>;
+  placesRetrieve(place: {
+    name: string;
+    id: string;
+    placeFormatted: string;
+    address?: string;
+    distance?: number;
+  }): Promise<Object>;
 
   // Orders functions
-  fetchOrders(): Promise<IOrder[]>;
-  createOrder(params: CreateOrderParamsType): Promise<IOrder>;
+  fetchOrders(): Promise<Object[]>;
+  createOrder(params: Object): Promise<Object>;
   claimOrder(
     redeemCode: string,
-    customerInfo: ICustomerInfo,
-    pickupType?: PickupType
-  ): Promise<IOrder>;
-  fetchOrderByRedemptionCode(redemCode: string): Promise<IOrder>;
-  updateOrderState(orderId: number, state: OrderStateType): Promise<IOrder>;
-  updateOrderCustomerState(
-    orderId: number,
-    state: CustomerState
-  ): Promise<IOrder>;
+    customerInfo: {
+      name: string;
+      carType: string;
+      carColor: string;
+      licensePlate: string;
+      phone?: string;
+    },
+    pickupType?: string
+  ): Promise<Object>;
+  fetchOrderByRedemptionCode(redemCode: string): Promise<Object>;
+  updateOrderState(orderId: number, state: string): Promise<Object>;
+  updateOrderCustomerState(orderId: number, state: string): Promise<Object>;
   updateOrderCustomerStateWithSpot(
     orderId: number,
-    state: CustomerState,
+    state: string,
     spot: string
-  ): Promise<IOrder>;
-  rateOrder(orderId: number, rating: number, comments: string): Promise<IOrder>;
+  ): Promise<Object>;
+  rateOrder(orderId: number, rating: number, comments: string): Promise<Object>;
   updatePickupMethod(
     orderId: number,
-    options: PickupMethodOptions
-  ): Promise<IOrder>;
+    options: {
+      pickupType: string;
+      customerCarColor?: string;
+      customerCarType?: string;
+      customerLicensePlate?: string;
+      handoffVehicleLocation?: string;
+    }
+  ): Promise<Object>;
 
   // Deeplinks
-  parseReferrerUrl(referrerUrl: string): Promise<LinkDetails>;
+  parseReferrerUrl(referrerUrl: string): Promise<Object>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('RnFlybuyCore');

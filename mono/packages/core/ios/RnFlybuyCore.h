@@ -58,6 +58,11 @@
     withResolver:(RCTPromiseResolveBlock)resolve
     withRejecter:(RCTPromiseRejectBlock)reject;
 
+- (void)fetchSitesNearPlace:(NSDictionary *)place
+    withDistance:(double)distance
+    withResolver:(RCTPromiseResolveBlock)resolve
+    withRejecter:(RCTPromiseRejectBlock)reject;
+
 - (void)fetchOrders:(RCTPromiseResolveBlock)resolve
     rejecter:(RCTPromiseRejectBlock)reject;
 

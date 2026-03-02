@@ -26,7 +26,7 @@ class RnFlybuyNotifyModule internal constructor(context: ReactApplicationContext
   }
 
   @ReactMethod
-  override fun configure(bgTaskIdentifier: String, promise: Promise) {
+  override fun configure(bgTaskIdentifier: String?, promise: Promise) {
     try {
       NotifyManager.getInstance()?.configure(reactApplicationContext.baseContext)
       promise.resolve(true)
@@ -120,7 +120,7 @@ class RnFlybuyNotifyModule internal constructor(context: ReactApplicationContext
   }
 
   @ReactMethod
-  override fun onPermissionChangedNotify() {
+  override fun onPermissionChanged() {
     NotifyManager.getInstance().onPermissionChanged()
   }
 

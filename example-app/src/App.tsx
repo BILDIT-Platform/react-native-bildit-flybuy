@@ -107,14 +107,18 @@ export default function App() {
       start: pickup_start.toISOString(),
       end: pickup_end.toISOString(),
     };
-    FlyBuyCore.Orders.createOrder({
+
+    const params = {
       siteId: SITE_ID,
       pid: partnerId,
       customerInfo: CUSTOMER_INFO,
       pickupWindow: pickupWindow,
       orderState: FlyBuyCore.OrderStateType.DELAYED,
       pickupType: FlyBuyCore.PickupType.DELIVERY,
-    })
+    }
+
+    console.log('params', params);
+    FlyBuyCore.Orders.createOrder(params)
       .then((order: FlyBuyCore.IOrder) => {
         console.log('order is created!', order);
         fetchOrders();

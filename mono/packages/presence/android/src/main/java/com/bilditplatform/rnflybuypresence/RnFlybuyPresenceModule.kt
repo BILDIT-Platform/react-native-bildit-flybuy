@@ -38,7 +38,7 @@ class RnFlybuyPresenceModule internal constructor(context: ReactApplicationConte
       PresenceManager.getInstance().stop()
       promise.resolve("Locator is stopped successfully.")
     } catch (e: ExecutionException) {
-      promise.reject(e.message, e.message)
+      promise.reject("STOP_LOCATOR_ERROR", e.message ?: e.toString())
     }
   }
   companion object {

@@ -101,7 +101,9 @@ RCT_EXPORT_METHOD(sync:(BOOL *)force
   map[@"partnerIdentifier"] = site.partnerIdentifier ?: @"";
   map[@"pickupConfig"] = [self parsePickupConfig:site.pickupConfig];
   map[@"operationalStatus"] = site.operationalStatus ?: @"";
-  map[@"prearrivalSeconds"] = @(site.prearrivalSeconds);
+  // Use KVC: prearrivalSeconds may not exist on FlyBuySite in all SDK versions
+  NSNumber *prearrival = [site valueForKey:@"prearrivalSeconds"];
+  map[@"prearrivalSeconds"] = prearrival ? @([prearrival integerValue]) : @0;
   return map;
 }
 
@@ -171,8 +173,6 @@ RCT_EXPORT_METHOD(sync:(BOOL *)force
   return region;
 }
 
-@end
-
 // Don't compile this code when we build for the old architecture.
 #ifdef RCT_NEW_ARCH_ENABLED
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
@@ -182,3 +182,4 @@ RCT_EXPORT_METHOD(sync:(BOOL *)force
 }
 #endif
 
+@end

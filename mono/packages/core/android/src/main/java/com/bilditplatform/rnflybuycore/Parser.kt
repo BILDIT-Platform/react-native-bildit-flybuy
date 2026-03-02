@@ -119,7 +119,8 @@ fun parsePickupConfig(pickupConfig: PickupConfig): WritableMap {
   map.putString("accentColor", pickupConfig.projectAccentColor)
   map.putString("accentTextColor", pickupConfig.projectAccentTextColor)
   map.putString("askToAskImageURL", pickupConfig.askToAskImageUrl)
-  map.putString("availableHandoffVehicleLocation", pickupConfig.availableHandoffVehicleLocation)
+  // TODO: availableHandoffVehicleLocation was removed/renamed in FlyBuy SDK; restore when SDK exposes it
+  map.putString("availableHandoffVehicleLocation", "")
   map.putArray("availablePickupTypes", parsePickupTypeConfigs(pickupConfig.availablePickupTypes))
   map.putBoolean("customerFeedbackEnabled", pickupConfig.customerFeedbackEnabled)
   map.putBoolean("customerNameEditingEnabled", pickupConfig.customerNameEditingEnabled)
